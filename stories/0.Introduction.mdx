@@ -1,0 +1,23 @@
+import { Meta } from "@storybook/addon-docs";
+import { Anchor, Story, Subheading, Subtitle, Title } from "@storybook/blocks";
+import { Translation } from "react-i18next";
+
+<Meta title="Introduction" />
+
+<div className="flex gap-lg">
+  <div>
+    <img src="poster.png" height={72} />
+    <Subtitle>
+    <div style={{marginInlineStart:"5rem"}}>
+      <Translation>
+        {(t, { i18n }) => t("appDescription", "Default text")}
+      </Translation>
+      </div>
+    </Subtitle>
+
+  </div>
+</div>
+
+<hr />
+
+Built using Tailwind and pure CSS, using CSS variables and the `color-mix` function which makes theming in css relatively easy.

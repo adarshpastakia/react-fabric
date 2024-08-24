@@ -1,0 +1,2 @@
+flags.*.css
+**/dist/**/*.css

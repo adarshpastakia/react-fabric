@@ -1,0 +1,124 @@
+/*
+ * React UI Framework
+ * @version   : 1.0.0
+ * @copyright : 2024
+ * @author    : Adarsh Pastakia
+ */
+
+.prismjs.prismjs.prismjs {
+  color: theme(textColor.dimmed);
+  background: var(--ruf-bg);
+}
+
+.prismjs > code {
+  user-select: text;
+
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 1em;
+  line-height: 1.5;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  white-space: pre;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  overflow: auto;
+  margin: 0.5em 0;
+  padding: 1em;
+}
+
+/* Inline code */
+*:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  white-space: normal;
+  border-radius: 0.3em;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  & .token.important,
+  & .token.bold {
+    font-weight: 600;
+  }
+
+  & .token.italic {
+    font-style: italic;
+  }
+
+  & .token.entity {
+    cursor: help;
+  }
+}
+
+.prismjs {
+  position: relative;
+}
+
+.prismjs > div {
+  white-space: pre-wrap !important;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    inset-inline-end: 0;
+
+    padding: 0.25em 0.5em;
+
+    font-size: 0.75rem;
+
+    opacity: 0.7;
+    border-end-start-radius: 8px;
+  }
+
+  &.language-jsx::after,
+  &.language-tsx::after {
+    content: "React";
+    color: #000;
+    background-color: #61dafb;
+  }
+
+  &.language-js::after {
+    content: "JS";
+    color: #000;
+    background-color: #f7df1e;
+  }
+
+  &.language-ts::after {
+    content: "TS";
+    color: #fff;
+    background-color: #3178c6;
+  }
+
+  &.language-css::after {
+    content: "CSS";
+    color: #fff;
+    background-color: #1572b6;
+  }
+
+  &.language-html::after {
+    content: "HTML";
+    color: #fff;
+    background-color: #e34f26;
+  }
+
+  &.language-bash::after {
+    content: "Bash";
+    color: #fff;
+    background-color: #64748b;
+  }
+
+  &.language-json::after {
+    content: "JSON";
+    color: #fff;
+    background-color: #000;
+  }
+
+  &.language-yaml::after {
+    content: "YAML";
+    color: #fff;
+    background-color: #cb171e;
+  }
+}

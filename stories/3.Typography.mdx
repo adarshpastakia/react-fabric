@@ -1,0 +1,50 @@
+import { Meta } from "@storybook/addon-docs";
+import {
+  Anchor,
+  Story,
+  IconGallery,
+  IconItem,
+  Subheading,
+  Subtitle,
+  Title,
+  Unstyled,
+} from "@storybook/blocks";
+import { Translation } from "react-i18next";
+import { faker, fakerAR } from "@faker-js/faker";
+
+<Meta title="Typography" />
+
+<Title>Typography</Title>
+
+<Subheading>Font Family</Subheading>
+<Unstyled>
+  <h6>Sans-Serif</h6>
+  <p className="whitespace-pre-wrap font-sans">
+    THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG'S BACK 1234567890
+  </p>
+  <h6 className="mt-4">Serif</h6>
+  <p className="whitespace-pre-wrap font-serif">
+    THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG'S BACK 1234567890
+  </p>
+  <h6 className="mt-4">Mono</h6>
+  <p className="whitespace-pre-wrap font-mono">
+    THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG'S BACK 1234567890
+  </p>
+</Unstyled>
+
+<Subheading>Headings</Subheading>
+<Unstyled>
+  <h1>Heading 1</h1>
+  <h2>Heading 2</h2>
+  <h4 className="text-2xl">Heading 3</h4>
+  <h4>Heading 4</h4>
+  <h5>Heading 5</h5>
+  <h6>Heading 6</h6>
+</Unstyled>
+
+<Subheading>Paragraphs</Subheading>
+<Unstyled>
+  <p className="whitespace-pre-wrap">
+    {faker.lorem.sentences(10) + "\n\n" + fakerAR.lorem.sentences(10)}
+  </p>
+</Unstyled>

@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-clean-order",
+    "stylelint-config-tailwindcss"
+  ],
+  "plugins": ["stylelint-selector-bem-pattern", "stylelint-order"],
+  "rules": {
+    "value-keyword-case": null,
+    "no-descending-specificity": null,
+    "media-query-no-invalid": null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      { "ignorePseudoClasses": ["global"] }
+    ],
+    "unit-no-unknown": [
+      true,
+      {
+        "ignoreUnits": ["xl"]
+      }
+    ],
+    "at-rule-no-unknown": [
+      true,
+      { "ignoreAtRules": ["mixin", "define-mixin", "value"] }
+    ],
+    "selector-class-pattern": "^[a-z][a-zA-Z0-9-]*(?:\\-[a-zA-Z0-9]+)*(?:__[a-z][a-zA-Z0-9]+)?(?:--[a-z][a-zA-Z0-9]+)?(?:\\:.*)?$",
+    "plugin/selector-bem-pattern": {
+      "preset": "bem",
+      "componentName": "[a-zA-Z0-9]+",
+      "componentSelectors": {
+        "initial": "^\\.{componentName}(?:__{componentName}+)?(?:--{componentName}+)?$"
+      },
+      "utilitySelectors": "^\\.{componentName}--{componentName}+$"
+    }
+  }
+}

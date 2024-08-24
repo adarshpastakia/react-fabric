@@ -1,0 +1,18 @@
+{
+  "search.exclude": {
+    "**/coverage": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "css.lint.validProperties": ["@layer", "@global", "@value"],
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    ".*ClassName"
+  ],
+  "stylelint.stylelintPath": ""
+}

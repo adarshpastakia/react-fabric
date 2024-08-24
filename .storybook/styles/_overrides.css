@@ -1,0 +1,95 @@
+/*
+ * React UI Framework
+ * @version   : 1.0.0
+ * @copyright : 2024
+ * @author    : Adarsh Pastakia
+ */
+
+.sb-show-main.sb-show-main.sb-show-main .control-panel {
+  margin: -2rem 0 2.5rem;
+
+  .sb-bar {
+    display: none;
+  }
+}
+
+.sb-show-main.sb-show-main.sb-show-main .docblock-argstable.docblock-argstable {
+  border-spacing: 0.25rem;
+  border-collapse: separate;
+  border-width: 0;
+
+  & thead th {
+    color: theme(textColor.accent.600);
+    background-color: theme(backgroundColor.dimmed);
+  }
+
+  & tbody tr:nth-child(odd) td {
+    background-color: color-mix(in lab, var(--ruf-bg) 99%, var(--ruf-tint));
+  }
+
+  & tbody tr:nth-child(even) td {
+    background-color: color-mix(in lab, var(--ruf-bg) 96%, var(--ruf-tint));
+  }
+
+  & tbody td p {
+    white-space: pre-wrap;
+  }
+}
+
+.hidden-anchor {
+  height: 0;
+  visibility: hidden;
+}
+
+h1.sbdocs-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--ruf-primary);
+  text-decoration: underline 2px;
+  text-underline-offset: 0.25em;
+}
+
+.sbdocs.sbdocs-content > h3,
+.sb-anchor > h3 {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--ruf-accent);
+  text-decoration: underline 1px;
+  text-underline-offset: 0.25em;
+}
+
+.sbdocs.sbdocs.sbdocs-preview {
+  &,
+  & .docs-story {
+    background-color: theme(backgroundColor.base);
+  }
+
+  .sb-bar {
+    background-color: var(--ruf-bg);
+  }
+}
+
+.toc-wrapper.toc-wrapper.toc-wrapper > .toc-list.toc-list.toc-list {
+  padding: 0;
+  border-left: 0;
+  border-inline-start: 1px solid theme(borderColor.base);
+
+  .toc-list-item.toc-list-item.toc-list-item {
+    margin: 0;
+    margin-inline-start: -1px;
+    padding: 0.25rem 1rem;
+    border-inline-start: 2px solid transparent;
+
+    &::before {
+      border-left: 0;
+    }
+  }
+
+  .toc-list-item.toc-list-item.is-active-li.is-active-li {
+    border-color: var(--ruf-accent);
+
+    & > a.is-active-link {
+      color: var(--ruf-accent);
+    }
+  }
+}
