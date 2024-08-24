@@ -1,0 +1,86 @@
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Heading,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { Collapsable, Dropdown } from "../../../src";
+import * as DropdownStories from "./Dropdown.stories";
+
+<Meta of={DropdownStories} />
+
+<Title>Dropdown</Title>
+
+<Anchor storyId="Dropdown">
+  <div className="hidden-anchor">
+    <Subheading>Dropdown</Subheading>
+  </div>
+</Anchor>
+
+<Description of={Dropdown} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={DropdownStories._Dropdown} />
+</Collapsable>
+
+<Anchor storyId="card">
+  <Subheading>Card Content</Subheading>
+</Anchor>
+<Description of={DropdownStories.CardContent} />
+<Canvas withToolbar of={DropdownStories.CardContent} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={DropdownStories.CardContent} />
+</Collapsable>
+
+<Anchor storyId="panel">
+  <Subheading>Panel Content</Subheading>
+</Anchor>
+<Description of={DropdownStories.PanelContent} />
+<Canvas withToolbar of={DropdownStories.PanelContent} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={DropdownStories.PanelContent} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { Dropdown, Button, Menu, MenuItem } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <Dropdown>
+      <Button altIcon={CoreIcons.chevronDown}>Dropdown Menu</Button>
+      <Menu>
+        <MenuItem label="Item One" />
+        <MenuItem label="Item Two" />
+        <MenuItem label="Item Three" />
+      </Menu>
+    </Dropdown>
+  );
+};
+```

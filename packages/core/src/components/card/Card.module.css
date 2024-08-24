@@ -1,0 +1,152 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@layer comp {
+  .cardWrapper.selected {
+    &::before {
+      content: "";
+
+      position: absolute;
+      z-index: 5;
+      top: -4px;
+      inset-inline-start: -4px;
+
+      border-top: 1rem solid theme(colors.accent.500);
+      border-bottom: 1rem solid transparent;
+      border-inline-start: 1rem solid theme(colors.accent.500);
+      border-inline-end: 1rem solid transparent;
+      border-start-start-radius: var(--rounding-cap);
+    }
+
+    &::after {
+      content: "✓";
+
+      position: absolute;
+      z-index: 5;
+      top: -4px;
+      inset-inline-start: -4px;
+
+      padding: 4px;
+
+      line-height: 1;
+      color: theme(colors.white);
+    }
+  }
+
+  .card {
+    background-color: var(--fabric-bg);
+    box-shadow: 0 0 0 1px theme(borderColor.muted);
+
+    & > * {
+      background-color: transparent;
+    }
+
+    & .cardCover {
+      &.inheritScheme:has([data-colorset="dark"]) > .cardCoverContent,
+      &.dark > .cardCoverContent {
+        color: var(--white);
+        text-shadow: 0 0 2px var(--black);
+        background-image: linear-gradient(to bottom, #0000 0, #0006 100%);
+      }
+
+      &.inheritScheme:has([data-colorset="light"]) > .cardCoverContent,
+      &.light > .cardCoverContent {
+        color: var(--black);
+        text-shadow: 0 0 2px var(--white);
+        background-image: linear-gradient(to bottom, #fff0 0, #fff6 100%);
+      }
+    }
+
+    & .cardBody {
+      padding: 1rem;
+    }
+
+    &.clickable {
+      box-shadow:
+        0 0 0 1px theme(borderColor.dimmed),
+        0 1px 2px 0 var(--fabric-shadow);
+      transition: box-shadow 0ms;
+
+      &:has(.cardBody:hover):not(:has([data-inner-clickable="true"]:hover)) {
+        box-shadow:
+          0 0 0 1px theme(borderColor.dimmed),
+          0 1px 4px 0 var(--fabric-shadow),
+          0 8px 16px 0 color-mix(in lab, var(--fabric-shadow) 35%, #0000);
+        transition-delay: 150ms;
+      }
+
+      &:has(.cardBody:active):not(:has([data-inner-clickable="true"]:hover)) {
+        transform: translateY(1px);
+        box-shadow: 0 0 0 1px theme(borderColor.dimmed);
+        transition-delay: 0ms;
+      }
+
+      & .cardBody {
+        cursor: pointer;
+
+        &::after {
+          pointer-events: none;
+          content: "";
+
+          position: absolute;
+          z-index: 5;
+          inset: 0;
+
+          background-image: linear-gradient(
+            175deg,
+            rgb(255 255 255 / 5%) 0%,
+            transparent 18%,
+            transparent 72%,
+            rgb(0 0 0 / 5%) 100%
+          );
+        }
+      }
+    }
+  }
+}
+
+@layer util {
+  .card {
+    & .cardBody {
+      & > * {
+        grid-area: unset;
+        background-color: transparent;
+      }
+    }
+
+    & .cardCover {
+      & > [data-ref="image"],
+      & > [data-ref="video"] {
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+      }
+
+      & .cardCoverContent {
+        & > * {
+          flex: 0 0 auto;
+        }
+      }
+    }
+  }
+}

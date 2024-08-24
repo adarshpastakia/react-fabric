@@ -1,5 +1,5 @@
 /*
- * React UI Framework
+ * React Fabric
  * @version   : 1.0.0
  * @copyright : 2024
  * @author    : Adarsh Pastakia
@@ -87,6 +87,7 @@ global.console = {
   },
 };
 
+jest.useFakeTimers();
 // @ts-expect-error ignore
 const virtualConsole = global.window._virtualConsole;
 const originalEmit = virtualConsole.emit;

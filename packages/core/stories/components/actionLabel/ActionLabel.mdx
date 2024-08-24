@@ -1,0 +1,61 @@
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Heading,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { ActionLabel, Collapsable } from "../../../src";
+import * as ActionLabelStories from "./ActionLabel.stories";
+
+<Meta of={ActionLabelStories} />
+
+<Title>Action Label</Title>
+
+<Anchor storyId="ActionLabel">
+  <div className="hidden-anchor">
+    <Subheading>Action Label</Subheading>
+  </div>
+</Anchor>
+
+<Description of={ActionLabel} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ActionLabelStories._ActionLabel} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { ActionLabel, Button } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <ActionLabel actions={[<Button icon="mdi mdi-share" aria-label="Share" />]}>
+      Some label
+    </ActionLabel>
+  );
+};
+```

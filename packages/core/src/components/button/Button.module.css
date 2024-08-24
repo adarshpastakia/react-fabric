@@ -1,0 +1,375 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@layer comp {
+  .buttonWrapper {
+    --color: theme(colors.primary.500);
+
+    font-size: 1rem;
+    border-radius: var(--rounding);
+
+    & .button {
+      color: var(--text);
+
+      background-color: var(--bg);
+      background-image: var(--click-gradient);
+      border-radius: inherit;
+      outline: 1px solid var(--outline);
+
+      &.spinOnHover:hover .buttonIcon {
+        & :global {
+          animation: spin 2s linear infinite;
+        }
+      }
+
+      & > * {
+        pointer-events: none;
+      }
+
+      &:not(:disabled) input[type="file"] {
+        pointer-events: auto;
+
+        &::-webkit-file-upload-button {
+          cursor: pointer;
+          position: absolute;
+          inset: 0;
+        }
+      }
+    }
+
+    & .rounded {
+      border-radius: 9999px;
+    }
+
+    & .buttonLabel {
+      order: 1;
+      padding: 0.5em 1em;
+      line-height: 1;
+
+      & + .altIcon {
+        margin-inline-start: -1em;
+      }
+    }
+
+    & .buttonChild {
+      order: 1;
+      padding: 0.5em;
+      line-height: 1;
+    }
+
+    & .buttonIcon {
+      padding: 0.3889em;
+      font-size: 1.125em;
+    }
+
+    & :global(.hotkey-label) {
+      align-self: center;
+      order: 3;
+    }
+
+    & .altIcon {
+      align-self: center;
+      order: 4;
+      padding: 0.125em 0.5em;
+    }
+
+    & [data-ref="badge"] {
+      align-self: center;
+      order: 2;
+      margin-inline-end: 0.5em;
+    }
+  }
+
+  .buttonGroup {
+    & > .buttonWrapper {
+      flex: 0 1 1em;
+    }
+
+    &:not(.flex) + &:not(.flex) {
+      margin-inline-start: 0.5rem;
+    }
+  }
+}
+
+@layer util {
+  .buttonWrapper {
+    &[data-size="xs"] {
+      font-size: 0.625rem;
+    }
+
+    &[data-size="sm"] {
+      font-size: 0.875rem;
+    }
+
+    &[data-size="md"] {
+      font-size: 1.125rem;
+    }
+
+    &[data-size="lg"] {
+      font-size: 1.25rem;
+    }
+
+    &[data-size="xl"] {
+      font-size: 1.5rem;
+    }
+  }
+
+  .button {
+    --bg: color-mix(in lab, var(--fabric-bg) 99%, var(--tint));
+    --outline: color-mix(in lab, var(--bg) 90%, var(--fabric-text));
+    --text: color-mix(in lab, var(--color) 80%, var(--fabric-text));
+    --bg-hover: color-mix(in lab, var(--color) 18%, var(--fabric-bg));
+    --bg-click: color-mix(in lab, var(--color) 25%, var(--fabric-bg));
+    --bg-active: color-mix(in lab, var(--color) 36%, var(--fabric-bg));
+
+    &[data-color="accent"] {
+      --color: theme(colors.accent.500);
+    }
+
+    &[data-color="info"] {
+      --color: theme(colors.info.500);
+    }
+
+    &[data-color="danger"] {
+      --color: theme(colors.danger.500);
+    }
+
+    &[data-color="success"] {
+      --color: theme(colors.success.500);
+    }
+
+    &[data-color="warning"] {
+      --color: theme(colors.warning.500);
+    }
+
+    &[data-variant="outline"] {
+      --outline: var(--color);
+    }
+
+    &[data-variant="solid"] {
+      --outline: var(--color);
+      --bg: color-mix(in lab, var(--color) 96%, var(--fabric-text));
+      --text: theme(colors.white);
+      --bg-hover: color-mix(in lab, var(--color) 90%, var(--fabric-bg));
+      --bg-click: color-mix(in lab, var(--color) 80%, theme(colors.black));
+      --bg-active: color-mix(in lab, var(--color) 70%, theme(colors.black));
+
+      & :global(.hotkey-label) {
+        color: theme(colors.white/70%);
+        background-color: theme(backgroundColor.dark/30%);
+      }
+    }
+
+    &[data-variant="link"] {
+      --bg: transparent;
+      --outline: transparent;
+
+      background-image: none;
+      box-shadow: none;
+    }
+
+    &[data-color="invert"] {
+      --bg: theme(backgroundColor.invert);
+      --text: color-mix(in lab, var(--color) 90%, theme(textColor.invert));
+      --bg-hover: color-mix(
+        in lab,
+        var(--color) 15%,
+        theme(backgroundColor.invert)
+      );
+      --bg-click: color-mix(
+        in lab,
+        var(--color) 35%,
+        theme(backgroundColor.invert)
+      );
+    }
+  }
+
+  .buttonIcon[data-align="start"] {
+    order: 0;
+
+    & + .buttonLabel[data-colored-icon="false"] {
+      margin-inline-start: -1em;
+    }
+  }
+
+  .buttonIcon[data-align="end"] {
+    order: 2;
+
+    & ~ .buttonLabel[data-colored-icon="false"] {
+      margin-inline-end: -1em;
+    }
+  }
+}
+
+@layer var {
+  .buttonWrapper {
+    height: unset;
+    padding: unset;
+
+    &[data-disabled="true"] {
+      cursor: not-allowed;
+
+      & .button {
+        pointer-events: none;
+        opacity: 0.5;
+        background-image: var(--active-gradient);
+      }
+    }
+
+    &[data-loading="true"] {
+      cursor: wait;
+
+      & .button {
+        pointer-events: none;
+        background-image: var(--progress-gradient);
+        background-size: 1em 1em;
+
+        & :global {
+          animation: progress 750ms linear infinite;
+        }
+      }
+
+      & .button:not([data-variant="solid"]) {
+        background-color: color-mix(in lab, var(--color) 15%, var(--fabric-bg));
+      }
+    }
+
+    &:global(.btn-dashed) > .button {
+      color: theme(colors.tint.600);
+      outline: 1px dashed theme(colors.tint.600);
+
+      &[data-invalid="true"] {
+        color: theme(colors.danger.600);
+        background-color: theme(colors.danger.100);
+        outline: 1px dashed theme(colors.danger.600);
+      }
+    }
+  }
+
+  .button {
+    --tw-ring-color: var(--color);
+
+    &:hover {
+      background-color: var(--bg-hover);
+    }
+
+    &:active {
+      background-color: var(--bg-click);
+      background-image: var(--active-gradient);
+
+      .buttonIcon,
+      .buttonLabel {
+        transform: translateY(1px);
+      }
+    }
+
+    &[data-active="true"],
+    &[data-checked="true"],
+    &[data-dropdown-open="true"] {
+      background-color: var(--bg-active);
+      background-image: none;
+    }
+
+    &[data-dropdown-open="true"] {
+      pointer-events: none;
+    }
+
+    &[data-active="true"] {
+      pointer-events: none;
+    }
+  }
+
+  .buttonGroup {
+    & > .buttonWrapper {
+      margin: 0;
+
+      & .button[data-variant="link"] {
+        --outline: theme(backgroundColor.base);
+      }
+    }
+
+    &:not(.vertical) {
+      & > :not(:first-child) {
+        &::before {
+          content: "";
+
+          position: absolute;
+          inset-block: 5%;
+          inset-inline-start: -0.5px;
+
+          border-inline-start: 0.5px solid theme(borderColor.base);
+        }
+      }
+
+      &.separator > :not(:first-child) {
+        margin-inline-start: 2px;
+
+        &::before {
+          inset-inline-start: -1.5px;
+        }
+      }
+
+      & > :not(:last-child) .button {
+        border-start-end-radius: 0;
+        border-end-end-radius: 0;
+      }
+
+      & > :not(:first-child) .button {
+        border-start-start-radius: 0;
+        border-end-start-radius: 0;
+      }
+    }
+
+    &.vertical {
+      & > :not(:first-child) {
+        &::before {
+          content: "";
+
+          position: absolute;
+          inset-block-start: -0.5px;
+          inset-inline: 5%;
+
+          border-block-start: 0.5px solid theme(borderColor.base);
+        }
+      }
+
+      &.separator > :not(:first-child) {
+        margin-block-start: 1px;
+
+        &::before {
+          inset-block-start: -1px;
+        }
+      }
+
+      & > :not(:last-child) .button {
+        border-end-start-radius: 0;
+        border-end-end-radius: 0;
+      }
+
+      & > :not(:first-child) .button {
+        border-start-start-radius: 0;
+        border-start-end-radius: 0;
+      }
+    }
+  }
+}

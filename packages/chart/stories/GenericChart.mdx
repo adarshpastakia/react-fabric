@@ -1,0 +1,55 @@
+import { Collapsable } from "@react-fabric/core";
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { GenericChart } from "../src";
+import * as GenericChartStories from "./GenericChart.stories";
+
+<Meta of={GenericChartStories} />
+
+<Title>Generic Chart</Title>
+
+<Anchor storyId="animations">
+  <div className="hidden-anchor">
+    <Subheading>Tree Map / Sunburst</Subheading>
+  </div>
+</Anchor>
+
+<Description of={GenericChart} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={GenericChartStories.TreeMap} />
+</Collapsable>
+
+<Anchor storyId="sankey">
+  <Subheading>Sankey</Subheading>
+</Anchor>
+<Description of={GenericChartStories.Sankey} />
+<Canvas withToolbar of={GenericChartStories.Sankey} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={GenericChartStories.Sankey} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />

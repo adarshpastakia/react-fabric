@@ -1,0 +1,116 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@layer comp {
+  .meter {
+    & .meterBar {
+      flex: 1 1 1rem;
+
+      min-width: 1rem;
+      max-width: 12rem;
+      height: 0.5em;
+
+      line-height: 1;
+
+      &::after {
+        width: var(--width);
+      }
+    }
+
+    & > label {
+      font-size: max(0.75rem, 0.5em);
+      line-height: 1;
+    }
+
+    & .meterBar[data-active="true"] {
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5),
+      &:nth-child(6) {
+        &::after {
+          opacity: 0.85;
+          background-color: currentColor;
+        }
+      }
+
+      &:nth-child(1) {
+        color: #eb5e28;
+      }
+
+      &:nth-child(2) {
+        color: #f9a03f;
+      }
+
+      &:nth-child(3) {
+        color: #f3c053;
+      }
+
+      &:nth-child(4) {
+        color: #a1c349;
+      }
+
+      &:nth-child(5) {
+        color: #87a330;
+      }
+
+      &:nth-child(6) {
+        color: #6a8532;
+      }
+    }
+
+    &[class*="text-primary"] .meterBar[data-active="true"],
+    &[class*="text-accent"] .meterBar[data-active="true"],
+    &[class*="text-info"] .meterBar[data-active="true"],
+    &[class*="text-danger"] .meterBar[data-active="true"],
+    &[class*="text-success"] .meterBar[data-active="true"],
+    &[class*="text-warning"] .meterBar[data-active="true"] {
+      color: currentColor;
+
+      &:nth-child(1)::after {
+        opacity: 0.2;
+      }
+
+      &:nth-child(2)::after {
+        opacity: 0.35;
+      }
+
+      &:nth-child(3)::after {
+        opacity: 0.5;
+      }
+
+      &:nth-child(4)::after {
+        opacity: 0.65;
+      }
+
+      &:nth-child(5)::after {
+        opacity: 0.8;
+      }
+
+      &:nth-child(6)::after {
+        opacity: 0.95;
+      }
+    }
+  }
+}

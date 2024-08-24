@@ -1,0 +1,54 @@
+import { Collapsable } from "@react-fabric/core";
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { CountSeries } from "../src";
+import * as CountSeriesStories from "./CountSeries.stories";
+
+<Meta of={CountSeriesStories} />
+
+<Title>Count Series</Title>
+
+<Anchor storyId="animations">
+  <div className="hidden-anchor">
+    <Subheading>Count Series</Subheading>
+  </div>
+</Anchor>
+
+<Description of={CountSeries} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CountSeriesStories.Example} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="data">
+  <Subheading>Data Format</Subheading>
+</Anchor>
+
+```ts
+// Single list of count values
+[{ id, label, count },...];
+```

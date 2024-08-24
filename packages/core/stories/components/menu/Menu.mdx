@@ -1,0 +1,80 @@
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { Menu, Collapsable } from "../../../src";
+import * as MenuStories from "./Menu.stories";
+
+<Meta of={MenuStories} />
+
+<Title>Menu</Title>
+
+<Anchor storyId="icon">
+  <div className="hidden-anchor">
+    <Subheading>Menu</Subheading>
+  </div>
+</Anchor>
+
+<Description of={Menu} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={MenuStories._Menu} />
+</Collapsable>
+
+<Anchor storyId="colors">
+  <Subheading>Compact</Subheading>
+</Anchor>
+<Description of={MenuStories.Minimal} />
+<Canvas withToolbar of={MenuStories.Minimal} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={MenuStories.Minimal} />
+</Collapsable>
+
+<Anchor storyId="sizes">
+  <Subheading>Context Menu</Subheading>
+</Anchor>
+<Description of={MenuStories._ContextMenu} />
+<Canvas withToolbar of={MenuStories._ContextMenu} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={MenuStories._ContextMenu} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { Menu, MenuItem } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <Menu>
+      <MenuItem label="Menu item" icon="icon path" />
+    </Menu>
+  );
+};
+```

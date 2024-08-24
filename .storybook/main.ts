@@ -1,5 +1,5 @@
 /*
- * React UI Framework
+ * React Fabric
  * @version   : 1.0.0
  * @copyright : 2024
  * @author    : Adarsh Pastakia
@@ -21,6 +21,7 @@ const mainConfig: StorybookConfig = {
     "@storybook/addon-interactions",
     "@storybook/addon-jest",
     "@storybook/addon-a11y",
+    "msw-storybook-addon",
     {
       name: "@storybook/addon-storysource",
       options: {
@@ -45,7 +46,7 @@ const mainConfig: StorybookConfig = {
       },
     },
   ],
-  staticDirs: ["../assets"],
+  staticDirs: ["../assets", "../static"],
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
@@ -94,12 +95,12 @@ const mainConfig: StorybookConfig = {
         },
       ],
     });
-    // config.plugins?.push(
-    //   new MonacoWebpackPlugin({
-    //     // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
-    //     languages: ["json", "text", "html", "markdown"],
-    //   }),
-    // );
+    config.plugins?.push(
+      new MonacoWebpackPlugin({
+        // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
+        languages: ["json", "text", "html", "css", "markdown"],
+      }),
+    );
     return config;
   },
 };

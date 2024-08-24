@@ -1,0 +1,165 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@layer comp {
+  @keyframes pinger {
+    0% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+
+    100% {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+
+  .badge {
+    --tw-bg-opacity: 1;
+
+    box-sizing: content-box;
+    color: theme(textColor.base);
+    background-color: theme(colors.tint.200/var(--tw-bg-opacity));
+    outline: 0.5px solid theme(backgroundColor.base);
+
+    & > span {
+      font-size: 0.625em;
+      font-weight: 500;
+      line-height: 1;
+      vertical-align: 0.125em;
+    }
+
+    &[data-ping="true"] {
+      --translate: calc(50%);
+
+      &::before {
+        content: "";
+
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+
+        background-color: inherit;
+        border-radius: 999px;
+
+        animation: pinger 1s linear infinite;
+      }
+    }
+
+    &:not([data-ping="true"]) {
+      --translate: 0.75rem;
+
+      min-width: 1em;
+    }
+
+    &[data-placement="top"] {
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &[data-placement="top-start"] {
+      top: 0;
+      inset-inline-start: 0;
+
+      :global([dir="ltr"]) & {
+        transform: translate(calc(var(--translate) * -1), -50%);
+      }
+
+      :global([dir="rtl"]) & {
+        transform: translate(calc(var(--translate) * 1), -50%);
+      }
+    }
+
+    &[data-placement="top-end"] {
+      top: 0;
+      inset-inline-end: 0;
+
+      :global([dir="ltr"]) & {
+        transform: translate(calc(var(--translate) * 1), -50%);
+      }
+
+      :global([dir="rtl"]) & {
+        transform: translate(calc(var(--translate) * -1), -50%);
+      }
+    }
+
+    &[data-placement="bottom"] {
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 50%);
+    }
+
+    &[data-placement="bottom-start"] {
+      bottom: 0;
+      inset-inline-start: 0;
+
+      :global([dir="ltr"]) & {
+        transform: translate(calc(var(--translate) * -1), -50%);
+      }
+
+      :global([dir="rtl"]) & {
+        transform: translate(calc(var(--translate) * 1), -50%);
+      }
+    }
+
+    &[data-placement="bottom-end"] {
+      bottom: 0;
+      inset-inline-end: 0;
+
+      :global([dir="ltr"]) & {
+        transform: translate(calc(var(--translate) * 1), -50%);
+      }
+
+      :global([dir="rtl"]) & {
+        transform: translate(calc(var(--translate) * -1), -50%);
+      }
+    }
+
+    &[data-placement="start"] {
+      top: 50%;
+      inset-inline-start: 0;
+
+      :global([dir="ltr"]) & {
+        transform: translate(-50%, -50%);
+      }
+
+      :global([dir="rtl"]) & {
+        transform: translate(50%, -50%);
+      }
+    }
+
+    &[data-placement="end"] {
+      top: 50%;
+      inset-inline-end: 0;
+
+      :global([dir="ltr"]) & {
+        transform: translate(50%, -50%);
+      }
+
+      :global([dir="rtl"]) & {
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}

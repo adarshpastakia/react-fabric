@@ -1,0 +1,109 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@layer comp {
+  .menuItem {
+    --color: theme(colors.primary.DEFAULT);
+
+    &[data-color="accent"] {
+      --color: theme(colors.accent.DEFAULT);
+    }
+
+    &[data-color="info"] {
+      --color: theme(colors.info.DEFAULT);
+    }
+
+    &[data-color="danger"] {
+      --color: theme(colors.danger.DEFAULT);
+    }
+
+    &[data-color="success"] {
+      --color: theme(colors.success.DEFAULT);
+    }
+
+    &[data-color="warning"] {
+      --color: theme(colors.warning.DEFAULT);
+    }
+  }
+}
+
+@layer var {
+  .menuItem {
+    color: color-mix(in lab, var(--color) 80%, var(--fabric-text));
+
+    > * {
+      pointer-events: none;
+    }
+
+    &[data-focus="true"] {
+      background-color: color(from var(--color) srgb r g b / 15%);
+    }
+
+    &:active {
+      background-color: color(from var(--color) srgb r g b / 35%);
+    }
+
+    &[data-open="true"] {
+      background-color: color(from var(--color) srgb r g b / 10%);
+    }
+
+    &.active,
+    &:global(.active) {
+      pointer-events: none;
+      background-color: color(from var(--color) srgb r g b / 20%);
+
+      & > div {
+        box-shadow: 4px 0 0 var(--color) inset;
+
+        :global([dir="rtl"]) & {
+          box-shadow: -4px 0 0 var(--color) inset;
+        }
+      }
+    }
+
+    &.disabled {
+      pointer-events: none;
+      color: theme(textColor.tint.500);
+      opacity: 0.5;
+
+      & > label ~ * {
+        display: none;
+      }
+    }
+  }
+
+  .menuIcon {
+    padding: 0.3em;
+    font-size: 1.25em;
+
+    &.minimal {
+      padding: 0.375em;
+      font-size: 1.5em;
+      font-weight: 500;
+    }
+  }
+
+  :global(.menu-list.hide-icons) .menuIcon {
+    width: 0.125em;
+  }
+}

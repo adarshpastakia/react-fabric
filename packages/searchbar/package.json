@@ -1,0 +1,56 @@
+{
+  "name": "@react-fabric/searchbar",
+  "version": "0.0.0",
+  "description": "RUF: Searchbar with filters package",
+  "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
+  "license": "MIT",
+  "repository": "https://github.com/adarshpastakia/react-ui-framework/tree/main/packages/searchbar",
+  "source": "src/index.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "directories": {
+    "src": "src",
+    "test": "tests"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "makelink": "yarn link",
+    "removelink": "yarn unlink",
+    "prebuild": "rm -rf ./dist",
+    "build:dts": "tsc -p ./tsconfig.build.json",
+    "build:rollup": "rollup -c ../../rollup.config.mjs",
+    "build": "npm-run-all -p build:rollup build:dts",
+    "watch:dts": "tsc -w -p ./tsconfig.build.json",
+    "watch:rollup": "rollup -w -c ../../rollup.config.mjs",
+    "watch": "npm-run-all -p watch:rollup watch:dts"
+  },
+  "dependencies": {
+    "@floating-ui/react": "0.26.24",
+    "@react-fabric/core": "^0.0.0",
+    "@react-fabric/date": "^0.0.0",
+    "@react-fabric/form": "^0.0.0",
+    "@react-fabric/monaco": "^0.0.0",
+    "@react-fabric/utilities": "^0.0.0",
+    "classnames": "^2.5.1",
+    "react-hook-form": "^7.52.1"
+  },
+  "peerDependencies": {
+    "i18next": "^23.15.1",
+    "react": ">=18.0.0 <20.0.0",
+    "react-dom": ">=18.0.0 <20.0.0",
+    "react-i18next": "^15.0.2"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.12.0",
+    "npm": ">=8.19.0"
+  }
+}

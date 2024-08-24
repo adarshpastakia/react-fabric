@@ -1,0 +1,200 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@layer comp {
+  .tabPanel {
+    --color: theme(colors.primary.500);
+
+    & > .tabList {
+      grid-area: tablist;
+
+      & > .tabButton {
+        &[data-color="accent"] {
+          --color: theme(colors.accent.500);
+        }
+
+        &[data-color="info"] {
+          --color: theme(colors.info.500);
+        }
+
+        &[data-color="danger"] {
+          --color: theme(colors.danger.500);
+        }
+
+        &[data-color="success"] {
+          --color: theme(colors.success.500);
+        }
+
+        &[data-color="warning"] {
+          --color: theme(colors.warning.500);
+        }
+
+        &:not(:global(.active)):hover {
+          color: color-mix(in lab, var(--color) 65%, var(--fabric-text));
+          background-color: theme(colors.tint.100/50%);
+        }
+
+        &:global(.active) {
+          --active-color: var(--color);
+
+          font-weight: 500;
+          color: color-mix(in lab, var(--color) 65%, var(--fabric-text));
+        }
+      }
+    }
+
+    &[data-variant="outline"] {
+      & > .tabList > .tabButton:global(.active) {
+        --active-color: theme(backgroundColor.base);
+        --active-border: 0 0 0 1px theme(borderColor.base) inset;
+
+        background-color: theme(backgroundColor.base);
+      }
+    }
+
+    &[data-variant="solid"] {
+      & > .tabList > .tabButton:global(.active) {
+        color: theme(colors.white);
+        background-color: var(--color);
+      }
+    }
+
+    &[data-variant="soft"] {
+      & > .tabList > .tabButton:global(.active) {
+        background-color: color-mix(in lab, var(--color) 20%, var(--fabric-bg));
+      }
+    }
+
+    &[data-orientation="top"] {
+      grid-template: "tablist" auto "content" 1fr / 1fr;
+      padding-inline: 2px;
+
+      &[data-variant="outline"] > .tabList,
+      &[data-variant="solid"] > .tabList,
+      &[data-variant="soft"] > .tabList {
+        box-shadow: 0 -1px 0 theme(borderColor.dimmed) inset;
+      }
+    }
+
+    &[data-orientation="bottom"] {
+      grid-template: "content" 1fr "tablist" auto / 1fr;
+      padding-inline: 2px;
+
+      &[data-variant="outline"] > .tabList,
+      &[data-variant="solid"] > .tabList,
+      &[data-variant="soft"] > .tabList {
+        box-shadow: 0 1px 0 theme(borderColor.dimmed) inset;
+      }
+    }
+
+    &[data-orientation="start"] {
+      grid-template: "tablist content" 1fr / auto 1fr;
+      padding-block: 2px;
+
+      &[data-variant="outline"] > .tabList,
+      &[data-variant="solid"] > .tabList,
+      &[data-variant="soft"] > .tabList {
+        box-shadow: -1px 0 0 theme(borderColor.dimmed) inset;
+      }
+    }
+
+    &[data-orientation="end"] {
+      grid-template: "content tablist" 1fr / 1fr auto;
+      padding-block: 2px;
+
+      &[data-variant="outline"] > .tabList,
+      &[data-variant="solid"] > .tabList,
+      &[data-variant="soft"] > .tabList {
+        box-shadow: 1px 0 0 theme(borderColor.dimmed) inset;
+      }
+    }
+  }
+}
+
+@layer util {
+  .tabPanel {
+    & > .tabList > .tabButton:global(.active) {
+      pointer-events: none;
+    }
+
+    &[data-orientation="top"] > .tabList {
+      & > .tabButton:global(.active) {
+        box-shadow:
+          0 -2px 0 var(--active-color) inset,
+          var(--active-border, 0 0 0 transparent);
+      }
+    }
+
+    &[data-orientation="bottom"] > .tabList {
+      & > .tabButton:global(.active) {
+        box-shadow:
+          0 2px 0 var(--active-color) inset,
+          var(--active-border, 0 0 0 transparent);
+      }
+    }
+
+    &[data-orientation="start"] > .tabList {
+      & > .tabButton:global(.active) {
+        box-shadow:
+          -2px 0 0 var(--active-color) inset,
+          var(--active-border, 0 0 0 transparent);
+      }
+    }
+
+    &[data-orientation="end"] > .tabList {
+      & > .tabButton:global(.active) {
+        box-shadow:
+          2px 0 0 var(--active-color) inset,
+          var(--active-border, 0 0 0 transparent);
+      }
+    }
+
+    &[data-orientation="top"] > .tabList > .tabButton {
+      margin-top: 2px;
+      margin-inline: 1px;
+      border-end-start-radius: 0;
+      border-end-end-radius: 0;
+    }
+
+    &[data-orientation="bottom"] > .tabList > .tabButton {
+      margin-bottom: 2px;
+      margin-inline: 1px;
+      border-start-start-radius: 0;
+      border-start-end-radius: 0;
+    }
+
+    &[data-orientation="start"] > .tabList > .tabButton {
+      margin-block: 1px;
+      margin-inline-start: 2px;
+      border-start-end-radius: 0;
+      border-end-end-radius: 0;
+    }
+
+    &[data-orientation="end"] > .tabList > .tabButton {
+      margin-block: 1px;
+      margin-inline-end: 2px;
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
+    }
+  }
+}

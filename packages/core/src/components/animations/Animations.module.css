@@ -1,0 +1,253 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@layer comp {
+  @keyframes l2 {
+    0%,
+    25% {
+      background-position:
+        0 50%,
+        0 calc(50% - 2px),
+        0 calc(50% + 2px),
+        50% 50%,
+        50% calc(50% - 2px),
+        50% calc(50% + 2px),
+        100% 50%,
+        100% calc(50% - 2px),
+        100% calc(50% + 2px);
+      background-size:
+        8px 0,
+        8px 4px,
+        8px 4px,
+        8px 0,
+        8px 4px,
+        8px 4px,
+        8px 0,
+        8px 4px,
+        8px 4px;
+    }
+
+    50% {
+      background-position:
+        0 50%,
+        0 calc(0% - 2px),
+        0 calc(100% + 2px),
+        50% 50%,
+        50% calc(50% - 2px),
+        50% calc(50% + 2px),
+        100% 50%,
+        100% calc(50% - 2px),
+        100% calc(50% + 2px);
+      background-size:
+        8px 100%,
+        8px 4px,
+        8px 4px,
+        8px 0,
+        8px 4px,
+        8px 4px,
+        8px 0,
+        8px 4px,
+        8px 4px;
+    }
+
+    75% {
+      background-position:
+        0 50%,
+        0 calc(0% - 2px),
+        0 calc(100% + 2px),
+        50% 50%,
+        50% calc(0% - 2px),
+        50% calc(100% + 2px),
+        100% 50%,
+        100% calc(50% - 2px),
+        100% calc(50% + 2px);
+      background-size:
+        8px 100%,
+        8px 4px,
+        8px 4px,
+        8px 100%,
+        8px 4px,
+        8px 4px,
+        8px 0,
+        8px 4px,
+        8px 4px;
+    }
+
+    95%,
+    100% {
+      background-position:
+        0 50%,
+        0 calc(0% - 2px),
+        0 calc(100% + 2px),
+        50% 50%,
+        50% calc(0% - 2px),
+        50% calc(100% + 2px),
+        100% 50%,
+        100% calc(0% - 2px),
+        100% calc(100% + 2px);
+      background-size:
+        8px 100%,
+        8px 4px,
+        8px 4px,
+        8px 100%,
+        8px 4px,
+        8px 4px,
+        8px 100%,
+        8px 4px,
+        8px 4px;
+    }
+  }
+
+  .bars {
+    --c: linear-gradient(currentcolor 0 0);
+    --r1: radial-gradient(farthest-side at bottom, currentcolor 93%, #0000);
+    --r2: radial-gradient(farthest-side at top, currentcolor 93%, #0000);
+
+    aspect-ratio: 1;
+    background: var(--c), var(--r1), var(--r2), var(--c), var(--r1), var(--r2),
+      var(--c), var(--r1), var(--r2);
+    background-repeat: no-repeat;
+    animation: l2 1s infinite alternate;
+  }
+
+  @keyframes l4 {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+  .spinner {
+    --b: 8px;
+
+    aspect-ratio: 1;
+
+    background: conic-gradient(#0000 10%, currentcolor) content-box;
+    border-radius: 50%;
+
+    mask: repeating-conic-gradient(
+        #0000 0deg,
+        #000 1deg 20deg,
+        #0000 21deg 36deg
+      ),
+      radial-gradient(
+        farthest-side,
+        #0000 calc(100% - var(--b) - 1px),
+        #000 calc(100% - var(--b))
+      );
+
+    animation: l4 2s infinite steps(10);
+
+    mask-composite: destination-in;
+    mask-composite: intersect;
+  }
+
+  @keyframes loader {
+    from {
+      transform: translateX(calc(-100% * var(--multiplier)));
+    }
+
+    to {
+      transform: translateX(calc(100% * var(--multiplier)));
+    }
+  }
+
+  .loader {
+    --multiplier: 1;
+
+    & > div {
+      height: calc(0.125rem + 2px);
+
+      &::after {
+        animation: loader 1s cubic-bezier(0.65, 0, 0.45, 1) infinite;
+      }
+    }
+
+    :global([dir="rtl"]) & {
+      --multiplier: -1;
+    }
+  }
+
+  @keyframes check-stroke {
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes check-scale {
+    0%,
+    100% {
+      transform: none;
+    }
+
+    50% {
+      transform: scale3d(1.1, 1.1, 1);
+    }
+  }
+
+  @keyframes check-fill {
+    100% {
+      box-shadow: inset 0 0 0 1em currentcolor;
+    }
+  }
+
+  .checkAnimation {
+    width: 1.5em;
+    height: 1.5em;
+
+    color: theme(colors.primary.DEFAULT);
+
+    box-shadow: inset 0 0 0 currentcolor;
+
+    fill: transparent;
+    stroke-miterlimit: 10;
+    stroke-width: 4px;
+
+    animation:
+      check-fill 0.4s ease-in-out 0.4s forwards,
+      check-scale 0.3s ease-in-out 0.9s both;
+    animation-delay: 0.75s;
+
+    & .circlePart {
+      fill: transparent;
+      stroke: currentcolor;
+      stroke-dasharray: 166;
+      stroke-dashoffset: 166;
+      stroke-miterlimit: 10;
+      stroke-width: 8px;
+
+      animation: check-stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+      animation-delay: 0.25s;
+    }
+
+    & .iconPart {
+      transform-origin: 50% 50%;
+
+      stroke: currentcolor;
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+
+      animation: check-stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+      animation-delay: 0.75s;
+    }
+  }
+}

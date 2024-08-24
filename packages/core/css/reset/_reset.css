@@ -1,0 +1,407 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@layer reset {
+  html,
+  body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    vertical-align: baseline;
+  }
+
+  :root {
+    font-family: theme(fontFamily.sans);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  p,
+  div,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  input,
+  textarea,
+  fieldset,
+  section,
+  aside,
+  header,
+  footer,
+  nav,
+  menu,
+  dialog {
+    margin: 0;
+    padding: 0;
+  }
+
+  fieldset {
+    min-inline-size: unset;
+  }
+
+  body {
+    a,
+    label,
+    button {
+      user-select: none;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: color-mix(in lab, var(--fabric-bg) 72%, var(--tint));
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: color-mix(in lab, var(--fabric-bg) 35%, var(--tint));
+
+      &:hover {
+        background-color: color-mix(
+          in lab,
+          var(--fabric-text) 50%,
+          var(--tint)
+        );
+      }
+
+      &:active {
+        background-color: color-mix(
+          in lab,
+          var(--fabric-bg) 50%,
+          var(--fabric-text)
+        );
+      }
+    }
+
+    ::-webkit-scrollbar-corner {
+      background-color: var(--fabric-bg);
+    }
+
+    input:not(:disabled)::-webkit-file-upload-button {
+      cursor: pointer;
+    }
+
+    .scroll-thin {
+      &::-webkit-scrollbar,
+      & ::-webkit-scrollbar {
+        width: 3px;
+        height: 3px;
+      }
+    }
+
+    .scroll-hide {
+      &::-webkit-scrollbar,
+      & ::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+    }
+
+    :focus-visible {
+      outline: 0;
+    }
+
+    ::placeholder {
+      color: theme(colors.tint.400);
+    }
+
+    ::selection {
+      background-color: color-mix(in lab, var(--accent) 35%, var(--fabric-bg));
+    }
+
+    *,
+    ::before,
+    ::after {
+      --tw-ring-offset-color: var(--fabric-bg);
+      --tw-ring-color: var(--primary);
+
+      box-sizing: border-box;
+      text-underline-offset: 0.25em;
+    }
+
+    img,
+    svg {
+      display: inline-block;
+      fill: currentcolor;
+    }
+
+    hr {
+      transform: scaleY(0.5);
+
+      height: auto;
+      margin: 1rem 0;
+
+      background: none;
+      border: 0;
+      border-top: 3px solid color-mix(in lab, var(--fabric-bg) 95%, var(--tint)) !important;
+      border-bottom: 2px solid
+        color-mix(in lab, var(--fabric-bg) 50%, var(--tint));
+
+      &.vertical {
+        transform: scaleX(0.5);
+
+        display: inline-block;
+
+        margin: 0 0.25rem;
+
+        border: 0;
+        border-inline-start: 3px solid
+          color-mix(in lab, var(--fabric-bg) 95%, var(--tint)) !important;
+        border-inline-end: 2px solid
+          color-mix(in lab, var(--fabric-bg) 50%, var(--tint));
+      }
+    }
+
+    label {
+      cursor: inherit;
+    }
+
+    [data-clickable="true"] {
+      cursor: pointer;
+    }
+
+    .sectioned {
+      display: grid;
+      grid-template: "head head head" auto "side-s content side-e" 1fr "foot foot foot" auto / auto 1fr auto;
+    }
+
+    @media (min-width: theme(screens.xs)) {
+      .hide-xs {
+        @apply hidden;
+      }
+
+      @media (max-width: theme(screens.sm)) {
+        .hide-xs-only {
+          @apply hidden;
+        }
+
+        .show-sm-only,
+        .show-md-only,
+        .show-lg-only,
+        .show-xl-only,
+        .show-2xl-only {
+          @apply hidden;
+        }
+      }
+    }
+
+    @media (min-width: theme(screens.sm)) {
+      .hide-sm {
+        @apply hidden;
+      }
+
+      @media (max-width: theme(screens.md)) {
+        .hide-sm-only {
+          @apply hidden;
+        }
+
+        .show-xs-only,
+        .show-md-only,
+        .show-lg-only,
+        .show-xl-only,
+        .show-2xl-only {
+          @apply hidden;
+        }
+      }
+    }
+
+    @media (min-width: theme(screens.md)) {
+      .hide-md {
+        @apply hidden;
+      }
+
+      @media (max-width: theme(screens.lg)) {
+        .hide-md-only {
+          @apply hidden;
+        }
+
+        .show-xs-only,
+        .show-sm-only,
+        .show-lg-only,
+        .show-xl-only,
+        .show-2xl-only {
+          @apply hidden;
+        }
+      }
+    }
+
+    @media (min-width: theme(screens.lg)) {
+      .hide-lg {
+        @apply hidden;
+      }
+
+      @media (max-width: theme(screens.xl)) {
+        .hide-lg-only {
+          @apply hidden;
+        }
+
+        .show-xs-only,
+        .show-sm-only,
+        .show-md-only,
+        .show-xl-only,
+        .show-2xl-only {
+          @apply hidden;
+        }
+      }
+    }
+
+    @media (min-width: theme(screens.xl)) {
+      .hide-xl {
+        @apply hidden;
+      }
+
+      @media (max-width: theme(screens.2xl)) {
+        .hide-xl-only {
+          @apply hidden;
+        }
+
+        .show-xs-only,
+        .show-sm-only,
+        .show-md-only,
+        .show-lg-only,
+        .show-2xl-only {
+          @apply hidden;
+        }
+      }
+    }
+
+    @media (min-width: theme(screens.2xl)) {
+      .hide-2xl,
+      .hide-2xl-only {
+        @apply hidden;
+      }
+
+      .show-xs-only,
+      .show-sm-only,
+      .show-md-only,
+      .show-lg-only,
+      .show-xl-only {
+        @apply hidden;
+      }
+    }
+
+    @media (max-width: theme(screens.xs)) {
+      .show-xs,
+      .show-sm,
+      .show-md,
+      .show-lg,
+      .show-xl,
+      .show-2xl {
+        @apply hidden;
+      }
+    }
+
+    @media (max-width: theme(screens.sm)) {
+      .show-sm,
+      .show-md,
+      .show-lg,
+      .show-xl,
+      .show-2xl {
+        @apply hidden;
+      }
+    }
+
+    @media (max-width: theme(screens.md)) {
+      .show-md,
+      .show-lg,
+      .show-xl,
+      .show-2xl {
+        @apply hidden;
+      }
+    }
+
+    @media (max-width: theme(screens.lg)) {
+      .show-lg,
+      .show-xl,
+      .show-2xl {
+        @apply hidden;
+      }
+    }
+
+    @media (max-width: theme(screens.xl)) {
+      .show-xl,
+      .show-2xl {
+        @apply hidden;
+      }
+    }
+
+    @media (max-width: theme(screens.2xl)) {
+      .show-2xl {
+        @apply hidden;
+      }
+    }
+  }
+
+  .scroll-snap-start {
+    scroll-snap-type: both proximity;
+
+    & > * {
+      scroll-snap-align: start;
+    }
+  }
+
+  .scroll-snap-center {
+    scroll-snap-type: both proximity;
+
+    & > * {
+      scroll-snap-align: center;
+    }
+  }
+
+  .break-words {
+    word-break: break-word;
+  }
+
+  .outline-thin {
+    outline-width: 0.5px;
+  }
+
+  .outline {
+    outline-width: 1px;
+  }
+
+  .container {
+    margin-inline: auto;
+  }
+
+  p,
+  pre,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .mixed-lang {
+    unicode-bidi: plaintext;
+  }
+}

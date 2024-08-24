@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`format test should format phone 1`] = `"99123"`;
+
+exports[`format test should format phone 2`] = `"badphone"`;
+
+exports[`format test should format phone 3`] = `"🇦🇪 +971 50 249 1824"`;
+
+exports[`format test should format phone 4`] = `"🇦🇪 +971 50 249 1824"`;
+
+exports[`format test should format phone 5`] = `"<span class="flag AE"></span> +971 50 249 1824"`;

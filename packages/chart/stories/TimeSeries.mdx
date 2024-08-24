@@ -1,0 +1,54 @@
+import { Collapsable } from "@react-fabric/core";
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { TimeSeries } from "../src";
+import * as TimeSeriesStories from "./TimeSeries.stories";
+
+<Meta of={TimeSeriesStories} />
+
+<Title>Time Series</Title>
+
+<Anchor storyId="animations">
+  <div className="hidden-anchor">
+    <Subheading>Time Series</Subheading>
+  </div>
+</Anchor>
+
+<Description of={TimeSeries} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={TimeSeriesStories.Example} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="data">
+  <Subheading>Data Format</Subheading>
+</Anchor>
+
+```ts
+// List of data series
+[{ id, label, values: [[ date, count ], ...] },...];
+```

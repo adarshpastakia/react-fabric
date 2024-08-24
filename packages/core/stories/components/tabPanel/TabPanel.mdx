@@ -1,0 +1,69 @@
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Heading,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { Collapsable, TabPanel } from "../../../src";
+import * as TabPanelStories from "./TabPanel.stories";
+
+<Meta of={TabPanelStories} />
+
+<Title>Tabbed Panel</Title>
+
+<Anchor storyId="TabPanel">
+  <div className="hidden-anchor">
+    <Subheading>Tab Panel</Subheading>
+  </div>
+</Anchor>
+
+<Description of={TabPanel} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={TabPanelStories._TabPanel} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { TabPanel, Button, Menu, MenuItem } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <TabPanel>
+      <Tab id="1" label="Tab Oner">
+        <Content>...</Content>
+      </Tab>
+      <Tab id="2" label="Tab Two">
+        <Content>...</Content>
+      </Tab>
+      <Tab id="3" label="Tab Three">
+        <Content>...</Content>
+      </Tab>
+    </TabPanel>
+  );
+};
+```

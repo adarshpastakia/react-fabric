@@ -1,5 +1,5 @@
 /*
- * React UI Framework
+ * React Fabric
  * @version   : 1.0.0
  * @copyright : 2024
  * @author    : Adarsh Pastakia
@@ -7,7 +7,7 @@
 
 .prismjs.prismjs.prismjs {
   color: theme(textColor.dimmed);
-  background: var(--ruf-bg);
+  background: var(--fabric-bg);
 }
 
 .prismjs > code {

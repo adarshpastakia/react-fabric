@@ -1,0 +1,83 @@
+import { Collapsable } from "@react-fabric/core";
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { AutoComplete } from "../../src";
+import * as AutoCompleteStories from "./AutoComplete.stories";
+
+<Meta of={AutoCompleteStories} />
+
+<Title>AutoComplete</Title>
+
+<Anchor storyId="AutoComplete">
+  <div className="hidden-anchor">
+    <Subheading>AutoComplete</Subheading>
+  </div>
+</Anchor>
+
+<Description of={AutoComplete} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={AutoCompleteStories._AutoComplete} />
+</Collapsable>
+
+<Anchor storyId="mutiple">
+  <Subheading>Multiple AutoComplete</Subheading>
+</Anchor>
+<Description of={AutoCompleteStories.Multiple} />
+<Canvas withToolbar of={AutoCompleteStories.Multiple} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={AutoCompleteStories.Multiple} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { AutoComplete } from "@react-fabric/form";
+
+export const Example = () => {
+  const [history, setHistory] = useLocalStorage<string[]>(
+    "autocomplete:history",
+    [],
+  );
+  const updateHistory = (values: string[] = []) => {
+    setHistory(dedupe([...values, ...history]).slice(50));
+  };
+
+  return (
+    <AutoComplete
+      label="AutoComplete label"
+      history={history}
+      value={value}
+      onChange={handleChange}
+      onSelect={updateHistory}
+    />
+  );
+};
+```

@@ -1,0 +1,54 @@
+import { Collapsable } from "@react-fabric/core";
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { MapSeries } from "../src";
+import * as MapSeriesStories from "./MapSeries.stories";
+
+<Meta of={MapSeriesStories} />
+
+<Title>Map Series</Title>
+
+<Anchor storyId="animations">
+  <div className="hidden-anchor">
+    <Subheading>Map Series</Subheading>
+  </div>
+</Anchor>
+
+<Description of={MapSeries} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={MapSeriesStories.Example} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="data">
+  <Subheading>Data Format</Subheading>
+</Anchor>
+
+```ts
+// List of country codes with count
+[{ id: "iso-2 country code", label, count },...];
+```

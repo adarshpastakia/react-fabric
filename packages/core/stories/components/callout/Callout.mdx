@@ -1,0 +1,80 @@
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { Callout, Collapsable } from "../../../src";
+import * as CalloutStories from "./Callout.stories";
+
+<Meta of={CalloutStories} />
+
+<Title>Callout</Title>
+
+<Anchor storyId="callout">
+  <div className="hidden-anchor">
+    <Subheading>Callout</Subheading>
+  </div>
+</Anchor>
+
+<Description of={Callout} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CalloutStories._Callout} />
+</Collapsable>
+
+<Anchor storyId="withlegend">
+  <Subheading>With Legend</Subheading>
+</Anchor>
+<Description of={CalloutStories.WithLegend} />
+<Canvas withToolbar of={CalloutStories.WithLegend} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CalloutStories.WithLegend} />
+</Collapsable>
+
+<Anchor storyId="colors">
+  <Subheading>Colors</Subheading>
+</Anchor>
+<Description of={CalloutStories.Colors} />
+<Canvas withToolbar of={CalloutStories.Colors} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CalloutStories.Colors} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { Callout } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <Callout title="Empty title" legend="Legend">
+      {...message text}
+    </Callout>
+  );
+};
+```

@@ -24,7 +24,8 @@
   "modulePaths": ["<rootDir>/packages", "<rootDir>/node_modules"],
   "modulePathIgnorePatterns": ["<rootDir>/packages/*/dist"],
   "moduleNameMapper": {
-    "^@mdi/font/css/materialdesignicons.min.css": "<rootDir>/jest/blank.js"
+    "^@mdi/font/css/materialdesignicons.min.css": "<rootDir>/jest/blank.js",
+    "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
   },
   "collectCoverageFrom": [
     "packages/**/src/**/*.{ts,tsx}",
@@ -41,5 +42,5 @@
     "node_modules/"
   ],
   "coverageDirectory": "<rootDir>/coverage",
-  "coverageReporters": ["json", "lcov", "text", "html"]
+  "coverageReporters": ["json", "lcov", "text", "html-spa"]
 }

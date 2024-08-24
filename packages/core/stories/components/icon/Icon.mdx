@@ -1,0 +1,76 @@
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { Icon, Collapsable } from "../../../src";
+import * as IconStories from "./Icon.stories";
+
+<Meta of={IconStories} />
+
+<Title>Icon</Title>
+
+<Anchor storyId="icon">
+  <div className="hidden-anchor">
+    <Subheading>Icon</Subheading>
+  </div>
+</Anchor>
+
+<Description of={Icon} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={IconStories._Icon} />
+</Collapsable>
+
+<Anchor storyId="colors">
+  <Subheading>Colors</Subheading>
+</Anchor>
+<Description of={IconStories.Colors} />
+<Canvas withToolbar of={IconStories.Colors} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={IconStories.Colors} />
+</Collapsable>
+
+<Anchor storyId="sizes">
+  <Subheading>Sizes</Subheading>
+</Anchor>
+<Description of={IconStories.Sizes} />
+<Canvas withToolbar of={IconStories.Sizes} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={IconStories.Sizes} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { Icon } from "@react-fabric/core";
+
+export const Example = () => {
+  return <Icon icon="svg path / image url" />;
+};
+```

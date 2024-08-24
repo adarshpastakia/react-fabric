@@ -1,0 +1,58 @@
+import { Collapsable } from "@react-fabric/core";
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Heading,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { JsonViewer } from "../../src";
+import * as JsonViewerStories from "./JsonViewer.stories";
+
+<Meta of={JsonViewerStories} />
+
+<Title>Json Viewer</Title>
+
+<Anchor storyId="JsonViewer">
+  <div className="hidden-anchor">
+    <Subheading>Json Viewer</Subheading>
+  </div>
+</Anchor>
+
+<Description of={JsonViewer} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={JsonViewerStories._JsonViewer} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { JsonViewer } from "@react-fabric/data";
+
+export const Example = () => {
+  return <JsonViewer json={AnyObject} />;
+};
+```

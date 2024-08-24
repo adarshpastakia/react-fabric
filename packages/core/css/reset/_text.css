@@ -1,0 +1,179 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@layer comp {
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 500;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+    font-weight: 500;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  h6 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  p {
+    line-height: 1.5;
+
+    & + p,
+    & + article {
+      margin-top: 1rem;
+    }
+  }
+
+  article {
+    & + p,
+    & + article {
+      margin-top: 1rem;
+    }
+  }
+
+  ul,
+  ol {
+    margin: 0;
+    padding-inline-start: 2em;
+    list-style-position: outside;
+
+    & > li {
+      padding: 0 2px;
+      line-height: 2;
+    }
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  dl {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 0 1rem;
+    line-height: 1.5em;
+
+    dt {
+      overflow: hidden;
+      flex: 0 0 33.3%;
+
+      min-width: 6em;
+      max-width: 12em;
+      padding-inline: 1em;
+
+      font-size: 0.875em;
+      color: theme(textColor.dimmed);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    dd {
+      flex: 1 1 66.6%;
+      margin: 0;
+      padding: 0;
+    }
+
+    &.align-end > dt {
+      text-align: end;
+
+      &::after {
+        content: ": ";
+      }
+    }
+
+    &.bg-alternate {
+      & > dt:nth-of-type(odd),
+      & > dd:nth-of-type(odd) {
+        background-color: color-mix(in lab, var(--fabric-bg) 99%, var(--tint));
+      }
+
+      & > dt:nth-of-type(even),
+      & > dd:nth-of-type(even) {
+        background-color: color-mix(in lab, var(--fabric-bg) 92%, var(--tint));
+      }
+    }
+  }
+
+  abbr {
+    cursor: help;
+
+    display: inline-block;
+
+    padding: 0 2px;
+
+    color: theme(colors.accent.700);
+    text-decoration: underline dashed 1px;
+
+    background-color: color-mix(in lab, currentcolor 10%, var(--fabric-bg));
+  }
+
+  mark {
+    display: inline-block;
+    color: var(--fabric-text);
+    background-color: theme(colors.accent.100);
+  }
+
+  .link {
+    cursor: pointer;
+    user-select: none;
+
+    font-weight: 500;
+    color: theme(colors.accent.600);
+    text-decoration: underline dotted;
+
+    &:hover {
+      text-decoration: underline solid;
+    }
+  }
+
+  .bg-odd,
+  .bg-alternate > :nth-child(odd) {
+    background-color: color-mix(in lab, var(--fabric-bg) 99%, var(--tint));
+  }
+
+  .bg-even,
+  .bg-alternate > :nth-child(even) {
+    background-color: color-mix(in lab, var(--fabric-bg) 92%, var(--tint));
+  }
+}

@@ -1,0 +1,189 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@layer comp {
+  .breadcrumbs,
+  .breadcrumbOverflow {
+    --color: theme(colors.primary.DEFAULT);
+
+    &[data-color="accent"] {
+      --color: theme(colors.accent.DEFAULT);
+    }
+
+    &[data-color="info"] {
+      --color: theme(colors.info.DEFAULT);
+    }
+
+    &[data-color="danger"] {
+      --color: theme(colors.danger.DEFAULT);
+    }
+
+    &[data-color="success"] {
+      --color: theme(colors.success.DEFAULT);
+    }
+
+    &[data-color="warning"] {
+      --color: theme(colors.warning.DEFAULT);
+    }
+
+    & :global(.link) {
+      padding: 0.25em 0.5em;
+      text-decoration: none;
+    }
+  }
+
+  .breadcrumbOverflow,
+  .breadcrumbs[data-variant="classic"] {
+    & :global(.link) {
+      color: color-mix(in lab, var(--color) 90%, var(--fabric-text));
+    }
+
+    & :global(.link):hover {
+      color: color-mix(in lab, var(--color) 99%, var(--fabric-text));
+      text-decoration: underline;
+      background-color: theme(colors.tint.50/50%);
+    }
+
+    & :global(.link):active {
+      color: color-mix(in lab, var(--color) 85%, var(--fabric-text));
+      background-color: theme(colors.tint.50);
+    }
+  }
+
+  .breadcrumbs[data-variant="classic"] {
+    & > .breadcrumbLink {
+      list-style: none;
+
+      &::after {
+        content: attr(data-separator);
+        display: inline-block;
+        margin-inline: 0.125em;
+        color: theme(colors.tint.300);
+      }
+
+      &:last-child::after {
+        content: unset;
+      }
+    }
+  }
+
+  [data-ref="viewport"] .breadcrumbs {
+    grid-area: crumbbar;
+    padding: 0 0.25rem;
+  }
+}
+
+@layer var {
+  .breadcrumbs[data-variant="classic"] {
+    & > :global(.link) {
+      overflow: hidden;
+      max-width: 24rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    & > .breadcrumbLink:last-child > :global(.link) {
+      pointer-events: none;
+      color: theme(colors.tint.600);
+    }
+  }
+
+  .breadcrumbs[data-variant="modern"] {
+    & > .breadcrumbLink {
+      --linkcolor: color-mix(in lab, var(--color) 50%, var(--fabric-bg));
+
+      position: relative;
+      list-style: none;
+      border-radius: var(--rounding);
+
+      &:last-child {
+        --color: theme(colors.tint.500);
+
+        pointer-events: none;
+      }
+
+      &:first-child > :global(.link) {
+        border-start-start-radius: var(--rounding);
+        border-end-start-radius: var(--rounding);
+      }
+
+      &:last-child > :global(.link) {
+        border-start-end-radius: var(--rounding);
+        border-end-end-radius: var(--rounding);
+      }
+
+      &:not(:first-child) {
+        margin-inline-start: -1em;
+
+        &::before {
+          content: "";
+
+          display: inline-block;
+
+          vertical-align: middle;
+
+          border: 0.625em solid transparent;
+          border-block-color: var(--linkcolor);
+          border-inline-end-color: var(--linkcolor);
+        }
+
+        & > :global(.link) {
+          margin-inline-start: -0.625em;
+        }
+      }
+
+      &:not(:last-child) {
+        &::after {
+          content: "";
+
+          display: inline-block;
+
+          vertical-align: middle;
+
+          border: 0.625em solid transparent;
+          border-inline-start-color: var(--linkcolor);
+        }
+      }
+
+      & > :global(.link) {
+        display: inline-block;
+
+        padding: 0.125em 0.5em;
+
+        line-height: 1;
+        color: color-mix(in lab, var(--color) 50%, var(--fabric-text));
+        vertical-align: middle;
+
+        background-color: var(--linkcolor);
+      }
+
+      &:hover {
+        --linkcolor: color-mix(in lab, var(--color) 65%, var(--fabric-bg));
+      }
+
+      &:active {
+        --linkcolor: color-mix(in lab, var(--color) 35%, var(--fabric-bg));
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { Collapsable, useOverlayService } from "../../../src";
+import * as FlyoutStories from "./Flyout.stories";
+import * as ModalStories from "./Modal.stories";
+
+<Meta of={ModalStories} />
+
+<Title>Overlays</Title>
+
+<Anchor storyId="modal">
+  <Subheading>Modal</Subheading>
+</Anchor>
+
+<Description of={useOverlayService} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ModalStories._Modal} />
+</Collapsable>
+
+<Anchor storyId="flyout">
+  <Subheading>Flyouts</Subheading>
+</Anchor>
+<Description of={FlyoutStories._Flyout} />
+<Canvas withToolbar of={FlyoutStories._Flyout} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={FlyoutStories._Flyout} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { Button, useOverlayService } from "@react-fabric/core";
+
+export const Example = () => {
+  const [ModelNode, openModal] = useOverlayService(ModalComponent);
+
+  return (
+    <Fragment>
+      <Button
+        onClick={() =>
+          openModal({
+            ...anyargs,
+          }).then((ret) => {
+            // return value modal.onClose
+          })
+        }
+      >
+        Modal
+      </Button>
+    </Fragment>
+  );
+};
+```

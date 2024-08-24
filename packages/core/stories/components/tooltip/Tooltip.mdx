@@ -1,0 +1,80 @@
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { Tooltip, Collapsable } from "../../../src";
+import * as TooltipStories from "./Tooltip.stories";
+
+<Meta of={TooltipStories} />
+
+<Title>Tooltip</Title>
+
+<Anchor storyId="emptycontent">
+  <div className="hidden-anchor">
+    <Subheading>Tooltip</Subheading>
+  </div>
+</Anchor>
+
+<Description of={Tooltip} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={TooltipStories._Tooltip} />
+</Collapsable>
+
+<Anchor storyId="colors">
+  <Subheading>Colors</Subheading>
+</Anchor>
+<Description of={TooltipStories.Colors} />
+<Canvas withToolbar of={TooltipStories.Colors} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={TooltipStories.Colors} />
+</Collapsable>
+
+<Anchor storyId="content">
+  <Subheading>Styled Content</Subheading>
+</Anchor>
+<Description of={TooltipStories.StyledContent} />
+<Canvas withToolbar of={TooltipStories.StyledContent} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={TooltipStories.StyledContent} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { Button, Tooltip } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <Tooltip content="Tooltip content">
+      <Button>Action</Button>
+    </Tooltip>
+  );
+};
+```

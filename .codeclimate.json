@@ -15,6 +15,7 @@
     "**/stories/",
     "**/tests/",
     "**/dist/",
+    "**/css/",
     "**/LICENSE",
     "**/*.d.ts",
     "**/*.lock",
@@ -27,6 +28,11 @@
     ".gitignore",
     ".npmignore",
     ".codeclimate.json",
+    "**/darkBase.ts",
+    "**/lightBase.ts",
+    "**/palettes.ts",
+    "**/world.svg.ts",
+    "**/_fileType.ts",
     "**/_countries.ts",
     "**/hijri-date.js"
   ]

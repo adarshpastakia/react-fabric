@@ -1,0 +1,81 @@
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Heading,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { ConfirmButton, Collapsable } from "../../../src";
+import * as ConfirmButtonStories from "./ConfirmButton.stories";
+
+<Meta of={ConfirmButtonStories} />
+
+<Title>Confirm Button</Title>
+
+<Anchor storyId="confirmButton">
+  <div className="hidden-anchor">
+    <Subheading>Confirm Button</Subheading>
+  </div>
+</Anchor>
+
+<Description of={ConfirmButton} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ConfirmButtonStories._ConfirmButton} />
+</Collapsable>
+
+<Anchor storyId="withAction">
+  <Subheading>With Action</Subheading>
+</Anchor>
+<Description of={ConfirmButtonStories.ConfirmWithAction} />
+<Canvas withToolbar of={ConfirmButtonStories.ConfirmWithAction} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ConfirmButtonStories.ConfirmWithAction} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { ConfirmButton } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <ConfirmButton
+      icon="icon svg path"
+      altIcon="caret icon"
+      color="color"
+      variant="style"
+      loading={boolean}
+      disabled={boolean}
+      message="Confirmation message"
+      okLabel="Yes"
+      cancelLabel="No"
+    >
+      Button Label
+    </Button>
+  );
+};
+```

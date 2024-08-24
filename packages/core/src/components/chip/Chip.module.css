@@ -1,0 +1,118 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@layer comp {
+  .chip {
+    --blank-gradient: linear-gradient(to bottom, #00000005 0%, #0000 10%);
+
+    color: theme(colors.tint.500);
+    background-image: var(--blank-gradient);
+    outline: 1px solid color-mix(in lab, currentcolor 20%, var(--fabric-bg));
+    outline-offset: -1px;
+
+    & > .chipLabel {
+      padding: 0.25em 0.5em;
+    }
+
+    & > .chipIcon {
+      & + .chipLabel {
+        margin-inline-start: -0.5em;
+      }
+    }
+
+    & > .chipRemove {
+      /* mayble add styles later */
+    }
+
+    &.clickable {
+      cursor: pointer;
+      background-image: var(--click-gradient);
+
+      &.disabled {
+        pointer-events: none;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+@layer var {
+  .chip {
+    height: unset;
+    padding: unset;
+    background-color: color-mix(in lab, currentcolor 10%, var(--fabric-bg));
+
+    &[data-variant="outline"] {
+      outline-color: color-mix(in lab, currentcolor 50%, var(--fabric-bg));
+      box-shadow: 0 0 2px color-mix(in lab, currentcolor 50%, var(--tint)) inset;
+    }
+
+    > * {
+      color: color-mix(in lab, currentcolor 50%, var(--fabric-text));
+    }
+
+    &.clickable {
+      &:hover {
+        background-color: color-mix(in lab, currentcolor 20%, var(--fabric-bg));
+      }
+
+      &:active,
+      &[data-dropdown-open="true"] {
+        background-color: color-mix(in lab, currentcolor 15%, var(--fabric-bg));
+        background-image: var(--active-gradient);
+      }
+
+      &[data-dropdown-open="true"] {
+        pointer-events: none;
+      }
+    }
+
+    &[data-variant="solid"] {
+      background-color: color-mix(in lab, currentcolor 35%, var(--fabric-bg));
+      outline-color: color-mix(in lab, currentcolor 50%, var(--fabric-bg));
+
+      & > * {
+        color: color-mix(in lab, currentcolor 5%, var(--fabric-text));
+      }
+
+      &.clickable {
+        &:hover {
+          background-color: color-mix(
+            in lab,
+            currentcolor 45%,
+            var(--fabric-bg)
+          );
+        }
+
+        &:active,
+        &[data-dropdown-open="true"] {
+          background-color: color-mix(
+            in lab,
+            currentcolor 30%,
+            var(--fabric-bg)
+          );
+        }
+      }
+    }
+  }
+}

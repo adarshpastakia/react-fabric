@@ -1,0 +1,137 @@
+import { Meta } from "@storybook/addon-docs";
+import {
+  Anchor,
+  IconGallery,
+  IconItem,
+  Story,
+  Subheading,
+  Subtitle,
+  Title,
+  Unstyled,
+} from "@storybook/blocks";
+import { background } from "@storybook/theming";
+import { Translation } from "react-i18next";
+import {
+  Copic,
+  Crayola,
+  Panatone,
+  CopCool,
+  CopWarm,
+  CopToner,
+  CopNeutral,
+} from "./colors";
+
+<Meta title="Color Collections" />
+
+<Title>Color Collections</Title>
+
+<Subheading>Panatone</Subheading>
+<IconGallery>
+  {Panatone.map(({ color, name }) => (
+    <IconItem key={name} name={name}>
+      <div
+        className="size-8 cursor-pointer"
+        style={{
+          backgroundColor: color,
+        }}
+        onClick={() => {
+          navigator.clipboard.writeText(color);
+        }}
+      />
+    </IconItem>
+  ))}
+</IconGallery>
+
+<Subheading>Copic</Subheading>
+<IconGallery>
+  {Copic.map(({ color, name }) => (
+    <IconItem key={name} name={name}>
+      <div
+        className="size-8 cursor-pointer"
+        style={{
+          backgroundColor: color,
+        }}
+        onClick={() => {
+          navigator.clipboard.writeText(color);
+        }}
+      />
+    </IconItem>
+  ))}
+</IconGallery>
+<IconGallery>
+  {CopCool.map(({ color, name }) => (
+    <IconItem key={name} name={name}>
+      <div
+        className="size-8 cursor-pointer"
+        style={{
+          backgroundColor: color,
+        }}
+        onClick={() => {
+          navigator.clipboard.writeText(color);
+        }}
+      />
+    </IconItem>
+  ))}
+</IconGallery>
+<IconGallery>
+  {CopNeutral.map(({ color, name }) => (
+    <IconItem key={name} name={name}>
+      <div
+        className="size-8 cursor-pointer"
+        style={{
+          backgroundColor: color,
+        }}
+        onClick={() => {
+          navigator.clipboard.writeText(color);
+        }}
+      />
+    </IconItem>
+  ))}
+</IconGallery>
+<IconGallery>
+  {CopWarm.map(({ color, name }) => (
+    <IconItem key={name} name={name}>
+      <div
+        className="size-8 cursor-pointer"
+        style={{
+          backgroundColor: color,
+        }}
+        onClick={() => {
+          navigator.clipboard.writeText(color);
+        }}
+      />
+    </IconItem>
+  ))}
+</IconGallery>
+<IconGallery>
+  {CopToner.map(({ color, name }) => (
+    <IconItem key={name} name={name}>
+      <div
+        className="size-8 cursor-pointer"
+        style={{
+          backgroundColor: color,
+        }}
+        onClick={() => {
+          navigator.clipboard.writeText(color);
+        }}
+      />
+    </IconItem>
+  ))}
+</IconGallery>
+
+<Subheading>Crayola</Subheading>
+<IconGallery>
+  {Crayola.map(({ color, name }) => (
+    <IconItem key={name} name={name}>
+      <div
+        className="size-8 cursor-pointer"
+        style={{
+          backgroundColor: color,
+        }}
+        onClick={() => {
+          navigator.clipboard.writeText(color);
+        }}
+      />
+    </IconItem>
+  ))}
+</IconGallery>

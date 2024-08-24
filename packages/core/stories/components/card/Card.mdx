@@ -1,0 +1,97 @@
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Heading,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { Card, Collapsable } from "../../../src";
+import * as CardStories from "./Card.stories";
+
+<Meta of={CardStories} />
+
+<Title>Card</Title>
+
+<Anchor storyId="card">
+  <div className="hidden-anchor">
+    <Subheading>Card</Subheading>
+  </div>
+</Anchor>
+
+<Description of={Card} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CardStories._Card} />
+</Collapsable>
+
+<Anchor storyId="clickable">
+  <Subheading>Clickable</Subheading>
+</Anchor>
+<Description of={CardStories.Clickable} />
+<Canvas withToolbar of={CardStories.Clickable} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CardStories.Clickable} />
+</Collapsable>
+
+<Anchor storyId="headFoot">
+  <Subheading>Header Footer</Subheading>
+</Anchor>
+<Description of={CardStories.HeadFoot} />
+<Canvas withToolbar of={CardStories.HeadFoot} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CardStories.HeadFoot} />
+</Collapsable>
+
+<Anchor storyId="cardCover">
+  <Subheading>Card Cover</Subheading>
+</Anchor>
+<Description of={CardStories._CardCover} />
+<Canvas withToolbar of={CardStories._CardCover} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CardStories._CardCover} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { Card } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <Card
+      className=""
+      bodyClassName=""
+      onClick={handler}
+    >
+        <Title as="h3">Card Title</Title>
+        <Title className="text-dimmed">Card description goes here</Title>
+        <Text clamp={4}>{faker.lorem.sentences(10)}</Text>
+    </Button>
+  );
+};
+```

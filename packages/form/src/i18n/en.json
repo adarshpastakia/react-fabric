@@ -1,0 +1,24 @@
+{
+  "addArray": "Add Item",
+  "password": {
+    "show": "Show password",
+    "hide": "Hide password"
+  },
+  "select": {
+    "emptyList": "No options available",
+    "notFound": "No options found for <0>{{query}}</0>",
+    "createOption": "Create new option for <0>{{query}}</0>"
+  },
+  "yup": {
+    "arrayMax": "{{label}} must contain upto {{max}} item",
+    "arrayMin": "{{label}} must contain atleast {{min}} item",
+    "invalid": "{{label}} invalid",
+    "empty": "{{label}} must not be empty",
+    "invalidType": "{{label}} invalid datatype",
+    "numberMax": "{{label}} maximum {{max}}",
+    "numberMin": "{{label}} minimum {{min}}",
+    "required": "{{label}} required",
+    "stringMax": "{{label}} maximum {{max}} characters allowed",
+    "stringMin": "{{label}} requires minimum {{min}} characters"
+  }
+}

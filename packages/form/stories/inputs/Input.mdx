@@ -1,0 +1,192 @@
+import { Collapsable } from "@react-fabric/core";
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { Input } from "../../src";
+import * as InputStories from "./Input.stories";
+import * as NumberStories from "./Number.stories";
+import * as ColorInputStories from "./ColorInput.stories";
+import * as TextareaStories from "./Textarea.stories";
+import * as OtherStories from "./Others.stories";
+import * as FileStories from "./File.stories";
+import * as CheckboxStories from "./Checkbox.stories";
+import * as RadioStories from "./Radio.stories";
+import * as SwitchStories from "./Switch.stories";
+import * as PasswordStories from "./Password.stories";
+import * as SearchStories from "./Search.stories";
+
+<Meta of={InputStories} />
+
+<Title>Inputs</Title>
+
+<Anchor storyId="input">
+  <div className="hidden-anchor">
+    <Subheading>Input</Subheading>
+  </div>
+</Anchor>
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={InputStories._Input} />
+</Collapsable>
+
+<Anchor storyId="password">
+  <Subheading>Password</Subheading>
+</Anchor>
+<Description of={PasswordStories._Password} />
+<Canvas withToolbar of={PasswordStories._Password} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={PasswordStories._Password} />
+</Collapsable>
+
+<Anchor storyId="number">
+  <Subheading>Number</Subheading>
+</Anchor>
+<Description of={NumberStories._Number} />
+<Canvas withToolbar of={NumberStories._Number} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={NumberStories._Number} />
+</Collapsable>
+
+<Anchor storyId="search">
+  <Subheading>Search</Subheading>
+</Anchor>
+<Description of={SearchStories._Search} />
+<Canvas withToolbar of={SearchStories._Search} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={SearchStories._Search} />
+</Collapsable>
+
+<Anchor storyId="textarea">
+  <Subheading>Textarea</Subheading>
+</Anchor>
+<Description of={TextareaStories._Textarea} />
+<Canvas withToolbar of={TextareaStories._Textarea} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={TextareaStories._Textarea} />
+</Collapsable>
+
+<Anchor storyId="file">
+  <Subheading>File</Subheading>
+</Anchor>
+<Description of={FileStories._FileInput} />
+<Canvas withToolbar of={FileStories._FileInput} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={FileStories._FileInput} />
+</Collapsable>
+
+<Anchor storyId="color">
+  <Subheading>Color Input</Subheading>
+</Anchor>
+<Description of={ColorInputStories._ColorInput} />
+<Canvas withToolbar of={ColorInputStories._ColorInput} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ColorInputStories._ColorInput} />
+</Collapsable>
+
+<Anchor storyId="checkbox">
+  <Subheading>Checkbox</Subheading>
+</Anchor>
+<Description of={CheckboxStories._Checkbox} />
+<Canvas withToolbar of={CheckboxStories._Checkbox} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CheckboxStories._Checkbox} />
+</Collapsable>
+
+<Anchor storyId="radio">
+  <Subheading>Radio</Subheading>
+</Anchor>
+<Description of={RadioStories._Radio} />
+<Canvas withToolbar of={RadioStories._Radio} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={RadioStories._Radio} />
+</Collapsable>
+
+<Anchor storyId="switch">
+  <Subheading>Switch</Subheading>
+</Anchor>
+<Description of={SwitchStories._Switch} />
+<Canvas withToolbar of={SwitchStories._Switch} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={SwitchStories._Switch} />
+</Collapsable>
+
+<Anchor storyId="withDecorators">
+  <Subheading>With Decorators</Subheading>
+</Anchor>
+<Description of={OtherStories.WithDecorators} />
+<Canvas withToolbar of={OtherStories.WithDecorators} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={OtherStories.WithDecorators} />
+</Collapsable>
+
+<Anchor storyId="invalid">
+  <Subheading>Invalid</Subheading>
+</Anchor>
+<Description of={OtherStories.InvalidInput} />
+<Canvas withToolbar of={OtherStories.InvalidInput} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={OtherStories.InvalidInput} />
+</Collapsable>
+
+<Anchor storyId="disabled">
+  <Subheading>Disabled</Subheading>
+</Anchor>
+<Description of={OtherStories.DisabledInput} />
+<Canvas withToolbar of={OtherStories.DisabledInput} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={OtherStories.DisabledInput} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { Input } from "@react-fabric/form";
+
+export const Example = () => {
+  return (
+    <Input
+      placeholder="Placeholder..."
+      label="Input label"
+      value={value}
+      onChange={handleChange}
+    />
+  );
+};
+```

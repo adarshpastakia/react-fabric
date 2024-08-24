@@ -1,9 +1,9 @@
 import { Meta } from "@storybook/addon-docs";
 import {
   Anchor,
-  Story,
   IconGallery,
   IconItem,
+  Story,
   Subheading,
   Subtitle,
   Title,
@@ -18,9 +18,16 @@ import { CoreIcons, Icon } from "../packages/core/src";
 <Title>Iconography</Title>
 
 <IconGallery>
-  {Object.entries(CoreIcons).map(([key, icon]) => (
-    <IconItem key={key} name={key}>
-      <Icon icon={icon} />
-    </IconItem>
-  ))}
+  {Object.entries(CoreIcons)
+    .sort()
+    .map(([key, icon]) => (
+      <IconItem key={key} name={key}>
+        <Icon
+          icon={icon}
+          onClick={() => {
+            navigator.clipboard.writeText(`CoreIcons.${key}`);
+          }}
+        />
+      </IconItem>
+    ))}
 </IconGallery>

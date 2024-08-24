@@ -1,0 +1,80 @@
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { EmptyContent, Collapsable } from "../../../src";
+import * as EmptyStories from "./Empty.stories";
+
+<Meta of={EmptyStories} />
+
+<Title>Empty Content</Title>
+
+<Anchor storyId="emptycontent">
+  <div className="hidden-anchor">
+    <Subheading>Empty Content</Subheading>
+  </div>
+</Anchor>
+
+<Description of={EmptyContent} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={EmptyStories._EmptyContent} />
+</Collapsable>
+
+<Anchor storyId="card">
+  <Subheading>Card</Subheading>
+</Anchor>
+<Description of={EmptyStories.CardEmpty} />
+<Canvas withToolbar of={EmptyStories.CardEmpty} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={EmptyStories.CardEmpty} />
+</Collapsable>
+
+<Anchor storyId="panel">
+  <Subheading>Panel</Subheading>
+</Anchor>
+<Description of={EmptyStories.PanelEmpty} />
+<Canvas withToolbar of={EmptyStories.PanelEmpty} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={EmptyStories.PanelEmpty} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { Button, EmptyContent } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <EmptyContent title="Empty title" message="Empty message">
+      <Button>Action</Button>
+    </EmptyContent>
+  );
+};
+```

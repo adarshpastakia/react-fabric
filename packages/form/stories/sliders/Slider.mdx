@@ -1,0 +1,76 @@
+import { Collapsable } from "@react-fabric/core";
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { Slider } from "../../src";
+import * as RangeStories from "./Range.stories";
+import * as SliderStories from "./Slider.stories";
+
+<Meta of={SliderStories} />
+
+<Title>Sliders</Title>
+
+<Anchor storyId="slider">
+  <div className="hidden-anchor">
+    <Subheading>Slider</Subheading>
+  </div>
+</Anchor>
+
+<Description of={Slider} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={SliderStories._Slider} />
+</Collapsable>
+
+<Anchor storyId="Range">
+  <Subheading>Range</Subheading>
+</Anchor>
+<Description of={RangeStories._Range} />
+<Canvas withToolbar of={RangeStories._Range} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={RangeStories._Range} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { Slider } from "@react-fabric/form";
+
+export const Example = () => {
+  return (
+    <Slider
+      label="Input label"
+      min={0}
+      max={99}
+      value={value}
+      onChange={handleChange}
+    />
+  );
+};
+```

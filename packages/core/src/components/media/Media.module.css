@@ -1,0 +1,112 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@layer comp {
+  .mediaContainer {
+    &.mediaReel {
+      &::after,
+      &::before {
+        content: "";
+
+        position: absolute;
+        inset-inline: 0;
+
+        height: 0.5rem;
+
+        background-image: linear-gradient(
+          to right,
+          #222c 0,
+          #222c 0.25rem,
+          #fff8 0.25rem,
+          #fff8 0.75rem,
+          #222c 0.75rem,
+          #222c 1rem
+        );
+        background-repeat: repeat-x;
+        background-position: center center;
+        background-size: 1rem;
+        border: 0.125rem solid #222c;
+      }
+
+      &::before {
+        top: 0;
+      }
+
+      &::after {
+        bottom: 0;
+      }
+    }
+
+    & .mediaPlaceholder {
+      /* might add styles later */
+    }
+
+    & .mediaControls {
+      & [data-ref="button"] {
+        margin: 0;
+
+        & > :first-child {
+          color: #fff;
+          background-color: theme(colors.black/50%);
+
+          &:hover {
+            color: theme(colors.primary.600);
+            background-color: theme(colors.black/80%);
+          }
+        }
+      }
+
+      & .mediaControlAction > :first-child {
+        background-color: theme(colors.black/70%);
+      }
+
+      & .mediaControlPlaceholder {
+        /* might add styles later */
+      }
+
+      & .mediaControlAction + .mediaControlAction {
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .media {
+    /* might add styles later */
+  }
+}
+
+@layer util {
+  & .mediaControls {
+    &:hover {
+      & .mediaControlPlaceholder {
+        display: none;
+      }
+    }
+
+    &:not(:hover) {
+      & .mediaControlAction {
+        display: none;
+      }
+    }
+  }
+}

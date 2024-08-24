@@ -1,0 +1,124 @@
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title as ST,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { Icon, Collapsable, Title, Text, Abbr, Mark } from "../../src";
+import * as TextStories from "./Text.stories";
+import * as TitleStories from "./Title.stories";
+import * as AbbrStories from "./Abbr.stories";
+import * as MarkStories from "./Mark.stories";
+import * as CopyStories from "./Copy.stories";
+import * as LinkStories from "./Link.stories";
+
+<Meta of={TextStories} />
+
+<ST>Typography</ST>
+
+<Anchor storyId="typo">
+  <div className="hidden-anchor">
+    <Subheading>Typography</Subheading>
+  </div>
+</Anchor>
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={TextStories._Text} />
+</Collapsable>
+
+<Anchor storyId="clmaped">
+  <Subheading>Clamped</Subheading>
+</Anchor>
+<Description of={TextStories.Clamped} />
+<Canvas withToolbar of={TextStories.Clamped} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={TextStories.Clamped} />
+</Collapsable>
+
+<Anchor storyId="titles">
+  <Subheading>Titles</Subheading>
+</Anchor>
+<Description of={TitleStories.Titles} />
+<Canvas withToolbar of={TitleStories.Titles} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={TitleStories.Titles} />
+</Collapsable>
+
+<Anchor storyId="abbrs">
+  <Subheading>Abbr</Subheading>
+</Anchor>
+<Description of={AbbrStories._Abbr} />
+<Canvas withToolbar of={AbbrStories._Abbr} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={AbbrStories._Abbr} />
+</Collapsable>
+
+<Anchor storyId="marks">
+  <Subheading>Mark</Subheading>
+</Anchor>
+<Description of={MarkStories._Mark} />
+<Canvas withToolbar of={MarkStories._Mark} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={MarkStories._Mark} />
+</Collapsable>
+
+<Anchor storyId="links">
+  <Subheading>Links</Subheading>
+</Anchor>
+<Description of={LinkStories._Link} />
+<Canvas withToolbar of={LinkStories._Link} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={LinkStories._Link} />
+</Collapsable>
+
+<Anchor storyId="copy">
+  <Subheading>Copy</Subheading>
+</Anchor>
+<Description of={CopyStories._Copy} />
+<Canvas withToolbar of={CopyStories._Copy} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CopyStories._Copy} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { Text, Title } from "@react-fabric/core";
+import { NavLink } from "react-router-dom";
+
+export const Example = () => {
+  return <div>
+    <Title as="h1">Title text</Title>
+    <Text>{text paras}</Text>
+    <Link as={NavLink}>Nav links</Link>
+  </div>;
+};
+```

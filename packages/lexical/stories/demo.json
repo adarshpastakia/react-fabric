@@ -1,0 +1,222 @@
+{
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "detail": 0,
+            "format": 0,
+            "mode": "normal",
+            "style": "",
+            "text": "Lexical Editor",
+            "type": "text",
+            "version": 1
+          }
+        ],
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "type": "heading",
+        "version": 1,
+        "tag": "h1"
+      },
+      {
+        "children": [
+          {
+            "detail": 0,
+            "format": 0,
+            "mode": "normal",
+            "style": "",
+            "text": "Lexcial editor provides rich-text editing which can be used to generate rich pdf documents through puppeteer",
+            "type": "text",
+            "version": 1
+          }
+        ],
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "type": "quote",
+        "version": 1
+      },
+      {
+        "children": [
+          {
+            "detail": 0,
+            "format": 0,
+            "mode": "normal",
+            "style": "",
+            "text": "This module is built with ",
+            "type": "text",
+            "version": 1
+          },
+          {
+            "detail": 0,
+            "format": 8,
+            "mode": "normal",
+            "style": "background-color: #fc07",
+            "text": "@lexical/react",
+            "type": "text",
+            "version": 1
+          },
+          {
+            "detail": 0,
+            "format": 0,
+            "mode": "normal",
+            "style": "",
+            "text": ". Try typing in ",
+            "type": "text",
+            "version": 1
+          },
+          {
+            "detail": 0,
+            "format": 1,
+            "mode": "normal",
+            "style": "",
+            "text": "some text",
+            "type": "text",
+            "version": 1
+          },
+          {
+            "detail": 0,
+            "format": 0,
+            "mode": "normal",
+            "style": "",
+            "text": " with ",
+            "type": "text",
+            "version": 1
+          },
+          {
+            "detail": 0,
+            "format": 2,
+            "mode": "normal",
+            "style": "",
+            "text": "different",
+            "type": "text",
+            "version": 1
+          },
+          {
+            "detail": 0,
+            "format": 0,
+            "mode": "normal",
+            "style": "",
+            "text": " formats.",
+            "type": "text",
+            "version": 1
+          }
+        ],
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "type": "paragraph",
+        "version": 1,
+        "textFormat": 0,
+        "textStyle": ""
+      },
+      {
+        "children": [
+          {
+            "detail": 0,
+            "format": 0,
+            "mode": "normal",
+            "style": "",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at bibendum lectus. Phasellus venenatis mauris mauris, id dignissim ipsum ultricies id. Cras ornare in mauris eu aliquet. Ut quis ante dictum, sagittis velit eu, porta nisl. Curabitur placerat tincidunt nisi. Curabitur consectetur urna urna, eu rhoncus justo mollis ac. Duis tincidunt libero eget ligula semper consequat. Pellentesque facilisis egestas dictum. Vivamus consequat condimentum malesuada. Aliquam ut pharetra tortor.",
+            "type": "text",
+            "version": 1
+          }
+        ],
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "type": "paragraph",
+        "version": 1,
+        "textFormat": 0,
+        "textStyle": ""
+      },
+      {
+        "children": [
+          {
+            "detail": 0,
+            "format": 0,
+            "mode": "normal",
+            "style": "",
+            "text": "Donec in urna eget metus bibendum semper auctor sed leo. Morbi dui ex, posuere ac lectus non, maximus consectetur justo. Pellentesque nulla risus, blandit quis risus non, lobortis consequat sem. Phasellus nec pulvinar dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin pharetra nisi ornare elit elementum pharetra. Vivamus pharetra neque vitae sollicitudin aliquam. Aliquam non mi interdum dolor mollis volutpat. Nulla placerat ipsum vel mauris ultricies, non lacinia tellus scelerisque.",
+            "type": "text",
+            "version": 1
+          }
+        ],
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "type": "paragraph",
+        "version": 1,
+        "textFormat": 0,
+        "textStyle": ""
+      },
+      {
+        "children": [
+          {
+            "detail": 0,
+            "format": 0,
+            "mode": "normal",
+            "style": "",
+            "text": "Ut quis lectus at eros eleifend condimentum. Nam a enim odio. Nunc libero nulla, commodo nec auctor vel, accumsan vitae lorem. Morbi interdum luctus dui ut finibus. Maecenas tincidunt at diam finibus lobortis. Vestibulum in felis vitae odio ultricies condimentum id at lacus. Proin ligula magna, malesuada at iaculis auctor, condimentum nec odio. Phasellus suscipit lectus nulla, a pharetra mi lacinia in. Donec facilisis urna ut viverra convallis. Phasellus laoreet, erat nec convallis vehicula, est arcu aliquam diam, eget laoreet purus augue commodo turpis. Maecenas scelerisque varius elit, in aliquet velit malesuada a. Sed malesuada vitae turpis in rutrum. Donec ut ipsum imperdiet, fringilla nisi et, facilisis ante. Aenean ac velit ut dui finibus venenatis vitae sit amet est. Nam finibus, orci et maximus fringilla, ex augue blandit enim, non maximus justo lectus in sapien. Nunc sodales tempor urna, ullamcorper posuere erat lacinia ut.",
+            "type": "text",
+            "version": 1
+          }
+        ],
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "type": "paragraph",
+        "version": 1,
+        "textFormat": 0,
+        "textStyle": ""
+      },
+      {
+        "children": [
+          {
+            "detail": 0,
+            "format": 0,
+            "mode": "normal",
+            "style": "",
+            "text": "Quisque eu egestas tellus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris eget hendrerit mauris, a tempor orci. In in consequat mauris. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis eu pharetra nibh. Praesent molestie elit at odio luctus, in laoreet eros egestas. Vestibulum ante velit, faucibus id volutpat a, ullamcorper sed risus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus nec sem erat.",
+            "type": "text",
+            "version": 1
+          }
+        ],
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "type": "paragraph",
+        "version": 1,
+        "textFormat": 0,
+        "textStyle": ""
+      },
+      {
+        "children": [
+          {
+            "detail": 0,
+            "format": 0,
+            "mode": "normal",
+            "style": "",
+            "text": "Sed euismod tortor sed rutrum fermentum. Mauris molestie auctor porttitor. Sed iaculis ante ac justo pretium varius. Aliquam bibendum nisi nisi, a iaculis turpis vehicula ultricies. Aenean egestas dignissim malesuada. Proin nec lectus vitae eros auctor fringilla. Nulla lacinia ut purus sed efficitur. In quis vehicula risus, non vestibulum ante.",
+            "type": "text",
+            "version": 1
+          }
+        ],
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "type": "paragraph",
+        "version": 1,
+        "textFormat": 0,
+        "textStyle": ""
+      }
+    ],
+    "direction": "ltr",
+    "format": "",
+    "indent": 0,
+    "type": "root",
+    "version": 1
+  }
+}

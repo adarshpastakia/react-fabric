@@ -1,5 +1,5 @@
 /*
- * React UI Framework
+ * React Fabric
  * @version   : 1.0.0
  * @copyright : 2024
  * @author    : Adarsh Pastakia
@@ -7,57 +7,43 @@
 import "@mdi/font/css/materialdesignicons.min.css";
 import "./styles/styles.css";
 
+import { ApplicationProvider, useApplicationContext } from "@react-fabric/core";
 import { Anchor } from "@storybook/addon-docs";
 import { withTests } from "@storybook/addon-jest";
-import {
-  Controls,
-  Description,
-  DocsContainer,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/blocks";
+import { DocsContainer } from "@storybook/blocks";
 import { addons, useGlobals } from "@storybook/preview-api";
 import { Preview } from "@storybook/react";
-import { create } from "@storybook/theming";
-import { Fragment } from "react";
+import { initialize, mswLoader } from "msw-storybook-addon";
+import { Fragment, useEffect, useMemo } from "react";
 import { I18nextProvider } from "react-i18next";
-import { ApplicationProvider } from "../packages/core/src";
-import { HotKeyWrapper } from "../packages/core/src/hotkeys/HotKeyWrapper";
 import { default as i18n } from "./i18n";
 import results from "./jest-test-results.json";
+import { darkTheme, lightTheme } from "./theme";
 
-const brandTitle = "React UI Framework";
-const reset = {
-  fontBase: 'Montserrat, "Helvetica Neue", Arial, sans-serif',
-  fontCode: "Consolas, Monaco, monospace",
-  brandImage: "poster.png",
-  brandTitle,
-};
-
-const lightTheme = create({
-  base: "light",
-  appBg: "#f5f6fa",
-  barBg: "#fefefe",
-  appContentBg: "#fafdfd",
-  colorPrimary: "#10ac84",
-  colorSecondary: "#2e86de",
-  ...reset,
-});
-const darkTheme = create({
-  base: "dark",
-  appBg: "#272f36",
-  barBg: "#2f3640",
-  textColor: "#fefefe",
-  inputTextColor: "#fefefe",
-  appContentBg: "#1e272e",
-  colorPrimary: "#10ac84",
-  colorSecondary: "#2e86de",
-  ...reset,
+/*
+ * Initializes MSW
+ * See https://github.com/mswjs/msw-storybook-addon#configuring-msw
+ * to learn how to customize it
+ */
+initialize({
+  onUnhandledRequest: "bypass",
+  serviceWorker: { url: "./serviceWorker.js" },
 });
 
 document.documentElement.dir = i18n.dir();
+
+const ContextWrapper = (props: AnyObject) => {
+  const { changeLocale, changeCalendar } = useApplicationContext();
+  useEffect(() => {
+    addons.getChannel().on("CALENDAR_CHANGE", (calendar: any) => {
+      changeCalendar?.(calendar);
+    });
+    addons.getChannel().on("LOCALE_CHANGED", (locale: any) => {
+      changeLocale?.(locale);
+    });
+  }, []);
+  return <Fragment {...props} />;
+};
 
 export default {
   parameters: {
@@ -101,33 +87,49 @@ export default {
       controls: { sort: "alpha" },
       container: ({ children, context }: any) => {
         const globals = context.store.globals.get();
+
+        const defaultCalendar = useMemo(
+          () => localStorage.getItem("storybook-calendar") ?? "gregorian",
+          [],
+        );
+
+        useEffect(() => {
+          const scheme = localStorage.getItem("storybook-scheme") ?? "light";
+          const theme = localStorage.getItem("storybook-theme") ?? "denim:jade";
+          const tint = localStorage.getItem("storybook-tint") ?? "silver";
+          const round = localStorage.getItem("storybook-rounding") ?? "normal";
+          const [primary, accent] = theme.split(":");
+          document.documentElement.style.setProperty(
+            "--primary",
+            `var(--${primary})`,
+          );
+          document.documentElement.style.setProperty(
+            "--accent",
+            `var(--${accent})`,
+          );
+          document.documentElement.style.setProperty(
+            "--tint",
+            `var(--${tint})`,
+          );
+          document.documentElement.dataset.colorScheme = scheme;
+          document.documentElement.dataset.rounding = round;
+        }, []);
+
         return (
           <ApplicationProvider
             defaultLocale={globals.locale}
             defaultColorScheme={globals.theme}
+            defaultCalendar={defaultCalendar as AnyObject}
           >
-            <HotKeyWrapper>
+            <ContextWrapper>
               <DocsContainer
                 context={context}
                 theme={globals.theme === "dark" ? darkTheme : lightTheme}
               >
                 {children}
               </DocsContainer>
-            </HotKeyWrapper>
+            </ContextWrapper>
           </ApplicationProvider>
-        );
-      },
-      page: () => {
-        return (
-          <>
-            <Title />
-            <Subtitle />
-            <Description />
-            <Primary />
-            <Controls />
-            <hr />
-            <Stories includePrimary={false} />
-          </>
         );
       },
       components: {
@@ -163,19 +165,46 @@ export default {
       },
     },
   },
+  loaders: [mswLoader],
   decorators: [
     (Story) => {
       const [globals] = useGlobals();
+
+      const defaultCalendar = useMemo(
+        () => localStorage.getItem("storybook-calendar") ?? "gregorian",
+        [],
+      );
+
+      useEffect(() => {
+        const scheme = localStorage.getItem("storybook-scheme") ?? "light";
+        const theme =
+          localStorage.getItem("storybook-theme") ?? "denim:avacado";
+        const tint = localStorage.getItem("storybook-tint") ?? "silver";
+        const round = localStorage.getItem("storybook-rounding") ?? "normal";
+        const [primary, accent] = theme.split(":");
+        document.documentElement.style.setProperty(
+          "--primary",
+          `var(--${primary})`,
+        );
+        document.documentElement.style.setProperty(
+          "--accent",
+          `var(--${accent})`,
+        );
+        document.documentElement.style.setProperty("--tint", `var(--${tint})`);
+        document.documentElement.dataset.colorScheme = scheme;
+        document.documentElement.dataset.rounding = round;
+      }, []);
+
       return (
         <I18nextProvider i18n={i18n}>
           <ApplicationProvider
             defaultLocale={globals.locale}
-            defaultColorScheme={
-              (localStorage.getItem("storybook-theme") ?? "light") as AnyObject
-            }
+            defaultCalendar={defaultCalendar as AnyObject}
           >
-            {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-            <Story />
+            <ContextWrapper>
+              {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+              <Story />
+            </ContextWrapper>
           </ApplicationProvider>
         </I18nextProvider>
       );
@@ -189,6 +218,21 @@ addons.getChannel().on("LOCALE_CHANGED", (locale: any) => {
     document.documentElement.dir = i18n.dir();
   });
 });
-addons.getChannel().on("THEME_CHANGED", (theme: any) => {
+addons.getChannel().on("SCHEME_CHANGED", (theme: any = "light") => {
   document.documentElement.dataset.colorScheme = theme;
+});
+addons
+  .getChannel()
+  .on("THEME_CHANGED", (primary: any = "denim", accent: any = "avacado") => {
+    document.documentElement.style.setProperty(
+      "--primary",
+      `var(--${primary})`,
+    );
+    document.documentElement.style.setProperty("--accent", `var(--${accent})`);
+  });
+addons.getChannel().on("TINT_CHANGED", (tint: any = "silver") => {
+  document.documentElement.style.setProperty("--tint", `var(--${tint})`);
+});
+addons.getChannel().on("ROUNDING_CHANGED", (round: any = "md") => {
+  document.documentElement.dataset.rounding = round;
 });

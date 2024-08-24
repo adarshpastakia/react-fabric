@@ -13,6 +13,7 @@
       "chore",
       "merge",
       "revert",
+      "i18n",
       "WIP"
     ],
     "commitScopes": [],
@@ -27,6 +28,7 @@
       "merge",
       "revert",
       "style",
+      "i18n",
       "refactor"
     ],
     "includeInvalidCommits": true,
@@ -39,6 +41,7 @@
       "revert": "Reverts",
       "style": "Styling Changes",
       "refactor": "Refactors",
+      "i18n": "I18N",
       "breakingChange": "BREAKING CHANGES"
     },
 

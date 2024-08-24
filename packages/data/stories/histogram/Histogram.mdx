@@ -1,0 +1,68 @@
+import { Collapsable } from "@react-fabric/core";
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Heading,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { Histogram } from "../../src";
+import * as HistogramStories from "./Histogram.stories";
+
+<Meta of={HistogramStories} />
+
+<Title>Histogram</Title>
+
+<Anchor storyId="Histogram">
+  <div className="hidden-anchor">
+    <Subheading>Histogram</Subheading>
+  </div>
+</Anchor>
+
+<Description of={Histogram} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={HistogramStories._Histogram} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { Histogram } from "@react-fabric/data";
+
+export const Example = () => {
+  return (
+    <Histogram
+      items={[
+        {
+          id: "key",
+          label: "Item",
+          count: 99,
+        },
+      ]}
+    />
+  );
+};
+```

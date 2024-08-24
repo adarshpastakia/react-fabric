@@ -1,0 +1,71 @@
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { Collapsable } from "../../../src";
+import * as CollapsableStories from "./Collapsable.stories";
+
+<Meta of={CollapsableStories} />
+
+<Title>Collapsable</Title>
+
+<Anchor storyId="Collapsable">
+  <div className="hidden-anchor">
+    <Subheading>Collapsable</Subheading>
+  </div>
+</Anchor>
+
+<Description of={Collapsable} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CollapsableStories._Collapsable} />
+</Collapsable>
+
+<Anchor storyId="withlegend">
+  <Subheading>Multiple</Subheading>
+</Anchor>
+<Description of={CollapsableStories.Multiple} />
+<Canvas withToolbar of={CollapsableStories.Multiple} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CollapsableStories.Multiple} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { Collapsable } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <Collapsable>
+        <Title>Collapsable title</Title>
+        <Content>{...message text}</Content>
+    </Collapsable>
+  );
+};
+```

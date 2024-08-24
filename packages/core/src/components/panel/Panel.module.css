@@ -1,0 +1,86 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@layer comp {
+  .panel {
+    grid-template: "head" auto "content" 1fr / 1fr;
+    background-color: theme(colors.bg);
+
+    & > * {
+      background-color: transparent;
+    }
+
+    &:global(.fixed) {
+      box-shadow: 0 0 18px theme(boxShadowColor.base);
+    }
+
+    & .panelHeader {
+      background-color: theme(backgroundColor.dimmed);
+    }
+
+    & .panelAction {
+      padding: 0.25rem;
+    }
+
+    & .panelBody {
+      grid-template: "head head head" auto ". loader ." auto "side-s content side-e" 1fr "foot foot foot" auto / auto 1fr auto;
+    }
+  }
+}
+
+@layer util {
+  .panelGroup {
+    & > .panel {
+      &[data-collapsed="true"] {
+        flex: 0 0 auto;
+      }
+
+      &[data-collapsed="false"] {
+        flex: 1 1 auto;
+        min-height: 15rem;
+
+        [data-ref="panelCollapse"] {
+          pointer-events: none;
+          color: var(--tint);
+          opacity: 0.25;
+        }
+      }
+    }
+
+    & > .panel:not(:first-child) {
+      border-start-start-radius: 0;
+      border-start-end-radius: 0;
+    }
+
+    & > .panel:not(:last-child) {
+      border-bottom: 1px solid theme(backgroundColor.base);
+      border-end-start-radius: 0;
+      border-end-end-radius: 0;
+    }
+  }
+
+  [data-ref="asideBody"] > .panelGroup > .panel {
+    border-radius: 0;
+    outline: 0;
+  }
+}

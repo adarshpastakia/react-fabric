@@ -1,0 +1,81 @@
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { ProgressBar, ProgressCircle, Collapsable } from "../../../src";
+import * as ProgressStories from "./Progress.stories";
+import * as CircleStories from "./Circle.stories";
+
+<Meta of={ProgressStories} />
+
+<Title>Progress</Title>
+
+<Anchor storyId="Progress">
+  <div className="hidden-anchor">
+    <Subheading>Progress Bar</Subheading>
+  </div>
+</Anchor>
+
+<Description of={ProgressBar} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ProgressStories._ProgressBar} />
+</Collapsable>
+
+<Anchor storyId="circle">
+  <Subheading>Circular</Subheading>
+</Anchor>
+<Description of={CircleStories._ProgressCircle} />
+<Canvas withToolbar of={CircleStories._ProgressCircle} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CircleStories._ProgressCircle} />
+</Collapsable>
+
+<Anchor storyId="colors">
+  <Subheading>Colors</Subheading>
+</Anchor>
+<Description of={ProgressStories.Colors} />
+<Canvas withToolbar of={ProgressStories.Colors} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ProgressStories.Colors} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { Progress } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <Progress title="Empty title" legend="Legend">
+      {...message text}
+    </Progress>
+  );
+};
+```

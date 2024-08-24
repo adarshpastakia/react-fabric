@@ -1,0 +1,88 @@
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { AnimationIndicator, Collapsable } from "../../../src";
+import * as AnimationsStories from "./Animations.stories";
+import * as BarsStories from "./Bars.stories";
+import * as SpinnerStories from "./Spinner.stories";
+import * as SkeletonStories from "./Skeleton.stories";
+
+<Meta of={AnimationsStories} />
+
+<Title>Animations</Title>
+
+<Anchor storyId="animations">
+  <div className="hidden-anchor">
+    <Subheading>Indicators</Subheading>
+  </div>
+</Anchor>
+
+<Description of={AnimationIndicator} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={AnimationsStories._Animations} />
+</Collapsable>
+
+<Anchor storyId="bars">
+  <Subheading>Bars</Subheading>
+</Anchor>
+<Description of={BarsStories._Bars} />
+<Canvas withToolbar of={BarsStories._Bars} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={BarsStories._Bars} />
+</Collapsable>
+
+<Anchor storyId="spinner">
+  <Subheading>Spinner</Subheading>
+</Anchor>
+<Description of={SpinnerStories._Spinner} />
+<Canvas withToolbar of={SpinnerStories._Spinner} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={SpinnerStories._Spinner} />
+</Collapsable>
+
+<Anchor storyId="skeleton">
+  <Subheading>Skeleton</Subheading>
+</Anchor>
+<Description of={SkeletonStories._Skeleton} />
+<Canvas withToolbar of={SkeletonStories._Skeleton} />
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { AnimationCheck, AnimationBars } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <AnimationCheck/>
+    <AnimationBars/>
+  );
+};
+```

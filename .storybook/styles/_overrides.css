@@ -1,5 +1,5 @@
 /*
- * React UI Framework
+ * React Fabric
  * @version   : 1.0.0
  * @copyright : 2024
  * @author    : Adarsh Pastakia
@@ -24,11 +24,11 @@
   }
 
   & tbody tr:nth-child(odd) td {
-    background-color: color-mix(in lab, var(--ruf-bg) 99%, var(--ruf-tint));
+    background-color: color-mix(in lab, var(--fabric-bg) 99%, var(--tint));
   }
 
   & tbody tr:nth-child(even) td {
-    background-color: color-mix(in lab, var(--ruf-bg) 96%, var(--ruf-tint));
+    background-color: color-mix(in lab, var(--fabric-bg) 96%, var(--tint));
   }
 
   & tbody td p {
@@ -44,7 +44,7 @@
 h1.sbdocs-title {
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--ruf-primary);
+  color: var(--primary);
   text-decoration: underline 2px;
   text-underline-offset: 0.25em;
 }
@@ -53,7 +53,7 @@ h1.sbdocs-title {
 .sb-anchor > h3 {
   font-size: 1.125rem;
   font-weight: 400;
-  color: var(--ruf-accent);
+  color: var(--accent);
   text-decoration: underline 1px;
   text-underline-offset: 0.25em;
 }
@@ -65,7 +65,15 @@ h1.sbdocs-title {
   }
 
   .sb-bar {
-    background-color: var(--ruf-bg);
+    background-color: var(--fabric-bg);
+  }
+}
+
+.sb-bar.sb-bar .tabbutton {
+  color: var(--primary);
+
+  &.tabbutton-active {
+    border-bottom-color: var(--primary);
   }
 }
 
@@ -86,10 +94,10 @@ h1.sbdocs-title {
   }
 
   .toc-list-item.toc-list-item.is-active-li.is-active-li {
-    border-color: var(--ruf-accent);
+    border-color: var(--accent);
 
     & > a.is-active-link {
-      color: var(--ruf-accent);
+      color: var(--accent);
     }
   }
 }

@@ -1,0 +1,75 @@
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { Avatar, AvatarGroup, Collapsable } from "../../../src";
+import * as AvatarStories from "./Avatar.stories";
+import * as AvatarGroupStories from "./AvatarGroup.stories";
+
+<Meta of={AvatarStories} />
+
+<Title>Avatar</Title>
+
+<Anchor storyId="avatar">
+  <div className="hidden-anchor">
+    <Subheading>Avatar</Subheading>
+  </div>
+</Anchor>
+
+<Description of={Avatar} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={AvatarStories._Avatar} />
+</Collapsable>
+
+<Anchor storyId="group">
+  <Subheading>Group</Subheading>
+</Anchor>
+<Description of={AvatarGroupStories._AvatarGroup} />
+<Canvas withToolbar of={AvatarGroupStories._AvatarGroup} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={AvatarGroupStories._AvatarGroup} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { Avatar, AvatarGroup } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <AvatarGroup>
+      <Avatar
+        name="Avatar Name"
+        avatar="Avatar image"
+        fallbackIcon="Fallback svg"
+      />
+    </AvatarGroup>
+  );
+};
+```

@@ -1,0 +1,23 @@
+{
+  "addArray": "اضافة عنصر",
+  "password": {
+    "show": "عرض كلمة المرور",
+    "hide": "اخفاء كلمة المرور"
+  },
+  "select": {
+    "emptyList": "لا توجد خيارات متاحة",
+    "notFound": "لم يتم العثور على خيارات ل ",
+    "createOption": "إنشاء خيار جديد ل "
+  },
+  "yup": {
+    "arrayMax": "{{label}} حدد ما يصل {{max}} غرض",
+    "arrayMin": "{{label}} اختر على الأقل {{min}} غرض",
+    "invalid": "{{label}} نوع بيانات غير صالح",
+    "invalidType": "{{label}} غير صالح",
+    "numberMax": "{{label}} الحد الأقصى {{max}}",
+    "numberMin": "{{label}} الحد الأدنى {{min}}",
+    "required": "{{label}} مطلوب",
+    "stringMax": "{{label}} أقصى {{max}} الحروف مسموحة",
+    "stringMin": "{{label}} يتطلب الحد الأدنى {{min}} الشخصيات"
+  }
+}

@@ -1,0 +1,68 @@
+import { Collapsable } from "@react-fabric/core";
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { DatePanel } from "../../src";
+import * as DatePanelStories from "./DatePanel.stories";
+import * as RangePanelStories from "./RangePanel.stories";
+
+<Meta of={DatePanelStories} />
+
+<Title>Date Panels</Title>
+
+<Anchor storyId="datepanel">
+  <div className="hidden-anchor">
+    <Subheading>Date Panel</Subheading>
+  </div>
+</Anchor>
+
+<Description of={DatePanel} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={DatePanelStories._DatePanel} />
+</Collapsable>
+
+<Anchor storyId="rangepanel">
+  <Subheading>Range Panel</Subheading>
+</Anchor>
+<Description of={RangePanelStories._RangePanel} />
+<Canvas withToolbar of={RangePanelStories._RangePanel} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={RangePanelStories._RangePanel} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { DatePanel } from "@react-fabric/date";
+
+export const Example = () => {
+  return <DatePanel value="" onChange={} />;
+};
+```

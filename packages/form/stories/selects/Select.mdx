@@ -1,0 +1,94 @@
+import { Collapsable } from "@react-fabric/core";
+import {
+  Canvas,
+  Description,
+  Primary,
+  Story,
+  Title,
+} from "@storybook/addon-docs";
+import {
+  Anchor,
+  ArgTypes,
+  Controls,
+  Meta,
+  Subheading,
+} from "@storybook/blocks";
+import { Fragment } from "react";
+import { Select } from "../../src";
+import * as SelectStories from "./Select.stories";
+
+<Meta of={SelectStories} />
+
+<Title>Select</Title>
+
+<Anchor storyId="select">
+  <div className="hidden-anchor">
+    <Subheading>Select</Subheading>
+  </div>
+</Anchor>
+
+<Description of={Select} />
+
+<Primary />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={SelectStories._Select} />
+</Collapsable>
+
+<Anchor storyId="mutiple">
+  <Subheading>Multiple Select</Subheading>
+</Anchor>
+<Description of={SelectStories.Multiple} />
+<Canvas withToolbar of={SelectStories.Multiple} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={SelectStories.Multiple} />
+</Collapsable>
+
+<Anchor storyId="searchable">
+  <Subheading>Searchable Select</Subheading>
+</Anchor>
+<Description of={SelectStories.Searchable} />
+<Canvas withToolbar of={SelectStories.Searchable} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={SelectStories.Searchable} />
+</Collapsable>
+
+<Anchor storyId="remote">
+  <Subheading>Remote Query</Subheading>
+</Anchor>
+<Description of={SelectStories.Remote} />
+<Canvas withToolbar of={SelectStories.Remote} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={SelectStories.Remote} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { Select } from "@react-fabric/form";
+
+export const Example = () => {
+  return (
+    <Select
+      label="Select label"
+      options={[]}
+      value={value}
+      onChange={handleChange}
+    />
+  );
+};
+```
