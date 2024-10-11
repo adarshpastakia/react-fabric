@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/lexical",
-  "version": "0.0.0",
+  "version": "1.0.0-beta.0",
   "description": "RUF: Lexical editor",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -35,11 +35,11 @@
   "dependencies": {
     "@lexical/headless": "^0.17.1",
     "@lexical/react": "^0.17.1",
-    "@react-fabric/core": "^0.0.0",
-    "@react-fabric/form": "^0.0.0",
-    "@react-fabric/utilities": "^0.0.0",
-    "lexical": "^0.17.1",
-    "classnames": "^2.5.1"
+    "@react-fabric/core": "^1.0.0-beta.0",
+    "@react-fabric/form": "^1.0.0-beta.0",
+    "@react-fabric/utilities": "^1.0.0-beta.0",
+    "classnames": "^2.5.1",
+    "lexical": "^0.17.1"
   },
   "peerDependencies": {
     "i18next": "^23.15.1",
@@ -47,7 +47,6 @@
     "react-dom": ">=18.0.0 <20.0.0",
     "react-i18next": "^15.0.2"
   },
-  "devDependencies": {},
   "engines": {
     "node": ">=18.12.0",
     "npm": ">=8.19.0"
