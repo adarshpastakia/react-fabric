@@ -21,7 +21,14 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { useDebounce } from "@react-fabric/core";
+import {
+  CoreIcons,
+  Dropdown,
+  Icon,
+  Menu,
+  MenuItem,
+  useDebounce,
+} from "@react-fabric/core";
 import classNames from "classnames";
 import { useCallback, useMemo } from "react";
 import { BodyCell } from "./BodyCell";
@@ -36,6 +43,7 @@ export const Table = <T extends KeyValue = KeyValue>({
   columns,
   keyProperty,
   checkableRows,
+  hideableColumns,
   onRowClick,
   onCheckedChanged,
 }: TableProps<T>) => {
@@ -44,7 +52,7 @@ export const Table = <T extends KeyValue = KeyValue>({
     [],
   );
 
-  const { state } = useTableColumns(columns);
+  const { state, onHide } = useTableColumns(columns);
   const {
     scrollerRef,
     items,
@@ -100,6 +108,26 @@ export const Table = <T extends KeyValue = KeyValue>({
         {state.cols?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
         <div className={wrapperEnd}>
           {state.end?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
+
+          {hideableColumns && (
+            <div className="group font-medium border-e w-6 flex flex-nowrap text-start items-center">
+              <Dropdown placement="bottom-end">
+                <Icon icon={CoreIcons.insert} className="p-1" />
+                <Menu className="text-xs" onClick={onHide}>
+                  {state.columns
+                    .filter((col) => col.hideable !== false)
+                    .map((col) => (
+                      <MenuItem
+                        key={String(col.id)}
+                        id={String(col.id)}
+                        label={`${col.label ?? String(col.id)}`}
+                        icon={!col.hidden ? CoreIcons.tick : ""}
+                      />
+                    ))}
+                </Menu>
+              </Dropdown>
+            </div>
+          )}
         </div>
       </div>
       <div
@@ -142,6 +170,7 @@ export const Table = <T extends KeyValue = KeyValue>({
                 {state.end?.map((col, ide) => (
                   <BodyCell key={`${key}:${ide}`} column={col} item={data} />
                 ))}
+                {hideableColumns && <div className="w-6" />}
               </div>
             </div>
           );
@@ -152,7 +181,11 @@ export const Table = <T extends KeyValue = KeyValue>({
             {state.start?.map(emptyCol)}
           </div>
           {state.cols?.map(emptyCol)}
-          <div className={wrapperEnd}>{state.end?.map(emptyCol)}</div>
+          <div className={wrapperEnd}>
+            {state.end?.map(emptyCol)}
+
+            {hideableColumns && <div className="w-6" />}
+          </div>
         </div>
       </div>
       <div className="area-foot bg-dimmed border-t sticky bottom-0 flex flex-nowrap z-2">

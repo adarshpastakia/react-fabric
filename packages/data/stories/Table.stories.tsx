@@ -62,6 +62,7 @@ export const _Table: Story = {
             width: "3rem",
             align: "center",
             locked: "start",
+            hideable: false,
             renderer(_, data) {
               return <Icon icon={`flag ${data.iso2}`} />;
             },
@@ -70,34 +71,51 @@ export const _Table: Story = {
             id: "iso2",
             width: "3rem",
             locked: "start",
+            hideable: false,
           },
           {
             id: "name",
             label: "Name",
             locked: "start",
             width: "32rem",
+            hideable: false,
+            resizable: true,
+          },
+          {
+            id: "continent",
+            label: "Continent",
+            width: "12rem",
+            hidden: true,
           },
           {
             id: "fullname",
             label: "Fullname",
             width: "48rem",
+            hidden: true,
           },
           {
             id: "capital",
             label: "Capital",
             width: "48rem",
+            hidden: true,
           },
           {
             id: "currency",
             label: "Currency",
             width: "8rem",
-            locked: "end",
+            hidden: true,
           },
           {
             id: "phone",
             label: "Phone",
             width: "8rem",
-            locked: "end",
+            hidden: true,
+          },
+          {
+            id: "tld",
+            label: "Domain",
+            width: "8rem",
+            hidden: true,
           },
         ]}
       />

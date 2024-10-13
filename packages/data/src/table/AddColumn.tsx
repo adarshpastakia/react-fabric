@@ -21,54 +21,24 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  type CssProp,
-  type IconProps,
-  type TestProps,
-} from "@react-fabric/core/dist/types/types";
-import { type ReactElement } from "react";
+import { CoreIcons, Dropdown, Icon, Menu, MenuItem } from "@react-fabric/core";
+import { type ColumnType } from "./types";
 
-export interface ColumnType<T = KeyValue>
-  extends CssProp,
-    IconProps,
-    TestProps {
-  id: keyof T;
-  label?: string;
-  actions?: ReactElement;
-  align?: "start" | "center" | "end";
-  locked?: "start" | "end";
-  hidden?: boolean;
-  hideable?: boolean;
-  resizable?: boolean;
-  sortable?: boolean;
-  filterable?: boolean;
-  filterList?: AnyObject[];
-  width?: string | number;
-  minWidth?: string | number;
-  maxWidth?: string | number;
-  dataType?:
-    | "string"
-    | "number"
-    | "boolean"
-    | "datetime"
-    | "date"
-    | "time"
-    | "unknown";
-  format?: string;
-  renderer?: (value: AnyObject, data: T) => void;
-}
-
-export interface TableProps<T = KeyValue> {
-  columns: Array<ColumnType<T>>;
-  data: T[];
-  keyProperty: keyof T;
-  /**
-   * checkable rows
-   */
-  checkableRows?: boolean;
-  onCheckedChanged?: (rows: Array<keyof T>) => void;
-
-  hideableColumns?: boolean;
-
-  onRowClick?: (data: T) => void;
-}
+export const AddColumn = ({ columns }: { columns: ColumnType[] }) => {
+  return (
+    <div className="group font-medium border-e w-6 flex flex-nowrap text-start items-center">
+      <Dropdown>
+        <Icon icon={CoreIcons.insert} className="p-1" />
+        <Menu className="text-sm">
+          {columns.map((col) => (
+            <MenuItem
+              key={String(col.id)}
+              label={`${col.label ?? String(col.id)}`}
+              icon={!col.hidden ? CoreIcons.tick : ""}
+            />
+          ))}
+        </Menu>
+      </Dropdown>
+    </div>
+  );
+};

@@ -34,8 +34,7 @@ interface ColumnState {
 
 type ColumnActions =
   | { type: "columns"; columns: ColumnType[] }
-  | { type: "hide"; id: string }
-  | { type: "unhide"; id: string };
+  | { type: "hide"; id: string };
 
 export const useTableColumns = (columns: ColumnType[]) => {
   const [state, dispatch] = useReducer(
@@ -43,14 +42,28 @@ export const useTableColumns = (columns: ColumnType[]) => {
       if (action.type === "columns") {
         state.columns = action.columns;
       }
-      const grouped = groupBy(
-        state.columns.filter((col) => !(col.hideable && col.hidden)),
+      if (action.type === "hide") {
+        const col = state.columns.find((col) => col.id === action.id);
+        col &&
+          state.columns.splice(state.columns.indexOf(col), 1, {
+            ...col,
+            hidden: col.hidden !== true,
+          });
+      }
+      const {
+        start = [],
+        end = [],
+        cols = [],
+      } = groupBy(
+        state.columns.filter((col) => col.hidden !== true),
         "locked",
         "cols",
       );
       return {
         ...state,
-        ...grouped,
+        start,
+        end,
+        cols,
       };
     },
     {
@@ -65,5 +78,8 @@ export const useTableColumns = (columns: ColumnType[]) => {
     dispatch({ type: "columns", columns });
   }, [columns]);
 
-  return { state };
+  return {
+    state,
+    onHide: (id: string) => dispatch({ type: "hide", id }),
+  };
 };
