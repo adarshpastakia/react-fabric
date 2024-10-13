@@ -32,8 +32,10 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Install packages
-        run: |
-          yarn
+        run: yarn
+
+      - name: Build packages
+        run: yarn dist
 
       - name: Run test
         run: yarn test
