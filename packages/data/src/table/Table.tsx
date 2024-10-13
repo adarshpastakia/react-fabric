@@ -21,21 +21,39 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { useDebounce } from "@react-fabric/core";
+import classNames from "classnames";
 import { useCallback, useMemo } from "react";
 import { BodyCell } from "./BodyCell";
+import { CheckboxCell } from "./CheckboxCell";
 import { HeaderCell } from "./HeaderCell";
 import { type ColumnType, type TableProps } from "./types";
 import { useTableColumns } from "./useTableColumns";
 import { useVirtualTable } from "./useVirtualTable";
-import classNames from "classnames";
 
 export const Table = <T extends KeyValue = KeyValue>({
   data,
   columns,
+  keyProperty,
+  checkableRows,
+  onCheckedChanged,
 }: TableProps<T>) => {
-  const { columnMap } = useTableColumns(columns);
-  const { scrollerRef, items, getData, totalSize, measureElement } =
-    useVirtualTable(data);
+  const fireCheckChanged = useDebounce(
+    (checkedIds: Array<keyof T>) => onCheckedChanged?.(checkedIds),
+    [],
+  );
+
+  const { state } = useTableColumns(columns);
+  const {
+    scrollerRef,
+    items,
+    checkState,
+    toggleChecked,
+    toggleAllChecked,
+    getData,
+    totalSize,
+    measureElement,
+  } = useVirtualTable(data, keyProperty, fireCheckChanged);
 
   const wrapperStart = useMemo(
     () => "bg-inherit sticky start-0 flex flex-nowrap z-1",
@@ -70,13 +88,17 @@ export const Table = <T extends KeyValue = KeyValue>({
     >
       <div className="bg-base font-medium sticky top-0 area-head border-b select-none flex flex-nowrap z-2">
         <div className={wrapperStart}>
-          {columnMap.start?.map((col, idx) => (
-            <HeaderCell key={idx} {...col} />
-          ))}
+          {checkableRows && (
+            <CheckboxCell
+              state={checkState.allChecked}
+              onClick={toggleAllChecked}
+            />
+          )}
+          {state.start?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
         </div>
-        {columnMap.cols?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
+        {state.cols?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
         <div className={wrapperEnd}>
-          {columnMap.end?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
+          {state.end?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
         </div>
       </div>
       <div
@@ -84,58 +106,63 @@ export const Table = <T extends KeyValue = KeyValue>({
         style={{ height: totalSize() }}
       >
         <div style={{ height: items[0]?.start }} />
-        {items.map(({ index, key }) => (
-          <div
-            key={key}
-            className={classNames(
-              "flex flex-nowrap",
-              index % 2 ? "bg-even" : "bg-odd",
-            )}
-            data-index={index}
-            ref={measureElement}
-          >
-            <div className={wrapperStart}>
-              {columnMap.start?.map((col, ids) => (
-                <BodyCell
-                  key={`${key}:${ids}`}
-                  column={col}
-                  item={getData(index)}
-                />
+        {items.map(({ index, key }) => {
+          const data = getData(index);
+          return (
+            <div
+              key={key}
+              className={classNames(
+                "flex flex-nowrap",
+                index % 2 ? "bg-even" : "bg-odd",
+              )}
+              data-index={index}
+              ref={measureElement}
+            >
+              <div className={wrapperStart}>
+                {checkableRows && (
+                  <CheckboxCell
+                    onClick={() => toggleChecked(data[keyProperty])}
+                    state={
+                      checkState.checked.includes(data[keyProperty]) ? 1 : 0
+                    }
+                  />
+                )}
+                {state.start?.map((col, ids) => (
+                  <BodyCell key={`${key}:${ids}`} column={col} item={data} />
+                ))}
+              </div>
+              {state.cols?.map((col, idc) => (
+                <BodyCell key={`${key}:${idc}`} column={col} item={data} />
               ))}
+              <div className={wrapperEnd}>
+                {state.end?.map((col, ide) => (
+                  <BodyCell key={`${key}:${ide}`} column={col} item={data} />
+                ))}
+              </div>
             </div>
-            {columnMap.cols?.map((col, idc) => (
-              <BodyCell
-                key={`${key}:${idc}`}
-                column={col}
-                item={getData(index)}
-              />
-            ))}
-            <div className={wrapperEnd}>
-              {columnMap.end?.map((col, ide) => (
-                <BodyCell
-                  key={`${key}:${ide}`}
-                  column={col}
-                  item={getData(index)}
-                />
-              ))}
-            </div>
-          </div>
-        ))}
+          );
+        })}
         <div className="flex-1 flex flex-nowrap">
-          <div className={wrapperStart}>{columnMap.start?.map(emptyCol)}</div>
-          {columnMap.cols?.map(emptyCol)}
-          <div className={wrapperEnd}>{columnMap.end?.map(emptyCol)}</div>
+          <div className={wrapperStart}>
+            {checkableRows && <div className="w-6" />}
+            {state.start?.map(emptyCol)}
+          </div>
+          {state.cols?.map(emptyCol)}
+          <div className={wrapperEnd}>{state.end?.map(emptyCol)}</div>
         </div>
       </div>
       <div className="area-foot bg-dimmed border-t sticky bottom-0 flex flex-nowrap z-2">
         <div className={wrapperStart}>
-          {columnMap.start?.map((col, idx) => (
-            <HeaderCell key={idx} {...col} />
-          ))}
+          {checkableRows && (
+            <div className="group font-medium border-e flex w-6 flex-nowrap text-start items-center">
+              &nbsp;
+            </div>
+          )}
+          {state.start?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
         </div>
-        {columnMap.cols?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
+        {state.cols?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
         <div className={wrapperEnd}>
-          {columnMap.end?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
+          {state.end?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
         </div>
       </div>
     </div>

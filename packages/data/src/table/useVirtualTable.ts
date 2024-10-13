@@ -22,9 +22,20 @@
  */
 
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { useCallback, useRef } from "react";
+import { useCallback, useReducer, useRef } from "react";
 
-export const useVirtualTable = (data: KeyValue[]) => {
+interface DataState {
+  checked: Key[];
+  allChecked: 0 | 1 | 2;
+}
+
+type DataAction = { type: "check"; key: Key } | { type: "checkall" };
+
+export const useVirtualTable = (
+  data: KeyValue[],
+  keyProperty: Key,
+  onCheckChanged: (checked: Key[]) => void,
+) => {
   // TODO: refactor data into item list, apply grouping if groupColumn provided
   // TODO: when grouping maintain map of group with children, {___GROUP___:true, label, items, open}
 
@@ -34,6 +45,37 @@ export const useVirtualTable = (data: KeyValue[]) => {
     getScrollElement: () => scrollerRef.current,
     estimateSize: () => 24,
   });
+
+  const [state, dispatch] = useReducer(
+    (state: DataState, action: DataAction) => {
+      if (action.type === "check") {
+        if (state.checked.includes(action.key))
+          state.checked.splice(state.checked.indexOf(action.key), 1);
+        else state.checked.push(action.key);
+      }
+      if (action.type === "checkall") {
+        if (state.allChecked !== 0) {
+          state.checked = [];
+        } else {
+          state.checked = data.map((item) => item[keyProperty]);
+        }
+      }
+      onCheckChanged(state.checked);
+      return {
+        ...state,
+        allChecked:
+          state.checked.length === data.length
+            ? 1
+            : state.checked.length
+              ? 2
+              : 0,
+      } as DataState;
+    },
+    {
+      checked: [],
+      allChecked: 0,
+    },
+  );
 
   const virtualItems = virtualizer.getVirtualItems();
 
@@ -47,8 +89,11 @@ export const useVirtualTable = (data: KeyValue[]) => {
   return {
     scrollerRef,
     items: virtualItems,
+    checkState: state,
     getData,
     totalSize: virtualizer.getTotalSize,
     measureElement: virtualizer.measureElement,
+    toggleChecked: (key: Key) => dispatch({ type: "check", key }),
+    toggleAllChecked: () => dispatch({ type: "checkall" }),
   };
 };

@@ -55,6 +55,7 @@ export const _Table: Story = {
       <Table
         {...args}
         data={Countries.list}
+        keyProperty="iso2"
         columns={[
           {
             id: "emoji",

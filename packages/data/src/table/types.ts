@@ -61,5 +61,12 @@ export interface ColumnType<T = KeyValue>
 export interface TableProps<T = KeyValue> {
   columns: Array<ColumnType<T>>;
   data: T[];
-  autoColumns?: boolean;
+  keyProperty: keyof T;
+  /**
+   * checkable rows
+   */
+  checkableRows?: boolean;
+  onCheckedChanged?: (rows: Array<keyof T>) => void;
+
+  onRowClick?: (data: T) => void;
 }

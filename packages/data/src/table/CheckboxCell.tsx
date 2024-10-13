@@ -21,49 +21,29 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { groupBy } from "@react-fabric/utilities";
-import { useEffect, useReducer } from "react";
-import { type ColumnType } from "./types";
+import { CoreIcons, Icon } from "@react-fabric/core";
 
-interface ColumnState {
-  columns: ColumnType[];
-  start: ColumnType[];
-  end: ColumnType[];
-  cols: ColumnType[];
-}
-
-type ColumnActions =
-  | { type: "columns"; columns: ColumnType[] }
-  | { type: "hide"; id: string }
-  | { type: "unhide"; id: string };
-
-export const useTableColumns = (columns: ColumnType[]) => {
-  const [state, dispatch] = useReducer(
-    (state: ColumnState, action: ColumnActions) => {
-      if (action.type === "columns") {
-        state.columns = action.columns;
-      }
-      const grouped = groupBy(
-        state.columns.filter((col) => !(col.hideable && col.hidden)),
-        "locked",
-        "cols",
-      );
-      return {
-        ...state,
-        ...grouped,
-      };
-    },
-    {
-      columns: [],
-      start: [],
-      end: [],
-      cols: [],
-    },
+export const CheckboxCell = ({
+  state,
+  onClick,
+}: {
+  state: 0 | 1 | 2;
+  onClick?: () => void;
+}) => {
+  return (
+    <div className="group font-medium border-e w-6 flex flex-nowrap text-start items-center">
+      <Icon
+        color="tint-700"
+        icon={
+          state === 2
+            ? CoreIcons.checkboxInt
+            : state === 1
+              ? CoreIcons.checkboxOn
+              : CoreIcons.checkboxOff
+        }
+        className="p-1"
+        onClick={onClick}
+      />
+    </div>
   );
-
-  useEffect(() => {
-    dispatch({ type: "columns", columns });
-  }, [columns]);
-
-  return { state };
 };
