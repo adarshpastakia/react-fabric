@@ -24,15 +24,26 @@
 import { CoreIcons, Dropdown, Icon, Menu, MenuItem } from "@react-fabric/core";
 import { type ColumnType } from "./types";
 
-export const AddColumn = ({ columns }: { columns: ColumnType[] }) => {
+export const AddColumn = ({
+  columns,
+  onClick,
+}: {
+  columns: ColumnType[];
+  onClick: (id: string) => void;
+}) => {
   return (
-    <div className="group font-medium border-e w-6 flex flex-nowrap text-start items-center">
-      <Dropdown>
-        <Icon icon={CoreIcons.insert} className="p-1" />
-        <Menu className="text-sm">
+    <div className="group font-medium w-6 flex flex-nowrap text-start items-end">
+      <Dropdown placement="bottom-end">
+        <Icon
+          icon={CoreIcons.insert}
+          className="p-1 rounded-t rounded-b-none hover:outline"
+        />
+        <Menu className="text-sm" onClick={onClick}>
           {columns.map((col) => (
             <MenuItem
               key={String(col.id)}
+              id={String(col.id)}
+              data-dropdown-dismiss="false"
               label={`${col.label ?? String(col.id)}`}
               icon={!col.hidden ? CoreIcons.tick : ""}
             />

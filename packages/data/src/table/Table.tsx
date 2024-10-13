@@ -21,16 +21,10 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  CoreIcons,
-  Dropdown,
-  Icon,
-  Menu,
-  MenuItem,
-  useDebounce,
-} from "@react-fabric/core";
+import { useDebounce } from "@react-fabric/core";
 import classNames from "classnames";
 import { useCallback, useMemo } from "react";
+import { AddColumn } from "./AddColumn";
 import { BodyCell } from "./BodyCell";
 import { CheckboxCell } from "./CheckboxCell";
 import { HeaderCell } from "./HeaderCell";
@@ -110,23 +104,10 @@ export const Table = <T extends KeyValue = KeyValue>({
           {state.end?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
 
           {hideableColumns && (
-            <div className="group font-medium border-e w-6 flex flex-nowrap text-start items-center">
-              <Dropdown placement="bottom-end">
-                <Icon icon={CoreIcons.insert} className="p-1" />
-                <Menu className="text-xs" onClick={onHide}>
-                  {state.columns
-                    .filter((col) => col.hideable !== false)
-                    .map((col) => (
-                      <MenuItem
-                        key={String(col.id)}
-                        id={String(col.id)}
-                        label={`${col.label ?? String(col.id)}`}
-                        icon={!col.hidden ? CoreIcons.tick : ""}
-                      />
-                    ))}
-                </Menu>
-              </Dropdown>
-            </div>
+            <AddColumn
+              onClick={onHide}
+              columns={state.columns.filter((col) => col.hideable !== false)}
+            />
           )}
         </div>
       </div>
@@ -146,7 +127,9 @@ export const Table = <T extends KeyValue = KeyValue>({
                 index % 2 ? "bg-even" : "bg-odd",
                 onRowClick && "hover:bg-primary-50 active:bg-primary-100",
               )}
-              onClick={() => onRowClick?.(data)}
+              onClick={() =>
+                onRowClick ? onRowClick(data) : toggleChecked(data[keyProperty])
+              }
               data-index={index}
               ref={measureElement}
             >
