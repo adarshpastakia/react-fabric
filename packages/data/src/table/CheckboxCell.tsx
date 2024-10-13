@@ -33,7 +33,6 @@ export const CheckboxCell = ({
   return (
     <div className="group font-medium border-e w-6 flex flex-nowrap text-start items-center">
       <Icon
-        color="tint-700"
         icon={
           state === 2
             ? CoreIcons.checkboxInt
@@ -41,8 +40,8 @@ export const CheckboxCell = ({
               ? CoreIcons.checkboxOn
               : CoreIcons.checkboxOff
         }
-        className="p-1"
-        onClick={onClick}
+        className="p-1 text-tint-700 hover:text-primary-600"
+        onClick={(e) => [onClick?.(), e.stopPropagation()]}
       />
     </div>
   );
