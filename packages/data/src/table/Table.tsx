@@ -36,6 +36,7 @@ export const Table = <T extends KeyValue = KeyValue>({
   columns,
   keyProperty,
   checkableRows,
+  onRowClick,
   onCheckedChanged,
 }: TableProps<T>) => {
   const fireCheckChanged = useDebounce(
@@ -111,10 +112,13 @@ export const Table = <T extends KeyValue = KeyValue>({
           return (
             <div
               key={key}
+              role="none"
               className={classNames(
                 "flex flex-nowrap",
                 index % 2 ? "bg-even" : "bg-odd",
+                onRowClick && "hover:bg-primary-50 active:bg-primary-100",
               )}
+              onClick={() => onRowClick?.(data)}
               data-index={index}
               ref={measureElement}
             >
