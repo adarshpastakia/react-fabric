@@ -21,7 +21,13 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { CoreIcons, Dropdown, Icon, Menu, MenuItem } from "@react-fabric/core";
+import {
+  CoreIcons,
+  DropdownTool,
+  Icon,
+  Menu,
+  MenuItem,
+} from "@react-fabric/core";
 import { type ColumnType } from "./types";
 
 export const HeaderCell = ({
@@ -52,16 +58,12 @@ export const HeaderCell = ({
         )}
         <span>{label ?? " "}</span>
       </div>
-      <Dropdown placement="bottom-start">
-        <Icon
-          icon={CoreIcons.caretDown}
-          className="outline bg-base me-0.5 flex-content hidden group-hover:inline-block data-[dropdown-open]:inline-block"
-        />
+      <DropdownTool groupHover placement="bottom-end">
         <Menu className="text-sm">
           <MenuItem label="Sort ascending" icon={CoreIcons.sortAsc} />
           <MenuItem label="Sort descending" icon={CoreIcons.sortDesc} />
         </Menu>
-      </Dropdown>
+      </DropdownTool>
       {resizable && (
         <div className="cursor-col-resize border-e bg-transparent border-tint-200 w-[5px] self-stretch" />
       )}
