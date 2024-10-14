@@ -1,0 +1,67 @@
+/* stylelint-disable custom-property-pattern */
+
+@layer components {
+  .mdx-editor.mdx-editor {
+    @apply ax-section max-h-full;
+
+    --blue1: color-mix(in lab, var(--ax-primary) 10%, var(--ax-bg));
+    --blue2: color-mix(in lab, var(--ax-primary) 30%, var(--ax-bg));
+    --blue3: color-mix(in lab, var(--ax-primary) 50%, var(--ax-bg));
+    --blue4: color-mix(in lab, var(--ax-primary) 70%, var(--ax-bg));
+    --blue5: color-mix(in lab, var(--ax-primary) 90%, var(--ax-bg));
+    --blue6: var(--ax-primary);
+    --blue7: color-mix(in lab, var(--ax-primary) 90%, var(--ax-text));
+    --blue8: color-mix(in lab, var(--ax-primary) 70%, var(--ax-text));
+    --blue9: color-mix(in lab, var(--ax-primary) 55%, var(--ax-text));
+    --blue10: color-mix(in lab, var(--ax-primary) 40%, var(--ax-text));
+    --blue11: color-mix(in lab, var(--ax-primary) 25%, var(--ax-text));
+    --blue12: color-mix(in lab, var(--ax-primary) 10%, var(--ax-text));
+    --admonitionTipBg: var(--ax-bg-success);
+    --admonitionTipBorder: var(--ax-border-success);
+    --admonitionInfoBg: var(--ax-bg-info);
+    --admonitionInfoBorder: var(--ax-border-info);
+    --admonitionCautionBg: var(--ax-bg-warning);
+    --admonitionCautionBorder: var(--ax-border-warning);
+    --admonitionDangerBg: var(--ax-bg-danger);
+    --admonitionDangerBorder: var(--ax-border-danger);
+    --admonitionNoteBg: var(--ax-bg-muted);
+    --admonitionNoteBorder: var(--ax-border-base);
+    --basePageBg: var(--ax-bg);
+
+    & > div[role="toolbar"] {
+      @apply grid-area-head rounded-none px-2 py-1 bg-dimmed;
+
+      & > div:first-child {
+        @apply flex-1 items-center;
+      }
+
+      & button {
+        @apply cursor-pointer;
+      }
+    }
+
+    & > div[role="toolbar"] + div {
+      @apply ax-section;
+
+      & > div {
+        @apply grid-area-content overflow-auto bg-input;
+      }
+    }
+
+    & .cm-editor {
+      @apply bg-input-focus text-base;
+    }
+
+    & div[class*="_nestedEditor_"] {
+      @apply bg-base;
+    }
+
+    div[class*="_sandpackWrapper_"] {
+      margin: 1.5rem 0;
+    }
+  }
+
+  div[data-radix-popper-content-wrapper] {
+    @apply z-50;
+  }
+}
