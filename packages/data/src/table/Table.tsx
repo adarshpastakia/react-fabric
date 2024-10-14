@@ -21,9 +21,10 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { useDebounce } from "@react-fabric/core";
+import { EmptyContent, Loading, useDebounce } from "@react-fabric/core";
 import classNames from "classnames";
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { AddColumn } from "./AddColumn";
 import { BodyCell } from "./BodyCell";
 import { CheckboxCell } from "./CheckboxCell";
@@ -41,10 +42,12 @@ export const Table = <T extends KeyValue = KeyValue>({
   checkableRows,
   hideableColumns,
   sort,
+  loading,
   onSort,
   onRowClick,
   onCheckedChanged,
 }: TableProps<T>) => {
+  const { t } = useTranslation("data");
   const fireCheckChanged = useDebounce(
     (checkedIds: Array<keyof T>) => onCheckedChanged?.(checkedIds),
     [],
@@ -76,7 +79,7 @@ export const Table = <T extends KeyValue = KeyValue>({
       <div
         className="grid area-content overflow-auto relative"
         style={{
-          gridTemplate: `"head" auto "content" 1fr "foot" auto/1fr`,
+          gridTemplate: `"head" auto "loader" auto "content" 1fr "foot" auto/1fr`,
         }}
         ref={scrollerRef}
       >
@@ -108,88 +111,92 @@ export const Table = <T extends KeyValue = KeyValue>({
             )}
           </div>
         </div>
-        <div
-          className="area-content flex flex-col flex-nowrap"
-          style={{ height: totalSize() }}
-        >
-          <div style={{ height: items[0]?.start }} />
-          {items.map(({ index, key }) => {
-            const data = getData(index);
-            return (
-              <div
-                key={key}
-                role="none"
-                className={classNames(
-                  "flex flex-nowrap",
-                  index % 2 ? "bg-even" : "bg-odd",
-                  onRowClick && "hover:bg-primary-50 active:bg-primary-100",
-                )}
-                onClick={() =>
-                  checkableRows && !onRowClick
-                    ? toggleChecked(data[keyProperty])
-                    : onRowClick?.(data)
-                }
-                data-index={index}
-                ref={measureElement}
-              >
-                <div className={wrapperStart}>
-                  {checkableRows && (
-                    <CheckboxCell
-                      onClick={() => toggleChecked(data[keyProperty])}
-                      state={
-                        checkState.checked.includes(data[keyProperty]) ? 1 : 0
-                      }
-                    />
+        {loading && <Loading />}
+        {data.length > 0 && (
+          <div
+            className="area-content flex flex-col flex-nowrap"
+            style={{ height: totalSize() }}
+          >
+            <div style={{ height: items[0]?.start }} />
+            {items.map(({ index, key }) => {
+              const data = getData(index);
+              return (
+                <div
+                  key={key}
+                  role="none"
+                  className={classNames(
+                    "flex flex-nowrap",
+                    index % 2 ? "bg-even" : "bg-odd",
+                    onRowClick && "hover:bg-primary-50 active:bg-primary-100",
                   )}
-                  {state.start?.map((col, ids) => (
-                    <BodyCell key={`${key}:${ids}`} column={col} item={data} />
+                  onClick={() =>
+                    checkableRows && !onRowClick
+                      ? toggleChecked(data[keyProperty])
+                      : onRowClick?.(data)
+                  }
+                  data-index={index}
+                  ref={measureElement}
+                >
+                  <div className={wrapperStart}>
+                    {checkableRows && (
+                      <CheckboxCell
+                        onClick={() => toggleChecked(data[keyProperty])}
+                        state={
+                          checkState.checked.includes(data[keyProperty]) ? 1 : 0
+                        }
+                      />
+                    )}
+                    {state.start?.map((col, ids) => (
+                      <BodyCell
+                        key={`${key}:${ids}`}
+                        column={col}
+                        item={data}
+                      />
+                    ))}
+                  </div>
+                  {state.cols?.map((col, idc) => (
+                    <BodyCell key={`${key}:${idc}`} column={col} item={data} />
                   ))}
+                  <div className={wrapperEnd}>
+                    {state.end?.map((col, ide) => (
+                      <BodyCell
+                        key={`${key}:${ide}`}
+                        column={col}
+                        item={data}
+                      />
+                    ))}
+                    {hideableColumns && <div className="w-6" />}
+                  </div>
                 </div>
-                {state.cols?.map((col, idc) => (
-                  <BodyCell key={`${key}:${idc}`} column={col} item={data} />
+              );
+            })}
+            <div className="flex-1 flex flex-nowrap">
+              <div className={wrapperStart}>
+                {checkableRows && <div className="w-6" />}
+                {state.start?.map((col) => (
+                  <EmptyCell key={String(col.id)} {...col} />
                 ))}
-                <div className={wrapperEnd}>
-                  {state.end?.map((col, ide) => (
-                    <BodyCell key={`${key}:${ide}`} column={col} item={data} />
-                  ))}
-                  {hideableColumns && <div className="w-6" />}
-                </div>
               </div>
-            );
-          })}
-          <div className="flex-1 flex flex-nowrap">
-            <div className={wrapperStart}>
-              {checkableRows && <div className="w-6" />}
-              {state.start?.map((col) => (
+              {state.cols?.map((col) => (
                 <EmptyCell key={String(col.id)} {...col} />
               ))}
-            </div>
-            {state.cols?.map((col) => (
-              <EmptyCell key={String(col.id)} {...col} />
-            ))}
-            <div className={wrapperEnd}>
-              {state.end?.map((col) => (
-                <EmptyCell key={String(col.id)} {...col} />
-              ))}
+              <div className={wrapperEnd}>
+                {state.end?.map((col) => (
+                  <EmptyCell key={String(col.id)} {...col} />
+                ))}
 
-              {hideableColumns && <div className="w-6" />}
+                {hideableColumns && <div className="w-6" />}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="area-foot bg-dimmed border-t sticky bottom-0 flex flex-nowrap z-2">
-          <div className={wrapperStart}>
-            {checkableRows && (
-              <div className="group font-medium border-e flex w-6 flex-nowrap text-start items-center">
-                &nbsp;
-              </div>
-            )}
-            {state.start?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
-          </div>
-          {state.cols?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
-          <div className={wrapperEnd}>
-            {state.end?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
-          </div>
-        </div>
+        )}
+        {!loading && data.length === 0 && (
+          <EmptyContent
+            size="sm"
+            className="bg-dimmed"
+            message={t("datagrid.empty")}
+          />
+        )}
       </div>
     </TableProvider>
   );

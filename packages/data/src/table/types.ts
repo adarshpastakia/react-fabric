@@ -77,6 +77,7 @@ export interface TableProps<T = KeyValue> {
   sort?: { id: string; order: "asc" | "desc" };
   onSort?: (sort: { id: string; order: "asc" | "desc" }) => void;
 
+  loading?: boolean;
   hideableColumns?: boolean;
 
   onRowClick?: (data: T) => void;
