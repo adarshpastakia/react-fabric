@@ -181,7 +181,6 @@ export const Alert = ({
 
             <Title className="font-medium area-[title]">{title}</Title>
             <p className="area-[message] py-4">{message}</p>
-            <div className="area-[message]">{message}</div>
             <div className="flex gap-1 justify-center flex-nowrap pt-2 area-[actions]">
               <div
                 className="contents"
