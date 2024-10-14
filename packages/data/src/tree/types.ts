@@ -27,6 +27,7 @@ import {
   type CssProp,
   type Elements,
   type IconProps,
+  type RefProp,
   type TestProps,
 } from "@react-fabric/core/dist/types/types";
 
@@ -105,8 +106,14 @@ export interface TreeNodeProps extends ChildProp {
   onChecked: (id: string) => void;
 }
 
+export interface TreeRef {
+  select: (id: string) => void;
+  open: (id: string) => void;
+}
+
 export interface TreePanelProps<T extends KeyValue = KeyValue>
-  extends TestProps {
+  extends TestProps,
+    RefProp<TreeRef> {
   items?: Array<TreeNodeType<T>>;
   /**
    * make tree searchable

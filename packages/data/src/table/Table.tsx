@@ -23,7 +23,7 @@
 
 import { EmptyContent, Loading, useDebounce } from "@react-fabric/core";
 import classNames from "classnames";
-import { useMemo } from "react";
+import { useImperativeHandle, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { AddColumn } from "./AddColumn";
 import { BodyCell } from "./BodyCell";
@@ -36,6 +36,7 @@ import { useTableColumns } from "./useTableColumns";
 import { useVirtualTable } from "./useVirtualTable";
 
 export const Table = <T extends KeyValue = KeyValue>({
+  ref,
   data,
   columns,
   keyProperty,
@@ -64,6 +65,7 @@ export const Table = <T extends KeyValue = KeyValue>({
     totalSize,
     measureElement,
   } = useVirtualTable(data, keyProperty, fireCheckChanged);
+  const refBody = useRef<HTMLDivElement>(null);
 
   const wrapperStart = useMemo(
     () => "bg-inherit sticky start-0 flex flex-nowrap z-1",
@@ -71,6 +73,32 @@ export const Table = <T extends KeyValue = KeyValue>({
   );
   const wrapperEnd = useMemo(
     () => "bg-inherit sticky end-0 flex flex-nowrap z-1 border-s -ms-px",
+    [],
+  );
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      hilight: (row: number) => {
+        refBody.current
+          ?.querySelectorAll<HTMLElement>(`.datatable-row[data-hilight="true"]`)
+          .forEach((el) => el && (el.dataset.hilight = undefined));
+        const el = refBody.current?.querySelector<HTMLElement>(
+          `[data-row="${row}"]`,
+        );
+        el?.scrollIntoView({ behavior: "smooth", block: "center" });
+        el && (el.dataset.hilight = "true");
+      },
+      unhilight: () => {
+        refBody.current
+          ?.querySelectorAll<HTMLElement>(`.datatable-row[data-hilight="true"]`)
+          .forEach((el) => el && (el.dataset.hilight = undefined));
+      },
+      scrollTo: (row: number) => {
+        const el = refBody.current?.querySelector(`[data-row="${row}"]`);
+        el?.scrollIntoView({ behavior: "smooth" });
+      },
+    }),
     [],
   );
 
@@ -116,6 +144,7 @@ export const Table = <T extends KeyValue = KeyValue>({
           <div
             className="area-content flex flex-col flex-nowrap"
             style={{ height: totalSize() }}
+            ref={refBody}
           >
             <div style={{ height: items[0]?.start }} />
             {items.map(({ index, key }) => {
@@ -124,8 +153,9 @@ export const Table = <T extends KeyValue = KeyValue>({
                 <div
                   key={key}
                   role="none"
+                  data-row={index}
                   className={classNames(
-                    "flex flex-nowrap",
+                    "flex flex-nowrap datatable-row data-[hilight]:outline-1 -outline-offset-1 outline-primary-500",
                     index % 2 ? "bg-even" : "bg-odd",
                     onRowClick && "hover:bg-primary-50 active:bg-primary-100",
                   )}
