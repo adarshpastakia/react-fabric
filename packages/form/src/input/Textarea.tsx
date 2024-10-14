@@ -32,9 +32,10 @@ import {
 } from "react";
 import { InputWrapper } from "../internal/InputWrapper";
 import { type InputProps } from "../types";
+import { handleEnter } from "../utils";
 
 export interface TextareaProps
-  extends Omit<InputProps, "onEnterPressed">,
+  extends InputProps,
     RefProp<HTMLTextAreaElement> {
   /**
    * textarae rows
@@ -64,6 +65,7 @@ export const Textarea = ({
   maxRows = 12,
   variableRows,
   onChange,
+  onEnterPressed,
   ...rest
 }: TextareaProps) => {
   const [actualValue, setActualValue] = useState("");
@@ -121,6 +123,7 @@ export const Textarea = ({
         {...{ autoFocus }}
         value={actualValue}
         onChange={handleChange}
+        onKeyDown={handleEnter(onEnterPressed)}
       />
     </InputWrapper>
   );
