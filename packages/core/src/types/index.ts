@@ -145,7 +145,10 @@ export interface RefProp<T = HTMLElement> {
 /* *********** */
 
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-export type CallbackReturn<T = unknown> = void | T | Promise<T | void>;
+export type CallbackReturn<T = unknown> =
+  | undefined
+  | T
+  | Promise<T | undefined>;
 
 export type ReactTag = keyof JSX.IntrinsicElements | JSXElementConstructor<any>;
 
@@ -155,7 +158,7 @@ export type PropsOf<AsTag extends ReactTag> = AsTag extends React.ElementType
 
 export type PolymorphicProps<AsTag extends ReactTag> = Omit<
   PropsOf<AsTag>,
-  "children" | "as" | "className"
+  "children" | "as" | "className" | "onClick"
 > & {
   /**
    * The component used for the root node.
