@@ -26,7 +26,7 @@ import classNames from "classnames";
 import { Fragment, useCallback, useMemo } from "react";
 import { useMemoDebugger } from "../hooks/useEffectDebugger";
 import { Tooltip, getTooltipProps } from "../overlays/tooltip/Tooltip";
-import { type ChildProp, type ColorType } from "../types";
+import { type ChildProp, type ColorType, type CssProp } from "../types";
 import { getColor, getColorClass } from "../utils";
 import classes from "./Typography.module.css";
 
@@ -64,7 +64,7 @@ const AbbrText = ({ color, children, tooltip, content }: AbbrTextProps) => {
   );
 };
 
-export interface AbbrProps extends ChildProp<string> {
+export interface AbbrProps extends ChildProp<string>, CssProp {
   /**
    * content to copy using the tooltip copy action
    */
@@ -87,6 +87,7 @@ export interface AbbrProps extends ChildProp<string> {
 export const Abbr = ({
   children,
   abbr,
+  className,
   renderer,
   copyContent = "text",
 }: AbbrProps) => {
@@ -148,5 +149,5 @@ export const Abbr = ({
   );
 
   /** ***************** component *******************/
-  return <span>{inner}</span>;
+  return <span className={className}>{inner}</span>;
 };
