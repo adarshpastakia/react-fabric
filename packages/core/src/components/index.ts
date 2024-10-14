@@ -27,6 +27,7 @@ export {
   AnimationIndicator,
   AnimationSpinner,
   Skeleton,
+  Loading,
 } from "./animations/Animations";
 export { Avatar } from "./avatar/Avatar";
 export { AvatarGroup } from "./avatar/AvatarGroup";
