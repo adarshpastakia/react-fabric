@@ -22,7 +22,7 @@
  */
 
 import classNames from "classnames";
-import { type ChildrenProp } from "../../types";
+import { type ChildrenProp, type CssProp, type RefProp } from "../../types";
 import { ErrorBoundary } from "../boundary/ErrorBoundary";
 import classes from "./Section.module.css";
 
@@ -31,14 +31,20 @@ import classes from "./Section.module.css";
  */
 export const Section = ({
   children,
+  className,
   dir,
-}: ChildrenProp & { dir?: "ltr" | "rtl" }) => {
+  ref,
+}: ChildrenProp &
+  CssProp &
+  RefProp<HTMLDivElement> & { dir?: "ltr" | "rtl" }) => {
   return (
     <div
       data-ref="section"
       dir={dir}
+      ref={ref}
       className={classNames(
         classes.section,
+        className,
         "grid area-content overflow-hidden",
       )}
     >
