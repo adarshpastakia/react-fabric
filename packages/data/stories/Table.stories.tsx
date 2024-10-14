@@ -25,6 +25,7 @@ import { Icon, Section, Viewport } from "@react-fabric/core";
 import { Countries } from "@react-fabric/utilities";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Table } from "../src";
+import { useState } from "react";
 
 const meta: Meta = {
   component: Table,
@@ -51,11 +52,14 @@ type Story = StoryObj<typeof Table>;
 
 export const _Table: Story = {
   render: (args) => {
+    const [sort, setSort] = useState<AnyObject>();
     return (
       <Table
         {...args}
         data={Countries.list}
         keyProperty="iso2"
+        onSort={setSort}
+        sort={sort}
         columns={[
           {
             id: "emoji",
@@ -78,6 +82,7 @@ export const _Table: Story = {
             label: "Name",
             locked: "start",
             width: "32rem",
+            sortable: true,
             hideable: false,
             resizable: true,
           },

@@ -71,6 +71,11 @@ export interface TableProps<T = KeyValue> {
    */
   checkableRows?: boolean;
   onCheckedChanged?: (rows: Array<keyof T>) => void;
+  /**
+   * sorting
+   */
+  sort?: { id: string; order: "asc" | "desc" };
+  onSort?: (sort: { id: string; order: "asc" | "desc" }) => void;
 
   hideableColumns?: boolean;
 

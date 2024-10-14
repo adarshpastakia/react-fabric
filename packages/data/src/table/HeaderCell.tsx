@@ -27,14 +27,16 @@ import {
   Icon,
   Menu,
   MenuItem,
+  Tooltip,
 } from "@react-fabric/core";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { useTableContext } from "./Context";
 import {
   COL_DEFAULT_WIDTH,
   COL_MAX_WIDTH,
   COL_MIN_WIDTH,
   type ColumnType,
+  type TableProps,
 } from "./types";
 
 export const HeaderCell = ({
@@ -46,11 +48,14 @@ export const HeaderCell = ({
   rtlFlip,
   actions,
   locked,
+  sortable,
   resizable,
   width: _width,
   maxWidth,
   minWidth,
-}: ColumnType) => {
+  sort,
+  onSort,
+}: ColumnType & Pick<TableProps, "sort" | "onSort">) => {
   const { startResize, widths } = useTableContext();
 
   const width = useMemo(
@@ -58,9 +63,38 @@ export const HeaderCell = ({
     [widths, _width, id],
   );
 
+  const handleSort = useCallback(() => {
+    sortable &&
+      onSort?.({
+        id: id.toString(),
+        order: sort?.id === id && sort.order === "asc" ? "desc" : "asc",
+      });
+  }, [onSort, name, sort, sortable]);
+
+  const menus = useMemo(() => {
+    const ret = [];
+    if (sortable) {
+      ret.push(
+        <MenuItem
+          key="sort-asc"
+          label="Sort ascending"
+          icon={CoreIcons.sortAsc}
+        />,
+        <MenuItem
+          key="sort-desc"
+          label="Sort descending"
+          icon={CoreIcons.sortDesc}
+        />,
+      );
+    }
+    return ret;
+  }, [sortable]);
+
   return (
     <div
+      role="none"
       data-id={id}
+      onClick={handleSort}
       className="group font-medium border-e flex flex-nowrap text-start items-center table-header-cell"
       style={{
         width: width ?? COL_DEFAULT_WIDTH,
@@ -68,18 +102,26 @@ export const HeaderCell = ({
         maxWidth: maxWidth ?? COL_MAX_WIDTH,
       }}
     >
-      <div className="flex-1 px-2 py-1 text-sm truncate sticky start-0">
-        {icon && (
-          <Icon icon={icon} bg={iconBg} color={iconColor} rtlFlip={rtlFlip} />
-        )}
-        <span>{label ?? " "}</span>
-      </div>
-      <DropdownTool groupHover placement="bottom-end">
-        <Menu className="text-sm">
-          <MenuItem label="Sort ascending" icon={CoreIcons.sortAsc} />
-          <MenuItem label="Sort descending" icon={CoreIcons.sortDesc} />
-        </Menu>
-      </DropdownTool>
+      <Tooltip content={label} disabled={!label}>
+        <div className="flex-initial px-2 py-1 text-sm truncate sticky start-0">
+          {icon && (
+            <Icon icon={icon} bg={iconBg} color={iconColor} rtlFlip={rtlFlip} />
+          )}
+          <span>{label ?? " "}</span>
+        </div>
+      </Tooltip>
+      {sortable && (
+        <div className="text-sm text-tint-300">
+          {sort?.id === id && sort?.order === "desc" && <span>▼</span>}
+          {sort?.id === id && sort?.order === "asc" && <span>▲</span>}
+        </div>
+      )}
+      <div className="flex-1" />
+      {menus.length > 0 && (
+        <DropdownTool groupHover placement="bottom-end">
+          <Menu className="text-sm">{menus}</Menu>
+        </DropdownTool>
+      )}
       {resizable && (
         <div
           role="none"

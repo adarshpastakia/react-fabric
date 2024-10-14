@@ -40,6 +40,8 @@ export const Table = <T extends KeyValue = KeyValue>({
   keyProperty,
   checkableRows,
   hideableColumns,
+  sort,
+  onSort,
   onRowClick,
   onCheckedChanged,
 }: TableProps<T>) => {
@@ -86,11 +88,17 @@ export const Table = <T extends KeyValue = KeyValue>({
                 onClick={toggleAllChecked}
               />
             )}
-            {state.start?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
+            {state.start?.map((col, idx) => (
+              <HeaderCell key={idx} {...col} sort={sort} onSort={onSort} />
+            ))}
           </div>
-          {state.cols?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
+          {state.cols?.map((col, idx) => (
+            <HeaderCell key={idx} {...col} sort={sort} onSort={onSort} />
+          ))}
           <div className={wrapperEnd}>
-            {state.end?.map((col, idx) => <HeaderCell key={idx} {...col} />)}
+            {state.end?.map((col, idx) => (
+              <HeaderCell key={idx} {...col} sort={sort} onSort={onSort} />
+            ))}
 
             {hideableColumns && (
               <AddColumn
@@ -117,9 +125,9 @@ export const Table = <T extends KeyValue = KeyValue>({
                   onRowClick && "hover:bg-primary-50 active:bg-primary-100",
                 )}
                 onClick={() =>
-                  onRowClick
-                    ? onRowClick(data)
-                    : toggleChecked(data[keyProperty])
+                  checkableRows && !onRowClick
+                    ? toggleChecked(data[keyProperty])
+                    : onRowClick?.(data)
                 }
                 data-index={index}
                 ref={measureElement}
