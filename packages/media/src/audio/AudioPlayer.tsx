@@ -22,10 +22,7 @@
  */
 
 import { Header } from "@react-fabric/core";
-import {
-  type ChildrenProp,
-  type RefProp,
-} from "@react-fabric/core/dist/types/types";
+import { type RefProp } from "@react-fabric/core/dist/types/types";
 import { compareValues, debounce } from "@react-fabric/utilities";
 import {
   useCallback,
@@ -42,7 +39,7 @@ import { Loading } from "./Loading";
 import { Tools } from "./Tools";
 import { Wavesurfer, type WavesurferInstance } from "./wavesurfer";
 
-export interface AudioProps extends ChildrenProp, RefProp<AudioPlayerRef> {
+export interface AudioProps extends RefProp<AudioPlayerRef> {
   /**
    * audio source
    */

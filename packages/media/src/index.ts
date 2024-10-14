@@ -21,8 +21,10 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-export { AudioPlayer } from "./audio/AudioPlayer";
+export { AudioPlayer, type AudioPlayerRef } from "./audio/AudioPlayer";
+export { type CanvasRef as ImageViewerRef } from "./canvas/Context";
 export { ImageViewer } from "./image/ImageViewer";
+export { type VideoPlayerRef } from "./video/types";
 export { VideoPlayer } from "./video/VideoPlayer";
 
 export { Thumbnail } from "./thumbnail/Thumbnail";
