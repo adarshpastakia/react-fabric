@@ -26,6 +26,7 @@ import {
   type AriaProps,
   type ChildrenProp,
   type ColorType,
+  type CssProp,
   type PaletteType,
   type TestProps,
 } from "../../types";
@@ -33,7 +34,11 @@ import { CoreIcons } from "../../types/icons";
 import { getBgClass, getBorderClass, getColorClass } from "../../utils";
 import { Icon } from "../icon/Icon";
 
-export interface CalloutProps extends AriaProps, ChildrenProp, TestProps {
+export interface CalloutProps
+  extends AriaProps,
+    ChildrenProp,
+    CssProp,
+    TestProps {
   /**
    * callout color
    */
@@ -69,11 +74,13 @@ export const Callout = ({
   icon,
   border,
   onClose,
+  className,
   ...aria
 }: CalloutProps) => {
   return (
     <fieldset
       className={classNames(
+        className,
         "block rounded-capped border max-w-full relative overflow-hidden mb-4",
         getBgClass(color + "-50"),
         getColorClass(color + "-700"),
