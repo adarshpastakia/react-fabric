@@ -28,6 +28,10 @@ import {
 } from "@react-fabric/core/dist/types/types";
 import { type ReactElement } from "react";
 
+export const COL_MIN_WIDTH = "3rem";
+export const COL_MAX_WIDTH = "64rem";
+export const COL_DEFAULT_WIDTH = "12rem";
+
 export interface ColumnType<T = KeyValue>
   extends CssProp,
     IconProps,

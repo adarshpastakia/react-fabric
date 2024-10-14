@@ -21,7 +21,6 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import classNames from "classnames";
 import { useMemo } from "react";
 import { useTableContext } from "./Context";
 import {
@@ -31,38 +30,28 @@ import {
   type ColumnType,
 } from "./types";
 
-export const BodyCell = ({
-  column,
-  item,
-}: {
-  column: ColumnType;
-  item: KeyValue;
-}) => {
+export const EmptyCell = ({
+  id,
+  width: _width,
+  maxWidth,
+  minWidth,
+}: ColumnType) => {
   const { widths } = useTableContext();
 
   const width = useMemo(
-    () => widths.get(column.id.toString()) ?? column.width,
-    [widths, column],
+    () => widths.get(id.toString()) ?? _width,
+    [widths, id, _width],
   );
 
   return (
     <div
-      className="overflow-hidden bg-inherit start-0"
+      key={`blank:${id.toString()}`}
+      className="overflow-hidden border-e"
       style={{
         width: width ?? COL_DEFAULT_WIDTH,
-        minWidth: column.minWidth ?? COL_MIN_WIDTH,
-        maxWidth: column.maxWidth ?? COL_MAX_WIDTH,
+        minWidth: minWidth ?? COL_MIN_WIDTH,
+        maxWidth: maxWidth ?? COL_MAX_WIDTH,
       }}
-    >
-      <div
-        className={classNames(
-          "px-2 py-1 border-e truncate",
-          column.align === "center" && "text-center",
-          column.align === "end" && "text-end",
-        )}
-      >
-        {column.renderer?.(item[column.id], item) ?? item[column.id]}
-      </div>
-    </div>
+    />
   );
 };

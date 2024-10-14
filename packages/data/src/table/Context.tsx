@@ -21,48 +21,50 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import classNames from "classnames";
-import { useMemo } from "react";
-import { useTableContext } from "./Context";
+import { type ChildrenProp } from "@react-fabric/core/dist/types/types";
 import {
-  COL_DEFAULT_WIDTH,
-  COL_MAX_WIDTH,
-  COL_MIN_WIDTH,
-  type ColumnType,
-} from "./types";
+  createContext,
+  useCallback,
+  useContext,
+  useRef,
+  useState,
+} from "react";
+import { useResizer } from "./useResizer";
 
-export const BodyCell = ({
-  column,
-  item,
-}: {
-  column: ColumnType;
-  item: KeyValue;
-}) => {
-  const { widths } = useTableContext();
+interface Context {
+  widths: Map<string, number>;
+  startResize: (col: HTMLElement) => void;
+}
 
-  const width = useMemo(
-    () => widths.get(column.id.toString()) ?? column.width,
-    [widths, column],
+const TableContext = createContext<Context>({} as Context);
+
+export const TableProvider = ({ children }: ChildrenProp) => {
+  const ghostRef = useRef<HTMLDivElement>(null);
+  const [widths, setWidths] = useState<Map<string, number>>(new Map());
+  const startResize = useCallback(
+    (col: HTMLElement) => {
+      if (col) {
+        ghostRef.current != null &&
+          useResizer(col, ghostRef.current, (width) => {
+            setWidths(new Map(widths.set(col.dataset.id ?? "", width)));
+          });
+      }
+    },
+    [widths],
   );
 
   return (
-    <div
-      className="overflow-hidden bg-inherit start-0"
-      style={{
-        width: width ?? COL_DEFAULT_WIDTH,
-        minWidth: column.minWidth ?? COL_MIN_WIDTH,
-        maxWidth: column.maxWidth ?? COL_MAX_WIDTH,
-      }}
-    >
+    <TableContext.Provider value={{ startResize, widths }}>
+      {children}
+
       <div
-        className={classNames(
-          "px-2 py-1 border-e truncate",
-          column.align === "center" && "text-center",
-          column.align === "end" && "text-end",
-        )}
+        className="absolute inset-0 hidden z-20 cursor-col-resize"
+        ref={ghostRef}
       >
-        {column.renderer?.(item[column.id], item) ?? item[column.id]}
+        <div className="absolute inset-y-0 bg-muted opacity-50 border-primary border-e-2" />
       </div>
-    </div>
+    </TableContext.Provider>
   );
 };
+
+export const useTableContext = () => useContext(TableContext);
