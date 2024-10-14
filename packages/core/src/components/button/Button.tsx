@@ -136,6 +136,8 @@ export interface BaseProps
    */
   hotKey?: string;
 
+  stopPropagation?: boolean;
+
   onMouseOut?: MouseEventHandler;
   onMouseOver?: MouseEventHandler;
   onMouseMove?: MouseEventHandler;
@@ -175,6 +177,7 @@ export const Button = <Tag extends React.ElementType = "button">({
   spinOnHover,
   onClick,
   actionMessage,
+  stopPropagation,
   type = "button",
   hotKey,
   showActionDone,
@@ -191,7 +194,7 @@ export const Button = <Tag extends React.ElementType = "button">({
   const clickHandler = useCallback(
     (e: React.MouseEvent) => {
       setBusy(true);
-      // e.stopPropagation();
+      stopPropagation && e.stopPropagation();
       const ret = onClick?.(e);
       void Promise.resolve(ret).then((b) => {
         setBusy(false);
@@ -200,7 +203,7 @@ export const Button = <Tag extends React.ElementType = "button">({
         }
       });
     },
-    [onClick, disabled, actionMessage, showActionDoneEvent],
+    [onClick, disabled, actionMessage, showActionDoneEvent, stopPropagation],
   );
 
   /** ***************** reset done state on timeout *******************/
