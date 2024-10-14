@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { isNumber, isObject, mergeRefs } from "@react-fabric/utilities";
+import { isNil, isNumber, isObject, mergeRefs } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { cloneElement, useMemo } from "react";
 import {
@@ -101,10 +101,12 @@ export const Badge = ({
   ...rest
 }: BadgeProps) => {
   const label = useMemo(() => {
-    if (isNumber(value) && max && value > max) {
-      return `${max}+`;
+    if (!isNil(value)) {
+      if (isNumber(value) && max && value > max) {
+        return `${max}+`;
+      }
+      return `${value}`;
     }
-    return `${value}`;
   }, [value, max]);
 
   const innerRef = useMemo(
@@ -127,22 +129,24 @@ export const Badge = ({
           ...rest,
           ref: innerRef,
         })}
-      <div
-        data-ref="badge"
-        data-ping={ping}
-        data-placement={placement}
-        className={classNames(
-          classes.badge,
-          className,
-          "inline-block p-px min-w-2 min-h-2 text-center select-none rounded-full leading-none z-5 pointer-events-none",
-          forButton && !placement ? "relative" : "absolute",
-        )}
-      >
-        {label && <span className="p-1">{label}</span>}
-        {icon && (
-          <Icon icon={icon} bg={iconBg} color={iconColor} rtlFlip={rtlFlip} />
-        )}
-      </div>
+      {(!!ping || label) && (
+        <div
+          data-ref="badge"
+          data-ping={ping}
+          data-placement={placement}
+          className={classNames(
+            classes.badge,
+            className,
+            "inline-block p-px min-w-2 min-h-2 text-center select-none rounded-full leading-none z-5 pointer-events-none",
+            forButton && !placement ? "relative" : "absolute",
+          )}
+        >
+          {label && <span className="p-1">{label}</span>}
+          {icon && (
+            <Icon icon={icon} bg={iconBg} color={iconColor} rtlFlip={rtlFlip} />
+          )}
+        </div>
+      )}
     </div>
   );
 };
