@@ -22,6 +22,7 @@
  */
 
 import classNames from "classnames";
+import { type MouseEventHandler } from "react";
 import { useMemoDebugger } from "../hooks/useEffectDebugger";
 import {
   type AriaProps,
@@ -52,6 +53,8 @@ export interface LinkProps extends ChildrenProp, CssProp, RefProp, AriaProps {
    * font family
    */
   family?: "sans" | "serif" | "mono";
+
+  onClick?: MouseEventHandler;
 }
 
 /**
