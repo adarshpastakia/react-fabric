@@ -31,7 +31,7 @@ import {
 } from "@react-fabric/core";
 import { Search } from "@react-fabric/form";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { useMemo, useRef } from "react";
+import { useImperativeHandle, useMemo, useRef } from "react";
 import { TreeNode } from "./TreeNode";
 import { iconCollapseAll, iconExpandAll, type TreePanelProps } from "./types";
 import { useTree } from "./useTree";
@@ -39,6 +39,7 @@ import { useTree } from "./useTree";
 // TODO: implement keyboard handler for navigating tree
 
 export const TreePanel = <T extends KeyValue>({
+  ref,
   items,
   selected,
   checked,
@@ -64,6 +65,7 @@ export const TreePanel = <T extends KeyValue>({
     expandAll,
     collapseAll,
     select,
+    expand,
     onFilter,
   } = useTree({
     items,
@@ -92,6 +94,15 @@ export const TreePanel = <T extends KeyValue>({
       return [CoreIcons.folderClosed, CoreIcons.folderOpen];
     return [CoreIcons.expand, CoreIcons.collapse];
   }, [expander]);
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      open: (id: string) => expand(id),
+      select: (id: string) => expand(id),
+    }),
+    [],
+  );
 
   return (
     <Section>

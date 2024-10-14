@@ -27,7 +27,9 @@ export { Histogram } from "./histogram/Histogram";
 export { JsonViewer } from "./json/JsonViewer";
 export { Pagination } from "./pagination/Pagination";
 export { Table } from "./table/Table";
+export { type TableRef } from "./table/types";
 export { TreePanel } from "./tree/TreePanel";
+export { type TreeNodeType as TreeNode } from "./tree/types";
 export { VirtualGallery, type VirtualGalleryRef } from "./virtual/Gallery";
 export { VirtualList, type VirtualListRef } from "./virtual/List";
 

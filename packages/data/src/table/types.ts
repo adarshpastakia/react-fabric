@@ -24,6 +24,7 @@
 import {
   type CssProp,
   type IconProps,
+  type RefProp,
   type TestProps,
 } from "@react-fabric/core/dist/types/types";
 import { type ReactElement } from "react";
@@ -62,7 +63,13 @@ export interface ColumnType<T = KeyValue>
   renderer?: (value: AnyObject, data: T) => void;
 }
 
-export interface TableProps<T = KeyValue> {
+export interface TableRef {
+  hilight: (row: number) => void;
+  unhilight: () => void;
+  scrollTo: (row: number) => void;
+}
+
+export interface TableProps<T = KeyValue> extends RefProp<TableRef> {
   columns: Array<ColumnType<T>>;
   data: T[];
   keyProperty: keyof T;

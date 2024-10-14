@@ -203,6 +203,10 @@ export const useTree = <T extends KeyValue>({
     dispatch({ type: "select", id });
   }, []);
 
+  const expand = useCallback((id: string) => {
+    dispatch({ type: "expand", id });
+  }, []);
+
   const expandAll = useCallback(() => {
     dispatch({ type: "expandAll" });
   }, []);
@@ -222,6 +226,7 @@ export const useTree = <T extends KeyValue>({
     collapseAll,
     toggleCheck,
     select,
+    expand,
     onFilter,
   };
 };
