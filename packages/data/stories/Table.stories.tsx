@@ -86,12 +86,14 @@ export const _Table: Story = {
             label: "Continent",
             width: "12rem",
             hidden: true,
+            resizable: true,
           },
           {
             id: "fullname",
             label: "Fullname",
             width: "48rem",
             hidden: true,
+            resizable: true,
           },
           {
             id: "capital",

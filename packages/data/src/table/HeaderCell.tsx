@@ -28,9 +28,17 @@ import {
   Menu,
   MenuItem,
 } from "@react-fabric/core";
-import { type ColumnType } from "./types";
+import { useMemo } from "react";
+import { useTableContext } from "./Context";
+import {
+  COL_DEFAULT_WIDTH,
+  COL_MAX_WIDTH,
+  COL_MIN_WIDTH,
+  type ColumnType,
+} from "./types";
 
 export const HeaderCell = ({
+  id,
   label,
   icon,
   iconBg,
@@ -39,17 +47,25 @@ export const HeaderCell = ({
   actions,
   locked,
   resizable,
-  width,
+  width: _width,
   maxWidth,
   minWidth,
 }: ColumnType) => {
+  const { startResize, widths } = useTableContext();
+
+  const width = useMemo(
+    () => widths.get(id.toString()) ?? _width,
+    [widths, _width, id],
+  );
+
   return (
     <div
-      className="group font-medium border-e flex flex-nowrap text-start items-center"
+      data-id={id}
+      className="group font-medium border-e flex flex-nowrap text-start items-center table-header-cell"
       style={{
-        width: width ?? "12rem",
-        minWidth: minWidth ?? "2rem",
-        maxWidth: maxWidth ?? "32rem",
+        width: width ?? COL_DEFAULT_WIDTH,
+        minWidth: minWidth ?? COL_MIN_WIDTH,
+        maxWidth: maxWidth ?? COL_MAX_WIDTH,
       }}
     >
       <div className="flex-1 px-2 py-1 text-sm truncate sticky start-0">
@@ -65,7 +81,14 @@ export const HeaderCell = ({
         </Menu>
       </DropdownTool>
       {resizable && (
-        <div className="cursor-col-resize border-e bg-transparent border-tint-200 w-[5px] self-stretch" />
+        <div
+          role="none"
+          className="cursor-col-resize border-e bg-transparent border-tint-200 w-[5px] self-stretch"
+          onMouseDown={(e) =>
+            e.currentTarget.parentElement &&
+            startResize(e.currentTarget.parentElement)
+          }
+        />
       )}
     </div>
   );
