@@ -79,6 +79,10 @@ export interface CollapsableProps
    */
   open?: boolean;
   /**
+   * disable collapsable
+   */
+  disabled?: boolean;
+  /**
    * open handler
    */
   onOpen?: () => void;
@@ -90,6 +94,7 @@ export interface CollapsableProps
 
 export const Collapsable = ({
   ref,
+  disabled,
   className,
   bodyClassName,
   headerClassName,
@@ -135,7 +140,7 @@ export const Collapsable = ({
           headerClassName,
           iconAlign === "end" ? "flex-row-reverse" : "flex-row",
         )}
-        onClick={() => setOpenState(!openState)}
+        onClick={() => !disabled && setOpenState(!openState)}
       >
         <Icon size="1.125em" icon={openState ? iconOpen : iconClosed} rtlFlip />
         <div className="flex-1 px-2">{head}</div>
