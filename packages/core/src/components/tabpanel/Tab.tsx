@@ -83,6 +83,10 @@ export interface TabProps
    * close handler
    */
   onClose?: () => CallbackReturn;
+  /**
+   * click handler
+   */
+  onClick?: (id: string) => CallbackReturn;
 }
 
 export const Tab = <Tag extends React.ElementType = "button">({

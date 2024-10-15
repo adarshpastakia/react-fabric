@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { type ElementType } from "react";
+import { type ElementType, type MouseEvent } from "react";
 import {
   type AriaProps,
   type BadgeType,
@@ -77,7 +77,7 @@ export interface MenuItemProps
   /**
    * click handler
    */
-  onClick?: () => CallbackReturn;
+  onClick?: (e: MouseEvent) => CallbackReturn;
 }
 
 export interface MenuRootProps extends CssProp {
