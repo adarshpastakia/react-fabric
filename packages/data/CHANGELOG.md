@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.2](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2024-10-15)
+
+### Bug Fixes
+
+- **@data:** export ref types ([f75f882](https://github.com/adarshpastakia/react-ui-framework/commit/f75f88232ac59fff152a61623fce742aad7f2a20))
+
 # 1.0.0-beta.1 (2024-10-14)
 
 ### Bug Fixes
