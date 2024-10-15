@@ -21,18 +21,18 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-export const isUndefined = (value: unknown): value is undefined => {
+export const isUndefined = (value: AnyObject): value is undefined => {
   return value === undefined;
 };
 
-export const isNull = (value: unknown): value is null => {
+export const isNull = (value: AnyObject): value is null => {
   return value === null;
 };
 
-export const isNil = (val: unknown): val is undefined => {
+export const isNil = (val: AnyObject): val is undefined => {
   return val === undefined || val === null;
 };
-export const isEmpty = (val: unknown): val is undefined => {
+export const isEmpty = (val: AnyObject): val is undefined => {
   if (val instanceof Date) return false;
   if (isNil(val) || val === "") {
     return true;
@@ -47,7 +47,7 @@ export const isEmpty = (val: unknown): val is undefined => {
   return !!val && typeof val === "object" && Object.entries(val).length === 0;
 };
 
-export const isObject = (val: unknown): val is KeyValue => {
+export const isObject = (val: AnyObject): val is KeyValue => {
   return (
     !isNil(val) &&
     !(val instanceof Date) &&
@@ -55,22 +55,22 @@ export const isObject = (val: unknown): val is KeyValue => {
     !Array.isArray(val)
   );
 };
-export const isArray = <T = unknown>(val: unknown): val is T[] => {
+export const isArray = <T = AnyObject>(val: AnyObject): val is T[] => {
   return Array.isArray(val);
 };
 
-export const isString = (value: unknown): value is string => {
+export const isString = (value: AnyObject): value is string => {
   return typeof value === "string";
 };
 
-export const isNumber = (value: unknown): value is number => {
+export const isNumber = (value: AnyObject): value is number => {
   return typeof value === "number";
 };
 
-export const isBoolean = (value: unknown): value is boolean => {
+export const isBoolean = (value: AnyObject): value is boolean => {
   return typeof value === "boolean";
 };
-export const isTrue = (value: unknown = ""): value is true => {
+export const isTrue = (value: AnyObject = ""): value is true => {
   return (
     value === true ||
     value === 1 ||
@@ -78,7 +78,7 @@ export const isTrue = (value: unknown = ""): value is true => {
     value?.toString().toLowerCase() === "true"
   );
 };
-export const isFalse = (value: unknown = ""): value is false => {
+export const isFalse = (value: AnyObject = ""): value is false => {
   return (
     value === false ||
     value === 0 ||
@@ -94,7 +94,7 @@ export const isColor = (color: string) =>
   color.startsWith?.("lab") ||
   color === "transparent";
 
-export const isSvgPath = (value: unknown): value is string => {
+export const isSvgPath = (value: AnyObject): value is string => {
   return (
     typeof value === "string" && value.match(/^[Mm][\d.].*[\dzZ]$/) !== null
   );
