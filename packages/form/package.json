@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/form",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "RUF: Form package",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -39,7 +39,7 @@
     "@dnd-kit/utilities": "^3.2.2",
     "@floating-ui/react": "0.26.24",
     "@hookform/resolvers": "^3.9.0",
-    "@react-fabric/core": "^1.0.0-beta.2",
+    "@react-fabric/core": "^1.0.0-beta.3",
     "@react-fabric/utilities": "^1.0.0-beta.1",
     "classnames": "^2.5.1",
     "color": "^4.2.3",
