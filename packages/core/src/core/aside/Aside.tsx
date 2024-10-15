@@ -23,12 +23,12 @@
 
 import classNames from "classnames";
 import {
-  type ReactNode,
   useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
+  type ReactNode,
 } from "react";
 import { Loading } from "../../components/animations/Animations";
 import { Icon } from "../../components/icon/Icon";
@@ -38,6 +38,7 @@ import { useResize } from "../../hooks/useResize";
 import {
   type ChildrenProp,
   type CollapseProps,
+  type CssProp,
   type Elements,
   type IconProps,
   type TestProps,
@@ -50,6 +51,7 @@ export interface AsideProps
   extends IconProps,
     ChildrenProp,
     CollapseProps,
+    CssProp,
     TestProps {
   /**
    * page title
@@ -67,6 +69,10 @@ export interface AsideProps
    * header class
    */
   headerClassName?: string;
+  /**
+   * header class
+   */
+  bodyClassName?: string;
 
   /**
    * show loading indicator
@@ -109,6 +115,8 @@ export const Aside = ({
   iconBg,
   iconColor,
   rtlFlip,
+  className,
+  bodyClassName,
   headerClassName,
   resizeable,
   flyout,
@@ -189,7 +197,7 @@ export const Aside = ({
 
   return (
     <aside
-      className={classNames(classes.aside, "overflow-hidden grid")}
+      className={classNames(classes.aside, className, "overflow-hidden grid")}
       data-align={align}
       data-flyout={peek}
       data-collapsed={isCollapsed}
@@ -250,7 +258,11 @@ export const Aside = ({
       <section
         ref={elementRef}
         data-ref="asideBody"
-        className={classNames(classes.asideBody, "overflow-hidden grid")}
+        className={classNames(
+          classes.asideBody,
+          bodyClassName,
+          "overflow-hidden grid",
+        )}
         style={isCollapsed ? widthStyles : undefined}
       >
         <ErrorBoundary>{children}</ErrorBoundary>
