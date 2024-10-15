@@ -31,7 +31,7 @@ import {
   useRole,
 } from "@floating-ui/react";
 import classNames from "classnames";
-import { useCallback, useLayoutEffect, useMemo } from "react";
+import { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AnimationIndicator } from "../../components/animations/Animations";
 import { Button } from "../../components/button/Button";
@@ -71,6 +71,14 @@ export interface AlertProps extends Omit<IconProps, "iconBg" | "iconColor"> {
    * cancel label
    */
   cancelLabel?: string;
+  /**
+   * placeholder for prompt
+   */
+  placeholder?: string;
+  /**
+   * default value for prompt
+   */
+  defaultValue?: string;
 }
 
 export const Alert = ({
@@ -85,8 +93,11 @@ export const Alert = ({
   type,
   okLabel,
   cancelLabel,
+  placeholder,
+  defaultValue,
 }: AlertProps) => {
   const { t } = useTranslation("core");
+  const [value, setValue] = useState(defaultValue);
   const { refs, context } = useFloating({
     open: true,
     onOpenChange: () => {
@@ -181,6 +192,19 @@ export const Alert = ({
 
             <Title className="font-medium area-[title]">{title}</Title>
             <p className="area-[message] py-4">{message}</p>
+            {type === "prompt" && (
+              <input
+                value={value}
+                placeholder={placeholder}
+                className={classNames(
+                  "border rounded focus:border-primary-500",
+                )}
+                ref={(e) => e != null && setTimeout(() => e.focus(), 100)}
+                onBlur={(e) => e.target.focus()}
+                onChange={(e) => setValue(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleClose(value)}
+              />
+            )}
             <div className="flex gap-1 justify-center flex-nowrap pt-2 area-[actions]">
               <div
                 className="contents"
