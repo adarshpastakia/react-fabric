@@ -162,7 +162,7 @@ const MenuComponent = ({
     (e: React.MouseEvent) => {
       const el = e.target as HTMLElement;
       if (el.dataset.id) {
-        onClick?.(el.dataset.id);
+        onClick?.(el.dataset.id as AnyObject);
       }
     },
     [onClick],
