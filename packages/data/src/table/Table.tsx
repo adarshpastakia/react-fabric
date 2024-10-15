@@ -160,7 +160,7 @@ export const Table = <T extends KeyValue = KeyValue>({
                     onRowClick && "hover:bg-primary-50 active:bg-primary-100",
                   )}
                   onClick={() =>
-                    checkableRows && !onRowClick
+                    checkableRows && keyProperty && !onRowClick
                       ? toggleChecked(data[keyProperty])
                       : onRowClick?.(data)
                   }
@@ -168,7 +168,7 @@ export const Table = <T extends KeyValue = KeyValue>({
                   ref={measureElement}
                 >
                   <div className={wrapperStart}>
-                    {checkableRows && (
+                    {checkableRows && keyProperty && (
                       <CheckboxCell
                         onClick={() => toggleChecked(data[keyProperty])}
                         state={

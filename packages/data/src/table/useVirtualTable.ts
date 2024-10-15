@@ -33,8 +33,8 @@ type DataAction = { type: "check"; key: Key } | { type: "checkall" };
 
 export const useVirtualTable = (
   data: KeyValue[],
-  keyProperty: Key,
-  onCheckChanged: (checked: Key[]) => void,
+  keyProperty?: Key,
+  onCheckChanged?: (checked: Key[]) => void,
 ) => {
   // TODO: refactor data into item list, apply grouping if groupColumn provided
   // TODO: when grouping maintain map of group with children, {___GROUP___:true, label, items, open}
@@ -56,11 +56,11 @@ export const useVirtualTable = (
       if (action.type === "checkall") {
         if (state.allChecked !== 0) {
           state.checked = [];
-        } else {
+        } else if (keyProperty) {
           state.checked = data.map((item) => item[keyProperty]);
         }
       }
-      onCheckChanged(state.checked);
+      onCheckChanged?.(state.checked);
       return {
         ...state,
         allChecked:

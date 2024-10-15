@@ -37,7 +37,7 @@ export interface ColumnType<T = KeyValue>
   extends CssProp,
     IconProps,
     TestProps {
-  id: keyof T;
+  id: keyof T | string;
   label?: string;
   actions?: ReactElement;
   align?: "start" | "center" | "end";
@@ -72,7 +72,7 @@ export interface TableRef {
 export interface TableProps<T = KeyValue> extends RefProp<TableRef> {
   columns: Array<ColumnType<T>>;
   data: T[];
-  keyProperty: keyof T;
+  keyProperty?: keyof T;
   /**
    * checkable rows
    */
