@@ -25,10 +25,11 @@ import { Section, useIsDark } from "@react-fabric/core";
 import { debounce } from "@react-fabric/utilities";
 import { getAssetUrlsByMetaUrl } from "@tldraw/assets/urls";
 import {
+  getSnapshot,
+  loadSnapshot,
   Tldraw,
   type Editor,
-  type StoreSnapshot,
-  type TLRecord,
+  type TLEditorSnapshot,
 } from "@tldraw/tldraw";
 import "@tldraw/tldraw/tldraw.css";
 import {
@@ -85,8 +86,8 @@ export async function getSvgAsDataUrl(svg: SVGElement) {
 }
 
 export interface DrawProps {
-  snapshot?: StoreSnapshot<TLRecord>;
-  onUpdate?: (snapshot: StoreSnapshot<TLRecord>) => void;
+  snapshot?: TLEditorSnapshot;
+  onUpdate?: (snapshot: TLEditorSnapshot) => void;
   renderer?: (props: KeyValue) => AnyObject;
   canvasRef?: RefObject<{ exportPages: () => Promise<KeyValue[]> }>;
 }
@@ -117,7 +118,7 @@ export const DrawCanvas: FC<DrawProps> = ({
   useEffect(() => {
     editorRef?.addListener(
       "update",
-      debounce(() => onUpdate?.(editorRef.store.getSnapshot()), 500),
+      debounce(() => onUpdate?.(getSnapshot(editorRef.store)), 500),
     );
 
     return () => {
@@ -127,7 +128,7 @@ export const DrawCanvas: FC<DrawProps> = ({
 
   useLayoutEffect(() => {
     setTimeout(() => {
-      snapshot && editorRef?.store.loadSnapshot(snapshot);
+      editorRef?.store && snapshot && loadSnapshot(editorRef.store, snapshot);
     }, 500);
   }, [editorRef, snapshot]);
 
