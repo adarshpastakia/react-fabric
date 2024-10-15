@@ -23,6 +23,7 @@
 
 import "./i18n";
 
+export { CheckList } from "./checklist/CheckList";
 export { Histogram } from "./histogram/Histogram";
 export { JsonViewer } from "./json/JsonViewer";
 export { Pagination } from "./pagination/Pagination";

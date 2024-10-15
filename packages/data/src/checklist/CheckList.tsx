@@ -1,0 +1,218 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+import { Badge, CoreIcons, EmptyContent, Icon } from "@react-fabric/core";
+import { type BadgeType } from "@react-fabric/core/dist/types/types";
+import { isString } from "@react-fabric/utilities";
+import {
+  Fragment,
+  isValidElement,
+  memo,
+  useEffect,
+  useMemo,
+  useState,
+  type FC,
+} from "react";
+import { useTranslation } from "react-i18next";
+import {
+  useSelectableList,
+  type SelectableProps,
+} from "../hooks/useSelectableList";
+
+export interface CheckListItem extends KeyValue {
+  id: string;
+  label: string;
+  icon?: string;
+  badge?: BadgeType;
+  isDisabled?: boolean;
+}
+
+export interface CheckListProps extends SelectableProps {
+  /**
+   * list items
+   */
+  items: CheckListItem[];
+  /**
+   * allow negative selections
+   */
+  allowNegative?: boolean;
+  /**
+   * max list items
+   */
+  maxCount?: number;
+  /**
+   * message for empty list
+   */
+  emptyMessage?: string;
+
+  sortItems?: boolean;
+}
+
+const CheckItem: FC<
+  Omit<CheckListItem, "selected"> & {
+    selected?: number;
+    allowNegative?: boolean;
+  }
+> = memo(
+  ({
+    id,
+    allowNegative,
+    selected,
+    icon,
+    label,
+    isDisabled,
+    onClick,
+    badge,
+  }: Omit<CheckListItem, "selected"> & {
+    selected?: number;
+    allowNegative?: boolean;
+  }) => {
+    return (
+      <div
+        role="none"
+        className="ax-checkList__item"
+        data-disabled={isDisabled}
+        onClick={() => onClick(id, false)}
+        onContextMenu={(e) => [
+          allowNegative && onClick(id, true),
+          e.preventDefault(),
+        ]}
+      >
+        {!allowNegative && (
+          <Icon
+            data-type="checkbox"
+            className="ax-checkList__checkbox"
+            data-selected={selected === 1}
+            icon={selected ? CoreIcons.checkboxInt : CoreIcons.checkboxOff}
+          />
+        )}
+        {allowNegative && (
+          <Fragment>
+            <Icon
+              data-type="multiple"
+              className="ax-checkList__checkbox"
+              icon={
+                selected === 1
+                  ? CoreIcons.expand
+                  : selected === -1
+                    ? CoreIcons.collapse
+                    : CoreIcons.checkboxOff
+              }
+              data-selected={selected}
+            />
+            <div className="ax-checkList__checkbox">
+              <Icon
+                data-type="positive"
+                onClick={(e) => [(onClick(id, false), e.stopPropagation())]}
+                icon={
+                  selected === 1 ? CoreIcons.expandActive : CoreIcons.expand
+                }
+                data-selected={selected === 1}
+              />
+              <Icon
+                data-type="negative"
+                onClick={(e) => [(onClick(id, true), e.stopPropagation())]}
+                icon={
+                  selected === -1
+                    ? CoreIcons.collapseActive
+                    : CoreIcons.collapse
+                }
+                data-selected={selected === -1}
+              />
+            </div>
+          </Fragment>
+        )}
+        {isValidElement(icon) && icon}
+        {isString(icon) && <Icon icon={icon} />}
+        <label>{label}</label>
+        <Badge {...badge} />
+      </div>
+    );
+  },
+);
+CheckItem.displayName = "CheckItem";
+
+export const CheckList: FC<CheckListProps> = ({
+  items = [],
+  maxCount = 0,
+  allowNegative,
+  emptyMessage,
+  sortItems = true,
+  ...props
+}: CheckListProps) => {
+  const { t } = useTranslation("data");
+  const { selection, toggleSelection } = useSelectableList({
+    items,
+    ...props,
+  });
+  const [showMore, setShowMore] = useState(false);
+
+  useEffect(() => {
+    setShowMore(false);
+  }, [items]);
+
+  const listItems = useMemo(() => {
+    return [...items]
+      .sort((a, b) => {
+        if (sortItems && selection[a.id] !== selection[b.id]) {
+          if (selection[a.id] === 1) return -1;
+          if (selection[b.id] === 1) return 1;
+          if (selection[a.id] === -1) return -1;
+          if (selection[b.id] === -1) return 1;
+        }
+        return 0;
+      })
+      .slice(0, !showMore && maxCount > 0 ? maxCount : undefined);
+  }, [items, selection, maxCount, showMore, sortItems]);
+
+  return (
+    <div className="ax-checkList">
+      {listItems.map((item, index) => (
+        <CheckItem
+          {...item}
+          key={index}
+          onClick={toggleSelection}
+          allowNegative={allowNegative}
+          selected={selection[item.id]}
+        />
+      ))}
+      {maxCount > 0 && items.length > maxCount && (
+        <div className="ax-moreLink">
+          <span
+            role="none"
+            className="link"
+            onClick={() => setShowMore(!showMore)}
+          >
+            ...{t(`core:action.${showMore ? "less" : "more"}`)}
+          </span>
+        </div>
+      )}
+      {listItems.length === 0 && (
+        <EmptyContent
+          className="text-sm"
+          message={emptyMessage ?? t("checkList.empty")}
+        />
+      )}
+    </div>
+  );
+};
