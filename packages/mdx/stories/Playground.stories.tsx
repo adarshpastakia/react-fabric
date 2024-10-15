@@ -21,5 +21,34 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-@import url("./_markdown.css");
-@import url("./_mdx.css");
+import { action } from "@storybook/addon-actions";
+import type { Meta, StoryObj } from "@storybook/react";
+import { MdxEditor } from "../src";
+
+import { Header, Viewport } from "@react-fabric/core";
+import md from "./demo.md";
+
+const meta: Meta<typeof MdxEditor> = {
+  component: MdxEditor,
+  title: "@mdx/_Playground_",
+  parameters: {
+    layout: "fullscreen",
+    controls: { exclude: "children" },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof MdxEditor>;
+
+export const Playground: Story = {
+  render: (args) => {
+    return (
+      <div className="min-h-[600px]">
+        <Viewport>
+          <MdxEditor {...args} value={md} onChange={action("onChange")} />
+        </Viewport>
+      </div>
+    );
+  },
+  args: {},
+};

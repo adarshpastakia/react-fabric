@@ -1,0 +1,92 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+/* stylelint-disable custom-property-pattern */
+
+@layer comp {
+  .editor {
+    grid-template: "head head head" auto "side-s content side-e" 1fr "foot foot foot" auto / auto 1fr auto;
+
+    &:global(.mdxeditor.mdxeditor) {
+      --blue1: theme(colors.primary.50);
+      --blue2: theme(colors.primary.100);
+      --blue3: theme(colors.primary.200);
+      --blue4: theme(colors.primary.300);
+      --blue5: theme(colors.primary.400);
+      --blue6: theme(colors.primary.500);
+      --blue7: theme(colors.primary.600);
+      --blue8: theme(colors.primary.700);
+      --blue9: theme(colors.primary.800);
+      --blue10: theme(colors.primary.900);
+      --blue11: theme(colors.primary.950);
+      --blue12: theme(colors.primary.950);
+      --admonitionTipBg: theme(backgroundColor.success.600);
+      --admonitionTipBorder: theme(borderColor.success.600);
+      --admonitionInfoBg: theme(backgroundColor.info.600);
+      --admonitionInfoBorder: theme(borderColor.info.600);
+      --admonitionCautionBg: theme(backgroundColor.warning.600);
+      --admonitionCautionBorder: theme(borderColor.warning.600);
+      --admonitionDangerBg: theme(backgroundColor.danger.600);
+      --admonitionDangerBorder: theme(borderColor.danger.600);
+      --admonitionNoteBg: theme(backgroundColor.muted);
+      --admonitionNoteBorder: theme(backgroundColor.base);
+      --basePageBg: theme(backgroundColor.base);
+      --baseBg: theme(backgroundColor.base);
+    }
+
+    & > div[role="toolbar"] {
+      @apply area-head rounded-none px-2 py-1 bg-base;
+
+      & > div:first-child {
+        @apply flex-1 items-center;
+      }
+
+      & button {
+        @apply cursor-pointer;
+      }
+    }
+
+    & > div[role="toolbar"] + div {
+      overflow: hidden;
+      display: grid;
+      grid-area: content;
+      grid-template: "head head head" auto "side-s content side-e" 1fr "foot foot foot" auto / auto 1fr auto;
+
+      & > div {
+        @apply area-content overflow-auto bg-base;
+      }
+    }
+
+    & div[class*="_nestedEditor_"] {
+      @apply bg-base;
+    }
+
+    div[class*="_sandpackWrapper_"] {
+      margin: 1.5rem 0;
+    }
+  }
+
+  div[data-radix-popper-content-wrapper] {
+    @apply z-50;
+  }
+}

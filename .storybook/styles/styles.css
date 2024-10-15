@@ -6,6 +6,7 @@
  */
 
 @import url("@react-fabric/core/css/styles.css");
+@import url("@react-fabric/mdx/css/styles.css");
 @import url("@react-fabric/core/css/flags.rect.css");
 @import url("./_overrides.css");
 @import url("./_prism.css");

@@ -1,5 +1,5 @@
 /* stylelint-disable selector-class-pattern */
-.dark {
+[data-color-scheme="dark"] {
   pre code.hljs {
     overflow-x: auto;
     display: block;

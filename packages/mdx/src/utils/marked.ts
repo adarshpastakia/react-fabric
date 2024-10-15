@@ -22,7 +22,7 @@
  */
 
 import * as DOMPurify from "dompurify";
-import hljs from "highlight.js/lib/core";
+import hljs from "highlight.js";
 import { Marked } from "marked";
 import * as admonition from "marked-admonition-extension";
 import { markedEmoji } from "marked-emoji";
@@ -53,6 +53,12 @@ const LANGS = [
   "html",
   "yaml",
 ];
+const LANG_MAP: KeyValue = {
+  js: "javascript",
+  jsx: "javascript",
+  ts: "typescript",
+  tsx: "typescript",
+};
 const _marked = new Marked(
   admonition.default,
   markedEmoji({
@@ -62,8 +68,9 @@ const _marked = new Marked(
   markedHighlight({
     langPrefix: "hljs language-",
     highlight(code, language) {
+      const lang = LANG_MAP[language] ?? language;
       return hljs.highlight(code, {
-        language: LANGS.includes(language) ? language : "default",
+        language: LANGS.includes(lang) ? lang : "default",
       }).value;
     },
   }),
@@ -72,8 +79,8 @@ _marked.use({
   gfm: true,
   breaks: true,
   renderer: {
-    code(code, infostring = "") {
-      return `<pre class="hljs language-${infostring}"><code>${code}</code><button class="hljs-copy">
+    code(code) {
+      return `<pre class="hljs language-${code.lang}"><code>${code.text}</code><button class="hljs-copy">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" /></svg></button>
       <div class="hljs-copy-success">Copied!</div>
       </pre>`;

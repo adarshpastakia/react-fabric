@@ -21,6 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import classes from "./MdxEditor.module.css";
 import {
   AdmonitionDirectiveDescriptor,
   BlockTypeSelect,
@@ -67,6 +68,7 @@ import {
   type FC,
 } from "react";
 import { Mdx } from "./Mdx";
+import classNames from "classnames";
 
 export interface MdxEditorProps {
   /**
@@ -98,8 +100,7 @@ export const MdxEditor: FC<MdxEditorProps> = ({ value: _value, onChange }) => {
 
   return showPreview ? (
     <Section>
-      <Header className="py-1 px-2">
-        <div className="flex-1" />
+      <Header flex justify="end" className="py-1 px-2 bg-base">
         <Button
           aria-label="close"
           icon="mdi mdi-close"
@@ -115,7 +116,11 @@ export const MdxEditor: FC<MdxEditorProps> = ({ value: _value, onChange }) => {
     </Section>
   ) : (
     <MDXEditor
-      className={`mdx-editor ${isDark ? "dark-theme" : "light-theme"}`}
+      className={classNames(
+        classes.editor,
+        "grid overflow-hidden area-content max-h-full h-full bg-base",
+        isDark ? "dark-theme" : "light-theme",
+      )}
       markdown={actualValue ?? ""}
       onChange={handleChange}
       contentEditableClassName="markdown-body"
