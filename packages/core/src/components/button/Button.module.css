@@ -245,7 +245,7 @@
         background-size: 1em 1em;
 
         & :global {
-          animation: progress 750ms linear infinite;
+          animation: bgprogress 750ms linear infinite;
         }
       }
 

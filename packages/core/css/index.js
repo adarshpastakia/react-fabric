@@ -190,7 +190,7 @@ module.exports = plugin(
           cardpulse: {
             "50%": { opacity: 0.5 },
           },
-          progress: {
+          bgprogress: {
             "0%": {
               "background-position-x": 0,
             },
@@ -201,7 +201,7 @@ module.exports = plugin(
         },
         animation: {
           pulse: "cardpulse 2s cubic-bezier(.4,0,.6,1) infinite",
-          progress: "progress 750ms linear infinite",
+          progress: "bgprogress 750ms linear infinite",
         },
         aspectRatio: {
           screen: "4 / 3",

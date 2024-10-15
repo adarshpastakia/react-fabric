@@ -104,7 +104,7 @@ export const AnimationIndicator = ({
 };
 
 export const AnimationBars = ({
-  color = "tint-700",
+  color = "tint",
   size = "2rem",
 }: {
   color?: ColorType | string;
