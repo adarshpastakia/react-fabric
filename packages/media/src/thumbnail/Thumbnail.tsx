@@ -22,13 +22,14 @@
  */
 
 import { AnimationSpinner, CoreIcons, Icon } from "@react-fabric/core";
+import { type CssProp } from "@react-fabric/core/dist/types/types";
 import { getImageColorset, isNumber } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { type SyntheticEvent, useReducer } from "react";
 import { NsfwOverlay } from "../nsfw/NsfwOverlay";
 import classes from "./Thumbnail.module.css";
 
-export interface ThumbnailProps {
+export interface ThumbnailProps extends CssProp {
   /**
    * original source
    */
@@ -78,6 +79,7 @@ export const Thumbnail = ({
   fallback,
   videoReel,
   height,
+  className,
   width = "8rem",
 }: ThumbnailProps) => {
   const [state, dispatch] = useReducer(
@@ -141,6 +143,7 @@ export const Thumbnail = ({
     <div
       className={classNames(
         classes.thumbnail,
+        className,
         videoReel && classes.reel,
         "overflow-hidden relative grid place-content-center shadow-base p-1 shadow-inset",
         state.colorScheme === "light_transparent" && "bg-dark",
