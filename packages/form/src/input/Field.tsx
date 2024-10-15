@@ -69,9 +69,16 @@ export interface FieldProps extends ChildrenProp, CssProp {
    * dont apply bg and outline
    */
   plain?: boolean;
+  vertical?: boolean;
 }
 
-export const Field = ({ children, noOutline, plain, ...rest }: FieldProps) => {
+export const Field = ({
+  children,
+  vertical,
+  noOutline,
+  plain,
+  ...rest
+}: FieldProps) => {
   return (
     <FieldWrapper {...rest}>
       <div
@@ -79,7 +86,8 @@ export const Field = ({ children, noOutline, plain, ...rest }: FieldProps) => {
           classes.fieldGroup,
           !plain && !noOutline && "outline",
           !plain && "bg-base",
-          "flex flex-nowrap flex-1 rounded",
+          "flex-1 rounded",
+          !vertical && "flex flex-nowrap",
         )}
       >
         {Children.map(
