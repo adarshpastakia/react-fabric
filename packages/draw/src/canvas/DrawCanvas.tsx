@@ -23,13 +23,18 @@
 
 import { Section, useIsDark } from "@react-fabric/core";
 import { debounce } from "@react-fabric/utilities";
-import { getAssetUrlsByMetaUrl } from "@tldraw/assets/urls";
 import {
+  DefaultToolbar,
+  DefaultToolbarContent,
   getSnapshot,
   loadSnapshot,
   Tldraw,
+  TldrawUiMenuItem,
+  useIsToolSelected,
+  useTools,
   type Editor,
   type TLEditorSnapshot,
+  type TLUiAssetUrlOverrides,
 } from "@tldraw/tldraw";
 import "@tldraw/tldraw/tldraw.css";
 import {
@@ -53,6 +58,13 @@ import { CardShapeUtil } from "./shapes/custom/CardShape";
 import { FileShapeUtil } from "./shapes/custom/FileShape";
 import { ImageShapeUtil } from "./shapes/custom/ImageShape";
 import { VideoShapeUtil } from "./shapes/custom/VideoShape";
+
+const customAssetUrls: TLUiAssetUrlOverrides = {
+  icons: {
+    avatar:
+      "data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiPgo8cGF0aCBkPSJNMjIuOCAyMi44di0yLjRjMC0xLjY1Ni0wLjY3My0zLjE1OC0xLjc1Ny00LjI0M3MtMi41ODctMS43NTctNC4yNDMtMS43NTdoLTkuNmMtMS42NTYgMC0zLjE1OCAwLjY3My00LjI0MyAxLjc1N3MtMS43NTcgMi41ODctMS43NTcgNC4yNDN2Mi40YzAgMC42NjIgMC41MzggMS4yIDEuMiAxLjJzMS4yLTAuNTM4IDEuMi0xLjJ2LTIuNGMwLTAuOTk1IDAuNDAyLTEuODkyIDEuMDU1LTIuNTQ1czEuNTUtMS4wNTUgMi41NDUtMS4wNTVoOS42YzAuOTk1IDAgMS44OTIgMC40MDIgMi41NDUgMS4wNTVzMS4wNTUgMS41NSAxLjA1NSAyLjU0NXYyLjRjMCAwLjY2MiAwLjUzOCAxLjIgMS4yIDEuMnMxLjItMC41MzggMS4yLTEuMnpNMTggNmMwLTEuNjU2LTAuNjczLTMuMTU4LTEuNzU3LTQuMjQzcy0yLjU4Ny0xLjc1Ny00LjI0My0xLjc1Ny0zLjE1OCAwLjY3My00LjI0MyAxLjc1Ny0xLjc1NyAyLjU4Ny0xLjc1NyA0LjI0MyAwLjY3MyAzLjE1OCAxLjc1NyA0LjI0MyAyLjU4NyAxLjc1NyA0LjI0MyAxLjc1NyAzLjE1OC0wLjY3MyA0LjI0My0xLjc1NyAxLjc1Ny0yLjU4NyAxLjc1Ny00LjI0M3pNMTUuNiA2YzAgMC45OTUtMC40MDIgMS44OTItMS4wNTUgMi41NDVzLTEuNTUgMS4wNTUtMi41NDUgMS4wNTUtMS44OTItMC40MDItMi41NDUtMS4wNTUtMS4wNTUtMS41NS0xLjA1NS0yLjU0NSAwLjQwMi0xLjg5MiAxLjA1NS0yLjU0NSAxLjU1LTEuMDU1IDIuNTQ1LTEuMDU1IDEuODkyIDAuNDAyIDIuNTQ1IDEuMDU1IDEuMDU1IDEuNTUgMS4wNTUgMi41NDV6Ij48L3BhdGg+Cjwvc3ZnPgo=",
+  },
+};
 
 export async function getSvgAsDataUrl(svg: SVGElement) {
   const clone = svg.cloneNode(true) as SVGGraphicsElement;
@@ -116,13 +128,15 @@ export const DrawCanvas: FC<DrawProps> = ({
   }, [editorRef, isDark]);
 
   useEffect(() => {
-    editorRef?.addListener(
-      "update",
-      debounce(() => onUpdate?.(getSnapshot(editorRef.store)), 500),
-    );
+    const handler = debounce(() => {
+      editorRef && onUpdate?.(getSnapshot(editorRef.store));
+    }, 500);
+    editorRef?.sideEffects.registerAfterChangeHandler("shape", handler);
+    editorRef?.sideEffects.registerAfterCreateHandler("shape", handler);
+    editorRef?.sideEffects.registerAfterDeleteHandler("shape", handler);
 
     return () => {
-      editorRef?.removeListener("update");
+      //
     };
   }, [editorRef]);
 
@@ -205,7 +219,7 @@ export const DrawCanvas: FC<DrawProps> = ({
   const TLDraw = useMemo(
     () => (
       <Tldraw
-        assetUrls={getAssetUrlsByMetaUrl()}
+        assetUrls={customAssetUrls}
         shapeUtils={[
           AvatarShapeUtil,
           AudioShapeUtil,
@@ -216,8 +230,28 @@ export const DrawCanvas: FC<DrawProps> = ({
         ]}
         tools={[AvatarShapeTool]}
         onMount={setEditor}
+        components={{
+          Toolbar: (props) => {
+            const tools = useTools();
+            const isAvatarSelected = useIsToolSelected(tools.avatar);
+            return (
+              <DefaultToolbar {...props}>
+                <DefaultToolbarContent />
+                <TldrawUiMenuItem
+                  {...tools.avatar}
+                  isSelected={isAvatarSelected}
+                />
+              </DefaultToolbar>
+            );
+          },
+        }}
         overrides={{
-          tools(editor, schema, helpers) {
+          translations: {
+            en: {
+              "tool.avatar": "Avatar",
+            },
+          },
+          tools(editor, schema) {
             schema.avatar = {
               id: "avatar",
               label: "tool.avatar" as AnyObject,
@@ -227,11 +261,11 @@ export const DrawCanvas: FC<DrawProps> = ({
                 editor.setCurrentTool("avatar");
               },
             };
-            return schema;
+            return { ...schema };
           },
-          actions(editor, schema, helpers) {
-            schema["insert-embed"].kbd = "";
-            schema["insert-media"].kbd = "";
+          actions(editor, schema) {
+            delete schema["insert-embed"];
+            delete schema["insert-media"];
             return schema;
           },
         }}
