@@ -122,7 +122,17 @@ export const FilterForm = ({
       if (values?.operator === OPERATOR.IN) {
         !isArray(values.value) && formRef.current?.setValue("value", []);
       } else {
-        isArray(values.value) && formRef.current?.setValue("value", "");
+        isArray(values.value) && formRef.current?.setValue("value", undefined);
+      }
+    }
+    if (
+      field?.type === FIELD_TYPE.NUMBER ||
+      field?.type === FIELD_TYPE.DECIMAL
+    ) {
+      if (values?.operator === OPERATOR.BETWEEN) {
+        !isArray(values.value) && formRef.current?.setValue("value", []);
+      } else {
+        isArray(values.value) && formRef.current?.setValue("value", undefined);
       }
     }
     if (
@@ -178,7 +188,7 @@ export const FilterForm = ({
             <Controller name="value[0]">
               <Number step={step} allowClear />
             </Controller>
-            <span className="p-2 text-muted">{`<>`}</span>
+            <span className="p-2 text-muted">{`≷`}</span>
             <Controller name="value[1]">
               <Number step={step} allowClear />
             </Controller>

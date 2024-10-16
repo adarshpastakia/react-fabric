@@ -27,6 +27,7 @@ import {
   EMPTY_ARRAY,
   groupBy,
   isArray,
+  isString,
   matchString,
 } from "@react-fabric/utilities";
 import {
@@ -173,7 +174,9 @@ export const useSelect = ({
         if (action.value !== undefined) {
           if (multiple) {
             const values = [];
-            values.push(...action.value.split(/,\s?/));
+            if (isString(action.value))
+              values.push(...action.value.split(/,\s?/));
+            else values.push(action.value);
             newState.value = [...state.value];
             values.forEach((value: AnyObject) => {
               newState.value = newState.value.includes?.(value)

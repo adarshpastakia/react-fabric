@@ -118,12 +118,16 @@ export const Form = <K extends KeyValue>({
       submit: () => form.handleSubmit(onSubmit),
       validate: async () => await form.trigger(),
       getValues: () => form.getValues(),
-      setValues: (v) => form.reset(v),
+      setValues: (v) => setTimeout(() => form.reset(v), 50),
       setValue: (k, v) =>
-        form.setValue(k as AnyObject, v, {
-          shouldDirty: false,
-          shouldTouch: false,
-        }),
+        setTimeout(
+          () =>
+            form.setValue(k as AnyObject, v, {
+              shouldDirty: false,
+              shouldTouch: false,
+            }),
+          50,
+        ),
     }),
     [onSubmit, form, form.formState, defaultValues],
   );

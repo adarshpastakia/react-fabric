@@ -273,6 +273,7 @@ export const Select = <T extends AnyObject = string>({
           "group flex-1 py-1 px-2 truncate text-start flex gap-1 relative min-h-5 justify-start",
           multiple ? "flex-wrap" : "flex-nowrap overflow-hidden",
         )}
+        {...referenceProps}
         onMouseUp={(e) =>
           e.currentTarget.querySelector<HTMLElement>("input")?.focus()
         }
@@ -294,7 +295,6 @@ export const Select = <T extends AnyObject = string>({
             multiple && "min-w-24",
           )}
           placeholder={isEmpty(state.value) ? placeholder : ""}
-          {...referenceProps}
           onChange={(evt) => handleQuery(evt.target.value)}
         />
       </div>
