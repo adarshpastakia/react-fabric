@@ -23,5 +23,6 @@
 
 import "./i18n";
 
+export { FilterBar } from "./filterbar/FilterBar";
 export { SearchBar } from "./searchbar/SearchBar";
 export { FIELD_TYPE, OPERATOR, type FilterObject } from "./types";
