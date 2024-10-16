@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.5](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-10-16)
+
+### Bug Fixes
+
+- **Chip:** label line-height ([c2b8607](https://github.com/adarshpastakia/react-fabric/commit/c2b8607c0ff396f86004301c624a5d6e6a8fc483))
+- **FilterForm:** number type form inputs ([85dc94d](https://github.com/adarshpastakia/react-fabric/commit/85dc94d0707679b78d74d6e87c4c3648e6e99304))
+- **QueryForm:** code editor wrapper ([0d44b81](https://github.com/adarshpastakia/react-fabric/commit/0d44b81eb4e7a8aeadeaa5a6afe917c6b10b2620))
+- **Searchbar:** export FilterBar ([73dee04](https://github.com/adarshpastakia/react-fabric/commit/73dee04cc8cb261e13b079bdcbf262c6eb5f2f50))
+- **Searchbar:** filter form ([4b64d66](https://github.com/adarshpastakia/react-fabric/commit/4b64d66e8b1f3fafcbc61f64eabc4dd1519eab9e))
+- **Searchbar:** updated props ([a2e8152](https://github.com/adarshpastakia/react-fabric/commit/a2e815266396e1af5fab278854153cc01cf250d0))
+
 # [1.0.0-beta.4](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2024-10-16)
 
 ### Bug Fixes

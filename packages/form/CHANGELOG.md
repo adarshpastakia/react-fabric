@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.5](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-10-16)
+
+### Bug Fixes
+
+- **FilterForm:** number type form inputs ([85dc94d](https://github.com/adarshpastakia/react-ui-framework/commit/85dc94d0707679b78d74d6e87c4c3648e6e99304))
+- **Searchbar:** filter form ([4b64d66](https://github.com/adarshpastakia/react-ui-framework/commit/4b64d66e8b1f3fafcbc61f64eabc4dd1519eab9e))
+
 # [1.0.0-beta.4](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2024-10-16)
 
 **Note:** Version bump only for package @react-fabric/form

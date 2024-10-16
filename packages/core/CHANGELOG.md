@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.5](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-10-16)
+
+### Bug Fixes
+
+- **Chip:** label line-height ([c2b8607](https://github.com/adarshpastakia/react-ui-framework/commit/c2b8607c0ff396f86004301c624a5d6e6a8fc483))
+
 # [1.0.0-beta.4](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2024-10-16)
 
 ### Bug Fixes
