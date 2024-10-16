@@ -206,6 +206,7 @@ export const _SearchBar: SearchBarStory = {
         canDisable: false,
         required: true,
         canEdit: false,
+        color: "lilac",
         icon: "mdi mdi-tray-full",
       },
       {

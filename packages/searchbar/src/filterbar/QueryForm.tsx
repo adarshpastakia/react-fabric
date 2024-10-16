@@ -119,7 +119,7 @@ export const QueryForm = ({
             >
               {t("label.query")}
             </label>
-            <div className="h-[380px] w-[600px] grid outline">
+            <div className="h-[28rem] w-[36rem] grid outline">
               <CodeEditor minimal required {...field} schema={querySchema} />
             </div>
           </div>

@@ -55,7 +55,7 @@ export enum OPERATOR {
  * @internal
  */
 export const TypeOperators: { [key in FIELD_TYPE]: OPERATOR[] } = {
-  [FIELD_TYPE.ID]: [OPERATOR.IS],
+  [FIELD_TYPE.ID]: [OPERATOR.IS, OPERATOR.IN],
   [FIELD_TYPE.STRING]: [
     OPERATOR.EXISTS,
     OPERATOR.IS,

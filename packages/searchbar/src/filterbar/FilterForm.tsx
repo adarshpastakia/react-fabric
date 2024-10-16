@@ -33,7 +33,7 @@ import {
   Switch,
   type FormRef,
 } from "@react-fabric/form";
-import { shortHash, yup } from "@react-fabric/utilities";
+import { isArray, shortHash, yup } from "@react-fabric/utilities";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -88,8 +88,9 @@ export const FilterForm = ({
   const [values, setValues] = useState<FilterSchemaType>(filter as AnyObject);
 
   useEffect(() => {
-    if (filter && "field" in filter && filter.field) return setValues(filter);
-    setValues({
+    if (filter && "field" in filter && filter.field)
+      return formRef.current?.setValues(filter);
+    formRef.current?.setValues({
       id: shortHash(),
       field: "",
       operator: OPERATOR.EXISTS,
@@ -113,9 +114,16 @@ export const FilterForm = ({
     return [...TypeOperators[field.type]];
   }, [field]);
 
-  useEffect(() => {
+  const valueInput = useMemo(() => {
     if (values?.operator === OPERATOR.EXISTS && values?.value !== undefined) {
       formRef.current?.setValue("value", undefined);
+    }
+    if (field?.type === FIELD_TYPE.STRING) {
+      if (values?.operator === OPERATOR.IN) {
+        !isArray(values.value) && formRef.current?.setValue("value", []);
+      } else {
+        isArray(values.value) && formRef.current?.setValue("value", "");
+      }
     }
     if (
       field?.type === FIELD_TYPE.BOOLEAN &&
@@ -124,9 +132,7 @@ export const FilterForm = ({
     ) {
       formRef.current?.setValue("value", false);
     }
-  }, [values, field]);
 
-  const valueInput = useMemo(() => {
     if (field == null || !values?.operator) return null;
     if (values?.operator === OPERATOR.EXISTS) return null;
     if (field?.type === FIELD_TYPE.BOOLEAN) {
@@ -144,6 +150,7 @@ export const FilterForm = ({
           <Controller name="value">
             <Select
               multiple
+              searchable
               allowCreate
               allowClear
               options={field.values ?? []}
@@ -211,70 +218,72 @@ export const FilterForm = ({
       onChange={setValues}
       onSubmit={handleSubmit}
     >
-      <Row>
-        <Col flex="fill">
-          <Controller name="field">
-            <Select<FilterField>
-              required
-              ref={inputRef}
-              label={t("label.field")}
-              options={fields}
-              labelProperty="label"
-              valueProperty="field"
-              groupProperty="type"
-            />
-          </Controller>
-        </Col>
-        <Col flex="auto" className="text-center">
-          <label className="block py-0.5 text-sm">{t("label.exclude")}</label>
-          <Controller name="negate">
-            <Switch color="danger" />
-          </Controller>
-        </Col>
-        <Col flex="auto" className="basis-28">
-          <Controller name="operator">
-            <Select
-              label={t("label.operator")}
-              options={operators}
-              renderer={(v) => t(`operator.${v}`)}
-            />
-          </Controller>
-        </Col>
-      </Row>
-      <br />
-      {valueInput}
-      <br />
-      <Controller name="label">
-        <Input
-          label={t("label.label")}
-          placeholder={t("label.label")}
-          decorateEnd={
-            !filter?.label && (
-              <span className="text-sm opacity-65 pe-4">Optional</span>
-            )
-          }
-        />
-      </Controller>
-      <div className="flex pt-4 justify-end gap-1">
-        {onRemove && (
-          <div className="flex-1">
-            <Button
-              data-dropdown-dismiss="true"
-              variant="link"
-              size="sm"
-              color="danger"
-              onClick={onRemove}
-            >
-              {t("label.remove")}
-            </Button>
-          </div>
-        )}
-        <Button data-dropdown-dismiss="true" variant="link" size="sm">
-          {t("label.cancel")}
-        </Button>
-        <Button type="submit" variant="solid" size="sm">
-          {t("label.apply")}
-        </Button>
+      <div className="w-[32rem]">
+        <Row>
+          <Col flex="fill">
+            <Controller name="field">
+              <Select<FilterField>
+                required
+                ref={inputRef}
+                label={t("label.field")}
+                options={fields}
+                labelProperty="label"
+                valueProperty="field"
+                groupProperty="type"
+              />
+            </Controller>
+          </Col>
+          <Col flex="auto" className="text-center">
+            <label className="block py-0.5 text-sm">{t("label.exclude")}</label>
+            <Controller name="negate">
+              <Switch color="danger" />
+            </Controller>
+          </Col>
+          <Col flex="auto" className="basis-28">
+            <Controller name="operator">
+              <Select
+                label={t("label.operator")}
+                options={operators}
+                renderer={(v) => t(`operator.${v}`)}
+              />
+            </Controller>
+          </Col>
+        </Row>
+        <br />
+        {valueInput}
+        <br />
+        <Controller name="label">
+          <Input
+            label={t("label.label")}
+            placeholder={t("label.label")}
+            decorateEnd={
+              !filter?.label && (
+                <span className="text-sm opacity-65 pe-4">Optional</span>
+              )
+            }
+          />
+        </Controller>
+        <div className="flex pt-4 justify-end gap-1">
+          {onRemove && (
+            <div className="flex-1">
+              <Button
+                data-dropdown-dismiss="true"
+                variant="link"
+                size="sm"
+                color="danger"
+                onClick={onRemove}
+              >
+                {t("label.remove")}
+              </Button>
+            </div>
+          )}
+          <Button data-dropdown-dismiss="true" variant="link" size="sm">
+            {t("label.cancel")}
+          </Button>
+          <Button type="submit" variant="solid" size="sm">
+            {t("label.apply")}
+          </Button>
+        </div>
       </div>
     </Form>
   );

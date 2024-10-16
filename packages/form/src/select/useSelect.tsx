@@ -173,9 +173,7 @@ export const useSelect = ({
         if (action.value !== undefined) {
           if (multiple) {
             const values = [];
-            if (action.value && autoComplete)
-              values.push(...action.value.split(/,\s?/));
-            else if (action.value) values.push(action.value);
+            values.push(...action.value.split(/,\s?/));
             newState.value = [...state.value];
             values.forEach((value: AnyObject) => {
               newState.value = newState.value.includes?.(value)
@@ -287,19 +285,21 @@ export const useSelect = ({
     }
     if (multiple) {
       optionsRef.current = [];
-      const value = (deferred ?? []).map((item: AnyObject) => {
-        const newOption =
-          (allowCreate || autoComplete) && item
-            ? createOption(item)
-            : undefined;
-        const hasValue = options.find(
-          (opt: AnyObject) => (opt[valueProperty] ?? opt) === deferred,
-        );
-        if (!hasValue && newOption) {
-          optionsRef.current.push(newOption);
-        }
-        return hasValue ?? newOption ?? "";
-      });
+      const value = (isArray(deferred) ? deferred : []).map(
+        (item: AnyObject) => {
+          const newOption =
+            (allowCreate || autoComplete) && item
+              ? createOption(item)
+              : undefined;
+          const hasValue = options.find(
+            (opt: AnyObject) => (opt[valueProperty] ?? opt) === deferred,
+          );
+          if (!hasValue && newOption) {
+            optionsRef.current.push(newOption);
+          }
+          return hasValue ?? newOption ?? "";
+        },
+      );
       optionsRef.current = [...optionsRef.current, ...(options ?? [])];
       dispatch({ type: "options", options: optionsRef.current });
       dispatch({
@@ -367,7 +367,11 @@ export const useSelect = ({
       value: value?.___create___ ? value.value : value,
     });
     if (value?.___create___) {
-      optionsRef.current = [...optionsRef.current, createOption(value.value)];
+      let val = [value.value];
+      if (multiple) {
+        val = value.value.split(/,\s?/);
+      }
+      optionsRef.current = [...optionsRef.current, ...val.map(createOption)];
     }
     if (autoComplete) {
       optionsRef.current = dedupe([

@@ -95,7 +95,7 @@ export const FilterTag = ({
       >
         <div
           className={classNames(
-            "flex gap-1",
+            "flex gap-1 items-center",
             filter.disabled && "line-through opacity-65",
           )}
         >
