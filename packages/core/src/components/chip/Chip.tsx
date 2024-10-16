@@ -156,7 +156,7 @@ export const Chip = <Tag extends React.ElementType = "div">({
         classes.chip,
         className,
         color && getColorClass(color),
-        "select-none inline-flex flex-nowrap items-center max-w-72 text-sm leading-none rounded",
+        "select-none inline-flex flex-nowrap items-center max-w-72 text-sm rounded",
         rounded && "rounded-full",
         !!onClick && classes.clickable,
         disabled && classes.disabled,
@@ -178,9 +178,7 @@ export const Chip = <Tag extends React.ElementType = "div">({
         />
       )}
       {children && (
-        <label
-          className={classNames(classes.chipLabel, "leading-none truncate")}
-        >
+        <label className={classNames(classes.chipLabel, "truncate")}>
           {children}
         </label>
       )}
