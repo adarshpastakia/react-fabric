@@ -119,7 +119,12 @@ export const QueryForm = ({
             >
               {t("label.query")}
             </label>
-            <div className="h-[28rem] w-[36rem] grid outline">
+            <div
+              className="h-[24rem] w-[36rem] grid outline place-content-start"
+              style={{
+                gridTemplate: '"content" 1fr/1fr',
+              }}
+            >
               <CodeEditor minimal required {...field} schema={querySchema} />
             </div>
           </div>
