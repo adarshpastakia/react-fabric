@@ -68,7 +68,7 @@ export const FilterTag = ({
   }, [filter]);
 
   const color = useMemo(
-    () => (filter.negate ? excludedColor : includedColor),
+    () => filter.color ?? (filter.negate ? excludedColor : includedColor),
     [filter, includedColor, excludedColor],
   );
 

@@ -154,18 +154,17 @@ export const _SearchBar: SearchBarStory = {
         {...args}
         onSearch={action("onSearch")}
         append={<SuperDate variant="link" value="$year-5|$now" />}
-        actions={
-          <Dropdown placement="bottom-end">
-            <Button icon={CoreIcons.menu} aria-label="menu" variant="link" />
-            <Menu className="text-sm">
-              <MenuItem label="Open" />
-              <MenuItem label="Save" />
-              <Divider />
-              <MenuItem label="Share" />
-            </Menu>
-          </Dropdown>
-        }
-      />
+      >
+        <Dropdown placement="bottom-end">
+          <Button icon={CoreIcons.menu} aria-label="menu" variant="link" />
+          <Menu className="text-sm">
+            <MenuItem label="Open" />
+            <MenuItem label="Save" />
+            <Divider />
+            <MenuItem label="Share" />
+          </Menu>
+        </Dropdown>
+      </SearchBar>
     );
   },
   args: {

@@ -21,6 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { type ChildrenProp } from "@react-fabric/core/dist/types/types";
 import { type ReactElement } from "react";
 
 export enum FIELD_TYPE {
@@ -136,6 +137,7 @@ interface BaseFilter {
   icon?: string;
   label?: string;
   group?: string;
+  color?: string;
   value?: FilterValue;
   pinned?: boolean;
   negate?: boolean;
@@ -165,8 +167,8 @@ export type FilterObject = BaseFilter &
       }
   );
 
-export interface SearchObject {
-  query?: string | string[];
+export interface SearchObject<T = string> {
+  query?: T;
   filters: FilterObject[];
 }
 
@@ -183,7 +185,7 @@ export interface FilterField {
   onSearch?: (q: string) => Promise<FieldValue[]> | FieldValue[];
 }
 
-interface BaseSearchBarProps {
+interface BaseSearchBarProps extends Partial<ChildrenProp> {
   /**
    * Query string
    */
@@ -215,11 +217,6 @@ interface BaseSearchBarProps {
   append?: ReactElement;
 
   /**
-   * Additional actions menu
-   */
-  actions?: ReactElement;
-
-  /**
    * Hide filter bar
    */
   hideFilters?: boolean;
@@ -247,12 +244,6 @@ interface BaseSearchBarProps {
    * @param collapsed
    */
   onCollapsed?: (collapsed: boolean) => void;
-
-  /**
-   * On search event
-   * @param queryObject
-   */
-  onSearch?: (queryObject: SearchObject) => void;
   /**
    * On query string change event
    * @param query
@@ -262,8 +253,26 @@ interface BaseSearchBarProps {
 
 export type SearchBarProps = BaseSearchBarProps &
   (
-    | { multiple: true; query?: string[] }
-    | { multiple?: never | false; query?: string }
+    | {
+        multiple: true;
+        query?: string[];
+
+        /**
+         * On search event
+         * @param queryObject
+         */
+        onSearch?: (queryObject: SearchObject<string[]>) => void;
+      }
+    | {
+        multiple?: never | false;
+        query?: string;
+
+        /**
+         * On search event
+         * @param queryObject
+         */
+        onSearch?: (queryObject: SearchObject) => void;
+      }
   );
 
 export interface FilterBarProps {

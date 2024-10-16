@@ -52,7 +52,7 @@ export const SearchBar = ({
   append,
   decorateEnd,
   decorateStart,
-  actions,
+  children,
   hideFilters,
   defaultCollapsed = false,
   disabled,
@@ -73,12 +73,15 @@ export const SearchBar = ({
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
   const emptyValue = useMemo(() => (multiple ? EMPTY_ARRAY : ""), [multiple]);
 
-  const fireSearch = useDebounce((query: string[], filters: FilterObject[]) => {
-    onSearch?.({
-      query,
-      filters,
-    });
-  }, []);
+  const fireSearch = useDebounce(
+    (query: AnyObject, filters: FilterObject[]) => {
+      onSearch?.({
+        query,
+        filters,
+      });
+    },
+    [],
+  );
 
   const [state, dispatch] = useReducer(
     (state: SearchState, action: SearchActions) => {
@@ -148,7 +151,7 @@ export const SearchBar = ({
             {t(state.dirty ? "label.update" : "label.refresh")}
           </Button>
         </Field>
-        {actions}
+        {children}
       </div>
       {!hideFilters && !collapsed && (
         <FilterBar
