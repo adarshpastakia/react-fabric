@@ -95,7 +95,7 @@ export interface ModalProps
   /**
    * close handler
    */
-  onClose: (...args: AnyObject) => void;
+  onClose?: (...args: AnyObject) => void;
   /**
    * before close handler, return false to prevent close
    */
