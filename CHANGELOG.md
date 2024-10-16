@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.4](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2024-10-16)
+
+### Bug Fixes
+
+- **Alert:** add prompt ([6b657cb](https://github.com/adarshpastakia/react-fabric/commit/6b657cba0b359facd4af8c154facf83ea1e26a73))
+- **Aside:** add className, bodyClassName props ([773cb51](https://github.com/adarshpastakia/react-fabric/commit/773cb511516ca544257cdbe224ef0506c8db7d48))
+- **DrawCanvas:** avatar tool ([3b62a2c](https://github.com/adarshpastakia/react-fabric/commit/3b62a2cfa4413182982b4d4484d91cdc3cc91221))
+
+### Features
+
+- **@data:** add checkable list ([529e17c](https://github.com/adarshpastakia/react-fabric/commit/529e17c148c3d539bf3668e3f00d157478ad1f9b))
+- **Mdx:** update with stories ([4119b97](https://github.com/adarshpastakia/react-fabric/commit/4119b97462a4ae14d6bad127d09f8e67681deaae))
+
 # [1.0.0-beta.3](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2024-10-15)
 
 **Note:** Version bump only for package react-fabric

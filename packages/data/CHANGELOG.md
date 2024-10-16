@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.4](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2024-10-16)
+
+### Features
+
+- **@data:** add checkable list ([529e17c](https://github.com/adarshpastakia/react-ui-framework/commit/529e17c148c3d539bf3668e3f00d157478ad1f9b))
+
 # [1.0.0-beta.3](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2024-10-15)
 
 **Note:** Version bump only for package @react-fabric/data
