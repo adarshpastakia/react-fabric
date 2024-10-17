@@ -104,6 +104,19 @@ export interface ArrayInputProps {
    * Add item
    */
   onAdd?: () => AnyObject;
+
+  /**
+   * field width
+   */
+  width?: number | string;
+  /**
+   * inline label and input
+   */
+  inline?: boolean;
+  /**
+   * label width for inline
+   */
+  labelWidth?: string;
 }
 
 export const ArrayInput = ({
