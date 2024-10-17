@@ -21,6 +21,8 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { DateDisplay } from "@react-fabric/date";
+import { Format, getByPath, isTrue } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useMemo } from "react";
 import { useTableContext } from "./Context";
@@ -47,6 +49,29 @@ export const BodyCell = ({
     [widths, column],
   );
 
+  const content = useMemo(() => {
+    const value = getByPath(item, column.id.toString());
+    if (column.renderer != null) {
+      return column.renderer(item[column.id], item, index);
+    }
+    if (column.dataType === "boolean") {
+      const map = column.valueMap ?? { true: "Yes", false: "no" };
+      return map[`${isTrue(value) ? "true" : "false"}`];
+    }
+    if (column.valueMap != null) {
+      if (column.dataType === "string" && value in column.valueMap) {
+        return column.valueMap[value];
+      }
+    }
+    if (column.dataType === "date") {
+      return <DateDisplay date={value} format={column.format} />;
+    }
+    if (column.dataType === "number") {
+      return Format.number(value, column.format);
+    }
+    return value ?? "";
+  }, [item, column]);
+
   return (
     <div
       className="overflow-hidden bg-inherit start-0"
@@ -63,7 +88,7 @@ export const BodyCell = ({
           column.align === "end" && "text-end",
         )}
       >
-        {column.renderer?.(item[column.id], item, index) ?? item[column.id]}
+        {content}
       </div>
     </div>
   );

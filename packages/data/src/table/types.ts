@@ -62,6 +62,7 @@ export interface TableColumn<T = KeyValue>
     | "time"
     | "unknown";
   format?: string;
+  valueMap?: KeyValue;
   renderer?: (value: AnyObject, data: T, index: number) => Elements<AnyObject>;
 }
 
