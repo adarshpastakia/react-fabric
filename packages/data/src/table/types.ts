@@ -23,6 +23,7 @@
 
 import {
   type CssProp,
+  type Elements,
   type IconProps,
   type RefProp,
   type TestProps,
@@ -33,7 +34,7 @@ export const COL_MIN_WIDTH = "3rem";
 export const COL_MAX_WIDTH = "64rem";
 export const COL_DEFAULT_WIDTH = "12rem";
 
-export interface ColumnType<T = KeyValue>
+export interface TableColumn<T = KeyValue>
   extends CssProp,
     IconProps,
     TestProps {
@@ -61,7 +62,7 @@ export interface ColumnType<T = KeyValue>
     | "time"
     | "unknown";
   format?: string;
-  renderer?: (value: AnyObject, data: T, index: number) => void;
+  renderer?: (value: AnyObject, data: T, index: number) => Elements<AnyObject>;
 }
 
 export interface TableRef {
@@ -71,7 +72,7 @@ export interface TableRef {
 }
 
 export interface TableProps<T = KeyValue> extends RefProp<TableRef> {
-  columns: Array<ColumnType<T>>;
+  columns: Array<TableColumn<T>>;
   data: T[];
   keyProperty?: keyof T;
   emptyDisplay?: ReactElement;

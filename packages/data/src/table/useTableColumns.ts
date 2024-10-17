@@ -23,20 +23,20 @@
 
 import { groupBy } from "@react-fabric/utilities";
 import { useEffect, useReducer } from "react";
-import { type ColumnType } from "./types";
+import { type TableColumn } from "./types";
 
 interface ColumnState {
-  columns: ColumnType[];
-  start: ColumnType[];
-  end: ColumnType[];
-  cols: ColumnType[];
+  columns: TableColumn[];
+  start: TableColumn[];
+  end: TableColumn[];
+  cols: TableColumn[];
 }
 
 type ColumnActions =
-  | { type: "columns"; columns: ColumnType[] }
+  | { type: "columns"; columns: TableColumn[] }
   | { type: "hide"; id: string };
 
-export const useTableColumns = (columns: ColumnType[]) => {
+export const useTableColumns = (columns: TableColumn[]) => {
   const [state, dispatch] = useReducer(
     (state: ColumnState, action: ColumnActions) => {
       if (action.type === "columns") {

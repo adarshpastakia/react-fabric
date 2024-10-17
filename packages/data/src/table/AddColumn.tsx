@@ -22,13 +22,13 @@
  */
 
 import { CoreIcons, Dropdown, Icon, Menu, MenuItem } from "@react-fabric/core";
-import { type ColumnType } from "./types";
+import { type TableColumn } from "./types";
 
 export const AddColumn = ({
   columns,
   onClick,
 }: {
-  columns: ColumnType[];
+  columns: TableColumn[];
   onClick: (id: string) => void;
 }) => {
   return (

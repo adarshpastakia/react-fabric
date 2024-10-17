@@ -27,7 +27,7 @@ import {
   COL_DEFAULT_WIDTH,
   COL_MAX_WIDTH,
   COL_MIN_WIDTH,
-  type ColumnType,
+  type TableColumn,
 } from "./types";
 
 export const EmptyCell = ({
@@ -35,7 +35,7 @@ export const EmptyCell = ({
   width: _width,
   maxWidth,
   minWidth,
-}: ColumnType) => {
+}: TableColumn) => {
   const { widths } = useTableContext();
 
   const width = useMemo(

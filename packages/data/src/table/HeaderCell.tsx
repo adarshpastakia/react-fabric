@@ -35,7 +35,7 @@ import {
   COL_DEFAULT_WIDTH,
   COL_MAX_WIDTH,
   COL_MIN_WIDTH,
-  type ColumnType,
+  type TableColumn,
   type TableProps,
 } from "./types";
 
@@ -56,7 +56,7 @@ export const HeaderCell = ({
   minWidth,
   sort,
   onSort,
-}: ColumnType & Pick<TableProps, "sort" | "onSort">) => {
+}: TableColumn & Pick<TableProps, "sort" | "onSort">) => {
   const { startResize, widths } = useTableContext();
 
   const width = useMemo(

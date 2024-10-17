@@ -28,7 +28,7 @@ import {
   COL_DEFAULT_WIDTH,
   COL_MAX_WIDTH,
   COL_MIN_WIDTH,
-  type ColumnType,
+  type TableColumn,
 } from "./types";
 
 export const BodyCell = ({
@@ -36,7 +36,7 @@ export const BodyCell = ({
   item,
   index,
 }: {
-  column: ColumnType;
+  column: TableColumn;
   item: KeyValue;
   index: number;
 }) => {
