@@ -62,7 +62,7 @@ export interface TabProps
   /**
    * tab badge
    */
-  badge?: BadgeType;
+  badge?: string | number | BadgeType;
   /**
    * disabled
    */
