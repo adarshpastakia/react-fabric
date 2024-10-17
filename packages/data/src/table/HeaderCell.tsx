@@ -48,6 +48,7 @@ export const HeaderCell = ({
   rtlFlip,
   actions,
   locked,
+  tooltip,
   sortable,
   resizable,
   width: _width,
@@ -102,7 +103,7 @@ export const HeaderCell = ({
         maxWidth: maxWidth ?? COL_MAX_WIDTH,
       }}
     >
-      <Tooltip content={label} disabled={!label}>
+      <Tooltip content={tooltip ?? label} disabled={!(tooltip ?? label)}>
         <div className="flex-initial px-2 py-1 text-sm truncate sticky start-0">
           {icon && (
             <Icon icon={icon} bg={iconBg} color={iconColor} rtlFlip={rtlFlip} />

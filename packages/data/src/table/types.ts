@@ -39,6 +39,7 @@ export interface ColumnType<T = KeyValue>
     TestProps {
   id: keyof T | string;
   label?: string;
+  tooltip?: string;
   actions?: ReactElement;
   align?: "start" | "center" | "end";
   locked?: "start" | "end";
