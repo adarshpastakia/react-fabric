@@ -128,5 +128,7 @@ export const _Table: Story = {
       />
     );
   },
-  args: {},
+  args: {
+    initialScroll: 18,
+  },
 };

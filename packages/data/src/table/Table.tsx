@@ -22,8 +22,15 @@
  */
 
 import { EmptyContent, Loading, useDebounce } from "@react-fabric/core";
+import { debounce } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { useImperativeHandle, useMemo, useRef } from "react";
+import {
+  useEffect,
+  useImperativeHandle,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+} from "react";
 import { useTranslation } from "react-i18next";
 import { AddColumn } from "./AddColumn";
 import { BodyCell } from "./BodyCell";
@@ -41,10 +48,13 @@ export const Table = <T extends KeyValue = KeyValue>({
   columns,
   keyProperty,
   checkableRows,
+  initialScroll,
   hideableColumns,
   sort,
   loading,
+  emptyDisplay,
   onSort,
+  onScroll,
   onRowClick,
   onCheckedChanged,
 }: TableProps<T>) => {
@@ -58,7 +68,9 @@ export const Table = <T extends KeyValue = KeyValue>({
   const {
     scrollerRef,
     items,
+    top,
     checkState,
+    virtualizer,
     toggleChecked,
     toggleAllChecked,
     getData,
@@ -76,31 +88,50 @@ export const Table = <T extends KeyValue = KeyValue>({
     [],
   );
 
+  useLayoutEffect(() => {
+    setTimeout(() => {
+      initialScroll &&
+        virtualizer.scrollToIndex(initialScroll, { align: "start" });
+    }, 100);
+  }, []);
+
   useImperativeHandle(
     ref,
     () => ({
-      hilight: (row: number) => {
-        refBody.current
-          ?.querySelectorAll<HTMLElement>(`.datatable-row[data-hilight="true"]`)
-          .forEach((el) => el && (el.dataset.hilight = undefined));
-        const el = refBody.current?.querySelector<HTMLElement>(
-          `[data-row="${row}"]`,
-        );
-        el?.scrollIntoView({ behavior: "smooth", block: "center" });
-        el && (el.dataset.hilight = "true");
-      },
-      unhilight: () => {
-        refBody.current
-          ?.querySelectorAll<HTMLElement>(`.datatable-row[data-hilight="true"]`)
-          .forEach((el) => el && (el.dataset.hilight = undefined));
-      },
       scrollTo: (row: number) => {
-        const el = refBody.current?.querySelector(`[data-row="${row}"]`);
-        el?.scrollIntoView({ behavior: "smooth" });
+        virtualizer.scrollToIndex(row, { align: "start" });
+      },
+      hilight(row) {
+        scrollerRef.current
+          ?.querySelector(".hilight")
+          ?.classList.remove("hilight", "ring-1");
+        virtualizer.scrollToIndex(Math.floor(row), {
+          align: "start",
+        });
+        setTimeout(() => {
+          scrollerRef.current
+            ?.querySelector(`[data-index="${row}"]`)
+            ?.classList.add("hilight", "ring-1");
+        }, 100);
+      },
+      unhilight() {
+        scrollerRef.current
+          ?.querySelector(".hilight")
+          ?.classList.remove("hilight", "ring-1");
       },
     }),
     [],
   );
+
+  useEffect(() => {
+    const handle = debounce((top: number) => {
+      onScroll?.(top ?? 0);
+    });
+    handle(top);
+    return () => {
+      handle.cancel();
+    };
+  }, [top]);
 
   return (
     <TableProvider>
@@ -181,11 +212,17 @@ export const Table = <T extends KeyValue = KeyValue>({
                         key={`${key}:${ids}`}
                         column={col}
                         item={data}
+                        index={ids}
                       />
                     ))}
                   </div>
                   {state.cols?.map((col, idc) => (
-                    <BodyCell key={`${key}:${idc}`} column={col} item={data} />
+                    <BodyCell
+                      key={`${key}:${idc}`}
+                      column={col}
+                      item={data}
+                      index={idc}
+                    />
                   ))}
                   <div className={wrapperEnd}>
                     {state.end?.map((col, ide) => (
@@ -193,6 +230,7 @@ export const Table = <T extends KeyValue = KeyValue>({
                         key={`${key}:${ide}`}
                         column={col}
                         item={data}
+                        index={ide}
                       />
                     ))}
                     {hideableColumns && <div className="w-6" />}
@@ -220,13 +258,15 @@ export const Table = <T extends KeyValue = KeyValue>({
             </div>
           </div>
         )}
-        {!loading && data.length === 0 && (
-          <EmptyContent
-            size="sm"
-            className="bg-dimmed"
-            message={t("datagrid.empty")}
-          />
-        )}
+        {!loading &&
+          data.length === 0 &&
+          (emptyDisplay ?? (
+            <EmptyContent
+              size="sm"
+              className="bg-dimmed"
+              message={t("datagrid.empty")}
+            />
+          ))}
       </div>
     </TableProvider>
   );

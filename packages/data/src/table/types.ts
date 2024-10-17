@@ -60,7 +60,7 @@ export interface ColumnType<T = KeyValue>
     | "time"
     | "unknown";
   format?: string;
-  renderer?: (value: AnyObject, data: T) => void;
+  renderer?: (value: AnyObject, data: T, index: number) => void;
 }
 
 export interface TableRef {
@@ -73,6 +73,7 @@ export interface TableProps<T = KeyValue> extends RefProp<TableRef> {
   columns: Array<ColumnType<T>>;
   data: T[];
   keyProperty?: keyof T;
+  emptyDisplay?: ReactElement;
   /**
    * checkable rows
    */
@@ -88,4 +89,7 @@ export interface TableProps<T = KeyValue> extends RefProp<TableRef> {
   hideableColumns?: boolean;
 
   onRowClick?: (data: T) => void;
+
+  initialScroll?: number;
+  onScroll?: (firstItem: number) => void;
 }

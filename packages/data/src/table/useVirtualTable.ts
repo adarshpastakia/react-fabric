@@ -91,6 +91,8 @@ export const useVirtualTable = (
     items: virtualItems,
     checkState: state,
     getData,
+    virtualizer,
+    top: virtualizer.range?.startIndex,
     totalSize: virtualizer.getTotalSize,
     measureElement: virtualizer.measureElement,
     toggleChecked: (key: Key) => dispatch({ type: "check", key }),
