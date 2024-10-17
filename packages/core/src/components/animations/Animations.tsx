@@ -142,6 +142,7 @@ export const AnimationSpinner = ({
       className={classNames(
         "absolute inset-0 z-10 flex justify-center items-center cursor-wait",
       )}
+      data-testid="spinner"
     >
       <div
         className={classNames(
@@ -164,15 +165,20 @@ export const Loading = () => {
         classes.loader,
         "area-[loader] relative overflow-x-clip",
       )}
+      data-testid="loading"
     >
       <div className="absolute z-10 py-px inset-x-0 top-0 after:h-0.5 after:block after:bg-primary-500" />
     </div>
   );
 };
 
-export const Skeleton = () => {
+export const Skeleton = ({ className, ...rest }: CssProp) => {
   return (
-    <div className={classNames("p-2 animate-pulse flex gap-2 max-w-lg")}>
+    <div
+      className={classNames(className, "p-2 animate-pulse flex gap-2 max-w-lg")}
+      data-testid="skeleton"
+      {...rest}
+    >
       <div className="bg-tint-100 rounded aspect-square h-12" />
       <div className="flex-1 flex flex-col gap-2">
         <div className="bg-tint-100 h-3 rounded-full" />
