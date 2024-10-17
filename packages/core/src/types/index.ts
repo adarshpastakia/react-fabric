@@ -239,3 +239,8 @@ export interface SizeObject {
   width: number;
   height: number;
 }
+
+export interface ScrollObject extends PositionObject, SizeObject {
+  scrollWidth?: number;
+  scrollHeight: number;
+}

@@ -22,14 +22,14 @@
  */
 
 import classNames from "classnames";
-import { useImperativeHandle } from "react";
+import { type MouseEvent, useImperativeHandle } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
 import { useResizeObserver } from "../../hooks/useResizeObserver";
 import {
   type ChildrenProp,
   type CssProp,
-  type PositionObject,
   type RefProp,
+  type ScrollObject,
   type SizeObject,
   type TestProps,
 } from "../../types";
@@ -44,7 +44,7 @@ export interface ContentProps
   /**
    * scroll vevent handler
    */
-  onScroll?: (event: PositionObject) => void;
+  onScroll?: (scroll: ScrollObject, event: MouseEvent<HTMLDivElement>) => void;
   /**
    * scroll vevent handler
    */
@@ -65,13 +65,19 @@ export const Content = ({
 }: ContentProps) => {
   const resizeHandle = useResizeObserver(onResize);
   const scrollHandler = useDebounce(
-    (e: React.UIEvent<HTMLDivElement>) => {
-      onScroll?.({
-        // @ts-expect-error ignore
-        left: e.target.scrollLeft,
-        // @ts-expect-error ignore
-        top: e.target.scrollTop,
-      });
+    (e: MouseEvent<HTMLDivElement>) => {
+      const el = e.target as HTMLElement;
+      onScroll?.(
+        {
+          left: el.scrollLeft,
+          top: el.scrollTop,
+          scrollHeight: el.scrollHeight,
+          scrollWidth: el.scrollWidth,
+          width: el.offsetWidth,
+          height: el.offsetHeight,
+        },
+        e,
+      );
     },
     [onScroll],
   );
