@@ -21,9 +21,12 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { type RefProp } from "@react-fabric/core/dist/types/types";
+import {
+  type RefProp,
+  type TestProps,
+} from "@react-fabric/core/dist/types/types";
 
-export interface InputProps<V = string> {
+export interface InputProps<V = string> extends TestProps {
   /**
    * value
    */
