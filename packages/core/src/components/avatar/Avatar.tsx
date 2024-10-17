@@ -24,8 +24,7 @@
 import { isSvgPath } from "@react-fabric/utilities";
 import BoringAvatar from "boring-avatars";
 import classNames from "classnames";
-import { useState } from "react";
-import { useMemoDebugger } from "../../hooks/useEffectDebugger";
+import { useMemo, useState } from "react";
 import {
   type AriaProps,
   type ColorType,
@@ -109,89 +108,77 @@ export const Avatar = ({
   const [fallback, setFallback] = useState(true);
 
   /** ***************** style map *******************/
-  const styles = useMemoDebugger(
-    () => {
-      const s: KeyValue = {};
-      if (bg) {
-        s.backgroundColor = getColor(bg);
-      }
-      if (color) {
-        s.color = getColor(color);
-      }
-      if (size && !(size in SizeMap)) {
-        s.fontSize = size;
-      }
-      if (size && size in SizeMap) {
-        s.fontSize = SizeMap[size];
-      }
-      return s;
-    },
-    [bg, color, size],
-    "Avatar styles",
-  );
+  const styles = useMemo(() => {
+    const s: KeyValue = {};
+    if (bg) {
+      s.backgroundColor = getColor(bg);
+    }
+    if (color) {
+      s.color = getColor(color);
+    }
+    if (size && !(size in SizeMap)) {
+      s.fontSize = size;
+    }
+    if (size && size in SizeMap) {
+      s.fontSize = SizeMap[size];
+    }
+    return s;
+  }, [bg, color, size]);
 
   /** ***************** render icon *******************/
-  const avatarImage = useMemoDebugger(
-    () => {
-      setFallback(!avatar);
-      return (
-        avatar && (
-          <div className="contents">
-            <div
-              className={classNames(
-                classes.imgPlaceholder,
-                "absolute inset-0 bg-gray animate-pulse",
-              )}
-            />
-            <img
-              src={avatar}
-              alt={avatar}
-              className="align-baseline"
-              onError={() => setFallback(true)}
-              onLoad={(e) => e.currentTarget.previousElementSibling?.remove()}
-            />
-          </div>
-        )
-      );
-    },
-    [avatar],
-    "Avatar icon",
-  );
+  const avatarImage = useMemo(() => {
+    setFallback(!avatar);
+    return (
+      avatar && (
+        <div className="contents">
+          <div
+            className={classNames(
+              classes.imgPlaceholder,
+              "absolute inset-0 bg-gray animate-pulse",
+            )}
+          />
+          <img
+            src={avatar}
+            alt={avatar}
+            className="align-baseline"
+            onError={() => setFallback(true)}
+            onLoad={(e) => e.currentTarget.previousElementSibling?.remove()}
+          />
+        </div>
+      )
+    );
+  }, [avatar]);
 
-  const fallbackAvatar = useMemoDebugger(
-    () => {
-      if (fallbackIcon) {
-        return isSvgPath(fallbackIcon) ? (
-          <svg viewBox={viewBox}>
-            <path fill="currentColor" d={fallbackIcon.toString()} />
-          </svg>
-        ) : (
-          <i className={fallbackIcon} />
-        );
-      }
-      if (variant === "text") {
-        const [, first, second, group] =
-          name.match(/(?=(\w).* (\w).*)|(?=(\w\w).*)/) ?? [];
-        return (
-          <svg role="img">
-            <text
-              x="50%"
-              y="50%"
-              dy=".1em"
-              dominantBaseline="middle"
-              textAnchor="middle"
-              style={{ fontSize: ".5em", fontWeight: 500 }}
-            >
-              {group ?? `${first}${second}`}
-            </text>
-          </svg>
-        );
-      }
-      return <BoringAvatar square size={64} variant={variant} name={name} />;
-    },
-    [name, variant, fallbackIcon],
-    "Avatar fallback",
-  );
+  const fallbackAvatar = useMemo(() => {
+    if (fallbackIcon) {
+      return isSvgPath(fallbackIcon) ? (
+        <svg viewBox={viewBox}>
+          <path fill="currentColor" d={fallbackIcon.toString()} />
+        </svg>
+      ) : (
+        <i className={fallbackIcon} />
+      );
+    }
+    if (variant === "text") {
+      const [, first, second, group] =
+        name.match(/(?=(\w).* (\w).*)|(?=(\w\w).*)/) ?? [];
+      return (
+        <svg role="img">
+          <text
+            x="50%"
+            y="50%"
+            dy=".1em"
+            dominantBaseline="middle"
+            textAnchor="middle"
+            style={{ fontSize: ".5em", fontWeight: 500 }}
+          >
+            {group ?? `${first}${second}`}
+          </text>
+        </svg>
+      );
+    }
+    return <BoringAvatar square size={64} variant={variant} name={name} />;
+  }, [name, variant, fallbackIcon]);
 
   return (
     <dfn

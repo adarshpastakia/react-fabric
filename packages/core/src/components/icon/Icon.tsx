@@ -23,7 +23,7 @@
 
 import { isString, isSvgPath } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { useMemoDebugger } from "../../hooks/useEffectDebugger";
+import { useMemo } from "react";
 import {
   type AriaProps,
   type ColorType,
@@ -101,66 +101,54 @@ export const Icon = ({
   ...rest
 }: IconProps) => {
   /** ***************** style map *******************/
-  const styles = useMemoDebugger(
-    () => {
-      const s: KeyValue = {};
-      if (bg) {
-        s.backgroundColor = getColor(bg);
-      }
-      if (color) {
-        s.color = getColor(color);
-      }
-      if (size && !(size in SizeMap)) {
-        s.fontSize = size;
-      }
-      if (size && size in SizeMap) {
-        s.fontSize = SizeMap[size];
-      }
-      return s;
-    },
-    [bg, color, size],
-    "Icon styles",
-  );
+  const styles = useMemo(() => {
+    const s: KeyValue = {};
+    if (bg) {
+      s.backgroundColor = getColor(bg);
+    }
+    if (color) {
+      s.color = getColor(color);
+    }
+    if (size && !(size in SizeMap)) {
+      s.fontSize = size;
+    }
+    if (size && size in SizeMap) {
+      s.fontSize = SizeMap[size];
+    }
+    return s;
+  }, [bg, color, size]);
 
   /** ***************** check if icon is svg path *******************/
-  const isSvg = useMemoDebugger(
-    () => {
-      return isSvgPath(icon);
-    },
-    [icon],
-    "Icon isSvg",
-  );
+  const isSvg = useMemo(() => {
+    return isSvgPath(icon);
+  }, [icon]);
 
   /** ***************** render icon *******************/
-  const iconEl = useMemoDebugger(
-    () => {
-      if (!isString(icon)) {
-        throw Error("Invalid icon expected string");
-      }
-      return isSvg ? (
-        <svg viewBox={viewBox}>
-          <path fill="currentColor" d={icon.toString()} />
-        </svg>
-      ) : icon?.toString().length <= 4 ? (
-        <svg role="img">
-          <text
-            x="50%"
-            y="50%"
-            dy=".1em"
-            dominantBaseline="middle"
-            textAnchor="middle"
-            style={{ fontSize: SvgTextSize[icon.length] ?? "1em" }}
-          >
-            {icon}
-          </text>
-        </svg>
-      ) : (
-        <i className={`${icon}`} />
-      );
-    },
-    [icon, isSvg, viewBox],
-    "Icon el",
-  );
+  const iconEl = useMemo(() => {
+    if (!isString(icon)) {
+      throw Error("Invalid icon expected string");
+    }
+    return isSvg ? (
+      <svg viewBox={viewBox}>
+        <path fill="currentColor" d={icon.toString()} />
+      </svg>
+    ) : icon?.toString().length <= 4 ? (
+      <svg role="img">
+        <text
+          x="50%"
+          y="50%"
+          dy=".1em"
+          dominantBaseline="middle"
+          textAnchor="middle"
+          style={{ fontSize: SvgTextSize[icon.length] ?? "1em" }}
+        >
+          {icon}
+        </text>
+      </svg>
+    ) : (
+      <i className={`${icon}`} />
+    );
+  }, [icon, isSvg, viewBox]);
 
   return (
     <dfn
