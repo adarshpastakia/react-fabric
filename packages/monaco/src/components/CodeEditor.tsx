@@ -37,6 +37,7 @@ import {
   useImperativeHandle,
   useLayoutEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import MonacoEditor from "react-monaco-editor";
@@ -47,7 +48,7 @@ export interface MonacoEditorRef {
   getValue: () => string | undefined;
 }
 
-export interface EditorProps {
+export interface BaseEditorProps {
   value?: string | AnyObject;
 
   required?: boolean;
@@ -55,17 +56,30 @@ export interface EditorProps {
 
   minimal?: boolean;
 
-  schema?: Array<{ uri: string; schema: KeyValue }>;
-
   language?: "json" | "css" | "html" | "text" | "markdown";
 
   onChange?: (value: string) => void;
 }
 
+type EditorProps = BaseEditorProps &
+  (
+    | {
+        language: "json";
+        schema?: Array<{ uri: string; schema: KeyValue }>;
+        handlebarSuggestions?: never;
+      }
+    | {
+        language: "html";
+        schema?: never;
+        handlebarSuggestions?: Array<{ text: string; description?: string }>;
+      }
+  );
+
 export const CodeEditor = ({
   ref,
   value,
   schema,
+  handlebarSuggestions,
   required,
   readOnly,
   minimal,
@@ -140,9 +154,10 @@ export const CodeEditor = ({
     [required, language],
   );
 
+  const disposeRef = useRef<AnyObject>();
   const schemaUri = useCallback(
     (monaco: typeof monacoEditor) => {
-      if (schema) {
+      if (language === "json" && schema) {
         const [main, ...rest] = schema;
         // configure the JSON language support with schemas and schema associations
         monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
@@ -157,8 +172,46 @@ export const CodeEditor = ({
           ],
         });
       }
+      if (language === "html" && handlebarSuggestions) {
+        disposeRef.current?.dispose?.();
+        disposeRef.current = monaco.languages.registerCompletionItemProvider(
+          "html",
+          {
+            triggerCharacters: ["{{"],
+            provideCompletionItems: function (model, position) {
+              // find out if we are completing a property in the 'dependencies' object.
+              const textUntilPosition = model.getValueInRange({
+                startLineNumber: 1,
+                startColumn: 1,
+                endLineNumber: position.lineNumber,
+                endColumn: position.column,
+              });
+              const match = textUntilPosition.match(/\{\{(.*)([^}])?$/);
+              if (!match) {
+                return { suggestions: [] };
+              }
+              const word = model.getWordUntilPosition(position);
+              const range = {
+                startLineNumber: position.lineNumber,
+                endLineNumber: position.lineNumber,
+                startColumn: word.startColumn,
+                endColumn: word.endColumn,
+              };
+              return {
+                suggestions: handlebarSuggestions.map((hs) => ({
+                  label: hs.text,
+                  kind: monaco.languages.CompletionItemKind.Text,
+                  documentation: hs.description,
+                  insertText: hs.text,
+                  range,
+                })),
+              };
+            },
+          },
+        );
+      }
     },
-    [schema],
+    [schema, language],
   );
 
   const resetSchema = useCallback((_: unknown, monaco: typeof monacoEditor) => {

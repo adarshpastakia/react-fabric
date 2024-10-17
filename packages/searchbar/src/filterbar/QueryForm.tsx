@@ -125,7 +125,13 @@ export const QueryForm = ({
                 gridTemplate: '"content" 1fr/1fr',
               }}
             >
-              <CodeEditor minimal required {...field} schema={querySchema} />
+              <CodeEditor
+                language="json"
+                minimal
+                required
+                {...field}
+                schema={querySchema}
+              />
             </div>
           </div>
         )}
