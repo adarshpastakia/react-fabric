@@ -67,6 +67,10 @@ export interface CollapsableProps
    */
   headerClassName?: string;
   /**
+   * Header position sticky
+   */
+  stickyHeader?: boolean;
+  /**
    * open state icon
    */
   iconOpen?: string;
@@ -100,6 +104,7 @@ export const Collapsable = ({
   headerClassName,
   children,
   iconAlign,
+  stickyHeader,
   iconClosed = CoreIcons.chevronRight,
   iconOpen = CoreIcons.chevronDown,
   open,
@@ -138,6 +143,7 @@ export const Collapsable = ({
           classes.collapsableHead,
           "flex gap-1 flex-nowrap py-2 font-medium cursor-pointer items-center select-none hover:opacity-70",
           headerClassName,
+          stickyHeader && "bg-base sticky top-0 px-2 py-1 z-10",
           iconAlign === "end" ? "flex-row-reverse" : "flex-row",
         )}
         onClick={() => !disabled && setOpenState(!openState)}
