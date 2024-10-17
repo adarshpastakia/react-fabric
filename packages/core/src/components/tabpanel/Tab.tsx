@@ -21,8 +21,10 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { type ReactElement, useMemo } from "react";
+import { Fragment, type ReactElement, useMemo } from "react";
+import { Tooltip } from "../../overlays";
 import {
   type AriaProps,
   type BadgeType,
@@ -34,6 +36,7 @@ import {
   type PolymorphicProps,
   type RefProp,
   type TestProps,
+  type TooltipProp,
 } from "../../types";
 import { Badge, getBadgeProps } from "../badge/Badge";
 import { DropdownTool } from "../dropdown/DropdownTool";
@@ -46,7 +49,8 @@ export interface TabProps
     RefProp,
     AriaProps,
     TestProps,
-    IconProps {
+    IconProps,
+    TooltipProp {
   /**
    * tab id
    */
@@ -110,6 +114,7 @@ export const Tab = <Tag extends React.ElementType = "button">({
   tabFlex,
   color,
   actions,
+  tooltip,
   activeClassName,
   ...aria
 }: TabProps & PolymorphicProps<Tag>) => {
@@ -117,63 +122,72 @@ export const Tab = <Tag extends React.ElementType = "button">({
     return getBadgeProps(badge);
   }, [badge]);
 
+  const tooltipProps = useMemo(() => {
+    if (isString(tooltip)) return { content: tooltip };
+
+    return tooltip ?? {};
+  }, [tooltip]);
+
   const E = as ?? "button";
+  const W = tooltip ? Tooltip : Fragment;
   return (
-    <E
-      data-id={id}
-      disabled={disabled}
-      data-color={color}
-      className={classNames(
-        classes.tabButton,
-        className,
-        active && "active pointer-events-none",
-        active && activeClassName,
-        disabled && "text-tint-500 pointer-events-none",
-        tabFlex ? "flex-1" : "flex-initial max-w-36 min-w-24",
-        "flex items-center justify-center px-1 rounded overflow-hidden",
-      )}
-      onClick={() => !active && onClick?.(id)}
-      ref={ref as AnyObject}
-      {...aria}
-    >
-      {icon && (
-        <Icon
-          icon={icon}
-          bg={iconBg}
-          color={iconColor}
-          rtlFlip={rtlFlip}
-          className="flex-content"
-        />
-      )}
-      {!minimal && (
-        <label className="flex-initial truncate text-center px-1 py-1">
-          {label}
-        </label>
-      )}
-      {badge && (
-        <Badge
-          {...badgeProps}
-          placement={minimal ? "end" : ""}
-          className={classNames("me-1", badgeProps.className)}
-        />
-      )}
-      {actions && active && (
-        <DropdownTool className="bg-base/20 me-1 z-5">{actions}</DropdownTool>
-      )}
-      {onClose && (
-        <span
-          role="none"
-          className={classNames(
-            "cursor-pointer me-1 opacity-65 hover:opacity-90 pointer-events-auto",
-          )}
-          onClick={(e) => {
-            onClose?.();
-            e.stopPropagation();
-          }}
-        >
-          &times;
-        </span>
-      )}
-    </E>
+    <W {...tooltipProps}>
+      <E
+        data-id={id}
+        disabled={disabled}
+        data-color={color}
+        className={classNames(
+          classes.tabButton,
+          className,
+          active && "active pointer-events-none",
+          active && activeClassName,
+          disabled && "text-tint-500 pointer-events-none",
+          tabFlex ? "flex-1" : "flex-initial max-w-36 min-w-24",
+          "flex items-center justify-center px-1 rounded overflow-hidden",
+        )}
+        onClick={() => !active && onClick?.(id)}
+        ref={ref as AnyObject}
+        {...aria}
+      >
+        {icon && (
+          <Icon
+            icon={icon}
+            bg={iconBg}
+            color={iconColor}
+            rtlFlip={rtlFlip}
+            className="flex-content"
+          />
+        )}
+        {!minimal && (
+          <label className="flex-initial truncate text-center px-1 py-1">
+            {label}
+          </label>
+        )}
+        {badge && (
+          <Badge
+            {...badgeProps}
+            placement={minimal ? "end" : ""}
+            className={classNames("me-1", badgeProps.className)}
+          />
+        )}
+        {actions && active && (
+          <DropdownTool className="bg-base/20 me-1 z-5">{actions}</DropdownTool>
+        )}
+        {onClose && (
+          <span
+            role="none"
+            className={classNames(
+              "cursor-pointer me-1 opacity-65 hover:opacity-90 pointer-events-auto",
+            )}
+            onClick={(e) => {
+              onClose?.();
+              e.stopPropagation();
+            }}
+          >
+            &times;
+          </span>
+        )}
+      </E>
+    </W>
   );
 };
