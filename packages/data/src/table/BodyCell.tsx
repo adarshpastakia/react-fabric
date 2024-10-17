@@ -34,9 +34,11 @@ import {
 export const BodyCell = ({
   column,
   item,
+  index,
 }: {
   column: ColumnType;
   item: KeyValue;
+  index: number;
 }) => {
   const { widths } = useTableContext();
 
@@ -61,7 +63,7 @@ export const BodyCell = ({
           column.align === "end" && "text-end",
         )}
       >
-        {column.renderer?.(item[column.id], item) ?? item[column.id]}
+        {column.renderer?.(item[column.id], item, index) ?? item[column.id]}
       </div>
     </div>
   );
