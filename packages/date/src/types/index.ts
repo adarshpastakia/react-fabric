@@ -96,10 +96,11 @@ export interface PresetType {
   label: string;
 }
 
-export interface SuperDateProps {
+export interface SuperDateProps extends TestProps {
   as?: "button" | "chip";
   color?: ColorType;
   variant?: "solid" | "outline" | "link";
+  disabled?: boolean;
   /**
    * relative date value
    */
@@ -112,6 +113,10 @@ export interface SuperDateProps {
    * list of calendar events
    */
   events?: EventType[];
+  /**
+   * list of calendar events
+   */
+  recurringEvents?: EventType[];
   /**
    * list of relative presets
    *

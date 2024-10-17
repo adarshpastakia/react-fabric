@@ -23,7 +23,7 @@
 
 import { Content, Section } from "@react-fabric/core";
 import { EMPTY_ARRAY } from "@react-fabric/utilities";
-import { endOfDay, isSameMonth, startOfDay } from "date-fns";
+import { endOfDay, isSameMonth, setYear, startOfDay } from "date-fns";
 import i18next from "i18next";
 import { useEffect, useReducer, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -44,8 +44,21 @@ type EventActions =
   | { type: "changePage"; page: PageType }
   | { type: "changePageDate"; date: Date; changePage?: boolean };
 
-const makeList = (year: number, predefined: Array<EventType<Date>> = []) => {
+const makeList = (
+  year: number,
+  recurring: EventType[] = [],
+  predefined: Array<EventType<Date>> = [],
+) => {
   const list = [...predefined];
+  recurring.forEach((evt) =>
+    list.push({
+      label: evt.label,
+      hijri: evt.hijri,
+      icon: evt.icon,
+      start: setYear(DateUtil.parseDate(evt.start), year),
+      end: setYear(DateUtil.parseDate(evt.end), year),
+    }),
+  );
   list.push({
     label: "superdate:event.newYear",
     start: startOfDay(new Date(`${year - 1}-12-31`)),
@@ -81,6 +94,7 @@ export const EventPanel = ({
   isHijri,
   onChange,
   events = EMPTY_ARRAY,
+  recurringEvents = EMPTY_ARRAY,
 }: { isHijri: boolean } & Partial<SuperDateProps>) => {
   const { t } = useTranslation();
   const [predefined, setPredefined] = useState<
@@ -106,7 +120,11 @@ export const EventPanel = ({
       }
       if (resetList) {
         const year = state.pageDate.getFullYear();
-        state.events = makeList(year, predefined[year] ?? []);
+        state.events = makeList(
+          year,
+          recurringEvents ?? [],
+          predefined[year] ?? [],
+        );
       }
       return { ...state };
     },

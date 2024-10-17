@@ -48,6 +48,7 @@ export const SuperDateTabs = ({
   events,
   value,
   presets,
+  recurringEvents,
   onChange,
 }: SuperDateProps) => {
   const { t } = useTranslation("superdate");
@@ -121,6 +122,7 @@ export const SuperDateTabs = ({
             isHijri={isHijri}
             onChange={handleChange}
             events={events}
+            recurringEvents={recurringEvents}
           />
         </Tab>
       </TabPanel>
@@ -146,8 +148,11 @@ export const SuperDate = ({
   as = "button",
   color = "primary",
   variant,
+  disabled,
   onChange,
   value,
+  "data-test-value": testValue,
+  "data-testid": testId,
   ...props
 }: SuperDateProps) => {
   const { currentCalendar, currentLocale } = useGlobals();
@@ -176,7 +181,14 @@ export const SuperDate = ({
   return (
     <Dropdown showArrow>
       <Tooltip content={DateUtil.relativeTooltip(relValue, isHijri)}>
-        <E icon={CoreIcons.clock} color={color} variant={variant as AnyObject}>
+        <E
+          icon={CoreIcons.clock}
+          color={color}
+          disabled={disabled}
+          variant={variant as AnyObject}
+          data-test-value={testValue}
+          data-testid={testId}
+        >
           {DateUtil.relativeLabel(relValue, isHijri) ?? ""}
         </E>
       </Tooltip>

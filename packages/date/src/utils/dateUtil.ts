@@ -157,7 +157,7 @@ export namespace DateUtil {
   };
 
   export const isRelative = (date: DateLike): date is string => {
-    return isString(date) && date.match(/^(\$\w+)([+-])(\d+)?$/) !== null;
+    return isString(date) && date.match(/^(\$\w+)([+-])?(\d+)?$/) !== null;
   };
 
   export const isRelativeRange = (date: DateLike): date is string => {
@@ -407,7 +407,7 @@ export namespace DateUtil {
     );
   };
 
-  export const parseDate = (datelike: string): Date => {
+  export const parseDate = (datelike: DateLike): Date => {
     return _parse(datelike);
   };
 
@@ -490,7 +490,8 @@ export namespace DateUtil {
     }
   };
 
-  const _parse = (dt: string, rounded?: "start" | "end") => {
+  const _parse = (dt: DateLike, rounded?: "start" | "end") => {
+    if (!isRelative(dt)) return new Date(dt);
     const [, part, diff = "0"] = dt.match(/^(\$\w+)([+-]\d+)?$/) ?? [];
     if (part) {
       let date = startOfMinute(new Date());

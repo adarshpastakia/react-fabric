@@ -47,6 +47,9 @@ export const _Superdate: Story = {
   },
   args: {
     value: "$year-2|$now",
+    recurringEvents: [
+      { label: "National Day", start: "2000-11-30", end: "2000-12-03" },
+    ],
     presets: [
       { value: "$year-2|$now", label: "Last 2 years" },
       { value: "$year-5|$now", label: "Last 5 years" },
