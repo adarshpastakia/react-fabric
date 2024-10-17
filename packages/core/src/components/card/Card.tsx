@@ -39,6 +39,7 @@ import {
   type AriaProps,
   type ChildrenProp,
   type CssProp,
+  type RefProp,
   type TestProps,
 } from "../../types";
 import { nodeCheck } from "../../utils";
@@ -48,6 +49,7 @@ export interface CardProps
   extends CssProp,
     AriaProps,
     TestProps,
+    RefProp<HTMLDivElement>,
     ChildrenProp<React.ReactElement<HeadFootProps | ContentProps>> {
   /**
    * apply flex fill styling
@@ -94,6 +96,7 @@ export const Card = ({
   draggable,
   dragKey,
   dragData,
+  ref,
   ...aria
 }: CardProps) => {
   const [header, body, footer] = useMemo(() => {
@@ -136,6 +139,7 @@ export const Card = ({
                   dragKey &&
                   e.dataTransfer?.setData(dragKey, JSON.stringify(dragData))
           }
+          ref={ref}
           {...aria}
         >
           {header}
