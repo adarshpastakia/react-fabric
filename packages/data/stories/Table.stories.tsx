@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Icon, Section, Viewport } from "@react-fabric/core";
+import { Avatar, Icon, Section, Title, Viewport } from "@react-fabric/core";
 import { Countries } from "@react-fabric/utilities";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Table } from "../src";
@@ -130,5 +130,16 @@ export const _Table: Story = {
   },
   args: {
     initialScroll: 18,
+    canExpand: () => true,
+    children: (data) => {
+      return (
+        <div className="flex flex-nowrap p-4 gap-2">
+          <Avatar size="2rem" name="" fallbackIcon={`flag ${data.iso2}`} />
+          <div className="flex-1">
+            <Title>{data.fullname}</Title>
+          </div>
+        </div>
+      );
+    },
   },
 };

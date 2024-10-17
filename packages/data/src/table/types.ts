@@ -94,4 +94,7 @@ export interface TableProps<T = KeyValue> extends RefProp<TableRef> {
 
   initialScroll?: number;
   onScroll?: (firstItem: number) => void;
+
+  canExpand?: (record: T) => boolean;
+  children?: (record: T) => Elements<AnyObject>;
 }

@@ -25,11 +25,15 @@ import { useVirtualizer } from "@tanstack/react-virtual";
 import { useCallback, useReducer, useRef } from "react";
 
 interface DataState {
+  expanded: Key[];
   checked: Key[];
   allChecked: 0 | 1 | 2;
 }
 
-type DataAction = { type: "check"; key: Key } | { type: "checkall" };
+type DataAction =
+  | { type: "expand"; key: Key }
+  | { type: "check"; key: Key }
+  | { type: "checkall" };
 
 export const useVirtualTable = (
   data: KeyValue[],
@@ -48,10 +52,16 @@ export const useVirtualTable = (
 
   const [state, dispatch] = useReducer(
     (state: DataState, action: DataAction) => {
+      if (action.type === "expand") {
+        if (state.expanded.includes(action.key))
+          state.expanded.splice(state.expanded.indexOf(action.key), 1);
+        else state.expanded.push(action.key);
+      }
       if (action.type === "check") {
         if (state.checked.includes(action.key))
           state.checked.splice(state.checked.indexOf(action.key), 1);
         else state.checked.push(action.key);
+        onCheckChanged?.(state.checked);
       }
       if (action.type === "checkall") {
         if (state.allChecked !== 0) {
@@ -59,8 +69,8 @@ export const useVirtualTable = (
         } else if (keyProperty) {
           state.checked = data.map((item) => item[keyProperty]);
         }
+        onCheckChanged?.(state.checked);
       }
-      onCheckChanged?.(state.checked);
       return {
         ...state,
         allChecked:
@@ -73,6 +83,7 @@ export const useVirtualTable = (
     },
     {
       checked: [],
+      expanded: [],
       allChecked: 0,
     },
   );
@@ -95,6 +106,7 @@ export const useVirtualTable = (
     top: virtualizer.range?.startIndex,
     totalSize: virtualizer.getTotalSize,
     measureElement: virtualizer.measureElement,
+    toggleExpand: (key: Key) => dispatch({ type: "expand", key }),
     toggleChecked: (key: Key) => dispatch({ type: "check", key }),
     toggleAllChecked: () => dispatch({ type: "checkall" }),
   };

@@ -23,7 +23,6 @@
 
 import { EmptyContent, Loading, useDebounce } from "@react-fabric/core";
 import { debounce } from "@react-fabric/utilities";
-import classNames from "classnames";
 import {
   useEffect,
   useImperativeHandle,
@@ -33,7 +32,7 @@ import {
 } from "react";
 import { useTranslation } from "react-i18next";
 import { AddColumn } from "./AddColumn";
-import { BodyCell } from "./BodyCell";
+import { BodyRow } from "./BodyRow";
 import { CheckboxCell } from "./CheckboxCell";
 import { TableProvider } from "./Context";
 import { EmptyCell } from "./EmptyCell";
@@ -53,6 +52,8 @@ export const Table = <T extends KeyValue = KeyValue>({
   sort,
   loading,
   emptyDisplay,
+  canExpand,
+  children,
   onSort,
   onScroll,
   onRowClick,
@@ -71,6 +72,7 @@ export const Table = <T extends KeyValue = KeyValue>({
     top,
     checkState,
     virtualizer,
+    toggleExpand,
     toggleChecked,
     toggleAllChecked,
     getData,
@@ -144,6 +146,7 @@ export const Table = <T extends KeyValue = KeyValue>({
       >
         <div className="bg-base font-medium sticky top-0 area-head border-b select-none flex flex-nowrap z-2">
           <div className={wrapperStart}>
+            {canExpand && <div className="w-6" />}
             {checkableRows && (
               <CheckboxCell
                 state={checkState.allChecked}
@@ -181,65 +184,39 @@ export const Table = <T extends KeyValue = KeyValue>({
             {items.map(({ index, key }) => {
               const data = getData(index);
               return (
-                <div
-                  key={key}
-                  role="none"
-                  data-row={index}
-                  className={classNames(
-                    "flex flex-nowrap datatable-row data-[hilight]:outline-1 -outline-offset-1 outline-primary-500",
-                    index % 2 ? "bg-even" : "bg-odd",
-                    onRowClick && "hover:bg-primary-50 active:bg-primary-100",
-                  )}
-                  onClick={() =>
-                    checkableRows && keyProperty && !onRowClick
-                      ? toggleChecked(data[keyProperty])
-                      : onRowClick?.(data)
+                <BodyRow
+                  rowKey={key}
+                  index={index}
+                  checkableRows={checkableRows}
+                  checked={
+                    keyProperty &&
+                    checkState.checked.includes(data[keyProperty])
+                      ? 1
+                      : 0
                   }
-                  data-index={index}
-                  ref={measureElement}
-                >
-                  <div className={wrapperStart}>
-                    {checkableRows && keyProperty && (
-                      <CheckboxCell
-                        onClick={() => toggleChecked(data[keyProperty])}
-                        state={
-                          checkState.checked.includes(data[keyProperty]) ? 1 : 0
-                        }
-                      />
-                    )}
-                    {state.start?.map((col, ids) => (
-                      <BodyCell
-                        key={`${key}:${ids}`}
-                        column={col}
-                        item={data}
-                        index={ids}
-                      />
-                    ))}
-                  </div>
-                  {state.cols?.map((col, idc) => (
-                    <BodyCell
-                      key={`${key}:${idc}`}
-                      column={col}
-                      item={data}
-                      index={idc}
-                    />
-                  ))}
-                  <div className={wrapperEnd}>
-                    {state.end?.map((col, ide) => (
-                      <BodyCell
-                        key={`${key}:${ide}`}
-                        column={col}
-                        item={data}
-                        index={ide}
-                      />
-                    ))}
-                    {hideableColumns && <div className="w-6" />}
-                  </div>
-                </div>
+                  expanded={
+                    !!keyProperty &&
+                    checkState.expanded.includes(data[keyProperty])
+                  }
+                  data={data}
+                  hideableColumns={hideableColumns}
+                  keyProperty={keyProperty}
+                  measureElement={measureElement}
+                  onRowClick={onRowClick}
+                  state={state}
+                  canExpand={canExpand}
+                  toggleExpand={toggleExpand}
+                  expandRow={children}
+                  toggleChecked={toggleChecked}
+                  wrapperEnd={wrapperEnd}
+                  wrapperStart={wrapperStart}
+                  key={key}
+                />
               );
             })}
             <div className="flex-1 flex flex-nowrap">
               <div className={wrapperStart}>
+                {canExpand && <div className="w-6" />}
                 {checkableRows && <div className="w-6" />}
                 {state.start?.map((col) => (
                   <EmptyCell key={String(col.id)} {...col} />
