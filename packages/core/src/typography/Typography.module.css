@@ -57,7 +57,7 @@
   }
 
   .mark {
-    --mark-color: var(--accent);
+    --mark-color: var(--primary);
 
     background-color: color-mix(
       in lab,
