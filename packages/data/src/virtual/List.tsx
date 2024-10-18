@@ -29,6 +29,7 @@
  */
 
 import { Skeleton, useDebounce } from "@react-fabric/core";
+import { type TestProps } from "@react-fabric/core/dist/types/types";
 import { debounce } from "@react-fabric/utilities";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import classNames from "classnames";
@@ -54,7 +55,7 @@ export interface VirtualListRef {
   unhilight: () => void;
 }
 
-export interface VirtualListProps<T> {
+export interface VirtualListProps<T> extends TestProps {
   children: (props: {
     data: T;
     index: number;
@@ -120,6 +121,7 @@ const _VirtualList = <T extends KeyValue>({
   onLoadMore,
   onScroll,
   listRef,
+  ...aria
 }: VirtualListProps<T>) => {
   const count = useDeferredValue(items.length);
   const extraSize = useMemo(() => (onLoadMore ? 64 : 0), [onLoadMore]);
@@ -258,6 +260,7 @@ const _VirtualList = <T extends KeyValue>({
       className={classNames(
         "area-content bg-base overflow-auto contain-strict",
       )}
+      {...aria}
     >
       <div
         className={classNames(

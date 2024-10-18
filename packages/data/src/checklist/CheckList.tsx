@@ -22,12 +22,14 @@
  */
 
 import { Badge, CoreIcons, EmptyContent, Icon } from "@react-fabric/core";
-import { type BadgeType } from "@react-fabric/core/dist/types/types";
+import {
+  type BadgeType,
+  type TestProps,
+} from "@react-fabric/core/dist/types/types";
 import { isString } from "@react-fabric/utilities";
 import {
   Fragment,
   isValidElement,
-  memo,
   useEffect,
   useMemo,
   useState,
@@ -47,7 +49,7 @@ export interface CheckListItem extends KeyValue {
   isDisabled?: boolean;
 }
 
-export interface CheckListProps extends SelectableProps {
+export interface CheckListProps extends SelectableProps, TestProps {
   /**
    * list items
    */
@@ -73,84 +75,79 @@ const CheckItem: FC<
     selected?: number;
     allowNegative?: boolean;
   }
-> = memo(
-  ({
-    id,
-    allowNegative,
-    selected,
-    icon,
-    label,
-    isDisabled,
-    onClick,
-    badge,
-  }: Omit<CheckListItem, "selected"> & {
-    selected?: number;
-    allowNegative?: boolean;
-  }) => {
-    return (
-      <div
-        role="none"
-        className="ax-checkList__item"
-        data-disabled={isDisabled}
-        onClick={() => onClick(id, false)}
-        onContextMenu={(e) => [
-          allowNegative && onClick(id, true),
-          e.preventDefault(),
-        ]}
-      >
-        {!allowNegative && (
+> = ({
+  id,
+  allowNegative,
+  selected,
+  icon,
+  label,
+  isDisabled,
+  onClick,
+  badge,
+  ...aria
+}: Omit<CheckListItem, "selected"> & {
+  selected?: number;
+  allowNegative?: boolean;
+}) => {
+  return (
+    <div
+      role="none"
+      className="ax-checkList__item"
+      data-disabled={isDisabled}
+      onClick={() => onClick(id, false)}
+      onContextMenu={(e) => [
+        allowNegative && onClick(id, true),
+        e.preventDefault(),
+      ]}
+      {...aria}
+    >
+      {!allowNegative && (
+        <Icon
+          data-type="checkbox"
+          className="ax-checkList__checkbox"
+          data-selected={selected === 1}
+          icon={selected ? CoreIcons.checkboxInt : CoreIcons.checkboxOff}
+        />
+      )}
+      {allowNegative && (
+        <Fragment>
           <Icon
-            data-type="checkbox"
+            data-type="multiple"
             className="ax-checkList__checkbox"
-            data-selected={selected === 1}
-            icon={selected ? CoreIcons.checkboxInt : CoreIcons.checkboxOff}
+            icon={
+              selected === 1
+                ? CoreIcons.expand
+                : selected === -1
+                  ? CoreIcons.collapse
+                  : CoreIcons.checkboxOff
+            }
+            data-selected={selected}
           />
-        )}
-        {allowNegative && (
-          <Fragment>
+          <div className="ax-checkList__checkbox">
             <Icon
-              data-type="multiple"
-              className="ax-checkList__checkbox"
-              icon={
-                selected === 1
-                  ? CoreIcons.expand
-                  : selected === -1
-                    ? CoreIcons.collapse
-                    : CoreIcons.checkboxOff
-              }
-              data-selected={selected}
+              data-type="positive"
+              onClick={(e) => [(onClick(id, false), e.stopPropagation())]}
+              icon={selected === 1 ? CoreIcons.expandActive : CoreIcons.expand}
+              data-selected={selected === 1}
             />
-            <div className="ax-checkList__checkbox">
-              <Icon
-                data-type="positive"
-                onClick={(e) => [(onClick(id, false), e.stopPropagation())]}
-                icon={
-                  selected === 1 ? CoreIcons.expandActive : CoreIcons.expand
-                }
-                data-selected={selected === 1}
-              />
-              <Icon
-                data-type="negative"
-                onClick={(e) => [(onClick(id, true), e.stopPropagation())]}
-                icon={
-                  selected === -1
-                    ? CoreIcons.collapseActive
-                    : CoreIcons.collapse
-                }
-                data-selected={selected === -1}
-              />
-            </div>
-          </Fragment>
-        )}
-        {isValidElement(icon) && icon}
-        {isString(icon) && <Icon icon={icon} />}
-        <label>{label}</label>
-        <Badge {...badge} />
-      </div>
-    );
-  },
-);
-CheckItem.displayName = "CheckItem";
+            <Icon
+              data-type="negative"
+              onClick={(e) => [(onClick(id, true), e.stopPropagation())]}
+              icon={
+                selected === -1 ? CoreIcons.collapseActive : CoreIcons.collapse
+              }
+              data-selected={selected === -1}
+            />
+          </div>
+        </Fragment>
+      )}
+      {isValidElement(icon) && icon}
+      {isString(icon) && <Icon icon={icon} />}
+      <label>{label}</label>
+      <Badge {...badge} />
+    </div>
+  );
+};
 
 export const CheckList: FC<CheckListProps> = ({
   items = [],
@@ -158,12 +155,19 @@ export const CheckList: FC<CheckListProps> = ({
   allowNegative,
   emptyMessage,
   sortItems = true,
-  ...props
+  selected,
+  nonselected,
+  onChange,
+  onClick,
+  ...aria
 }: CheckListProps) => {
   const { t } = useTranslation("data");
   const { selection, toggleSelection } = useSelectableList({
     items,
-    ...props,
+    selected,
+    nonselected,
+    onChange,
+    onClick,
   });
   const [showMore, setShowMore] = useState(false);
 
@@ -186,7 +190,7 @@ export const CheckList: FC<CheckListProps> = ({
   }, [items, selection, maxCount, showMore, sortItems]);
 
   return (
-    <div className="ax-checkList">
+    <div {...aria}>
       {listItems.map((item, index) => (
         <CheckItem
           {...item}

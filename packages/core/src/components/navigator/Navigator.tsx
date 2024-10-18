@@ -61,6 +61,7 @@ export const Navigator = ({
         color={color}
         className="text-[1em] p-1"
         aria-label="previous"
+        data-testid="previous"
         icon={CoreIcons.chevronLeft}
         onClick={(e) => [e.stopPropagation(), onNavigate(-1)]}
       />
@@ -69,6 +70,7 @@ export const Navigator = ({
         className="text-[1em] p-1"
         color={color}
         aria-label="next"
+        data-testid="next"
         icon={CoreIcons.chevronRight}
         onClick={(e) => [e.stopPropagation(), onNavigate(1)]}
       />

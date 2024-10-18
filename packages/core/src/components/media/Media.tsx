@@ -24,12 +24,12 @@
 import { getImageColorset } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useMemo, useRef, useState } from "react";
-import { type AriaProps, type CssProp } from "../../types";
+import { type AriaProps, type CssProp, type TestProps } from "../../types";
 import { CoreIcons } from "../../types/icons";
 import { Button } from "../button/Button";
 import classes from "./Media.module.css";
 
-export interface BaseProps extends CssProp, AriaProps {
+export interface BaseProps extends CssProp, TestProps, AriaProps {
   /**
    * media source
    */

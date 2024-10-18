@@ -140,6 +140,7 @@ export const SearchBar = ({
             onInput={() => dispatch({ type: "dirty", dirty: true })}
             onSelect={updateHistory}
             onQuery={onQuery}
+            data-testid="searchbar-input"
             onEnterPressed={() => fireSearch(state.query, state.filters)}
           />
           {append}

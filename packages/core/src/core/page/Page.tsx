@@ -66,6 +66,7 @@ export const Page = ({
     <div
       data-testid={testId}
       data-test-value={testValue}
+      data-loading={loading}
       className={classNames(
         classes.page,
         "overflow-hidden grid area-content",

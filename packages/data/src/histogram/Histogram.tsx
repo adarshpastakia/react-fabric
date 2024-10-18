@@ -31,6 +31,7 @@ import {
 import {
   type ColorType,
   type PaletteType,
+  type TestProps,
 } from "@react-fabric/core/dist/types/types";
 import { compareValues, Format } from "@react-fabric/utilities";
 import classNames from "classnames";
@@ -49,7 +50,7 @@ interface HistogramItem {
   disabled?: boolean;
 }
 
-export interface HistogramProps {
+export interface HistogramProps extends TestProps {
   /**
    * histogram items list
    */
@@ -88,6 +89,7 @@ export const Histogram = ({
   emptyTitle,
   emptyMessage,
   onClick,
+  ...aria
 }: HistogramProps) => {
   const { t } = useTranslation("data");
   const maxTotal = useMemo(() => {
@@ -104,6 +106,7 @@ export const Histogram = ({
   return (
     <div
       className={classes.histogram}
+      {...aria}
       style={
         {
           "--color": `var(--${color})`,
@@ -127,6 +130,7 @@ export const Histogram = ({
             classes.histoLabel,
             (item.count === 0 || item.disabled) && "pointer-events-none",
           )}
+          data-testid={item.id}
           onClick={(e) => [onClick?.(item.id), e.stopPropagation()]}
         >
           <div

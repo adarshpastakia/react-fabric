@@ -22,12 +22,21 @@
  */
 
 import classNames from "classnames";
-import { type ReactElement, useCallback } from "react";
-import { type AriaProps, type ChildProp, type CssProp } from "../../types";
+import { useCallback, type ReactElement } from "react";
+import {
+  type AriaProps,
+  type ChildProp,
+  type CssProp,
+  type TestProps,
+} from "../../types";
 import { ButtonGroup } from "../button/ButtonGroup";
 import classes from "./ActionLabel.module.css";
 
-export interface ActionLabelProps extends AriaProps, CssProp, ChildProp {
+export interface ActionLabelProps
+  extends AriaProps,
+    CssProp,
+    ChildProp,
+    TestProps {
   /**
    * action buttons aligment
    */

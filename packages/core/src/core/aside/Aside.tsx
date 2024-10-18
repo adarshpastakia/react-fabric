@@ -200,6 +200,7 @@ export const Aside = ({
       className={classNames(classes.aside, className, "overflow-hidden grid")}
       data-align={align}
       data-flyout={peek}
+      data-loading={loading}
       data-collapsed={isCollapsed}
       style={isCollapsed ? undefined : widthStyles}
       data-testid={testId}
@@ -211,6 +212,7 @@ export const Aside = ({
           headerClassName,
           "grid area-head items-center",
         )}
+        data-testid="aside-header"
       >
         {title && (
           <div
@@ -264,6 +266,7 @@ export const Aside = ({
           "overflow-hidden grid",
         )}
         style={isCollapsed ? widthStyles : undefined}
+        data-testid="aside-body"
       >
         <ErrorBoundary>{children}</ErrorBoundary>
       </section>

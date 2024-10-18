@@ -22,6 +22,7 @@
  */
 
 import { Skeleton, useDebounce, useEffectDebugger } from "@react-fabric/core";
+import { type TestProps } from "@react-fabric/core/dist/types/types";
 import { debounce } from "@react-fabric/utilities";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import classNames from "classnames";
@@ -47,7 +48,7 @@ export interface VirtualGalleryRef {
   unhilight: () => void;
 }
 
-export interface VirtualGalleryProps<T> {
+export interface VirtualGalleryProps<T> extends TestProps {
   children: (props: {
     data: T;
     index: number;
@@ -108,6 +109,7 @@ const _VirtualGallery = <T extends KeyValue>({
   onLoadMore,
   onScroll,
   galleryRef,
+  ...aria
 }: VirtualGalleryProps<T>) => {
   const count = useDeferredValue(items.length);
   const extraSize = useMemo(() => (onLoadMore ? 64 : 0), [onLoadMore]);
@@ -275,6 +277,7 @@ const _VirtualGallery = <T extends KeyValue>({
       className={classNames(
         "area-content bg-base overflow-auto contain-strict",
       )}
+      {...aria}
     >
       <div
         className={classNames(

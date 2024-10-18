@@ -248,6 +248,7 @@ const DropdownElement = ({
                 zIndex: "var(--z-popover)",
                 ...floatingStyles,
               }}
+              data-testid="dropdown-body"
               {...getFloatingProps({
                 onClick: (e) => e.stopPropagation(),
               })}

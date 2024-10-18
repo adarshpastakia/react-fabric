@@ -226,6 +226,7 @@ export const CodeEditor = ({
     <Section>
       <div
         ref={containerRef}
+        data-testid="code-editor"
         className={classNames(classes.codeEditor, "area-content")}
       >
         <MonacoEditor
