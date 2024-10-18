@@ -22,18 +22,19 @@
  */
 
 import {
-  FloatingArrow,
-  FloatingFocusManager,
-  FloatingPortal,
   arrow,
   autoUpdate,
   flip,
+  FloatingArrow,
+  FloatingFocusManager,
+  FloatingPortal,
   offset,
   shift,
   useClick,
   useDismiss,
   useFloating,
   useInteractions,
+  type Placement,
 } from "@floating-ui/react";
 import { mergeRefs } from "@react-fabric/utilities";
 import classNames from "classnames";
@@ -67,6 +68,10 @@ interface ExtendedProps extends Omit<BaseProps, "onClick">, RefProp {
    */
   cancelLabel?: string;
   /**
+   * dropdown placement
+   */
+  placement?: Placement;
+  /**
    * click handler, return Promise to autoset loading state
    */
   onClick?: (e: boolean) => CallbackReturn;
@@ -85,6 +90,7 @@ export const ConfirmButton = <Tag extends React.ElementType = "button">({
   cancelLabel,
   onClick,
   loading,
+  placement = "bottom",
   actionMessage,
   showActionDone,
   showActionDoneEvent = "click",
@@ -127,7 +133,7 @@ export const ConfirmButton = <Tag extends React.ElementType = "button">({
       }
     },
     strategy: "fixed",
-    placement: "bottom",
+    placement,
     whileElementsMounted: autoUpdate,
     middleware: [
       shift({ padding: 8 }),

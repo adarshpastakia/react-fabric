@@ -29,30 +29,41 @@ import {
   useClick,
   useDismiss,
   useFloating,
+  useFloatingNodeId,
   useInteractions,
 } from "@floating-ui/react";
-import { cloneElement, useRef, useState } from "react";
+import { cloneElement, useEffect, useRef, useState } from "react";
 import { type ChildrenProp } from "../../types";
 import { type Menu } from "./Menu";
 
 export interface ContextMenuProps extends ChildrenProp {
   menu: React.ReactElement<typeof Menu>;
+
+  disabled?: boolean;
 }
 
-export const ContextMenu = ({ children, menu }: ContextMenuProps) => {
+export const ContextMenu = ({ children, menu, disabled }: ContextMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const nodeId = useFloatingNodeId();
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
-    onOpenChange: setIsOpen,
+    nodeId,
+    onOpenChange: (open, evt, reason) => {
+      const target = evt?.target as HTMLElement;
+      if (!target?.closest(".menu-list")) setIsOpen(open);
+    },
     strategy: "fixed",
     placement: "bottom-start",
     whileElementsMounted: autoUpdate,
     middleware: [offset(8), flip()],
   });
 
-  const click = useClick(context, {});
-  const dismiss = useDismiss(context, {});
+  const click = useClick(context, {
+    toggle: true,
+    ignoreMouse: true,
+  });
+  const dismiss = useDismiss(context, { bubbles: true });
 
   const { getFloatingProps } = useInteractions([dismiss, click]);
 
@@ -78,10 +89,19 @@ export const ContextMenu = ({ children, menu }: ContextMenuProps) => {
     return false;
   });
 
-  const wrapperRef = useRef((el: HTMLElement) => {
-    el?.parentElement?.removeEventListener("contextmenu", handleClick.current);
-    el?.parentElement?.addEventListener("contextmenu", handleClick.current);
-  });
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = wrapperRef.current;
+    if (el && !disabled) {
+      el?.parentElement?.addEventListener("contextmenu", handleClick.current);
+      return () => {
+        el?.parentElement?.removeEventListener(
+          "contextmenu",
+          handleClick.current,
+        );
+      };
+    }
+  }, [disabled]);
 
   const tryClosing = useRef((e: React.MouseEvent) => {
     if ((e.target as HTMLElement)?.closest("[data-dropdown-dismiss='true']"))
@@ -91,12 +111,17 @@ export const ContextMenu = ({ children, menu }: ContextMenuProps) => {
   return (
     <div
       className="contents"
-      ref={wrapperRef.current as AnyObject}
+      ref={wrapperRef}
       onMouseUpCapture={tryClosing.current}
     >
       {children}
       {isOpen && (
-        <FloatingPortal>
+        <FloatingPortal
+          root={
+            refs.domReference.current?.closest<HTMLElement>(".theme-base") ??
+            undefined
+          }
+        >
           {cloneElement(menu as AnyObject, {
             ...getFloatingProps(),
             style: {

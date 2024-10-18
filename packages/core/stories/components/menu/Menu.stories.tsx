@@ -100,6 +100,10 @@ export const _Menu: MenuStory = {
           <Menu label="Floating Item">
             <MenuItem id="inner1" label="Inner Item" />
             <MenuItem id="inner2" label="Inner Item" />
+            <Menu label="Floating Item">
+              <MenuItem id="inner1.1" label="Inner Item" />
+              <MenuItem id="inner1.2" label="Inner Item" />
+            </Menu>
           </Menu>
           <div className="flex-1" />
           <MenuItem id="delete" color="danger" label="Danger Item" />
@@ -107,7 +111,7 @@ export const _Menu: MenuStory = {
       </Fragment>
     );
   },
-  args: { onClick: fn() },
+  args: { onClick: fn() as AnyObject },
 };
 
 export const Minimal: MenuStory = {
@@ -115,7 +119,7 @@ export const Minimal: MenuStory = {
     return (
       <Fragment>
         <Menu
-          {...args}
+          {...(args as AnyObject)}
           label={undefined}
           menuClassName={undefined}
           minimal
@@ -145,11 +149,11 @@ export const Minimal: MenuStory = {
       </Fragment>
     );
   },
-  args: { onClick: fn() },
+  args: { onClick: fn() as AnyObject },
 };
 
 export const _ContextMenu: MenuStory = {
-  render: (args) => {
+  render: (args: AnyObject) => {
     const menu = useMemo(
       () => (
         <Menu onClick={action("context-menu")}>
@@ -173,11 +177,11 @@ export const _ContextMenu: MenuStory = {
     );
     return (
       <div className="w-screen max-w-lg aspect-video outline rounded-capped flex items-center justify-center">
-        <ContextMenu menu={menu}>
+        <ContextMenu menu={menu} disabled={args.disabled}>
           <Title>Context menu for container</Title>
         </ContextMenu>
       </div>
     );
   },
-  args: { onClick: fn() },
+  args: { onClick: fn() as AnyObject },
 };

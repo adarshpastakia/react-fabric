@@ -224,7 +224,7 @@ const MenuComponent = ({
                     "outline shadow-lg rounded-capped max-h-96 overflow-auto scroll-thin z-[var(--z-popover)]",
                 )}
                 autoFocus
-                ref={mergeRefs(refs.setFloating, isNested ? undefined : ref)}
+                ref={mergeRefs(isNested ? refs.setFloating : ref)}
                 {...getFloatingProps({
                   onClick: isNested ? undefined : handleClick,
                 })}
