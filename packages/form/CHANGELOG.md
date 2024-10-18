@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.6](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2024-10-18)
+
+### Bug Fixes
+
+- **ArrayInput:** inline and width props ([faf0f82](https://github.com/adarshpastakia/react-ui-framework/commit/faf0f82de3b986dcc6b636ba54aa7d32b0e5aa28))
+- **RadioGroup:** add optionWidth prop ([c3669dc](https://github.com/adarshpastakia/react-ui-framework/commit/c3669dce83ec8c230b68b20377b5515ee1ddcf44))
+- **Switch:** add on/off labels ([fbb807b](https://github.com/adarshpastakia/react-ui-framework/commit/fbb807bf43461cd3e438fcfb3d84b5626213a7af))
+
 # [1.0.0-beta.5](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-10-16)
 
 ### Bug Fixes

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.6](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2024-10-18)
+
+### Bug Fixes
+
+- **Table:** add expandable rows ([a09318d](https://github.com/adarshpastakia/react-ui-framework/commit/a09318d2f99f8bac85928be6976bb9f93e324040))
+- **Table:** add onScroll and initialScroll ([0aa089f](https://github.com/adarshpastakia/react-ui-framework/commit/0aa089faf4751aad35d3d3f849ee1389f8339a60))
+- **Table:** formatted content by dataType ([4e7e623](https://github.com/adarshpastakia/react-ui-framework/commit/4e7e6236117aac8ce1b69a13105c5f8a69354ff4))
+- **TableHeader:** add tooltip prop ([c983583](https://github.com/adarshpastakia/react-ui-framework/commit/c98358371fafc2340985a2572d6da63ec158674d))
+- **Table:** send index as param for renderer ([2d774ef](https://github.com/adarshpastakia/react-ui-framework/commit/2d774efde94a848fb48b60c2a95996ec3bb366c3))
+
 # [1.0.0-beta.5](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-10-16)
 
 **Note:** Version bump only for package @react-fabric/data

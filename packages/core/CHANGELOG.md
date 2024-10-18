@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.6](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2024-10-18)
+
+### Bug Fixes
+
+- **Animations:** add testId ([c9cf93a](https://github.com/adarshpastakia/react-ui-framework/commit/c9cf93a5e6677c9251d495a86447d8371748e7ce))
+- **Card:** add ref prop ([6811150](https://github.com/adarshpastakia/react-ui-framework/commit/6811150780928735baeea6a6dcfdb6ae8ba36a86))
+- **Collapsable:** sticky header ([f77d6b5](https://github.com/adarshpastakia/react-ui-framework/commit/f77d6b5b674f14ded0d6553583778a08922cea44))
+- **Content:** extend scroll event object ([7a14f0b](https://github.com/adarshpastakia/react-ui-framework/commit/7a14f0b8b669d791d6387cce8ad3c20b3fb2ec17))
+- **ContextMenu:** add disabled prop ([07bd181](https://github.com/adarshpastakia/react-ui-framework/commit/07bd1818b503b0526e30f450905e8cacf88d0f5a))
+- **DropdownTool:** add cutom icon prop ([7760728](https://github.com/adarshpastakia/react-ui-framework/commit/7760728cbe16f5710e9cabe478b45fe1c4464b3b))
+- **Tab:** allow string as badge ([b30b67d](https://github.com/adarshpastakia/react-ui-framework/commit/b30b67d077d33a08b59f3f7660581006d236f7e0))
+- **TabButton:** add tooltip wrapper ([779bf08](https://github.com/adarshpastakia/react-ui-framework/commit/779bf08e51fd686823c46a4969efc6ed3e624af8))
+
 # [1.0.0-beta.5](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-10-16)
 
 ### Bug Fixes

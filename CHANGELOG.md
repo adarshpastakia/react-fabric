@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.6](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2024-10-18)
+
+### Bug Fixes
+
+- **Animations:** add testId ([c9cf93a](https://github.com/adarshpastakia/react-fabric/commit/c9cf93a5e6677c9251d495a86447d8371748e7ce))
+- **ArrayInput:** inline and width props ([faf0f82](https://github.com/adarshpastakia/react-fabric/commit/faf0f82de3b986dcc6b636ba54aa7d32b0e5aa28))
+- **Card:** add ref prop ([6811150](https://github.com/adarshpastakia/react-fabric/commit/6811150780928735baeea6a6dcfdb6ae8ba36a86))
+- **CodeEditor:** add handlebar suggestions ([f688413](https://github.com/adarshpastakia/react-fabric/commit/f68841386218325980300726605726f3f82c745e))
+- **Collapsable:** sticky header ([f77d6b5](https://github.com/adarshpastakia/react-fabric/commit/f77d6b5b674f14ded0d6553583778a08922cea44))
+- **Content:** extend scroll event object ([7a14f0b](https://github.com/adarshpastakia/react-fabric/commit/7a14f0b8b669d791d6387cce8ad3c20b3fb2ec17))
+- **ContextMenu:** add disabled prop ([07bd181](https://github.com/adarshpastakia/react-fabric/commit/07bd1818b503b0526e30f450905e8cacf88d0f5a))
+- **DropdownTool:** add cutom icon prop ([7760728](https://github.com/adarshpastakia/react-fabric/commit/7760728cbe16f5710e9cabe478b45fe1c4464b3b))
+- **RadioGroup:** add optionWidth prop ([c3669dc](https://github.com/adarshpastakia/react-fabric/commit/c3669dce83ec8c230b68b20377b5515ee1ddcf44))
+- **Superdate:** add recurring events prop ([8970e44](https://github.com/adarshpastakia/react-fabric/commit/8970e4486881f10c2cba14e66e63f18c03147109))
+- **Switch:** add on/off labels ([fbb807b](https://github.com/adarshpastakia/react-fabric/commit/fbb807bf43461cd3e438fcfb3d84b5626213a7af))
+- **Tab:** allow string as badge ([b30b67d](https://github.com/adarshpastakia/react-fabric/commit/b30b67d077d33a08b59f3f7660581006d236f7e0))
+- **TabButton:** add tooltip wrapper ([779bf08](https://github.com/adarshpastakia/react-fabric/commit/779bf08e51fd686823c46a4969efc6ed3e624af8))
+- **Table:** add expandable rows ([a09318d](https://github.com/adarshpastakia/react-fabric/commit/a09318d2f99f8bac85928be6976bb9f93e324040))
+- **Table:** add onScroll and initialScroll ([0aa089f](https://github.com/adarshpastakia/react-fabric/commit/0aa089faf4751aad35d3d3f849ee1389f8339a60))
+- **Table:** formatted content by dataType ([4e7e623](https://github.com/adarshpastakia/react-fabric/commit/4e7e6236117aac8ce1b69a13105c5f8a69354ff4))
+- **TableHeader:** add tooltip prop ([c983583](https://github.com/adarshpastakia/react-fabric/commit/c98358371fafc2340985a2572d6da63ec158674d))
+- **Table:** send index as param for renderer ([2d774ef](https://github.com/adarshpastakia/react-fabric/commit/2d774efde94a848fb48b60c2a95996ec3bb366c3))
+
 # [1.0.0-beta.5](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-10-16)
 
 ### Bug Fixes

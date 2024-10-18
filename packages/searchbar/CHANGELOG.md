@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.6](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2024-10-18)
+
+### Bug Fixes
+
+- **CodeEditor:** add handlebar suggestions ([f688413](https://github.com/adarshpastakia/react-ui-framework/commit/f68841386218325980300726605726f3f82c745e))
+
 # [1.0.0-beta.5](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-10-16)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.6](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2024-10-18)
+
+### Bug Fixes
+
+- **Superdate:** add recurring events prop ([8970e44](https://github.com/adarshpastakia/react-ui-framework/commit/8970e4486881f10c2cba14e66e63f18c03147109))
+
 # [1.0.0-beta.5](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-10-16)
 
 **Note:** Version bump only for package @react-fabric/date
