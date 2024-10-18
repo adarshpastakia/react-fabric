@@ -22,8 +22,8 @@
  */
 
 import {
-  type CssProp,
   type ChildrenProp,
+  type CssProp,
 } from "@react-fabric/core/dist/types/types";
 import { Children, cloneElement } from "react";
 import { FieldWrapper } from "../internal/FieldWrapper";
@@ -42,6 +42,23 @@ export interface RadioGroupProps extends ChildrenProp<typeof Radio>, CssProp {
    * field info
    */
   info?: string;
+
+  /**
+   * field width
+   */
+  width?: number | string;
+  /**
+   * inline label and input
+   */
+  inline?: boolean;
+  /**
+   * label width for inline
+   */
+  labelWidth?: string;
+  /**
+   * label width for inline
+   */
+  optionWidth?: string;
   /**
    * field name
    */
@@ -60,6 +77,7 @@ export const RadioGroup = ({
   children,
   name,
   className,
+  optionWidth,
   onChange,
   ...rest
 }: RadioGroupProps) => {
@@ -67,7 +85,11 @@ export const RadioGroup = ({
     <FieldWrapper {...rest}>
       <div className={className}>
         {Children.map(children, (child) =>
-          cloneElement(child as AnyObject, { name, onChange }),
+          cloneElement(child as AnyObject, {
+            name,
+            onChange,
+            width: optionWidth,
+          }),
         )}
       </div>
     </FieldWrapper>
