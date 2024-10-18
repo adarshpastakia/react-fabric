@@ -21,10 +21,32 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-export { AudioPlayer, type AudioPlayerRef } from "./audio/AudioPlayer";
-export { type CanvasRef as ImageViewerRef } from "./canvas/Context";
-export { Dictation } from "./dictation/Dictation";
-export { ImageViewer } from "./image/ImageViewer";
-export { Thumbnail } from "./thumbnail/Thumbnail";
-export { type VideoPlayerRef } from "./video/types";
-export { VideoPlayer } from "./video/VideoPlayer";
+import { SearchBar } from "@react-fabric/searchbar";
+import { action } from "@storybook/addon-actions";
+import type { Meta, StoryObj } from "@storybook/react";
+import { Dictation } from "../src";
+
+const meta: Meta = {
+  component: Dictation,
+  title: "@media/Dictation",
+  parameters: {
+    layout: "centered",
+    jest: ["media/tests/Dictation.test.tsx"],
+  },
+};
+
+export default meta;
+type DictationStory = StoryObj<typeof Dictation>;
+
+export const _Dictation: DictationStory = {
+  render: (args) => {
+    return (
+      <div className="">
+        <Dictation {...args} />
+      </div>
+    );
+  },
+  args: {
+    onRecord: action("onRecord"),
+  },
+};
