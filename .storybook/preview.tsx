@@ -49,10 +49,10 @@ export default {
   parameters: {
     layout: "centered",
     backgrounds: { disable: true, grid: { disable: true } },
-    actions: { argTypesRegex: "^on.*" },
+    actions: { argTypesRegex: "^on(?!Label).*" },
     a11y: {},
     controls: {
-      exclude: /^on.*/,
+      exclude: /^on(?!Label).*/,
       sort: "requiredFirst",
       matchers: {
         date: /^date$/,

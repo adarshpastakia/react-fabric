@@ -27,6 +27,7 @@ import {
 } from "@react-fabric/core/dist/types/types";
 import classNames from "classnames";
 import {
+  Fragment,
   useCallback,
   useDeferredValue,
   useEffect,
@@ -34,7 +35,7 @@ import {
   type ChangeEvent,
 } from "react";
 import { ErrorIcon } from "../internal/ErrorIcon";
-import { getBgClass, getColor } from "../utils";
+import { getBgClass, getColor, getColorClass } from "../utils";
 
 export interface SwitchProps extends RefProp<HTMLInputElement> {
   /**
@@ -71,13 +72,19 @@ export interface SwitchProps extends RefProp<HTMLInputElement> {
   /**
    * cutom Switch icon
    */
-  color?: ColorType;
+  color?: string | ColorType;
   /**
    * cutom Switch icon
    */
-  defaultColor?: ColorType;
+  defaultColor?: string | ColorType;
 
   name?: string;
+
+  onLabel?: string;
+  onLabelColor?: string | ColorType;
+
+  offLabel?: string;
+  offLabelColor?: string | ColorType;
 }
 
 export const Switch = ({
@@ -90,6 +97,10 @@ export const Switch = ({
   width,
   color,
   name,
+  onLabel,
+  offLabel,
+  onLabelColor,
+  offLabelColor,
   defaultColor,
   onChange,
   ...rest
@@ -125,7 +136,7 @@ export const Switch = ({
           actualValue && getBgClass(color ? `${color}-500` : "primary-500"),
           !actualValue &&
             (defaultColor ? getBgClass(`${defaultColor}-500`) : "bg-tint-200"),
-          "relative flex h-6 w-10 cursor-pointer rounded-full p-1 transition-colors duration-200 ease-in-out",
+          "relative grid grid-cols-2 items-center h-6 min-w-10 cursor-pointer rounded-full p-1 transition-colors duration-200 ease-in-out",
         )}
         style={{
           backgroundColor: actualValue
@@ -154,10 +165,33 @@ export const Switch = ({
           aria-hidden="true"
           className={classNames(
             !disabled && "shadow-sm",
-            actualValue ? "translate-x-4" : "translate-x-0",
-            "pointer-events-none inline-block size-4 rounded-full bg-white ring-0 transition duration-200 ease-in-out",
+            actualValue ? "translate-x-[100%]" : "translate-x-0",
+            "pointer-events-none inline-block h-4 start-1 absolute rounded-full bg-white ring-0 transition duration-200 ease-in-out",
           )}
+          style={{
+            width: "calc(50% - 0.25rem)",
+          }}
         />
+        {(!!onLabel || !!offLabel) && (
+          <Fragment>
+            <span
+              className={`whitespace-nowrap text-xs px-1 ${getColorClass(onLabelColor ?? "white")}`}
+              style={{
+                color: getColor(onLabelColor),
+              }}
+            >
+              {onLabel ?? " "}
+            </span>
+            <span
+              className={`whitespace-nowrap text-xs px-1 ${getColorClass(offLabelColor ?? "base")}`}
+              style={{
+                color: getColor(offLabelColor),
+              }}
+            >
+              {offLabel ?? " "}
+            </span>
+          </Fragment>
+        )}
       </div>
       <ErrorIcon invalid={invalid} error={error} />
       {label && (
