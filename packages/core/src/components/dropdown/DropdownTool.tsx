@@ -31,10 +31,12 @@ export const DropdownTool = ({
   children,
   className,
   groupHover,
+  icon,
   ...props
 }: ChildProp &
   CssProp &
   Omit<DropdownProps, "children"> & {
+    icon?: string;
     /**
      * hide until group hovered
      */
@@ -43,7 +45,7 @@ export const DropdownTool = ({
   return (
     <Dropdown {...props}>
       <Icon
-        icon={CoreIcons.caretDown}
+        icon={icon ?? CoreIcons.caretDown}
         className={classNames(
           className,
           "outline bg-base flex-content pointer-events-auto cursor-pointer",
