@@ -101,7 +101,12 @@ export const FilterTag = ({
             filter.disabled && "line-through opacity-65",
           )}
         >
-          {filter.pinned && <Icon icon={filter.icon ?? CoreIcons.pin} />}
+          {filter.pinned && (
+            <Icon
+              className="flex-content"
+              icon={filter.icon ?? CoreIcons.pin}
+            />
+          )}
           {label}
         </div>
       </Chip>
