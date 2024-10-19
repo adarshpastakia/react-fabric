@@ -32,12 +32,14 @@ export interface DictationProps {
   size?: "sm";
   variant?: "solid" | "outline";
   hotkey?: string;
+  icon?: string;
   onRecord?: (blob: Blob) => void;
 }
 
 export const Dictation = ({
   hotkey = "alt+t",
   size,
+  icon,
   variant,
   onRecord,
 }: DictationProps) => {
@@ -130,7 +132,7 @@ export const Dictation = ({
           <HotKey global keyCombo={hotkey} handler={startDictation.current} />
           <Button
             size={size}
-            icon={CoreIcons.mic}
+            icon={icon ?? CoreIcons.mic}
             aria-label="Start dictation"
             rounded
             variant={variant}
