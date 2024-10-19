@@ -128,7 +128,8 @@ export const Histogram = ({
           className={classNames(
             "relative cursor-pointer flex flex-nowrap items-center select-none overflow-hidden min-h-6 my-px",
             classes.histoLabel,
-            (item.count === 0 || item.disabled) && "pointer-events-none",
+            ((item.total ?? item.count) === 0 || item.disabled) &&
+              "pointer-events-none",
           )}
           data-testid={item.id}
           onClick={(e) => [onClick?.(item.id), e.stopPropagation()]}
