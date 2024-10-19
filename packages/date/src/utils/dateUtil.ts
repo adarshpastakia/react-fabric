@@ -547,6 +547,3 @@ export namespace DateUtil {
     return new Date(dt);
   };
 }
-
-// @ts-expect-error ignore
-window.DateUtil = DateUtil;
