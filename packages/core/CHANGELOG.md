@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.7](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2024-10-19)
+
+### Features
+
+- **Dictation:** dictation tool using wavesurfer ([e6ff12b](https://github.com/adarshpastakia/react-ui-framework/commit/e6ff12b6cba39c55a7501e6ec7e1ccf06de85a6e))
+
 # [1.0.0-beta.6](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2024-10-18)
 
 ### Bug Fixes
