@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.8](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2024-10-19)
+
+### Bug Fixes
+
+- **CodeEditor:** move monaco-editor to dependency ([250078f](https://github.com/adarshpastakia/react-fabric/commit/250078f62feab080b12232518ffea8bdecfc706c))
+- **DateUtil:** remove attach to window :stupid: ([176e3c4](https://github.com/adarshpastakia/react-fabric/commit/176e3c4a51bb1c32f1fd2e2059f62e3bd3394066))
+- **Dictation:** add custom icon prop ([d27be12](https://github.com/adarshpastakia/react-fabric/commit/d27be1281e96f7ca7671474f32a3bc7ad8778e5a))
+- **FilterTag:** fix width pin icon ([d9b6c2c](https://github.com/adarshpastakia/react-fabric/commit/d9b6c2ca916a5efff425b80fd58f44584f079c43))
+- **Histogram:** if total provided disable when total is 0 ([57304cd](https://github.com/adarshpastakia/react-fabric/commit/57304cd07f9e8452e707be2a9f952a211572806a))
+- **SearchBar:** reset state when query/filters change ([597fe83](https://github.com/adarshpastakia/react-fabric/commit/597fe833f0cb897228187cdba970803454187351))
+
 # [1.0.0-beta.7](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2024-10-19)
 
 ### Features

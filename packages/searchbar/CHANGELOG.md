@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.8](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2024-10-19)
+
+### Bug Fixes
+
+- **FilterTag:** fix width pin icon ([d9b6c2c](https://github.com/adarshpastakia/react-ui-framework/commit/d9b6c2ca916a5efff425b80fd58f44584f079c43))
+- **SearchBar:** reset state when query/filters change ([597fe83](https://github.com/adarshpastakia/react-ui-framework/commit/597fe833f0cb897228187cdba970803454187351))
+
 # [1.0.0-beta.7](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2024-10-19)
 
 **Note:** Version bump only for package @react-fabric/searchbar

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.8](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2024-10-19)
+
+### Bug Fixes
+
+- **Histogram:** if total provided disable when total is 0 ([57304cd](https://github.com/adarshpastakia/react-ui-framework/commit/57304cd07f9e8452e707be2a9f952a211572806a))
+
 # [1.0.0-beta.7](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2024-10-19)
 
 **Note:** Version bump only for package @react-fabric/data

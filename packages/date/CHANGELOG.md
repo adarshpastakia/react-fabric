@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.8](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2024-10-19)
+
+### Bug Fixes
+
+- **DateUtil:** remove attach to window :stupid: ([176e3c4](https://github.com/adarshpastakia/react-ui-framework/commit/176e3c4a51bb1c32f1fd2e2059f62e3bd3394066))
+
 # [1.0.0-beta.7](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2024-10-19)
 
 **Note:** Version bump only for package @react-fabric/date
