@@ -24,7 +24,7 @@
 import { Button, useDebounce, useLocalStorage } from "@react-fabric/core";
 import { AutoComplete, Field } from "@react-fabric/form";
 import { dedupe, EMPTY_ARRAY, isArray } from "@react-fabric/utilities";
-import { useMemo, useReducer, useState } from "react";
+import { useEffect, useMemo, useReducer, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FilterBar } from "../filterbar/FilterBar";
 import {
@@ -40,6 +40,7 @@ interface SearchState {
 }
 
 type SearchActions =
+  | { type: "reset"; query: string | string[]; filters: FilterObject[] }
   | { type: "dirty"; dirty: boolean }
   | { type: "query"; query: string | string[] }
   | { type: "filter"; filters: FilterObject[] };
@@ -85,6 +86,9 @@ export const SearchBar = ({
 
   const [state, dispatch] = useReducer(
     (state: SearchState, action: SearchActions) => {
+      if (action.type === "reset") {
+        return { ...state, query: action.query, filters: action.filters };
+      }
       if (action.type === "dirty") {
         return { ...state, dirty: action.dirty };
       }
@@ -104,6 +108,10 @@ export const SearchBar = ({
       filters,
     },
   );
+
+  useEffect(() => {
+    dispatch({ type: "reset", filters, query });
+  }, [filters, query]);
 
   const updateHistory = (value: string | string[]) => {
     const historyEntry = isArray(value) ? value : [value];
@@ -139,7 +147,6 @@ export const SearchBar = ({
             decorateStart={decorateStart}
             onInput={() => dispatch({ type: "dirty", dirty: true })}
             onSelect={updateHistory}
-            onQuery={onQuery}
             data-testid="searchbar-input"
             onEnterPressed={() => fireSearch(state.query, state.filters)}
           />
