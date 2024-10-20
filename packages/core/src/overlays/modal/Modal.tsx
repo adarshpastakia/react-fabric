@@ -174,7 +174,7 @@ export const Modal = ({
       <FloatingOverlay
         lockScroll
         style={{ zIndex: "var(--z-overlay-mask)" }}
-        className="bg-base/50 backdrop-blur-sm grid place-items-center"
+        className="bg-base/20 backdrop-blur-sm grid place-items-center"
       >
         <FloatingFocusManager context={context}>
           <dialog
