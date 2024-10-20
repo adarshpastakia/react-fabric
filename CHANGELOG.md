@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.9](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2024-10-20)
+
+### Bug Fixes
+
+- **FilterBar:** add field type to filter object ([44d8999](https://github.com/adarshpastakia/react-fabric/commit/44d8999d17ca25889900ac8d40e8ac559de0ab59))
+- **Modal:** mask bg ([f935bb0](https://github.com/adarshpastakia/react-fabric/commit/f935bb07688b9a3b86966f1a613bd00428e5f461))
+
 # [1.0.0-beta.8](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2024-10-19)
 
 ### Bug Fixes
