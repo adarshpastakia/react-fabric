@@ -48,6 +48,7 @@ import { useFilterContext } from "./Context";
 const FilterSchema = new yup.ObjectSchema({
   id: yup.string().required(),
   field: yup.string().required(),
+  type: yup.string().required().oneOf(Object.values(FIELD_TYPE)),
   operator: yup.string().required().oneOf(Object.values(OPERATOR)),
   negate: yup.boolean(),
   label: yup.string(),
@@ -93,6 +94,7 @@ export const FilterForm = ({
     formRef.current?.setValues({
       id: shortHash(),
       field: "",
+      type: FIELD_TYPE.NONE,
       operator: OPERATOR.EXISTS,
     });
   }, [filter]);
@@ -209,6 +211,7 @@ export const FilterForm = ({
       const filter: FilterObject = {
         id: model.id,
         field: model.field,
+        type: model.type,
         negate: model.negate,
         operator: model.operator,
         value: model.value as AnyObject,
@@ -240,6 +243,9 @@ export const FilterForm = ({
                 labelProperty="label"
                 valueProperty="field"
                 groupProperty="type"
+                onSelect={(field) =>
+                  formRef.current?.setValue("type", field.type)
+                }
               />
             </Controller>
           </Col>
