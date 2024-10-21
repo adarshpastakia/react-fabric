@@ -114,7 +114,7 @@ export const Dictation = ({
       <div
         ref={container}
         className={classNames(
-          "overflow-hidden w-24 bg-base rounded-full shadow-inner shadow-base",
+          "overflow-hidden w-24 bg-base rounded-full shadow-inner",
           size === "sm" ? "h-7" : "h-8",
           !recording && "hidden",
         )}

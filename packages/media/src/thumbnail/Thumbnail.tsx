@@ -145,7 +145,7 @@ export const Thumbnail = ({
         classes.thumbnail,
         className,
         videoReel && classes.reel,
-        "overflow-hidden relative grid place-content-center shadow-base p-1 shadow-inset",
+        "overflow-hidden relative grid place-content-center p-1 shadow-inset",
         state.colorScheme === "light_transparent" && "bg-dark",
         state.colorScheme === "dark_transparent" && "bg-light",
       )}

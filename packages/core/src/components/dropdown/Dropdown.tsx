@@ -258,8 +258,7 @@ const DropdownElement = ({
                 className={classNames(
                   classes.dropdownBody,
                   dropdownClassName,
-                  !plainDropdown &&
-                    "shadow-lg shadow-base bg-base ring-1 ring-tint-100",
+                  !plainDropdown && "shadow-lg bg-base ring-1 ring-tint-100",
                   "rounded-capped overflow-auto scroll-thin grid max-h-[70vh]",
                 )}
                 onMouseUpCapture={tryClosing}
