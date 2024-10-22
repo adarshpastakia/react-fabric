@@ -93,7 +93,7 @@ const HeadFoot = ({
         color && getColorClass(color),
         area === "head" ? "area-head" : "area-foot",
         `leading-none`,
-        flex && "flex flex-nowrap gap-px",
+        flex && "flex flex-nowrap",
         align && `items-${align}`,
         justify && `justify-${justify}`,
       )}

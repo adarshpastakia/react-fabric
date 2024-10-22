@@ -23,6 +23,8 @@
 
 @layer comp {
   .headfoot {
+    gap: 2px;
+
     .buttonWrapper + .buttonWrapper {
       margin-inline-start: 0.25rem;
     }
