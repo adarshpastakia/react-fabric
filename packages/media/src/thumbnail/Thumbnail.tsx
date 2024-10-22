@@ -25,7 +25,7 @@ import { AnimationSpinner, CoreIcons, Icon } from "@react-fabric/core";
 import { type CssProp } from "@react-fabric/core/dist/types/types";
 import { getImageColorset, isNumber } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { type SyntheticEvent, useReducer } from "react";
+import { type SyntheticEvent, useEffect, useReducer } from "react";
 import { NsfwOverlay } from "../nsfw/NsfwOverlay";
 import classes from "./Thumbnail.module.css";
 
@@ -66,6 +66,7 @@ interface ThumbnailState {
 
 type ThumbnailActions =
   | { type: "reset" }
+  | { type: "loading" }
   | { type: "loaded"; colorScheme: ThumbnailState["colorScheme"] }
   | { type: "colorScheme" }
   | { type: "errored" };
@@ -86,11 +87,9 @@ export const Thumbnail = ({
     (state: ThumbnailState, action: ThumbnailActions) => {
       if (action.type === "reset") {
         return {
-          src,
-          errorLevel: 0,
-          colorScheme: "light",
-          loading: true,
-          transparent: false,
+          ...state,
+          src: src ?? fallback,
+          errorLevel: !(src ?? fallback) ? 2 : 0,
         } as ThumbnailState;
       }
       if (action.type === "loaded") {
@@ -138,6 +137,10 @@ export const Thumbnail = ({
       ) as ThumbnailState["colorScheme"],
     });
   };
+
+  useEffect(() => {
+    dispatch({ type: "reset" });
+  }, [src]);
 
   return (
     <div
