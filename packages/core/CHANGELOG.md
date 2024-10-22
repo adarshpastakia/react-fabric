@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.10](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2024-10-22)
+
+### Bug Fixes
+
+- clickable items add `inner-cliackable` ([8c4e91f](https://github.com/adarshpastakia/react-ui-framework/commit/8c4e91f3dfc2cbe3c20ecdf03342e752c4d15084))
+- **Navigator:** add optional children prop to display page count ([800b178](https://github.com/adarshpastakia/react-ui-framework/commit/800b178d96039234379d64b6ede7bfe946276678))
+- **TabPanel:** add append/prepend props ([de90d18](https://github.com/adarshpastakia/react-ui-framework/commit/de90d18c0e085a117a61900f713256e46c976aef))
+
 # [1.0.0-beta.9](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2024-10-20)
 
 ### Bug Fixes

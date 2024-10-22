@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.10](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2024-10-22)
+
+### Bug Fixes
+
+- **NsfwOverlay:** change import ([d02c406](https://github.com/adarshpastakia/react-ui-framework/commit/d02c406a6d22e8e7a0ce7e0b138b720685928488))
+- **Thumbnail:** reset on src change ([b62a69e](https://github.com/adarshpastakia/react-ui-framework/commit/b62a69eecd481c537a9a8d7e8f5b89705b6d2de0))
+
 # [1.0.0-beta.9](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2024-10-20)
 
 **Note:** Version bump only for package @react-fabric/media
