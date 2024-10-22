@@ -27,7 +27,7 @@
   }
 
   .moreLink {
-    margin: -0.25rem 0 1rem;
+    margin: -0.25rem 0 0.25rem;
     text-align: end;
 
     & > span {
