@@ -22,8 +22,8 @@
  */
 
 export { Abbr } from "./Abbr";
+export { Anchor } from "./Anchor";
 export { Copy } from "./Copy";
-export { Link } from "./Link";
 export { Mark } from "./Mark";
 export { Text } from "./Text";
 export { Title } from "./Title";

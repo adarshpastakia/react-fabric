@@ -36,7 +36,7 @@ import {
 import { getBgClass, getColor, getColorClass } from "../utils";
 import { TextSizeMap } from "./types";
 
-export interface LinkProps extends ChildrenProp, CssProp, RefProp, AriaProps {
+export interface AnchorProps extends ChildrenProp, CssProp, RefProp, AriaProps {
   /**
    * link background (CSS color / tailwind color)
    */
@@ -60,7 +60,7 @@ export interface LinkProps extends ChildrenProp, CssProp, RefProp, AriaProps {
 /**
  * Typography link component
  */
-export const Link = <Tag extends React.ElementType = "a">({
+export const Anchor = <Tag extends React.ElementType = "a">({
   ref,
   as,
   children,
@@ -70,7 +70,7 @@ export const Link = <Tag extends React.ElementType = "a">({
   family,
   size,
   ...aria
-}: LinkProps & PolymorphicProps<Tag>) => {
+}: AnchorProps & PolymorphicProps<Tag>) => {
   /** ***************** style map *******************/
   const styles = useMemoDebugger(
     () => {
