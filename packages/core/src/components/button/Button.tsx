@@ -147,9 +147,13 @@ export interface BaseProps
   onWheel?: WheelEventHandler;
 }
 
-export type ButtonProps =
+type ButtonTypeProps =
   | { children: string | React.ReactElement; "aria-label"?: string }
   | { children?: never; "aria-label": string };
+
+export type ButtonProps<Tag extends React.ElementType = "button"> = BaseProps &
+  ButtonTypeProps &
+  PolymorphicProps<Tag>;
 
 /**
  * Clickable action button
@@ -186,7 +190,7 @@ export const Button = <Tag extends React.ElementType = "button">({
   // @ts-expect-error ignore
   "data-ref": dataRef,
   ...aria
-}: BaseProps & ButtonProps & PolymorphicProps<Tag>) => {
+}: ButtonProps<Tag>) => {
   const refEl = useRef<AnyObject>(null);
   const [busy, setBusy] = useState(false);
   const [actionDone, setActionDone] = useState(false);
@@ -240,6 +244,10 @@ export const Button = <Tag extends React.ElementType = "button">({
     return getBadgeProps(badge);
   }, [badge]);
 
+  const hotKeyHandler = useRef(() => {
+    !disabled && refEl.current?.click();
+  });
+
   const E = as ?? "button";
   return (
     <div
@@ -254,12 +262,7 @@ export const Button = <Tag extends React.ElementType = "button">({
       data-loading={busy || loading}
       data-disabled={disabled}
     >
-      {hotKey && (
-        <HotKey
-          keyCombo={hotKey}
-          handler={() => !disabled && refEl.current?.click()}
-        />
-      )}
+      {hotKey && <HotKey keyCombo={hotKey} handler={hotKeyHandler.current} />}
       <TooltipWrapper {...tooltipProps}>
         <E
           ref={mergeRefs(ref, refEl)}
