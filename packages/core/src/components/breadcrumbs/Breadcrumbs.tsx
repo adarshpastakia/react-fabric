@@ -24,14 +24,14 @@
 import classNames from "classnames";
 import { Children, useMemo } from "react";
 import { type AriaProps, type ChildrenProp, type CssProp } from "../../types";
-import { Link } from "../../typography/Link";
+import { Anchor } from "../../typography/Anchor";
 import { Dropdown } from "../dropdown/Dropdown";
 import classes from "./Breadcrumbs.module.css";
 
 export interface BreadcrumbProps
   extends CssProp,
     AriaProps,
-    ChildrenProp<typeof Link> {
+    ChildrenProp<typeof Anchor> {
   /**
    * breadcrumb styling
    */
@@ -85,7 +85,7 @@ export const Breadcrumbs = ({
       {overflow && (
         <Dropdown closeOnClick showArrow>
           <li className={classes.breadcrumbLink} data-separator={separator}>
-            <Link>...</Link>
+            <Anchor>...</Anchor>
           </li>
           <div
             data-color={color}
