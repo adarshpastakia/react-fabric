@@ -21,8 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Icon } from "@react-fabric/core";
-import { CoreIcons } from "@react-fabric/core/src/types/icons";
+import { CoreIcons, Icon } from "@react-fabric/core";
 import { useState } from "react";
 
 export const NsfwOverlay = ({ size }: { size?: "sm" | "md" }) => {
