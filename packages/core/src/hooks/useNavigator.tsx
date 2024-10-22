@@ -21,24 +21,29 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 
 export const useNavigator = (totalCount = 0, defaultIndex = 0) => {
   const [currentIndex, setCurrentIndex] = useState(defaultIndex);
+  const refCurrent = useRef(defaultIndex);
+
   const onNavigate = useCallback(
     (dir: 1 | -1) => {
       if (dir === -1) {
-        setCurrentIndex(currentIndex > 0 ? currentIndex - 1 : totalCount - 1);
+        refCurrent.current =
+          refCurrent.current > 0 ? refCurrent.current - 1 : totalCount - 1;
       }
       if (dir === 1) {
-        setCurrentIndex(currentIndex + 1 < totalCount ? currentIndex + 1 : 0);
+        refCurrent.current =
+          refCurrent.current + 1 < totalCount ? refCurrent.current + 1 : 0;
       }
+      setCurrentIndex(refCurrent.current);
     },
-    [currentIndex, totalCount],
+    [totalCount],
   );
   const headLabel = useMemo(
     () => (
-      <span className="text-muted leading-none">
+      <span className="text-muted leading-5">
         {currentIndex + 1}/{totalCount}
       </span>
     ),
