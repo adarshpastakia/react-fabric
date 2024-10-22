@@ -78,7 +78,7 @@ export const DateDisplay = ({
   );
 
   return children ? (
-    <Dropdown>
+    <Dropdown showArrow>
       {dtLabel}
       {children}
     </Dropdown>
