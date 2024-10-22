@@ -30,6 +30,7 @@ import {
   type PaletteType,
 } from "../../types";
 import { getBgClass, getBorderClass, getColorClass } from "../../utils";
+import classes from "./Divider.module.css";
 
 export interface DividerProps extends CssProp, Partial<ChildProp> {
   /**
@@ -67,7 +68,7 @@ export const Divider = ({
             className,
             vertical && "vertical",
             !flex && "self-stretch",
-            vertical ? "mx-1" : "my-1",
+            vertical ? classes.vertical : classes.horizontal,
             color && getBorderClass(color + "-200"),
           )}
         />
@@ -88,7 +89,7 @@ export const Divider = ({
       <div
         className={classNames(
           "px-2 whitespace-nowrap",
-          vertical ? "mx-1" : "my-1",
+          vertical ? classes.vertical : classes.horizontal,
           fill && getBgClass((color ?? "tint") + "-200"),
           !fill && getColorClass((color ?? "tint") + "-600"),
           "rounded-full text-[0.75em]",
