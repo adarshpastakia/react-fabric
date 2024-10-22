@@ -24,7 +24,7 @@
 @layer comp {
   .tooltip {
     z-index: var(--z-tooltip);
-    color: theme(backgroundColor.invert);
+    color: theme(backgroundColor.dimmed);
 
     &[data-color="primary"] {
       color: theme(colors.primary.600);
