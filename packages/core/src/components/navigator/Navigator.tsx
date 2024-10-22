@@ -24,6 +24,7 @@
 import classNames from "classnames";
 import { HotKey } from "../../hotkeys/HotKey";
 import {
+  type ChildProp,
   type AriaProps,
   type ColorType,
   type CssProp,
@@ -31,8 +32,13 @@ import {
 } from "../../types";
 import { CoreIcons } from "../../types/icons";
 import { Icon } from "../icon/Icon";
+import { useCallback } from "react";
 
-export interface NavigatorProps extends CssProp, AriaProps, TestProps {
+export interface NavigatorProps
+  extends CssProp,
+    AriaProps,
+    TestProps,
+    Partial<ChildProp> {
   /**
    * navigator button color
    */
@@ -47,15 +53,18 @@ export const Navigator = ({
   className,
   onNavigate,
   color,
+  children,
   ...aria
 }: NavigatorProps) => {
+  const navPrev = useCallback(() => onNavigate(-1), [onNavigate]);
+  const navNext = useCallback(() => onNavigate(+1), [onNavigate]);
   return (
     <div
-      className={classNames(className, "inline-block leading-none")}
+      className={classNames(className, "inline-flex items-center leading-none")}
       {...aria}
     >
-      <HotKey keyCombo="left" handler={() => onNavigate(-1)} />
-      <HotKey keyCombo="right" handler={() => onNavigate(1)} />
+      <HotKey keyCombo="left" handler={navPrev} />
+      <HotKey keyCombo="right" handler={navNext} />
       <Icon
         rtlFlip
         color={color}
@@ -65,6 +74,7 @@ export const Navigator = ({
         icon={CoreIcons.chevronLeft}
         onClick={(e) => [e.stopPropagation(), onNavigate(-1)]}
       />
+      {children}
       <Icon
         rtlFlip
         className="text-[1em] p-1"
