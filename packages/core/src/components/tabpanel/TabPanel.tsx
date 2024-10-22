@@ -25,6 +25,7 @@ import classNames from "classnames";
 import {
   Children,
   cloneElement,
+  type ReactElement,
   useCallback,
   useEffect,
   useMemo,
@@ -65,6 +66,14 @@ export interface TabPanelProps extends ChildrenProp<typeof Tab> {
    */
   headerClassName?: string;
   /**
+   * append element
+   */
+  append?: ReactElement;
+  /**
+   * prepend element
+   */
+  prepend?: ReactElement;
+  /**
    * change handler
    */
   onChange?: (id: string) => void;
@@ -84,6 +93,8 @@ export const TabPanel = ({
   justify,
   variant,
   tabFlex,
+  append,
+  prepend,
   gap,
   onBeforeChange,
   onChange,
@@ -132,21 +143,32 @@ export const TabPanel = ({
     >
       <div
         className={classNames(
-          classes.tabList,
+          classes.tabHeader,
           headerClassName,
           justify && `justify-${justify}`,
           ["start", "end"].includes(orientation) && "flex-col",
-          "flex flex-nowrap overflow-auto scroll-thin",
+          "flex flex-nowrap overflow-hidden items-center",
         )}
-        style={{ gap }}
       >
-        {tabs.map((node: AnyObject) =>
-          cloneElement(node, {
-            tabFlex: node.props.tabFlex ?? tabFlex,
-            onClick: handleClick,
-            active: node.props.id === active,
-          }),
-        )}
+        {prepend}
+        <div
+          className={classNames(
+            classes.tabList,
+            justify && `justify-${justify}`,
+            ["start", "end"].includes(orientation) && "flex-col",
+            "flex flex-1 flex-nowrap overflow-auto scroll-thin",
+          )}
+          style={{ gap }}
+        >
+          {tabs.map((node: AnyObject) =>
+            cloneElement(node, {
+              tabFlex: node.props.tabFlex ?? tabFlex,
+              onClick: handleClick,
+              active: node.props.id === active,
+            }),
+          )}
+        </div>
+        {append}
       </div>
       {rest}
       {activeTabPanel}
