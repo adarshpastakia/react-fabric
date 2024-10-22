@@ -224,6 +224,7 @@ const DropdownElement = ({
             e.stopPropagation();
           },
         }),
+        "data-inner-clickable": "true",
         "data-dropdown-open": isOpen ? true : undefined,
         ref: innerRef,
       })}

@@ -92,6 +92,7 @@ export const ActionLabel = ({
     >
       <ButtonGroup
         ref={calculateBasis}
+        data-inner-clickable
         className={classNames(
           classes.actions,
           "overflow-hidden flex-content",

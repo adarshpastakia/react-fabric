@@ -136,6 +136,7 @@ export const Tab = <Tag extends React.ElementType = "button">({
         data-id={id}
         disabled={disabled}
         data-color={color}
+        data-inner-clickable
         className={classNames(
           classes.tabButton,
           className,

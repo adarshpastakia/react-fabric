@@ -169,6 +169,7 @@ export const Icon = ({
       data-flip={rtlFlip}
       style={styles}
       data-clickable={!!onClick}
+      data-inner-clickable={!!onClick}
     >
       {iconEl}
     </dfn>
