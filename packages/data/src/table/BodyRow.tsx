@@ -76,6 +76,7 @@ export const BodyRow = ({
         className={classNames(
           "flex flex-nowrap datatable-row data-[hilight]:outline-1 -outline-offset-1 outline-primary-500",
           onRowClick && "hover:bg-primary-50 active:bg-primary-100",
+          index % 2 ? "bg-even" : "bg-odd",
         )}
         onClick={() =>
           checkableRows && keyProperty && !onRowClick
@@ -87,7 +88,7 @@ export const BodyRow = ({
           {!!canExpand && (
             <div
               className={classNames(
-                "group font-medium w-6 flex flex-nowrap text-start items-center",
+                "group font-medium w-6 flex flex-nowrap text-start py-1",
                 !canExpand(data) && "pointer-events-none opacity-35",
               )}
             >

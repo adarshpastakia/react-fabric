@@ -74,7 +74,7 @@ export const BodyCell = ({
 
   return (
     <div
-      className="overflow-hidden bg-inherit start-0"
+      className="overflow-hidden bg-inherit start-0 border-e"
       style={{
         width: width ?? COL_DEFAULT_WIDTH,
         minWidth: column.minWidth ?? COL_MIN_WIDTH,
@@ -83,7 +83,8 @@ export const BodyCell = ({
     >
       <div
         className={classNames(
-          "px-2 py-1 border-e truncate",
+          "px-2 py-1",
+          column.truncate && "truncate",
           column.align === "center" && "text-center",
           column.align === "end" && "text-end",
         )}

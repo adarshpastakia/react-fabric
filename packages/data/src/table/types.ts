@@ -45,6 +45,7 @@ export interface TableColumn<T = KeyValue>
   align?: "start" | "center" | "end";
   locked?: "start" | "end";
   hidden?: boolean;
+  truncate?: boolean;
   hideable?: boolean;
   resizable?: boolean;
   sortable?: boolean;

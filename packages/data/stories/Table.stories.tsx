@@ -22,10 +22,11 @@
  */
 
 import { Avatar, Icon, Section, Title, Viewport } from "@react-fabric/core";
-import { Countries } from "@react-fabric/utilities";
+import { Countries, Country } from "@react-fabric/utilities";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Table } from "../src";
 import { useState } from "react";
+import { faker } from "@faker-js/faker";
 
 const meta: Meta = {
   component: Table,
@@ -50,6 +51,80 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj<typeof Table>;
 
+const columns: AnyObject = [
+  {
+    id: "emoji",
+    width: "3rem",
+    align: "center",
+    locked: "start",
+    hideable: false,
+    renderer(_: string, data: Country) {
+      return <Icon icon={`flag ${data.iso2}`} />;
+    },
+  },
+  {
+    id: "iso2",
+    width: "3rem",
+    locked: "start",
+    hideable: false,
+  },
+  {
+    id: "name",
+    label: "Name",
+    locked: "start",
+    width: "32rem",
+    sortable: true,
+    hideable: false,
+    resizable: true,
+  },
+  {
+    id: "continent",
+    label: "Continent",
+    width: "12rem",
+    hidden: true,
+    resizable: true,
+  },
+  {
+    id: "fullname",
+    label: "Fullname",
+    width: "48rem",
+    hidden: true,
+    resizable: true,
+    renderer(v: string) {
+      return (
+        <div>
+          <div>{v}</div>
+          <div className="text-muted">{faker.lorem.paragraphs(2)}</div>
+        </div>
+      );
+    },
+  },
+  {
+    id: "capital",
+    label: "Capital",
+    width: "48rem",
+    hidden: true,
+  },
+  {
+    id: "currency",
+    label: "Currency",
+    width: "8rem",
+    hidden: true,
+  },
+  {
+    id: "phone",
+    label: "Phone",
+    width: "8rem",
+    hidden: true,
+  },
+  {
+    id: "tld",
+    label: "Domain",
+    width: "8rem",
+    hidden: true,
+  },
+];
+
 export const _Table: Story = {
   render: (args) => {
     const [sort, setSort] = useState<AnyObject>();
@@ -60,71 +135,7 @@ export const _Table: Story = {
         keyProperty="iso2"
         onSort={setSort}
         sort={sort}
-        columns={[
-          {
-            id: "emoji",
-            width: "3rem",
-            align: "center",
-            locked: "start",
-            hideable: false,
-            renderer(_, data) {
-              return <Icon icon={`flag ${data.iso2}`} />;
-            },
-          },
-          {
-            id: "iso2",
-            width: "3rem",
-            locked: "start",
-            hideable: false,
-          },
-          {
-            id: "name",
-            label: "Name",
-            locked: "start",
-            width: "32rem",
-            sortable: true,
-            hideable: false,
-            resizable: true,
-          },
-          {
-            id: "continent",
-            label: "Continent",
-            width: "12rem",
-            hidden: true,
-            resizable: true,
-          },
-          {
-            id: "fullname",
-            label: "Fullname",
-            width: "48rem",
-            hidden: true,
-            resizable: true,
-          },
-          {
-            id: "capital",
-            label: "Capital",
-            width: "48rem",
-            hidden: true,
-          },
-          {
-            id: "currency",
-            label: "Currency",
-            width: "8rem",
-            hidden: true,
-          },
-          {
-            id: "phone",
-            label: "Phone",
-            width: "8rem",
-            hidden: true,
-          },
-          {
-            id: "tld",
-            label: "Domain",
-            width: "8rem",
-            hidden: true,
-          },
-        ]}
+        columns={columns}
       />
     );
   },
