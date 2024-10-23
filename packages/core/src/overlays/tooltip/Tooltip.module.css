@@ -27,27 +27,27 @@
     color: theme(backgroundColor.dimmed);
 
     &[data-color="primary"] {
-      color: theme(colors.primary.600);
+      color: theme(colors.primary.200);
     }
 
     &[data-color="accent"] {
-      color: theme(colors.accent.600);
+      color: theme(colors.accent.200);
     }
 
     &[data-color="info"] {
-      color: theme(colors.info.600);
+      color: theme(colors.info.200);
     }
 
     &[data-color="danger"] {
-      color: theme(colors.danger.600);
+      color: theme(colors.danger.200);
     }
 
     &[data-color="success"] {
-      color: theme(colors.success.600);
+      color: theme(colors.success.200);
     }
 
     &[data-color="warning"] {
-      color: theme(colors.warning.600);
+      color: theme(colors.warning.200);
     }
   }
 }

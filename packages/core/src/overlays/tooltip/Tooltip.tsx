@@ -153,7 +153,7 @@ export const Tooltip = ({
       return (
         <span
           role="none"
-          className="ms-2 cursor-pointer flex-content opacity-75 hover:opacity-90 active:opacity-60"
+          className="ms-2 cursor-pointer text-dimmed flex-content opacity-75 hover:opacity-90 active:opacity-60"
           onClick={handler}
         >
           <Icon icon={CoreIcons.copy} />
