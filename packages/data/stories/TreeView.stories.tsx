@@ -59,6 +59,10 @@ const treeItems = Object.entries(groupBy(Countries.list, "continent")).map(
       id: `${key}-${alp}`,
       label: alp,
       leaf: false,
+      data: {
+        label: alp,
+        type: "group",
+      },
       children: (list as AnyObject).map((ctr: KeyValue) => ({
         id: ctr.iso2,
         icon: `flag ${ctr.iso2}`,
@@ -78,16 +82,36 @@ export const _TreePanel: Story = {
         {...args}
         items={treeItems as AnyObject}
         renderer={(data) => {
+          if (data.type == "group") {
+            return (
+              <div>
+                <div className="flex items-center gap-1 overflow-hidden">
+                  <div className="flex-initial truncate">{data.label}</div>
+                  <DropdownTool groupHover>
+                    <Menu>
+                      <MenuItem label="Show in map" />
+                      <MenuItem label="Major cities" />
+                      <MenuItem label="History..." />
+                    </Menu>
+                  </DropdownTool>
+                </div>
+                <div className="text-sm text-muted">Something extra</div>
+              </div>
+            );
+          }
           return (
-            <div className="flex items-center overflow-hidden">
-              <div className="flex-initial truncate">{data.name}</div>
-              <DropdownTool groupHover>
-                <Menu>
-                  <MenuItem label="Show in map" />
-                  <MenuItem label="Major cities" />
-                  <MenuItem label="History..." />
-                </Menu>
-              </DropdownTool>
+            <div>
+              <div className="flex items-center gap-1 overflow-hidden">
+                <div className="flex-initial truncate">{data.name}</div>
+                <DropdownTool groupHover>
+                  <Menu>
+                    <MenuItem label="Show in map" />
+                    <MenuItem label="Major cities" />
+                    <MenuItem label="History..." />
+                  </Menu>
+                </DropdownTool>
+              </div>
+              <div className="text-sm text-muted">{data.fullname}</div>
             </div>
           );
         }}

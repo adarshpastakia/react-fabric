@@ -45,20 +45,26 @@ export const TreeNode = ({
 
   const filler = useMemo(() => {
     return node.lines.slice(noLines ? 1 : 0).map((line, idx) => (
-      <svg
+      <div
         key={idx}
-        viewBox="0 0 24 24"
-        className="flex-initial w-6 fill-tint-200"
+        className={classNames(
+          "flex-initial self-stretch flex items-center w-6 relative before:absolute before:top-0 before:start-[7px] before:bg-tint-200 before:min-h-[50%] before:w-[2px] before:scale-x-[.625]",
+          !noLines && line !== 2 && "before:h-full",
+        )}
       >
-        {line === 0 && <path d="" />}
-        {!noLines && line === 1 && <path d="M7.45 26.1v-28.2h1.1v28.2h-1.1z" />}
-        {!noLines && line === 2 && (
-          <path d="M14.989 12.389l0.161-0.389-0.161-0.389-0.389-0.161h-6.050v-13.55h-1.1v14.1l0.161 0.389 0.389 0.161h6.6z" />
-        )}
-        {!noLines && line === 3 && (
-          <path d="M8.55 12.55h6.050l0.389-0.161 0.161-0.389-0.161-0.389-0.389-0.161h-6.050v-13.55h-1.1v28.2h1.1z" />
-        )}
-      </svg>
+        <svg viewBox="0 0 24 24" className="fill-tint-200">
+          {line === 0 && <path d="" />}
+          {!noLines && line === 1 && (
+            <path d="M7.45 26.1v-28.2h1.1v28.2h-1.1z" />
+          )}
+          {!noLines && line === 2 && (
+            <path d="M14.989 12.389l0.161-0.389-0.161-0.389-0.389-0.161h-6.050v-13.55h-1.1v14.1l0.161 0.389 0.389 0.161h6.6z" />
+          )}
+          {!noLines && line === 3 && (
+            <path d="M8.55 12.55h6.050l0.389-0.161 0.161-0.389-0.161-0.389-0.389-0.161h-6.050v-13.55h-1.1v28.2h1.1z" />
+          )}
+        </svg>
+      </div>
     ));
   }, [noLines, node.lines]);
 
@@ -82,7 +88,7 @@ export const TreeNode = ({
     <div
       role="treeitem"
       aria-selected={node.selected}
-      className="flex flex-nowrap"
+      className="flex flex-nowrap items-center"
       data-testid={node["data-testid"]}
       data-test-value={node["data-test-value"]}
     >
@@ -119,7 +125,7 @@ export const TreeNode = ({
       <div
         role="none"
         className={classNames(
-          "group data-[selected]:bg-primary-100 flex flex-nowrap flex-1 items-center overflow-hidden select-none",
+          "group data-[selected]:bg-primary-100 flex flex-nowrap flex-1 overflow-hidden select-none",
           node.childSelected && "font-medium",
           canSelect && "hover:bg-primary-50 cursor-pointer",
         )}
