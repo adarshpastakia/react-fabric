@@ -2,8 +2,8 @@ import {
   Canvas,
   Description,
   Primary,
-  Story,
   Title as ST,
+  Story,
 } from "@storybook/addon-docs";
 import {
   Anchor,
@@ -13,13 +13,13 @@ import {
   Subheading,
 } from "@storybook/blocks";
 import { Fragment } from "react";
-import { Icon, Collapsable, Title, Text, Abbr, Mark } from "../../src";
+import { Abbr, Collapsable, Icon, Mark, Text, Title } from "../../src";
+import * as AbbrStories from "./Abbr.stories";
+import * as AnchorStories from "./Anchor.stories";
+import * as CopyStories from "./Copy.stories";
+import * as MarkStories from "./Mark.stories";
 import * as TextStories from "./Text.stories";
 import * as TitleStories from "./Title.stories";
-import * as AbbrStories from "./Abbr.stories";
-import * as MarkStories from "./Mark.stories";
-import * as CopyStories from "./Copy.stories";
-import * as LinkStories from "./Link.stories";
 
 <Meta of={TextStories} />
 
@@ -79,13 +79,13 @@ import * as LinkStories from "./Link.stories";
 </Collapsable>
 
 <Anchor storyId="links">
-  <Subheading>Links</Subheading>
+  <Subheading>Anchor</Subheading>
 </Anchor>
-<Description of={LinkStories._Link} />
-<Canvas withToolbar of={LinkStories._Link} />
+<Description of={AnchorStories._Anchor} />
+<Canvas withToolbar of={AnchorStories._Anchor} />
 <Collapsable className="control-panel">
   <div>Controls</div>
-  <Controls of={LinkStories._Link} />
+  <Controls of={AnchorStories._Anchor} />
 </Collapsable>
 
 <Anchor storyId="copy">
@@ -111,14 +111,14 @@ import * as LinkStories from "./Link.stories";
 </Anchor>
 
 ```tsx
-import { Text, Title } from "@react-fabric/core";
+import { Text, Title, Anchor } from "@react-fabric/core";
 import { NavLink } from "react-router-dom";
 
 export const Example = () => {
   return <div>
     <Title as="h1">Title text</Title>
     <Text>{text paras}</Text>
-    <Link as={NavLink}>Nav links</Link>
+    <Anchor as={NavLink}>Nav links</Anchor>
   </div>;
 };
 ```

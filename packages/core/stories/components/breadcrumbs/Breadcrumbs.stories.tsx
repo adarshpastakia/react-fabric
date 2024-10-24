@@ -23,7 +23,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { Fragment } from "react";
-import { Breadcrumbs, Icon, Link, Title } from "../../../src";
+import { Anchor, Breadcrumbs, Icon, Title } from "../../../src";
 
 const meta: Meta = {
   component: Breadcrumbs,
@@ -49,21 +49,21 @@ export const _Breadcrumbs: BreadcrumbsStory = {
   render: (args) => {
     return (
       <Breadcrumbs {...args}>
-        <Link>
+        <Anchor>
           <Icon icon="mdi mdi-home" />
-        </Link>
-        <Link>Page 1</Link>
-        <Link>Page 2</Link>
-        <Link>Page 3</Link>
-        <Link>Page 4</Link>
-        <Link>Page 5</Link>
-        <Link>Page 6</Link>
-        <Link>Page 7</Link>
-        <Link>Page 8</Link>
-        <Link>Page 9</Link>
-        <Link>Page 10</Link>
-        <Link>Page 11</Link>
-        <Link>Page 12</Link>
+        </Anchor>
+        <Anchor>Page 1</Anchor>
+        <Anchor>Page 2</Anchor>
+        <Anchor>Page 3</Anchor>
+        <Anchor>Page 4</Anchor>
+        <Anchor>Page 5</Anchor>
+        <Anchor>Page 6</Anchor>
+        <Anchor>Page 7</Anchor>
+        <Anchor>Page 8</Anchor>
+        <Anchor>Page 9</Anchor>
+        <Anchor>Page 10</Anchor>
+        <Anchor>Page 11</Anchor>
+        <Anchor>Page 12</Anchor>
       </Breadcrumbs>
     );
   },
@@ -76,39 +76,39 @@ export const Styles: BreadcrumbsStory = {
       <Fragment>
         <Title>Classic</Title>
         <Breadcrumbs {...args} variant="classic">
-          <Link>
+          <Anchor>
             <Icon icon="mdi mdi-home" />
-          </Link>
-          <Link>Page 1</Link>
-          <Link>Page 2</Link>
-          <Link>Page 3</Link>
-          <Link>Page 4</Link>
-          <Link>Page 5</Link>
-          <Link>Page 6</Link>
-          <Link>Page 7</Link>
-          <Link>Page 8</Link>
-          <Link>Page 9</Link>
-          <Link>Page 10</Link>
-          <Link>Page 11</Link>
-          <Link>Page 12</Link>
+          </Anchor>
+          <Anchor>Page 1</Anchor>
+          <Anchor>Page 2</Anchor>
+          <Anchor>Page 3</Anchor>
+          <Anchor>Page 4</Anchor>
+          <Anchor>Page 5</Anchor>
+          <Anchor>Page 6</Anchor>
+          <Anchor>Page 7</Anchor>
+          <Anchor>Page 8</Anchor>
+          <Anchor>Page 9</Anchor>
+          <Anchor>Page 10</Anchor>
+          <Anchor>Page 11</Anchor>
+          <Anchor>Page 12</Anchor>
         </Breadcrumbs>
         <Title className="mt-6">Modern</Title>
         <Breadcrumbs {...args} variant="modern">
-          <Link>
+          <Anchor>
             <Icon icon="mdi mdi-home" />
-          </Link>
-          <Link>Page 1</Link>
-          <Link>Page 2</Link>
-          <Link>Page 3</Link>
-          <Link>Page 4</Link>
-          <Link>Page 5</Link>
-          <Link>Page 6</Link>
-          <Link>Page 7</Link>
-          <Link>Page 8</Link>
-          <Link>Page 9</Link>
-          <Link>Page 10</Link>
-          <Link>Page 11</Link>
-          <Link>Page 12</Link>
+          </Anchor>
+          <Anchor>Page 1</Anchor>
+          <Anchor>Page 2</Anchor>
+          <Anchor>Page 3</Anchor>
+          <Anchor>Page 4</Anchor>
+          <Anchor>Page 5</Anchor>
+          <Anchor>Page 6</Anchor>
+          <Anchor>Page 7</Anchor>
+          <Anchor>Page 8</Anchor>
+          <Anchor>Page 9</Anchor>
+          <Anchor>Page 10</Anchor>
+          <Anchor>Page 11</Anchor>
+          <Anchor>Page 12</Anchor>
         </Breadcrumbs>
       </Fragment>
     );

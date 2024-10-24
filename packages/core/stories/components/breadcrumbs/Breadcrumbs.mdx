@@ -59,16 +59,16 @@ import * as BreadcrumbsStories from "./Breadcrumbs.stories";
 </Anchor>
 
 ```tsx
-import { Breadcrumbs, Link, Icon } from "@react-fabric/core";
+import { Breadcrumbs, Anchor, Icon } from "@react-fabric/core";
 
 export const Example = () => {
   return (
     <Breadcrumbs>
-      <Link>
+      <Anchor>
         <Icon icon="mdi mdi-home" />
-      </Link>
-      <Link>Previous Page</Link>
-      <Link>Current Page</Link>
+      </Anchor>
+      <Anchor>Previous Page</Anchor>
+      <Anchor>Current Page</Anchor>
     </Breadcrumbs>
   );
 };

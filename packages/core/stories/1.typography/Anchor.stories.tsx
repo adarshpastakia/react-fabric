@@ -23,15 +23,14 @@
 
 import { faker, fakerAR } from "@faker-js/faker";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Abbr, Anchor, Copy, Mark, Text, Title } from "../../src";
+import { Anchor, Text } from "../../src";
 
 const meta: Meta = {
-  component: Text,
-  subcomponents: { Title, Abbr, Mark, Anchor, Copy } as AnyObject,
+  component: Anchor,
   title: "@core/Typography",
   parameters: {
     controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/Typpography.test.tsx"],
+    jest: ["core/tests/Anchor.test.tsx"],
   },
   decorators: [
     (Story) => (
@@ -43,22 +42,17 @@ const meta: Meta = {
 };
 
 export default meta;
-type TextStory = StoryObj<typeof Text>;
-
-const para = faker.lorem.sentences(5) + "\n\n" + fakerAR.lorem.sentences(5);
+type AnchorStory = StoryObj<typeof Anchor>;
 
 const paras = faker.lorem.sentences(10) + "\n\n" + fakerAR.lorem.sentences(10);
 
-export const _Text: TextStory = {
+export const _Anchor: AnchorStory = {
   render: (args) => {
-    return <Text {...args}>{para}</Text>;
+    return (
+      <Text>
+        <Anchor {...args}>Simple anchor link</Anchor>
+      </Text>
+    );
   },
-  args: { className: "mixed-lang" },
-};
-
-export const Clamped: TextStory = {
-  render: (args) => {
-    return <Text {...args}>{paras}</Text>;
-  },
-  args: { clamp: 5, className: "mixed-lang" },
+  args: {},
 };
