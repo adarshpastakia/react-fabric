@@ -38,13 +38,17 @@
     "@tldraw/assets": "^3.3.1",
     "@tldraw/editor": "^3.3.1",
     "@tldraw/tldraw": "^3.3.1",
-    "classnames": "^2.5.1"
+    "classnames": "^2.5.1",
+    "dom-to-image": "^2.6.0"
   },
   "peerDependencies": {
     "i18next": "^23.15.1",
     "react": ">=18.0.0 <20.0.0",
     "react-dom": ">=18.0.0 <20.0.0",
     "react-i18next": "^15.0.2"
+  },
+  "devDependencies": {
+    "@types/dom-to-image": "^2.6.7"
   },
   "engines": {
     "node": ">=18.12.0",
