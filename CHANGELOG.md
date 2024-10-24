@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.15](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.14...v1.0.0-beta.15) (2024-10-24)
+
+### Bug Fixes
+
+- **ArrayInput:** defaultValue with blank string ([b3e1836](https://github.com/adarshpastakia/react-fabric/commit/b3e1836fc2435f8a9d923140156bd38e1d0680ae))
+
 # [1.0.0-beta.14](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.13...v1.0.0-beta.14) (2024-10-23)
 
 ### Bug Fixes
