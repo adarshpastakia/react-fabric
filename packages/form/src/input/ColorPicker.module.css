@@ -26,21 +26,30 @@
     --color-shadow: theme(borderColor.base);
 
     & input {
-      @apply bg-base text-base !border !border-solid !rounded-sm !border-base focus:!border-primary !shadow-none;
+      background-color: theme(backgroundColor.base);
+      color: theme(textColor.base);
+      border: 1px solid theme(borderColor.base);
+      border-radius: theme(borderRadius.sm);
+      box-shadow: none;
+
+      &:focus {
+        border-color: theme(borderColor.primary.DEFAULT);
+      }
 
       padding: 0 4px !important;
       line-height: 2;
     }
 
     & label {
-      @apply !text-base;
+      color: theme(textColor.base);
     }
 
     & :global(.flexbox-fix) {
-      @apply !border-t-muted justify-center;
+      border-color: theme(borderColor.muted);
+      justify-content: center;
 
       & > div > div {
-        @apply text-center;
+        text-align: center;
       }
 
       & span > div {

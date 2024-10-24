@@ -24,19 +24,30 @@
 @layer comp {
   .fileInput {
     &::-webkit-file-upload-button {
-      @apply bg-primary-500 opacity-80 hover:opacity-90 text-white rounded border-none py-0 cursor-pointer;
+      background-color: theme(backgroundColor.primary.500);
+      color: theme(textColor.white);
+      border-radius: theme(borderRadius.DEFAULT);
+      border: 0;
+      padding-block: 0;
+      cursor: pointer;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 0.9;
+      }
     }
 
     &[aria-invalid="true"]::-webkit-file-upload-button {
-      @apply bg-danger-500;
+      background-color: theme(backgroundColor.danger.500);
     }
 
     &:disabled::-webkit-file-upload-button {
-      @apply bg-muted pointer-events-none;
+      background-color: theme(backgroundColor.muted);
+      pointer-events: none;
     }
 
     &[readOnly] {
-      @apply pointer-events-none;
+      pointer-events: none;
     }
   }
 }

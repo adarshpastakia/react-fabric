@@ -55,14 +55,18 @@
     }
 
     & > div[role="toolbar"] {
-      @apply area-head rounded-none px-2 py-1 bg-base;
+      grid-area: head;
+      border-radius: 0;
+      padding: 0.25rem 0.5rem;
+      background-color: theme(backgroundColor.base);
 
       & > div:first-child {
-        @apply flex-1 items-center;
+        flex: 1 1 0%;
+        align-items: center;
       }
 
       & button {
-        @apply cursor-pointer;
+        cursor: pointer;
       }
     }
 
@@ -73,12 +77,14 @@
       grid-template: "head head head" auto "side-s content side-e" 1fr "foot foot foot" auto / auto 1fr auto;
 
       & > div {
-        @apply area-content overflow-auto bg-base;
+        background-color: theme(backgroundColor.base);
+        grid-area: content;
+        overflow: auto;
       }
     }
 
     & div[class*="_nestedEditor_"] {
-      @apply bg-base;
+      background-color: theme(backgroundColor.base);
     }
 
     div[class*="_sandpackWrapper_"] {
@@ -87,6 +93,6 @@
   }
 
   div[data-radix-popper-content-wrapper] {
-    @apply z-50;
+    z-index: 50;
   }
 }

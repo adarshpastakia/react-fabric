@@ -93,6 +93,6 @@
   }
 
   .editorTools {
-    @apply bg-base;
+    background-color: theme(backgroundColor.base);
   }
 }
