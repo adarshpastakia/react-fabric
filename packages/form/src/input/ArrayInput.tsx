@@ -34,7 +34,7 @@ import {
   useMemo,
   type PropsWithChildren,
   type ReactNode,
-  type RefObject,
+  type Ref,
 } from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -96,7 +96,7 @@ export interface ArrayInputProps {
    * fixed length list
    */
   fixedList?: boolean;
-  arrayRef?: RefObject<{
+  arrayRef?: Ref<{
     addItem: (item: AnyObject) => void;
     removeItem: (idx: number) => void;
   }>;

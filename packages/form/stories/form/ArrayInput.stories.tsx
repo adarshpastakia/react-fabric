@@ -74,19 +74,20 @@ export const _ArrayInput: ArrayInputStory = {
         onSubmit={action("onSubmit")}
         schema={schema.current}
         defaultValues={{
-          names: [],
+          names: ["", ""],
         }}
       >
         <div className="mx-auto w-96">
           <ArrayInput
             {...args}
             required
+            minItems={1}
             name="names"
             label="Names list"
             addLabel="Add Name"
-            onAdd={() => ({ name: "" })}
+            onAdd={() => ""}
           >
-            <Controller name="name">
+            <Controller>
               <Input autoFocus placeholder="Name.." />
             </Controller>
           </ArrayInput>

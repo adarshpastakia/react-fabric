@@ -89,6 +89,10 @@ export const Form = <K extends KeyValue>({
     defaultValues: defaultValues as DefaultValues<K>,
   });
 
+  useEffect(() => {
+    form.reset();
+  }, []);
+
   const [, startTransition] = useTransition();
   const changeHandler = useDebounce(onChange, [onChange]);
   useEffect(() => {
