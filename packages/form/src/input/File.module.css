@@ -24,13 +24,16 @@
 @layer comp {
   .fileInput {
     &::-webkit-file-upload-button {
-      background-color: theme(backgroundColor.primary.500);
-      color: theme(textColor.white);
-      border-radius: theme(borderRadius.DEFAULT);
-      border: 0;
-      padding-block: 0;
       cursor: pointer;
+
+      padding-block: 0;
+
+      color: theme(textColor.white);
+
       opacity: 0.8;
+      background-color: theme(backgroundColor.primary.500);
+      border: 0;
+      border-radius: theme(borderRadius.DEFAULT);
 
       &:hover {
         opacity: 0.9;
@@ -42,8 +45,8 @@
     }
 
     &:disabled::-webkit-file-upload-button {
-      background-color: theme(backgroundColor.muted);
       pointer-events: none;
+      background-color: theme(backgroundColor.muted);
     }
 
     &[readOnly] {

@@ -56,9 +56,9 @@
 
     & > div[role="toolbar"] {
       grid-area: head;
-      border-radius: 0;
       padding: 0.25rem 0.5rem;
       background-color: theme(backgroundColor.base);
+      border-radius: 0;
 
       & > div:first-child {
         flex: 1 1 0%;
@@ -77,9 +77,9 @@
       grid-template: "head head head" auto "side-s content side-e" 1fr "foot foot foot" auto / auto 1fr auto;
 
       & > div {
-        background-color: theme(backgroundColor.base);
-        grid-area: content;
         overflow: auto;
+        grid-area: content;
+        background-color: theme(backgroundColor.base);
       }
     }
 

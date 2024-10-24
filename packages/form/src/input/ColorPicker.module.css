@@ -26,8 +26,12 @@
     --color-shadow: theme(borderColor.base);
 
     & input {
-      background-color: theme(backgroundColor.base);
+      padding: 0 4px !important;
+
+      line-height: 2;
       color: theme(textColor.base);
+
+      background-color: theme(backgroundColor.base);
       border: 1px solid theme(borderColor.base);
       border-radius: theme(borderRadius.sm);
       box-shadow: none;
@@ -35,9 +39,6 @@
       &:focus {
         border-color: theme(borderColor.primary.DEFAULT);
       }
-
-      padding: 0 4px !important;
-      line-height: 2;
     }
 
     & label {
@@ -45,8 +46,8 @@
     }
 
     & :global(.flexbox-fix) {
-      border-color: theme(borderColor.muted);
       justify-content: center;
+      border-color: theme(borderColor.muted);
 
       & > div > div {
         text-align: center;
