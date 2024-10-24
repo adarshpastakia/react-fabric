@@ -46,7 +46,7 @@ import {
   useState,
   type DragEvent,
   type FC,
-  type RefObject,
+  type Ref,
 } from "react";
 import { DrawContextProvider } from "./DrawContext";
 import {
@@ -101,7 +101,7 @@ export interface DrawProps {
   snapshot?: TLEditorSnapshot;
   onUpdate?: (snapshot: TLEditorSnapshot) => void;
   renderer?: (props: KeyValue) => AnyObject;
-  canvasRef?: RefObject<{ exportPages: () => Promise<KeyValue[]> }>;
+  canvasRef?: Ref<{ exportPages: () => Promise<KeyValue[]> }>;
 }
 
 const TypeMap: KeyValue = {

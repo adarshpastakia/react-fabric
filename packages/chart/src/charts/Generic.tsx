@@ -28,14 +28,14 @@ import {
   useImperativeHandle,
   useRef,
   type FC,
-  type RefObject,
+  type Ref,
 } from "react";
 import { type BaseChart } from "../types";
 import { ChartContainer } from "../wrapper/ChartContainer";
 import { ChartWrapper } from "../wrapper/ChartWrapper";
 
 export interface GenericProps extends BaseChart {
-  chartRef?: RefObject<EChartsType>;
+  chartRef?: Ref<EChartsType>;
 
   legend?: EChartOption["legend"];
   toolbox?: EChartOption["toolbox"];

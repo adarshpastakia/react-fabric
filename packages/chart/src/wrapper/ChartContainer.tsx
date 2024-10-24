@@ -41,7 +41,7 @@ import {
   useImperativeHandle,
   useMemo,
   useState,
-  type RefObject,
+  type Ref,
 } from "react";
 import { type Theme } from "../types";
 import echarts from "../types/charts";
@@ -100,7 +100,7 @@ export const ChartContainer = memo(
     emptyIcon?: string;
     options: EChartOption;
     children?: AnyObject;
-    chartRef?: RefObject<EChartsType>;
+    chartRef?: Ref<EChartsType>;
     onClick?: (event: AnyObject) => void;
     onExport?: (event: AnyObject) => void;
     dataTableRenderer?: (opt: KeyValue) => string;
