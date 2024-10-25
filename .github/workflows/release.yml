@@ -45,7 +45,7 @@ jobs:
           echo "registry=https://registry.npmjs.org/" >> .npmrc
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
           npm whoami
-          lerna publish from-package --yes --no-verify-access --pre-dist-tag next
+          lerna publish from-package --yes --no-verify-access
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
