@@ -63,7 +63,7 @@ module.exports = plugin(
       ".scroll-hide": {},
       ...Object.fromEntries(
         Object.entries(theme("spacing")).map(([key, size]) => [
-          `.gap-${key}`,
+          `.gap-${key.replace(".", "\\.")}`,
           { gap: size, "--gutter": size },
         ]),
       ),
