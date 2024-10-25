@@ -25,8 +25,9 @@ import {
   type ChildrenProp,
   type CssProp,
 } from "@react-fabric/core/dist/types/types";
+import { cloneChildren } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { Children, cloneElement } from "react";
+import { cloneElement } from "react";
 import classes from "../internal/Field.module.css";
 import { FieldWrapper } from "../internal/FieldWrapper";
 
@@ -90,13 +91,10 @@ export const Field = ({
           !vertical && "flex flex-nowrap",
         )}
       >
-        {Children.map(
-          children,
-          (child) =>
-            child &&
-            cloneElement(child as AnyObject, {
-              "data-inner": true,
-            }),
+        {cloneChildren(children, (child: AnyObject) =>
+          cloneElement(child, {
+            "data-inner": true,
+          }),
         )}
       </div>
     </FieldWrapper>

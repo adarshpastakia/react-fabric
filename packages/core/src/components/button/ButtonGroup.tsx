@@ -21,8 +21,9 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { cloneChildren } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { Children, cloneElement } from "react";
+import { cloneElement } from "react";
 import {
   type AriaProps,
   type ChildrenProp,
@@ -96,7 +97,7 @@ export const ButtonGroup = ({
       )}
       {...aria}
     >
-      {Children.map(children, (child: AnyObject) =>
+      {cloneChildren(children, (child: AnyObject) =>
         cloneElement(child, {
           color,
           size,

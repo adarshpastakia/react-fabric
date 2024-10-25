@@ -24,10 +24,9 @@
 import { DndContext, type DragEndEvent } from "@dnd-kit/core";
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { Button, CoreIcons, Icon, Tooltip } from "@react-fabric/core";
-import { isString } from "@react-fabric/utilities";
+import { cloneChildren, isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import {
-  Children,
   cloneElement,
   useCallback,
   useImperativeHandle,
@@ -255,7 +254,7 @@ export const ArrayInput = ({
                     index,
                     name: `${name}.${index}`,
                   })
-                : Children.map(children, (child: AnyObject) =>
+                : cloneChildren(children, (child: AnyObject) =>
                     cloneElement(
                       child,
                       Object.assign(

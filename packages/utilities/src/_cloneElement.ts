@@ -21,32 +21,22 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/* istanbul ignore file */
+import { type ReactNode, Children, isValidElement } from "react";
+import { Fragment } from "react/jsx-runtime";
 
-export * from "./_ascii";
-export * from "./_boundingBox";
-export { getBoundingBox, getBox } from "./_boundingBox";
-export * from "./_cloneElement";
-export { default as Countries } from "./_countries";
-export type { Country } from "./_countries";
-export * from "./_debounce";
-export * from "./_dedupe";
-export { _fetch as fetch } from "./_fetch";
-export { default as FileUtil } from "./_fileType";
-export * from "./_format";
-export * from "./_getByPath";
-export * from "./_hash";
-export * from "./_interpolate";
-export * from "./_isEqual";
-export * from "./_isType";
-export * from "./_mergeRefs";
-export * from "./_tokenize";
-export { getImageColorset } from "./getImageColorset";
-export { useLogger } from "./useLogger";
-export * from "./yup";
-
-export const EMPTY_ARRAY = [];
-Object.freeze(EMPTY_ARRAY);
-
-export const EMPTY_OBJECT = {};
-Object.freeze(EMPTY_OBJECT);
+export const cloneChildren = (
+  children: ReactNode,
+  callback: (child: ReactNode, index: number) => ReactNode,
+  index = 0,
+): ReactNode => {
+  return Children.map(children, (c: ReactNode) => {
+    if (isValidElement(c)) {
+      if (c.type === Fragment) {
+        // just compare to `Fragment`
+        return cloneChildren(c.props?.children, callback);
+      }
+      return callback(c, index++);
+    }
+    return c;
+  });
+};

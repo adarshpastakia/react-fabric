@@ -21,9 +21,9 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { EMPTY_ARRAY, isArray } from "@react-fabric/utilities";
+import { cloneChildren, EMPTY_ARRAY, isArray } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { Children, cloneElement, useCallback, useMemo } from "react";
+import { cloneElement, useCallback, useMemo } from "react";
 import { useControlledValue } from "../../hooks/useControlledValue";
 import {
   type AriaProps,
@@ -140,7 +140,7 @@ export const ToggleButtonGroup = ({
       )}
       {...aria}
     >
-      {Children.map(children, (child: AnyObject) =>
+      {cloneChildren(children, (child: AnyObject) =>
         cloneElement(child, {
           color,
           size,

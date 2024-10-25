@@ -52,9 +52,12 @@ export const _ButtonGroup: ButtonGroupStory = {
     return (
       <Fragment>
         <ButtonGroup {...args}>
-          <Button>First</Button>
+          <Tooltip content="Tester">
+            <Button>First</Button>
+          </Tooltip>
           <Button>Second</Button>
           <Button>Third</Button>
+          {args.className === "red" && <Button>Four</Button>}
         </ButtonGroup>
       </Fragment>
     );

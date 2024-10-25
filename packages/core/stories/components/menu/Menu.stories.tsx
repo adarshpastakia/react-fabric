@@ -132,8 +132,10 @@ export const Minimal: MenuStory = {
             appendLabel="NEW"
           />
           <MenuItem id="newItem" label="New Menu Item" badge={45} />
-          <MenuItem id="collapsable1" label="Collapsable Item" disabled />
-          <MenuItem id="collapsable2" label="Collapsable Item" active />
+          <Fragment>
+            <MenuItem id="collapsable1" label="Collapsable Item" disabled />
+            <MenuItem id="collapsable2" label="Collapsable Item" active />
+          </Fragment>
           <MenuItem id="sectionItem" label="Section Item" />
           <Menu label="Floating Item">
             <MenuItem id="inner1" label="Inner Item" />

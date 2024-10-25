@@ -45,10 +45,9 @@ import {
   useRole,
   useTypeahead,
 } from "@floating-ui/react";
-import { mergeRefs } from "@react-fabric/utilities";
+import { cloneChildren, mergeRefs } from "@react-fabric/utilities";
 import classNames from "classnames";
 import {
-  Children,
   cloneElement,
   Fragment,
   useCallback,
@@ -231,25 +230,23 @@ const MenuComponent = ({
                 // @ts-expect-error ignore
                 {...{ style: !isNested ? rest.style : floatingStyles }}
               >
-                {Children.map(children, (child: AnyObject, index) => {
-                  if (child) {
-                    labelsRef.current[index] = child.props.label;
-                    return cloneElement(
-                      child,
-                      nodeCheck(child, MenuItem, Menu, MenuComponent)
-                        ? {
-                            minimal: !isNested && minimal,
-                            "data-focus": activeIndex === index,
-                            ref: (el: HTMLElement) =>
-                              (elementsRef.current[index] = el),
-                            ...getItemProps({
-                              onClick: child.props.onClick,
-                              tabIndex: activeIndex === index ? 0 : -1,
-                            }),
-                          }
-                        : {},
-                    );
-                  }
+                {cloneChildren(children, (child: AnyObject, index) => {
+                  labelsRef.current[index] = child.props.label;
+                  return cloneElement(
+                    child,
+                    nodeCheck(child, MenuItem, Menu, MenuComponent)
+                      ? {
+                          minimal: !isNested && minimal,
+                          "data-focus": activeIndex === index,
+                          ref: (el: HTMLElement) =>
+                            (elementsRef.current[index] = el),
+                          ...getItemProps({
+                            onClick: child.props.onClick,
+                            tabIndex: activeIndex === index ? 0 : -1,
+                          }),
+                        }
+                      : {},
+                  );
                 })}
               </div>
             </FloatingFocusManager>
