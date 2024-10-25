@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.16](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.15...v1.0.0-beta.16) (2024-10-25)
+
+**Note:** Version bump only for package @react-fabric/media
+
 # [1.0.0-beta.15](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.14...v1.0.0-beta.15) (2024-10-24)
 
 **Note:** Version bump only for package @react-fabric/media
