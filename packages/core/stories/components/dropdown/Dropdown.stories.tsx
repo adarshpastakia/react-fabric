@@ -68,6 +68,31 @@ export const _Dropdown: DropdownStory = {
           <MenuItem id="1" label="Item One" />
           <MenuItem id="2" label="Item Two" />
           <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" />
         </Menu>
       </Dropdown>
     );

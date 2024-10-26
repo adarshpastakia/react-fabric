@@ -186,6 +186,16 @@ const MenuComponent = ({
     );
   }, [isOpen]);
 
+  useEffect(() => {
+    if ((!isNested || isOpen) && activeIndex) {
+      setTimeout(() => {
+        elementsRef.current[activeIndex]?.scrollIntoView({
+          block: "nearest",
+        });
+      }, 100);
+    }
+  }, [isOpen, activeIndex]);
+
   return (
     <FloatingNode id={nodeId}>
       {isNested && (
@@ -259,6 +269,7 @@ const MenuComponent = ({
 
 export const Menu = (props: MenuProps) => {
   const parentId = useFloatingParentNodeId();
+  const tree = useFloatingTree();
 
   if (parentId === null) {
     return (
@@ -268,6 +279,15 @@ export const Menu = (props: MenuProps) => {
           menuClassName={props.className}
         />
       </FloatingTree>
+    );
+  }
+
+  if (tree) {
+    return (
+      <MenuComponent
+        {...(props as AnyObject)}
+        menuClassName={props.className}
+      />
     );
   }
 
