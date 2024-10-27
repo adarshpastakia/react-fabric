@@ -32,7 +32,7 @@ import {
 import { Chip } from "@react-fabric/core";
 import { isArray, isEmpty } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { Fragment, useCallback, useId, useMemo } from "react";
+import { Fragment, useCallback, useId, useLayoutEffect, useMemo } from "react";
 import { FieldWrapper } from "../internal/FieldWrapper";
 import { InputWrapper } from "../internal/InputWrapper";
 import { type SelectProps } from "../types";
@@ -55,6 +55,7 @@ export const List = <T extends AnyObject = string>({
   valueProperty,
   multiple,
   allowCreate,
+  searchable,
   createOption,
   matcher,
   renderer,
@@ -166,9 +167,12 @@ export const List = <T extends AnyObject = string>({
           }
         } else if (evt.key === "Backspace") {
           !state.query && handleRemove();
-        } else if (["ArrowUp", "ArrowDown"].includes(evt.key)) {
-          if (state.activeIndex === null) {
-            setActiveIndex(state.selectedIndex);
+        } else if (!searchable || ["ArrowUp", "ArrowDown"].includes(evt.key)) {
+          if (
+            ["ArrowUp", "ArrowDown"].includes(evt.key) &&
+            state.activeIndex === null
+          ) {
+            setActiveIndex(state.selectedIndex ?? 0);
           }
           setTimeout(() => {
             props.onKeyDown?.(evt);
@@ -225,6 +229,15 @@ export const List = <T extends AnyObject = string>({
     }
   }, [state.value, state.query, placeholder, renderer]);
 
+  useLayoutEffect(() => {
+    setTimeout(() => {
+      state.selectedIndex &&
+        listRef.current[state.selectedIndex]?.scrollIntoView({
+          block: "center",
+        });
+    }, 100);
+  }, [state.selectedIndex]);
+
   return (
     <Wrapper {...wrapperProps}>
       <InputWrapper
@@ -240,22 +253,34 @@ export const List = <T extends AnyObject = string>({
         wrapperRef={refs.setReference}
       >
         <div
+          role="none"
           data-select-display="true"
-          className="group flex-1 py-1 px-2 truncate text-start flex gap-1 flex-wrap"
+          className={classNames(
+            "group flex-1 py-1 px-2 truncate text-start flex gap-1 relative min-h-5 justify-start",
+            multiple ? "flex-wrap" : "flex-nowrap overflow-hidden",
+          )}
+          {...referenceProps}
+          onMouseUp={(e) =>
+            e.currentTarget.querySelector<HTMLElement>("input")?.focus()
+          }
         >
           {!hideSelected && displayValue}
           <input
+            readOnly={!searchable || readOnly}
             disabled={disabled}
             value={state.query ?? ""}
             aria-invalid={invalid}
             data-testid={name}
             name={name}
+            size={1}
+            ref={ref}
+            autoFocus={autoFocus}
             className={classNames(
               "appearance-none bg-transparent outline-none border-none ring-0 flex-1 min-w-24",
               disabled && "cursor-not-allowed pointer-events-none",
+              multiple && "min-w-24",
             )}
             placeholder={isEmpty(state.value) ? placeholder : ""}
-            {...referenceProps}
             onChange={(evt) => handleQuery(evt.target.value)}
           />
         </div>
@@ -277,10 +302,12 @@ export const List = <T extends AnyObject = string>({
           {...floatingProps}
           items={state.items}
           active={state.activeIndex}
+          valueProperty={valueProperty}
+          labelProperty={labelProperty}
           itemRef={setItemRef}
           itemProps={makeItemProps}
         >
-          {(item) => renderer?.(item) ?? item[labelProperty] ?? item}
+          {(item, label) => renderer?.(item) ?? label}
         </Options>
       </FloatingFocusManager>
     </Wrapper>
