@@ -44,6 +44,10 @@ export interface BadgeProps
    */
   block?: boolean;
   /**
+   * inline badge
+   */
+  inline?: boolean;
+  /**
    * badge value
    */
   value?: number | string;
@@ -90,6 +94,7 @@ export const Badge = ({
   max,
   ping,
   block,
+  inline,
   placement = "top-end",
   children,
   // @ts-expect-error ignore
@@ -120,7 +125,7 @@ export const Badge = ({
   return (
     <div
       className={classNames(
-        forButton ? "contents" : "relative",
+        forButton || inline ? "contents" : "relative",
         block ? "block" : "inline-block",
       )}
     >
@@ -138,7 +143,7 @@ export const Badge = ({
             classes.badge,
             className,
             "inline-block p-px min-w-2 min-h-2 text-center select-none rounded-full leading-none z-5 pointer-events-none",
-            forButton && !placement ? "relative" : "absolute",
+            (forButton && !placement) || inline ? "relative" : "absolute",
           )}
         >
           {label && <span className="p-1">{label}</span>}
