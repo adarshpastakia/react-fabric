@@ -81,7 +81,7 @@ export interface ColProps
   /**
    * column flex
    */
-  flex?: "auto" | "fill" | "full";
+  flex?: "auto" | "fill" | "full" | "content";
   /**
    * stretch inner content
    */
