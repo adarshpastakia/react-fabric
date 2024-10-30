@@ -43,7 +43,7 @@ export const useNavigator = (totalCount = 0, defaultIndex = 0) => {
   );
   const headLabel = useMemo(
     () => (
-      <span className="text-muted leading-5">
+      <span className="text-muted leading-none select-none">
         {currentIndex + 1}/{totalCount}
       </span>
     ),
