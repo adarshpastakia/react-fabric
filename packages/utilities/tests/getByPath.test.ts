@@ -78,6 +78,12 @@ describe("get values by JSON path", () => {
     done();
   });
 
+  it("should get array item", (done) => {
+    expect(getByPath(["one", "two", "three"], "0")).toBe("one");
+    expect(getByPath([{ item: "one" }, { item: "two" }], "0.item")).toBe("one");
+    done();
+  });
+
   it("should get first no null value", (done) => {
     expect(getValue(undefined, "yes", null)).toBe("yes");
     expect(getValue(null, 0, undefined, "yes", null)).toBe(0);

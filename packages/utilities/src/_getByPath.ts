@@ -35,10 +35,10 @@ const _get = (hit: any, field: string): any => {
     return hit;
   }
 
-  if (isObject(hit)) {
+  if (isObject(hit) || isArray(hit)) {
     /** ***************** return value if object.property is not empty *******************/
-    if (!isNil(hit[field])) {
-      return hit[field];
+    if (!isNil(hit[field as any])) {
+      return hit[field as any];
     }
 
     /** ***************** if property name contains `.` separator split to multiple property names *******************/
