@@ -23,7 +23,9 @@
 
 @layer comp {
   .title {
+    padding: 4px 2px;
     line-height: 1.125;
+    white-space: prewrap;
   }
 
   .moreLink {

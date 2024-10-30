@@ -110,7 +110,6 @@ export const Title = ({
     <E
       className={classNames(
         classes.title,
-        "px-[2px] py-1 truncate whitespace-pre-wrap",
         className,
         family && `font-${family}`,
         !as && "text-lg",

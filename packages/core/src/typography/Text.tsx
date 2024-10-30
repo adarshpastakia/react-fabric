@@ -165,7 +165,7 @@ export const Text = ({
         <div
           className={classNames(
             classes.text,
-            "text-reset mixed-lang px-[2px] whitespace-pre-wrap",
+            "mixed-lang px-[2px] whitespace-pre-wrap",
             family && `font-${family}`,
             bg && getBgClass(bg),
             color && getColorClass(color),
