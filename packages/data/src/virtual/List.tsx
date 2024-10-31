@@ -74,6 +74,8 @@ export interface VirtualListProps<T> extends TestProps {
    * full width list
    */
   fullWidth?: boolean;
+  maxWidth?: string | number;
+  minWidth?: string | number;
   /**
    * padding
    */
@@ -111,6 +113,8 @@ const _VirtualList = <T extends KeyValue>({
   items,
   children,
   fullWidth,
+  maxWidth,
+  minWidth,
   padding = "md",
   orientation = "vertical",
   defaultHeight: height = 48,
@@ -278,6 +282,10 @@ const _VirtualList = <T extends KeyValue>({
             padding === "md" && "p-2",
             padding === "lg" && "p-4",
           )}
+          style={{
+            minWidth,
+            maxWidth,
+          }}
         >
           <div
             style={

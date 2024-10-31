@@ -68,6 +68,12 @@ export interface VirtualGalleryProps<T> extends TestProps {
    */
   defaultWidth?: number;
   /**
+   * full width list
+   */
+  fullWidth?: boolean;
+  maxWidth?: string | number;
+  minWidth?: string | number;
+  /**
    * padding
    */
   padding?: "sm" | "md" | "lg" | "none";
@@ -100,6 +106,9 @@ const _VirtualGallery = <T extends KeyValue>({
   items,
   children,
   columns,
+  fullWidth,
+  maxWidth,
+  minWidth,
   padding = "md",
   defaultHeight: height = 48,
   defaultWidth: width = 48,
@@ -287,10 +296,15 @@ const _VirtualGallery = <T extends KeyValue>({
         <div
           className={classNames(
             "box-content",
+            fullWidth && "flex-1",
             padding === "sm" && "p-1",
             padding === "md" && "p-2",
             padding === "lg" && "p-4",
           )}
+          style={{
+            minWidth,
+            maxWidth,
+          }}
         >
           <div
             style={{
@@ -300,7 +314,7 @@ const _VirtualGallery = <T extends KeyValue>({
             <div style={{ height: virtualItems[0]?.start }} />
             {virtualItems.map(({ key, index, measureElement }) => (
               <div
-                className="flex"
+                className="flex justify-center"
                 key={key}
                 data-index={index}
                 ref={measureElement}
