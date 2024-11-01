@@ -156,7 +156,7 @@ export const Chip = <Tag extends React.ElementType = "div">({
         classes.chip,
         className,
         color && getColorClass(color),
-        "select-none inline-flex flex-nowrap items-center max-w-72 text-sm rounded",
+        "select-none inline-flex flex-nowrap items-center max-w-72 rounded",
         rounded && "rounded-full",
         !!onClick && classes.clickable,
         disabled && classes.disabled,
@@ -185,6 +185,7 @@ export const Chip = <Tag extends React.ElementType = "div">({
       {onRemove && (
         <span
           role="none"
+          data-inner-cliackable
           className={classNames(
             classes.chipRemove,
             "cursor-pointer pe-1 opacity-65 hover:opacity-90",

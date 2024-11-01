@@ -25,13 +25,16 @@
   .chip {
     --blank-gradient: linear-gradient(to bottom, #00000005 0%, #0000 10%);
 
+    font-size: 0.875rem;
     color: theme(colors.tint.500);
+
     background-image: var(--blank-gradient);
     outline: 1px solid color-mix(in lab, currentcolor 20%, var(--fabric-bg));
     outline-offset: -1px;
 
     & > .chipLabel {
       padding: 0 0.5em;
+      line-height: 1.25;
     }
 
     & > .chipIcon {
