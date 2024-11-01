@@ -85,7 +85,7 @@ export interface BaseProps
   /**
    * button styling
    */
-  variant?: "outline" | "solid" | "link";
+  variant?: "outline" | "soft" | "solid" | "link";
   /**
    * active state with click disabled
    */

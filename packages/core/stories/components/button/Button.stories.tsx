@@ -116,6 +116,7 @@ export const Styles: ButtonStory = {
       <Fragment>
         <Button {...args} variant={undefined} />
         <Button {...args} variant="outline" />
+        <Button {...args} variant="soft" />
         <Button {...args} variant="solid" />
         <Button {...args} variant="link" />
       </Fragment>

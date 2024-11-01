@@ -166,6 +166,13 @@
       --outline: var(--color);
     }
 
+    &[data-variant="soft"] {
+      --bg: color-mix(in lab, var(--color) 25%, var(--fabric-bg));
+      --bg-hover: color-mix(in lab, var(--color) 35%, var(--fabric-bg));
+      --bg-click: color-mix(in lab, var(--color) 50%, theme(colors.tint.50));
+      --bg-active: color-mix(in lab, var(--color) 50%, theme(colors.tint.50));
+    }
+
     &[data-variant="solid"] {
       --outline: var(--color);
       --bg: color-mix(in lab, var(--color) 96%, var(--fabric-text));
