@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.18](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.17...v1.0.0-beta.18) (2024-11-01)
+
+### Bug Fixes
+
+- **Alert:** prompt input ([d50b06a](https://github.com/adarshpastakia/react-fabric/commit/d50b06abf10a628a8d9dac1ca4e0920d0cd8ebba))
+- **Badge:** add inline prop ([24b5369](https://github.com/adarshpastakia/react-fabric/commit/24b536919b4481ddecff1e83b11e5db2181c249a))
+- **Col:** add "content" align ([bf34e3d](https://github.com/adarshpastakia/react-fabric/commit/bf34e3d896d7e4d13a3bf82d9fb79c6804baa340))
+- **DateDisplay:** dropdown closeOnClick ([8fabd92](https://github.com/adarshpastakia/react-fabric/commit/8fabd92160e07d67819a22514242b2dceed46a61))
+- **getByPath:** fetch value when record is array ([031a4b0](https://github.com/adarshpastakia/react-fabric/commit/031a4b06f56868e156ba7090130809438fac6e5b))
+- **List:** scroll selected into view ([5083686](https://github.com/adarshpastakia/react-fabric/commit/5083686164558f4a6be4b905131b3debefc49541))
+- **Menu:** floating menu scroll active into view ([1e71d33](https://github.com/adarshpastakia/react-fabric/commit/1e71d33aba0fae1219b109fc38f8f764b797a2f6))
+- **NsfwOverlay:** add data-inner-clickable ([bcfd729](https://github.com/adarshpastakia/react-fabric/commit/bcfd729a3bd05e892c7f6a37fd110e4fc8237ac2))
+- **Title:** move default styles to component layer ([586b7bb](https://github.com/adarshpastakia/react-fabric/commit/586b7bb577c68f9ee7f9a118024812259ac1057a))
+- **useNavigator:** line-height and select on display ([fb467d3](https://github.com/adarshpastakia/react-fabric/commit/fb467d3884006280c709ecf8d03af5e19f4b5316))
+- **VirtualLists:** max/min width ([0040b8e](https://github.com/adarshpastakia/react-fabric/commit/0040b8eb169bb2e96d405520abab3e0f9307992e))
+
 # [1.0.0-beta.17](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.16...v1.0.0-beta.17) (2024-10-25)
 
 **Note:** Version bump only for package react-fabric

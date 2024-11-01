@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.18](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.17...v1.0.0-beta.18) (2024-11-01)
+
+### Bug Fixes
+
+- **VirtualLists:** max/min width ([0040b8e](https://github.com/adarshpastakia/react-ui-framework/commit/0040b8eb169bb2e96d405520abab3e0f9307992e))
+
 # [1.0.0-beta.17](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.16...v1.0.0-beta.17) (2024-10-25)
 
 **Note:** Version bump only for package @react-fabric/data

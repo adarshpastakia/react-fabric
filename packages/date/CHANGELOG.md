@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.18](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.17...v1.0.0-beta.18) (2024-11-01)
+
+### Bug Fixes
+
+- **DateDisplay:** dropdown closeOnClick ([8fabd92](https://github.com/adarshpastakia/react-ui-framework/commit/8fabd92160e07d67819a22514242b2dceed46a61))
+
 # [1.0.0-beta.17](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.16...v1.0.0-beta.17) (2024-10-25)
 
 **Note:** Version bump only for package @react-fabric/date

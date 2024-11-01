@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.18](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.17...v1.0.0-beta.18) (2024-11-01)
+
+### Bug Fixes
+
+- **Alert:** prompt input ([d50b06a](https://github.com/adarshpastakia/react-ui-framework/commit/d50b06abf10a628a8d9dac1ca4e0920d0cd8ebba))
+- **Badge:** add inline prop ([24b5369](https://github.com/adarshpastakia/react-ui-framework/commit/24b536919b4481ddecff1e83b11e5db2181c249a))
+- **Col:** add "content" align ([bf34e3d](https://github.com/adarshpastakia/react-ui-framework/commit/bf34e3d896d7e4d13a3bf82d9fb79c6804baa340))
+- **Menu:** floating menu scroll active into view ([1e71d33](https://github.com/adarshpastakia/react-ui-framework/commit/1e71d33aba0fae1219b109fc38f8f764b797a2f6))
+- **Title:** move default styles to component layer ([586b7bb](https://github.com/adarshpastakia/react-ui-framework/commit/586b7bb577c68f9ee7f9a118024812259ac1057a))
+- **useNavigator:** line-height and select on display ([fb467d3](https://github.com/adarshpastakia/react-ui-framework/commit/fb467d3884006280c709ecf8d03af5e19f4b5316))
+
 # [1.0.0-beta.17](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.16...v1.0.0-beta.17) (2024-10-25)
 
 **Note:** Version bump only for package @react-fabric/core
