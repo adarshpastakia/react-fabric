@@ -25,7 +25,7 @@
   .alert {
     z-index: var(--z-overlay);
 
-    grid-template: "icon title" auto "icon message" auto "input input" auto "actions actions" auto / auto 1fr;
+    grid-template: "icon title" auto "message message" auto "input input" auto "actions actions" auto / auto 1fr;
     gap: 0.5rem 1rem;
 
     margin-top: -100%;

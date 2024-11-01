@@ -190,14 +190,16 @@ export const Alert = ({
               {iconType}
             </div>
 
-            <Title className="font-medium area-[title]">{title}</Title>
-            <p className="area-[message] py-4">{message}</p>
+            <Title className="font-medium area-[title] self-center">
+              {title}
+            </Title>
+            <div className="area-[message] py-4">{message}</div>
             {type === "prompt" && (
               <input
                 value={value}
                 placeholder={placeholder}
                 className={classNames(
-                  "border rounded focus:border-primary-500",
+                  `area-[input] appearance-none outline-0 ring-${color}-500 border rounded border-${color}-200 w-full px-2 py-1`,
                 )}
                 ref={(e) => e != null && setTimeout(() => e.focus(), 100)}
                 onBlur={(e) => e.target.focus()}
@@ -228,7 +230,7 @@ export const Alert = ({
                 size="sm"
                 variant="solid"
                 color={color}
-                onClick={() => handleClose(true)}
+                onClick={() => handleClose(type === "prompt" ? value : true)}
               >
                 {okLabel ?? t("action.ok", "OK")}
               </Button>
