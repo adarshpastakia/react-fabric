@@ -156,7 +156,7 @@ export const Chip = <Tag extends React.ElementType = "div">({
         classes.chip,
         className,
         color && getColorClass(color),
-        "select-none inline-flex flex-nowrap items-center max-w-72 rounded",
+        "select-none inline-flex flex-nowrap items-center align-middle max-w-72 rounded",
         rounded && "rounded-full",
         !!onClick && classes.clickable,
         disabled && classes.disabled,
