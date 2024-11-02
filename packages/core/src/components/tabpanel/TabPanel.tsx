@@ -156,6 +156,7 @@ export const TabPanel = ({
             classes.tabList,
             justify && `justify-${justify}`,
             ["start", "end"].includes(orientation) && "flex-col",
+            ["bottom", "end"].includes(orientation) ? "self-start" : "self-end",
             "flex flex-1 flex-nowrap overflow-auto scroll-thin",
           )}
           style={{ gap }}

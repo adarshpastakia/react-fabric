@@ -87,7 +87,6 @@
 
     &[data-orientation="top"] {
       grid-template: "tablist" auto "content" 1fr / 1fr;
-      padding-inline: 2px;
 
       .tabHeader {
         box-shadow: 0 -1px 0 theme(borderColor.dimmed) inset;
@@ -96,7 +95,6 @@
 
     &[data-orientation="bottom"] {
       grid-template: "content" 1fr "tablist" auto / 1fr;
-      padding-inline: 2px;
 
       .tabHeader {
         margin-top: 1px;
@@ -106,7 +104,6 @@
 
     &[data-orientation="start"] {
       grid-template: "tablist content" 1fr / auto 1fr;
-      padding-block: 2px;
 
       .tabHeader {
         box-shadow: -1px 0 0 theme(borderColor.dimmed) inset;
@@ -115,7 +112,6 @@
 
     &[data-orientation="end"] {
       grid-template: "content tablist" 1fr / 1fr auto;
-      padding-block: 2px;
 
       .tabHeader {
         box-shadow: 1px 0 0 theme(borderColor.dimmed) inset;
