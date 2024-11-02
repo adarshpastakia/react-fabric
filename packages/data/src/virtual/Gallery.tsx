@@ -314,7 +314,7 @@ const _VirtualGallery = <T extends KeyValue>({
             <div style={{ height: virtualItems[0]?.start }} />
             {virtualItems.map(({ key, index, measureElement }) => (
               <div
-                className="flex justify-center"
+                className="flex justify-start"
                 key={key}
                 data-index={index}
                 ref={measureElement}
