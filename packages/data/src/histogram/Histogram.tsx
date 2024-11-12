@@ -150,6 +150,7 @@ export const Histogram = ({
                 key="negative"
                 color="danger"
                 size="sm"
+                stopPropagation
                 icon={CoreIcons.funnelMinus}
                 aria-label="Filter Negative"
                 onClick={() => onClick?.(item.id, true)}
@@ -158,6 +159,7 @@ export const Histogram = ({
                 key="positive"
                 color="primary"
                 size="sm"
+                stopPropagation
                 icon={CoreIcons.funnelPlus}
                 aria-label="Filter"
                 onClick={() => onClick?.(item.id)}
