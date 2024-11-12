@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.19](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.18...v1.0.0-beta.19) (2024-11-12)
+
+### Bug Fixes
+
+- **Histogram:** stopPropagation on action click ([9fd6ad2](https://github.com/adarshpastakia/react-ui-framework/commit/9fd6ad2491253e2ed404e657bc9c273549c71a22))
+
 # [1.0.0-beta.18](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.17...v1.0.0-beta.18) (2024-11-01)
 
 ### Bug Fixes

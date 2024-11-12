@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/chart",
-  "version": "1.0.0-beta.18",
+  "version": "1.0.0-beta.19",
   "description": "RUF: Charting package",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -33,8 +33,8 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@react-fabric/core": "^1.0.0-beta.18",
-    "@react-fabric/utilities": "^1.0.0-beta.18",
+    "@react-fabric/core": "^1.0.0-beta.19",
+    "@react-fabric/utilities": "^1.0.0-beta.19",
     "classnames": "^2.5.1",
     "color": "^4.2.3",
     "date-fns": "^4.0.0",
