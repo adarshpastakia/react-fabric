@@ -23,6 +23,6 @@
 
 @layer comp {
   .section {
-    grid-template: "head head head" auto "side-s content side-e" 1fr "foot foot foot" auto / auto 1fr auto;
+    grid-template: ". loader ." auto "head head head" auto "side-s content side-e" 1fr "foot foot foot" auto / auto 1fr auto;
   }
 }
