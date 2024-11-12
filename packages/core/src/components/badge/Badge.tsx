@@ -142,7 +142,7 @@ export const Badge = ({
           className={classNames(
             classes.badge,
             className,
-            "inline-block p-px min-w-2 min-h-2 text-center select-none rounded-full leading-none z-5 pointer-events-none",
+            "inline-block p-px min-w-2 min-h-2 text-center select-none rounded-full leading-none z-2 pointer-events-none",
             (forButton && !placement) || inline ? "relative" : "absolute",
           )}
         >
