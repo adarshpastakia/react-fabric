@@ -76,6 +76,7 @@ export const SearchBar = ({
 
   const fireSearch = useDebounce(
     (query: AnyObject, filters: FilterObject[]) => {
+      dispatch({ type: "dirty", dirty: false });
       onSearch?.({
         query,
         filters,
@@ -87,7 +88,12 @@ export const SearchBar = ({
   const [state, dispatch] = useReducer(
     (state: SearchState, action: SearchActions) => {
       if (action.type === "reset") {
-        return { ...state, query: action.query, filters: action.filters };
+        return {
+          ...state,
+          dirty: false,
+          query: action.query,
+          filters: action.filters,
+        };
       }
       if (action.type === "dirty") {
         return { ...state, dirty: action.dirty };
