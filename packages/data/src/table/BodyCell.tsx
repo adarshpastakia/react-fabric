@@ -63,7 +63,7 @@ export const BodyCell = ({
         return column.valueMap[value];
       }
     }
-    if (column.dataType === "date") {
+    if (["date", "time", "datetime"].includes(column.dataType ?? "")) {
       return <DateDisplay date={value} format={column.format} />;
     }
     if (column.dataType === "number") {
