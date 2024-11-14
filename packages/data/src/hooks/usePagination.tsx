@@ -111,9 +111,12 @@ export const usePagination = ({
 
   /** ***************** set page *******************/
   useEffect(() => {
-    setPage(Math.min(currentPage, totalPages - 1));
-    onChange?.(Math.min(currentPage, totalPages - 1));
-  }, [currentPage, totalPages]);
+    if (totalRecords > -1) {
+      const actual = Math.min(currentPage, totalPages - 1);
+      setPage(actual);
+      actual !== currentPage && onChange?.(actual);
+    }
+  }, [currentPage, totalRecords, totalPages]);
 
   const headLabel = useMemo(
     () => (
@@ -126,10 +129,13 @@ export const usePagination = ({
     [page, perPage, totalRecords],
   );
 
-  const onPageChange = useCallback((page: number) => {
-    setPage(page);
-    startTransition(() => onChange?.(page));
-  }, []);
+  const onPageChange = useCallback(
+    (page: number) => {
+      setPage(page);
+      startTransition(() => onChange?.(page));
+    },
+    [onChange],
+  );
 
   return { page, totalPages, headLabel, ranges, onPageChange };
 };
