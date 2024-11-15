@@ -104,7 +104,7 @@ export const Input = ({
         type={type}
         ref={ref}
         autoComplete="off"
-        {...{ autoFocus }}
+        autoFocus={autoFocus}
         value={actualValue}
         onChange={handleChange}
         onKeyDown={handleEnterPressed}

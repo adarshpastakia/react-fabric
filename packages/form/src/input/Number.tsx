@@ -116,7 +116,7 @@ export const Number = ({
         step={step}
         ref={ref}
         autoComplete="off"
-        {...{ autoFocus }}
+        autoFocus={autoFocus}
         value={actualValue}
         onChange={handleChange}
         onKeyDown={handleEnterPressed}

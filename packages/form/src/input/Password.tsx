@@ -129,7 +129,7 @@ export const Password = ({
         type={show ? "text" : "password"}
         ref={ref}
         autoComplete="off"
-        {...{ autoFocus }}
+        autoFocus={autoFocus}
         value={actualValue}
         onChange={handleChange}
         onKeyDown={handleEnterPressed}

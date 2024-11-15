@@ -120,7 +120,7 @@ export const Textarea = ({
         name={name}
         ref={ref}
         autoComplete="off"
-        {...{ autoFocus }}
+        autoFocus={autoFocus}
         value={actualValue}
         onChange={handleChange}
         onKeyDown={handleEnter(onEnterPressed)}

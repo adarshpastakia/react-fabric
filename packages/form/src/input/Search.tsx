@@ -150,7 +150,7 @@ export const Search = ({
         type="search"
         ref={ref}
         autoComplete="off"
-        {...{ autoFocus }}
+        autoFocus={autoFocus}
         value={actualValue}
         onChange={handleChange}
         onKeyDown={handleEnterPressed}
