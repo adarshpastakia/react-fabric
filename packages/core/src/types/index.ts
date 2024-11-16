@@ -25,6 +25,10 @@
 import { type Placement } from "@floating-ui/react";
 import { type JSXElementConstructor, type Ref } from "react";
 
+export type ModalProps<P = unknown> = P & {
+  onClose?: (...args: AnyObject) => void;
+};
+
 export type SizeType = "xs" | "sm" | "md" | "lg" | "xl";
 
 export type SizeTypeWithZero = "xs" | "sm" | "md" | "lg" | "xl" | 0;
