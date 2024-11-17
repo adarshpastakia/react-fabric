@@ -50,7 +50,7 @@ export interface VirtualGalleryRef {
 
 export interface VirtualGalleryProps<T> extends TestProps {
   children: (props: {
-    data: T;
+    item: T;
     index: number;
     isLast: boolean;
   }) => ReactElement;
@@ -124,15 +124,15 @@ const _VirtualGallery = <T extends KeyValue>({
   const extraSize = useMemo(() => (onLoadMore ? 64 : 0), [onLoadMore]);
   const itemList: Array<{
     index: number;
-    data: T;
+    item: T;
     isLast: boolean;
     isSticky: boolean;
   }> = createItemList(
-    items.map((item: AnyObject, idx) => {
+    items.map((item: AnyObject, index) => {
       return {
-        index: idx,
-        data: item,
-        isLast: idx + 1 === items.length,
+        index,
+        item,
+        isLast: index + 1 === items.length,
       };
     }),
   );
@@ -308,7 +308,7 @@ const _VirtualGallery = <T extends KeyValue>({
         >
           <div
             style={{
-              height: virtualizer.getTotalSize(),
+              height: virtualizer.getTotalSize() + extraSize,
             }}
           >
             <div style={{ height: virtualItems[0]?.start }} />

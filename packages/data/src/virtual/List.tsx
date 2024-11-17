@@ -57,7 +57,7 @@ export interface VirtualListRef {
 
 export interface VirtualListProps<T> extends TestProps {
   children: (props: {
-    data: T;
+    item: T;
     index: number;
     isLast: boolean;
   }) => ReactElement;
@@ -135,11 +135,11 @@ const _VirtualList = <T extends KeyValue>({
     isLast: boolean;
     isSticky: boolean;
   }> = createItemList(
-    items.map((item: AnyObject, idx) => {
+    items.map((item: AnyObject, index) => {
       return {
-        index: idx,
-        data: item,
-        isLast: idx + 1 === items.length,
+        index,
+        item,
+        isLast: index + 1 === items.length,
       };
     }),
   );
@@ -290,8 +290,8 @@ const _VirtualList = <T extends KeyValue>({
           <div
             style={
               orientation === "vertical"
-                ? { height: virtualizer.getTotalSize() }
-                : { width: virtualizer.getTotalSize() }
+                ? { height: virtualizer.getTotalSize() + extraSize }
+                : { width: virtualizer.getTotalSize() + extraSize }
             }
           >
             <div

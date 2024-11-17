@@ -94,8 +94,8 @@ export const Gallery: Story = {
               onLoadMore={loadMore}
               loading={isLoading}
             >
-              {({ data, index }) =>
-                data && (
+              {({ item, index }) =>
+                item && (
                   <div className="w-[480px] flex flex-nowrap gap-1 py-2 px-4">
                     <Card bodyClassName="p-2 flex-1">
                       <Header>
@@ -206,9 +206,9 @@ export const LoadableList: Story = {
               initialScroll={100}
               onLoadMore={loadMore}
             >
-              {({ data, index }) => (
+              {({ item, index }) => (
                 <div className="w-[620px] flex flex-nowrap gap-1 py-2 px-4">
-                  {data && (
+                  {item && (
                     <Fragment>
                       <Card bodyClassName="p-2 flex-1">
                         <Header>
@@ -245,7 +245,7 @@ export const LoadableList: Story = {
                       </ButtonGroup>
                     </Fragment>
                   )}
-                  {!data && (
+                  {!item && (
                     <div className="flex-1">
                       <Skeleton />
                     </div>

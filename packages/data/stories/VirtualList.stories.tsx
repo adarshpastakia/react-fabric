@@ -82,7 +82,7 @@ export const List: Story = {
               defaultHeight={152}
               defaultWidth={608}
             >
-              {({ data, index, isLast }) => (
+              {({ item, index, isLast }) => (
                 <div className="flex flex-nowrap gap-4 p-2">
                   <div
                     className={classNames(
@@ -93,8 +93,8 @@ export const List: Story = {
                   >
                     <Avatar
                       rounded
-                      name={data.iso3}
-                      fallbackIcon={`flag ${data.iso3}`}
+                      name={item.iso3}
+                      fallbackIcon={`flag ${item.iso3}`}
                       size="3rem"
                     />
                   </div>
@@ -102,42 +102,42 @@ export const List: Story = {
                     <Row className="text-lg font-semibold" align="center">
                       <Col flex="fill">
                         <Text className="flex-1 px-2">
-                          {index} {data.name}
+                          {index} {item.name}
                         </Text>
                       </Col>
                       <Col>
-                        <Text>&nbsp;{data.emoji}</Text>
+                        <Text>&nbsp;{item.emoji}</Text>
                       </Col>
                     </Row>
                     <Row justify="between" align="center">
                       <Col>
-                        <Text>{data.fullname}</Text>
+                        <Text>{item.fullname}</Text>
                       </Col>
                       <Col>
                         <Text className="text-sm text-muted">
-                          {data.continent}
-                        </Text>
-                      </Col>
-                    </Row>
-                    <Row justify="between" align="center">
-                      <Col>
-                        <Text className="text-sm text-muted">
-                          {data.capital}
-                        </Text>
-                      </Col>
-                      <Col>
-                        <Text className="text-sm text-muted">
-                          {data.iso2}/{data.iso3}
+                          {item.continent}
                         </Text>
                       </Col>
                     </Row>
                     <Row justify="between" align="center">
                       <Col>
-                        <Text className="text-sm text-muted">{data.phone}</Text>
+                        <Text className="text-sm text-muted">
+                          {item.capital}
+                        </Text>
                       </Col>
                       <Col>
                         <Text className="text-sm text-muted">
-                          {data.currency}
+                          {item.iso2}/{item.iso3}
+                        </Text>
+                      </Col>
+                    </Row>
+                    <Row justify="between" align="center">
+                      <Col>
+                        <Text className="text-sm text-muted">{item.phone}</Text>
+                      </Col>
+                      <Col>
+                        <Text className="text-sm text-muted">
+                          {item.currency}
                         </Text>
                       </Col>
                     </Row>
@@ -235,9 +235,9 @@ export const LoadableList: Story = {
               initialScroll={105}
               onLoadMore={loadMore}
             >
-              {({ data, index }) => (
+              {({ item, index }) => (
                 <div className="w-[620px] flex flex-nowrap gap-1 py-2 px-4">
-                  {data && (
+                  {item && (
                     <Fragment>
                       <Card bodyClassName="p-2 flex-1">
                         <Header>
@@ -274,7 +274,7 @@ export const LoadableList: Story = {
                       </ButtonGroup>
                     </Fragment>
                   )}
-                  {!data && (
+                  {!item && (
                     <div className="flex-1">
                       <Skeleton />
                     </div>
