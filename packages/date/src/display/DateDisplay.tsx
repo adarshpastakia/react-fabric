@@ -46,6 +46,8 @@ export interface Props
    * date format
    */
   format?: string;
+
+  showAlternateDate?: boolean;
 }
 
 export const DateDisplay = ({
@@ -53,12 +55,14 @@ export const DateDisplay = ({
   className,
   format = "eee, PPpp",
   children,
+  showAlternateDate,
   ...aria
 }: Props) => {
   const { currentCalendar, currentLocale } = useGlobals();
 
   const dtLabel = (
     <Tooltip
+      disabled={!showAlternateDate}
       content={DateUtil.format(
         date,
         format,
