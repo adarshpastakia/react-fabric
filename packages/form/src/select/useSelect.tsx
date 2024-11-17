@@ -23,6 +23,7 @@
 
 import { useDebounce } from "@react-fabric/core";
 import {
+  compareValues,
   dedupe,
   EMPTY_ARRAY,
   groupBy,
@@ -223,6 +224,7 @@ export const useSelect = ({
         if (autoComplete && action.query !== undefined) {
           optionList = dedupe([action.query, ...optionList]);
         }
+        optionList = optionList.sort(compareValues("asc", labelProperty));
         const grouped = groupBy(optionList, groupProperty, "");
         if (action.open) newState.open = true;
         newState.items = [];
@@ -283,7 +285,7 @@ export const useSelect = ({
       dispatch({ type: "options", options: optionsRef.current });
       dispatch({
         type: "setValue",
-        value: hasValue ?? newOption ?? "",
+        value: hasValue ?? newOption ?? deferred,
       });
     }
     if (multiple) {
@@ -300,7 +302,7 @@ export const useSelect = ({
           if (!hasValue && newOption) {
             optionsRef.current.push(newOption);
           }
-          return hasValue ?? newOption ?? "";
+          return hasValue ?? newOption ?? item;
         },
       );
       optionsRef.current = [...optionsRef.current, ...(options ?? [])];
