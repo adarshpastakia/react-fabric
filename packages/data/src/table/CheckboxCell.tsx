@@ -31,7 +31,7 @@ export const CheckboxCell = ({
   onClick?: () => void;
 }) => {
   return (
-    <div className="group font-medium border-e w-6 flex flex-nowrap text-start items-center">
+    <div className="group font-medium border-e w-6 flex flex-nowrap text-start py-1">
       <Icon
         icon={
           state === 2
