@@ -25,7 +25,7 @@ import classNames from "classnames";
 import {
   Children,
   cloneElement,
-  type ReactElement,
+  type ReactNode,
   useCallback,
   useEffect,
   useMemo,
@@ -68,11 +68,11 @@ export interface TabPanelProps extends ChildrenProp<typeof Tab> {
   /**
    * append element
    */
-  append?: ReactElement;
+  append?: ReactNode;
   /**
    * prepend element
    */
-  prepend?: ReactElement;
+  prepend?: ReactNode;
   /**
    * change handler
    */

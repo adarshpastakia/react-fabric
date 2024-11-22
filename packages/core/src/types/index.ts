@@ -126,15 +126,7 @@ export interface TestProps {
   "data-test-value"?: AnyObject;
 }
 
-export type Elements<T> =
-  | React.ReactElement<T>
-  | React.ReactPortal
-  | React.ReactNode
-  | string
-  | number
-  | boolean
-  | null
-  | undefined;
+export type Elements<T> = React.ReactElement<T> | React.ReactNode;
 
 export type AriaProps = React.AriaAttributes;
 
