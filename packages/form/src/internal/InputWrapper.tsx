@@ -21,7 +21,6 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { FloatingPortal } from "@floating-ui/react";
 import { CoreIcons, Icon } from "@react-fabric/core";
 import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
@@ -50,6 +49,7 @@ export const InputWrapper = ({
   noOutline,
   noBorder,
   textarea = false,
+  textareaExpandable = false,
   "data-inner": isInner,
   "data-open": isOpen,
   // expand autocomplete
@@ -117,7 +117,11 @@ export const InputWrapper = ({
         !noOutline &&
           "after:absolute after:bottom-0 after:h-px after:bg-primary-500 after:mx-auto",
       )}
-      onKeyDown={(e) => e.key === "Escape" && setExpanded(false)}
+      onKeyDown={(e) =>
+        e.key === "Escape" &&
+        isExpanded &&
+        (setExpanded(false), e.stopPropagation())
+      }
     >
       {decorateStart && (
         <div
@@ -156,7 +160,7 @@ export const InputWrapper = ({
           {decorateEnd}
         </div>
       )}
-      {textarea && (
+      {textareaExpandable && (
         <Icon
           onClick={() => setExpanded(!isExpanded)}
           icon={isExpanded ? CoreIcons.arrowCollapse : CoreIcons.arrowExpand}
@@ -173,14 +177,7 @@ export const InputWrapper = ({
         className="flex-1 relative min-h-8"
         style={{ width, flexBasis: width }}
       >
-        {!isExpanded && el}
-        {isExpanded && (
-          <FloatingPortal
-            root={elRef.current?.closest<HTMLElement>(".theme-base")}
-          >
-            {el}
-          </FloatingPortal>
-        )}
+        {el}
       </div>
     </Wrapper>
   );

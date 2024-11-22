@@ -49,6 +49,10 @@ export interface TextareaProps
    * increment rows on value change
    */
   variableRows?: boolean;
+  /**
+   * expandable textarea
+   */
+  expandable?: boolean;
 }
 
 export const Textarea = ({
@@ -64,6 +68,7 @@ export const Textarea = ({
   rows = 5,
   maxRows = 12,
   variableRows,
+  expandable,
   onChange,
   onEnterPressed,
   ...rest
@@ -104,6 +109,7 @@ export const Textarea = ({
       disabled={disabled}
       required={required}
       wrapperRef={wrapperRef}
+      textareaExpandable={expandable}
       textarea
       {...rest}
     >
@@ -123,7 +129,9 @@ export const Textarea = ({
         autoFocus={autoFocus}
         value={actualValue}
         onChange={handleChange}
-        onKeyDown={handleEnter(onEnterPressed)}
+        onKeyDown={handleEnter(onEnterPressed, {
+          preventDefault: !!onEnterPressed,
+        })}
       />
     </InputWrapper>
   );
