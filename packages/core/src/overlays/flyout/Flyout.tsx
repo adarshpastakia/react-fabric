@@ -140,6 +140,7 @@ export const Flyout = ({
   });
   const dismiss = useDismiss(context, {
     outsidePressEvent: "mousedown",
+    outsidePress: !hideMask,
     escapeKey: true,
   });
   const role = useRole(context);
@@ -173,9 +174,6 @@ export const Flyout = ({
   useEffect(() => {
     setTimeout(() => {
       refs.floating.current && (refs.floating.current.dataset.show = "true");
-      refs.floating.current
-        ?.querySelector<HTMLElement>('[role="dialog"]')
-        ?.focus();
     }, 50);
   }, []);
 
@@ -214,68 +212,66 @@ export const Flyout = ({
     <FloatingPortal>
       <Wrapper>
         <FloatingFocusManager context={context}>
-          <Wrapper>
-            <div
-              data-align={align}
-              className={classNames(
-                classes.flyout,
-                "fixed inset-y-0 overflow-hidden flex flex-col flex-nowrap pointer-events-auto shadow-xl",
-                align === "start" ? "start-0" : "end-0",
-                size === "sm" && "w-[20rem]",
-                size === "md" && "w-[40rem]",
-                size === "lg" && "w-[60vw]",
-                size === "xl" && "w-[80vw]",
-              )}
-              style={{
-                width,
-                minWidth,
-              }}
-              onMouseUpCapture={tryClosing}
-              ref={refs.setFloating}
-              {...getFloatingProps()}
-              {...aria}
-              {...aria}
-            >
-              <HotKeyWrapper>
-                <Header
-                  flex
-                  className={classNames(classes.flyoutHeader, headerClassName)}
-                >
-                  {icon && (
-                    <Icon
-                      icon={icon}
-                      bg={iconBg}
-                      color={iconColor}
-                      className={classNames(iconClassName, "p-1")}
-                      rtlFlip={rtlFlip}
-                    />
-                  )}
-                  <label className="flex-1 truncate py-2 px-1">{title}</label>
-                  {actions}
+          <div
+            data-align={align}
+            className={classNames(
+              classes.flyout,
+              "fixed inset-y-0 overflow-hidden flex flex-col flex-nowrap pointer-events-auto shadow-xl",
+              align === "start" ? "start-0" : "end-0",
+              size === "sm" && "w-[20rem]",
+              size === "md" && "w-[40rem]",
+              size === "lg" && "w-[60vw]",
+              size === "xl" && "w-[80vw]",
+            )}
+            style={{
+              width,
+              minWidth,
+            }}
+            onMouseUpCapture={tryClosing}
+            ref={refs.setFloating}
+            {...getFloatingProps()}
+            {...aria}
+            {...aria}
+          >
+            <HotKeyWrapper>
+              <Header
+                flex
+                className={classNames(classes.flyoutHeader, headerClassName)}
+              >
+                {icon && (
                   <Icon
-                    data-ref="panelClose"
-                    className={classNames(
-                      classes.panelAction,
-                      "cursor-pointer p-1 text-xl self-stretch",
-                    )}
-                    icon={CoreIcons.close}
-                    onClick={() => handleClose(false)}
+                    icon={icon}
+                    bg={iconBg}
+                    color={iconColor}
+                    className={classNames(iconClassName, "p-1")}
+                    rtlFlip={rtlFlip}
                   />
-                </Header>
-                {loading && <Loading />}
-                <div
-                  role="dialog"
+                )}
+                <label className="flex-1 truncate py-2 px-1">{title}</label>
+                {actions}
+                <Icon
+                  data-ref="panelClose"
                   className={classNames(
-                    classes.flyoutBody,
-                    "flex-1 grid overflow-hidden",
+                    classes.panelAction,
+                    "cursor-pointer p-1 text-xl self-stretch",
                   )}
-                  {...({ tabIndex: 0 } as AnyObject)}
-                >
-                  {children}
-                </div>
-              </HotKeyWrapper>
-            </div>
-          </Wrapper>
+                  icon={CoreIcons.close}
+                  onClick={() => handleClose(false)}
+                />
+              </Header>
+              {loading && <Loading />}
+              <div
+                role="dialog"
+                className={classNames(
+                  classes.flyoutBody,
+                  "flex-1 grid overflow-hidden",
+                )}
+                {...({ tabIndex: 0 } as AnyObject)}
+              >
+                {children}
+              </div>
+            </HotKeyWrapper>
+          </div>
         </FloatingFocusManager>
       </Wrapper>
     </FloatingPortal>

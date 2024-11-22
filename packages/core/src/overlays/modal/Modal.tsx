@@ -163,9 +163,6 @@ export const Modal = ({
   useEffect(() => {
     setTimeout(() => {
       refs.floating.current && (refs.floating.current.dataset.show = "true");
-      refs.floating.current
-        ?.querySelector<HTMLElement>("[role='dialog']")
-        ?.focus();
     }, 50);
   }, []);
 
