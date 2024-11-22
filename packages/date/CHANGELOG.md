@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.20](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.19...v1.0.0-beta.20) (2024-11-22)
+
+### Bug Fixes
+
+- **DateDisplay:** add showAlternateDate prop ([95c8169](https://github.com/adarshpastakia/react-ui-framework/commit/95c8169bf113ff24dc4a98622f1a9d68744cad16))
+
 # [1.0.0-beta.19](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.18...v1.0.0-beta.19) (2024-11-12)
 
 **Note:** Version bump only for package @react-fabric/date

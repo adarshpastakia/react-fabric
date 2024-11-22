@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.20](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.19...v1.0.0-beta.20) (2024-11-22)
+
+### Bug Fixes
+
+- **Searchbar:** reset dirty after submit ([b5392e8](https://github.com/adarshpastakia/react-ui-framework/commit/b5392e86a95dcfe5b68c5f51253e374772290bf2))
+
 # [1.0.0-beta.19](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.18...v1.0.0-beta.19) (2024-11-12)
 
 **Note:** Version bump only for package @react-fabric/searchbar

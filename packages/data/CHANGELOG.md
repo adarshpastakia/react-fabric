@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.20](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.19...v1.0.0-beta.20) (2024-11-22)
+
+### Bug Fixes
+
+- **TableCell:** date type field display ([2ad4400](https://github.com/adarshpastakia/react-ui-framework/commit/2ad4400be9a2d27d17a1c141e404122680caf495))
+- **usePagination:** fire change if default page is not same ([65b8130](https://github.com/adarshpastakia/react-ui-framework/commit/65b81302c341f48bac07cd40937c71c68c87ae5f))
+
 # [1.0.0-beta.19](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.18...v1.0.0-beta.19) (2024-11-12)
 
 ### Bug Fixes

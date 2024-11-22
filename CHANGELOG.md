@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.20](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.19...v1.0.0-beta.20) (2024-11-22)
+
+### Bug Fixes
+
+- **ColorInput:** use floatingui instead of dropdown ([1fcbe47](https://github.com/adarshpastakia/react-fabric/commit/1fcbe47cccbe96025d457c700dbecfe030e8cba3))
+- **DateDisplay:** add showAlternateDate prop ([95c8169](https://github.com/adarshpastakia/react-fabric/commit/95c8169bf113ff24dc4a98622f1a9d68744cad16))
+- export modal props type ([970bf23](https://github.com/adarshpastakia/react-fabric/commit/970bf234861b1143ca2c8043cde1d95a122406f9))
+- **Overlay:** remove forced focus (not required) ([fc956a8](https://github.com/adarshpastakia/react-fabric/commit/fc956a8119a19874356b4d841f84ab9bf758ee40))
+- **Searchbar:** reset dirty after submit ([b5392e8](https://github.com/adarshpastakia/react-fabric/commit/b5392e86a95dcfe5b68c5f51253e374772290bf2))
+- **Select:** set intial value even if missing in list ([dc5f56b](https://github.com/adarshpastakia/react-fabric/commit/dc5f56bb927e532a2560aca984cd7db32481fed5))
+- **TableCell:** date type field display ([2ad4400](https://github.com/adarshpastakia/react-fabric/commit/2ad4400be9a2d27d17a1c141e404122680caf495))
+- **TabPanel:** append/prepend prop type ([b247ddf](https://github.com/adarshpastakia/react-fabric/commit/b247ddf9f3e540a8cf6e01053938594f14c0ae39))
+- **Textarea:** exapndable prop ([27821ff](https://github.com/adarshpastakia/react-fabric/commit/27821ff0a6565c483a5735d2c9750f0e0e4b3aab))
+- **usePagination:** fire change if default page is not same ([65b8130](https://github.com/adarshpastakia/react-fabric/commit/65b81302c341f48bac07cd40937c71c68c87ae5f))
+
 # [1.0.0-beta.19](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.18...v1.0.0-beta.19) (2024-11-12)
 
 ### Bug Fixes

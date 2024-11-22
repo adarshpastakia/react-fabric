@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.20](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.19...v1.0.0-beta.20) (2024-11-22)
+
+### Bug Fixes
+
+- **ColorInput:** use floatingui instead of dropdown ([1fcbe47](https://github.com/adarshpastakia/react-ui-framework/commit/1fcbe47cccbe96025d457c700dbecfe030e8cba3))
+- **Select:** set intial value even if missing in list ([dc5f56b](https://github.com/adarshpastakia/react-ui-framework/commit/dc5f56bb927e532a2560aca984cd7db32481fed5))
+- **Textarea:** exapndable prop ([27821ff](https://github.com/adarshpastakia/react-ui-framework/commit/27821ff0a6565c483a5735d2c9750f0e0e4b3aab))
+
 # [1.0.0-beta.19](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.18...v1.0.0-beta.19) (2024-11-12)
 
 **Note:** Version bump only for package @react-fabric/form

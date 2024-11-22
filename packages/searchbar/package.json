@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/searchbar",
-  "version": "1.0.0-beta.19",
+  "version": "1.0.0-beta.20",
   "description": "RUF: Searchbar with filters package",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -34,11 +34,11 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.24",
-    "@react-fabric/core": "^1.0.0-beta.19",
-    "@react-fabric/date": "^1.0.0-beta.19",
-    "@react-fabric/form": "^1.0.0-beta.19",
-    "@react-fabric/monaco": "^1.0.0-beta.19",
-    "@react-fabric/utilities": "^1.0.0-beta.19",
+    "@react-fabric/core": "^1.0.0-beta.20",
+    "@react-fabric/date": "^1.0.0-beta.20",
+    "@react-fabric/form": "^1.0.0-beta.20",
+    "@react-fabric/monaco": "^1.0.0-beta.20",
+    "@react-fabric/utilities": "^1.0.0-beta.20",
     "classnames": "^2.5.1",
     "react-hook-form": "^7.52.1"
   },

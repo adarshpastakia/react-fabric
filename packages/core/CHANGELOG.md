@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.20](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.19...v1.0.0-beta.20) (2024-11-22)
+
+### Bug Fixes
+
+- export modal props type ([970bf23](https://github.com/adarshpastakia/react-ui-framework/commit/970bf234861b1143ca2c8043cde1d95a122406f9))
+- **Overlay:** remove forced focus (not required) ([fc956a8](https://github.com/adarshpastakia/react-ui-framework/commit/fc956a8119a19874356b4d841f84ab9bf758ee40))
+- **TabPanel:** append/prepend prop type ([b247ddf](https://github.com/adarshpastakia/react-ui-framework/commit/b247ddf9f3e540a8cf6e01053938594f14c0ae39))
+
 # [1.0.0-beta.19](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.18...v1.0.0-beta.19) (2024-11-12)
 
 **Note:** Version bump only for package @react-fabric/core
