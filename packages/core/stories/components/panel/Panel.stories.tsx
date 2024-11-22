@@ -60,7 +60,10 @@ export const _Panel: PanelStory = {
   render: (args) => {
     return (
       <Fragment>
-        <Panel {...args} actions={<Navigator onNavigate={fn()} />}>
+        <Panel
+          {...args}
+          actions={<Navigator className="self-center" onNavigate={fn()} />}
+        >
           <Content>{faker.lorem.paragraphs(2)}</Content>
           <Footer flex justify="end" className="px-2 py-1">
             <Button variant="link">Cancel</Button>

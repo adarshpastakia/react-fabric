@@ -205,7 +205,7 @@ export const Panel = ({
         >
           {title}
         </div>
-        <div className="px-1">{actions}</div>
+        <div className="px-1 leading-none">{actions}</div>
         {hasTools && (
           <div
             role="none"
