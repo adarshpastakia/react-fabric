@@ -179,7 +179,7 @@ export const Thumbnail = ({
           icon={CoreIcons.mediaContrast}
           className={classNames(
             classes.contrastAction,
-            "absolute bottom-2 end-2",
+            "absolute bottom-2 end-2 rounded-full opacity-50 hover:opacity-100",
           )}
           onClick={() => dispatch({ type: "colorScheme" })}
         />
