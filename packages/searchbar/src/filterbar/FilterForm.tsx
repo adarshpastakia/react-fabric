@@ -237,6 +237,7 @@ export const FilterForm = ({
             <Controller name="field">
               <Select<FilterField>
                 required
+                searchable
                 ref={inputRef}
                 label={t("label.field")}
                 options={fields}
