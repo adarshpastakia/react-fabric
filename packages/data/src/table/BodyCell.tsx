@@ -84,6 +84,7 @@ export const BodyCell = ({
       <div
         className={classNames(
           "px-2 py-1",
+          column.className,
           column.truncate && "truncate",
           column.align === "center" && "text-center",
           column.align === "end" && "text-end",
