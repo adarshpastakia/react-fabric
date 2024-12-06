@@ -21,10 +21,15 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { useState, type FC, type ReactNode } from "react";
+import {
+  useState,
+  type ComponentProps,
+  type ElementType,
+  type ReactNode,
+} from "react";
 
-type OverlayComponent = FC<{
-  onClose: (args?: AnyObject) => void;
+type OverlayComponent = ElementType<{
+  onClose: (...args: AnyObject) => void;
   [key: string]: AnyObject;
 }>;
 
@@ -36,7 +41,10 @@ export const useOverlayService = (
 ] => {
   const [Overlay, setOverlay] = useState<ReactNode | null>(null);
 
-  const openOverlay = async ({ onClose, ...props }: KeyValue = {}) => {
+  const openOverlay = async ({
+    onClose,
+    ...props
+  }: ComponentProps<typeof ModalOrFlyout> = {}) => {
     return await new Promise((resolve) => {
       const handleClose = (args: AnyObject) => {
         setOverlay(null);
