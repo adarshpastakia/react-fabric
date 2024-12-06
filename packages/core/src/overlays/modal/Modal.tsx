@@ -30,8 +30,14 @@ import {
   useInteractions,
   useRole,
 } from "@floating-ui/react";
+import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { useCallback, useEffect } from "react";
+import {
+  type ElementType,
+  isValidElement,
+  useCallback,
+  useEffect,
+} from "react";
 import { Loading } from "../../components/animations/Animations";
 import { Icon } from "../../components/icon/Icon";
 import { Header } from "../../core/headfoot/HeadFoot";
@@ -50,8 +56,9 @@ import classes from "./Modal.module.css";
 export interface ModalProps
   extends AriaProps,
     TestProps,
-    IconProps,
+    Omit<IconProps, "icon">,
     ChildrenProp {
+  icon?: string | ElementType<IconProps>;
   /**
    * header className
    */
@@ -200,7 +207,7 @@ export const Modal = ({
                 flex
                 className={classNames(classes.modalHeader, headerClassName)}
               >
-                {icon && (
+                {isString(icon) && (
                   <Icon
                     icon={icon}
                     bg={iconBg}
@@ -209,6 +216,7 @@ export const Modal = ({
                     rtlFlip={rtlFlip}
                   />
                 )}
+                {isValidElement(icon) && icon}
                 <label className="flex-1 truncate py-2 px-1">{title}</label>
                 {actions}
                 <Icon

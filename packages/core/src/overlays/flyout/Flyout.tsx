@@ -30,11 +30,14 @@ import {
   useInteractions,
   useRole,
 } from "@floating-ui/react";
+import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import {
   Fragment,
+  isValidElement,
   useCallback,
   useEffect,
+  type ElementType,
   type PropsWithChildren,
 } from "react";
 import { Loading } from "../../components/animations/Animations";
@@ -55,8 +58,9 @@ import classes from "./Flyout.module.css";
 export interface FlyoutProps
   extends AriaProps,
     TestProps,
-    IconProps,
+    Omit<IconProps, "icon">,
     ChildrenProp {
+  icon?: string | ElementType<IconProps>;
   /**
    * flyout alignment
    */
@@ -238,7 +242,7 @@ export const Flyout = ({
                 flex
                 className={classNames(classes.flyoutHeader, headerClassName)}
               >
-                {icon && (
+                {isString(icon) && (
                   <Icon
                     icon={icon}
                     bg={iconBg}
@@ -247,6 +251,7 @@ export const Flyout = ({
                     rtlFlip={rtlFlip}
                   />
                 )}
+                {isValidElement(icon) && icon}
                 <label className="flex-1 truncate py-2 px-1">{title}</label>
                 {actions}
                 <Icon
