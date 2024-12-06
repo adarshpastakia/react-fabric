@@ -27,7 +27,6 @@ import { Fragment } from "react/jsx-runtime";
 export const cloneChildren = (
   children: ReactNode,
   callback: (child: ReactNode, index: number) => ReactNode,
-  index = 0,
 ): ReactNode => {
   return Children.map(children, (c: ReactNode) => {
     if (isValidElement(c)) {
@@ -35,8 +34,11 @@ export const cloneChildren = (
         // just compare to `Fragment`
         return cloneChildren(c.props?.children, callback);
       }
-      return callback(c, index++);
+      return c;
     }
     return c;
-  });
+  })
+    ?.flat()
+    .filter(Boolean)
+    .map(callback);
 };
