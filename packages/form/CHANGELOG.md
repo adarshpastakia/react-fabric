@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.21](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.20...v1.0.0-beta.21) (2024-12-19)
+
+### Bug Fixes
+
+- **HiddenInput:** delay onChange to set hiddenValue ([19191ec](https://github.com/adarshpastakia/react-ui-framework/commit/19191ec260b55d9a5af45142c698ce76741460e1))
+
 # [1.0.0-beta.20](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.19...v1.0.0-beta.20) (2024-11-22)
 
 ### Bug Fixes

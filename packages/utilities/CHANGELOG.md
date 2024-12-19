@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.21](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.20...v1.0.0-beta.21) (2024-12-19)
+
+### Bug Fixes
+
+- **cloneelements:** map children from fragments and flatten ([83273f3](https://github.com/adarshpastakia/react-fabric/commit/83273f377a92cc0d3ef401d1da4ad05b5e0400ef))
+
 # [1.0.0-beta.20](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.19...v1.0.0-beta.20) (2024-11-22)
 
 **Note:** Version bump only for package @react-fabric/utilities

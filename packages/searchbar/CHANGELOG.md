@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.21](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.20...v1.0.0-beta.21) (2024-12-19)
+
+### Bug Fixes
+
+- **FilterForm:** make field select searchable ([4c2a656](https://github.com/adarshpastakia/react-ui-framework/commit/4c2a6561d93f0fad8df23d1817dc1f5729b8a983))
+
 # [1.0.0-beta.20](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.19...v1.0.0-beta.20) (2024-11-22)
 
 ### Bug Fixes

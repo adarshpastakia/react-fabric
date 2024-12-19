@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.21](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.20...v1.0.0-beta.21) (2024-12-19)
+
+### Bug Fixes
+
+- **BodyCell:** append column className ([b6221e2](https://github.com/adarshpastakia/react-fabric/commit/b6221e253231b9ccda6af12a968589f8d3c5dde7))
+- **cloneelements:** map children from fragments and flatten ([83273f3](https://github.com/adarshpastakia/react-fabric/commit/83273f377a92cc0d3ef401d1da4ad05b5e0400ef))
+- **CodeEditor:** sizing issue ([10ac8c4](https://github.com/adarshpastakia/react-fabric/commit/10ac8c4cf58e5830ddf911ae503312a1121edf9c))
+- **FilterForm:** make field select searchable ([4c2a656](https://github.com/adarshpastakia/react-fabric/commit/4c2a6561d93f0fad8df23d1817dc1f5729b8a983))
+- **HiddenInput:** delay onChange to set hiddenValue ([19191ec](https://github.com/adarshpastakia/react-fabric/commit/19191ec260b55d9a5af45142c698ce76741460e1))
+- **Overlays:** allow custom header icon element ([496d2de](https://github.com/adarshpastakia/react-fabric/commit/496d2de1d22c687be2a72493d8e21f51161b02cc))
+
 # [1.0.0-beta.20](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.19...v1.0.0-beta.20) (2024-11-22)
 
 ### Bug Fixes

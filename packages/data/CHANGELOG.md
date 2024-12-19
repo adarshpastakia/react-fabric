@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.21](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.20...v1.0.0-beta.21) (2024-12-19)
+
+### Bug Fixes
+
+- **BodyCell:** append column className ([b6221e2](https://github.com/adarshpastakia/react-ui-framework/commit/b6221e253231b9ccda6af12a968589f8d3c5dde7))
+
 # [1.0.0-beta.20](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.19...v1.0.0-beta.20) (2024-11-22)
 
 ### Bug Fixes

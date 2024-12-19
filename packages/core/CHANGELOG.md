@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.21](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.20...v1.0.0-beta.21) (2024-12-19)
+
+### Bug Fixes
+
+- **Overlays:** allow custom header icon element ([496d2de](https://github.com/adarshpastakia/react-ui-framework/commit/496d2de1d22c687be2a72493d8e21f51161b02cc))
+
 # [1.0.0-beta.20](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.19...v1.0.0-beta.20) (2024-11-22)
 
 ### Bug Fixes
