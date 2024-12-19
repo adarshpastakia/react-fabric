@@ -223,11 +223,11 @@ export const CodeEditor = ({
   }, []);
 
   return (
-    <Section>
+    <Section className="relative">
       <div
         ref={containerRef}
         data-testid="code-editor"
-        className={classNames(classes.codeEditor, "area-content")}
+        className={classNames(classes.codeEditor, "absolute inset-0")}
       >
         <MonacoEditor
           editorDidMount={(e, m) => [
