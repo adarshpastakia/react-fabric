@@ -136,6 +136,7 @@ export const Gallery: Story = {
     );
   },
   args: {
+    total: 500,
     onScroll: fn(),
   },
 };

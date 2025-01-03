@@ -196,7 +196,7 @@ export const LoadableList: Story = {
             setItems(newList);
           }
           setLoading(false);
-        }, 200);
+        }, 2000);
       },
       [items],
     );
@@ -287,5 +287,7 @@ export const LoadableList: Story = {
       </div>
     );
   },
-  args: {},
+  args: {
+    total: 500,
+  },
 };

@@ -88,6 +88,7 @@ export interface VirtualListProps<T> extends TestProps {
    * data list
    */
   items: T[];
+  total?: number;
   initialScroll?: number;
   /**
    * loading state
@@ -111,6 +112,7 @@ const createItemList = memoizeOne((items) => items);
 
 const _VirtualList = <T extends KeyValue>({
   items,
+  total = 0,
   children,
   fullWidth,
   maxWidth,
@@ -128,7 +130,7 @@ const _VirtualList = <T extends KeyValue>({
   ...aria
 }: VirtualListProps<T>) => {
   const count = useDeferredValue(items.length);
-  const extraSize = useMemo(() => (onLoadMore ? 64 : 0), [onLoadMore]);
+  const extraSize = useMemo(() => (onLoadMore ? 8 : 0), [onLoadMore]);
   const itemList: Array<{
     index: number;
     data: T;
@@ -205,22 +207,22 @@ const _VirtualList = <T extends KeyValue>({
   }, [itemList, calculateActiveScroll]);
 
   useEffect(() => {
-    const db = debounce(() => {
-      const lastItem = virtualItems?.slice(-1).pop();
-      if (lastItem && !loading && lastItem.index === count - 1) onLoadMore?.();
-    });
-    db();
-    return () => db.cancel();
-  }, [onLoadMore, loading, itemList, virtualItems, count]);
-
-  useEffect(() => {
-    const firstItem = virtualItems[0]?.index;
-    if (onLoadMore && firstItem !== undefined && items[firstItem] === null) {
+    if (onLoadMore) {
+      const firstItem = virtualItems[0]?.index;
+      const lastItem = virtualItems?.slice(-1).pop()?.index;
+      const canLoadPrevPage =
+        firstItem !== undefined && items[firstItem] === null;
+      const canLoadNextPage =
+        lastItem !== undefined && lastItem === count - 1 && count < total;
       const db = debounce(onLoadMore);
-      db(firstItem);
+      if (canLoadPrevPage) {
+        db(firstItem);
+      } else if (!loading && canLoadNextPage) {
+        db(lastItem + 1);
+      }
       return () => db.cancel();
     }
-  }, [onLoadMore, items, virtualItems, count]);
+  }, [onLoadMore, virtualItems]);
 
   useLayoutEffect(() => {
     setTimeout(() => {
@@ -315,9 +317,9 @@ const _VirtualList = <T extends KeyValue>({
               </div>
             ))}
           </div>
-          {onLoadMore && (
-            <div className={orientation === "horizontal" ? "min-w-16" : "h-16"}>
-              {loading && <Skeleton />}
+          {loading && (
+            <div className={orientation === "horizontal" ? "min-w-16" : ""}>
+              <Skeleton />
             </div>
           )}
         </div>

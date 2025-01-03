@@ -81,6 +81,7 @@ export interface VirtualGalleryProps<T> extends TestProps {
    * data list
    */
   items: T[];
+  total?: number;
   /**
    * loading state
    */
@@ -109,6 +110,7 @@ const _VirtualGallery = <T extends KeyValue>({
   fullWidth,
   maxWidth,
   minWidth,
+  total = 0,
   padding = "md",
   defaultHeight: height = 48,
   defaultWidth: width = 48,
@@ -121,7 +123,7 @@ const _VirtualGallery = <T extends KeyValue>({
   ...aria
 }: VirtualGalleryProps<T>) => {
   const count = useDeferredValue(items.length);
-  const extraSize = useMemo(() => (onLoadMore ? 64 : 0), [onLoadMore]);
+  const extraSize = useMemo(() => (onLoadMore ? 8 : 0), [onLoadMore]);
   const itemList: Array<{
     index: number;
     item: T;
@@ -214,31 +216,23 @@ const _VirtualGallery = <T extends KeyValue>({
   }, [count, calculateActiveScroll]);
 
   useEffect(() => {
-    const db = debounce(() => {
-      const lastItem = virtualItems?.slice(-1).pop();
-      if (
-        lastItem &&
-        !loading &&
-        lastItem.index * columnCount + columnCount >= count - 1
-      )
-        onLoadMore?.();
-    });
-    db();
-    return () => db.cancel();
-  }, [onLoadMore, loading, itemList, virtualItems, count, columnCount]);
-
-  useEffect(() => {
-    const firstItem = virtualItems[0]?.index;
-    if (
-      onLoadMore &&
-      firstItem !== undefined &&
-      items[firstItem * columnCount] === null
-    ) {
+    if (onLoadMore) {
+      const firstItem = virtualItems[0]?.index;
+      const lastItem = virtualItems?.slice(-1).pop()?.index;
+      const lastIndex = (lastItem ?? 0) * columnCount + columnCount;
+      const canLoadPrevPage =
+        firstItem !== undefined && items[firstItem * columnCount] === null;
+      const canLoadNextPage =
+        lastItem !== undefined && lastIndex >= count - 1 && count < total;
       const db = debounce(onLoadMore);
-      db(firstItem * columnCount);
+      if (canLoadPrevPage) {
+        db(firstItem);
+      } else if (!loading && canLoadNextPage) {
+        db(lastItem + 1);
+      }
       return () => db.cancel();
     }
-  }, [onLoadMore, items, columnCount, virtualItems, count]);
+  }, [onLoadMore, virtualItems]);
 
   useLayoutEffect(() => {
     setTimeout(() => {
