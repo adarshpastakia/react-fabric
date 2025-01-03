@@ -64,13 +64,17 @@ export const HeaderCell = ({
     [widths, _width, id],
   );
 
-  const handleSort = useCallback(() => {
-    sortable &&
-      onSort?.({
-        id: id.toString(),
-        order: sort?.id === id && sort.order === "asc" ? "desc" : "asc",
-      });
-  }, [onSort, name, sort, sortable]);
+  const handleSort = useCallback(
+    (order?: "asc" | "desc") => {
+      sortable &&
+        onSort?.({
+          id: id.toString(),
+          order:
+            order ?? (sort?.id === id && sort.order === "asc" ? "desc" : "asc"),
+        });
+    },
+    [onSort, sort, sortable],
+  );
 
   const menus = useMemo(() => {
     const ret = [];
@@ -80,11 +84,13 @@ export const HeaderCell = ({
           key="sort-asc"
           label="Sort ascending"
           icon={CoreIcons.sortAsc}
+          onClick={() => handleSort("asc")}
         />,
         <MenuItem
           key="sort-desc"
           label="Sort descending"
           icon={CoreIcons.sortDesc}
+          onClick={() => handleSort("desc")}
         />,
       );
     }
@@ -95,7 +101,7 @@ export const HeaderCell = ({
     <div
       role="none"
       data-id={id}
-      onClick={handleSort}
+      onClick={() => handleSort()}
       className="group font-medium border-e flex flex-nowrap text-start items-center table-header-cell"
       style={{
         width: width ?? COL_DEFAULT_WIDTH,

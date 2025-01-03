@@ -21,12 +21,13 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { faker } from "@faker-js/faker";
 import { Avatar, Icon, Section, Title, Viewport } from "@react-fabric/core";
 import { Countries, Country } from "@react-fabric/utilities";
+import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Table } from "../src";
 import { useState } from "react";
-import { faker } from "@faker-js/faker";
+import { Table } from "../src";
 
 const meta: Meta = {
   component: Table,
@@ -133,7 +134,7 @@ export const _Table: Story = {
         {...args}
         data={Countries.list}
         keyProperty="iso2"
-        onSort={setSort}
+        onSort={(o) => (setSort(o), action("onSort")(o))}
         sort={sort}
         columns={columns}
       />
