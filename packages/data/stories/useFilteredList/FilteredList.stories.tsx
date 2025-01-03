@@ -70,21 +70,21 @@ export const FilteredList: Story = {
               </div>
             </Header>
             <VirtualList items={filteredList} hideScroller fullWidth>
-              {({ data }) => (
+              {({ item }) => (
                 <div className="p-2 container max-w-96">
                   <Card>
                     <Title className="flex items-center gap-2">
                       <Icon
                         className="flex-content"
                         size="2rem"
-                        icon={`flag ${data.iso2}`}
+                        icon={`flag ${item.iso2}`}
                       />
-                      <span className="flex-1 truncate">{data.name}</span>
+                      <span className="flex-1 truncate">{item.name}</span>
                       <span className="text-sm text-muted flex-content">
-                        {data.iso2}/{data.iso3}
+                        {item.iso2}/{item.iso3}
                       </span>
                     </Title>
-                    <div>{data.capital}</div>
+                    <div>{item.capital}</div>
                   </Card>
                 </div>
               )}
