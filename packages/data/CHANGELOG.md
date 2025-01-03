@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.22](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.21...v1.0.0-beta.22) (2025-01-03)
+
+### Bug Fixes
+
+- **Table:** fire sort from menu ([ec04ad4](https://github.com/adarshpastakia/react-ui-framework/commit/ec04ad4849ec8b85138cbc2fe5e02e67261d0fde))
+- **VirtualList:** loadMore logic ([fc25e77](https://github.com/adarshpastakia/react-ui-framework/commit/fc25e77495e8ea91a98ba57299af98187270454f))
+
 # [1.0.0-beta.21](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.20...v1.0.0-beta.21) (2024-12-19)
 
 ### Bug Fixes

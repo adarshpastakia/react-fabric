@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/date",
-  "version": "1.0.0-beta.21",
+  "version": "1.0.0-beta.22",
   "description": "RUF: Date package",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -34,9 +34,9 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.24",
-    "@react-fabric/core": "^1.0.0-beta.21",
-    "@react-fabric/form": "^1.0.0-beta.21",
-    "@react-fabric/utilities": "^1.0.0-beta.21",
+    "@react-fabric/core": "^1.0.0-beta.22",
+    "@react-fabric/form": "^1.0.0-beta.22",
+    "@react-fabric/utilities": "^1.0.0-beta.22",
     "classnames": "^2.5.1",
     "date-fns": "^4.0.0",
     "resize-observer-polyfill": "^1.5.1"

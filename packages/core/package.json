@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/core",
-  "version": "1.0.0-beta.21",
+  "version": "1.0.0-beta.22",
   "description": "RUF: Core package",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.24",
-    "@react-fabric/utilities": "^1.0.0-beta.21",
+    "@react-fabric/utilities": "^1.0.0-beta.22",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.13",
