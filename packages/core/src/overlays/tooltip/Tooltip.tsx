@@ -184,7 +184,7 @@ export const Tooltip = ({
           >
             <span
               className={classNames(
-                "font-medium text-dimmed flex-1",
+                "font-medium text-dimmed flex-1 break-all",
                 isString(content) && "whitespace-pre-wrap mixed-lang",
               )}
             >
