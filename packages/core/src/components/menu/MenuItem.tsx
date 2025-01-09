@@ -22,9 +22,10 @@
  */
 
 import { useFloatingTree } from "@floating-ui/react";
-import { iconToken } from "@react-fabric/utilities";
+import { iconToken, mergeRefs } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { Fragment, useCallback, useMemo } from "react";
+import { Fragment, useCallback, useMemo, useRef } from "react";
+import { HotKey } from "../../hotkeys/HotKey";
 import { HotKeyLabel } from "../../hotkeys/HotKeyLabel";
 import { Tooltip } from "../../overlays";
 import { type PolymorphicProps } from "../../types";
@@ -58,6 +59,7 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
   ref,
   ...aria
 }: MenuItemProps & PolymorphicProps<Tag>) => {
+  const elRef = useRef<HTMLElement>(null);
   const tree = useFloatingTree();
   const badgeProps = useMemo(() => {
     return getBadgeProps(badge);
@@ -135,7 +137,7 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
   return (
     <Wrapper {...aria}>
       <E
-        ref={ref}
+        ref={mergeRefs(ref, elRef)}
         data-dropdown-dismiss
         data-color={color}
         className={classNames(
@@ -155,6 +157,9 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
         }}
         {...(minimal ? {} : aria)}
       >
+        {hotKey && (
+          <HotKey keyCombo={hotKey} handler={() => elRef.current?.click?.()} />
+        )}
         {menuLabel}
       </E>
     </Wrapper>

@@ -59,6 +59,7 @@ import { CoreIcons } from "../../types/icons";
 import { nodeCheck } from "../../utils";
 import { MenuItem } from "./MenuItem";
 import { type MenuProps } from "./types";
+import { HotKeyWrapper } from "../../hotkeys/HotKeyWrapper";
 
 // FIXME: refactor menu implementation to differentiate between static and floating menus, implement context wrapper for each menu level
 
@@ -219,47 +220,49 @@ const MenuComponent = ({
         {(!isNested || isOpen) && (
           <Wrapper {...wrapperProps}>
             {isNested && <FloatingOverlay />}
-            <FloatingFocusManager
-              context={context}
-              modal={!isNested}
-              initialFocus={isNested ? -1 : 0}
-              returnFocus={!isNested}
-            >
-              <div
-                className={classNames(
-                  menuClassName,
-                  "flex flex-col bg-base p-1 menu-list",
-                  isNested &&
-                    "outline shadow-lg rounded-capped max-h-96 overflow-auto scroll-thin z-[var(--z-popover)]",
-                )}
-                autoFocus
-                ref={mergeRefs(isNested ? refs.setFloating : ref)}
-                {...getFloatingProps({
-                  onClick: isNested ? undefined : handleClick,
-                })}
-                // @ts-expect-error ignore
-                {...{ style: !isNested ? rest.style : floatingStyles }}
+            <HotKeyWrapper>
+              <FloatingFocusManager
+                context={context}
+                modal={!isNested}
+                initialFocus={isNested ? -1 : 0}
+                returnFocus={!isNested}
               >
-                {cloneChildren(children, (child: AnyObject, index) => {
-                  labelsRef.current[index] = child.props.label;
-                  return cloneElement(
-                    child,
-                    nodeCheck(child, MenuItem, Menu, MenuComponent)
-                      ? {
-                          minimal: !isNested && minimal,
-                          "data-focus": activeIndex === index,
-                          ref: (el: HTMLElement) =>
-                            (elementsRef.current[index] = el),
-                          ...getItemProps({
-                            onClick: child.props.onClick,
-                            tabIndex: activeIndex === index ? 0 : -1,
-                          }),
-                        }
-                      : {},
-                  );
-                })}
-              </div>
-            </FloatingFocusManager>
+                <div
+                  className={classNames(
+                    menuClassName,
+                    "flex flex-col bg-base p-1 menu-list",
+                    isNested &&
+                      "outline shadow-lg rounded-capped max-h-96 overflow-auto scroll-thin z-[var(--z-popover)]",
+                  )}
+                  autoFocus
+                  ref={mergeRefs(isNested ? refs.setFloating : ref)}
+                  {...getFloatingProps({
+                    onClick: isNested ? undefined : handleClick,
+                  })}
+                  // @ts-expect-error ignore
+                  {...{ style: !isNested ? rest.style : floatingStyles }}
+                >
+                  {cloneChildren(children, (child: AnyObject, index) => {
+                    labelsRef.current[index] = child.props.label;
+                    return cloneElement(
+                      child,
+                      nodeCheck(child, MenuItem, Menu, MenuComponent)
+                        ? {
+                            minimal: !isNested && minimal,
+                            "data-focus": activeIndex === index,
+                            ref: (el: HTMLElement) =>
+                              (elementsRef.current[index] = el),
+                            ...getItemProps({
+                              onClick: child.props.onClick,
+                              tabIndex: activeIndex === index ? 0 : -1,
+                            }),
+                          }
+                        : {},
+                    );
+                  })}
+                </div>
+              </FloatingFocusManager>
+            </HotKeyWrapper>
           </Wrapper>
         )}
       </FloatingList>

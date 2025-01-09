@@ -40,6 +40,7 @@ export * from "./hooks/useStorage";
 
 export { HotKey } from "./hotkeys/HotKey";
 export { HotKeyLabel } from "./hotkeys/HotKeyLabel";
+export { HotKeyWrapper } from "./hotkeys/HotKeyWrapper";
 
 export { type ModalProps } from "./types";
 export { CoreIcons } from "./types/icons";
