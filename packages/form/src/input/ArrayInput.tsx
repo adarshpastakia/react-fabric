@@ -91,6 +91,7 @@ export interface ArrayInputProps {
    * add item button label
    */
   addLabel?: string;
+  buttonPosition?: "top" | "bottom" | "both";
   /**
    * fixed length list
    */
@@ -124,6 +125,7 @@ export const ArrayInput = ({
   addLabel,
   fixedList,
   focusName = "",
+  buttonPosition = "bottom",
   onAdd,
   arrayRef,
   enableSorting,
@@ -239,8 +241,47 @@ export const ArrayInput = ({
   // @ts-expect-error ignore
   SortableItem.displayName = "SortableItem";
 
+  const addButton = useMemo(
+    () => (
+      <div className="flex justify-end">
+        <Tooltip
+          color="danger"
+          content={
+            isString(error)
+              ? `${error}`
+              : (t(
+                  error?.key,
+                  error?.values
+                    ? {
+                        ...error?.values,
+                        label: t(
+                          error.values?.label ?? "form:badkey",
+                          error.values?.path,
+                        ),
+                      }
+                    : {},
+                ) as string)
+          }
+        >
+          <Button
+            aria-label="Add item"
+            icon={CoreIcons.insert}
+            onClick={() => handleAdd(onAdd?.())}
+            data-invalid={!!error}
+            disabled={!!disabled || readOnly}
+            className={classNames(classes.addButton, "me-10")}
+          >
+            {addLabel ?? t("addArray")}
+          </Button>
+        </Tooltip>
+      </div>
+    ),
+    [],
+  );
+
   return (
     <div className={classes.arrayInput}>
+      {!fixedList && onAdd && buttonPosition !== "bottom" && addButton}
       <FieldWrapper {...rest}>
         <Wrapper>
           {fields.map((item, index) => (
@@ -291,40 +332,7 @@ export const ArrayInput = ({
           ))}
         </Wrapper>
       </FieldWrapper>
-      {!fixedList && onAdd && (
-        <div className="flex justify-end">
-          <Tooltip
-            color="danger"
-            content={
-              isString(error)
-                ? `${error}`
-                : (t(
-                    error?.key,
-                    error?.values
-                      ? {
-                          ...error?.values,
-                          label: t(
-                            error.values?.label ?? "form:badkey",
-                            error.values?.path,
-                          ),
-                        }
-                      : {},
-                  ) as string)
-            }
-          >
-            <Button
-              aria-label="Add item"
-              icon={CoreIcons.insert}
-              onClick={() => handleAdd(onAdd())}
-              data-invalid={!!error}
-              disabled={!!disabled || readOnly}
-              className={classNames(classes.addButton, "me-10")}
-            >
-              {addLabel ?? t("addArray")}
-            </Button>
-          </Tooltip>
-        </div>
-      )}
+      {!fixedList && onAdd && buttonPosition !== "top" && addButton}
     </div>
   );
 };
