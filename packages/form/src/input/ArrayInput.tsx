@@ -77,6 +77,10 @@ export interface ArrayInputProps {
    */
   minItems?: number;
   /**
+   * maximum length
+   */
+  maxItems?: number;
+  /**
    * field name to focus on add
    */
   focusName?: string;
@@ -132,6 +136,7 @@ export const ArrayInput = ({
   disabled = false,
   readOnly = false,
   minItems = 0,
+  maxItems = Number.MAX_SAFE_INTEGER,
   ...rest
 }: ArrayInputProps) => {
   const { t } = useTranslation("form");
@@ -268,7 +273,7 @@ export const ArrayInput = ({
             icon={CoreIcons.insert}
             onClick={() => handleAdd(onAdd?.())}
             data-invalid={!!error}
-            disabled={!!disabled || readOnly}
+            disabled={!!disabled || readOnly || fields.length < maxItems}
             className={classNames(classes.addButton, "me-10")}
           >
             {addLabel ?? t("addArray")}
@@ -276,7 +281,7 @@ export const ArrayInput = ({
         </Tooltip>
       </div>
     ),
-    [],
+    [error, fields, handleAdd, disabled, readOnly, addLabel, maxItems],
   );
 
   return (
