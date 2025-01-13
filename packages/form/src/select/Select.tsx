@@ -172,6 +172,9 @@ export const Select = <T extends AnyObject = string>({
             return false;
           } else if (state.query) {
             handleQuery("");
+            evt.preventDefault();
+            evt.stopPropagation();
+            return false;
           } else {
             onEnterPressed?.(evt);
           }

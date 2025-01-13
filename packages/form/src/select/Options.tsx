@@ -93,7 +93,7 @@ export const Options = ({
             >
               <Trans
                 i18nKey="form:select.createOption"
-                values={{ query: item.value }}
+                values={{ query: item.value ?? item }}
                 components={[<strong key="t0">query</strong>]}
               />
             </div>

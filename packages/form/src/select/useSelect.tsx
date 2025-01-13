@@ -232,7 +232,7 @@ export const useSelect = ({
         if (allowCreate && action.query)
           newState.items.push({
             ___create___: true,
-            value: createOption(action.query),
+            value: action.query,
           });
         Object.entries(grouped).forEach(([key, list]) => {
           if (key) {
@@ -297,7 +297,7 @@ export const useSelect = ({
               ? createOption(item)
               : undefined;
           const hasValue = options.find(
-            (opt: AnyObject) => (opt[valueProperty] ?? opt) === deferred,
+            (opt: AnyObject) => (opt[valueProperty] ?? opt) === item,
           );
           if (!hasValue && newOption) {
             optionsRef.current.push(newOption);
