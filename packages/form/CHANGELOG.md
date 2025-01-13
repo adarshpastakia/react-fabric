@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.23](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.22...v1.0.0-beta.23) (2025-01-13)
+
+### Bug Fixes
+
+- **ArrayInput:** add button placement prop ([9230761](https://github.com/adarshpastakia/react-ui-framework/commit/92307619883183a35e2841bd45a0eb0eb39a3eda))
+- **ArrayInput:** add maxItems prop ([fc726d9](https://github.com/adarshpastakia/react-ui-framework/commit/fc726d9c9a8368f16c45ba4a131f2b3c92bee152))
+- **Select:** create new option from query ([9d48359](https://github.com/adarshpastakia/react-ui-framework/commit/9d48359527df69f7421f955918c953e62623e872))
+
 # [1.0.0-beta.22](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.21...v1.0.0-beta.22) (2025-01-03)
 
 **Note:** Version bump only for package @react-fabric/form

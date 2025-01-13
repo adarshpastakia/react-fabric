@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.23](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.22...v1.0.0-beta.23) (2025-01-13)
+
+### Bug Fixes
+
+- **Menu:** use hotkey wrapper for menu hotkeys ([92fa4fe](https://github.com/adarshpastakia/react-ui-framework/commit/92fa4feca0480065b64a460708eda124e12d86af))
+- **Tooltip:** break long words ([fbcebf6](https://github.com/adarshpastakia/react-ui-framework/commit/fbcebf6707b1c08691b1b9dd9674e40c6c0dfbad))
+
 # [1.0.0-beta.22](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.21...v1.0.0-beta.22) (2025-01-03)
 
 **Note:** Version bump only for package @react-fabric/core
