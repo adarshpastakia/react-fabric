@@ -24,5 +24,6 @@
 /* istanbul ignore file */
 
 export * from "./calculateDimensions";
+export * from "./cloneElement";
 export * from "./getColor";
 export * from "./nodeCheck";

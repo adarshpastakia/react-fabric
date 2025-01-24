@@ -45,6 +45,8 @@ export { HotKeyWrapper } from "./hotkeys/HotKeyWrapper";
 export { type ModalProps } from "./types";
 export { CoreIcons } from "./types/icons";
 
+export { cloneChildren } from "./utils";
+
 export {
   ApplicationProvider,
   useApplicationContext,

@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { cloneChildren, EMPTY_ARRAY, isArray } from "@react-fabric/utilities";
+import { EMPTY_ARRAY, isArray } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { cloneElement, useCallback, useMemo } from "react";
 import { useControlledValue } from "../../hooks/useControlledValue";
@@ -32,6 +32,7 @@ import {
   type CssProp,
   type SizeType,
 } from "../../types";
+import { cloneChildren } from "../../utils";
 import { type ButtonProps } from "./Button";
 import classes from "./Button.module.css";
 

@@ -46,7 +46,7 @@ export const hash = (str: string) => {
  * @internal
  */
 export const shortHash = () => {
-  return (new Date().getTime() + Math.trunc(Math.random() * 1000)).toString(36);
+  return (new Date().getTime() * Math.random()).toString(36);
 };
 
 /**

@@ -23,8 +23,14 @@
 
 import { DndContext, type DragEndEvent } from "@dnd-kit/core";
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
-import { Button, CoreIcons, Icon, Tooltip } from "@react-fabric/core";
-import { cloneChildren, isString } from "@react-fabric/utilities";
+import {
+  Button,
+  cloneChildren,
+  CoreIcons,
+  Icon,
+  Tooltip,
+} from "@react-fabric/core";
+import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import {
   cloneElement,

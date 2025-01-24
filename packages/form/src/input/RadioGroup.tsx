@@ -21,11 +21,11 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { cloneChildren } from "@react-fabric/core";
 import {
   type ChildrenProp,
   type CssProp,
 } from "@react-fabric/core/dist/types/types";
-import { cloneChildren } from "@react-fabric/utilities";
 import { cloneElement } from "react";
 import { FieldWrapper } from "../internal/FieldWrapper";
 import { type Radio } from "./Radio";

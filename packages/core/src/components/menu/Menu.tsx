@@ -45,7 +45,7 @@ import {
   useRole,
   useTypeahead,
 } from "@floating-ui/react";
-import { cloneChildren, mergeRefs } from "@react-fabric/utilities";
+import { mergeRefs } from "@react-fabric/utilities";
 import classNames from "classnames";
 import {
   cloneElement,
@@ -55,11 +55,11 @@ import {
   useRef,
   useState,
 } from "react";
+import { HotKeyWrapper } from "../../hotkeys/HotKeyWrapper";
 import { CoreIcons } from "../../types/icons";
-import { nodeCheck } from "../../utils";
+import { cloneChildren, nodeCheck } from "../../utils";
 import { MenuItem } from "./MenuItem";
 import { type MenuProps } from "./types";
-import { HotKeyWrapper } from "../../hotkeys/HotKeyWrapper";
 
 // FIXME: refactor menu implementation to differentiate between static and floating menus, implement context wrapper for each menu level
 

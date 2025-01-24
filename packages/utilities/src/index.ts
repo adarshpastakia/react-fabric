@@ -26,7 +26,6 @@
 export * from "./_ascii";
 export * from "./_boundingBox";
 export { getBoundingBox, getBox } from "./_boundingBox";
-export * from "./_cloneElement";
 export { default as Countries } from "./_countries";
 export type { Country } from "./_countries";
 export * from "./_debounce";

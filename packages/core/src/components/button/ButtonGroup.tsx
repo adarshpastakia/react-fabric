@@ -21,7 +21,6 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { cloneChildren } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { cloneElement } from "react";
 import {
@@ -33,6 +32,7 @@ import {
   type SizeType,
   type TestProps,
 } from "../../types";
+import { cloneChildren } from "../../utils";
 import { type Button } from "./Button";
 import classes from "./Button.module.css";
 

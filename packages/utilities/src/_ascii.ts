@@ -85,9 +85,9 @@ const conversions = {
  */
 export const ascii = (str: string) => {
   if (isEmpty(str)) return "";
-  Object.entries(conversions).forEach(([a, l]) => {
-    const re = new RegExp(l, "g");
-    str = `${str}`.replace(re, a);
+  Object.entries(conversions).forEach((entry) => {
+    const re = new RegExp(entry[1], "g");
+    str = `${str}`.replace(re, entry[0]);
   });
   return str;
 };
