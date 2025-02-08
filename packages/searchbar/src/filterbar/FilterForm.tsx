@@ -89,14 +89,16 @@ export const FilterForm = ({
   const [values, setValues] = useState<FilterSchemaType>(filter as AnyObject);
 
   useEffect(() => {
-    if (filter && "field" in filter && filter.field)
-      return formRef.current?.setValues(filter);
-    formRef.current?.setValues({
-      id: shortHash(),
-      field: "",
-      type: FIELD_TYPE.NONE,
-      operator: OPERATOR.EXISTS,
-    });
+    if (filter && "field" in filter && filter.field) {
+      formRef.current?.setValues(filter);
+    } else {
+      formRef.current?.setValues({
+        id: shortHash(),
+        field: "",
+        type: FIELD_TYPE.NONE,
+        operator: OPERATOR.EXISTS,
+      });
+    }
   }, [filter]);
 
   useEffect(() => {
@@ -280,7 +282,7 @@ export const FilterForm = ({
             }
           />
         </Controller>
-        <div className="flex pt-4 justify-end gap-1">
+        <div className="flex mt-4 justify-end gap-1 sticky bottom-1 bg-base">
           {onRemove && (
             <div className="flex-1">
               <Button
