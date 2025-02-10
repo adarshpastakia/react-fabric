@@ -135,7 +135,7 @@
     }
 
     ::selection {
-      background-color: color-mix(in lab, var(--accent) 35%, var(--fabric-bg));
+      background-color: color(from var(--accent) srgb r g b / 30%);
     }
 
     *,
