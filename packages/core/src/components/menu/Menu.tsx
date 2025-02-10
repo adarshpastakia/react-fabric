@@ -104,8 +104,9 @@ const MenuComponent = ({
     handleClose: safePolygon({ blockPointerEvents: true }),
   });
   const click = useClick(context, {
-    toggle: true,
-    ignoreMouse: true,
+    event: "mousedown",
+    toggle: !isNested,
+    ignoreMouse: isNested,
   });
   const role = useRole(context, { role: "menu" });
   const dismiss = useDismiss(context, { bubbles: true });

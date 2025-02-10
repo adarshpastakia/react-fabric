@@ -24,7 +24,7 @@
 import { useFloatingTree } from "@floating-ui/react";
 import { iconToken, mergeRefs } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { Fragment, useCallback, useMemo, useRef } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useRef } from "react";
 import { HotKey } from "../../hotkeys/HotKey";
 import { HotKeyLabel } from "../../hotkeys/HotKeyLabel";
 import { Tooltip } from "../../overlays";
@@ -51,6 +51,7 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
   onClick,
   badge,
   hotKey,
+  tabIndex = -1,
   // @ts-expect-error ignore
   minimal,
   // @ts-expect-error ignore
@@ -64,6 +65,10 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
   const badgeProps = useMemo(() => {
     return getBadgeProps(badge);
   }, [badge]);
+
+  useEffect(() => {
+    tabIndex === 0 && elRef.current?.focus();
+  }, [tabIndex]);
 
   const iconEl = useMemo(() => {
     let path = icon;
@@ -152,6 +157,7 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
         data-open={childOpen}
         disabled={disabled}
         data-id={id}
+        tabIndex={tabIndex}
         onClick={(e) => {
           onClick?.(e) !== false && tree?.events.emit("click");
         }}
