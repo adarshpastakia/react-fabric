@@ -275,11 +275,12 @@ export const ArrayInput = ({
           }
         >
           <Button
+            size="sm"
             aria-label="Add item"
             icon={CoreIcons.insert}
             onClick={() => handleAdd(onAdd?.())}
             data-invalid={!!error}
-            disabled={!!disabled || readOnly || fields.length < maxItems}
+            disabled={!!disabled || readOnly || fields.length > maxItems}
             className={classNames(classes.addButton, "me-10")}
           >
             {addLabel ?? t("addArray")}
@@ -292,8 +293,14 @@ export const ArrayInput = ({
 
   return (
     <div className={classes.arrayInput}>
-      {!fixedList && onAdd && buttonPosition !== "bottom" && addButton}
-      <FieldWrapper {...rest}>
+      <FieldWrapper
+        {...rest}
+        appendLabel={
+          <div className="-me-2">
+            {!fixedList && onAdd && buttonPosition !== "bottom" && addButton}
+          </div>
+        }
+      >
         <Wrapper>
           {fields.map((item, index) => (
             <SortableItem
