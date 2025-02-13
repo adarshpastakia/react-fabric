@@ -50,7 +50,7 @@ export const FieldWrapper = ({
     >
       {!isInner && (
         <div
-          className="flex flex-nowrap flex-content gap-1 py-0.5 px-2"
+          className="flex flex-nowrap flex-content items-end gap-1 py-0.5 px-2"
           style={{ width: inline ? labelWidth : undefined }}
         >
           <label
@@ -73,6 +73,7 @@ export const FieldWrapper = ({
               ✽
             </span>
           )}
+          <div className="flex-1" />
           {appendLabel && <span className="flex-content">{appendLabel}</span>}
         </div>
       )}
