@@ -57,5 +57,9 @@
         box-shadow: 0 0 1px 1px theme(borderColor.base) inset !important;
       }
     }
+
+    & :global(.saturation-black) ~ div {
+      pointer-events: none;
+    }
   }
 }

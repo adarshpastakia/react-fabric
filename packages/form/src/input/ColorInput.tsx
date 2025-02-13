@@ -171,9 +171,7 @@ export const ColorInput = ({
             ...floatingStyles,
           }}
           data-testid="dropdown-body"
-          {...getFloatingProps({
-            onClick: (e) => e.stopPropagation(),
-          })}
+          {...getFloatingProps()}
         >
           <ColorPicker
             {...rest}

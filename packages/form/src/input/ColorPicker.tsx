@@ -135,12 +135,9 @@ export const ColorPicker: FC<ColorProps> = memo(
           {
             default: {
               hue: {
-                borderRadius: "99px",
                 boxShadow: "0 0 1px 1px var(--color-shadow)",
               },
               alpha: {
-                height: "1rem",
-                borderRadius: "99px",
                 backgroundColor: "var(--fabric-bg)",
                 boxShadow: "0 0 1px 1px var(--color-shadow)",
               },
@@ -157,36 +154,6 @@ export const ColorPicker: FC<ColorProps> = memo(
                 backgroundColor: "var(--fabric-bg)",
                 boxShadow:
                   "0 0 0 1px var(--color-shadow), 0 0 8px var(--fabric-shadow)",
-              },
-              Alpha: {
-                alpha: {
-                  paddingRight: "calc(1rem - 2px)",
-                },
-                slider: {
-                  width: "calc(1rem - 2px)",
-                  borderRadius: "99px",
-                  height: "calc(1rem - 2px)",
-                  transform: "none",
-                },
-              },
-              Hue: {
-                hue: {
-                  paddingRight: "calc(1rem - 2px)",
-                },
-                slider: {
-                  width: "calc(1rem - 2px)",
-                  borderRadius: "99px",
-                  height: "calc(1rem - 2px)",
-                  transform: "none",
-                },
-              },
-              Saturation: {
-                circle: {
-                  width: "0.5rem",
-                  borderRadius: "99px",
-                  height: "0.5rem",
-                  transform: "translate(-0.25rem, -0.25rem)",
-                },
               },
               checkboard: {
                 white: "transparent",
