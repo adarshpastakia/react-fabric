@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.25](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.24...v1.0.0-beta.25) (2025-02-15)
+
+### Bug Fixes
+
+- **ArrayInput:** fix max length disable ([ae791d0](https://github.com/adarshpastakia/react-ui-framework/commit/ae791d06a44d4f45f33583f1a7d8f5ecbac7fe81))
+- **Field:** flex between label and appendLabel ([1c79e55](https://github.com/adarshpastakia/react-ui-framework/commit/1c79e55f7fb6631d98b326ffdaa5cc209c5e5e0a))
+
 # [1.0.0-beta.24](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.23...v1.0.0-beta.24) (2025-01-24)
 
 **Note:** Version bump only for package @react-fabric/form

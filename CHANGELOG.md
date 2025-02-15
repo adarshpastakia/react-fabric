@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.25](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.24...v1.0.0-beta.25) (2025-02-15)
+
+### Bug Fixes
+
+- **ArrayInput:** fix max length disable ([ae791d0](https://github.com/adarshpastakia/react-fabric/commit/ae791d06a44d4f45f33583f1a7d8f5ecbac7fe81))
+- **Field:** flex between label and appendLabel ([1c79e55](https://github.com/adarshpastakia/react-fabric/commit/1c79e55f7fb6631d98b326ffdaa5cc209c5e5e0a))
+- **Lexical:** color picker ([2f84c43](https://github.com/adarshpastakia/react-fabric/commit/2f84c4379a1d4a674caadaad95cd7f11f710b448))
+- **Menu:** focus on keyboard navigation ([6221079](https://github.com/adarshpastakia/react-fabric/commit/6221079b6bb747e7fc05c3d2eca4f8ea1761d102))
+
 # [1.0.0-beta.24](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.23...v1.0.0-beta.24) (2025-01-24)
 
 **Note:** Version bump only for package react-fabric

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.25](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.24...v1.0.0-beta.25) (2025-02-15)
+
+### Bug Fixes
+
+- **Lexical:** color picker ([2f84c43](https://github.com/adarshpastakia/react-fabric/commit/2f84c4379a1d4a674caadaad95cd7f11f710b448))
+
 # [1.0.0-beta.24](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.23...v1.0.0-beta.24) (2025-01-24)
 
 **Note:** Version bump only for package @react-fabric/utilities
