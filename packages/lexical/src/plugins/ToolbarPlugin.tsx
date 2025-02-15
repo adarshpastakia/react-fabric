@@ -252,13 +252,13 @@ export const ToolbarPlugin = () => {
       <ColorInput
         {...{ noOutline: true }}
         value={watch.fontColor}
-        onChange={(v = "#000") => watch.onFontColorSelect(v)}
+        onChange={watch.onFontColorSelect}
         decorateStart={<Icon icon={CoreIcons.formatText} />}
       />
       <ColorInput
         {...{ noOutline: true }}
         value={watch.bgColor}
-        onChange={(v = "#fff") => watch.onBgColorSelect(v)}
+        onChange={watch.onBgColorSelect}
         decorateStart={<Icon icon={CoreIcons.formatFill} />}
       />
       <ButtonWrapper

@@ -53,6 +53,7 @@ import {
   $getNearestNodeOfType,
   mergeRegister,
 } from "@lexical/utils";
+import { isNil } from "@react-fabric/utilities";
 import {
   $createParagraphNode,
   $getSelection,
@@ -62,7 +63,6 @@ import {
   CAN_REDO_COMMAND,
   CAN_UNDO_COMMAND,
   COMMAND_PRIORITY_CRITICAL,
-  FOCUS_COMMAND,
   INDENT_CONTENT_COMMAND,
   OUTDENT_CONTENT_COMMAND,
   SELECTION_CHANGE_COMMAND,
@@ -114,6 +114,7 @@ export const useFormatWatcher = () => {
   const [, startTransition] = useTransition();
   const [editor] = useLexicalComposerContext();
   const [activeEditor, setActiveEditor] = useState(editor);
+  const [currentSelection, setCurrentSelection] = useState<AnyObject>();
   const [blockType, setBlockType] =
     useState<keyof typeof blockTypeToBlockName>("paragraph");
   const [rootType, setRootType] =
@@ -218,41 +219,46 @@ export const useFormatWatcher = () => {
         ) + "",
       );
       setFontColor(
-        $getSelectionStyleValueForProperty(selection, "color", "#000"),
+        $getSelectionStyleValueForProperty(
+          selection,
+          "color",
+          // @ts-expect-error ignore
+          // eslint-disable-next-line no-new-wrappers
+          new String("#000"),
+        ),
       );
       setBgColor(
         $getSelectionStyleValueForProperty(
           selection,
           "background-color",
-          "#fff",
+          // @ts-expect-error ignore
+          // eslint-disable-next-line no-new-wrappers
+          new String("#fff"),
         ),
       );
       setFontFamily(
         $getSelectionStyleValueForProperty(selection, "font-family", "inherit"),
       );
     }
-  }, [activeEditor]);
+  }, []);
 
   useEffect(() => {
     return editor.registerCommand(
-      FOCUS_COMMAND,
-      (_payload, newEditor) => {
-        setActiveEditor(newEditor);
-        return false;
-      },
-      COMMAND_PRIORITY_CRITICAL,
-    );
-  }, [editor]);
-
-  useEffect(() => {
-    return activeEditor.registerCommand(
       SELECTION_CHANGE_COMMAND,
       (_payload, newEditor) => {
+        setActiveEditor(newEditor);
+        setCurrentSelection($getSelection());
         $updateToolbar();
         return false;
       },
       COMMAND_PRIORITY_CRITICAL,
     );
+  }, [editor, $updateToolbar]);
+
+  useEffect(() => {
+    activeEditor.getEditorState().read(() => {
+      $updateToolbar();
+    });
   }, [activeEditor, $updateToolbar]);
 
   useEffect(() => {
@@ -286,16 +292,13 @@ export const useFormatWatcher = () => {
 
   const applyStyleText = useCallback(
     (styles: Record<string, string>) => {
-      setTimeout(() => {
-        editor.update(() => {
-          const selection = $getSelection();
-          if ($isRangeSelection(selection)) {
-            $patchStyleText(selection, styles);
-          }
-        });
-      }, 100);
+      activeEditor.update(() => {
+        if (!isNil(currentSelection)) {
+          $patchStyleText(currentSelection, styles);
+        }
+      });
     },
-    [editor],
+    [activeEditor, currentSelection],
   );
 
   const formatBulletList = () => {
@@ -439,16 +442,14 @@ export const useFormatWatcher = () => {
   );
 
   const onFontColorSelect = useCallback(
-    (value: string) => {
-      startTransition(() => setFontColor(value));
+    (value: string = "#000000") => {
       applyStyleText({ color: value });
     },
     [applyStyleText],
   );
 
   const onBgColorSelect = useCallback(
-    (value: string) => {
-      startTransition(() => setBgColor(value));
+    (value: string = "#ffffff") => {
       applyStyleText({ "background-color": value });
     },
     [applyStyleText],

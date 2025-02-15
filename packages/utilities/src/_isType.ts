@@ -29,7 +29,7 @@ export const isNull = (value: AnyObject): value is null => {
   return value === null;
 };
 
-export const isNil = (val: AnyObject): val is undefined => {
+export const isNil = (val: AnyObject): val is null | undefined => {
   return val === undefined || val === null;
 };
 export const isEmpty = (val: AnyObject): val is undefined => {
