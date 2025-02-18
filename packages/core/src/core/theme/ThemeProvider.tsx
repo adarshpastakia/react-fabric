@@ -57,7 +57,7 @@ export interface ThemeProps {
   /**
    * component rounding
    */
-  rounding?: "minimal" | "normal" | "full";
+  rounding?: "sm" | "md" | "full";
 }
 
 /**
