@@ -25,7 +25,11 @@ import { useDebounce } from "@react-fabric/core";
 import { EMPTY_ARRAY } from "@react-fabric/utilities";
 import memoizeOne from "memoize-one";
 import { useCallback, useEffect, useReducer, useRef } from "react";
-import { type InternalNode, type TreeNodeType } from "./types";
+import {
+  type InternalNode,
+  type TreeNodeType,
+  type TreePanelProps,
+} from "./types";
 import {
   filterTree,
   flattenTree,
@@ -87,17 +91,11 @@ export const useTree = <T extends KeyValue>({
   items = EMPTY_ARRAY,
   checked = EMPTY_ARRAY,
   selected,
+  sorter,
   matcher,
   onSelect,
   onChecked,
-}: {
-  items?: Array<TreeNodeType<T>>;
-  selected?: string;
-  checked?: string[];
-  onSelect?: (id: string) => void;
-  onChecked?: (leafs: string[], nodes: string[]) => void;
-  matcher?: (data: T, query: string) => boolean;
-}) => {
+}: Partial<TreePanelProps<T>>) => {
   const componentEvents = useRef({ onSelect, onChecked });
 
   const itemList = createItemList(items);
@@ -105,7 +103,7 @@ export const useTree = <T extends KeyValue>({
   const [state, dispatch] = useReducer(
     (state: TreeState, action: TreeActions) => {
       if (action.type === "load") {
-        state.items = refactorTree(action.items);
+        state.items = refactorTree(action.items, sorter);
         state.itemMap = makeTreeMap(state.items);
         state.tree = flattenTree(state.items);
         return { ...state };
@@ -149,7 +147,10 @@ export const useTree = <T extends KeyValue>({
         }
         updateSelection(state.itemMap, action.id, true);
         state.tree = flattenTree(state.items);
-        componentEvents.current.onSelect?.(action.id);
+        componentEvents.current.onSelect?.(
+          action.id,
+          state.itemMap.get(action.id)?.data,
+        );
         return { ...state, selected: action.id };
       }
       if (action.type === "toggleCheck") {

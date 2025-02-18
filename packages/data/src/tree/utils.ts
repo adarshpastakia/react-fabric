@@ -48,11 +48,12 @@ const getIntermediate = (list: AnyObject[] = []) => {
 // convert node item to internal node used by the tree
 export const refactorTree = (
   nodes: TreeNodeType[],
+  sorterfn: any = sorter,
   options: { level: number; parent?: string } = { level: 0, parent: undefined },
 ) => {
   const list: InternalNode[] = [];
-
-  nodes.sort(sorter).forEach((node) => {
+  if (sorterfn !== false) nodes = nodes.sort(sorterfn);
+  nodes.forEach((node) => {
     list.push({
       open: false,
       level: options.level,
@@ -66,7 +67,7 @@ export const refactorTree = (
       leaf: !!node.leaf,
       children:
         node.children &&
-        refactorTree(node.children, {
+        refactorTree(node.children, sorterfn, {
           level: options.level + 1,
           parent: node.id,
         }),

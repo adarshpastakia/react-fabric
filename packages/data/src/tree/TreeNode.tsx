@@ -22,6 +22,7 @@
  */
 
 import { Badge, CoreIcons, getBadgeProps, Icon } from "@react-fabric/core";
+import { isEmpty } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useMemo } from "react";
 import { type TreeNodeProps } from "./types";
@@ -44,11 +45,14 @@ export const TreeNode = ({
   }, [node.badge]);
 
   const filler = useMemo(() => {
-    return node.lines.slice(noLines ? 1 : 0).map((line, idx) => (
+    return node.lines.slice(1).map((line, idx) => (
       <div
         key={idx}
         className={classNames(
-          "flex-initial self-stretch flex items-center w-6 relative before:absolute before:top-0 before:start-[7px] before:bg-tint-200 before:min-h-[50%] before:w-[2px] before:scale-x-[.625]",
+          "flex-initial self-stretch flex items-center w-6 relative",
+          !noLines &&
+            line > 0 &&
+            "before:absolute before:top-0 before:start-[7px] before:bg-tint-200 before:min-h-[50%] before:w-[2px] before:scale-x-[.625]",
           !noLines && line !== 2 && "before:h-full",
         )}
       >
@@ -154,7 +158,7 @@ export const TreeNode = ({
         <div role="none" className="flex-1 truncate">
           {children}
         </div>
-        {node.badge && (
+        {!isEmpty(node.badge) && (
           <Badge
             {...badgeProps}
             className={classNames(

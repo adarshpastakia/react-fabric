@@ -56,6 +56,9 @@ export const TreePanel = <T extends KeyValue>({
   onChecked,
   onLoad,
   onSelect,
+  sorter,
+  makeLabel,
+  makeIcon,
   ...aria
 }: TreePanelProps<T>) => {
   const {
@@ -72,6 +75,7 @@ export const TreePanel = <T extends KeyValue>({
     checked,
     selected,
     matcher,
+    sorter,
     onSelect,
     onChecked,
   });
@@ -151,12 +155,15 @@ export const TreePanel = <T extends KeyValue>({
                 checkable={checkable}
                 selectable={selectable}
                 defaultLeafIcon={defaultLeafIcon}
-                defaultNodeIcon={defaultNodeIcon}
+                defaultNodeIcon={
+                  makeIcon?.(tree[index].data) ?? defaultNodeIcon
+                }
                 onToggle={toggleExpand}
                 onChecked={toggleCheck}
                 onSelect={select}
               >
                 {(tree[index].data && renderer?.(tree[index].data)) ||
+                  makeLabel?.(tree[index].data) ||
                   tree[index].label}
               </TreeNode>
             </div>

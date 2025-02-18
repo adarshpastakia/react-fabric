@@ -167,7 +167,7 @@ export interface TreePanelProps<T extends KeyValue = KeyValue>
   /**
    * callback on selection of tree node
    */
-  onSelect?: (id: string) => void;
+  onSelect?: (id: string, data: T) => void;
   /**
    * callback on change of checked list
    */
@@ -180,6 +180,10 @@ export interface TreePanelProps<T extends KeyValue = KeyValue>
    * item filter matcher
    */
   matcher?: (data: T, query: string) => boolean;
+
+  sorter?: false | ((a: T, b: T) => number);
+  makeLabel?: (node: T) => string;
+  makeIcon?: (node: T) => string;
 }
 
 export const iconExpandAll =
