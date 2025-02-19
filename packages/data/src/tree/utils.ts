@@ -24,7 +24,7 @@
 import { compareValues, isString, matchString } from "@react-fabric/utilities";
 import { type InternalNode, type TreeNodeType } from "./types";
 
-const sorter = (a: TreeNodeType, b: TreeNodeType) => {
+const defaultSorter = (a: TreeNodeType, b: TreeNodeType) => {
   if (!!a.leaf !== !!b.leaf) return a.leaf ? 1 : -1;
   return compareValues()(a.label, b.label);
 };
@@ -48,14 +48,17 @@ const getIntermediate = (list: AnyObject[] = []) => {
 // convert node item to internal node used by the tree
 export const refactorTree = (
   nodes: TreeNodeType[],
-  sorterfn: any = sorter,
+  {
+    sorter = defaultSorter,
+    defaultExpanded = [],
+  }: { sorter?: any; defaultExpanded?: string[] },
   options: { level: number; parent?: string } = { level: 0, parent: undefined },
 ) => {
   const list: InternalNode[] = [];
-  if (sorterfn !== false) nodes = nodes.sort(sorterfn);
+  if (sorter !== false) nodes = nodes.sort(sorter);
   nodes.forEach((node) => {
     list.push({
-      open: false,
+      open: defaultExpanded.includes(node.id),
       level: options.level,
       parent: options.parent,
       checked: 0,
@@ -67,10 +70,14 @@ export const refactorTree = (
       leaf: !!node.leaf,
       children:
         node.children &&
-        refactorTree(node.children, sorterfn, {
-          level: options.level + 1,
-          parent: node.id,
-        }),
+        refactorTree(
+          node.children,
+          { sorter, defaultExpanded },
+          {
+            level: options.level + 1,
+            parent: node.id,
+          },
+        ),
     });
   });
 

@@ -56,9 +56,14 @@ export const TreePanel = <T extends KeyValue>({
   onChecked,
   onLoad,
   onSelect,
+  onClick,
   sorter,
   makeLabel,
   makeIcon,
+  defaultExpanded,
+  onExpandToggle,
+  leafClassName,
+  nodeClassName,
   ...aria
 }: TreePanelProps<T>) => {
   const {
@@ -78,6 +83,8 @@ export const TreePanel = <T extends KeyValue>({
     sorter,
     onSelect,
     onChecked,
+    defaultExpanded,
+    onExpandToggle,
   });
 
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -103,7 +110,7 @@ export const TreePanel = <T extends KeyValue>({
     ref,
     () => ({
       open: (id: string) => expand(id),
-      select: (id: string) => expand(id),
+      select: (id: string) => select(id),
     }),
     [],
   );
@@ -161,9 +168,12 @@ export const TreePanel = <T extends KeyValue>({
                 onToggle={toggleExpand}
                 onChecked={toggleCheck}
                 onSelect={select}
+                onClick={onClick}
+                leafClassName={leafClassName}
+                nodeClassName={nodeClassName}
               >
-                {(tree[index].data && renderer?.(tree[index].data)) ||
-                  makeLabel?.(tree[index].data) ||
+                {(tree[index].data && renderer?.(tree[index].data)) ??
+                  makeLabel?.(tree[index].data) ??
                   tree[index].label}
               </TreeNode>
             </div>

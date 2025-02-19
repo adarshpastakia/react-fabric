@@ -22,9 +22,9 @@
  */
 
 import { Badge, CoreIcons, getBadgeProps, Icon } from "@react-fabric/core";
-import { isEmpty } from "@react-fabric/utilities";
+import { isEmpty, isString } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { useMemo } from "react";
+import { isValidElement, useMemo } from "react";
 import { type TreeNodeProps } from "./types";
 
 export const TreeNode = ({
@@ -36,9 +36,12 @@ export const TreeNode = ({
   defaultLeafIcon,
   defaultNodeIcon,
   onToggle,
+  onClick,
   onSelect,
   onChecked,
   children,
+  leafClassName,
+  nodeClassName,
 }: TreeNodeProps) => {
   const badgeProps = useMemo(() => {
     return getBadgeProps(node.badge);
@@ -92,7 +95,10 @@ export const TreeNode = ({
     <div
       role="treeitem"
       aria-selected={node.selected}
-      className="flex flex-nowrap items-center"
+      className={classNames(
+        "flex flex-nowrap items-center",
+        node.leaf ? leafClassName : nodeClassName,
+      )}
       data-testid={node["data-testid"]}
       data-test-value={node["data-test-value"]}
     >
@@ -131,25 +137,29 @@ export const TreeNode = ({
         className={classNames(
           "group data-[selected]:bg-primary-100 flex flex-nowrap flex-1 overflow-hidden select-none",
           node.childSelected && "font-medium",
-          canSelect && "hover:bg-primary-50 cursor-pointer",
+          (canSelect || onClick) && "hover:bg-primary-50 cursor-pointer",
         )}
         data-selected={node.selected}
-        onClick={() =>
+        onClick={() => {
+          onClick?.(node.id, node.data);
           canSelect
             ? onSelect(node.id)
             : canCheck
               ? onChecked(node.id)
-              : onToggle(node.id)
-        }
+              : onToggle(node.id);
+        }}
       >
         {nodeIcon && (
-          <div className="flex-content w-6">
-            <Icon
-              icon={nodeIcon}
-              bg={node.iconBg}
-              color={node.iconColor}
-              rtlFlip={node.rtlFlip}
-            />
+          <div className="flex-content w-6 self-center leading-none">
+            {isValidElement(nodeIcon) && nodeIcon}
+            {isString(nodeIcon) && (
+              <Icon
+                icon={nodeIcon}
+                bg={node.iconBg}
+                color={node.iconColor}
+                rtlFlip={node.rtlFlip}
+              />
+            )}
           </div>
         )}
         {node.childSelected && !node.open && (

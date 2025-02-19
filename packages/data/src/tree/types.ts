@@ -30,8 +30,9 @@ import {
   type RefProp,
   type TestProps,
 } from "@react-fabric/core/dist/types/types";
+import { type ElementType } from "react";
 
-interface TreeBaseNode<T> extends IconProps, CssProp, TestProps {
+interface TreeBaseNode<T> extends Omit<IconProps, "icon">, CssProp, TestProps {
   id: string;
   /**
    * display label
@@ -54,20 +55,25 @@ interface TreeBaseNode<T> extends IconProps, CssProp, TestProps {
    */
   disabled?: boolean;
   data?: T;
+
+  icon?: ElementType<IconProps> | string;
 }
 
 export type TreeNodeType<T extends KeyValue = KeyValue> = TreeBaseNode<T> &
   (
     | { leaf: true; children?: never }
     | {
-        leaf?: false;
+        leaf?: boolean;
         children?: Array<TreeNodeType<T>>;
         open?: boolean;
         iconOpen?: string;
       }
   );
 
-export interface InternalNode extends IconProps, CssProp, TestProps {
+export interface InternalNode
+  extends Omit<IconProps, "icon">,
+    CssProp,
+    TestProps {
   id: string;
   label: Elements<JSX.Element>;
   queryable?: string;
@@ -84,6 +90,7 @@ export interface InternalNode extends IconProps, CssProp, TestProps {
   loaded: boolean;
   parent?: string;
   empty?: boolean;
+  icon?: ElementType<IconProps> | string;
   errored?: string;
   selected?: true;
   childSelected?: true;
@@ -101,9 +108,12 @@ export interface TreeNodeProps extends ChildProp {
   noLines?: boolean;
   selectable?: true | "leafOnly";
   checkable?: true | "leafOnly";
+  leafClassName?: string;
+  nodeClassName?: string;
   onToggle: (id: string) => void;
   onSelect: (id: string) => void;
   onChecked: (id: string) => void;
+  onClick?: (id: string, node: any) => void;
 }
 
 export interface TreeRef {
@@ -165,6 +175,10 @@ export interface TreePanelProps<T extends KeyValue = KeyValue>
     | Array<TreeNodeType<T>>
     | undefined;
   /**
+   * callback on click of tree node
+   */
+  onClick?: (id: string, data: T) => void;
+  /**
    * callback on selection of tree node
    */
   onSelect?: (id: string, data: T) => void;
@@ -184,6 +198,12 @@ export interface TreePanelProps<T extends KeyValue = KeyValue>
   sorter?: false | ((a: T, b: T) => number);
   makeLabel?: (node: T) => string;
   makeIcon?: (node: T) => string;
+
+  defaultExpanded?: string[];
+  onExpandToggle?: (id: string[]) => void;
+
+  leafClassName?: string;
+  nodeClassName?: string;
 }
 
 export const iconExpandAll =

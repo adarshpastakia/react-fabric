@@ -95,15 +95,27 @@ export const useTree = <T extends KeyValue>({
   matcher,
   onSelect,
   onChecked,
+  defaultExpanded,
+  onExpandToggle,
 }: Partial<TreePanelProps<T>>) => {
   const componentEvents = useRef({ onSelect, onChecked });
 
   const itemList = createItemList(items);
 
+  const fireExpandToggle = useCallback(
+    (itemMap: InternalNode[]) => {
+      const expandedList = itemMap
+        .filter((node) => node.open)
+        .map((node) => node.id);
+      onExpandToggle?.(expandedList);
+    },
+    [onExpandToggle],
+  );
+
   const [state, dispatch] = useReducer(
     (state: TreeState, action: TreeActions) => {
       if (action.type === "load") {
-        state.items = refactorTree(action.items, sorter);
+        state.items = refactorTree(action.items, { sorter, defaultExpanded });
         state.itemMap = makeTreeMap(state.items);
         state.tree = flattenTree(state.items);
         return { ...state };
@@ -111,6 +123,7 @@ export const useTree = <T extends KeyValue>({
       if (action.type === "toggleExpand") {
         const node = state.itemMap.get(action.id);
         node && (node.open = !node.open);
+        fireExpandToggle(Array.from(state.itemMap.values()));
         state.tree = flattenTree(state.items);
         return { ...state };
       }
@@ -118,6 +131,7 @@ export const useTree = <T extends KeyValue>({
         // TODO: check if children available, if not call onLoad to fetch node children
         const node = state.itemMap.get(action.id);
         node && (node.open = true);
+        fireExpandToggle(Array.from(state.itemMap.values()));
         state.tree = flattenTree(state.items);
         return { ...state };
       }
@@ -126,6 +140,7 @@ export const useTree = <T extends KeyValue>({
         state.itemMap.forEach((node) => {
           !node.leaf && (node.open = true);
         });
+        fireExpandToggle(Array.from(state.itemMap.values()));
         state.tree = flattenTree(state.items);
         return { ...state };
       }
@@ -133,6 +148,7 @@ export const useTree = <T extends KeyValue>({
         state.itemMap.forEach((node) => {
           !node.leaf && (node.open = false);
         });
+        fireExpandToggle([]);
         state.tree = flattenTree(state.items);
         return { ...state };
       }
