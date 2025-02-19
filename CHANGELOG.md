@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.26](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.25...v1.0.0-beta.26) (2025-02-19)
+
+### Bug Fixes
+
+- **ResponsiveCol:** flex content ([c7f0941](https://github.com/adarshpastakia/react-fabric/commit/c7f094184f74066946db185376f4799dbc980b1e))
+- **TreePanel:** add sorter, label/icon maker prop ([f54440d](https://github.com/adarshpastakia/react-fabric/commit/f54440d44360d11b85cf1dcdbb4b0c2ca67e7cf3))
+- **TreePanel:** added extra props ([f6d80a4](https://github.com/adarshpastakia/react-fabric/commit/f6d80a42f96abb834197a05e2a06af88e440ddc7))
+
 # [1.0.0-beta.25](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.24...v1.0.0-beta.25) (2025-02-15)
 
 ### Bug Fixes

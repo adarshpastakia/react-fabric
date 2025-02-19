@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.26](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.25...v1.0.0-beta.26) (2025-02-19)
+
+### Bug Fixes
+
+- **ResponsiveCol:** flex content ([c7f0941](https://github.com/adarshpastakia/react-ui-framework/commit/c7f094184f74066946db185376f4799dbc980b1e))
+
 # [1.0.0-beta.25](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.24...v1.0.0-beta.25) (2025-02-15)
 
 ### Bug Fixes
