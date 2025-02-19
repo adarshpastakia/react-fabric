@@ -159,9 +159,10 @@ export const Col = ({
         classes.col,
         className,
         stretchContent && classes.stretchContent,
-        flex === "auto" && "flex-content",
         flex === "fill" && "flex-1",
         flex === "full" && "flex-full",
+        flex === "auto" && "flex-initial",
+        flex === "content" && "flex-content",
         align && `self-${align}`,
       )}
       {...aria}
