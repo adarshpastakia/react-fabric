@@ -50,7 +50,7 @@ export const DropdownTool = ({
           className,
           "outline bg-base flex-content pointer-events-auto cursor-pointer",
           groupHover &&
-            "hidden group-hover:inline-block data-[dropdown-open]:inline-block",
+            "hidden group-hover/tool:inline-block data-[dropdown-open]:inline-block",
         )}
       />
       {children}
