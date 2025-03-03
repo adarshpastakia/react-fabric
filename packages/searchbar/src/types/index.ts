@@ -153,14 +153,12 @@ export type FilterObject = BaseFilter &
   (
     | {
         field: string;
-        type: FIELD_TYPE;
         operator: OPERATOR;
         value?: FilterValue;
         query?: never;
       }
     | {
         field?: never;
-        type?: never;
         operator?: never;
         label: string;
         query: string;
