@@ -81,6 +81,7 @@ export const TreePanel = <T extends KeyValue>({
     selected,
     matcher,
     sorter,
+    onLoad,
     onSelect,
     onChecked,
     defaultExpanded,

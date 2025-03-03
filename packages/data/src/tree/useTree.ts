@@ -75,7 +75,11 @@ type TreeActions =
   /**
    * collapse all nodes
    */
-  | { type: "collapseAll" };
+  | { type: "collapseAll" }
+  /**
+   * loaded dynamic nodes
+   */
+  | { type: "loaded" };
 
 interface TreeState {
   items: InternalNode[];
@@ -93,13 +97,14 @@ export const useTree = <T extends KeyValue>({
   selected,
   sorter,
   matcher,
+  onLoad,
   onSelect,
   onChecked,
   defaultExpanded,
   onExpandToggle,
 }: Partial<TreePanelProps<T>>) => {
   const componentEvents = useRef({ onSelect, onChecked });
-
+  const intialExpand = useRef(defaultExpanded ?? EMPTY_ARRAY);
   const itemList = createItemList(items);
 
   const fireExpandToggle = useCallback(
@@ -112,6 +117,39 @@ export const useTree = <T extends KeyValue>({
     [onExpandToggle],
   );
 
+  const loadChildren = useCallback(
+    (node: InternalNode) => {
+      if (node.open && !node.leaf && !node.children?.length) {
+        node.loading = true;
+        void Promise.resolve(onLoad?.(node.id))
+          .then((resp = EMPTY_ARRAY) => {
+            node.children = refactorTree(
+              resp,
+              { sorter, defaultExpanded },
+              { level: node.level + 1, parent: node.id },
+            );
+          })
+          .finally(() => {
+            node.loading = false;
+            dispatch({ type: "loaded" });
+            intialExpand.current?.length > 0 &&
+              dispatch({
+                type: "expand",
+                id: intialExpand.current.shift() as unknown as string,
+              });
+          });
+      } else {
+        dispatch({ type: "loaded" });
+        intialExpand.current?.length > 0 &&
+          dispatch({
+            type: "expand",
+            id: intialExpand.current.shift() as unknown as string,
+          });
+      }
+    },
+    [onLoad],
+  );
+
   const [state, dispatch] = useReducer(
     (state: TreeState, action: TreeActions) => {
       if (action.type === "load") {
@@ -122,23 +160,36 @@ export const useTree = <T extends KeyValue>({
       }
       if (action.type === "toggleExpand") {
         const node = state.itemMap.get(action.id);
-        node && (node.open = !node.open);
+        if (node && !node.leaf) {
+          node && (node.open = !node.open);
+          loadChildren(node);
+          return { ...state };
+        }
+      }
+      if (action.type === "loaded") {
+        state.itemMap = makeTreeMap(state.items);
         fireExpandToggle(Array.from(state.itemMap.values()));
         state.tree = flattenTree(state.items);
+        state.selected && updateSelection(state.itemMap, state.selected, true);
         return { ...state };
       }
       if (action.type === "expand") {
-        // TODO: check if children available, if not call onLoad to fetch node children
         const node = state.itemMap.get(action.id);
-        node && (node.open = true);
-        fireExpandToggle(Array.from(state.itemMap.values()));
-        state.tree = flattenTree(state.items);
-        return { ...state };
+        if (node && !node.leaf) {
+          node.open = true;
+          let parentId = node.parent;
+          while (parentId) {
+            const node = state.itemMap.get(parentId);
+            node && (node.open = true);
+            parentId = node?.parent;
+          }
+          loadChildren(node);
+          return { ...state };
+        }
       }
       if (action.type === "expandAll") {
-        // TODO: prevent opening dynamic nodes that dont have children
         state.itemMap.forEach((node) => {
-          !node.leaf && (node.open = true);
+          !node.leaf && node.children?.length && (node.open = true);
         });
         fireExpandToggle(Array.from(state.itemMap.values()));
         state.tree = flattenTree(state.items);
@@ -198,6 +249,11 @@ export const useTree = <T extends KeyValue>({
 
   useEffect(() => {
     dispatch({ type: "load", items: itemList });
+    intialExpand.current?.length > 0 &&
+      dispatch({
+        type: "expand",
+        id: intialExpand.current.shift() as unknown as string,
+      });
   }, [itemList]);
 
   useEffect(() => {

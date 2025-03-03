@@ -24,6 +24,7 @@
 import { DropdownTool, Menu, MenuItem } from "@react-fabric/core";
 import { Countries, groupBy } from "@react-fabric/utilities";
 import type { Meta, StoryObj } from "@storybook/react";
+import { useCallback, useMemo } from "react";
 import { TreePanel } from "../src";
 
 const meta: Meta = {
@@ -77,10 +78,28 @@ const treeItems = Object.entries(groupBy(Countries.list, "continent")).map(
 
 export const _TreePanel: Story = {
   render: (args) => {
+    const initialTree = useMemo(
+      () => treeItems.map(({ children, ...item }) => item),
+      [],
+    );
+    const loadTreeNodes = useCallback((id: string) => {
+      return new Promise<any>((resolve) => {
+        setTimeout(() => {
+          const node = treeItems.find((i) => i.id === id.split("-")[0]);
+          if (node && id.includes("-")) {
+            return resolve(node.children.find((c) => c.id === id)?.children);
+          }
+          return resolve(node?.children.map(({ children, ...item }) => item));
+        }, 1000);
+      });
+    }, []);
     return (
       <TreePanel
         {...args}
-        items={treeItems as AnyObject}
+        items={initialTree as AnyObject}
+        onLoad={loadTreeNodes}
+        selected="BH"
+        defaultExpanded={["Asia", "Asia-B"]}
         renderer={(data) => {
           if (data.type == "group") {
             return (

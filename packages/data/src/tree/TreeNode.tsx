@@ -103,7 +103,16 @@ export const TreeNode = ({
       data-test-value={node["data-test-value"]}
     >
       {filler}
-      {!node.leaf && !node.childFiltered && (
+      {node.loading && (
+        <div className="flex-initial w-6">
+          <Icon
+            rtlFlip
+            icon={CoreIcons.spinner}
+            className="animate-spin text-muted"
+          />
+        </div>
+      )}
+      {!node.leaf && !node.childFiltered && !node.loading && (
         <div className="flex-initial w-6">
           <Icon
             rtlFlip
@@ -135,7 +144,7 @@ export const TreeNode = ({
       <div
         role="none"
         className={classNames(
-          "group data-[selected]:bg-primary-100 flex flex-nowrap flex-1 overflow-hidden select-none",
+          "group/tool data-[selected]:bg-primary-100 flex flex-nowrap flex-1 overflow-hidden select-none",
           node.childSelected && "font-medium",
           (canSelect || onClick) && "hover:bg-primary-50 cursor-pointer",
         )}

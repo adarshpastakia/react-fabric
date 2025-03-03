@@ -58,7 +58,7 @@ export const refactorTree = (
   if (sorter !== false) nodes = nodes.sort(sorter);
   nodes.forEach((node) => {
     list.push({
-      open: defaultExpanded.includes(node.id),
+      open: false, // defaultExpanded.includes(node.id),
       level: options.level,
       parent: options.parent,
       checked: 0,
