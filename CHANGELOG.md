@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.27](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.26...v1.0.0-beta.27) (2025-03-03)
+
+### Bug Fixes
+
+- **FilterBar:** updated filter type ([f3ea667](https://github.com/adarshpastakia/react-fabric/commit/f3ea667c095c1c51498d1d81db65cec88a85b2a3))
+- **TreePanel:** lazy loading nodes with default expand ([98402a2](https://github.com/adarshpastakia/react-fabric/commit/98402a2ad67f41e63f347f5deece4e00cf8b8148))
+
 # [1.0.0-beta.26](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.25...v1.0.0-beta.26) (2025-02-19)
 
 ### Bug Fixes
