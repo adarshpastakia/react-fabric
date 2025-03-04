@@ -175,6 +175,10 @@ export interface TreePanelProps<T extends KeyValue = KeyValue>
     | Array<TreeNodeType<T>>
     | undefined;
   /**
+   * callback to load tree using search query
+   */
+  onQuery?: (query: string) => void;
+  /**
    * callback on click of tree node
    */
   onClick?: (id: string, data: T) => void;

@@ -98,6 +98,7 @@ export const useTree = <T extends KeyValue>({
   sorter,
   matcher,
   onLoad,
+  onQuery,
   onSelect,
   onChecked,
   defaultExpanded,
@@ -204,9 +205,13 @@ export const useTree = <T extends KeyValue>({
         return { ...state };
       }
       if (action.type === "filter") {
-        filterTree(state.itemMap, action.query, matcher);
-        state.tree = flattenTree(state.items);
-        return { ...state };
+        if (onQuery) {
+          onQuery(action.query ?? "");
+        } else {
+          filterTree(state.itemMap, action.query, matcher);
+          state.tree = flattenTree(state.items);
+          return { ...state };
+        }
       }
       if (action.type === "select") {
         if (state.selected) {
@@ -249,7 +254,8 @@ export const useTree = <T extends KeyValue>({
 
   useEffect(() => {
     dispatch({ type: "load", items: itemList });
-    intialExpand.current?.length > 0 &&
+    itemList.length &&
+      intialExpand.current?.length > 0 &&
       dispatch({
         type: "expand",
         id: intialExpand.current.shift() as unknown as string,
