@@ -26,15 +26,15 @@ import { render } from "@testing-library/react";
 import { Avatar } from "../../src";
 import * as stories from "../../stories/components/avatar/AvatarGroup.stories";
 
-const { Tester } = composeStories(stories);
+const { GroupTester } = composeStories(stories);
 
 describe("AvatarGroup", () => {
   it("should render avatar", () => {
     const fragment = render(
-      <Tester size="2rem">
+      <GroupTester size="2rem">
         <Avatar name="Hyacinth Bucket" variant="text" />
         <Avatar name="Hyacinth Bucket" fallbackIcon="mdi mdi-react" />
-      </Tester>,
+      </GroupTester>,
     );
     expect(document.body.innerHTML).toMatchSnapshot();
     fragment.unmount();
@@ -42,10 +42,10 @@ describe("AvatarGroup", () => {
 
   it("should render avatar with extra count", () => {
     const fragment = render(
-      <Tester size="md" totalCount={4} rounded>
+      <GroupTester size="md" totalCount={4} rounded>
         <Avatar name="Hyacinth Bucket" variant="text" />
         <Avatar name="Hyacinth Bucket" fallbackIcon="mdi mdi-react" />
-      </Tester>,
+      </GroupTester>,
     );
     expect(
       fragment.container.querySelector("[data-ref='avatarCount'] text")

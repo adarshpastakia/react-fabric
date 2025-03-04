@@ -21,11 +21,10 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { faker } from "@faker-js/faker";
+import { mdiAbacus } from "@mdi/js";
 import { composeStories } from "@storybook/react";
 import { fireEvent, render } from "@testing-library/react";
 import * as stories from "../../stories/components/avatar/Avatar.stories";
-import { mdiAbacus } from "@mdi/js";
 
 const { Tester } = composeStories(stories);
 

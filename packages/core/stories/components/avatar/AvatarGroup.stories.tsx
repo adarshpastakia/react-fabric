@@ -63,7 +63,7 @@ export const _AvatarGroup: AvatarGroupStory = {
   args: { rounded: true, totalCount: 99, size: "2.5rem" },
 };
 
-export const Tester: AvatarGroupStory = {
+export const GroupTester: AvatarGroupStory = {
   render: (args) => <AvatarGroup {...args} />,
   args: {},
 };
