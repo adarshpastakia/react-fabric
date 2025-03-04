@@ -25,6 +25,7 @@ import { Badge, CoreIcons, getBadgeProps, Icon } from "@react-fabric/core";
 import { isEmpty, isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { isValidElement, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { type TreeNodeProps } from "./types";
 
 export const TreeNode = ({
@@ -43,6 +44,7 @@ export const TreeNode = ({
   leafClassName,
   nodeClassName,
 }: TreeNodeProps) => {
+  const { t } = useTranslation("data");
   const badgeProps = useMemo(() => {
     return getBadgeProps(node.badge);
   }, [node.badge]);
@@ -141,52 +143,59 @@ export const TreeNode = ({
           />
         </div>
       )}
-      <div
-        role="none"
-        className={classNames(
-          "group/tool data-[selected]:bg-primary-100 flex flex-nowrap flex-1 overflow-hidden select-none",
-          node.childSelected && "font-medium",
-          (canSelect || onClick) && "hover:bg-primary-50 cursor-pointer",
-        )}
-        data-selected={node.selected}
-        onClick={() => {
-          onClick?.(node.id, node.data);
-          canSelect
-            ? onSelect(node.id)
-            : canCheck
-              ? onChecked(node.id)
-              : onToggle(node.id);
-        }}
-      >
-        {nodeIcon && (
-          <div className="flex-content w-6 self-center leading-none">
-            {isValidElement(nodeIcon) && nodeIcon}
-            {isString(nodeIcon) && (
-              <Icon
-                icon={nodeIcon}
-                bg={node.iconBg}
-                color={node.iconColor}
-                rtlFlip={node.rtlFlip}
-              />
-            )}
+      {!node.empty && (
+        <div
+          role="none"
+          className={classNames(
+            "group/tool data-[selected]:bg-primary-100 flex flex-nowrap flex-1 overflow-hidden select-none",
+            node.childSelected && "font-medium",
+            (canSelect || onClick) && "hover:bg-primary-50 cursor-pointer",
+          )}
+          data-selected={node.selected}
+          onClick={() => {
+            onClick?.(node.id, node.data);
+            canSelect
+              ? onSelect(node.id)
+              : canCheck
+                ? onChecked(node.id)
+                : onToggle(node.id);
+          }}
+        >
+          {nodeIcon && (
+            <div className="flex-content w-6 self-center leading-none">
+              {isValidElement(nodeIcon) && nodeIcon}
+              {isString(nodeIcon) && (
+                <Icon
+                  icon={nodeIcon}
+                  bg={node.iconBg}
+                  color={node.iconColor}
+                  rtlFlip={node.rtlFlip}
+                />
+              )}
+            </div>
+          )}
+          {node.childSelected && !node.open && (
+            <span className=" flex-content text-primary-500">•</span>
+          )}
+          <div role="none" className="flex-1 truncate">
+            {children}
           </div>
-        )}
-        {node.childSelected && !node.open && (
-          <span className=" flex-content text-primary-500">•</span>
-        )}
-        <div role="none" className="flex-1 truncate">
-          {children}
+          {!isEmpty(node.badge) && (
+            <Badge
+              {...badgeProps}
+              className={classNames(
+                "me-1 self-center flex-content bg-opacity-50",
+                badgeProps.className,
+              )}
+            />
+          )}
         </div>
-        {!isEmpty(node.badge) && (
-          <Badge
-            {...badgeProps}
-            className={classNames(
-              "me-1 self-center flex-content bg-opacity-50",
-              badgeProps.className,
-            )}
-          />
-        )}
-      </div>
+      )}
+      {node.empty && (
+        <div className="text-muted text-sm select-none">
+          {t("tree.noItems")}
+        </div>
+      )}
     </div>
   );
 };

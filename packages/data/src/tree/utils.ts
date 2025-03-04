@@ -58,7 +58,7 @@ export const refactorTree = (
   if (sorter !== false) nodes = nodes.sort(sorter);
   nodes.forEach((node) => {
     list.push({
-      open: false, // defaultExpanded.includes(node.id),
+      open: defaultExpanded.includes(node.id) && !!node.children?.length,
       level: options.level,
       parent: options.parent,
       checked: 0,
@@ -114,6 +114,13 @@ export const flattenTree = (
           [...lines, idx === filtered.length - 1 ? 0 : 1],
         ),
       );
+    node.open &&
+      node.children?.length === 0 &&
+      list.push({
+        empty: true,
+        leaf: true,
+        lines: [...lines, idx === filtered.length - 1 ? 0 : 1, 2],
+      } as any);
   });
   return list;
 };
