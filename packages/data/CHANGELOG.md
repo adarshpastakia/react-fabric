@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.28](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.27...v1.0.0-beta.28) (2025-03-04)
+
+### Bug Fixes
+
+- **TreePanel:** add onQuery handler for dynamic trees ([33eece5](https://github.com/adarshpastakia/react-ui-framework/commit/33eece5177fe1207714d040761c97ed92126759f))
+- **TreePanel:** empty list label ([70c54f3](https://github.com/adarshpastakia/react-ui-framework/commit/70c54f31b934c39a10a2570018aa888482bf71db))
+
 # [1.0.0-beta.27](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.26...v1.0.0-beta.27) (2025-03-03)
 
 ### Bug Fixes
