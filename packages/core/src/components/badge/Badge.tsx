@@ -134,7 +134,7 @@ export const Badge = ({
           ...rest,
           ref: innerRef,
         })}
-      {(!!ping || label) && (
+      {(!!ping || (label ?? icon)) && (
         <div
           data-ref="badge"
           data-ping={ping}

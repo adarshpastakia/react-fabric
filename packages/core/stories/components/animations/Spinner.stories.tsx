@@ -44,11 +44,16 @@ const meta: Meta = {
 };
 
 export default meta;
-type BarStory = StoryObj<typeof AnimationSpinner>;
+type SpinnerStory = StoryObj<typeof AnimationSpinner>;
 
-export const _Spinner: BarStory = {
+export const _Spinner: SpinnerStory = {
   render: (args) => {
     return <AnimationSpinner {...args} />;
   },
+  args: {},
+};
+
+export const Tester: SpinnerStory = {
+  render: (args) => <AnimationSpinner {...args} />,
   args: {},
 };

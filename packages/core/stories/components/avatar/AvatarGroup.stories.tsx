@@ -51,38 +51,19 @@ export const _AvatarGroup: AvatarGroupStory = {
   render: (args) => {
     return (
       <AvatarGroup {...args}>
-        <Avatar
-          name="Hyacinth Bucket"
-          tooltip="Hyacinth Bucket"
-          variant="text"
-        />
-        <Avatar
-          name="Hyacinth Bucket"
-          tooltip="Hyacinth Bucket"
-          fallbackIcon="mdi mdi-react"
-        />
-        <Avatar
-          name="Hyacinth Bucket"
-          tooltip="Hyacinth Bucket"
-          avatar={iconImg}
-        />
-        <Avatar
-          name="Hyacinth Bucket"
-          tooltip="Hyacinth Bucket"
-          variant="bauhaus"
-        />
-        <Avatar
-          name="Hyacinth Bucket"
-          tooltip="Hyacinth Bucket"
-          variant="beam"
-        />
-        <Avatar
-          name="Hyacinth Bucket"
-          tooltip="Hyacinth Bucket"
-          variant="pixel"
-        />
+        <Avatar name="Hyacinth Bucket" variant="text" />
+        <Avatar name="Hyacinth Bucket" fallbackIcon="mdi mdi-react" />
+        <Avatar name="Hyacinth Bucket" avatar={iconImg} />
+        <Avatar name="Hyacinth Bucket" variant="bauhaus" />
+        <Avatar name="Hyacinth Bucket" variant="beam" />
+        <Avatar name="Hyacinth Bucket" variant="pixel" />
       </AvatarGroup>
     );
   },
   args: { rounded: true, totalCount: 99, size: "2.5rem" },
+};
+
+export const Tester: AvatarGroupStory = {
+  render: (args) => <AvatarGroup {...args} />,
+  args: {},
 };

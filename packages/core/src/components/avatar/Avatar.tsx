@@ -160,8 +160,9 @@ export const Avatar = ({
       );
     }
     if (variant === "text") {
-      const [, first, second, group] =
-        name.match(/(?=(\w).* (\w).*)|(?=(\w\w).*)/) ?? [];
+      const [, first, second, group] = name.match(
+        /(?=(\w).* (\w).*)|(?=(\w\w).*)/,
+      ) as string[];
       return (
         <svg role="img">
           <text

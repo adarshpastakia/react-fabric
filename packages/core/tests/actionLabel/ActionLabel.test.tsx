@@ -21,43 +21,26 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import type { Meta, StoryObj } from "@storybook/react";
-import { Fragment } from "react/jsx-runtime";
-import { Skeleton } from "../../../src";
+import { composeStories } from "@storybook/react";
+import { render } from "@testing-library/react";
+import * as stories from "../../stories/components/actionLabel/ActionLabel.stories";
 
-const meta: Meta = {
-  component: Skeleton,
-  title: "@core/components/Animations",
-  parameters: {
-    layout: "centered",
-    controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/Animations.test.tsx"],
-  },
-  decorators: [
-    (Story) => (
-      <div className="h-48 w-96 relative p-4 overflow-hidden outline rounded">
-        <Story />
-      </div>
-    ),
-  ],
-};
+const { Tester } = composeStories(stories);
 
-export default meta;
-type SkeletonStory = StoryObj<typeof Skeleton>;
+describe("ActionLabel", () => {
+  it("should render action label", () => {
+    const fragment = render(<Tester>Click Me</Tester>);
+    expect(
+      fragment.container.querySelector("[data-ref='buttonGroup'] ~ div")
+        ?.innerHTML,
+    ).toBe("Click Me");
+    expect(document.body.innerHTML).toMatchSnapshot();
+    fragment.unmount();
+  });
 
-export const _Skeleton: SkeletonStory = {
-  render: () => {
-    return (
-      <Fragment>
-        <Skeleton />
-        <Skeleton />
-      </Fragment>
-    );
-  },
-  args: {},
-};
-
-export const Tester: SkeletonStory = {
-  render: (args) => <Skeleton {...args} />,
-  args: {},
-};
+  it("should render action label align end", () => {
+    const fragment = render(<Tester align="end">Click Me</Tester>);
+    expect(document.body.innerHTML).toMatchSnapshot();
+    fragment.unmount();
+  });
+});

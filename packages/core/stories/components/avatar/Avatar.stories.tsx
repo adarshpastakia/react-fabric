@@ -72,3 +72,8 @@ export const _Avatar: AvatarStory = {
     onClick: fn(),
   },
 };
+
+export const Tester: AvatarStory = {
+  render: (args) => <Avatar {...args} />,
+  args: {},
+};

@@ -29,9 +29,7 @@ export const dedupe = (list: any[], key?: string) => {
     return Array.from(new Set(filtered).values());
   }
 
-  return Array.from(
-    new Map(filtered.map((obj) => [obj[key] ?? obj, obj])).values(),
-  );
+  return Array.from(new Map(filtered.map((obj) => [obj[key], obj])).values());
 };
 
 export const flatten = (list: any[]) => {

@@ -21,12 +21,17 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { hash, uuid } from "../src";
+import { hash, shortHash, uuid } from "../src";
 
 describe("hash/uuid test", () => {
   it("should create hash", (done) => {
     expect(hash("")).toBe(0);
     expect(hash("ABC")).toBe(64578);
+    done();
+  });
+
+  it("should create short hash", (done) => {
+    expect(shortHash()).toMatch(/[\w\d]*/);
     done();
   });
 

@@ -21,43 +21,37 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import type { Meta, StoryObj } from "@storybook/react";
-import { Fragment } from "react/jsx-runtime";
-import { Skeleton } from "../../../src";
+import { composeStories } from "@storybook/react";
+import { render } from "@testing-library/react";
+import { Avatar } from "../../src";
+import * as stories from "../../stories/components/avatar/AvatarGroup.stories";
 
-const meta: Meta = {
-  component: Skeleton,
-  title: "@core/components/Animations",
-  parameters: {
-    layout: "centered",
-    controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/Animations.test.tsx"],
-  },
-  decorators: [
-    (Story) => (
-      <div className="h-48 w-96 relative p-4 overflow-hidden outline rounded">
-        <Story />
-      </div>
-    ),
-  ],
-};
+const { Tester } = composeStories(stories);
 
-export default meta;
-type SkeletonStory = StoryObj<typeof Skeleton>;
-
-export const _Skeleton: SkeletonStory = {
-  render: () => {
-    return (
-      <Fragment>
-        <Skeleton />
-        <Skeleton />
-      </Fragment>
+describe("AvatarGroup", () => {
+  it("should render avatar", () => {
+    const fragment = render(
+      <Tester size="2rem">
+        <Avatar name="Hyacinth Bucket" variant="text" />
+        <Avatar name="Hyacinth Bucket" fallbackIcon="mdi mdi-react" />
+      </Tester>,
     );
-  },
-  args: {},
-};
+    expect(document.body.innerHTML).toMatchSnapshot();
+    fragment.unmount();
+  });
 
-export const Tester: SkeletonStory = {
-  render: (args) => <Skeleton {...args} />,
-  args: {},
-};
+  it("should render avatar with extra count", () => {
+    const fragment = render(
+      <Tester size="md" totalCount={4} rounded>
+        <Avatar name="Hyacinth Bucket" variant="text" />
+        <Avatar name="Hyacinth Bucket" fallbackIcon="mdi mdi-react" />
+      </Tester>,
+    );
+    expect(
+      fragment.container.querySelector("[data-ref='avatarCount'] text")
+        ?.innerHTML,
+    ).toBe("+2");
+    expect(document.body.innerHTML).toMatchSnapshot();
+    fragment.unmount();
+  });
+});

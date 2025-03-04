@@ -115,6 +115,7 @@ export const AvatarGroup = ({
       {avatars}
       {!!diff && (
         <dfn
+          data-ref="avatarCount"
           className={classNames(
             classes.avatar,
             "select-none relative overflow-hidden inline-block box-content leading-none not-italic text-center",

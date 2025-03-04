@@ -52,3 +52,8 @@ export const _Bars: BarStory = {
   },
   args: {},
 };
+
+export const Tester: BarStory = {
+  render: (args) => <AnimationBars {...args} />,
+  args: {},
+};

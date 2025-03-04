@@ -21,62 +21,58 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { faker } from "@faker-js/faker";
 import { composeStories } from "@storybook/react";
-import "@testing-library/jest-dom";
-import { getByTestId, render } from "@testing-library/react";
-import { Button } from "../../src";
-import * as stories from "../../stories/components/button/ButtonGroup.stories";
+import { fireEvent, render } from "@testing-library/react";
+import * as stories from "../../stories/components/avatar/Avatar.stories";
+import { mdiAbacus } from "@mdi/js";
 
 const { Tester } = composeStories(stories);
 
-describe("ButtonGroup", () => {
-  it("should render buttons", () => {
+describe("Avatar", () => {
+  it("should render avatar", () => {
     const fragment = render(
-      <Tester>
-        <Button badge={{ value: 99, max: 25 }}>First</Button>
-        <Button badge={{ ping: true, className: "bg-lilac-500" }}>
-          Second
-        </Button>
-      </Tester>,
+      <Tester name="Smeghead" bg="lilac" color="coral" size="md" />,
     );
-    expect(
-      fragment.container.querySelector("[data-ref='buttonGroup']"),
-    ).not.toBeNull();
-    expect(
-      fragment.container.querySelectorAll(
-        "[data-ref='buttonGroup'] > [data-ref='button']",
-      ),
-    ).toHaveLength(2);
     expect(document.body.innerHTML).toMatchSnapshot();
     fragment.unmount();
   });
 
-  it("should render full-width", () => {
+  it("should render text avatar", () => {
     const fragment = render(
-      <Tester fullWidth data-testid="btngrp">
-        <Button>First</Button>
-        <Button>Second</Button>
-      </Tester>,
+      <Tester variant="text" name="Smeg head" size="2rem" />,
     );
-    expect(
-      fragment.container.querySelector("[data-ref='buttonGroup']"),
-    ).not.toBeNull();
-    expect(getByTestId(fragment.container, "btngrp")).toHaveClass("flex");
     expect(document.body.innerHTML).toMatchSnapshot();
     fragment.unmount();
   });
 
-  it("should render vertical", () => {
+  it("should render fallback avatar", () => {
     const fragment = render(
-      <Tester vertical data-testid="btngrp">
-        <Button>First</Button>
-        <Button>Second</Button>
-      </Tester>,
+      <Tester name="Smeg head" avatar="none" fallbackIcon={mdiAbacus} />,
     );
-    expect(
-      fragment.container.querySelector("[data-ref='buttonGroup']"),
-    ).not.toBeNull();
-    expect(getByTestId(fragment.container, "btngrp")).toHaveClass("flex-col");
+    fireEvent.error(fragment.container.querySelector("img") as HTMLElement);
+    expect(document.body.innerHTML).toMatchSnapshot();
+    fragment.unmount();
+  });
+
+  it("should render fallback icon font", () => {
+    const fragment = render(
+      <Tester name="Smeg head" fallbackIcon="mdi mdi-alien" />,
+    );
+    expect(document.body.innerHTML).toMatchSnapshot();
+    fragment.unmount();
+  });
+
+  it("should render image avatar", () => {
+    const fragment = render(
+      <Tester
+        rounded
+        variant="text"
+        name="Smeg head"
+        avatar="https://avatars.githubusercontent.com/u/47371134"
+      />,
+    );
+    fireEvent.load(fragment.container.querySelector("img") as HTMLElement);
     expect(document.body.innerHTML).toMatchSnapshot();
     fragment.unmount();
   });

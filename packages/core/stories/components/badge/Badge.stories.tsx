@@ -22,9 +22,8 @@
  */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
 import { Fragment } from "react/jsx-runtime";
-import { Avatar, Button, Card, Icon, Badge } from "../../../src";
+import { Avatar, Badge, Button, Card, Icon } from "../../../src";
 
 const meta: Meta = {
   component: Badge,
@@ -111,4 +110,9 @@ export const Ping: BadgeStory = {
   args: {
     ping: true,
   },
+};
+
+export const Tester: BadgeStory = {
+  render: (args) => <Badge {...args} />,
+  args: {},
 };

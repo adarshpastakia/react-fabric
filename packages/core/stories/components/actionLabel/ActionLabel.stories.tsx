@@ -22,10 +22,7 @@
  */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
-import { Fragment } from "react/jsx-runtime";
 import { ActionLabel, Button, CoreIcons, Icon, Tooltip } from "../../../src";
-import { FloatingTree } from "@floating-ui/react";
 
 const meta: Meta = {
   component: ActionLabel,
@@ -146,5 +143,10 @@ export const _ActionLabel: ActionLabelStory = {
       </div>
     );
   },
+  args: {},
+};
+
+export const Tester: ActionLabelStory = {
+  render: (args) => <ActionLabel {...args} />,
   args: {},
 };

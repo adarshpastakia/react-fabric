@@ -22,61 +22,70 @@
  */
 
 import { composeStories } from "@storybook/react";
-import "@testing-library/jest-dom";
-import { getByTestId, render } from "@testing-library/react";
-import { Button } from "../../src";
-import * as stories from "../../stories/components/button/ButtonGroup.stories";
+import { render } from "@testing-library/react";
+import { Loading } from "../../src";
+import * as stories from "../../stories/components/animations/Animations.stories";
+import * as barStories from "../../stories/components/animations/Bars.stories";
+import * as skeletonStories from "../../stories/components/animations/Skeleton.stories";
+import * as spinnerStories from "../../stories/components/animations/Spinner.stories";
 
 const { Tester } = composeStories(stories);
+const { Tester: BarTester } = composeStories(barStories);
+const { Tester: SkeletonTester } = composeStories(skeletonStories);
+const { Tester: SpinnerTester } = composeStories(spinnerStories);
 
-describe("ButtonGroup", () => {
-  it("should render buttons", () => {
+describe("Animations", () => {
+  it("should render indicator", () => {
     const fragment = render(
-      <Tester>
-        <Button badge={{ value: 99, max: 25 }}>First</Button>
-        <Button badge={{ ping: true, className: "bg-lilac-500" }}>
-          Second
-        </Button>
-      </Tester>,
+      <div>
+        <Tester />
+        <Tester type="info" />
+        <Tester type="check" />
+        <Tester type="question" />
+        <Tester type="cross" color="lilac" />
+        <Tester type="exclaim" strokeColor="lilac" />
+      </div>,
     );
-    expect(
-      fragment.container.querySelector("[data-ref='buttonGroup']"),
-    ).not.toBeNull();
-    expect(
-      fragment.container.querySelectorAll(
-        "[data-ref='buttonGroup'] > [data-ref='button']",
-      ),
-    ).toHaveLength(2);
     expect(document.body.innerHTML).toMatchSnapshot();
     fragment.unmount();
   });
 
-  it("should render full-width", () => {
+  it("should render bars", () => {
     const fragment = render(
-      <Tester fullWidth data-testid="btngrp">
-        <Button>First</Button>
-        <Button>Second</Button>
-      </Tester>,
+      <div>
+        <BarTester />
+      </div>,
     );
-    expect(
-      fragment.container.querySelector("[data-ref='buttonGroup']"),
-    ).not.toBeNull();
-    expect(getByTestId(fragment.container, "btngrp")).toHaveClass("flex");
     expect(document.body.innerHTML).toMatchSnapshot();
     fragment.unmount();
   });
 
-  it("should render vertical", () => {
+  it("should render skeleton", () => {
     const fragment = render(
-      <Tester vertical data-testid="btngrp">
-        <Button>First</Button>
-        <Button>Second</Button>
-      </Tester>,
+      <div>
+        <SkeletonTester />
+      </div>,
     );
-    expect(
-      fragment.container.querySelector("[data-ref='buttonGroup']"),
-    ).not.toBeNull();
-    expect(getByTestId(fragment.container, "btngrp")).toHaveClass("flex-col");
+    expect(document.body.innerHTML).toMatchSnapshot();
+    fragment.unmount();
+  });
+
+  it("should render spinner", () => {
+    const fragment = render(
+      <div>
+        <SpinnerTester />
+      </div>,
+    );
+    expect(document.body.innerHTML).toMatchSnapshot();
+    fragment.unmount();
+  });
+
+  it("should render loader", () => {
+    const fragment = render(
+      <div className="relative">
+        <Loading />
+      </div>,
+    );
     expect(document.body.innerHTML).toMatchSnapshot();
     fragment.unmount();
   });

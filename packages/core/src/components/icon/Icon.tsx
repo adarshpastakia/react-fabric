@@ -154,6 +154,7 @@ export const Icon = ({
     <dfn
       {...rest}
       ref={ref}
+      data-ref="icon"
       role="presentation"
       className={classNames(
         classes.icon,

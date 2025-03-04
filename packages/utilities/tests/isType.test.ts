@@ -54,6 +54,7 @@ describe("check type test", () => {
     expect(isEmpty([1, 2])).toBeFalsy();
     expect(isEmpty({ a: 1, b: 2 })).toBeFalsy();
     expect(isEmpty(new Map([["a", "test"]]))).toBeFalsy();
+    expect(isEmpty(new Date())).toBeFalsy();
 
     expect(isEmpty("")).toBeTruthy();
     expect(isEmpty([])).toBeTruthy();

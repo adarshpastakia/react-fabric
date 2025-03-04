@@ -33,7 +33,7 @@ import {
 
 const meta: Meta = {
   component: AnimationIndicator,
-  subcomponents: { AnimationBars, AnimationSpinner } as AnyObject,
+  subcomponents: { AnimationBars, AnimationSpinner, Skeleton } as AnyObject,
   title: "@core/components/Animations",
   parameters: {
     layout: "centered",
@@ -75,5 +75,10 @@ export const _Animations: AnimationsStory = {
       </Fragment>
     );
   },
+  args: {},
+};
+
+export const Tester: AnimationsStory = {
+  render: (args) => <AnimationIndicator {...args} />,
   args: {},
 };
