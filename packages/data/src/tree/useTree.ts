@@ -113,7 +113,7 @@ export const useTree = <T extends KeyValue>({
       const expandedList = itemMap
         .filter((node) => node.open)
         .map((node) => node.id);
-      onExpandToggle?.(expandedList);
+      setTimeout(() => onExpandToggle?.(expandedList), 100);
     },
     [onExpandToggle],
   );
