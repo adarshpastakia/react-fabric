@@ -52,8 +52,3 @@ export const _Spinner: SpinnerStory = {
   },
   args: {},
 };
-
-export const Tester: SpinnerStory = {
-  render: (args) => <AnimationSpinner {...args} />,
-  args: {},
-};

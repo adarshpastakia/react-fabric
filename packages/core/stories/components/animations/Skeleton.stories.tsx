@@ -56,8 +56,3 @@ export const _Skeleton: SkeletonStory = {
   },
   args: {},
 };
-
-export const Tester: SkeletonStory = {
-  render: (args) => <Skeleton {...args} />,
-  args: {},
-};

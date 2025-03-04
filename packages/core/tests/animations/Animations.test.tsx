@@ -23,16 +23,10 @@
 
 import { composeStories } from "@storybook/react";
 import { render } from "@testing-library/react";
-import { Loading } from "../../src";
+import { AnimationBars, AnimationSpinner, Loading, Skeleton } from "../../src";
 import * as stories from "../../stories/components/animations/Animations.stories";
-import * as barStories from "../../stories/components/animations/Bars.stories";
-import * as skeletonStories from "../../stories/components/animations/Skeleton.stories";
-import * as spinnerStories from "../../stories/components/animations/Spinner.stories";
 
 const { Tester } = composeStories(stories);
-const { Tester: BarTester } = composeStories(barStories);
-const { Tester: SkeletonTester } = composeStories(skeletonStories);
-const { Tester: SpinnerTester } = composeStories(spinnerStories);
 
 describe("Animations", () => {
   it("should render indicator", () => {
@@ -52,8 +46,8 @@ describe("Animations", () => {
 
   it("should render bars", () => {
     const fragment = render(
-      <div>
-        <BarTester />
+      <div className="relative">
+        <AnimationBars />
       </div>,
     );
     expect(document.body.innerHTML).toMatchSnapshot();
@@ -62,8 +56,8 @@ describe("Animations", () => {
 
   it("should render skeleton", () => {
     const fragment = render(
-      <div>
-        <SkeletonTester />
+      <div className="relative">
+        <Skeleton />
       </div>,
     );
     expect(document.body.innerHTML).toMatchSnapshot();
@@ -72,8 +66,8 @@ describe("Animations", () => {
 
   it("should render spinner", () => {
     const fragment = render(
-      <div>
-        <SpinnerTester />
+      <div className="relative">
+        <AnimationSpinner />
       </div>,
     );
     expect(document.body.innerHTML).toMatchSnapshot();
