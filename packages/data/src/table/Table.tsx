@@ -142,9 +142,13 @@ export const Table = <T extends KeyValue = KeyValue>({
         style={{
           gridTemplate: `"head" auto "loader" auto "content" 1fr "foot" auto/1fr`,
         }}
+        data-ref="tableScroller"
         ref={scrollerRef}
       >
-        <div className="bg-base font-medium sticky top-0 area-head border-b select-none flex flex-nowrap z-2">
+        <div
+          data-ref="tableHeader"
+          className="bg-base font-medium sticky top-0 area-head border-b select-none flex flex-nowrap z-2"
+        >
           <div className={wrapperStart}>
             {canExpand && <div className="w-6" />}
             {checkableRows && (

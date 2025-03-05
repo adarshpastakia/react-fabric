@@ -47,13 +47,15 @@ export const useResizer = (
   /** ***************** attach handlers *******************/
   const box = colEl.getBoundingClientRect();
   if (colEl.parentElement != null) {
-    const parentBox = colEl.parentElement?.getBoundingClientRect();
+    const parentBox = colEl
+      .closest("[data-ref='tableScroller']")
+      ?.getBoundingClientRect() as unknown as DOMRect;
     if (isRtl) {
       placeholder.style.left = "unset";
-      placeholder.style.right = `${box.right - parentBox.right}px`;
+      placeholder.style.right = `${parentBox.width - box.right}px`;
     } else {
       placeholder.style.right = "unset";
-      placeholder.style.left = `${box.left - parentBox.left}px`;
+      placeholder.style.left = `${box.left}px`;
     }
   }
   placeholder.style.width = `${colEl.offsetWidth}px`;
