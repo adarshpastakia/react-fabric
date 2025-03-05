@@ -31,7 +31,7 @@ const meta: Meta = {
   parameters: {
     layout: "centered",
     controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/Breadcrumbs.test.tsx"],
+    jest: ["core/tests/breadcrumbs/Breadcrumb.test.tsx"],
   },
   decorators: [
     (Story) => (
@@ -113,5 +113,10 @@ export const Styles: BreadcrumbsStory = {
       </Fragment>
     );
   },
+  args: {},
+};
+
+export const Tester: BreadcrumbsStory = {
+  render: (args) => <Breadcrumbs {...args} />,
   args: {},
 };

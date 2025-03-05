@@ -32,7 +32,7 @@ const meta: Meta = {
   parameters: {
     layout: "centered",
     controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/ToggleButtonGroup.test.tsx"],
+    jest: ["core/tests/buttons/ToggleButtonGroup.test.tsx"],
   },
   decorators: [
     (Story) => (
@@ -127,5 +127,10 @@ export const EditorToolbar: ToggleButtonGroupStory = {
       </Fragment>
     );
   },
+  args: {},
+};
+
+export const Tester: ToggleButtonGroupStory = {
+  render: (args) => <ToggleButtonGroup {...args} />,
   args: {},
 };

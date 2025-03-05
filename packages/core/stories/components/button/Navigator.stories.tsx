@@ -22,7 +22,6 @@
  */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
 import { Navigator, useNavigator } from "../../../src";
 
 const meta: Meta = {
@@ -31,7 +30,7 @@ const meta: Meta = {
   parameters: {
     layout: "centered",
     controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/Navigator.test.tsx"],
+    jest: ["core/tests/buttons/Navigator.test.tsx"],
   },
   decorators: [
     (Story) => (
@@ -55,5 +54,10 @@ export const _Navigator: NavigatorStory = {
       </div>
     );
   },
+  args: {},
+};
+
+export const NavTester: NavigatorStory = {
+  render: (args) => <Navigator {...args} />,
   args: {},
 };

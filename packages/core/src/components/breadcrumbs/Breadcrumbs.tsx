@@ -64,6 +64,7 @@ export const Breadcrumbs = ({
 
   return (
     <nav
+      data-ref="breadcrumbs"
       data-color={color}
       data-variant={variant}
       className={classNames(
@@ -84,8 +85,12 @@ export const Breadcrumbs = ({
       ))}
       {overflow && (
         <Dropdown closeOnClick showArrow>
-          <li className={classes.breadcrumbLink} data-separator={separator}>
-            <Anchor>...</Anchor>
+          <li
+            className={classes.breadcrumbLink}
+            data-separator={separator}
+            data-ref="breadcrumbOverflow"
+          >
+            <Anchor data->...</Anchor>
           </li>
           <div
             data-color={color}

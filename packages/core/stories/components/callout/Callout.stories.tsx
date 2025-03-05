@@ -32,7 +32,7 @@ const meta: Meta = {
   parameters: {
     layout: "centered",
     controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/Callout.test.tsx"],
+    jest: ["core/tests/callout/Callout.test.tsx"],
   },
   decorators: [
     (Story) => (
@@ -146,5 +146,10 @@ export const Colors: CalloutStory = {
       </Row>
     );
   },
+  args: {},
+};
+
+export const Tester: CalloutStory = {
+  render: (args) => <Callout {...args} />,
   args: {},
 };

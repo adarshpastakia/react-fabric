@@ -31,7 +31,7 @@ const meta: Meta = {
   parameters: {
     layout: "centered",
     controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/Animations.test.tsx"],
+    jest: ["core/tests/animations/Animations.test.tsx"],
   },
   decorators: [
     (Story) => (

@@ -30,7 +30,7 @@ const meta: Meta = {
   parameters: {
     layout: "centered",
     controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/ActionLabel.test.tsx"],
+    jest: ["core/tests/actionLabel/ActionLabel.test.tsx"],
   },
   decorators: [
     (Story) => (

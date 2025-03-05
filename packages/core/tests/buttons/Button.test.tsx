@@ -158,8 +158,8 @@ describe("Button", () => {
   it("should render action message", async () => {
     const fn = jest.fn(() => true);
     const fragment = render(
-      <Tester onClick={fn} actionMessage="Action completed">
-        Click Me
+      <Tester onClick={fn} actionMessage="Action completed" stopPropagation>
+        <span>Click Me</span>
       </Tester>,
     );
     fireEvent.click(

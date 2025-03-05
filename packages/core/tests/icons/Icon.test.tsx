@@ -21,34 +21,37 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { faker } from "@faker-js/faker";
-import type { Meta, StoryObj } from "@storybook/react";
-import { AnimationBars } from "../../../src";
+import { composeStories } from "@storybook/react";
+import "@testing-library/jest-dom";
+import { render } from "@testing-library/react";
+import * as stories from "../../stories/components/icon/Icon.stories";
 
-const meta: Meta = {
-  component: AnimationBars,
-  title: "@core/components/Animations",
-  parameters: {
-    layout: "centered",
-    controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/animations/Animations.test.tsx"],
-  },
-  decorators: [
-    (Story) => (
-      <div className="h-48 w-96 relative p-4 overflow-hidden outline rounded">
-        <p>{faker.lorem.paragraphs(10)}</p>
-        <Story />
-      </div>
-    ),
-  ],
-};
+const { Tester } = composeStories(stories);
 
-export default meta;
-type BarStory = StoryObj<typeof AnimationBars>;
+describe("Icons", () => {
+  it("should render icon", () => {
+    const fragment = render(
+      <Tester icon="mdi mdi-alien" color="lilac" bg="white" size="md" />,
+    );
+    expect(document.body.innerHTML).toMatchSnapshot();
+    fragment.unmount();
+  });
 
-export const _Bars: BarStory = {
-  render: (args) => {
-    return <AnimationBars {...args} />;
-  },
-  args: {},
-};
+  it("should render rounded icon", () => {
+    const fragment = render(
+      <Tester icon="mdi mdi-alien" size="2rem" rounded animate="spin" />,
+    );
+    expect(document.body.innerHTML).toMatchSnapshot();
+    fragment.unmount();
+  });
+
+  it("should render text icon", () => {
+    const fragment = render(<Tester icon="ABC" />);
+    expect(document.body.innerHTML).toMatchSnapshot();
+    fragment.unmount();
+  });
+
+  it("should throw error", () => {
+    expect(() => render(<Tester />)).toThrow("Invalid icon expected string");
+  });
+});

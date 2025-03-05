@@ -153,7 +153,7 @@ export const SearchBar = ({
             decorateStart={decorateStart}
             onInput={() => dispatch({ type: "dirty", dirty: true })}
             onSelect={updateHistory}
-            data-testid="searchbar-input"
+            data-ref="searchbarInput"
             onEnterPressed={() => fireSearch(state.query, state.filters)}
           />
           {append}

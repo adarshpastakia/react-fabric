@@ -176,7 +176,7 @@ export const Panel = ({
           headerClassName,
           "flex flex-nowrap items-center area-head",
         )}
-        data-testid="panel-header"
+        data-ref="panelHeader"
         onClick={collapsable ? toggleCollapse : undefined}
       >
         {onBack && (
@@ -241,7 +241,7 @@ export const Panel = ({
       </header>
       {(!collapsed || expanded) && (
         <div
-          data-testid="panel-body"
+          data-ref="panelBody"
           className={classNames(
             classes.panelBody,
             "area-content grid overflow-hidden",

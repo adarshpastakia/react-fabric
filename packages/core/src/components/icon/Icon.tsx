@@ -140,7 +140,7 @@ export const Icon = ({
           dy=".1em"
           dominantBaseline="middle"
           textAnchor="middle"
-          style={{ fontSize: SvgTextSize[icon.length] ?? "1em" }}
+          style={{ fontSize: SvgTextSize[icon.length] }}
         >
           {icon}
         </text>
@@ -152,9 +152,9 @@ export const Icon = ({
 
   return (
     <dfn
-      {...rest}
-      ref={ref}
       data-ref="icon"
+      ref={ref}
+      {...rest}
       role="presentation"
       className={classNames(
         classes.icon,

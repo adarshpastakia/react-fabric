@@ -33,7 +33,7 @@ const meta: Meta = {
   parameters: {
     layout: "centered",
     controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/Chip.test.tsx"],
+    jest: ["core/tests/chip/Chip.test.tsx"],
   },
   decorators: [
     (Story) => (
@@ -145,4 +145,9 @@ export const States: ChipStory = {
     onClick: fn(),
     onRemove: fn(),
   },
+};
+
+export const Tester: ChipStory = {
+  render: (args) => <Chip {...args} />,
+  args: {},
 };

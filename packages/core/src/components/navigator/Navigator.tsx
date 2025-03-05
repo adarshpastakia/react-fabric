@@ -60,6 +60,7 @@ export const Navigator = ({
   const navNext = useCallback(() => onNavigate(+1), [onNavigate]);
   return (
     <div
+      data-ref="navigator"
       className={classNames(className, "inline-flex items-center leading-none")}
       {...aria}
     >
@@ -70,7 +71,7 @@ export const Navigator = ({
         color={color}
         className="text-[1em] p-1"
         aria-label="previous"
-        data-testid="previous"
+        data-ref="previous"
         icon={CoreIcons.chevronLeft}
         onClick={(e) => [e.stopPropagation(), onNavigate(-1)]}
       />
@@ -80,7 +81,7 @@ export const Navigator = ({
         className="text-[1em] p-1"
         color={color}
         aria-label="next"
-        data-testid="next"
+        data-ref="next"
         icon={CoreIcons.chevronRight}
         onClick={(e) => [e.stopPropagation(), onNavigate(1)]}
       />

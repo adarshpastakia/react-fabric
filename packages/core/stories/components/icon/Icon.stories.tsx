@@ -32,7 +32,7 @@ const meta: Meta = {
   parameters: {
     layout: "centered",
     controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/Icon.test.tsx"],
+    jest: ["core/tests/icons/Icon.test.tsx"],
   },
   decorators: [
     (Story) => (
@@ -108,4 +108,9 @@ export const Sizes: IconStory = {
     icon: "mdi mdi-react",
     onClick: fn(),
   },
+};
+
+export const Tester: IconStory = {
+  render: (args) => <Icon {...args} />,
+  args: {},
 };

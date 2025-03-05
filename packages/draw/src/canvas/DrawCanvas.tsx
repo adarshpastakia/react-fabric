@@ -281,7 +281,7 @@ export const DrawCanvas: FC<DrawProps> = ({
           className="absolute inset-0"
           onDragOver={handleDragOver}
           onDrop={handleDrop}
-          data-testid="draw-canvas"
+          data-ref="drawCanvas"
         >
           {TLDraw}
         </div>

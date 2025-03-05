@@ -191,11 +191,14 @@ export const ConfirmButton = <Tag extends React.ElementType = "button">({
               {...getFloatingProps()}
             >
               <div className="font-medium ">
-                <p className="py-2 px-4">{message}</p>
+                <p className="py-2 px-4" data-ref="confirmMessage">
+                  {message}
+                </p>
                 <div className="flex justify-end py-2 px-4 gap-2">
                   <Button
                     size="sm"
                     variant="link"
+                    data-ref="confirmCancel"
                     color={color}
                     onClick={() => [clickHandler(false), setIsOpen(false)]}
                   >
@@ -206,6 +209,7 @@ export const ConfirmButton = <Tag extends React.ElementType = "button">({
                     variant="solid"
                     color={color}
                     autoFocus
+                    data-ref="confirmOk"
                     onClick={() => [clickHandler(true), setIsOpen(false)]}
                   >
                     {okLabel ?? t("action.ok")}

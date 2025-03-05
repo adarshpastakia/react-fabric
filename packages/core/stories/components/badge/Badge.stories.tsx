@@ -31,7 +31,7 @@ const meta: Meta = {
   parameters: {
     layout: "centered",
     controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/Badge.test.tsx"],
+    jest: ["core/tests/badge/Badge.test.tsx"],
   },
   decorators: [
     (Story) => (

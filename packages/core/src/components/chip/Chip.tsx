@@ -49,7 +49,7 @@ export interface ChipProps
   /**
    * chip size
    */
-  size?: SizeType;
+  size?: SizeType | number | string;
   /**
    * chip color (CSS color / tailwind color)
    */
@@ -152,6 +152,7 @@ export const Chip = <Tag extends React.ElementType = "div">({
     <E
       ref={ref}
       role="term"
+      data-ref="chip"
       className={classNames(
         classes.chip,
         className,
@@ -164,11 +165,12 @@ export const Chip = <Tag extends React.ElementType = "div">({
       style={styles}
       data-variant={variant}
       data-inner-clickable={!!onClick}
-      {...{ onClick: clickHandler }}
+      {...{ onClick: disabled ? undefined : clickHandler }}
       {...aria}
     >
       {icon && (
         <Icon
+          data-ref="chipIcon"
           className={classNames(classes.chipIcon, "m-1")}
           icon={icon}
           bg={iconBg}
@@ -178,13 +180,17 @@ export const Chip = <Tag extends React.ElementType = "div">({
         />
       )}
       {children && (
-        <label className={classNames(classes.chipLabel, "truncate")}>
+        <label
+          data-ref="chipLabel"
+          className={classNames(classes.chipLabel, "truncate")}
+        >
           {children}
         </label>
       )}
       {onRemove && (
         <span
           role="none"
+          data-ref="chipRemove"
           data-inner-cliackable
           className={classNames(
             classes.chipRemove,

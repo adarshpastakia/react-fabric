@@ -90,17 +90,26 @@ export const Callout = ({
       )}
       {...aria}
     >
-      {legend && <legend className="px-2 mx-4 font-medium">{legend}</legend>}
+      {legend && (
+        <legend className="px-2 mx-4 font-medium" data-ref="calloutLegend">
+          {legend}
+        </legend>
+      )}
       <div className={classNames("break-words whitespace-break-spaces p-2")}>
         <div className="flex flex-nowrap items-center text-xl pe-4 gap-2 mb-4 empty:mb-0">
-          {icon && <Icon icon={icon} />}
-          {title && <p className="flex-1">{title}</p>}
+          {icon && <Icon icon={icon} data-ref="calloutIcon" />}
+          {title && (
+            <p className="flex-1" data-ref="calloutTitle">
+              {title}
+            </p>
+          )}
         </div>
         <div className="pe-4">{children}</div>
       </div>
       {onClose && (
         <Icon
           size="md"
+          data-ref="calloutClose"
           className={classNames("absolute end-2", legend ? "top-0" : "top-2")}
           icon={CoreIcons.close}
           onClick={onClose}

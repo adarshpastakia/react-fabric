@@ -32,7 +32,7 @@ const meta: Meta = {
   parameters: {
     layout: "centered",
     controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/ConfirmButton.test.tsx"],
+    jest: ["core/tests/buttons/ConfirmButton.test.tsx"],
   },
   decorators: [
     (Story) => (
@@ -56,7 +56,7 @@ export const _ConfirmButton: ConfirmButtonStory = {
   },
   args: {
     message: "Confirm done",
-    onClick: fn(),
+    onClick: fn() as any,
   },
 };
 
@@ -71,6 +71,11 @@ export const ConfirmWithAction: ConfirmButtonStory = {
   args: {
     actionMessage: "Action completed",
     message: "Confirm done",
-    onClick: fn(),
+    onClick: fn() as any,
   },
+};
+
+export const Tester: ConfirmButtonStory = {
+  render: (args) => <ConfirmButton {...args} />,
+  args: {},
 };

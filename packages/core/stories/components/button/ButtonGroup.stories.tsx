@@ -33,7 +33,7 @@ const meta: Meta = {
   parameters: {
     layout: "centered",
     controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/ButtonGroup.test.tsx"],
+    jest: ["core/tests/buttons/ButtonGroup.test.tsx"],
   },
   decorators: [
     (Story) => (

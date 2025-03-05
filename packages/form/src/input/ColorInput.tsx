@@ -170,7 +170,7 @@ export const ColorInput = ({
             zIndex: "var(--z-popover)",
             ...floatingStyles,
           }}
-          data-testid="dropdown-body"
+          data-ref="dropdownBody"
           {...getFloatingProps()}
         >
           <ColorPicker

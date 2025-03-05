@@ -212,7 +212,7 @@ export const Aside = ({
           headerClassName,
           "grid area-head items-center",
         )}
-        data-testid="aside-header"
+        data-ref="asideHeader"
       >
         {title && (
           <div
@@ -266,7 +266,6 @@ export const Aside = ({
           "overflow-hidden grid",
         )}
         style={isCollapsed ? widthStyles : undefined}
-        data-testid="aside-body"
       >
         <ErrorBoundary>{children}</ErrorBoundary>
       </section>

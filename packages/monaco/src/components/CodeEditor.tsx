@@ -226,7 +226,7 @@ export const CodeEditor = ({
     <Section className="relative">
       <div
         ref={containerRef}
-        data-testid="code-editor"
+        data-ref="codeEditor"
         className={classNames(classes.codeEditor, "absolute inset-0")}
       >
         <MonacoEditor

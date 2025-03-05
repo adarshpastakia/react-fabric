@@ -90,7 +90,7 @@ export const FilterTag = ({
           onChange({ ...filter, disabled: !filter.disabled }),
           e.stopPropagation(),
         ]}
-        data-testid="filter-tag"
+        data-ref="filterTag"
         data-test-value={filter.id}
         stopPropagation
         onRemove={filter.required ? undefined : () => onRemove()}
