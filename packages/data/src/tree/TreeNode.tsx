@@ -61,7 +61,7 @@ export const TreeNode = ({
           !noLines && line !== 2 && "before:h-full",
         )}
       >
-        <svg viewBox="0 0 24 24" className="fill-tint-200 rtl:-scale-100">
+        <svg viewBox="0 0 24 24" className="fill-tint-200 rtl:-scale-x-100">
           {line === 0 && <path d="" />}
           {!noLines && line === 1 && (
             <path d="M7.45 26.1v-28.2h1.1v28.2h-1.1z" />
@@ -107,11 +107,7 @@ export const TreeNode = ({
       {filler}
       {node.loading && (
         <div className="flex-initial w-6">
-          <Icon
-            rtlFlip
-            icon={CoreIcons.spinner}
-            className="animate-spin text-muted"
-          />
+          <Icon icon={CoreIcons.spinner} className="animate-spin text-muted" />
         </div>
       )}
       {!node.leaf && !node.childFiltered && !node.loading && (
