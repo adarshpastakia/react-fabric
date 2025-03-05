@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.29](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.28...v1.0.0-beta.29) (2025-03-05)
+
+### Bug Fixes
+
+- **Table:** rtl column resize placeholder ([5916229](https://github.com/adarshpastakia/react-fabric/commit/5916229e14af7981105dec39a34350aece1c3b52))
+- **TreePanel:** tree lines rtl flip ([78e4117](https://github.com/adarshpastakia/react-fabric/commit/78e4117518d11b5d84fe8fc66e14f156f75b1259))
+
 # [1.0.0-beta.28](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.27...v1.0.0-beta.28) (2025-03-04)
 
 ### Bug Fixes
