@@ -22,12 +22,27 @@
  */
 
 import { faker } from "@faker-js/faker";
-import { Avatar, Icon, Section, Title, Viewport } from "@react-fabric/core";
+import {
+  Avatar,
+  Badge,
+  Icon,
+  MenuItem,
+  Section,
+  Title,
+  Viewport,
+} from "@react-fabric/core";
 import { Countries, Country } from "@react-fabric/utilities";
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Table } from "../src";
+
+import africa from "./images/africa.svg";
+import asia from "./images/asia.svg";
+import europe from "./images/europe.svg";
+import oceania from "./images/oceania.svg";
+import namerica from "./images/north-america.svg";
+import samerica from "./images/south-america.svg";
 
 const meta: Meta = {
   component: Table,
@@ -77,6 +92,7 @@ const columns: AnyObject = [
     sortable: true,
     hideable: false,
     resizable: true,
+    actions: [<MenuItem label="Sort down" />, <MenuItem label="Sort up" />],
   },
   {
     id: "continent",
@@ -131,9 +147,24 @@ export const _Table: Story = {
     const [sort, setSort] = useState<AnyObject>();
     return (
       <Table
-        {...args}
+        {...(args as any)}
         data={Countries.list}
         keyProperty="iso2"
+        groupProperty="continent"
+        groupRenderer={(grp) => (
+          <Fragment>
+            {grp.key === "Asia" && <img src={asia} />}
+            {grp.key === "Africa" && <img src={africa} />}
+            {grp.key === "Europe" && <img src={europe} />}
+            {grp.key === "Oceania" && <img src={oceania} />}
+            {grp.key === "North America" && <img src={namerica} />}
+            {grp.key === "South America" && <img src={samerica} />}
+            <span className="text-xl">{grp.key}</span>
+            <span className="text-sm font-medium inline-block bg-tint-100 rounded-full px-1 border">
+              {grp.itemCount}
+            </span>
+          </Fragment>
+        )}
         onSort={(o) => (setSort(o), action("onSort")(o))}
         sort={sort}
         columns={columns}

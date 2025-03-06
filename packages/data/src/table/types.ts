@@ -41,7 +41,7 @@ export interface TableColumn<T = KeyValue>
   id: keyof T | string;
   label?: string;
   tooltip?: string;
-  actions?: ReactElement;
+  actions?: ReactElement[];
   align?: "start" | "center" | "end";
   locked?: "start" | "end";
   hidden?: boolean;
@@ -77,12 +77,16 @@ export interface TableProps<T = KeyValue> extends RefProp<TableRef> {
   columns: Array<TableColumn<T>>;
   data: T[];
   keyProperty?: keyof T;
+  groupProperty?: keyof T;
+  groupRenderer?: (key: AnyObject) => ReactElement;
   emptyDisplay?: ReactElement;
+
   /**
    * checkable rows
    */
+  checked?: AnyObject[];
   checkableRows?: boolean;
-  onCheckedChanged?: (rows: Array<keyof T>) => void;
+  onCheckedChanged?: (rows: AnyObject[]) => void;
   /**
    * sorting
    */

@@ -21,37 +21,55 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { useVirtualizer } from "@tanstack/react-virtual";
-import { useCallback, useReducer, useRef } from "react";
+import { compareValues, groupBy } from "@react-fabric/utilities";
+import {
+  defaultRangeExtractor,
+  type Range,
+  useVirtualizer,
+} from "@tanstack/react-virtual";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useReducer,
+  useRef,
+  useState,
+} from "react";
 
-interface DataState {
-  expanded: Key[];
-  checked: Key[];
+interface DataState<T = KeyValue> {
+  items: T[];
+  grouped: KeyValue<T[]>;
+  groups: AnyObject[];
+  expanded: AnyObject[];
+  checked: AnyObject[];
   allChecked: 0 | 1 | 2;
 }
 
 type DataAction =
-  | { type: "expand"; key: Key }
-  | { type: "check"; key: Key }
+  | { type: "updateState"; checked: AnyObject[] }
+  | { type: "groupExpand"; key: AnyObject }
+  | { type: "grouped"; key: AnyObject }
+  | { type: "expand"; key: AnyObject }
+  | { type: "check"; key: AnyObject }
   | { type: "checkall" };
 
-export const useVirtualTable = (
-  data: KeyValue[],
-  keyProperty?: Key,
-  onCheckChanged?: (checked: Key[]) => void,
+export const useVirtualTable = <T extends KeyValue = KeyValue>(
+  data: T[],
+  options: {
+    checked?: AnyObject[];
+    keyProperty: keyof T;
+    groupProperty?: keyof T;
+    onCheckChanged?: (checked: AnyObject[]) => void;
+  },
 ) => {
   // TODO: refactor data into item list, apply grouping if groupColumn provided
   // TODO: when grouping maintain map of group with children, {___GROUP___:true, label, items, open}
 
-  const scrollerRef = useRef<HTMLDivElement>(null);
-  const virtualizer = useVirtualizer({
-    count: data.length,
-    getScrollElement: () => scrollerRef.current,
-    estimateSize: () => 24,
-  });
-
   const [state, dispatch] = useReducer(
-    (state: DataState, action: DataAction) => {
+    (state: DataState<T>, action: DataAction) => {
+      if (action.type === "updateState") {
+        state.checked = action.checked;
+      }
       if (action.type === "expand") {
         if (state.expanded.includes(action.key))
           state.expanded.splice(state.expanded.indexOf(action.key), 1);
@@ -61,41 +79,121 @@ export const useVirtualTable = (
         if (state.checked.includes(action.key))
           state.checked.splice(state.checked.indexOf(action.key), 1);
         else state.checked.push(action.key);
-        onCheckChanged?.(state.checked);
+        options.onCheckChanged?.(state.checked);
       }
       if (action.type === "checkall") {
         if (state.allChecked !== 0) {
           state.checked = [];
-        } else if (keyProperty) {
-          state.checked = data.map((item) => item[keyProperty]);
+        } else if (options.keyProperty) {
+          state.checked = data.map((item) => item[options.keyProperty]);
         }
-        onCheckChanged?.(state.checked);
+        options.onCheckChanged?.(state.checked);
+      }
+      const checkList = data.filter((hit) =>
+        state.checked.includes(hit[options.keyProperty]),
+      );
+      if (action.type === "groupExpand") {
+        const group = state.groups.find((group) => group.key === action.key);
+        if (group) {
+          group.open = !group.open;
+          state.groups = state.groups.slice();
+          state.items = state.groups
+            .map((group) => [
+              group,
+              group.open ? state.grouped[group.key] : undefined,
+            ])
+            .flat(2)
+            .filter(Boolean) as any;
+        }
+      }
+      if (action.type === "grouped") {
+        if (action.key) {
+          state.grouped = groupBy<T>(data, action.key);
+          state.groups = Object.keys(state.grouped)
+            .sort(compareValues("asc"))
+            .map((group) => ({
+              __GROUP__: true,
+              open: true,
+              key: group,
+              items: state.grouped[group],
+              itemCount: state.grouped[group].length,
+            }));
+          state.items = state.groups
+            .map((group) => [group, ...state.grouped[group.key]])
+            .flat() as any;
+        } else {
+          state.items = data;
+        }
       }
       return {
         ...state,
         allChecked:
-          state.checked.length === data.length
-            ? 1
-            : state.checked.length
-              ? 2
-              : 0,
-      } as DataState;
+          checkList.length === data.length ? 1 : state.checked.length ? 2 : 0,
+      } as DataState<T>;
     },
     {
+      items: data,
+      grouped: {},
+      groups: [],
       checked: [],
       expanded: [],
       allChecked: 0,
     },
   );
 
+  const activeStickyIndexRef = useRef(0);
+  const stickyIndexes = useMemo<number[]>(
+    () =>
+      state.items
+        .map((hit, idx) => ("__GROUP__" in hit ? idx : undefined))
+        .filter(Boolean) as number[],
+    [state.items],
+  );
+  const isActiveSticky = (index: number) =>
+    activeStickyIndexRef.current === index;
+
+  const [hasActiveSticky, setHasActiveSticky] = useState(false);
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const virtualizer = useVirtualizer({
+    count: state.items.length,
+    getScrollElement: () => scrollerRef.current,
+    estimateSize: () => 32,
+    rangeExtractor: useCallback(
+      (range: Range) => {
+        activeStickyIndexRef.current =
+          [...stickyIndexes]
+            .reverse()
+            .find((index) => range.startIndex > index) ?? 0;
+
+        setHasActiveSticky(range.startIndex !== activeStickyIndexRef.current);
+
+        const next = new Set([
+          activeStickyIndexRef.current,
+          ...defaultRangeExtractor(range),
+        ]);
+
+        return [...next];
+      },
+      [stickyIndexes],
+    ),
+  });
+
   const virtualItems = virtualizer.getVirtualItems();
 
   const getData = useCallback(
     (index: number) => {
-      return data[index];
+      return state.items[index];
     },
-    [data],
+    [state.items],
   );
+
+  useEffect(() => {
+    dispatch({ type: "grouped", key: options.groupProperty });
+  }, [options.groupProperty]);
+
+  useEffect(() => {
+    dispatch({ type: "updateState", checked: options.checked ?? [] });
+  }, [options.checked]);
 
   return {
     scrollerRef,
@@ -103,9 +201,12 @@ export const useVirtualTable = (
     checkState: state,
     getData,
     virtualizer,
+    hasActiveSticky,
+    isActiveSticky,
     top: virtualizer.range?.startIndex,
     totalSize: virtualizer.getTotalSize,
     measureElement: virtualizer.measureElement,
+    toggleGroupExpand: (key: Key) => dispatch({ type: "groupExpand", key }),
     toggleExpand: (key: Key) => dispatch({ type: "expand", key }),
     toggleChecked: (key: Key) => dispatch({ type: "check", key }),
     toggleAllChecked: () => dispatch({ type: "checkall" }),

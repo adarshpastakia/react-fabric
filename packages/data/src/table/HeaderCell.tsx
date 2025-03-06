@@ -23,6 +23,7 @@
 
 import {
   CoreIcons,
+  Divider,
   DropdownTool,
   Icon,
   Menu,
@@ -94,15 +95,21 @@ export const HeaderCell = ({
         />,
       );
     }
+    if (sortable && actions) {
+      ret.push(<Divider />);
+    }
+    if (actions) {
+      ret.push(...actions);
+    }
     return ret;
-  }, [sortable]);
+  }, [sortable, actions]);
 
   return (
     <div
       role="none"
       data-id={id}
       onClick={() => handleSort()}
-      className="group font-medium border-e flex flex-nowrap text-start items-center table-header-cell"
+      className="group/tool font-medium border-e flex flex-nowrap text-start items-center table-header-cell"
       style={{
         width: width ?? COL_DEFAULT_WIDTH,
         minWidth: minWidth ?? COL_MIN_WIDTH,

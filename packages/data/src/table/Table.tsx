@@ -21,8 +21,15 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { EmptyContent, Loading, useDebounce } from "@react-fabric/core";
+import {
+  CoreIcons,
+  EmptyContent,
+  Icon,
+  Loading,
+  useDebounce,
+} from "@react-fabric/core";
 import { debounce } from "@react-fabric/utilities";
+import classNames from "classnames";
 import {
   useEffect,
   useImperativeHandle,
@@ -45,13 +52,16 @@ export const Table = <T extends KeyValue = KeyValue>({
   ref,
   data,
   columns,
-  keyProperty,
+  keyProperty = "id",
+  groupProperty,
   checkableRows,
   initialScroll,
   hideableColumns,
   sort,
   loading,
+  checked,
   emptyDisplay,
+  groupRenderer,
   canExpand,
   children,
   onSort,
@@ -72,13 +82,21 @@ export const Table = <T extends KeyValue = KeyValue>({
     top,
     checkState,
     virtualizer,
+    hasActiveSticky,
     toggleExpand,
     toggleChecked,
     toggleAllChecked,
+    toggleGroupExpand,
     getData,
     totalSize,
+    isActiveSticky,
     measureElement,
-  } = useVirtualTable(data, keyProperty, fireCheckChanged);
+  } = useVirtualTable(data, {
+    checked,
+    keyProperty,
+    groupProperty,
+    onCheckChanged: fireCheckChanged,
+  });
   const refBody = useRef<HTMLDivElement>(null);
 
   const wrapperStart = useMemo(
@@ -184,10 +202,39 @@ export const Table = <T extends KeyValue = KeyValue>({
             style={{ height: totalSize() }}
             ref={refBody}
           >
-            <div style={{ height: items[0]?.start }} />
+            <div
+              style={{
+                height: items[hasActiveSticky ? 1 : 0]?.start,
+              }}
+            />
             {items.map(({ index, key }) => {
               const data = getData(index);
-              return (
+              return "__GROUP__" in data ? (
+                <div
+                  key={key}
+                  ref={measureElement}
+                  data-index={index}
+                  className={classNames(
+                    "px-2 py-1 text-md bg-base border-y border-tint-100 cursor-pointer flex items-center gap-1",
+                    isActiveSticky(index) && "sticky top-8 z-30",
+                  )}
+                  role="none"
+                  onClick={() => toggleGroupExpand(data.key)}
+                >
+                  <Icon
+                    rtlFlip
+                    icon={
+                      data.open ? CoreIcons.chevronDown : CoreIcons.chevronRight
+                    }
+                  />
+                  {groupRenderer?.(data) ?? (
+                    <div className="flex gap-1 items-center">
+                      <span>{data.key}</span>
+                      <span className="text-sm">({data.itemCount})</span>
+                    </div>
+                  )}
+                </div>
+              ) : (
                 <BodyRow
                   rowKey={key}
                   index={index}
