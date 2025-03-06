@@ -108,8 +108,6 @@ export const Tab = <Tag extends React.ElementType = "button">({
   onClose,
   // @ts-expect-error ignore
   active,
-  // @ts-expect-error ignore
-  minimal,
   onClick,
   tabFlex,
   color,
@@ -121,6 +119,8 @@ export const Tab = <Tag extends React.ElementType = "button">({
   const badgeProps = useMemo(() => {
     return getBadgeProps(badge);
   }, [badge]);
+
+  const minimal = useMemo(() => !label, [label]);
 
   const tooltipProps = useMemo(() => {
     if (isString(tooltip)) return { content: tooltip };
@@ -143,7 +143,8 @@ export const Tab = <Tag extends React.ElementType = "button">({
           active && "active pointer-events-none",
           active && activeClassName,
           disabled && "text-tint-500 pointer-events-none",
-          tabFlex ? "flex-1" : "flex-initial max-w-36 min-w-24",
+          tabFlex ? "flex-1" : "flex-initial max-w-36",
+          minimal ? "min-w-6 px-2 py-1" : "min-w-18",
           "flex items-center justify-center px-1 rounded overflow-hidden",
         )}
         onClick={() => !active && onClick?.(id)}
