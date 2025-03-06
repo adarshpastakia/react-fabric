@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.30](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.29...v1.0.0-beta.30) (2025-03-06)
+
+### Bug Fixes
+
+- **Table:** implement groupBy with sticky group head ([8fe4239](https://github.com/adarshpastakia/react-fabric/commit/8fe4239d2c2dbc8fb778700e676ae19a0a247ac8))
+
 # [1.0.0-beta.29](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.28...v1.0.0-beta.29) (2025-03-05)
 
 ### Bug Fixes
