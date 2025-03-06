@@ -248,7 +248,7 @@ const _VirtualGallery = <T extends KeyValue>({
     () => ({
       scrollToItem(index) {
         virtualizer.scrollToIndex(Math.floor(index / columnCount), {
-          align: "start",
+          align: "auto",
         });
       },
       hilight(index) {
@@ -256,7 +256,7 @@ const _VirtualGallery = <T extends KeyValue>({
           ?.querySelector(".hilight")
           ?.classList.remove("hilight", "ring-1");
         virtualizer.scrollToIndex(Math.floor(index / columnCount), {
-          align: "start",
+          align: "auto",
         });
         setTimeout(() => {
           scrollerRef.current

@@ -235,14 +235,14 @@ const _VirtualList = <T extends KeyValue>({
     listRef,
     () => ({
       scrollToItem(index) {
-        virtualizer.scrollToIndex(index, { align: "start" });
+        virtualizer.scrollToIndex(index, { align: "auto" });
       },
       hilight(index) {
         scrollerRef.current
           ?.querySelector(".hilight")
           ?.classList.remove("hilight", "ring-1");
         virtualizer.scrollToIndex(Math.floor(index), {
-          align: "start",
+          align: "auto",
         });
         setTimeout(() => {
           scrollerRef.current
