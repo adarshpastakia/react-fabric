@@ -22,7 +22,6 @@
  */
 
 import {
-  ActionLabel,
   Button,
   Copy,
   CoreIcons,
@@ -181,6 +180,8 @@ const JsonEntry = ({
       ret = actualValue ? t("json.true") : t("json.false");
     if (ret?.length > 128) {
       ret = <Text clamp={3}>{ret}</Text>;
+    } else {
+      ret = <div className="break-words">{ret}</div>;
     }
 
     return (
@@ -216,37 +217,36 @@ const JsonEntry = ({
 
   const labelDisplay = useMemo(
     () => (
-      <ActionLabel
-        className="text-dimmed text-sm px-2 flex-1 truncate"
-        actions={
-          !canExpand && canFilter
-            ? [
-                <Button
-                  key="negative"
-                  color="danger"
-                  size="sm"
-                  variant="link"
-                  icon={CoreIcons.funnelMinus}
-                  aria-label="Filter Negative"
-                  onClick={() =>
-                    onFilter?.(pathWithoutOrdinal, actualValue, true)
-                  }
-                />,
-                <Button
-                  key="positive"
-                  color="primary"
-                  size="sm"
-                  variant="link"
-                  icon={CoreIcons.funnelPlus}
-                  aria-label="Filter"
-                  onClick={() => onFilter?.(pathWithoutOrdinal, actualValue)}
-                />,
-              ]
-            : []
-        }
+      <div
+        className={classNames(
+          "text-dimmed text-sm px-2 flex-1 group",
+          inline ? "truncate" : "break-words",
+        )}
       >
+        {!canExpand && canFilter && (
+          <div className="hidden pe-1 group-hover:inline-block">
+            <Button
+              key="negative"
+              color="danger"
+              size="xs"
+              variant="link"
+              icon={CoreIcons.funnelMinus}
+              aria-label="Filter Negative"
+              onClick={() => onFilter?.(pathWithoutOrdinal, actualValue, true)}
+            />
+            <Button
+              key="positive"
+              color="primary"
+              size="xs"
+              variant="link"
+              icon={CoreIcons.funnelPlus}
+              aria-label="Filter"
+              onClick={() => onFilter?.(pathWithoutOrdinal, actualValue)}
+            />
+          </div>
+        )}
         {labeler?.(path) ?? field}
-      </ActionLabel>
+      </div>
     ),
     [field, labeler, pathWithoutOrdinal, actualValue, canExpand, canFilter],
   );
@@ -356,7 +356,7 @@ export const JsonViewer = <T extends KeyValue = KeyValue>({
   const list = useMemo(() => reduceObject(json), [json]);
 
   return (
-    <div {...rest} className={classNames(className, "p-4 bg-alternate")}>
+    <div {...rest} className={classNames(className, "bg-alternate")}>
       {!isEmpty(json) ? (
         list.map((item) => (
           <JsonEntry
