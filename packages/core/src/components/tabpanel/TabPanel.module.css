@@ -25,6 +25,47 @@
   .tabPanel {
     --color: theme(colors.primary.500);
 
+    &[data-orientation="top"] {
+      grid-template: "tablist" auto "content" 1fr / 1fr;
+
+      .tabHeader {
+        box-shadow: 0 -1px 0 theme(borderColor.dimmed) inset;
+      }
+    }
+
+    &[data-orientation="bottom"] {
+      grid-template: "content" 1fr "tablist" auto / 1fr;
+
+      .tabHeader {
+        margin-top: 1px;
+        box-shadow: 0 1px 0 theme(borderColor.dimmed) inset;
+      }
+    }
+
+    &[data-orientation="start"] {
+      grid-template: "tablist content" 1fr / auto 1fr;
+
+      .tabHeader {
+        box-shadow: -1px 0 0 theme(borderColor.dimmed) inset;
+      }
+    }
+
+    &[data-orientation="end"] {
+      grid-template: "content tablist" 1fr / 1fr auto;
+
+      .tabHeader {
+        box-shadow: 1px 0 0 theme(borderColor.dimmed) inset;
+      }
+    }
+  }
+}
+
+@layer util {
+  .tabPanel {
+    & .tabList > .tabButton:global(.active) {
+      pointer-events: none;
+    }
+
     & > .tabHeader {
       grid-area: tablist;
 
@@ -83,47 +124,6 @@
       & .tabList > .tabButton:global(.active) {
         background-color: color-mix(in lab, var(--color) 20%, var(--fabric-bg));
       }
-    }
-
-    &[data-orientation="top"] {
-      grid-template: "tablist" auto "content" 1fr / 1fr;
-
-      .tabHeader {
-        box-shadow: 0 -1px 0 theme(borderColor.dimmed) inset;
-      }
-    }
-
-    &[data-orientation="bottom"] {
-      grid-template: "content" 1fr "tablist" auto / 1fr;
-
-      .tabHeader {
-        margin-top: 1px;
-        box-shadow: 0 1px 0 theme(borderColor.dimmed) inset;
-      }
-    }
-
-    &[data-orientation="start"] {
-      grid-template: "tablist content" 1fr / auto 1fr;
-
-      .tabHeader {
-        box-shadow: -1px 0 0 theme(borderColor.dimmed) inset;
-      }
-    }
-
-    &[data-orientation="end"] {
-      grid-template: "content tablist" 1fr / 1fr auto;
-
-      .tabHeader {
-        box-shadow: 1px 0 0 theme(borderColor.dimmed) inset;
-      }
-    }
-  }
-}
-
-@layer util {
-  .tabPanel {
-    & .tabList > .tabButton:global(.active) {
-      pointer-events: none;
     }
 
     &[data-orientation="top"] .tabList {
