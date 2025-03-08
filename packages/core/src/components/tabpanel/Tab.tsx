@@ -144,7 +144,7 @@ export const Tab = <Tag extends React.ElementType = "button">({
           active && activeClassName,
           disabled && "text-tint-500 pointer-events-none",
           tabFlex ? "flex-1" : "flex-initial max-w-36",
-          minimal ? "min-w-6 px-2 py-1" : "min-w-18",
+          minimal ? "min-w-6" : "min-w-18",
           "flex items-center justify-center px-1 rounded overflow-hidden",
         )}
         onClick={() => !active && onClick?.(id)}
@@ -157,7 +157,7 @@ export const Tab = <Tag extends React.ElementType = "button">({
             bg={iconBg}
             color={iconColor}
             rtlFlip={rtlFlip}
-            className="flex-content"
+            className="flex-content p-2"
           />
         )}
         {!minimal && (
