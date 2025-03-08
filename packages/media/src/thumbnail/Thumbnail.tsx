@@ -39,6 +39,10 @@ export interface ThumbnailProps extends CssProp {
    */
   fallback?: string;
   /**
+   * icon image for missing media
+   */
+  missingIcon?: string;
+  /**
    * NSFW overlay
    */
   nsfw?: boolean;
@@ -81,6 +85,7 @@ export const Thumbnail = ({
   videoReel,
   height,
   className,
+  missingIcon,
   width = "8rem",
 }: ThumbnailProps) => {
   const [state, dispatch] = useReducer(
@@ -172,7 +177,11 @@ export const Thumbnail = ({
         />
       )}
       {state.errorLevel === 2 && (
-        <Icon icon={CoreIcons.mediaImageBroken} color="muted" size="3rem" />
+        <Icon
+          icon={missingIcon ?? CoreIcons.mediaImageBroken}
+          color="muted"
+          size="3rem"
+        />
       )}
       {state.transparent && (
         <Icon
