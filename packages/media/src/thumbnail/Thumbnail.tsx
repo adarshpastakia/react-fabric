@@ -190,7 +190,10 @@ export const Thumbnail = ({
             classes.contrastAction,
             "absolute bottom-2 end-2 rounded-full opacity-50 hover:opacity-100",
           )}
-          onClick={() => dispatch({ type: "colorScheme" })}
+          onClick={(e) => [
+            e.stopPropagation(),
+            dispatch({ type: "colorScheme" }),
+          ]}
         />
       )}
       {nsfw && <NsfwOverlay size="sm" />}
