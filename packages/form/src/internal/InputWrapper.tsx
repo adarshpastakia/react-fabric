@@ -107,7 +107,7 @@ export const InputWrapper = ({
         !noOutline &&
           !noBorder &&
           "bg-[var(--fabric-input)] outline overflow-hidden",
-        "flex flex-nowrap items-center",
+        "flex flex-nowrap items-center flex-1",
         textarea ? "rounded-capped group" : "rounded",
         isExpanded
           ? "fixed inset-4 z-[99]"
@@ -174,7 +174,7 @@ export const InputWrapper = ({
     <Wrapper {...wrapperProps}>
       <div
         ref={elRef}
-        className="flex-1 relative min-h-8"
+        className="flex-1 relative min-h-8 flex flex-col flex-nowrap"
         style={{ width, flexBasis: width }}
       >
         {el}
