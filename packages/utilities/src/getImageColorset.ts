@@ -56,8 +56,8 @@ export const getImageColorset = (el: HTMLImageElement) => {
         transparent = true;
         continue;
       }
-      if (transparent && data[x - 1] === 1) {
-        continue;
+      if (data[x + 3] < 1) {
+        transparent = true;
       }
       r = data[x];
       g = data[x + 1];

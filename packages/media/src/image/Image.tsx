@@ -26,6 +26,7 @@ import { useCanvasContext } from "../canvas/Context";
 import { useImageContext } from "./Context";
 import { Cropper } from "./Cropper";
 import { Overlay } from "./Overlay";
+import classNames from "classnames";
 
 export const Image = ({ onCrop }: { onCrop?: (box: number[]) => void }) => {
   const { imageRef, scrollerRef, state, handleLoad, handleError } =
@@ -76,7 +77,10 @@ export const Image = ({ onCrop }: { onCrop?: (box: number[]) => void }) => {
           }}
         >
           <div
-            className="origin-center relative pointer-events-none"
+            className={classNames(
+              "origin-center relative pointer-events-none",
+              state.colorScheme.startsWith("dark") && "bg-light",
+            )}
             style={{
               width: state.imageWidth,
               height: state.imageHeight,

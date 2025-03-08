@@ -22,10 +22,12 @@
  */
 
 import { type RefProp } from "@react-fabric/core/dist/types/types";
+import { getImageColorset } from "@react-fabric/utilities";
 import {
   createContext,
   type PropsWithChildren,
   type RefObject,
+  type SyntheticEvent,
   useCallback,
   useContext,
   useEffect,
@@ -40,7 +42,7 @@ interface ContextType {
 
   state: ImageState;
 
-  handleLoad: () => void;
+  handleLoad: (e: SyntheticEvent<HTMLImageElement>) => void;
   handleError: () => void;
   reset: () => void;
   fitToSize: () => void;
@@ -77,10 +79,11 @@ interface ImageState {
   isLoaded: boolean;
   isErrored: boolean;
   showSplitter: boolean;
+  colorScheme: "light" | "dark" | "light_transparent" | "dark_transparent";
 }
 
 type ImageActions =
-  | { type: "loaded" }
+  | { type: "loaded"; colorScheme: ImageState["colorScheme"] }
   | { type: "errored" }
   | {
       type: "resize";
@@ -127,6 +130,7 @@ export const ImageProvider = ({
       if (action.type === "loaded") {
         state.isLoading = false;
         state.isLoaded = true;
+        state.colorScheme = action.colorScheme;
         setTimeout(() => onLoad?.(), 10);
       }
       if (action.type === "errored") {
@@ -250,6 +254,7 @@ export const ImageProvider = ({
       zoom: 0,
       errorLevel: 0,
       src: "",
+      colorScheme: "light",
       isLoading: true,
       isLoaded: false,
       isErrored: false,
@@ -294,8 +299,13 @@ export const ImageProvider = ({
     }
   }, [calculateSize]);
 
-  const handleLoad = useCallback(() => {
-    dispatch({ type: "loaded" });
+  const handleLoad = useCallback((e: SyntheticEvent<HTMLImageElement>) => {
+    dispatch({
+      type: "loaded",
+      colorScheme: getImageColorset(
+        e.currentTarget,
+      ) as ImageState["colorScheme"],
+    });
     calculateSize();
   }, []);
 
