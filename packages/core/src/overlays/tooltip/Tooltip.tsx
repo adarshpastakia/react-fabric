@@ -176,7 +176,7 @@ export const Tooltip = ({
             data-color={color}
             className={classNames(
               classes.tooltip,
-              "select-none text-sm not-italic flex py-1 px-2 !max-w-64 rounded shadow-md bg-current",
+              "select-none text-sm not-italic flex py-1 px-2 !max-w-lg rounded shadow-md bg-current",
             )}
             ref={refs.setFloating}
             style={floatingStyles}
