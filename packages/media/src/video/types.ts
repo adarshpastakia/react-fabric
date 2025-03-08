@@ -52,6 +52,10 @@ export interface VideoProps extends RefProp<VideoPlayerRef> {
    */
   nsfw?: boolean;
   /**
+   * enable zoom tool (default: true)
+   */
+  enableZoom?: boolean;
+  /**
    *
    */
   vttText?: string;

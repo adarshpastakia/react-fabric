@@ -127,7 +127,7 @@ export const VideoProvider = ({
       if (action.type === "loaded") {
         state.isLoading = false;
         state.isLoaded = true;
-        onLoad?.();
+        setTimeout(() => onLoad?.(), 10);
       }
       if (action.type === "errored") {
         state.errorLevel++;
@@ -141,7 +141,7 @@ export const VideoProvider = ({
         if (state.errorLevel === 2) {
           state.isLoading = false;
           state.isLoaded = true;
-          onError?.();
+          setTimeout(() => onError?.(), 10);
         }
       }
       if (action.type === "metadata") {

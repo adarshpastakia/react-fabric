@@ -41,11 +41,12 @@ export const Tools = ({
   hasVtt = false,
   markers,
   annotations = [],
+  enableZoom = true,
   onAnnotationChange,
   onCut,
 }: { hasVtt?: boolean } & Pick<
   VideoProps,
-  "markers" | "annotations" | "onAnnotationChange" | "onCut"
+  "markers" | "annotations" | "onAnnotationChange" | "onCut" | "enableZoom"
 >) => {
   const { videoRef, state, fitToSize, fitToView, toggleFit, toggleVtt } =
     useVideoContext();
@@ -169,7 +170,9 @@ export const Tools = ({
       {state.isLoaded && (
         <Fragment>
           <HotKey global keyCombo="space" handler={handlers.togglePlay} />
-          <HotKey global keyCombo="f" handler={handlers.toggleFit} />
+          {enableZoom && (
+            <HotKey global keyCombo="f" handler={handlers.toggleFit} />
+          )}
           {onCut && <HotKey global keyCombo="x" handler={handlers.cutStart} />}
           {onCut && (
             <HotKey global keyCombo="escape" handler={handlers.cutStop} />
@@ -233,21 +236,25 @@ export const Tools = ({
             }
           />
           <Divider vertical />
-          <Button
-            variant="link"
-            aria-label="fit-to-view"
-            onClick={fitToView}
-            disabled={!state.isLoaded}
-            icon={CoreIcons.mediaFitToView}
-          />
-          <Button
-            variant="link"
-            aria-label="fit-to-size"
-            onClick={fitToSize}
-            disabled={!state.isLoaded}
-            icon={CoreIcons.mediaAspect}
-          />
-          <Divider vertical />
+          {enableZoom && (
+            <Fragment>
+              <Button
+                variant="link"
+                aria-label="fit-to-view"
+                onClick={fitToView}
+                disabled={!state.isLoaded}
+                icon={CoreIcons.mediaFitToView}
+              />
+              <Button
+                variant="link"
+                aria-label="fit-to-size"
+                onClick={fitToSize}
+                disabled={!state.isLoaded}
+                icon={CoreIcons.mediaAspect}
+              />
+              <Divider vertical />
+            </Fragment>
+          )}
           {onAnnotationChange && (
             <AnnotationTool
               onChange={updateAnnotation}

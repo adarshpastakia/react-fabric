@@ -34,6 +34,7 @@ export const VideoPlayer = ({
   vttText,
   markers,
   annotations,
+  enableZoom = true,
   onAnnotationChange,
   onCut,
   ...props
@@ -44,6 +45,7 @@ export const VideoPlayer = ({
         <Section dir="ltr">
           <Video poster={poster} vttText={vttText} />
           <Tools
+            enableZoom={enableZoom}
             hasVtt={!!vttText}
             markers={markers}
             annotations={annotations}
