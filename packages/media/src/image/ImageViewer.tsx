@@ -47,6 +47,14 @@ export interface ImageProps extends RefProp<CanvasRef> {
    */
   overlay?: string;
   /**
+   * default splitter toggle (default: true)
+   */
+  defaultSplitter?: boolean;
+  /**
+   * enable zoom tool (default: true)
+   */
+  enableZoom?: boolean;
+  /**
    * crop selection handler
    */
   onCrop?: (box: number[]) => void;
@@ -60,13 +68,18 @@ export interface ImageProps extends RefProp<CanvasRef> {
   onError?: () => void;
 }
 
-export const ImageViewer = ({ nsfw, onCrop, ...props }: ImageProps) => {
+export const ImageViewer = ({
+  nsfw,
+  enableZoom,
+  onCrop,
+  ...props
+}: ImageProps) => {
   return (
     <ThemeProvider colorScheme="dark">
       <ImageProvider {...props}>
         <Section dir="ltr">
           <Image onCrop={onCrop} />
-          <Tools />
+          <Tools enableCrop={!!onCrop} enableZoom={enableZoom} />
           {nsfw && <NsfwOverlay />}
         </Section>
       </ImageProvider>

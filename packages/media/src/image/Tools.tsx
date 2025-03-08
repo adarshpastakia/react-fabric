@@ -33,7 +33,13 @@ import { Fragment, useMemo } from "react";
 import { useImageContext } from "./Context";
 import { ZoomMeter } from "./ZoomMeter";
 
-export const Tools = () => {
+export const Tools = ({
+  enableZoom = true,
+  enableCrop = true,
+}: {
+  enableZoom?: boolean;
+  enableCrop?: boolean;
+}) => {
   const {
     state,
     reset,
@@ -95,73 +101,83 @@ export const Tools = () => {
     <Footer flex justify="center" className="select-none">
       {state.isLoaded && (
         <Fragment>
-          {!state.splitter && (
+          {!state.splitter && enableZoom && (
             <HotKey global keyCombo="," handler={handlers.zoomDown} />
           )}
-          {!state.splitter && (
+          {!state.splitter && enableZoom && (
             <HotKey global keyCombo="." handler={handlers.zoomUp} />
           )}
           <HotKey global keyCombo="[" handler={handlers.rotateDown} />
           <HotKey global keyCombo="]" handler={handlers.rotateUp} />
-          <HotKey global keyCombo="f" handler={handlers.toggleFit} />
+          {enableZoom && (
+            <HotKey global keyCombo="f" handler={handlers.toggleFit} />
+          )}
           <HotKey global keyCombo="r" handler={handlers.reset} />
-          <HotKey global keyCombo="c" handler={handlers.startCropping} />
-          <HotKey global keyCombo="esc" handler={handlers.cancelCropping} />
+          {enableCrop && (
+            <HotKey global keyCombo="c" handler={handlers.startCropping} />
+          )}
+          {state.cropping && (
+            <HotKey global keyCombo="esc" handler={handlers.cancelCropping} />
+          )}
         </Fragment>
       )}
-      <label className="text-xs basis-16 whitespace-nowrap">
-        Zoom: {state.zoom === 0 ? "FIT" : state.zoom.toFixed(2)}
-      </label>
-      <Button
-        variant="link"
-        aria-label="fit-to-view"
-        onClick={fitToView}
-        disabled={!state.isLoaded}
-        icon={CoreIcons.mediaFitToView}
-      />
-      {!state.splitter && (
-        <Button
-          variant="link"
-          aria-label="fit-to-size"
-          onClick={fitToSize}
-          disabled={!state.isLoaded}
-          icon={CoreIcons.mediaAspect}
-        />
-      )}
-      {!state.splitter && (
-        <Dropdown
-          placement="top"
-          dropdownEvent="hover"
-          dropdownClassName="overflow-hidden bg-black/80 backdrop-blur-md w-[12rem] h-[6rem] rounded-t-full"
-        >
+      {enableZoom && (
+        <Fragment>
+          <label className="text-xs basis-16 whitespace-nowrap">
+            Zoom: {state.zoom === 0 ? "FIT" : state.zoom.toFixed(2)}
+          </label>
           <Button
             variant="link"
-            aria-label="zoom"
-            icon={CoreIcons.mediaZoomer}
+            aria-label="fit-to-view"
+            onClick={fitToView}
             disabled={!state.isLoaded}
-            onWheel={(e) => {
-              changeZoom(e.deltaY * 0.05);
-              e.stopPropagation();
-            }}
-            onClick={handlers.zoomUp}
+            icon={CoreIcons.mediaFitToView}
           />
-          <div
-            role="none"
-            className="select-none"
-            onMouseDown={startDrag}
-            onWheel={(e) => {
-              changeZoom(e.deltaY * 0.05);
-              e.stopPropagation();
-            }}
-          >
-            <ZoomMeter zoom={state.zoom} />
-            <span className="absolute top-0.5 left-1/2 -translate-x-1/2 bg-accent-300 outline -outline-offset-1 outline-accent-700 rounded-full text-white text-xs py-px px-1">
-              {state.zoom > 0 ? state.zoom.toFixed(1) : "FIT"}
-            </span>
-          </div>
-        </Dropdown>
+          {!state.splitter && (
+            <Button
+              variant="link"
+              aria-label="fit-to-size"
+              onClick={fitToSize}
+              disabled={!state.isLoaded}
+              icon={CoreIcons.mediaAspect}
+            />
+          )}
+          {!state.splitter && (
+            <Dropdown
+              placement="top"
+              dropdownEvent="hover"
+              dropdownClassName="overflow-hidden bg-black/80 backdrop-blur-md w-[12rem] h-[6rem] rounded-t-full"
+            >
+              <Button
+                variant="link"
+                aria-label="zoom"
+                icon={CoreIcons.mediaZoomer}
+                disabled={!state.isLoaded}
+                onWheel={(e) => {
+                  changeZoom(e.deltaY * 0.05);
+                  e.stopPropagation();
+                }}
+                onClick={handlers.zoomUp}
+              />
+              <div
+                role="none"
+                className="select-none"
+                onMouseDown={startDrag}
+                onWheel={(e) => {
+                  changeZoom(e.deltaY * 0.05);
+                  e.stopPropagation();
+                }}
+              >
+                <ZoomMeter zoom={state.zoom} />
+                <span className="absolute top-0.5 left-1/2 -translate-x-1/2 bg-accent-300 outline -outline-offset-1 outline-accent-700 rounded-full text-white text-xs py-px px-1">
+                  {state.zoom > 0 ? state.zoom.toFixed(1) : "FIT"}
+                </span>
+              </div>
+            </Dropdown>
+          )}
+          <Divider vertical />
+        </Fragment>
       )}
-      <Divider vertical />
       {state.overlay && (
         <Button
           aria-label="splitter"
@@ -171,7 +187,7 @@ export const Tools = () => {
           onClick={toggleSplitter}
         />
       )}
-      {!state.splitter && (
+      {!state.splitter && enableCrop && (
         <Button
           aria-label="crop"
           disabled={!state.isLoaded}

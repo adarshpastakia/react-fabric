@@ -105,6 +105,7 @@ export const ImageProvider = ({
   children,
   src,
   ref,
+  defaultSplitter = true,
   fallback,
   overlay,
   onLoad,
@@ -112,6 +113,7 @@ export const ImageProvider = ({
 }: PropsWithChildren &
   RefProp<CanvasRef> & {
     src: string;
+    defaultSplitter?: boolean;
     fallback?: string;
     overlay?: string;
     onLoad?: () => void;
@@ -125,7 +127,7 @@ export const ImageProvider = ({
       if (action.type === "loaded") {
         state.isLoading = false;
         state.isLoaded = true;
-        onLoad?.();
+        setTimeout(() => onLoad?.(), 10);
       }
       if (action.type === "errored") {
         state.errorLevel++;
@@ -140,7 +142,7 @@ export const ImageProvider = ({
         if (state.errorLevel === 2) {
           state.isLoading = false;
           state.isLoaded = true;
-          onError?.();
+          setTimeout(() => onError?.(), 10);
         }
       }
       if (action.type === "resize") {
@@ -168,16 +170,22 @@ export const ImageProvider = ({
         state.src = action.src;
       }
       if (action.type === "overlay") {
-        state.splitter = !!action.overlay;
         state.overlay = action.overlay;
-        state.src = state.image;
+        if (action.overlay) {
+          state.splitter = defaultSplitter;
+          state.src = defaultSplitter ? state.image : action.overlay;
+        } else {
+          state.splitter = false;
+          state.src = state.image;
+        }
       }
       if (action.type === "toggleSplitter") {
         state.splitter = !state.splitter;
-        state.src =
-          state.src === state.image && state.overlay
-            ? state.overlay
-            : state.image;
+        if (state.overlay) {
+          state.src = state.splitter ? state.image : state.overlay;
+        } else {
+          state.src = state.image;
+        }
       }
       if (action.type === "toggleCropping") {
         state.cropping = !state.cropping;
