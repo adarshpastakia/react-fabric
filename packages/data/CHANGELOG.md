@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.31](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.30...v1.0.0-beta.31) (2025-03-08)
+
+### Bug Fixes
+
+- **JsonViewer:** filter actions ([6aedf4a](https://github.com/adarshpastakia/react-ui-framework/commit/6aedf4a9d183297c1b6eca26f7a6740c2a09ae44))
+- **VirtualLists:** scroll into view "auto" ([de1254f](https://github.com/adarshpastakia/react-ui-framework/commit/de1254fe18c329430c2fcb6a8ca4458283287889))
+
 # [1.0.0-beta.30](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.29...v1.0.0-beta.30) (2025-03-06)
 
 ### Bug Fixes

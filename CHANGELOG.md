@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.31](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.30...v1.0.0-beta.31) (2025-03-08)
+
+### Bug Fixes
+
+- **ImageViewer:** add prop for enabling zoom ([2cf02a6](https://github.com/adarshpastakia/react-fabric/commit/2cf02a6f27681e78398ded5946881618b3c83637))
+- **JsonViewer:** filter actions ([6aedf4a](https://github.com/adarshpastakia/react-fabric/commit/6aedf4a9d183297c1b6eca26f7a6740c2a09ae44))
+- **Tab:** switch to minimal when label missing ([feeb300](https://github.com/adarshpastakia/react-fabric/commit/feeb300f256bcbf45df7dde61a8e19ae72810b41))
+- **Thumbnail:** add prop for missing media icon ([416af85](https://github.com/adarshpastakia/react-fabric/commit/416af85656dea4a955ebf91ece2fa59ceabd51de))
+- **VideoPlayer:** add prop for enable zoom ([53399a0](https://github.com/adarshpastakia/react-fabric/commit/53399a02ce16e7c2882800a51c12aa1bd84a031b))
+- **VirtualLists:** scroll into view "auto" ([de1254f](https://github.com/adarshpastakia/react-fabric/commit/de1254fe18c329430c2fcb6a8ca4458283287889))
+
 # [1.0.0-beta.30](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.29...v1.0.0-beta.30) (2025-03-06)
 
 ### Bug Fixes

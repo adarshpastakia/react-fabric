@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.31](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.30...v1.0.0-beta.31) (2025-03-08)
+
+### Bug Fixes
+
+- **Tab:** switch to minimal when label missing ([feeb300](https://github.com/adarshpastakia/react-ui-framework/commit/feeb300f256bcbf45df7dde61a8e19ae72810b41))
+
 # [1.0.0-beta.30](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.29...v1.0.0-beta.30) (2025-03-06)
 
 **Note:** Version bump only for package @react-fabric/core
