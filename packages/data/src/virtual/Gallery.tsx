@@ -94,7 +94,7 @@ export interface VirtualGalleryProps<T> extends TestProps {
   /**
    * load more callback
    */
-  onLoadMore?: () => void;
+  onLoadMore?: (page?: number) => void;
   /**
    * scroll handler
    */
