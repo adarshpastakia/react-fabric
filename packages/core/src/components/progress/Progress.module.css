@@ -64,7 +64,7 @@
     background-size: 1rem 1rem;
 
     & :global {
-      animation: progress 750ms linear infinite;
+      animation: bgprogress 750ms linear infinite;
     }
   }
 }
