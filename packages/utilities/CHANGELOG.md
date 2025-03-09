@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.32](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.31...v1.0.0-beta.32) (2025-03-09)
+
+### Bug Fixes
+
+- **ImageViewer:** set color scheme for transparent images ([768be17](https://github.com/adarshpastakia/react-fabric/commit/768be17a8b9fb8202afdfab56bd6c52d0724168f))
+
 # [1.0.0-beta.31](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.30...v1.0.0-beta.31) (2025-03-08)
 
 **Note:** Version bump only for package @react-fabric/utilities
