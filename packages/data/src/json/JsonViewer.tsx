@@ -283,9 +283,14 @@ const JsonEntry = ({
             {labelDisplay}
           </div>
           {display && (
-            <div className={classNames("px-2", inline && "flex-1")}>
+            <div
+              className={classNames(
+                "px-2 flex flex-nowrap overflow-hidden",
+                inline && "flex-1",
+              )}
+            >
               {canCopy && <Copy size="xs" text={actualValue} />}
-              {display}
+              <div className="flex-1">{display}</div>
             </div>
           )}
         </div>
@@ -309,9 +314,14 @@ const JsonEntry = ({
           >
             {labelDisplay}
           </div>
-          <div className={classNames("px-2", inline && "flex-1")}>
+          <div
+            className={classNames(
+              "px-2 flex flex-nowrap overflow-hidden",
+              inline && "flex-1",
+            )}
+          >
             {canCopy && <Copy size="xs" text={value} />}
-            {display}
+            <div className="flex-1">{display}</div>
           </div>
         </div>
       )}
