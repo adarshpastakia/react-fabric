@@ -160,7 +160,7 @@ export const CodeEditor = ({
       if (language === "json" && schema) {
         const [main, ...rest] = schema;
         // configure the JSON language support with schemas and schema associations
-        monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+        monaco.languages?.json?.jsonDefaults.setDiagnosticsOptions({
           validate: true,
           allowComments: false,
           schemas: [
