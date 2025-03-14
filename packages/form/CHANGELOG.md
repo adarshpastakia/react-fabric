@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.33](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.32...v1.0.0-beta.33) (2025-03-14)
+
+### Bug Fixes
+
+- **DateInput:** add date input ([6a539a9](https://github.com/adarshpastakia/react-ui-framework/commit/6a539a944bde4305d0dac1f428402c449428bc52))
+- **SchemaEditor:** add schema editor for dynamic form schemas ([21c147d](https://github.com/adarshpastakia/react-ui-framework/commit/21c147dc90d1c1974dccc7306b1d1121e8667525))
+
 # [1.0.0-beta.32](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.31...v1.0.0-beta.32) (2025-03-09)
 
 **Note:** Version bump only for package @react-fabric/form

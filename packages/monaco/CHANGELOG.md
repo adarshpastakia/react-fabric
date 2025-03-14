@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.33](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.32...v1.0.0-beta.33) (2025-03-14)
+
+### Bug Fixes
+
+- **CodeEditor:** handle missing languages object ([43abffd](https://github.com/adarshpastakia/react-ui-framework/commit/43abffda102802f872696738ef810ff584be20bc))
+
 # [1.0.0-beta.32](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.31...v1.0.0-beta.32) (2025-03-09)
 
 **Note:** Version bump only for package @react-fabric/monaco
