@@ -151,7 +151,7 @@ export const FormField = ({
   return rest.multiple && !hasOptions ? (
     <ArrayInput
       name={fieldName}
-      label={t(label, label)}
+      label={t(`fb.${id}`, label || id)}
       required={required}
       onAdd={() => String("")}
     >
@@ -164,8 +164,8 @@ export const FormField = ({
       <E
         {...props}
         autoFocus={autoFocus}
-        label={t(label, label)}
-        placeholder={t(label, label)}
+        label={t(`fb.${id}`, label || id)}
+        placeholder={t(`fb.${id}`, label || id)}
         required={required}
         inline={inline}
       />

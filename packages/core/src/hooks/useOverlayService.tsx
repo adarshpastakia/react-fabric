@@ -27,11 +27,9 @@ import {
   type ElementType,
   type ReactNode,
 } from "react";
+import { type ModalProps } from "../types";
 
-type OverlayComponent = ElementType<{
-  onClose: (...args: AnyObject) => void;
-  [key: string]: AnyObject;
-}>;
+type OverlayComponent = ElementType<ModalProps<AnyObject>>;
 
 export const useOverlayService = (
   ModalOrFlyout: OverlayComponent,

@@ -84,7 +84,7 @@ export const Number = ({
     (e?: ChangeEvent<HTMLInputElement>) => {
       const number = e?.target.valueAsNumber;
       setActualValue(number ?? "");
-      onChange?.(number ?? undefined);
+      onChange?.(number ?? null);
     },
     [onChange],
   );

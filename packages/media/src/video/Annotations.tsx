@@ -47,7 +47,12 @@ export const AnnotationTool = ({ onChange, onOpen }: KeyValue) => {
       />
       <div>
         <div className="p-2 w-96 max-w-screen">
-          <Textarea rows={5} autoFocus value={value} onChange={setValue} />
+          <Textarea
+            rows={5}
+            autoFocus
+            value={value}
+            onChange={(v) => setValue(v ?? "")}
+          />
         </div>
         <Footer flex justify="end" className="p-1">
           <DropdownDismiss>

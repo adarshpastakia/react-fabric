@@ -73,7 +73,7 @@ export const Input = ({
     (e?: ChangeEvent<HTMLInputElement>) => {
       const value = e?.target.value;
       setActualValue(value ?? "");
-      onChange?.(value ?? undefined);
+      onChange?.(value ?? null);
     },
     [onchange],
   );

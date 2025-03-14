@@ -146,7 +146,7 @@ export const Slider = ({
     (value: number) => {
       const val = useInfinity && value === max ? Infinity : value;
       setActualValue(val ?? 0);
-      onChange?.(val ?? undefined);
+      onChange?.(val ?? null);
     },
     [onChange, max, useInfinity],
   );

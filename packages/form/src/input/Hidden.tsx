@@ -54,9 +54,10 @@ export const HiddenInput = ({
   name,
 }: Props) => {
   useEffect(() => {
-    setTimeout(() => {
-      onChange?.(hiddenValue);
-    }, 50);
+    hiddenValue &&
+      setTimeout(() => {
+        onChange?.(hiddenValue);
+      }, 50);
   }, [hiddenValue]);
   return (
     <Fragment>

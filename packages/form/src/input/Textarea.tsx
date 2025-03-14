@@ -86,7 +86,7 @@ export const Textarea = ({
     (e?: ChangeEvent<HTMLTextAreaElement>) => {
       const value = e?.target.value;
       setActualValue(value ?? "");
-      onChange?.(value ?? undefined);
+      onChange?.(value ?? null);
     },
     [onChange],
   );

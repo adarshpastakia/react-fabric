@@ -31,6 +31,7 @@ import {
   ToggleButtonGroup,
   useOverlayService,
 } from "@react-fabric/core";
+import { type Elements } from "@react-fabric/core/dist/types/types";
 import { EMPTY_ARRAY } from "@react-fabric/utilities";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { Controller } from "../form/Controller";
@@ -39,6 +40,7 @@ import { ArrayInput } from "../input/ArrayInput";
 import { Checkbox } from "../input/Checkbox";
 import { DateInput } from "../input/DateInput";
 import { Field } from "../input/Field";
+import { HiddenInput } from "../input/Hidden";
 import { Input } from "../input/Input";
 import { Number } from "../input/Number";
 import { Select } from "../select/Select";
@@ -60,6 +62,11 @@ interface Props {
 
   optionLists?: string[];
 
+  /**
+   * Footer actions
+   */
+  children?: Elements<JSX.Element> | Array<Elements<JSX.Element>>;
+
   onChange: (schema: FormSchema) => void;
 }
 
@@ -68,12 +75,14 @@ const CUSTOM_LIST = "--CUSTOM--";
 const SchemaField = ({
   field,
   getModel,
+  onRemove,
   optionLists = EMPTY_ARRAY,
   allowRemove,
   onTypeChange,
   acceptableTypes,
 }: {
   field: string;
+  onRemove: () => void;
   getModel: () => KeyValue;
   onTypeChange: (val: KeyValue) => void;
 } & Omit<Props, "schemaDef" | "onChange">) => {
@@ -113,7 +122,7 @@ const SchemaField = ({
     }, 10);
   }, []);
 
-  useEffect(() => {
+  const handleTypeChange = useCallback((type: DATA_TYPES) => {
     if (type) {
       const modelRef = getModel();
       let reset = {
@@ -147,8 +156,9 @@ const SchemaField = ({
         setMultiple(false);
       }
       onTypeChange(reset);
+      setType(type);
     }
-  }, [type]);
+  }, []);
 
   return (
     <Collapsable key={field} open>
@@ -162,18 +172,22 @@ const SchemaField = ({
             aria-label="Delete"
             stopPropagation
             icon={CoreIcons.trash}
+            onClick={onRemove}
             className="invisible group-hover/field:visible"
           />
         )}
       </div>
       <div className="flex flex-col gap-1 pb-4">
+        <Controller name={`${field}.id`}>
+          <HiddenInput hiddenValue={field} />
+        </Controller>
         <Controller name={`${field}.datatype`}>
           <Select
             inline
             label="Type"
             placeholder="Data type"
             options={acceptableTypes}
-            onChange={(val) => setType(val as unknown as DATA_TYPES)}
+            onChange={(val) => handleTypeChange(val as unknown as DATA_TYPES)}
           />
         </Controller>
         <Controller name={`${field}.label`}>
@@ -374,11 +388,10 @@ export const SchemaEditor = ({
   allowRemove,
   acceptableTypes,
   optionLists = EMPTY_ARRAY,
+  children,
   onChange,
 }: Props) => {
   const formRef = useRef<FormRef<KeyValue>>(null);
-  const schemaRef = useRef<KeyValue>({});
-  const [schema, setSchema] = useState<KeyValue<SchemaDef>>({});
   const [schemaFields, setSchemaFields] = useState<string[]>([]);
 
   useEffect(() => {
@@ -386,14 +399,18 @@ export const SchemaEditor = ({
       schemaDef.map((schema) => [schema.id, schema]),
     );
 
+    const currentModel: KeyValue = formRef.current?.getValues() ?? {};
+
     const schema = Object.fromEntries(
       Object.keys(schemaMap).map((field) => [
         field,
-        schemaRef.current[field] ?? schemaMap[field],
+        currentModel[field] ?? schemaMap[field],
       ]),
     );
-    setSchema(schema);
-    setSchemaFields(Object.keys(schema));
+    formRef.current?.setValues(schema);
+    setTimeout(() => {
+      setSchemaFields(Object.keys(schema));
+    }, 100);
   }, [schemaDef]);
 
   const handleChange = useCallback((model: KeyValue<SchemaDef>) => {
@@ -404,13 +421,18 @@ export const SchemaEditor = ({
     formRef.current?.setValue(field, val);
   }, []);
 
+  const handleRemove = useCallback((field: string) => {
+    const newSchema: KeyValue = formRef.current?.getValues() ?? {};
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+    delete newSchema[field];
+    formRef.current?.setValues(newSchema);
+    setTimeout(() => {
+      setSchemaFields(Object.keys(newSchema));
+    }, 100);
+  }, []);
+
   return (
-    <Form
-      formRef={formRef}
-      values={schema}
-      defaultValues={schema}
-      onSubmit={handleChange}
-    >
+    <Form formRef={formRef} onSubmit={handleChange}>
       <Content className="divide-y">
         {schemaFields.map((field) => (
           <SchemaField
@@ -418,24 +440,18 @@ export const SchemaEditor = ({
             field={field}
             allowRemove={allowRemove}
             optionLists={optionLists}
+            onRemove={() => handleRemove(field)}
             getModel={() => formRef.current?.getValues()[field]}
             onTypeChange={(val: KeyValue) => handleTypeChange(field, val)}
             acceptableTypes={acceptableTypes ?? Object.values(DATA_TYPES)}
           />
         ))}
       </Content>
-      <Footer
-        flex
-        justify="end"
-        className="sticky bottom-0 border-t bg-base px-6 py-2"
-      >
-        <Button type="reset" variant="link">
-          Reset
-        </Button>
-        <Button type="submit" variant="solid">
-          Submit
-        </Button>
-      </Footer>
+      {children && (
+        <Footer flex className="border-t bg-base px-6 py-2">
+          {children}
+        </Footer>
+      )}
     </Form>
   );
 };

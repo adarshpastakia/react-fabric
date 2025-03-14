@@ -120,7 +120,7 @@ export const DateInput = ({
       } else {
         setActualValue("");
         setInputValue("");
-        onChange != null && startTransition(() => onChange(""));
+        onChange != null && startTransition(() => onChange(null));
       }
     },
     [onChange, inputFormat],
@@ -137,7 +137,7 @@ export const DateInput = ({
       } else {
         setActualValue("");
         setInputValue("");
-        onChange != null && startTransition(() => onChange(""));
+        onChange != null && startTransition(() => onChange(null));
       }
     },
     [onChange, inputFormat],

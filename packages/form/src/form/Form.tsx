@@ -23,7 +23,7 @@
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDebounce } from "@react-fabric/core";
-import { type yup } from "@react-fabric/utilities";
+import { EMPTY_OBJECT, type yup } from "@react-fabric/utilities";
 import {
   useCallback,
   useEffect,
@@ -47,6 +47,7 @@ export interface FormRef<K extends KeyValue> {
   submit: () => void;
   validate: () => Promise<boolean>;
   getValues: () => K;
+  removeField: (field: string) => void;
   setValue: (key: keyof K, value: AnyObject) => void;
   setValues: (values: K) => void;
 }
@@ -57,10 +58,6 @@ export interface FormProps<K extends KeyValue = KeyValue> {
    * form data schema
    */
   schema?: yup.ObjectSchema<K>;
-  /**
-   * current form model
-   */
-  values?: K;
   /**
    * default data values
    */
@@ -81,16 +78,15 @@ export const Form = <K extends KeyValue>({
   formRef,
   schema,
   children,
-  values,
-  defaultValues,
+  defaultValues = EMPTY_OBJECT as K,
   onSubmit = DEFAULT_SUBMIT,
   onChange,
   ...rest
 }: PropsWithChildren<FormProps<K>>) => {
   const ref = useRef<HTMLFormElement>(null);
   const form = useForm<K>({
-    values,
     shouldFocusError: true,
+    shouldUnregister: true,
     resolver: schema && (yupResolver(schema) as AnyObject),
     defaultValues: defaultValues as DefaultValues<K>,
   });
@@ -125,6 +121,8 @@ export const Form = <K extends KeyValue>({
       validate: async () => await form.trigger(),
       getValues: () => form.getValues(),
       setValues: (v) => setTimeout(() => form.reset(v), 50),
+      removeField: (field: AnyObject) =>
+        form.unregister(field, { keepDefaultValue: false, keepValue: false }),
       setValue: (k, v) =>
         setTimeout(
           () =>

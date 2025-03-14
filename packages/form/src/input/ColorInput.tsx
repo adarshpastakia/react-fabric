@@ -48,7 +48,10 @@ import {
 import { type InputProps } from "../types";
 import { ColorPicker, type ColorProps } from "./ColorPicker";
 
-export interface ColorInputProps extends InputProps, ColorProps, RefProp {
+export interface ColorInputProps
+  extends InputProps,
+    Omit<ColorProps, "onChange">,
+    RefProp {
   /**
    * show eydrop picker
    */
@@ -82,7 +85,7 @@ export const ColorInput = ({
   const handleChange = useCallback(
     (e?: string) => {
       setActualValue(e ?? defaultColor);
-      onChange != null && startTransition(() => onChange(e));
+      onChange != null && startTransition(() => onChange(e ?? null));
     },
     [onChange],
   );

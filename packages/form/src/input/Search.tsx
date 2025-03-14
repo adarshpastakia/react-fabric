@@ -96,7 +96,7 @@ export const Search = ({
       const value = e?.target.value;
       refValue.current = value ?? "";
       setActualValue(value ?? "");
-      onChange?.(value ?? undefined);
+      onChange?.(value ?? null);
 
       // value was cleared so force fire onSearch
       if (searchOnChange) {

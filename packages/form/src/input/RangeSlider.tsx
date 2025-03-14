@@ -141,7 +141,7 @@ export const RangeSlider = ({
   const handleChange = useCallback(
     (val: [number, number]) => {
       setActualValue(val ?? [min, max]);
-      onChange?.(val ?? undefined);
+      onChange?.(val ?? null);
     },
     [onChange, min, max],
   );

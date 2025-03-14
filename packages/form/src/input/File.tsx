@@ -134,7 +134,7 @@ export const FileInput = ({
         }
       } else {
         setActualValue(e?.target.files?.item(0));
-        onChange?.(e?.target.files?.item(0) ?? undefined);
+        onChange?.(e?.target.files?.item(0) ?? null);
         if (!e && inputRef.current) inputRef.current.value = "";
       }
     },
