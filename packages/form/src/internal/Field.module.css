@@ -71,7 +71,7 @@
     }
 
     & > input[type="number"] + .inputClear {
-      margin-inline: -3rem 2rem;
+      margin-inline: -3rem 0;
     }
 
     & input::-ms-clear,
@@ -88,6 +88,17 @@
       /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
       font-family: caption;
       letter-spacing: 2px;
+    }
+
+    & input[type="date"]::-webkit-calendar-picker-indicator,
+    & input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+      display: none;
+      appearance: none;
+    }
+
+    & input[type="date"]:global(.empty)::-webkit-datetime-edit,
+    & input[type="datetime-local"]:global(.empty)::-webkit-datetime-edit {
+      color: theme(colors.tint.400);
     }
 
     & input:-webkit-autofill {

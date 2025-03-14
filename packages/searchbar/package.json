@@ -35,7 +35,6 @@
   "dependencies": {
     "@floating-ui/react": "^0.26.24",
     "@react-fabric/core": "^1.0.0-beta.32",
-    "@react-fabric/date": "^1.0.0-beta.32",
     "@react-fabric/form": "^1.0.0-beta.32",
     "@react-fabric/monaco": "^1.0.0-beta.32",
     "@react-fabric/utilities": "^1.0.0-beta.32",
@@ -47,6 +46,9 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-i18next": "^15.0.2"
+  },
+  "devDependencies": {
+    "@react-fabric/superdate": "^1.0.0-beta.32"
   },
   "engines": {
     "node": ">=18.12.0",

@@ -34,7 +34,7 @@ import {
 } from "react";
 import { ErrorIcon } from "../internal/ErrorIcon";
 
-export interface CheckboxProps extends RefProp<HTMLInputElement> {
+interface CheckboxProps extends RefProp<HTMLInputElement> {
   /**
    * checkbox label
    */
@@ -50,8 +50,7 @@ export interface CheckboxProps extends RefProp<HTMLInputElement> {
   /**
    * on checked change
    */
-  onChange?: (checked: boolean | string | number) => void;
-
+  onChange?: (checked: boolean) => void;
   /**
    * disabled input
    */
@@ -94,6 +93,8 @@ export const Checkbox = ({
   width,
   icon,
   iconChecked,
+  // @ts-expect-error ignore
+  required,
   onChange,
   ...rest
 }: CheckboxProps) => {

@@ -44,6 +44,8 @@ export const InputWrapper = ({
   showClear,
   decorateStart,
   decorateEnd,
+  decorateEndShowWhenEmpty,
+  decorateEndHideWhenEmpty,
   children,
   onClear,
   noOutline,
@@ -155,6 +157,9 @@ export const InputWrapper = ({
             classes.decorate,
             "text-muted leading-none flex-content",
             isString(decorateEnd) && "px-1",
+            decorateEndHideWhenEmpty && "peer-placeholder-shown:hidden",
+            decorateEndShowWhenEmpty &&
+              "hidden peer-placeholder-shown:inline-block",
           )}
         >
           {decorateEnd}

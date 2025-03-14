@@ -21,6 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { isEmpty } from "@react-fabric/utilities";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Controller } from "../form/Controller";
@@ -28,13 +29,15 @@ import { type UploadHandler } from "../hooks/useFileUploader";
 import { ArrayInput } from "../input/ArrayInput";
 import { AvatarInput } from "../input/AvatarInput";
 import { ColorInput } from "../input/ColorInput";
+import { DateInput } from "../input/DateInput";
 import { Input } from "../input/Input";
 import { Number } from "../input/Number";
-import { Range } from "../input/Range";
+import { RangeSlider } from "../input/RangeSlider";
 import { Switch } from "../input/Switch";
 import { Textarea } from "../input/Textarea";
 import { Select } from "../select/Select";
-import { type SchemaType } from "../types/schema";
+import { type BaseSelectProps } from "../types";
+import { DATA_TYPES, type SchemaType } from "../types/schema";
 import { FileField } from "./FileField";
 
 export const FormField = ({
@@ -44,7 +47,7 @@ export const FormField = ({
   inline,
   prefix,
   autoFocus,
-  defaultValue,
+  optionLists,
   fileUrl,
   uploadHandler,
   ...rest
@@ -52,6 +55,7 @@ export const FormField = ({
   inline?: boolean;
   prefix?: string;
   autoFocus?: boolean;
+  optionLists?: KeyValue<BaseSelectProps<any>>;
   fileUrl?: (path: string) => string;
   uploadHandler?: UploadHandler;
 }) => {
@@ -61,32 +65,34 @@ export const FormField = ({
     [id, prefix],
   );
 
-  const E = useMemo(() => {
-    if (rest.datatype === "number" || rest.datatype === "decimal")
-      return Number;
-    if (rest.datatype === "range") return Range;
-    if (rest.datatype === "boolean") return Switch;
-    if (rest.datatype === "text") return Textarea;
-    if (rest.datatype === "color") return ColorInput;
-    if (rest.datatype === "string" && rest.options) return Select;
+  const hasOptions = useMemo(
+    () =>
+      rest.datatype === DATA_TYPES.STRING &&
+      ((rest.optionList === "--CUSTOM--" && !isEmpty(rest.options)) ||
+        !isEmpty(optionLists?.[rest.optionList ?? ""])),
+    [rest],
+  );
+
+  const E = useMemo<AnyObject>(() => {
+    if (rest.datatype === DATA_TYPES.NUMBER) return Number;
+    if (rest.datatype === DATA_TYPES.RANGE) return RangeSlider;
+    if (rest.datatype === DATA_TYPES.BOOL) return Switch;
+    if (rest.datatype === DATA_TYPES.TEXT) return Textarea;
+    if (rest.datatype === DATA_TYPES.DATE) return DateInput;
+    if (rest.datatype === DATA_TYPES.COLOR) return ColorInput;
+    if (hasOptions) return Select;
 
     return Input;
-  }, [rest.datatype]);
+  }, [rest.datatype, hasOptions]);
 
   const props = useMemo(() => {
-    if (rest.datatype === "number")
+    if (rest.datatype === DATA_TYPES.NUMBER)
       return {
         min: rest.min,
         max: rest.max,
         step: rest.step ?? 1,
       };
-    if (rest.datatype === "decimal")
-      return {
-        min: rest.min,
-        max: rest.max,
-        step: rest.step ?? 0.1,
-      };
-    if (rest.datatype === "range")
+    if (rest.datatype === DATA_TYPES.RANGE)
       return {
         min: rest.min ?? 1,
         max: rest.max ?? 99,
@@ -94,20 +100,27 @@ export const FormField = ({
         showValue: true,
         showLabels: true,
       };
-    if (rest.datatype === "text") return { rows: 3 };
-    if (rest.datatype === "color") return { showPicker: true };
-
-    if (rest.datatype === "string" && rest.options)
+    if (rest.datatype === DATA_TYPES.DATE)
       return {
-        options: rest.options,
+        min: rest.min,
+        max: rest.max,
+        type: rest.type,
+      };
+    if (rest.datatype === DATA_TYPES.TEXT) return { rows: 3 };
+    if (rest.datatype === DATA_TYPES.COLOR) return { showPicker: true };
+
+    if (rest.datatype === DATA_TYPES.STRING && hasOptions)
+      return {
         multiple: rest.multiple,
+        allowCreate: rest.allowCustom,
         searchable: true,
+        ...(optionLists?.[rest.optionList ?? ""] ?? { options: rest.options }),
       };
 
     return {};
-  }, [rest]);
+  }, [rest, hasOptions, optionLists]);
 
-  if (rest.datatype === "avatar")
+  if (rest.datatype === DATA_TYPES.AVATAR)
     return (
       uploadHandler && (
         <Controller name={fieldName}>
@@ -120,7 +133,7 @@ export const FormField = ({
       )
     );
 
-  if (rest.datatype === "file")
+  if (rest.datatype === DATA_TYPES.FILE)
     return (
       uploadHandler && (
         <Controller name={fieldName}>
@@ -135,12 +148,12 @@ export const FormField = ({
       )
     );
 
-  return rest.multiple && !("options" in rest) ? (
+  return rest.multiple && !hasOptions ? (
     <ArrayInput
       name={fieldName}
       label={t(label, label)}
       required={required}
-      onAdd={() => ""}
+      onAdd={() => String("")}
     >
       <Controller>
         <E {...props} />

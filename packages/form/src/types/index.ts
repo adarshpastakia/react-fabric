@@ -72,6 +72,8 @@ export interface InputProps<V = string> extends TestProps {
    *
    */
   decorateEnd?: JSX.Element | string | number | boolean;
+  decorateEndShowWhenEmpty?: boolean;
+  decorateEndHideWhenEmpty?: boolean;
   /**
    * info label at bottom
    */
@@ -120,9 +122,7 @@ export interface InputProps<V = string> extends TestProps {
   labelWidth?: string;
 }
 
-export interface BaseSelectProps<T>
-  extends RefProp<HTMLInputElement>,
-    Omit<InputProps, "value" | "onChange"> {
+export interface BaseSelectProps<T extends AnyObject = string> {
   /**
    * list options
    */
@@ -165,7 +165,11 @@ export interface BaseSelectProps<T>
   matcher?: (option: T, query: string) => boolean;
 }
 
-export type SelectProps<T> = BaseSelectProps<T> &
+type BaseSelectType<T> = BaseSelectProps<T> &
+  RefProp<HTMLInputElement> &
+  Omit<InputProps, "value" | "onChange">;
+
+export type SelectProps<T> = BaseSelectType<T> &
   (
     | {
         /**

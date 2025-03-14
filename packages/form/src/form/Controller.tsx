@@ -46,7 +46,7 @@ export interface ControllerProps {
         disabled?: boolean;
         onBlur: () => void;
         onChange: (value: AnyObject) => void;
-        inputRef?: React.Ref<HTMLInputElement>;
+        ref?: React.Ref<HTMLInputElement>;
       }) => ReactElement);
 }
 
@@ -86,7 +86,7 @@ export const Controller = ({ name, children, ...rest }: ControllerProps) => {
           : children({
               ...field,
               ...rest,
-              inputRef: (el: AnyObject) => {
+              ref: (el: AnyObject) => {
                 el && ref(el);
               },
               readOnly: isSubmitting,

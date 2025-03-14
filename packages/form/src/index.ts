@@ -26,15 +26,18 @@ import "./i18n";
 export { Controller } from "./form/Controller";
 export { Form, type FormRef } from "./form/Form";
 
+export { SchemaEditor } from "./builder/SchemaEditor";
+
 export { useFileUploader } from "./hooks/useFileUploader";
 export { useFormBuilder } from "./hooks/useFormBuilder";
 
-export { type FormSchema } from "./types/schema";
+export { DATA_TYPES, type FormSchema, type SchemaDef } from "./types/schema";
 
 export { ArrayInput } from "./input/ArrayInput";
 export { Checkbox } from "./input/Checkbox";
 export { ColorInput } from "./input/ColorInput";
 export { ColorPicker } from "./input/ColorPicker";
+export { DateInput } from "./input/DateInput";
 export { Field } from "./input/Field";
 export { FileInput } from "./input/File";
 export { HiddenInput } from "./input/Hidden";
@@ -43,7 +46,7 @@ export { Number } from "./input/Number";
 export { Password } from "./input/Password";
 export { Radio } from "./input/Radio";
 export { RadioGroup } from "./input/RadioGroup";
-export { Range } from "./input/Range";
+export { RangeSlider } from "./input/RangeSlider";
 export { Search } from "./input/Search";
 export { Slider } from "./input/Slider";
 export { Switch } from "./input/Switch";

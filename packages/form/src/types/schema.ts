@@ -21,80 +21,104 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-interface BaseSchemaDef {
+import { type DateLike } from "@react-fabric/date";
+
+export enum DATA_TYPES {
+  TEXT = "text",
+  COLOR = "color",
+  BOOL = "bool",
+  DATE = "date",
+  STRING = "string",
+  NUMBER = "number",
+  RANGE = "range",
+  FILE = "file",
+  AVATAR = "avatar",
+  SCHEMA = "schema",
+}
+
+interface SingleValue {
+  multiple?: false;
+  minItems?: never;
+  maxItems?: never;
+}
+
+interface MultipleValue {
+  multiple: true;
+  minItems?: number;
+  maxItems?: number;
+}
+
+export type ValueType = SingleValue | MultipleValue;
+
+interface BaseSchema {
   id: string;
   label: string;
   datatype: string;
   required?: boolean;
-  multiple?: boolean;
-  defaultValue?: AnyObject;
 }
 
-interface SchemaDef extends BaseSchemaDef {
-  datatype: "text" | "color";
+export interface DefaultSchema extends BaseSchema {
+  datatype: DATA_TYPES.TEXT | DATA_TYPES.COLOR;
 }
 
-interface BooleanSchema extends BaseSchemaDef {
-  datatype: "boolean";
-  defaultValue?: boolean;
+export interface BooleanSchema extends BaseSchema {
+  datatype: DATA_TYPES.BOOL;
 }
 
-interface StringSchema extends BaseSchemaDef {
-  datatype: "string";
-  options?: string[];
+export interface StringSchema extends BaseSchema {
+  datatype: DATA_TYPES.STRING;
   regex?: string;
-  identifierType?: string;
+  options?: string[];
+  optionList?: string;
+  allowCustom?: boolean;
 }
 
-interface RangeSchema extends BaseSchemaDef {
-  datatype: "range";
+export interface RangeSchema extends BaseSchema {
+  datatype: DATA_TYPES.RANGE;
   min?: number;
   max?: number;
   step?: number;
-  defaultValue?: [number, number];
 }
 
-interface NumberSchema extends BaseSchemaDef {
-  datatype: "number";
+export interface DateSchema extends BaseSchema {
+  datatype: DATA_TYPES.DATE;
+  type?: "date" | "datetime";
+  min?: DateLike;
+  max?: DateLike;
+}
+
+export interface NumberSchema extends BaseSchema {
+  datatype: DATA_TYPES.NUMBER;
   min?: number;
   max?: number;
   step?: number;
-  defaultValue?: number;
 }
 
-interface DecimalSchema extends BaseSchemaDef {
-  datatype: "decimal";
-  min?: number;
-  max?: number;
-  step?: number;
-  defaultValue?: number;
-}
-
-export interface FileSchema extends BaseSchemaDef {
-  datatype: "file";
+export interface FileSchema extends BaseSchema {
+  datatype: DATA_TYPES.FILE;
   accept?: string;
 }
 
-export interface AvatarSchema extends BaseSchemaDef {
-  datatype: "avatar";
+export interface AvatarSchema extends BaseSchema {
+  datatype: DATA_TYPES.AVATAR;
   multiple?: false;
 }
 
 export type SchemaType =
-  | SchemaDef
-  | BooleanSchema
-  | StringSchema
-  | RangeSchema
-  | NumberSchema
-  | DecimalSchema
-  | FileSchema
-  | AvatarSchema;
+  | (DefaultSchema & ValueType)
+  | (BooleanSchema & ValueType)
+  | (StringSchema & ValueType)
+  | (RangeSchema & ValueType)
+  | (DateSchema & ValueType)
+  | (NumberSchema & ValueType)
+  | (FileSchema & ValueType)
+  | (AvatarSchema & ValueType);
 
-export interface ChildSchema extends BaseSchemaDef {
-  datatype: "schema";
+export interface ChildSchema extends BaseSchema {
+  datatype: DATA_TYPES.SCHEMA;
   inline?: boolean;
   schema: SchemaType[];
-  defaultValue?: never;
 }
 
-export type FormSchema = SchemaType | ChildSchema;
+export type SchemaDef = SchemaType | (ChildSchema & ValueType);
+export type FormSchema = SchemaDef[];

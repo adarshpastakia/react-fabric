@@ -112,7 +112,7 @@ export const QueryForm = ({
         />
       </Controller>
       <Controller name="query">
-        {({ checked, error, invalid, ...field }) => (
+        {({ checked, error, invalid, ref, ...field }) => (
           <div className="my-2">
             <label
               className={classNames("block px-2", invalid && "text-danger-600")}

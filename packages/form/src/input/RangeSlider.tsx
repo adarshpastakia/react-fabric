@@ -97,7 +97,7 @@ export interface RangeProps
 /**
  * Number Range input
  */
-export const Range = ({
+export const RangeSlider = ({
   error,
   name,
   value,

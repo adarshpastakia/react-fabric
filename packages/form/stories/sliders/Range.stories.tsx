@@ -23,10 +23,10 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import { Range } from "../../src";
+import { RangeSlider } from "../../src";
 
 const meta: Meta = {
-  component: Range,
+  component: RangeSlider,
   title: "@form/Slider",
   parameters: {
     layout: "centered",
@@ -43,11 +43,11 @@ const meta: Meta = {
 };
 
 export default meta;
-type RangeStory = StoryObj<typeof Range>;
+type RangeStory = StoryObj<typeof RangeSlider>;
 
 export const _Range: RangeStory = {
   render: (args) => {
-    return <Range {...args} />;
+    return <RangeSlider {...args} />;
   },
   args: {
     label: "Range input",

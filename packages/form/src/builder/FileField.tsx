@@ -24,20 +24,21 @@
 import { Button, Icon, ProgressBar } from "@react-fabric/core";
 import { FileUtil, Format } from "@react-fabric/utilities";
 import { Fragment } from "react";
-import { type UploadHandler, useFileUploader } from "../hooks/useFileUploader";
+import { useFileUploader, type UploadHandler } from "../hooks/useFileUploader";
 import { Field } from "../input/Field";
 import { HiddenInput } from "../input/Hidden";
-import { type FileSchema } from "../types/schema";
+import { type FileSchema, type ValueType } from "../types/schema";
 
 export const FileField = ({
   uploadHandler,
   inline,
   label,
   accept,
-  multiple = false,
   value,
+  fileUrl,
+  multiple,
   ...rest
-}: Partial<FileSchema> & {
+}: Partial<FileSchema & ValueType> & {
   value?: AnyObject;
   inline?: boolean;
   fileUrl?: (path: string) => string;

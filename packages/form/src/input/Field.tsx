@@ -87,8 +87,9 @@ export const Field = ({
           classes.fieldGroup,
           !plain && !noOutline && "outline",
           !plain && "bg-base",
+          plain && "flex-wrap",
           "flex-1 rounded",
-          !vertical && "flex flex-nowrap",
+          !vertical && "flex",
         )}
       >
         {cloneChildren(children, (child: AnyObject) =>

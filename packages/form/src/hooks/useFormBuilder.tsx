@@ -21,38 +21,47 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { EmptyContent } from "@react-fabric/core";
 import { isEmpty, isNil, yup } from "@react-fabric/utilities";
 import { Fragment, useMemo } from "react";
 import { FormField } from "../builder/FormField";
-import { type FormSchema } from "../types/schema";
+import { type BaseSelectProps } from "../types";
+import { DATA_TYPES, type FormSchema, type SchemaDef } from "../types/schema";
 import { type UploadHandler } from "./useFileUploader";
 
-const makeYupField = (field: FormSchema) => {
-  let yupField: AnyObject = yup.string();
-  if (field.datatype === "schema") {
+const makeYupField = (field: SchemaDef) => {
+  let yupField: AnyObject = yup.string().trim();
+  if (field.datatype === DATA_TYPES.SCHEMA) {
     const child: yup.ObjectShape = Object.fromEntries(
       field.schema.map((field) => [field.id, makeYupField(field)]),
     );
     yupField = yup.object(child);
   }
-  if (field.datatype === "boolean") yupField = yup.boolean();
+  if (field.datatype === DATA_TYPES.BOOL) {
+    yupField = yup.boolean();
+    if (field.required)
+      yupField = yupField.test({
+        test: (value: boolean) => !!value,
+      });
+  }
   if (
-    field.datatype === "decimal" ||
-    field.datatype === "number" ||
-    field.datatype === "range"
+    field.datatype === DATA_TYPES.NUMBER ||
+    field.datatype === DATA_TYPES.RANGE
   ) {
     yupField = yup.number();
     !isNil(field.min) && (yupField = yupField.min(field.min));
     !isNil(field.max) && (yupField = yupField.max(field.max));
 
-    if (field.datatype === "range") yupField = yup.array(yupField);
+    if (field.datatype === DATA_TYPES.RANGE) yupField = yup.array(yupField);
   }
-  if (field.datatype === "string") {
-    field.options && (yupField = yupField.oneOf(field.options));
+  if (field.datatype === DATA_TYPES.STRING) {
+    field.options &&
+      !field.allowCustom &&
+      (yupField = yupField.oneOf(field.options));
     field.regex && (yupField = yupField.matches(new RegExp(field.regex)));
   }
 
-  if (field.datatype === "file") {
+  if (field.datatype === DATA_TYPES.FILE) {
     yupField = yup
       .object({
         filename: yup.string().required(),
@@ -83,13 +92,14 @@ const makeYupField = (field: FormSchema) => {
   return yupField.label(field.label);
 };
 
-export const useFormBuilder = (
-  schema: FormSchema[],
+export const useFormBuilder = <T extends AnyObject = string>(
+  schema: FormSchema,
   options: {
     prefix?: string;
     inline?: boolean;
     fileUrl?: (path: string) => string;
     uploadHandler?: UploadHandler;
+    optionLists?: KeyValue<BaseSelectProps<T>>;
   } = {},
 ) => {
   const filteredSchema = useMemo(
@@ -106,11 +116,12 @@ export const useFormBuilder = (
     <Fragment>
       {filteredSchema.map((field, idx) => (
         <div className="mb-4" key={field.id}>
-          {field.datatype === "schema" ? null : (
+          {field.datatype === DATA_TYPES.SCHEMA ? null : (
             <FormField
               {...field}
               autoFocus={idx === 0}
               fileUrl={options.fileUrl}
+              optionLists={options.optionLists}
               uploadHandler={options.uploadHandler}
               inline={options.inline}
               prefix={options.prefix}
@@ -118,6 +129,9 @@ export const useFormBuilder = (
           )}
         </div>
       ))}
+      {filteredSchema.length === 0 && (
+        <EmptyContent message="No schema defined" />
+      )}
     </Fragment>
   );
 

@@ -24,11 +24,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { AnyObject } from "yup";
-import { Range, Slider } from "../../src";
+import { RangeSlider, Slider } from "../../src";
 
 const meta: Meta = {
   component: Slider,
-  subcomponents: { Range } as AnyObject,
+  subcomponents: { RangeSlider } as AnyObject,
   title: "@form/Slider",
   parameters: {
     layout: "centered",

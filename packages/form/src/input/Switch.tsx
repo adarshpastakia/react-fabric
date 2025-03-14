@@ -102,6 +102,8 @@ export const Switch = ({
   onLabelColor,
   offLabelColor,
   defaultColor,
+  // @ts-expect-error ignore
+  required,
   onChange,
   ...rest
 }: SwitchProps) => {

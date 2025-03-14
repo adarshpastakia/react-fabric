@@ -58,6 +58,10 @@ export interface FormProps<K extends KeyValue = KeyValue> {
    */
   schema?: yup.ObjectSchema<K>;
   /**
+   * current form model
+   */
+  values?: K;
+  /**
    * default data values
    */
   defaultValues?: K;
@@ -77,6 +81,7 @@ export const Form = <K extends KeyValue>({
   formRef,
   schema,
   children,
+  values,
   defaultValues,
   onSubmit = DEFAULT_SUBMIT,
   onChange,
@@ -84,14 +89,11 @@ export const Form = <K extends KeyValue>({
 }: PropsWithChildren<FormProps<K>>) => {
   const ref = useRef<HTMLFormElement>(null);
   const form = useForm<K>({
+    values,
     shouldFocusError: true,
     resolver: schema && (yupResolver(schema) as AnyObject),
     defaultValues: defaultValues as DefaultValues<K>,
   });
-
-  useEffect(() => {
-    form.reset();
-  }, []);
 
   const [, startTransition] = useTransition();
   const changeHandler = useDebounce(onChange, [onChange]);

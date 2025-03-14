@@ -23,20 +23,20 @@
 
 import {
   Button,
-  CoreIcons,
   Footer,
   Header,
   Icon,
   Title,
   Viewport,
 } from "@react-fabric/core";
-import { CodeEditor } from "@react-fabric/monaco";
+import { Countries, debounce } from "@react-fabric/utilities";
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import axios from "axios";
 import { http, HttpResponse } from "msw";
-import { useCallback, useState } from "react";
-import { Form, FormSchema, useFormBuilder } from "../src";
+import { useState } from "react";
+import { Form, FormSchema, SchemaEditor, useFormBuilder } from "../src";
+import { DATA_TYPES } from "../src/types/schema";
 
 const meta: Meta<typeof Form> = {
   component: Form,
@@ -61,55 +61,74 @@ const meta: Meta<typeof Form> = {
 export default meta;
 type Story = StoryObj<typeof Form>;
 
-const defaultSchema: FormSchema[] = [
-  { id: "avatar", label: "Avatar", datatype: "avatar", required: true },
-  { id: "name", label: "Name", datatype: "string", required: true },
+const defaultSchema: FormSchema = [
+  {
+    id: "avatar",
+    label: "Avatar",
+    datatype: DATA_TYPES.AVATAR,
+    required: true,
+  },
+  { id: "name", label: "Name", datatype: DATA_TYPES.STRING, required: true },
   {
     id: "age",
     label: "Age",
-    datatype: "number",
+    datatype: DATA_TYPES.NUMBER,
     required: true,
     min: 16,
     max: 65,
   },
   {
+    id: "dob",
+    label: "DOB",
+    datatype: DATA_TYPES.DATE,
+    required: true,
+    max: new Date(),
+  },
+  {
     id: "skills",
     label: "skills",
-    datatype: "string",
+    datatype: DATA_TYPES.STRING,
     required: true,
     multiple: true,
   },
   {
     id: "range",
     label: "range",
-    datatype: "range",
+    datatype: DATA_TYPES.RANGE,
     min: 1,
     max: 10,
     step: 0.5,
-    defaultValue: [2, 4],
   },
   {
     id: "notes",
     label: "Notes",
-    datatype: "text",
+    datatype: DATA_TYPES.TEXT,
   },
   {
     id: "option",
     label: "Option",
-    datatype: "string",
+    datatype: DATA_TYPES.STRING,
+    optionList: "--CUSTOM--",
     options: ["One", "Two", "Three"],
+    allowCustom: true,
+  },
+  {
+    id: "optionList",
+    label: "Defined list",
+    datatype: DATA_TYPES.STRING,
+    optionList: "countries",
   },
   {
     id: "files",
     label: "Files",
-    datatype: "file",
+    datatype: DATA_TYPES.FILE,
     required: true,
     multiple: true,
   },
   {
     id: "agree",
     label: "Agreement?",
-    datatype: "boolean",
+    datatype: DATA_TYPES.BOOL,
   },
 ];
 
@@ -121,8 +140,6 @@ export const FormBuilder: Story = {
         .postForm("/api/upload", data, config)
         .then((resp) => resp.data?.path ?? "pathfor file");
 
-    const [json, setJson] = useState(JSON.stringify(defaultSchema, null, 4));
-    const [badJson, setBadJson] = useState(false);
     const [schema, setSchema] = useState<AnyObject[]>(defaultSchema);
     const [formValues, setFormValues] = useState<AnyObject>({
       name: "Person name",
@@ -140,16 +157,15 @@ export const FormBuilder: Story = {
 
     const { formDef, schemaDef } = useFormBuilder(schema, {
       uploadHandler,
+      optionLists: {
+        countries: {
+          options: Countries.list,
+          valueProperty: "iso2",
+          labelProperty: "name",
+          groupProperty: "continent",
+        },
+      },
     });
-
-    const changeSchema = useCallback(() => {
-      try {
-        setBadJson(false);
-        setSchema(JSON.parse(json ?? "[]"));
-      } catch {
-        setBadJson(true);
-      }
-    }, [json]);
 
     return (
       <div className="min-h-[600px]">
@@ -161,29 +177,23 @@ export const FormBuilder: Story = {
               <span>Experimental</span>
             </div>
           </Header>
-          <div className="grid grid-cols-4 overflow-hidden area-content p-2 gap-2">
+          <div className="grid grid-cols-3 overflow-hidden area-content p-2 gap-2">
             <div
-              className="grid col-span-2 rounded-capped outline overflow-hidden bg-base"
+              className="grid rounded-capped outline overflow-hidden bg-base"
               style={{ gridTemplate: `"content" 1fr "foot" auto / 1fr` }}
             >
-              <CodeEditor value={json} onChange={setJson} />
-              <Footer flex justify="end" className="border-t p-2">
-                <Button
-                  iconColor="danger"
-                  icon={badJson ? CoreIcons.alert : undefined}
-                  variant="solid"
-                  onClick={changeSchema}
-                >
-                  Apply
-                </Button>
-              </Footer>
+              <SchemaEditor
+                allowRemove
+                schemaDef={schema}
+                onChange={setSchema}
+                optionLists={["countries"]}
+              />
             </div>
             <div className="overflow-auto bg-base outline rounded-capped">
               <Form
                 schema={schemaDef}
                 defaultValues={formValues}
-                onChange={setFormValues}
-                onSubmit={action("onSubmit")}
+                onSubmit={setFormValues}
               >
                 <div className="p-6">{formDef}</div>
 
