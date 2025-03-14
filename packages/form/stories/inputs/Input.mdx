@@ -16,6 +16,7 @@ import {
 import { Fragment } from "react";
 import { Input } from "../../src";
 import * as InputStories from "./Input.stories";
+import * as DateInputStories from "./DateInput.stories";
 import * as NumberStories from "./Number.stories";
 import * as ColorInputStories from "./ColorInput.stories";
 import * as TextareaStories from "./Textarea.stories";
@@ -62,6 +63,16 @@ import * as SearchStories from "./Search.stories";
 <Collapsable className="control-panel">
   <div>Controls</div>
   <Controls of={NumberStories._Number} />
+</Collapsable>
+
+<Anchor storyId="date">
+  <Subheading>Date Input</Subheading>
+</Anchor>
+<Description of={DateInputStories._DateInput} />
+<Canvas withToolbar of={DateInputStories._DateInput} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={DateInputStories._DateInput} />
 </Collapsable>
 
 <Anchor storyId="search">
