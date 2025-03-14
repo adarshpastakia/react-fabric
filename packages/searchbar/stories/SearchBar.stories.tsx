@@ -29,11 +29,11 @@ import {
   Menu,
   MenuItem,
 } from "@react-fabric/core";
-import { SuperDate } from "@react-fabric/date";
+import { SuperDate } from "@react-fabric/superdate";
+import { shortHash } from "@react-fabric/utilities";
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import { FIELD_TYPE, OPERATOR, SearchBar } from "../src";
-import { shortHash } from "@react-fabric/utilities";
 
 const meta: Meta = {
   component: SearchBar,
