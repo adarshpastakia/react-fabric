@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/monaco",
-  "version": "1.0.0-beta.33",
+  "version": "1.0.0-beta.34",
   "description": "RUF: Monaco editor",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -33,8 +33,8 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@react-fabric/core": "^1.0.0-beta.33",
-    "@react-fabric/utilities": "^1.0.0-beta.33",
+    "@react-fabric/core": "^1.0.0-beta.34",
+    "@react-fabric/utilities": "^1.0.0-beta.34",
     "classnames": "^2.5.1",
     "monaco-editor": "^0.52.0",
     "react-monaco-editor": "^0.56.2"
