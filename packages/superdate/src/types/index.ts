@@ -21,17 +21,43 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import "./hijri";
-import "./i18n";
+import {
+  type ColorType,
+  type TestProps,
+} from "@react-fabric/core/dist/types/types";
 
-export { DateHeader } from "./components/DateHeader";
-export { DecadePage } from "./components/DecadePage";
-export { YearPage } from "./components/YearPage";
-export { DateDisplay } from "./display/DateDisplay";
-export { DatePanel } from "./panels/DatePanel";
-export { EventPanel } from "./panels/EventPanel";
-export { RangePanel } from "./panels/RangePanel";
+import { type EventType } from "@react-fabric/date/dist/types/types";
 
-export { DateUtil } from "./utils/dateUtil";
+export interface PresetType {
+  value: string;
+  label: string;
+}
 
-export * from "./types";
+export interface SuperDateProps extends TestProps {
+  as?: "button" | "chip";
+  color?: ColorType;
+  variant?: "solid" | "outline" | "link";
+  disabled?: boolean;
+  /**
+   * relative date value
+   */
+  value?: string;
+  /**
+   * change handler
+   */
+  onChange?: (value: string, dates: [string, string]) => void;
+  /**
+   * list of calendar events
+   */
+  events?: EventType[];
+  /**
+   * list of calendar events
+   */
+  recurringEvents?: EventType[];
+  /**
+   * list of relative presets
+   *
+   * {value:'$year-5|$year', label:'last 5 years'}
+   */
+  presets?: PresetType[];
+}

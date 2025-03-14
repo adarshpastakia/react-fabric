@@ -33,13 +33,11 @@ import {
   Tooltip,
   useGlobals,
 } from "@react-fabric/core";
+import { DateUtil, EventPanel, RangePanel } from "@react-fabric/date";
 import classNames from "classnames";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { RangePanel } from "../panels/RangePanel";
 import { type SuperDateProps } from "../types";
-import { DateUtil } from "../utils/dateUtil";
-import { EventPanel } from "./EventPanel";
 import { QuickSelect } from "./QuickSelect";
 import { RelativePanel } from "./RelativePanel";
 import classes from "./SuperDate.module.css";

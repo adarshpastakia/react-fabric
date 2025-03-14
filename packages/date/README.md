@@ -1,10 +1,3 @@
-# React-Fabric Date Module
+# React-Fabric Date panel Module
 
-#### Install
-
-```bash
-# Using
-yarn add @react-fabric/date
-```
-
-#### Usage
+> INTERNAL ONLY

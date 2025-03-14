@@ -22,7 +22,6 @@
  */
 
 import {
-  type ColorType,
   type CssProp,
   type TestProps,
 } from "@react-fabric/core/dist/types/types";
@@ -63,6 +62,14 @@ format?:
     | string;
     */
 
+export interface EventType<D = DateLike> {
+  label: string;
+  icon?: string;
+  start: D;
+  end: D;
+  hijri?: boolean;
+}
+
 export interface BaseProps {
   min?: DateLike;
   max?: DateLike;
@@ -81,46 +88,4 @@ export interface RangeProps extends BaseProps, CssProp, TestProps {
   value?: [start: DateLike, end: DateLike];
   onChange?: (dates: [start: string, end: string]) => void;
   presets?: Record<string, [DateLike, DateLike]>;
-}
-
-export interface EventType<D = DateLike> {
-  label: string;
-  icon?: string;
-  start: D;
-  end: D;
-  hijri?: boolean;
-}
-
-export interface PresetType {
-  value: string;
-  label: string;
-}
-
-export interface SuperDateProps extends TestProps {
-  as?: "button" | "chip";
-  color?: ColorType;
-  variant?: "solid" | "outline" | "link";
-  disabled?: boolean;
-  /**
-   * relative date value
-   */
-  value?: string;
-  /**
-   * change handler
-   */
-  onChange?: (value: string, dates: [string, string]) => void;
-  /**
-   * list of calendar events
-   */
-  events?: EventType[];
-  /**
-   * list of calendar events
-   */
-  recurringEvents?: EventType[];
-  /**
-   * list of relative presets
-   *
-   * {value:'$year-5|$year', label:'last 5 years'}
-   */
-  presets?: PresetType[];
 }

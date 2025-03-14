@@ -52,5 +52,7 @@ export const _DatePanel: Story = {
   },
   args: {
     withTime: true,
+    showHijriToggle: true,
+    max: new Date(),
   },
 };

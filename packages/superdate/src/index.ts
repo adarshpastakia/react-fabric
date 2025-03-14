@@ -21,17 +21,6 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import "./hijri";
 import "./i18n";
 
-export { DateHeader } from "./components/DateHeader";
-export { DecadePage } from "./components/DecadePage";
-export { YearPage } from "./components/YearPage";
-export { DateDisplay } from "./display/DateDisplay";
-export { DatePanel } from "./panels/DatePanel";
-export { EventPanel } from "./panels/EventPanel";
-export { RangePanel } from "./panels/RangePanel";
-
-export { DateUtil } from "./utils/dateUtil";
-
-export * from "./types";
+export { SuperDate } from "./superdate/Superdate";

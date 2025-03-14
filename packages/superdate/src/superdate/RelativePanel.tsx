@@ -22,11 +22,11 @@
  */
 
 import { Button, Content } from "@react-fabric/core";
+import { DatePart } from "@react-fabric/date";
 import { Form } from "@react-fabric/form";
 import { yup } from "@react-fabric/utilities";
 import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { DatePart } from "../types";
 import { RelativeInput } from "./RelativeInput";
 
 const schema = yup.object({

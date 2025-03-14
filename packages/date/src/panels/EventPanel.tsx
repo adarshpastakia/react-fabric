@@ -30,7 +30,7 @@ import { useTranslation } from "react-i18next";
 import { DateHeader } from "../components/DateHeader";
 import { DecadePage } from "../components/DecadePage";
 import { YearPage } from "../components/YearPage";
-import { type EventType, PageType, type SuperDateProps } from "../types";
+import { type EventType, PageType } from "../types";
 import { DateUtil } from "../utils/dateUtil";
 
 interface EventState {
@@ -90,12 +90,29 @@ const makeList = (
   });
 };
 
+export interface EventProps {
+  isHijri?: boolean;
+  /**
+   * list of calendar events
+   */
+  events?: EventType[];
+  /**
+   * list of calendar events
+   */
+  recurringEvents?: EventType[];
+
+  /**
+   * change handler
+   */
+  onChange?: (value: string, dates: [string, string]) => void;
+}
+
 export const EventPanel = ({
   isHijri,
   onChange,
   events = EMPTY_ARRAY,
   recurringEvents = EMPTY_ARRAY,
-}: { isHijri: boolean } & Partial<SuperDateProps>) => {
+}: EventProps) => {
   const { t } = useTranslation();
   const [predefined, setPredefined] = useState<
     KeyValue<Array<EventType<Date>>>
@@ -114,7 +131,7 @@ export const EventPanel = ({
       if (action.type === "changePageDate") {
         resetList = true;
         state.pageDate = action.date;
-        if (action.changePage !== false) {
+        if (action.changePage) {
           state.page = Math.max(state.page - 1, PageType.MONTH);
         }
       }

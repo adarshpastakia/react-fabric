@@ -21,17 +21,8 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import "./hijri";
-import "./i18n";
+import { addTranslationBundle } from "@react-fabric/core";
+import ar from "./ar.json";
+import en from "./en.json";
 
-export { DateHeader } from "./components/DateHeader";
-export { DecadePage } from "./components/DecadePage";
-export { YearPage } from "./components/YearPage";
-export { DateDisplay } from "./display/DateDisplay";
-export { DatePanel } from "./panels/DatePanel";
-export { EventPanel } from "./panels/EventPanel";
-export { RangePanel } from "./panels/RangePanel";
-
-export { DateUtil } from "./utils/dateUtil";
-
-export * from "./types";
+addTranslationBundle("superdate", { en, ar });

@@ -22,16 +22,16 @@
  */
 
 import { Menu, MenuItem } from "@react-fabric/core";
+import { DateDisplay, DateUtil } from "@react-fabric/date";
 import type { Meta, StoryObj } from "@storybook/react";
 import { addDays, addMonths, addWeeks } from "date-fns";
 import { useMemo, useState } from "react";
-import { DateDisplay, SuperDate } from "../../src";
+import { SuperDate } from "../../src";
 import { SuperDateTabs } from "../../src/superdate/Superdate";
-import { DateUtil } from "../../src/utils/dateUtil";
 
 const meta: Meta<typeof SuperDate> = {
   component: SuperDate,
-  title: "@date/Superdate",
+  title: "@superdate/Superdate",
   parameters: {
     layout: "centered",
     controls: { exclude: "children" },
@@ -76,9 +76,9 @@ export const Playground: Story = {
         </div>
         <div>
           <span className="text-muted">Actual value: </span>
-          <DateDisplay date={start} />
+          <DateDisplay date={start} showAlternateDate />
           <span> ⇾ </span>
-          <DateDisplay date={end}>
+          <DateDisplay date={end} showAlternateDate>
             <Menu>
               <MenuItem
                 label="± 1 Day"

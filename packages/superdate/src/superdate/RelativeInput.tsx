@@ -22,9 +22,9 @@
  */
 
 import { Button } from "@react-fabric/core";
+import { DatePart } from "@react-fabric/date";
 import { Controller, Field, Number, Select } from "@react-fabric/form";
 import { useTranslation } from "react-i18next";
-import { DatePart } from "../types";
 
 export const RelativeInput = ({ label, prefix, showApply }: KeyValue) => {
   const { t } = useTranslation("superdate");
@@ -37,7 +37,7 @@ export const RelativeInput = ({ label, prefix, showApply }: KeyValue) => {
       <Controller name={`${prefix}.part`}>
         <Select
           width="6rem"
-          options={Object.values(DatePart)
+          options={Object.values<string>(DatePart)
             .slice(1)
             .map((dt) => ({
               id: dt,
