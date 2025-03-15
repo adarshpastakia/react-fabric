@@ -150,5 +150,6 @@ export interface SchemaEditorProps {
    */
   children?: Elements<JSX.Element> | Array<Elements<JSX.Element>>;
 
-  onChange: (schema: FormSchema) => void;
+  onChange?: (schema: FormSchema) => void;
+  onSubmit?: (schema: FormSchema) => void;
 }

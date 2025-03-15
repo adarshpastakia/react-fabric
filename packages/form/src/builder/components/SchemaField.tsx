@@ -168,43 +168,46 @@ export const SchemaField = ({
     }, 10);
   }, []);
 
-  const handleTypeChange = useCallback((type: DATA_TYPES) => {
-    if (type) {
-      const modelRef = getModel();
-      let reset = {
-        datatype: type,
-        id: field,
-        label: modelRef.label,
-        defaultValue: modelRef.defaultValue,
-        required: modelRef.required,
-        multiple: type === DATA_TYPES.AVATAR ? false : modelRef.multiple,
-        minItems: modelRef.minItems,
-        maxItems: modelRef.maxItems,
-      } as DefaultSchema & ValueType;
-      if (type === DATA_TYPES.STRING) {
-        reset = Object.assign(reset, {
-          optionList: modelRef.optionList,
-          options: modelRef.options,
-          regex: modelRef.regex,
-        } as StringSchema);
-      } else if (type === DATA_TYPES.DATE) {
-        reset = Object.assign(reset, {
-          type: "date",
-        } as DateSchema);
-      } else if (type === DATA_TYPES.NUMBER || type === DATA_TYPES.RANGE) {
-        reset = Object.assign(reset, {
-          min: modelRef.min,
-          max: modelRef.max,
-          step: modelRef.step,
-        } as NumberSchema);
+  const handleTypeChange = useCallback(
+    (type: DATA_TYPES) => {
+      if (type) {
+        const modelRef = getModel();
+        let reset = {
+          datatype: type,
+          id,
+          label: modelRef.label,
+          defaultValue: modelRef.defaultValue,
+          required: modelRef.required,
+          multiple: type === DATA_TYPES.AVATAR ? false : modelRef.multiple,
+          minItems: modelRef.minItems,
+          maxItems: modelRef.maxItems,
+        } as DefaultSchema & ValueType;
+        if (type === DATA_TYPES.STRING) {
+          reset = Object.assign(reset, {
+            optionList: modelRef.optionList,
+            options: modelRef.options,
+            regex: modelRef.regex,
+          } as StringSchema);
+        } else if (type === DATA_TYPES.DATE) {
+          reset = Object.assign(reset, {
+            type: "date",
+          } as DateSchema);
+        } else if (type === DATA_TYPES.NUMBER || type === DATA_TYPES.RANGE) {
+          reset = Object.assign(reset, {
+            min: modelRef.min,
+            max: modelRef.max,
+            step: modelRef.step,
+          } as NumberSchema);
+        }
+        if (type === DATA_TYPES.AVATAR) {
+          setMultiple(false);
+        }
+        onTypeChange(reset);
+        setType(type);
       }
-      if (type === DATA_TYPES.AVATAR) {
-        setMultiple(false);
-      }
-      onTypeChange(reset);
-      setType(type);
-    }
-  }, []);
+    },
+    [id],
+  );
 
   return (
     <SortableItem id={fieldId} className="flex flex-nowrap gap-1 group/field">
@@ -276,7 +279,7 @@ export const SchemaField = ({
                     icon={CoreIcons.list}
                     aria-label="Custom options"
                     onClick={() => {
-                      void openOptionModal();
+                      void openOptionModal({ title: `${id} Options` });
                     }}
                   />
                 )}

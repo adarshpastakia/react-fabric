@@ -199,7 +199,7 @@ export const FormBuilder: Story = {
               <SchemaEditor
                 dynamic
                 schemaDef={schema}
-                onChange={(m) => {
+                onSubmit={(m) => {
                   setSchema(m);
                 }}
                 optionLists={["countries"]}

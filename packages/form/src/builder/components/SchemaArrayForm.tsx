@@ -45,13 +45,13 @@ export const SchemaArrayForm = ({
 }: Partial<SchemaEditorProps>) => {
   const form = useFormContext();
   const [defaultOpen, setDefaultOpen] = useState(true);
-  const { fields, append, remove, update, move } = useFieldArray({
+  const { fields, append, remove, move } = useFieldArray({
     name: "schema",
     control: form.control,
   });
 
   const handleTypeChange = useCallback((index: number, val: KeyValue) => {
-    update(index, val);
+    form.setValue(`schema.${index}`, val);
   }, []);
 
   const handleRemove = useCallback((index: number) => {

@@ -38,6 +38,7 @@ export const SchemaEditor = ({
   acceptableTypes,
   optionLists = EMPTY_ARRAY,
   children,
+  onSubmit,
   onChange,
 }: SchemaEditorProps) => {
   const formRef = useRef<FormRef<{ schema: FormSchema }>>(null);
@@ -46,12 +47,16 @@ export const SchemaEditor = ({
     onChange?.(model.schema);
   }, []);
 
+  const handleSubmit = useCallback((model: { schema: FormSchema }) => {
+    onSubmit?.(model.schema);
+  }, []);
+
   useEffect(() => {
     formRef.current?.setValues({ schema: schemaDef });
   }, [schemaDef]);
 
   return (
-    <Form formRef={formRef} onSubmit={handleChange}>
+    <Form formRef={formRef} onChange={handleChange} onSubmit={handleSubmit}>
       <SchemaArrayForm
         dynamic={dynamic}
         optionLists={optionLists}
