@@ -21,6 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { type Elements } from "@react-fabric/core/dist/types/types";
 import { type DateLike } from "@react-fabric/date";
 
 export enum DATA_TYPES {
@@ -35,6 +36,8 @@ export enum DATA_TYPES {
   AVATAR = "avatar",
   SCHEMA = "schema",
 }
+
+export const SCHEMA_CUSTOM_LIST = "--CUSTOM--";
 
 interface SingleValue {
   multiple?: false;
@@ -122,3 +125,30 @@ export interface ChildSchema extends BaseSchema {
 
 export type SchemaDef = SchemaType | (ChildSchema & ValueType);
 export type FormSchema = SchemaDef[];
+
+export interface SchemaEditorProps {
+  /**
+   * default form schema
+   */
+  schemaDef: FormSchema;
+  /**
+   * is dynamic schema (allow add/remove)
+   */
+  dynamic?: boolean;
+  /**
+   * acceptable list of data types
+   */
+  acceptableTypes?: DATA_TYPES[];
+
+  /**
+   * available option lists in application
+   */
+  optionLists?: string[];
+
+  /**
+   * footer actions
+   */
+  children?: Elements<JSX.Element> | Array<Elements<JSX.Element>>;
+
+  onChange: (schema: FormSchema) => void;
+}

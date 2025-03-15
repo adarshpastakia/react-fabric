@@ -23,19 +23,31 @@
 
 import {
   Button,
+  Content,
   Footer,
   Header,
   Icon,
+  Modal,
+  ModalProps,
   Title,
+  useOverlayService,
   Viewport,
 } from "@react-fabric/core";
-import { Countries, debounce } from "@react-fabric/utilities";
+import { Countries, debounce, isArray, yup } from "@react-fabric/utilities";
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import axios from "axios";
 import { http, HttpResponse } from "msw";
-import { useState } from "react";
-import { Form, FormSchema, SchemaEditor, useFormBuilder } from "../src";
+import { useCallback, useState } from "react";
+import {
+  ArrayInput,
+  Controller,
+  Form,
+  FormSchema,
+  Input,
+  SchemaEditor,
+  useFormBuilder,
+} from "../src";
 import { DATA_TYPES } from "../src/types/schema";
 
 const meta: Meta<typeof Form> = {
@@ -180,14 +192,22 @@ export const FormBuilder: Story = {
           <div className="grid grid-cols-3 overflow-hidden area-content p-2 gap-2">
             <div
               className="grid rounded-capped outline overflow-hidden bg-base"
-              style={{ gridTemplate: `"content" 1fr "foot" auto / 1fr` }}
+              style={{
+                gridTemplate: `"head" auto "content" 1fr "foot" auto / 1fr`,
+              }}
             >
               <SchemaEditor
-                allowRemove
+                dynamic
                 schemaDef={schema}
-                onChange={setSchema}
+                onChange={(m) => {
+                  setSchema(m);
+                }}
                 optionLists={["countries"]}
-              />
+              >
+                <Button type="submit" variant="solid">
+                  Update
+                </Button>
+              </SchemaEditor>
             </div>
             <div className="overflow-auto bg-base outline rounded-capped">
               <Form

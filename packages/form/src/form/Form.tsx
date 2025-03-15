@@ -47,7 +47,6 @@ export interface FormRef<K extends KeyValue> {
   submit: () => void;
   validate: () => Promise<boolean>;
   getValues: () => K;
-  removeField: (field: string) => void;
   setValue: (key: keyof K, value: AnyObject) => void;
   setValues: (values: K) => void;
 }
@@ -86,7 +85,6 @@ export const Form = <K extends KeyValue>({
   const ref = useRef<HTMLFormElement>(null);
   const form = useForm<K>({
     shouldFocusError: true,
-    shouldUnregister: true,
     resolver: schema && (yupResolver(schema) as AnyObject),
     defaultValues: defaultValues as DefaultValues<K>,
   });
@@ -121,8 +119,6 @@ export const Form = <K extends KeyValue>({
       validate: async () => await form.trigger(),
       getValues: () => form.getValues(),
       setValues: (v) => setTimeout(() => form.reset(v), 50),
-      removeField: (field: AnyObject) =>
-        form.unregister(field, { keepDefaultValue: false, keepValue: false }),
       setValue: (k, v) =>
         setTimeout(
           () =>
@@ -154,7 +150,10 @@ export const Form = <K extends KeyValue>({
       <form
         ref={ref}
         onReset={() => handleReset(defaultValues)}
-        onSubmit={form.handleSubmit(onSubmit, onInvalid) as AnyObject}
+        onSubmit={(e) => {
+          e.stopPropagation();
+          void form.handleSubmit(onSubmit, onInvalid)(e);
+        }}
         data-loading={form.formState.isSubmitting}
         className="contents"
         autoComplete="off"

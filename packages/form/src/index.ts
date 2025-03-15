@@ -31,7 +31,12 @@ export { SchemaEditor } from "./builder/SchemaEditor";
 export { useFileUploader } from "./hooks/useFileUploader";
 export { useFormBuilder } from "./hooks/useFormBuilder";
 
-export { DATA_TYPES, type FormSchema, type SchemaDef } from "./types/schema";
+export {
+  DATA_TYPES,
+  SCHEMA_CUSTOM_LIST,
+  type FormSchema,
+  type SchemaDef,
+} from "./types/schema";
 
 export { ArrayInput } from "./input/ArrayInput";
 export { Checkbox } from "./input/Checkbox";

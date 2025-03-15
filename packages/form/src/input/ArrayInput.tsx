@@ -48,6 +48,7 @@ import classes from "./ArrayInput.module.css";
 
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { CSS } from "@dnd-kit/utilities";
+
 export interface ArrayInputProps {
   /**
    * input label
