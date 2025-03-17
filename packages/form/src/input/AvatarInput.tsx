@@ -99,7 +99,7 @@ export const AvatarInput = ({
     <div className="flex flex-nowrap items-end">
       <div className="inline-block leading-none rounded-full relative outline overflow-hidden">
         <Avatar name="temp" size={size} avatar={base64} />
-        <div className="absolute inset-x-0 bottom-0 cursor-pointer bg-opacity-20 hover:bg-opacity-50 bg-black text-white text-xs text-center py-1">
+        <div className="absolute inset-x-0 bottom-0 cursor-pointer bg-black/20 hover:bg-black/50 text-white text-xs text-center py-1">
           <span>Edit</span>
           <input
             type="file"

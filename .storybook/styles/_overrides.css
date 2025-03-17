@@ -19,16 +19,24 @@
   border-width: 0;
 
   & thead th {
-    color: theme(textColor.accent.600);
-    background-color: theme(backgroundColor.dimmed);
+    color: var(--text-accent-600);
+    background-color: var(--bg-color-dimmed);
   }
 
   & tbody tr:nth-child(odd) td {
-    background-color: color-mix(in lab, var(--fabric-bg) 99%, var(--tint));
+    background-color: color-mix(
+      in lab,
+      var(--fabric-bg) 99%,
+      var(--color-tint)
+    );
   }
 
   & tbody tr:nth-child(even) td {
-    background-color: color-mix(in lab, var(--fabric-bg) 96%, var(--tint));
+    background-color: color-mix(
+      in lab,
+      var(--fabric-bg) 96%,
+      var(--color-tint)
+    );
   }
 
   & tbody td p {
@@ -44,7 +52,7 @@
 h1.sbdocs-title {
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--primary);
+  color: var(--color-primary);
   text-decoration: underline 2px;
   text-underline-offset: 0.25em;
 }
@@ -53,7 +61,7 @@ h1.sbdocs-title {
 .sb-anchor > h3 {
   font-size: 1.125rem;
   font-weight: 400;
-  color: var(--accent);
+  color: var(--color-accent);
   text-decoration: underline 1px;
   text-underline-offset: 0.25em;
 }
@@ -61,7 +69,7 @@ h1.sbdocs-title {
 .sbdocs.sbdocs.sbdocs-preview {
   &,
   & .docs-story {
-    background-color: theme(backgroundColor.base);
+    background-color: var(--bg-color-base);
   }
 
   .sb-bar {
@@ -70,17 +78,17 @@ h1.sbdocs-title {
 }
 
 .sb-bar.sb-bar .tabbutton {
-  color: var(--primary);
+  color: var(--color-primary);
 
   &.tabbutton-active {
-    border-bottom-color: var(--primary);
+    border-bottom-color: var(--color-primary);
   }
 }
 
 .toc-wrapper.toc-wrapper.toc-wrapper > .toc-list.toc-list.toc-list {
   padding: 0;
   border-left: 0;
-  border-inline-start: 1px solid theme(borderColor.base);
+  border-inline-start: 1px solid var(--border-color-base);
 
   .toc-list-item.toc-list-item.toc-list-item {
     margin: 0;
@@ -94,10 +102,10 @@ h1.sbdocs-title {
   }
 
   .toc-list-item.toc-list-item.is-active-li.is-active-li {
-    border-color: var(--accent);
+    border-color: var(--color-accent);
 
     & > a.is-active-link {
-      color: var(--accent);
+      color: var(--color-accent);
     }
   }
 }

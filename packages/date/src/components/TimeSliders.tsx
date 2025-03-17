@@ -24,7 +24,6 @@
 import { useDebounce } from "@react-fabric/core";
 import classNames from "classnames";
 import { useCallback, useEffect, useRef, useState } from "react";
-import classes from "./Date.module.css";
 
 interface Props {
   hour: number;
@@ -80,7 +79,7 @@ export const TimeSlider = ({ hour = 0, minute = 0, onTimeChange }: Props) => {
       <div className="flex">
         <div
           className={classNames(
-            classes.dateHeader,
+            "fabric-dateHeader",
             "flex-1 font-medium text-muted text-sm p-1 mx-px text-center bg-tint-50",
           )}
         >
@@ -88,18 +87,18 @@ export const TimeSlider = ({ hour = 0, minute = 0, onTimeChange }: Props) => {
         </div>
         <div
           className={classNames(
-            classes.dateHeader,
+            "fabric-dateHeader",
             "flex-1 font-medium text-muted text-sm p-1 mx-px text-center bg-tint-50",
           )}
         >
           M
         </div>
       </div>
-      <div className="flex flex-1 flex-nowrap overflow-hidden relative">
+      <div className="flex flex-1 flex-nowrap items-stretch overflow-hidden relative">
         <div
           className={classNames(
             "flex-1 overflow-auto scroll-hide snap-y snap-mandatory",
-            classes.timeSlider,
+            "fabric-date-timeSlider",
           )}
           onScroll={calculateTime}
           ref={hourRef}
@@ -144,7 +143,7 @@ export const TimeSlider = ({ hour = 0, minute = 0, onTimeChange }: Props) => {
         <div
           className={classNames(
             "flex-1 overflow-auto scroll-hide snap-y snap-mandatory",
-            classes.timeSlider,
+            "fabric-date-timeSlider",
           )}
           onScroll={calculateTime}
           ref={minuteRef}

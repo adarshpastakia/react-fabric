@@ -11,9 +11,11 @@
   "types": "dist/types/index.d.ts",
   "directories": {
     "src": "src",
+    "styles": "css",
     "test": "tests"
   },
   "files": [
+    "css",
     "src",
     "dist"
   ],

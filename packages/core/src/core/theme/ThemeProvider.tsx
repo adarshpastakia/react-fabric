@@ -25,7 +25,6 @@ import { isColor } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useMemo } from "react";
 import { type ChildrenProp } from "../../types";
-import classes from "./Theme.module.css";
 
 export interface ThemeProps {
   /**
@@ -36,9 +35,9 @@ export interface ThemeProps {
    * branding css className
    *
    * .branding {
-   *  --primary: #color;
-   *  --accent: #color;
-   *  --tint: #color;
+   *  --color-primary: #color;
+   *  --color-accent: #color;
+   *  --color-tint: #color;
    * }
    */
   branding?: string;
@@ -75,22 +74,22 @@ export const ThemeProvider = ({
   const styles = useMemo(() => {
     const ret: KeyValue = {};
     if (primaryColor && isColor(primaryColor)) {
-      ret["--primary"] = primaryColor;
+      ret["--color-primary"] = primaryColor;
     }
     if (primaryColor && !isColor(primaryColor)) {
-      ret["--primary"] = `var(--${primaryColor})`;
+      ret["--color-primary"] = `var(--color-${primaryColor})`;
     }
     if (accentColor && isColor(accentColor)) {
-      ret["--accent"] = accentColor;
+      ret["--color-accent"] = accentColor;
     }
     if (accentColor && !isColor(accentColor)) {
-      ret["--accent"] = `var(--${accentColor})`;
+      ret["--color-accent"] = `var(--color-${accentColor})`;
     }
     if (tintColor && isColor(tintColor)) {
-      ret["--tint"] = tintColor;
+      ret["--color-tint"] = tintColor;
     }
     if (tintColor && !isColor(tintColor)) {
-      ret["--tint"] = `var(--${tintColor})`;
+      ret["--color-tint"] = `var(--color-${tintColor})`;
     }
     return ret;
   }, [primaryColor, accentColor, tintColor]);
@@ -101,7 +100,7 @@ export const ThemeProvider = ({
       data-color-scheme={colorScheme}
       data-rounding={rounding}
       className={classNames(
-        classes.themeProvider,
+        "fabric-themeProvider",
         "contents theme-base",
         branding,
       )}

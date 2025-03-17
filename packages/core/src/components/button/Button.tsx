@@ -26,12 +26,12 @@ import classNames from "classnames";
 import {
   Fragment,
   isValidElement,
-  type MouseEventHandler,
   useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
+  type MouseEventHandler,
   type WheelEventHandler,
 } from "react";
 import { useEffectDebugger } from "../../hooks/useEffectDebugger";
@@ -39,10 +39,10 @@ import { HotKey } from "../../hotkeys/HotKey";
 import { HotKeyLabel } from "../../hotkeys/HotKeyLabel";
 import { Tooltip } from "../../overlays/tooltip/Tooltip";
 import {
+  type ColorState,
   type AriaProps,
   type BadgeType,
   type CallbackReturn,
-  type ColorType,
   type CssProp,
   type IconProps,
   type PolymorphicProps,
@@ -51,10 +51,10 @@ import {
   type TestProps,
   type TooltipType,
 } from "../../types";
+import { getColor } from "../../utils";
 import { AnimationIndicator } from "../animations/Animations";
 import { Badge, getBadgeProps } from "../badge/Badge";
 import { Icon } from "../icon/Icon";
-import classes from "./Button.module.css";
 
 export interface BaseProps
   extends CssProp,
@@ -77,7 +77,7 @@ export interface BaseProps
   /**
    * button color
    */
-  color?: ColorType;
+  color?: ColorState;
   /**
    * button type
    */
@@ -234,7 +234,7 @@ export const Button = <Tag extends React.ElementType = "button">({
       return {
         content: actionMessage,
         placement: "top",
-        color,
+        color: `${color}-100`,
         open: true,
       } as TooltipType;
     }
@@ -252,7 +252,7 @@ export const Button = <Tag extends React.ElementType = "button">({
   return (
     <div
       className={classNames(
-        classes.buttonWrapper,
+        "fabric-buttonWrapper",
         className,
         "relative align-text-top select-none focus-within:z-1",
         fullWidth ? "block w-full" : "inline-block",
@@ -268,12 +268,12 @@ export const Button = <Tag extends React.ElementType = "button">({
           ref={mergeRefs(ref, refEl)}
           role="button"
           className={classNames(
-            classes.button,
+            "fabric-button",
             "pointer-events-auto cursor-pointer select-none flex flex-nowrap w-full h-full items-center border-0 -outline-offset-1 justify-center max-w-72 p-0 font-sans font-medium appearance-none",
             `focus-visible:ring-2 focus-visible:ring-offset-2 buttonInner`,
             fullWidth && "max-w-full w-full",
             rounded && "rounded-full",
-            spinOnHover && classes.spinOnHover,
+            spinOnHover && "fabric-spinOnHover",
           )}
           type={type}
           disabled={disabled}
@@ -287,7 +287,7 @@ export const Button = <Tag extends React.ElementType = "button">({
         >
           {icon && (
             <Icon
-              className={classes.buttonIcon}
+              className={"fabric-buttonIcon"}
               icon={icon}
               bg={iconBg}
               color={iconColor}
@@ -296,11 +296,11 @@ export const Button = <Tag extends React.ElementType = "button">({
             />
           )}
           {isValidElement(children) && (
-            <div className={classes.buttonChild}>{children}</div>
+            <div className={"fabric-buttonChild"}>{children}</div>
           )}
           {isString(children) && (
             <label
-              className={classNames(classes.buttonLabel, "truncate")}
+              className={classNames("fabric-buttonLabel", "truncate")}
               data-colored-icon={!!iconBg}
             >
               {children}
@@ -309,7 +309,7 @@ export const Button = <Tag extends React.ElementType = "button">({
           {!isNil(badge) && <Badge {...badgeProps} />}
           {hotKey && <HotKeyLabel keyCombo={hotKey} />}
           {altIcon && (
-            <Icon className={classes.altIcon} icon={altIcon} rtlFlip />
+            <Icon className={"fabric-altIcon"} icon={altIcon} rtlFlip />
           )}
         </E>
       </TooltipWrapper>
@@ -317,9 +317,11 @@ export const Button = <Tag extends React.ElementType = "button">({
         <div
           className={classNames(
             "absolute inset-0 overflow-hidden flex justify-center items-center",
-            `bg-${color}-300`,
             rounded ? "rounded-full" : "rounded",
           )}
+          style={{
+            backgroundColor: getColor(`${color}-300`),
+          }}
         >
           <AnimationIndicator type="check" color={color} />
         </div>

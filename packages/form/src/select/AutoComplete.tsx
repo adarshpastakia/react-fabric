@@ -328,7 +328,7 @@ export const AutoComplete = ({
           >
             <Options
               ref={refs.setFloating}
-              className="outline shadow-lg max-h-[40vh] z-[var(--z-popover)]"
+              className="outline shadow-lg max-h-[40vh] z-(--z-popover)"
               style={{
                 width: refs.reference.current?.getBoundingClientRect().width,
                 ...floatingStyles,

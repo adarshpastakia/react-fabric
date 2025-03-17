@@ -24,9 +24,8 @@
 import { Format } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useMemoDebugger } from "../../hooks/useEffectDebugger";
-import { type ColorType } from "../../types";
-import { getColorClass } from "../../utils";
-import classes from "./Progress.module.css";
+import { type PaletteType, type ColorType } from "../../types";
+import { getColor } from "../../utils";
 
 export interface ProgressProps {
   /**
@@ -40,7 +39,7 @@ export interface ProgressProps {
   /**
    * color
    */
-  color?: ColorType;
+  color?: ColorType | PaletteType;
   /**
    * animate
    */
@@ -64,7 +63,7 @@ const SizeMap: KeyValue = {
 export const ProgressBar = ({
   value = 0,
   size,
-  color = "primary",
+  color = "primary-500",
   label = "",
   animate,
 }: ProgressProps) => {
@@ -87,12 +86,12 @@ export const ProgressBar = ({
   return (
     <div
       className={classNames(
-        classes.progressbar,
-        getColorClass(color),
+        "fabric-progressbar",
         "block bg-dimmed relative rounded font-bold overflow-hidden whitespace-nowrap",
       )}
       style={{
         ...progressVar,
+        color: getColor(color),
         minHeight: SizeMap[size ?? ""],
         fontSize: SizeMap[size ?? ""],
       }}
@@ -106,8 +105,8 @@ export const ProgressBar = ({
       )}
       <div
         className={classNames(
-          classes.progressTrack,
-          animate && classes.progressAnimate,
+          "fabric-progressTrack",
+          animate && "fabric-progressAnimate",
           "h-full overflow-clip bg-current relative z-0",
         )}
       />

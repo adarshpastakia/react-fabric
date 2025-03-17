@@ -53,7 +53,6 @@ import {
   type TestProps,
 } from "../../types";
 import { CoreIcons } from "../../types/icons";
-import classes from "./Flyout.module.css";
 
 export interface FlyoutProps
   extends AriaProps,
@@ -219,7 +218,7 @@ export const Flyout = ({
           <div
             data-align={align}
             className={classNames(
-              classes.flyout,
+              "fabric-flyout",
               "fixed inset-y-0 overflow-hidden flex flex-col flex-nowrap pointer-events-auto shadow-xl",
               align === "start" ? "start-0" : "end-0",
               size === "sm" && "w-[20rem]",
@@ -240,7 +239,7 @@ export const Flyout = ({
             <HotKeyWrapper>
               <Header
                 flex
-                className={classNames(classes.flyoutHeader, headerClassName)}
+                className={classNames("fabric-flyoutHeader", headerClassName)}
               >
                 {isString(icon) && (
                   <Icon
@@ -257,7 +256,7 @@ export const Flyout = ({
                 <Icon
                   data-ref="panelClose"
                   className={classNames(
-                    classes.panelAction,
+                    "fabric-panelAction",
                     "cursor-pointer p-1 text-xl self-stretch",
                   )}
                   icon={CoreIcons.close}
@@ -268,7 +267,7 @@ export const Flyout = ({
               <div
                 role="dialog"
                 className={classNames(
-                  classes.flyoutBody,
+                  "fabric-flyoutBody",
                   "flex-1 grid overflow-hidden",
                 )}
                 {...({ tabIndex: 0 } as AnyObject)}

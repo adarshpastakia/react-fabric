@@ -30,7 +30,7 @@ import {
   type BadgeType,
   type CallbackReturn,
   type ChildrenProp,
-  type ColorType,
+  type ColorState,
   type CssProp,
   type IconProps,
   type PolymorphicProps,
@@ -41,7 +41,6 @@ import {
 import { Badge, getBadgeProps } from "../badge/Badge";
 import { DropdownTool } from "../dropdown/DropdownTool";
 import { Icon } from "../icon/Icon";
-import classes from "./TabPanel.module.css";
 
 export interface TabProps
   extends Partial<ChildrenProp>,
@@ -62,7 +61,7 @@ export interface TabProps
   /**
    * tab color
    */
-  color?: ColorType;
+  color?: ColorState;
   /**
    * tab badge
    */
@@ -138,7 +137,7 @@ export const Tab = <Tag extends React.ElementType = "button">({
         data-color={color}
         data-inner-clickable
         className={classNames(
-          classes.tabButton,
+          "fabric-tabButton",
           className,
           active && "active pointer-events-none",
           active && activeClassName,

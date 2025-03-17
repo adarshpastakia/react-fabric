@@ -24,8 +24,8 @@
 import { Format } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useMemoDebugger } from "../../hooks/useEffectDebugger";
-import { type ColorType } from "../../types";
-import { getColorClass } from "../../utils";
+import { type PaletteType, type ColorType } from "../../types";
+import { getColor } from "../../utils";
 
 export interface ProgressProps {
   /**
@@ -39,7 +39,7 @@ export interface ProgressProps {
   /**
    * color
    */
-  color?: ColorType;
+  color?: ColorType | PaletteType;
 }
 
 const SizeMap: KeyValue = {
@@ -53,7 +53,7 @@ const SizeMap: KeyValue = {
 export const ProgressCircle = ({
   value = 0,
   size = "sm",
-  color = "primary",
+  color = "primary-500",
 }: ProgressProps) => {
   /** ***************** make sure value is between 0 and 100 *******************/
   const actualValue = useMemoDebugger(
@@ -75,12 +75,9 @@ export const ProgressCircle = ({
   /** ***************** component *******************/
   return (
     <div
-      className={classNames(
-        "inline-block w-[4em] h-[4em] text-lg relative",
-        getColorClass(color),
-      )}
+      className={classNames("inline-block w-[4em] h-[4em] text-lg relative")}
       aria-hidden="true"
-      style={{ fontSize: SizeMap[size] }}
+      style={{ fontSize: SizeMap[size], color: getColor(color) }}
     >
       <svg
         viewBox="0 0 100 100"

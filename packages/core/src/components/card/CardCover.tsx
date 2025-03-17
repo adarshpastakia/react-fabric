@@ -26,7 +26,6 @@ import { Children, useMemo } from "react";
 import { type AriaProps, type ChildrenProp, type CssProp } from "../../types";
 import { nodeCheck } from "../../utils";
 import { Image, Video } from "../media/Media";
-import classes from "./Card.module.css";
 
 export interface CardCoverProps extends CssProp, AriaProps, ChildrenProp {
   /**
@@ -43,12 +42,19 @@ export interface CardCoverProps extends CssProp, AriaProps, ChildrenProp {
   justify?: "start" | "center" | "end";
 }
 
+const scheme = {
+  inheritScheme: "inheritScheme",
+  light: "light",
+  dark: "dark",
+};
+
 export const CardCover = ({
   className,
   children,
   height = 120,
   justify = "end",
-  colorScheme,
+  // @ts-expect-error ignore
+  colorScheme = "inheritScheme",
   ...aria
 }: CardCoverProps) => {
   const [media, body] = useMemo(() => {
@@ -64,8 +70,8 @@ export const CardCover = ({
     <div
       style={{ height }}
       className={classNames(
-        classes.cardCover,
-        classes[colorScheme ?? "inheritScheme"],
+        "fabric-cardCover",
+        scheme[colorScheme],
         "relative z-0",
       )}
       {...aria}
@@ -73,9 +79,8 @@ export const CardCover = ({
       {media}
       <div
         className={classNames(
-          classes.cardCoverContent,
+          "fabric-cardCoverContent",
           "relative pointer-events-none z-1 flex flex-col flex-nowrap p-4 h-full",
-          className,
           `justify-${justify}`,
           className,
         )}

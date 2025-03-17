@@ -45,7 +45,6 @@ import {
 } from "../../types";
 import { CoreIcons } from "../../types/icons";
 import { ErrorBoundary } from "../boundary/ErrorBoundary";
-import classes from "./Aside.module.css";
 
 export interface AsideProps
   extends IconProps,
@@ -197,7 +196,7 @@ export const Aside = ({
 
   return (
     <aside
-      className={classNames(classes.aside, className, "overflow-hidden grid")}
+      className={classNames("fabric-aside", className, "overflow-hidden grid")}
       data-align={align}
       data-flyout={peek}
       data-loading={loading}
@@ -208,7 +207,7 @@ export const Aside = ({
     >
       <header
         className={classNames(
-          classes.asideHeader,
+          "fabric-asideHeader",
           headerClassName,
           "grid area-head items-center",
         )}
@@ -217,7 +216,7 @@ export const Aside = ({
         {title && (
           <div
             className={classNames(
-              classes.asideTitle,
+              "fabric-asideTitle",
               "truncate py-0.5 px-1 select-none pointer-events-none",
             )}
           >
@@ -227,7 +226,7 @@ export const Aside = ({
         {collapsable && (
           <Icon
             aria-label={isCollapsed ? "expand" : "collapse"}
-            className={classNames(classes.asideCollapse, "p-2 select-none")}
+            className={classNames("fabric-asideCollapse", "p-2 select-none")}
             icon={CoreIcons.chevronLeft}
             rtlFlip
             onClick={toggleCollapse}
@@ -241,12 +240,12 @@ export const Aside = ({
             color={iconColor}
             rtlFlip={rtlFlip}
             className={classNames(
-              classes.asideIcon,
+              "fabric-asideIcon",
               "p-1 text-lg select-none pointer-events-none",
             )}
           />
         )}
-        {actions && <div className={classes.asideActions}>{actions}</div>}
+        {actions && <div className={"fabric-asideActions"}>{actions}</div>}
       </header>
       {loading && <Loading />}
       {isCollapsed && (
@@ -254,14 +253,14 @@ export const Aside = ({
           role="none"
           onClick={tryPeek}
           data-ref="asidePlaceholder"
-          className={classes.asidePlaceholder}
+          className={"fabric-asidePlaceholder"}
         />
       )}
       <section
         ref={elementRef}
         data-ref="asideBody"
         className={classNames(
-          classes.asideBody,
+          "fabric-asideBody",
           bodyClassName,
           "overflow-hidden grid",
         )}
@@ -273,7 +272,7 @@ export const Aside = ({
         <div
           {...resizeHandleProps}
           className={classNames(
-            classes.asideResizer,
+            "fabric-asideResizer",
             "before:absolute before:inset-0 before:w-1 before:top-1/2 before:-translate-y-1/2 before:transition-all",
           )}
         />

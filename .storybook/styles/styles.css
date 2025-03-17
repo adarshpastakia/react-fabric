@@ -5,10 +5,18 @@
  * @author    : Adarsh Pastakia
  */
 
-@import url("@react-fabric/core/css/styles.css");
-@import url("@react-fabric/mdx/css/styles.css");
-@import url("@react-fabric/core/css/flags.rect.css");
-@import url("./_overrides.css");
-@import url("./_prism.css");
-@import url("./_prism-dark.css");
-@import url("./_prism-light.css");
+@import "tailwindcss";
+@import "@react-fabric/core/styles";
+@import "@react-fabric/data/styles";
+@import "@react-fabric/date/styles";
+@import "@react-fabric/form/styles";
+@import "@react-fabric/lexical/styles";
+@import "@react-fabric/mdx/styles";
+@import "@react-fabric/media/styles";
+@import "@react-fabric/monaco/styles";
+@import "@react-fabric/superdate/styles";
+@import "@react-fabric/core/flags.rect";
+@import "./_overrides.css";
+@import "./_prism.css";
+@import "./_prism-dark.css";
+@import "./_prism-light.css";

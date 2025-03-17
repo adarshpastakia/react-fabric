@@ -42,7 +42,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { StickyNode } from "../nodes/StickyNode";
 import { DraggableBlockPlugin } from "../plugins/DraggableBlockPlugin";
 import { StickyPlugin } from "../plugins/StickyPlugin";
-import classes from "./Lexical.module.css";
 import { LexicalTheme } from "./theme";
 import { ToolbarPlugin } from "../plugins/ToolbarPlugin";
 
@@ -162,7 +161,7 @@ export const LexicalEditor = ({
       return !publishMode ? (
         <div className="lexical-scroller area-content overflow-auto">
           <div
-            className={classNames(classes.lexicalToolbar, "sticky top-0 z-1")}
+            className={classNames("fabric-lexicalToolbar", "sticky top-0 z-1")}
           >
             <Header className="bg-base">
               <ToolbarPlugin />
@@ -185,7 +184,7 @@ export const LexicalEditor = ({
             <div
               role="none"
               className={classNames(
-                classes.lexicalEditor,
+                "fabric-lexicalEditor",
                 "lexical-container relative bg-white min-h-full mx-auto shadow-md print:shadow-none",
               )}
               onDragOver={(e) => e.stopPropagation()}

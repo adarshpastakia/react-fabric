@@ -29,21 +29,5 @@ export const getColor = (color: string) => {
   if (color && isColor(color)) {
     return color;
   }
-};
-
-export const getBgClass = (bg: string) => {
-  if (bg && !isColor(bg)) {
-    return `bg-${bg}`;
-  }
-};
-
-export const getColorClass = (color: string) => {
-  if (color && !isColor(color)) {
-    return `text-${color}`;
-  }
-};
-export const getBorderClass = (color: string) => {
-  if (color && !isColor(color)) {
-    return `border-${color}`;
-  }
+  return `var(--color-${color})`;
 };

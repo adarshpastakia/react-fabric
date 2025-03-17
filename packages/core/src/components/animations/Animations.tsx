@@ -30,19 +30,18 @@ import {
   type CssProp,
   type PaletteType,
 } from "../../types";
-import { getColor, getColorClass } from "../../utils";
-import classes from "./Animations.module.css";
+import { getColor } from "../../utils";
 
 export interface AnimationProps extends CssProp, AriaProps {
   type?: "info" | "check" | "cross" | "question" | "exclaim";
   /**
    * icon color
    */
-  color?: ColorType | PaletteType;
+  color?: ColorType | PaletteType | string;
   /**
    * icon mark color
    */
-  strokeColor?: ColorType | PaletteType;
+  strokeColor?: ColorType | PaletteType | string;
 }
 
 export const AnimationIndicator = ({
@@ -80,10 +79,9 @@ export const AnimationIndicator = ({
     <svg
       data-ref="animated-indicator"
       className={classNames(
-        classes.checkAnimation,
+        "fabric-checkAnimation",
         className,
         "inline-block rounded-full",
-        color && getColorClass(color),
       )}
       style={styles}
       xmlns="http://www.w3.org/2000/svg"
@@ -91,12 +89,14 @@ export const AnimationIndicator = ({
       aria-hidden="true"
       {...aria}
     >
-      <circle className={classes.circlePart} cx="26" cy="26" r="25" />
+      <circle className={"fabric-circlePart"} cx="26" cy="26" r="25" />
       <path
-        className={classNames(
-          classes.iconPart,
-          getColorClass(strokeColor ?? "invert"),
-        )}
+        className={classNames("fabric-iconPart")}
+        style={{
+          color: strokeColor
+            ? getColor(strokeColor)
+            : "var(--text-color-invert)",
+        }}
         d={path}
       />
     </svg>
@@ -104,10 +104,10 @@ export const AnimationIndicator = ({
 };
 
 export const AnimationBars = ({
-  color = "tint",
+  color = "tint-500",
   size = "2rem",
 }: {
-  color?: ColorType | string;
+  color?: ColorType | PaletteType | string;
   size?: number | string;
 }) => {
   return (
@@ -122,8 +122,8 @@ export const AnimationBars = ({
         )}
       >
         <div
-          className={classNames(classes.bars, getColorClass(color + "-500/50"))}
-          style={{ width: size }}
+          className={classNames("fabric-bars")}
+          style={{ width: size, color: getColor(color) }}
         />
       </div>
     </div>
@@ -134,7 +134,7 @@ export const AnimationSpinner = ({
   color = "tint-700",
   size = "2rem",
 }: {
-  color?: ColorType | string;
+  color?: ColorType | PaletteType | string;
   size?: number | string;
 }) => {
   return (
@@ -150,8 +150,8 @@ export const AnimationSpinner = ({
         )}
       >
         <div
-          className={classNames(classes.spinner, getColorClass(color))}
-          style={{ width: size }}
+          className={classNames("fabric-spinner")}
+          style={{ width: size, color: getColor(color) }}
         />
       </div>
     </div>
@@ -162,7 +162,7 @@ export const Loading = () => {
   return (
     <div
       className={classNames(
-        classes.loader,
+        "fabric-loader",
         "area-[loader] relative overflow-x-clip",
       )}
       data-ref="loading"

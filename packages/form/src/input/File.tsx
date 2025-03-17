@@ -44,7 +44,6 @@ import {
 import { InputWrapper } from "../internal/InputWrapper";
 import { type InputProps } from "../types";
 import { handleEnter } from "../utils";
-import classes from "./File.module.css";
 
 export interface FileInputProps
   extends InputProps<AnyObject>,
@@ -195,10 +194,8 @@ export const FileInput = ({
       <input
         className={classNames(
           "appearance-none bg-transparent py-1 px-2 flex-1 border-none outline-none ring-0",
-          classes.fileInput,
-          isArray(actualValue) &&
-            actualValue?.length &&
-            "text-[var(--fabric-bg)]",
+          "fabric-fileInput",
+          isArray(actualValue) && actualValue?.length && "text-(--fabric-bg)",
         )}
         aria-invalid={invalid}
         aria-disabled={disabled}

@@ -27,10 +27,9 @@ import { useTranslation } from "react-i18next";
 import { AnimationIndicator } from "../../components/animations/Animations";
 import { Button } from "../../components/button/Button";
 import { Icon } from "../../components/icon/Icon";
-import { type ColorType, type Elements, type IconProps } from "../../types";
+import { type ColorState, type Elements, type IconProps } from "../../types";
 import { CoreIcons } from "../../types/icons";
-import { getBgClass, getBorderClass, getColorClass } from "../../utils";
-import classes from "./Toast.module.css";
+import { getColor } from "../../utils";
 
 export interface ToastProps extends Omit<IconProps, "iconBg" | "iconColor"> {
   /**
@@ -48,7 +47,7 @@ export interface ToastProps extends Omit<IconProps, "iconBg" | "iconColor"> {
   /**
    * theme color
    */
-  color?: ColorType;
+  color?: ColorState;
   /**
    * extra action button
    */
@@ -87,31 +86,16 @@ export const Toast = ({
       );
     switch (color) {
       case "danger":
-        return (
-          <AnimationIndicator
-            type="cross"
-            className={getColorClass(color + "-600")}
-          />
-        );
+        return <AnimationIndicator type="cross" color={"danger-600"} />;
       case "success":
-        return (
-          <AnimationIndicator
-            type="check"
-            className={getColorClass(color + "-600")}
-          />
-        );
+        return <AnimationIndicator type="check" color={"success-600"} />;
       case "warning":
-        return (
-          <AnimationIndicator
-            type="exclaim"
-            className={getColorClass(color + "-600")}
-          />
-        );
+        return <AnimationIndicator type="exclaim" color={"warning-600"} />;
       default:
         return (
           <AnimationIndicator
             type={type === "confirm" ? "question" : "info"}
-            className={getColorClass(color + "-600")}
+            color={`${color}-600`}
           />
         );
     }
@@ -138,22 +122,29 @@ export const Toast = ({
     <div
       role="alert"
       className={classNames(
-        classes.toast,
-        getBorderClass(color + "-300"),
+        "fabric-toast",
         "flex flex-nowrap max-w-sm bg-base min-w-72 border pointer-events-auto relative overflow-hidden rounded-capped mt-4 select-none",
       )}
+      style={{
+        borderColor: getColor(color + "-300"),
+      }}
       ref={elRef}
     >
       <div
-        className={classNames("flex-initial p-2", getBgClass(color + "-100"))}
+        className={classNames("flex-initial p-2")}
+        style={{
+          backgroundColor: getColor(color + "-300"),
+        }}
       >
         {iconType}
       </div>
       <div
         className={classNames(
-          getBgClass(color + "-50/50"),
           "flex flex-col flex-1 flex-nowrap overflow-hidden p-2",
         )}
+        style={{
+          backgroundColor: getColor(color + "-50"),
+        }}
       >
         <div className="flex flex-nowrap gap-2 items-start">
           <div className="font-medium flex-1">{title}</div>

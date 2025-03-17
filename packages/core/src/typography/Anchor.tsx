@@ -29,22 +29,23 @@ import {
   type ChildrenProp,
   type ColorType,
   type CssProp,
+  type PaletteType,
   type PolymorphicProps,
   type RefProp,
   type SizeType,
 } from "../types";
-import { getBgClass, getColor, getColorClass } from "../utils";
+import { getColor } from "../utils";
 import { TextSizeMap } from "./types";
 
 export interface AnchorProps extends ChildrenProp, CssProp, RefProp, AriaProps {
   /**
    * link background (CSS color / tailwind color)
    */
-  bg?: ColorType | string;
+  bg?: ColorType | PaletteType | string;
   /**
    * link color (CSS color / tailwind color)
    */
-  color?: ColorType | string;
+  color?: ColorType | PaletteType | string;
   /**
    * link size
    */
@@ -96,13 +97,7 @@ export const Anchor = <Tag extends React.ElementType = "a">({
   const E = as ?? "a";
   return (
     <E
-      className={classNames(
-        "link",
-        className,
-        family && `font-${family}`,
-        bg && getBgClass(bg),
-        color && getColorClass(color),
-      )}
+      className={classNames("link", className, family && `font-${family}`)}
       style={styles}
       ref={ref as AnyObject}
       {...aria}

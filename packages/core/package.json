@@ -19,6 +19,17 @@
     "src",
     "dist"
   ],
+  "exports": {
+    ".": {
+      "default": "./dist/esm/index.js",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./styles": "./css/styles.css",
+    "./flags.rect": "./css/flags.rect.css",
+    "./flags.wavy": "./css/flags.wavy.css"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -37,14 +48,12 @@
   "dependencies": {
     "@floating-ui/react": "^0.26.24",
     "@react-fabric/utilities": "^1.0.0-beta.36",
-    "@tailwindcss/container-queries": "^0.1.1",
-    "@tailwindcss/forms": "^0.5.7",
-    "@tailwindcss/typography": "^0.5.13",
+    "@tailwindcss/postcss": "~4.0.14",
     "boring-avatars": "^1.10.2",
     "classnames": "^2.5.1",
     "color": "^4.2.3",
     "resize-observer-polyfill": "^1.5.1",
-    "tailwindcss": "^3.4.4"
+    "tailwindcss": "^4.0.14"
   },
   "peerDependencies": {
     "i18next": "^23.15.1",

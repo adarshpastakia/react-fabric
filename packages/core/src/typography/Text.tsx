@@ -38,13 +38,7 @@ import {
   type SizeType,
   type TestProps,
 } from "../types";
-import {
-  calculateTextHeight,
-  getBgClass,
-  getColor,
-  getColorClass,
-} from "../utils";
-import classes from "./Typography.module.css";
+import { calculateTextHeight, getColor } from "../utils";
 import { TextSizeMap } from "./types";
 
 export interface TextProps extends ChildrenProp, CssProp, AriaProps, TestProps {
@@ -164,11 +158,9 @@ export const Text = ({
       >
         <div
           className={classNames(
-            classes.text,
+            "fabric-text",
             "mixed-lang px-[2px] whitespace-pre-wrap",
             family && `font-${family}`,
-            bg && getBgClass(bg),
-            color && getColorClass(color),
             clamp && "line-clamp-1",
           )}
           style={styles}
@@ -178,7 +170,7 @@ export const Text = ({
         </div>
       </div>
       {clipped && (
-        <div className={classes.moreLink}>
+        <div className={"fabric-moreLink"}>
           <span
             role="link"
             tabIndex={0}

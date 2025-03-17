@@ -22,7 +22,7 @@
  */
 
 import { faker } from "@faker-js/faker";
-import { useNotificationService } from "@react-fabric/core";
+import { useNotificationService, ApplicationProvider } from "../../../src";
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Fragment } from "react/jsx-runtime";
@@ -39,9 +39,11 @@ const meta: Meta = {
   },
   decorators: [
     (Story) => (
-      <div className="max-w-2xl p-4 flex gap-2 flex-wrap">
-        <Story />
-      </div>
+      <ApplicationProvider>
+        <div className="max-w-2xl p-4 flex gap-2 flex-wrap">
+          <Story />
+        </div>
+      </ApplicationProvider>
     ),
   ],
 };

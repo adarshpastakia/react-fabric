@@ -31,7 +31,6 @@ import {
   type SizeType,
 } from "../../types";
 import { type AvatarProps } from "./Avatar";
-import classes from "./Avatar.module.css";
 
 type AvatarChild =
   | ReactElement<Omit<AvatarProps, "size" | "rounded">>
@@ -104,7 +103,7 @@ export const AvatarGroup = ({
       {...aria}
       ref={ref as AnyObject}
       className={classNames(
-        classes.avatarGroup,
+        "fabric-avatarGroup",
         className,
         "inline-flex flex-nowrap",
         !rounded && "rounded",
@@ -117,9 +116,9 @@ export const AvatarGroup = ({
         <dfn
           data-ref="avatarCount"
           className={classNames(
-            classes.avatar,
+            "fabric-avatar",
             "select-none relative overflow-hidden inline-block box-content leading-none not-italic text-center",
-            classes.extra,
+            "fabric-avatarGroup--extra",
           )}
         >
           <svg>

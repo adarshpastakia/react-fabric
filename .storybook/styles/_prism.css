@@ -6,7 +6,7 @@
  */
 
 .prismjs.prismjs.prismjs {
-  color: theme(textColor.dimmed);
+  color: var(--text-color-dimmed);
   background: var(--fabric-bg);
 }
 

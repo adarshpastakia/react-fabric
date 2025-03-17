@@ -25,7 +25,6 @@ import { Format } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { type PropsWithChildren } from "react";
 import { Fragment } from "react/jsx-runtime";
-import classes from "./TimeSlider.module.css";
 
 export const TimeSlider = ({
   duration,
@@ -41,7 +40,7 @@ export const TimeSlider = ({
     <div className="flex-1 relative flex">
       <input
         type="range"
-        className={classNames(classes.slider, classes.timeSlider)}
+        className={classNames("fabric-media-slider", "fabric-media-timeSlider")}
         min={0}
         max={Math.max(duration, time)}
         step={0.01}

@@ -23,7 +23,6 @@
 
 import classNames from "classnames";
 import { type PropsWithChildren } from "react";
-import classes from "./Viewport.module.css";
 
 /**
  * The application viewport is the main container that defines the visible area where content is displayed and interacted with.
@@ -33,7 +32,7 @@ export const Viewport = ({ children }: PropsWithChildren) => {
     <div
       data-ref="viewport"
       className={classNames(
-        classes.viewport,
+        "fabric-viewport",
         "grid overflow-hidden absolute inset-0",
       )}
     >

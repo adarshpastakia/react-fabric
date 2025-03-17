@@ -34,7 +34,6 @@ import {
 import { type CallbackReturn, type ChildrenProp } from "../../types";
 import { nodeCheck } from "../../utils";
 import { Tab } from "./Tab";
-import classes from "./TabPanel.module.css";
 
 export interface TabPanelProps extends ChildrenProp<typeof Tab> {
   /**
@@ -135,7 +134,7 @@ export const TabPanel = ({
   return (
     <div
       className={classNames(
-        classes.tabPanel,
+        "fabric-tabPanel",
         "area-content grid bg-base overflow-hidden",
       )}
       data-orientation={orientation}
@@ -143,7 +142,7 @@ export const TabPanel = ({
     >
       <div
         className={classNames(
-          classes.tabHeader,
+          "fabric-tabHeader",
           headerClassName,
           justify && `justify-${justify}`,
           ["start", "end"].includes(orientation) && "flex-col",
@@ -153,7 +152,7 @@ export const TabPanel = ({
         {prepend}
         <div
           className={classNames(
-            classes.tabList,
+            "fabric-tabList",
             justify && `justify-${justify}`,
             ["start", "end"].includes(orientation) && "flex-col",
             ["bottom", "end"].includes(orientation) ? "self-start" : "self-end",

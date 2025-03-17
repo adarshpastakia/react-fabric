@@ -126,7 +126,7 @@ export const Radio = ({
       <Icon
         className={classNames(
           "p-0.5 hidden peer-checked:inline-block",
-          icon && !iconChecked && "bg-primary-500 text-white",
+          icon && !iconChecked && "bg-primary-500 text-white!",
         )}
         color={invalid ? "danger" : "primary"}
         size="1.25em"

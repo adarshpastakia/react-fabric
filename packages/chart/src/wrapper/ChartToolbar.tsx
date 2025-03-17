@@ -24,14 +24,13 @@
 import { type ChildrenProp } from "@react-fabric/core/dist/types/types";
 import classNames from "classnames";
 import { type FC } from "react";
-import classes from "./Chart.module.css";
 
 export const ChartToolbar: FC<ChildrenProp> = ({ children }) => {
   return (
     <div
       className={classNames(
         "flex flex-nowrap items-center justify-end bg-base area-head",
-        classes.chartToolbar,
+        "rf-chartToolbar",
       )}
     >
       {children}

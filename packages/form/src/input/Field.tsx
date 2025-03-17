@@ -28,7 +28,6 @@ import {
 } from "@react-fabric/core/dist/types/types";
 import classNames from "classnames";
 import { cloneElement } from "react";
-import classes from "../internal/Field.module.css";
 import { FieldWrapper } from "../internal/FieldWrapper";
 
 export interface FieldProps extends ChildrenProp, CssProp {
@@ -84,7 +83,7 @@ export const Field = ({
     <FieldWrapper {...rest}>
       <div
         className={classNames(
-          classes.fieldGroup,
+          "fabric-fieldGroup",
           !plain && !noOutline && "outline",
           !plain && "bg-base",
           plain && "flex-wrap",

@@ -29,7 +29,6 @@ import {
   type SizeTypeWithZero,
   type TestProps,
 } from "../../types";
-import classes from "./Responsive.module.css";
 
 export interface ContainerProps
   extends AriaProps,
@@ -101,7 +100,7 @@ export const Container = ({
   return (
     <div
       className={classNames(
-        classes.container,
+        "fabric-container",
         className,
         !fullWidth && "container mx-auto",
       )}
@@ -126,7 +125,7 @@ export const Row = ({
   return (
     <div
       className={classNames(
-        classes.row,
+        "fabric-row",
         className,
         "flex",
         orient === "row" && "flex-row",
@@ -156,9 +155,9 @@ export const Col = ({
   return (
     <div
       className={classNames(
-        classes.col,
+        "fabric-col",
         className,
-        stretchContent && classes.stretchContent,
+        stretchContent && "stretchContent",
         flex === "fill" && "flex-1",
         flex === "full" && "flex-full",
         flex === "auto" && "flex-initial",

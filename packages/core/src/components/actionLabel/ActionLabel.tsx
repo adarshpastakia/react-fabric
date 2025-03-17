@@ -30,7 +30,6 @@ import {
   type TestProps,
 } from "../../types";
 import { ButtonGroup } from "../button/ButtonGroup";
-import classes from "./ActionLabel.module.css";
 
 export interface ActionLabelProps
   extends AriaProps,
@@ -84,7 +83,7 @@ export const ActionLabel = ({
     <div
       className={classNames(
         className,
-        classes.actionLabel,
+        "fabric-actionLabel",
         "flex overflow-hidden gap-1 items-center cursor-default select-none",
       )}
       data-disabled={disabled}
@@ -94,7 +93,7 @@ export const ActionLabel = ({
         ref={calculateBasis}
         data-inner-clickable
         className={classNames(
-          classes.actions,
+          "fabric-actions",
           "overflow-hidden flex-content",
           align === "end" && "order-2",
         )}

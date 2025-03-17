@@ -48,7 +48,7 @@ export const ErrorIcon = ({ error = "", invalid }: KeyValue) => {
               ) as string)
         }
         placement="bottom"
-        color="danger"
+        color="danger-200"
       >
         <Icon
           className="flex-content first:ms-2 self-center"

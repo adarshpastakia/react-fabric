@@ -34,7 +34,6 @@ import {
 } from "../../types";
 import { cloneChildren } from "../../utils";
 import { type ButtonProps } from "./Button";
-import classes from "./Button.module.css";
 
 interface BaseProps
   extends CssProp,
@@ -132,11 +131,11 @@ export const ToggleButtonGroup = ({
   return (
     <div
       className={classNames(
-        classes.buttonGroup,
+        "fabric-buttonGroup",
         className,
         fullWidth ? "flex" : "inline-flex",
         "flex-nowrap align-middle",
-        vertical && classes.vertical,
+        vertical && "vertical",
         vertical && "flex-col",
       )}
       {...aria}

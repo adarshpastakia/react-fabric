@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-@layer reset {
+@layer base {
   :root {
     --click-gradient: linear-gradient(
       var(--fabric-gradient-deg, 180deg),
@@ -39,13 +39,13 @@
     );
     --progress-gradient: linear-gradient(
       -45deg,
-      color(from var(--white) srgb r g b / 10%) 25%,
-      color(from var(--tint) srgb r g b / 10%) 25%,
-      color(from var(--tint) srgb r g b / 10%) 50%,
-      color(from var(--white) srgb r g b / 10%) 50%,
-      color(from var(--white) srgb r g b / 10%) 75%,
-      color(from var(--tint) srgb r g b / 10%) 75%,
-      color(from var(--tint) srgb r g b / 10%)
+      color(from var(--color-white) srgb r g b / 10%) 25%,
+      color(from var(--color-tint) srgb r g b / 10%) 25%,
+      color(from var(--color-tint) srgb r g b / 10%) 50%,
+      color(from var(--color-white) srgb r g b / 10%) 50%,
+      color(from var(--color-white) srgb r g b / 10%) 75%,
+      color(from var(--color-tint) srgb r g b / 10%) 75%,
+      color(from var(--color-tint) srgb r g b / 10%)
     );
   }
 }

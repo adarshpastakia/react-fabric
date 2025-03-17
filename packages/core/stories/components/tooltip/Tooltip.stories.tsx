@@ -77,22 +77,22 @@ export const Colors: TooltipStory = {
         <Tooltip {...args}>
           <Icon size="3rem" icon="mdi mdi-react" />
         </Tooltip>
-        <Tooltip {...args} color="primary">
+        <Tooltip {...args} color="primary-200" textColor="primary-800">
           <Icon size="3rem" icon="mdi mdi-react" color="primary" />
         </Tooltip>
-        <Tooltip {...args} color="accent">
+        <Tooltip {...args} color="accent-200" textColor="accent-800">
           <Icon size="3rem" icon="mdi mdi-react" color="accent" />
         </Tooltip>
-        <Tooltip {...args} color="info">
+        <Tooltip {...args} color="info-200" textColor="info-800">
           <Icon size="3rem" icon="mdi mdi-react" color="info" />
         </Tooltip>
-        <Tooltip {...args} color="danger">
+        <Tooltip {...args} color="danger-200" textColor="danger-800">
           <Icon size="3rem" icon="mdi mdi-react" color="danger" />
         </Tooltip>
-        <Tooltip {...args} color="success">
+        <Tooltip {...args} color="success-200" textColor="success-800">
           <Icon size="3rem" icon="mdi mdi-react" color="success" />
         </Tooltip>
-        <Tooltip {...args} color="warning">
+        <Tooltip {...args} color="warning-200" textColor="warning-800">
           <Icon size="3rem" icon="mdi mdi-react" color="warning" />
         </Tooltip>
       </Fragment>

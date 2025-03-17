@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-@layer comp {
+@layer components {
   h1 {
     font-size: 2.5rem;
     font-weight: 500;
@@ -103,7 +103,7 @@
       padding-inline: 1em;
 
       font-size: 0.875em;
-      color: theme(textColor.dimmed);
+      color: var(--text-color-dimmed);
       text-overflow: ellipsis;
       white-space: nowrap;
     }
@@ -125,12 +125,20 @@
     &.bg-alternate {
       & > dt:nth-of-type(odd),
       & > dd:nth-of-type(odd) {
-        background-color: color-mix(in lab, var(--fabric-bg) 99%, var(--tint));
+        background-color: color-mix(
+          in lab,
+          var(--fabric-bg) 99%,
+          var(--color-tint)
+        );
       }
 
       & > dt:nth-of-type(even),
       & > dd:nth-of-type(even) {
-        background-color: color-mix(in lab, var(--fabric-bg) 92%, var(--tint));
+        background-color: color-mix(
+          in lab,
+          var(--fabric-bg) 92%,
+          var(--color-tint)
+        );
       }
     }
   }
@@ -142,7 +150,7 @@
 
     padding: 0 2px;
 
-    color: theme(colors.accent.700);
+    color: var(--color-accent-700);
     text-decoration: underline dashed 1px;
 
     background-color: color-mix(in lab, currentcolor 10%, var(--fabric-bg));
@@ -151,29 +159,6 @@
   mark {
     display: inline-block;
     color: var(--fabric-text);
-    background-color: theme(colors.accent.100);
-  }
-
-  .link {
-    cursor: pointer;
-    user-select: none;
-
-    font-weight: 500;
-    color: theme(colors.accent.600);
-    text-decoration: underline dotted;
-
-    &:hover {
-      text-decoration: underline solid;
-    }
-  }
-
-  .bg-odd,
-  .bg-alternate > :nth-child(odd) {
-    background-color: color-mix(in lab, var(--fabric-bg) 99%, var(--tint));
-  }
-
-  .bg-even,
-  .bg-alternate > :nth-child(even) {
-    background-color: color-mix(in lab, var(--fabric-bg) 92%, var(--tint));
+    background-color: var(--color-accent-100);
   }
 }

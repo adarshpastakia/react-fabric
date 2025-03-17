@@ -1,0 +1,189 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@layer components {
+  .fabric-tabPanel {
+    --color: var(--color-primary-500);
+
+    &[data-orientation="top"] {
+      grid-template: "tablist" auto "content" 1fr / 1fr;
+
+      .fabric-tabHeader {
+        box-shadow: 0 -1px 0 var(--border-color-dimmed) inset;
+      }
+    }
+
+    &[data-orientation="bottom"] {
+      grid-template: "content" 1fr "tablist" auto / 1fr;
+
+      .fabric-tabHeader {
+        margin-top: 1px;
+        box-shadow: 0 1px 0 var(--border-color-dimmed) inset;
+      }
+    }
+
+    &[data-orientation="start"] {
+      grid-template: "tablist content" 1fr / auto 1fr;
+
+      .fabric-tabHeader {
+        box-shadow: -1px 0 0 var(--border-color-dimmed) inset;
+      }
+    }
+
+    &[data-orientation="end"] {
+      grid-template: "content tablist" 1fr / 1fr auto;
+
+      .fabric-tabHeader {
+        box-shadow: 1px 0 0 var(--border-color-dimmed) inset;
+      }
+    }
+  }
+}
+
+@layer utilities {
+  .fabric-tabPanel {
+    & .fabric-tabList > .fabric-tabButton.active {
+      pointer-events: none;
+    }
+
+    & > .fabric-tabHeader {
+      grid-area: tablist;
+
+      & > .fabric-tabList > .fabric-tabButton {
+        &[data-color="accent"] {
+          --color: var(--color-accent-500);
+        }
+
+        &[data-color="info"] {
+          --color: var(--color-info-500);
+        }
+
+        &[data-color="danger"] {
+          --color: var(--color-danger-500);
+        }
+
+        &[data-color="success"] {
+          --color: var(--color-success-500);
+        }
+
+        &[data-color="warning"] {
+          --color: var(--color-warning-500);
+        }
+
+        &:not(.active):hover {
+          color: color-mix(in lab, var(--color) 65%, var(--fabric-text));
+          background-color: --alpha(var(--color-tint-100) / 50%);
+        }
+
+        &.active {
+          --active-color: var(--color);
+
+          font-weight: 500;
+          color: color-mix(in lab, var(--color) 65%, var(--fabric-text));
+        }
+      }
+    }
+
+    &[data-variant="outline"] {
+      & .fabric-tabList > .fabric-tabButton.active {
+        --active-color: var(--bg-color-base);
+        --active-border: 0 0 0 1px var(--border-color-base) inset;
+
+        background-color: var(--bg-color-base);
+      }
+    }
+
+    &[data-variant="solid"] {
+      & .fabric-tabList > .fabric-tabButton.active {
+        color: var(--color-white);
+        background-color: var(--color);
+      }
+    }
+
+    &[data-variant="soft"] {
+      & .fabric-tabList > .fabric-tabButton.active {
+        background-color: color-mix(in lab, var(--color) 20%, var(--fabric-bg));
+      }
+    }
+
+    &[data-orientation="top"] .fabric-tabList {
+      & > .fabric-tabButton.active {
+        box-shadow:
+          0 -2px 0 var(--active-color) inset,
+          var(--active-border, 0 0 0 transparent);
+      }
+    }
+
+    &[data-orientation="bottom"] .fabric-tabList {
+      & > .fabric-tabButton.active {
+        box-shadow:
+          0 2px 0 var(--active-color) inset,
+          var(--active-border, 0 0 0 transparent);
+      }
+    }
+
+    &[data-orientation="start"] .fabric-tabList {
+      & > .fabric-tabButton.active {
+        box-shadow:
+          -2px 0 0 var(--active-color) inset,
+          var(--active-border, 0 0 0 transparent);
+      }
+    }
+
+    &[data-orientation="end"] .fabric-tabList {
+      & > .fabric-tabButton.active {
+        box-shadow:
+          2px 0 0 var(--active-color) inset,
+          var(--active-border, 0 0 0 transparent);
+      }
+    }
+
+    &[data-orientation="top"] .fabric-tabList > .fabric-tabButton {
+      margin-top: 2px;
+      margin-inline: 1px;
+      border-end-start-radius: 0;
+      border-end-end-radius: 0;
+    }
+
+    &[data-orientation="bottom"] .fabric-tabList > .fabric-tabButton {
+      margin-bottom: 2px;
+      margin-inline: 1px;
+      border-start-start-radius: 0;
+      border-start-end-radius: 0;
+    }
+
+    &[data-orientation="start"] .fabric-tabList > .fabric-tabButton {
+      margin-block: 1px;
+      margin-inline-start: 2px;
+      border-start-end-radius: 0;
+      border-end-end-radius: 0;
+    }
+
+    &[data-orientation="end"] .fabric-tabList > .fabric-tabButton {
+      margin-block: 1px;
+      margin-inline-end: 2px;
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
+    }
+  }
+}

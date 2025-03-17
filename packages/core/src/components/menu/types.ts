@@ -27,7 +27,7 @@ import {
   type BadgeType,
   type CallbackReturn,
   type ChildrenProp,
-  type ColorType,
+  type ColorState,
   type CssProp,
   type IconProps,
   type TestProps,
@@ -53,7 +53,7 @@ export interface MenuItemProps
   /**
    * menu color
    */
-  color?: ColorType;
+  color?: ColorState;
   /**
    * item active
    */

@@ -30,14 +30,14 @@ import {
   type ColorType,
   type CssProp,
   type IconProps,
+  type PaletteType,
   type PolymorphicProps,
   type RefProp,
   type SizeType,
   type TestProps,
 } from "../../types";
-import { getColor, getColorClass } from "../../utils";
+import { getColor } from "../../utils";
 import { Icon } from "../icon/Icon";
-import classes from "./Chip.module.css";
 
 export interface ChipProps
   extends CssProp,
@@ -53,7 +53,7 @@ export interface ChipProps
   /**
    * chip color (CSS color / tailwind color)
    */
-  color?: ColorType | string;
+  color?: ColorType | PaletteType | string;
   /**
    * chip styling
    */
@@ -154,13 +154,12 @@ export const Chip = <Tag extends React.ElementType = "div">({
       role="term"
       data-ref="chip"
       className={classNames(
-        classes.chip,
+        "fabric-chip",
         className,
-        color && getColorClass(color),
         "select-none inline-flex flex-nowrap items-center align-middle max-w-72 rounded",
         rounded && "rounded-full",
-        !!onClick && classes.clickable,
-        disabled && classes.disabled,
+        !!onClick && "clickable",
+        disabled && "disabled",
       )}
       style={styles}
       data-variant={variant}
@@ -171,7 +170,7 @@ export const Chip = <Tag extends React.ElementType = "div">({
       {icon && (
         <Icon
           data-ref="chipIcon"
-          className={classNames(classes.chipIcon, "m-1")}
+          className={classNames("fabric-chipIcon", "m-1")}
           icon={icon}
           bg={iconBg}
           onClick={onIconClick}
@@ -182,7 +181,7 @@ export const Chip = <Tag extends React.ElementType = "div">({
       {children && (
         <label
           data-ref="chipLabel"
-          className={classNames(classes.chipLabel, "truncate")}
+          className={classNames("fabric-chipLabel", "truncate")}
         >
           {children}
         </label>
@@ -193,7 +192,7 @@ export const Chip = <Tag extends React.ElementType = "div">({
           data-ref="chipRemove"
           data-inner-cliackable
           className={classNames(
-            classes.chipRemove,
+            "fabric-chipRemove",
             "cursor-pointer pe-1 opacity-65 hover:opacity-90",
           )}
           onClick={removeHandler}

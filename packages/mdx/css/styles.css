@@ -21,6 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-@import url("./_hljs.light.css");
-@import url("./_hljs.dark.css");
-@import url("./_markdown.css");
+@import "./_hljs.light.css";
+@import "./_hljs.dark.css";
+@import "./_markdown.css";
+@import "./_mdxEditor.css";

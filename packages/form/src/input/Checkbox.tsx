@@ -151,7 +151,7 @@ export const Checkbox = ({
       <Icon
         className={classNames(
           "p-0.5",
-          actualValue && icon && !iconChecked && "bg-primary-500 text-white",
+          actualValue && icon && !iconChecked && "bg-primary-500 text-white!",
         )}
         size="1.25em"
         color={invalid ? "danger" : "primary"}

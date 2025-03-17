@@ -29,7 +29,6 @@ import { Fragment } from "react/jsx-runtime";
 import { useMemoDebugger } from "../../hooks/useEffectDebugger";
 import { usePropToggle } from "../../hooks/usePropToggle";
 import { type ChildrenProp } from "../../types";
-import classes from "./ErrorBoundary.module.css";
 import { ErrorIcon } from "./ErrorIcon";
 import { useGlobals } from "../../context/Global";
 
@@ -53,7 +52,7 @@ const ErrorMessage = ({ error, errorElement }: KeyValue) => {
   return (
     <Fragment>
       <ErrorIcon />
-      <div className={classNames(classes.boundaryMessage, "p-2")}>
+      <div className={classNames("fabric-boundaryMessage", "p-2")}>
         <EE error={error} />
       </div>
     </Fragment>
@@ -64,10 +63,12 @@ const ErrorStack = ({ error, stack }: KeyValue) => {
   const [show, toggleShow] = usePropToggle(false);
   useLogger().error(error, {}, stack);
   return (
-    <div className={classNames(classes.boundaryDetail, "overflow-hidden grid")}>
+    <div
+      className={classNames("fabric-boundaryDetail", "overflow-hidden grid")}
+    >
       <div
         className={classNames(
-          classes.boundaryLink,
+          "fabric-boundaryLink",
           "px-2 py-1 text-xs text-end",
         )}
       >
@@ -78,7 +79,7 @@ const ErrorStack = ({ error, stack }: KeyValue) => {
       {show && (
         <div
           className={classNames(
-            classes.boundaryStack,
+            "fabric-boundaryStack",
             "overflow-auto p-2 text-xs border-t",
           )}
         >
@@ -122,13 +123,13 @@ export class ErrorBoundary extends Component<
       return (
         <div
           className={classNames(
-            classes.errorBoundary,
+            "fabric-errorBoundary",
             "grid grid-rows-1 overflow-hidden p-0.5 rounded-capped",
           )}
         >
           <div
             className={classNames(
-              classes.boundaryContent,
+              "fabric-boundaryContent",
               "overflow-hidden grid rounded-capped",
             )}
           >

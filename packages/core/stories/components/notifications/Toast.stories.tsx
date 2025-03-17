@@ -85,15 +85,18 @@ export const _Toast: ToastStory = {
         </Button>
         <Button
           onClick={() =>
-            showToast({
-              ...args,
-              color: "accent",
-              actions: (
-                <Button variant="outline" color="accent" value="showLog">
-                  View Logs
-                </Button>
-              ),
-            }).then(action("toastReturn"))
+            showToast(
+              {
+                ...args,
+                color: "accent",
+                actions: (
+                  <Button variant="outline" color="accent" value="showLog">
+                    View Logs
+                  </Button>
+                ),
+              },
+              0,
+            ).then(action("toastReturn"))
           }
         >
           With Action

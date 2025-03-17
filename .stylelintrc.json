@@ -9,6 +9,7 @@
     "value-keyword-case": null,
     "no-descending-specificity": null,
     "media-query-no-invalid": null,
+    "import-notation": "string",
     "selector-pseudo-class-no-unknown": [
       true,
       { "ignorePseudoClasses": ["global"] }
@@ -17,6 +18,22 @@
       true,
       {
         "ignoreUnits": ["xl"]
+      }
+    ],
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "mixin",
+          "define-mixin",
+          "value",
+          "source",
+          "theme",
+          "utility",
+          "variant",
+          "reference",
+          "custom-variant"
+        ]
       }
     ],
     "selector-class-pattern": "^[a-z][a-zA-Z0-9-]*(?:\\-[a-zA-Z0-9]+)*(?:__[a-z][a-zA-Z0-9]+)?(?:--[a-z][a-zA-Z0-9]+)?(?:\\:.*)?$",

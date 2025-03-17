@@ -34,7 +34,6 @@ import {
   type TestProps,
 } from "../../types";
 import { ErrorBoundary } from "../boundary/ErrorBoundary";
-import classes from "./Content.module.css";
 
 export interface ContentProps
   extends ChildrenProp,
@@ -89,7 +88,7 @@ export const Content = ({
       data-test-value={testValue}
       ref={resizeHandle}
       onScroll={scrollHandler}
-      className={classNames(classes.content, "area-content", className)}
+      className={classNames("fabric-content", "area-content", className)}
     >
       <ErrorBoundary>{children}</ErrorBoundary>
     </section>

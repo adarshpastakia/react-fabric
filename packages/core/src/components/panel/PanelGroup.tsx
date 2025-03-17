@@ -28,7 +28,6 @@ import {
   useMemoDebugger,
 } from "../../hooks/useEffectDebugger";
 import { type ChildrenProp } from "../../types";
-import classes from "./Panel.module.css";
 
 export interface PanelGroupProps extends ChildrenProp {
   /**
@@ -81,7 +80,7 @@ export const PanelGroup = ({
     <div
       data-ref="panelGroup"
       className={classNames(
-        classes.panelGroup,
+        "fabric-panelGroup",
         "flex flex-col overflow-auto area-content p-px",
       )}
     >

@@ -27,7 +27,6 @@ import { useMemo, useRef, useState } from "react";
 import { type AriaProps, type CssProp, type TestProps } from "../../types";
 import { CoreIcons } from "../../types/icons";
 import { Button } from "../button/Button";
-import classes from "./Media.module.css";
 
 export interface BaseProps extends CssProp, TestProps, AriaProps {
   /**
@@ -43,6 +42,12 @@ export interface BaseProps extends CssProp, TestProps, AriaProps {
    */
   fit?: "cover" | "contain" | "fill";
 }
+
+const cover = {
+  fill: "object-fill",
+  cover: "object-cover",
+  contain: "object-contain",
+};
 
 export interface ImageProps extends BaseProps {
   /**
@@ -78,7 +83,7 @@ export const Image = ({
     () => (
       <div
         className={classNames(
-          classes.mediaPlaceholder,
+          "fabric-mediaPlaceholder",
           "absolute z-1 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl text-gray animate-pulse",
         )}
       >
@@ -91,9 +96,9 @@ export const Image = ({
     <div
       data-ref="image"
       className={classNames(
-        classes.mediaContainer,
+        "fabric-mediaContainer",
         "relative overflow-hidden bg-gray inline-block",
-        reel && classes.mediaReel,
+        reel && "fabric-mediaReel",
         className,
       )}
       data-colorset={colorSet}
@@ -106,9 +111,9 @@ export const Image = ({
         loading="lazy"
         crossOrigin="anonymous"
         className={classNames(
-          classes.media,
+          "fabric-media",
           "pointer-events-none w-full h-full",
-          fit && `object-${fit}`,
+          cover[fit],
         )}
         onLoad={(e) => {
           e.currentTarget.previousElementSibling?.remove();
@@ -138,9 +143,9 @@ export const Video = ({
     <div
       data-ref="video"
       className={classNames(
-        classes.mediaContainer,
+        "fabric-mediaContainer",
         "relative overflow-hidden bg-gray inline-block",
-        reel && classes.mediaReel,
+        reel && "fabric-mediaReel",
         className,
       )}
       onMouseEnter={() => {
@@ -153,7 +158,7 @@ export const Video = ({
     >
       <div
         className={classNames(
-          classes.mediaPlaceholder,
+          "fabric-mediaPlaceholder",
           "absolute z-1 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl animate-pulse",
         )}
       >
@@ -166,7 +171,7 @@ export const Video = ({
         poster={poster}
         autoPlay={autoPlay}
         className={classNames(
-          classes.media,
+          "fabric-media",
           "pointer-events-none w-full h-full",
           fit && `object-${fit}`,
         )}
@@ -184,14 +189,14 @@ export const Video = ({
       <div
         data-inner-clickable
         className={classNames(
-          classes.mediaControls,
+          "fabric-mediaControls",
           "absolute bottom-6 end-6 rounded-full flex flex-col",
         )}
       >
         <Button
           rounded
           variant="link"
-          className={classes.mediaControlPlaceholder}
+          className={"fabric-mediaControlPlaceholder"}
           icon={CoreIcons.ellipsis}
           aria-label="controls"
         />
@@ -199,7 +204,7 @@ export const Video = ({
           rounded
           variant="link"
           aria-label="controls"
-          className={classes.mediaControlAction}
+          className={"fabric-mediaControlAction"}
           onClick={() => {
             videoRef.current &&
               (videoRef.current.volume = videoRef.current.volume ? 0 : 1);
@@ -210,7 +215,7 @@ export const Video = ({
           rounded
           variant="link"
           aria-label="controls"
-          className={classes.mediaControlAction}
+          className={"fabric-mediaControlAction"}
           onClick={() => {
             videoRef.current?.paused
               ? videoRef.current?.play()

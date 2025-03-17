@@ -33,11 +33,10 @@ import {
   type PaletteType,
   type TestProps,
 } from "@react-fabric/core/dist/types/types";
-import { compareValues, Format } from "@react-fabric/utilities";
+import { compareValues, Format, isColor } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import classes from "./Histogram.module.css";
 
 const emptyIcon =
   "M20.84 22.73L11.11 13H3V11H9.11L6.11 8H3V6H4.11L1.11 3L2.39 1.73L22.11 21.46L20.84 22.73M15 11H14.2L15 11.8V11M21 8V6H9.2L11.2 8H21M3 18H9V16H3V18Z";
@@ -84,7 +83,7 @@ export interface HistogramProps extends TestProps {
 export const Histogram = ({
   items = [],
   total,
-  color = "primary",
+  color = "primary-500",
   sortBy = "count",
   emptyTitle,
   emptyMessage,
@@ -105,11 +104,11 @@ export const Histogram = ({
 
   return (
     <div
-      className={classes.histogram}
+      className={"fabric-histogram from-0% to-100%"}
       {...aria}
       style={
         {
-          "--color": `var(--${color})`,
+          "--color": isColor(color) ? color : `var(--color-${color})`,
         } as AnyObject
       }
     >
@@ -127,7 +126,7 @@ export const Histogram = ({
           data-disabled={item.count === 0 || item.disabled}
           className={classNames(
             "relative cursor-pointer flex flex-nowrap items-center select-none overflow-hidden min-h-6 my-px",
-            classes.histoLabel,
+            "fabric-histoLabel",
             ((item.total ?? item.count) === 0 || item.disabled) &&
               "pointer-events-none",
           )}
@@ -136,8 +135,8 @@ export const Histogram = ({
         >
           <div
             className={classNames(
-              "absolute z-0 inset-0 opacity-50 min-w-2 ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-0% to-100%",
-              classes.histoBar,
+              "absolute z-0 inset-0 opacity-50 min-w-2 ltr:bg-gradient-to-r rtl:bg-gradient-to-l",
+              "fabric-histoBar",
             )}
             style={{
               width: `${Math.min(item.count / maxTotal, 1) * 100}%`,
@@ -171,7 +170,7 @@ export const Histogram = ({
           <span
             className={classNames(
               "z-1 rounded-full text-xs font-medium px-2 py-1 leading-none",
-              classes.histoBadge,
+              "fabric-histoBadge",
             )}
           >
             {Format.number(item.count)}

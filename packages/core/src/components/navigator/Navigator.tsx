@@ -22,17 +22,18 @@
  */
 
 import classNames from "classnames";
+import { useCallback } from "react";
 import { HotKey } from "../../hotkeys/HotKey";
 import {
-  type ChildProp,
   type AriaProps,
+  type ChildProp,
   type ColorType,
   type CssProp,
+  type PaletteType,
   type TestProps,
 } from "../../types";
 import { CoreIcons } from "../../types/icons";
 import { Icon } from "../icon/Icon";
-import { useCallback } from "react";
 
 export interface NavigatorProps
   extends CssProp,
@@ -42,7 +43,7 @@ export interface NavigatorProps
   /**
    * navigator button color
    */
-  color?: ColorType | string;
+  color?: ColorType | PaletteType | string;
   /**
    * navigation handler
    */

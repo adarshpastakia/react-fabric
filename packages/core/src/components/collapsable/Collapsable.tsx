@@ -40,7 +40,6 @@ import {
 } from "../../types";
 import { CoreIcons } from "../../types/icons";
 import { Icon } from "../icon/Icon";
-import classes from "./Collapsable.module.css";
 
 interface CollapsableRef {
   button: RefObject<HTMLElement>;
@@ -135,12 +134,12 @@ export const Collapsable = ({
     return [h, b];
   }, [children]);
   return (
-    <div className={classNames(classes.collapsable, className)} {...aria}>
+    <div className={classNames("fabric-collapsable", className)} {...aria}>
       <div
         role="none"
         ref={headRef}
         className={classNames(
-          classes.collapsableHead,
+          "fabric-collapsableHead",
           "flex gap-1 flex-nowrap py-2 font-medium cursor-pointer items-center select-none hover:opacity-70",
           headerClassName,
           stickyHeader && "bg-base sticky top-0 px-2 py-1 z-10",
@@ -154,7 +153,7 @@ export const Collapsable = ({
       {openState && (
         <div
           ref={bodyRef}
-          className={classNames(classes.collapsableBody, bodyClassName)}
+          className={classNames("fabric-collapsableBody", bodyClassName)}
         >
           {body}
         </div>

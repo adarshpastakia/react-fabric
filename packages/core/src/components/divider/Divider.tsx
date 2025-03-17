@@ -24,13 +24,12 @@
 import classNames from "classnames";
 import { useCallback } from "react";
 import {
-  type CssProp,
   type ChildProp,
   type ColorType,
+  type CssProp,
   type PaletteType,
 } from "../../types";
-import { getBgClass, getBorderClass, getColorClass } from "../../utils";
-import classes from "./Divider.module.css";
+import { getColor } from "../../utils";
 
 export interface DividerProps extends CssProp, Partial<ChildProp> {
   /**
@@ -42,9 +41,13 @@ export interface DividerProps extends CssProp, Partial<ChildProp> {
    */
   vertical?: boolean;
   /**
+   * divider label classname(s)
+   */
+  labelClassName?: string;
+  /**
    * rule color
    */
-  color?: ColorType | PaletteType | "tint";
+  color?: ColorType | PaletteType | string;
   /**
    * text alignment
    */
@@ -53,8 +56,9 @@ export interface DividerProps extends CssProp, Partial<ChildProp> {
 
 export const Divider = ({
   children,
-  color,
+  color = "tint-300",
   vertical,
+  labelClassName,
   fill,
   align = "start",
   className,
@@ -63,13 +67,14 @@ export const Divider = ({
     ({ flex, className }: KeyValue) => {
       return (
         <hr
-          style={{ flex }}
+          style={{ flex, borderColor: getColor(color) }}
           className={classNames(
             className,
             vertical && "vertical",
             !flex && "self-stretch",
-            vertical ? classes.vertical : classes.horizontal,
-            color && getBorderClass(color + "-200"),
+            vertical
+              ? "fabric-divider--vertical"
+              : "fabric-divider--horizontal",
           )}
         />
       );
@@ -89,9 +94,8 @@ export const Divider = ({
       <div
         className={classNames(
           "px-2 whitespace-nowrap",
-          vertical ? classes.vertical : classes.horizontal,
-          fill && getBgClass((color ?? "tint") + "-200"),
-          !fill && getColorClass((color ?? "tint") + "-600"),
+          vertical ? "fabric-divider--vertical" : "fabric-divider--horizontal",
+          labelClassName,
           "rounded-full text-[0.75em]",
           vertical && "origin-center -rotate-90 z-1",
         )}

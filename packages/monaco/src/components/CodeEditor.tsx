@@ -41,7 +41,6 @@ import {
   useState,
 } from "react";
 import MonacoEditor from "react-monaco-editor";
-import classes from "./CodeEditor.module.css";
 
 export interface MonacoEditorRef {
   validate: () => boolean;
@@ -227,7 +226,7 @@ export const CodeEditor = ({
       <div
         ref={containerRef}
         data-ref="codeEditor"
-        className={classNames(classes.codeEditor, "absolute inset-0")}
+        className={classNames("fabric-codeEditor", "absolute inset-0")}
       >
         <MonacoEditor
           editorDidMount={(e, m) => [
@@ -240,7 +239,7 @@ export const CodeEditor = ({
           language={language}
           onChange={handleChange}
           theme={theme}
-          className={classes.editor}
+          className={"fabric-editor"}
           options={{
             readOnly,
             minimap: {

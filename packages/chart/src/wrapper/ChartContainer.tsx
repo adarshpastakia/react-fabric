@@ -45,7 +45,6 @@ import {
 } from "react";
 import { type Theme } from "../types";
 import echarts from "../types/charts";
-import classes from "./Chart.module.css";
 import { ChartToolbar } from "./ChartToolbar";
 
 const defaultOptions = {
@@ -198,7 +197,7 @@ export const ChartContainer = memo(
         <div
           ref={containerRef}
           className={classNames(
-            classes.chartContainer,
+            "rf-chartContainer",
             "overflow-hidden area-content",
           )}
         />

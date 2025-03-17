@@ -24,7 +24,6 @@
 import classNames from "classnames";
 import { type ChildrenProp, type CssProp, type RefProp } from "../../types";
 import { ErrorBoundary } from "../boundary/ErrorBoundary";
-import classes from "./Section.module.css";
 
 /**
  * The section component provides a structured layout used within a page to organize and display content in a sectioned format, ensuring a consistent and intuitive user experience.
@@ -43,7 +42,7 @@ export const Section = ({
       dir={dir}
       ref={ref}
       className={classNames(
-        classes.section,
+        "fabric-section",
         className,
         "grid area-content overflow-hidden",
       )}

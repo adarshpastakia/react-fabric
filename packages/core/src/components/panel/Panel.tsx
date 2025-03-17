@@ -38,7 +38,6 @@ import {
 import { CoreIcons } from "../../types/icons";
 import { Loading } from "../animations/Animations";
 import { Icon } from "../icon/Icon";
-import classes from "./Panel.module.css";
 
 export interface PanelProps
   extends CssProp,
@@ -146,7 +145,7 @@ export const Panel = ({
   return (
     <div
       className={classNames(
-        classes.panel,
+        "fabric-panel",
         className,
         "rounded-capped overflow-hidden outline grid",
         expanded ? "fixed inset-4 z-50" : "relative",
@@ -172,7 +171,7 @@ export const Panel = ({
       <header
         role="none"
         className={classNames(
-          classes.panelHeader,
+          "fabric-panelHeader",
           headerClassName,
           "flex flex-nowrap items-center area-head",
         )}
@@ -182,7 +181,7 @@ export const Panel = ({
         {onBack && (
           <Icon
             data-ref="panelBack"
-            className={classNames(classes.panelAction, "cursor-pointer")}
+            className={classNames("fabric-panelAction", "cursor-pointer")}
             icon={CoreIcons.chevronLeft}
             onClick={onBack}
           />
@@ -215,7 +214,7 @@ export const Panel = ({
             {expandable && (
               <Icon
                 data-ref="panelExpand"
-                className={classNames(classes.panelAction, "cursor-pointer")}
+                className={classNames("fabric-panelAction", "cursor-pointer")}
                 icon={expanded ? CoreIcons.minimize : CoreIcons.maximize}
                 onClick={toggleExpand}
               />
@@ -223,7 +222,7 @@ export const Panel = ({
             {!expanded && collapsable && (
               <Icon
                 data-ref="panelCollapse"
-                className={classNames(classes.panelAction, "cursor-pointer")}
+                className={classNames("fabric-panelAction", "cursor-pointer")}
                 icon={collapsed ? CoreIcons.expand : CoreIcons.collapse}
                 onClick={toggleCollapse}
               />
@@ -231,7 +230,7 @@ export const Panel = ({
             {!expanded && onClose && (
               <Icon
                 data-ref="panelClose"
-                className={classNames(classes.panelAction, "cursor-pointer")}
+                className={classNames("fabric-panelAction", "cursor-pointer")}
                 icon={CoreIcons.close}
                 onClick={onClose}
               />
@@ -243,7 +242,7 @@ export const Panel = ({
         <div
           data-ref="panelBody"
           className={classNames(
-            classes.panelBody,
+            "fabric-panelBody",
             "area-content grid overflow-hidden",
           )}
         >

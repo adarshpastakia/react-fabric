@@ -51,7 +51,7 @@ import { Icon } from "../../components/icon/Icon";
 import { useIsRtl } from "../../hooks/useIsRtl";
 import { type RefProp, type TooltipType } from "../../types";
 import { CoreIcons } from "../../types/icons";
-import classes from "./Tooltip.module.css";
+import { getColor } from "../../utils";
 
 export interface TooltipProps extends TooltipType, RefProp {
   /**
@@ -82,6 +82,7 @@ export const Tooltip = ({
   ref,
   children,
   color,
+  textColor,
   content,
   open,
   copyContent,
@@ -173,25 +174,45 @@ export const Tooltip = ({
         <FloatingPortal>
           <dfn
             data-ref="tooltip"
-            data-color={color}
             className={classNames(
-              classes.tooltip,
-              "select-none text-sm not-italic flex py-1 px-2 !max-w-lg rounded shadow-md bg-current",
+              "fabric-tooltip z-(--z-tooltip)",
+              "select-none text-sm not-italic flex py-1 px-2 !max-w-lg rounded shadow-md bg-muted",
             )}
             ref={refs.setFloating}
-            style={floatingStyles}
+            style={{
+              color: textColor ? getColor(textColor) : undefined,
+              backgroundColor: color ? getColor(color) : undefined,
+              ...floatingStyles,
+            }}
             {...getFloatingProps()}
           >
             <span
               className={classNames(
-                "font-medium text-dimmed flex-1 break-all",
+                "font-medium flex-1 break-all",
+                !textColor && "contrast",
                 isString(content) && "whitespace-pre-wrap mixed-lang",
               )}
+              style={{
+                color: textColor
+                  ? undefined
+                  : color
+                    ? getColor(color)
+                    : "var(--bg-color-muted)",
+              }}
             >
               {content}
             </span>
             {copyEl}
-            <FloatingArrow ref={arrowRef} context={context} />
+            <FloatingArrow
+              ref={arrowRef}
+              context={context}
+              strokeWidth={0.5}
+              className="fill-muted stroke-dimmed"
+              style={{
+                stroke: color ? getColor(color) : undefined,
+                fill: color ? getColor(color) : undefined,
+              }}
+            />
           </dfn>
         </FloatingPortal>
       )}

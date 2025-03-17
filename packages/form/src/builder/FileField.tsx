@@ -21,9 +21,10 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Button, Icon, ProgressBar } from "@react-fabric/core";
-import { FileUtil, Format } from "@react-fabric/utilities";
+import { Button, Icon, ProgressBar, Tooltip } from "@react-fabric/core";
+import { FileUtil, Format, isString } from "@react-fabric/utilities";
 import { Fragment } from "react";
+import { useTranslation } from "react-i18next";
 import { useFileUploader, type UploadHandler } from "../hooks/useFileUploader";
 import { Field } from "../input/Field";
 import { HiddenInput } from "../input/Hidden";
@@ -37,13 +38,18 @@ export const FileField = ({
   value,
   fileUrl,
   multiple,
+  invalid,
+  error,
   ...rest
 }: Partial<FileSchema & ValueType> & {
   value?: AnyObject;
   inline?: boolean;
+  invalid?: boolean;
+  error?: AnyObject;
   fileUrl?: (path: string) => string;
   uploadHandler: UploadHandler;
 }) => {
+  const { t } = useTranslation();
   const { pending, files, list, upload, remove } = useFileUploader(
     async (data, config) => await uploadHandler?.(data, config),
     value,
@@ -52,29 +58,48 @@ export const FileField = ({
 
   return (
     <Fragment>
-      <Field plain inline={inline} label={label} className="inline-block">
+      <Field plain inline={inline} label={label}>
         <HiddenInput hiddenValue={multiple ? list : list?.[0]} {...rest} />
-        <span>
-          <Button
-            badge={pending > 0 ? `${pending}` : undefined}
-            data-ref="filebtn"
-          >
-            <Fragment>
-              <span>Add file</span>
-              <input
-                type="file"
-                accept={accept}
-                multiple={multiple}
-                className="absolute inset-0 opacity-0 z-5"
-                onChange={(e) => [
-                  upload(e.target.files),
-                  (e.target.value = ""),
-                ]}
-              />
-            </Fragment>
-          </Button>
-        </span>
       </Field>
+      <Tooltip
+        color="danger-200"
+        content={
+          isString(error)
+            ? `${error}`
+            : error &&
+              (t(
+                error?.key,
+                error.values
+                  ? {
+                      ...error?.values,
+                      label: t(
+                        error.values?.label ?? "form:badkey",
+                        error.values?.path,
+                      ),
+                    }
+                  : {},
+              ) as string)
+        }
+        disabled={!error}
+      >
+        <Button
+          badge={pending > 0 ? `${pending}` : undefined}
+          color={error ? "danger" : undefined}
+          variant={error ? "soft" : undefined}
+          data-ref="filebtn"
+        >
+          <Fragment>
+            <span>Add file</span>
+            <input
+              type="file"
+              accept={accept}
+              multiple={multiple}
+              className="absolute inset-0 opacity-0 z-5"
+              onChange={(e) => [upload(e.target.files), (e.target.value = "")]}
+            />
+          </Fragment>
+        </Button>
+      </Tooltip>
       <br />
       <div className="bg-alternate">
         {files.map((file, idx) => (

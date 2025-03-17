@@ -25,7 +25,6 @@ import { Format } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useMemoDebugger } from "../../hooks/useEffectDebugger";
 import { type AriaProps, type CssProp, type TestProps } from "../../types";
-import classes from "./Meter.module.css";
 
 export interface MeterProps extends CssProp, AriaProps, TestProps {
   /**
@@ -51,7 +50,7 @@ export const Meter = ({ value, hideLabel, className, ...aria }: MeterProps) => {
   return (
     <div
       className={classNames(
-        classes.meter,
+        "fabric-meter",
         className,
         "flex flex-nowrap items-center gap-[2px]",
       )}
@@ -61,7 +60,7 @@ export const Meter = ({ value, hideLabel, className, ...aria }: MeterProps) => {
         <div
           key={step}
           className={classNames(
-            classes.meterBar,
+            "fabric-meterBar",
             "first-of-type:rounded-s last-of-type:rounded-e bg-tint-100 relative outline -outline-offset-1 outline-muted overflow-hidden after:absolute after:inset-0",
           )}
           data-active={activeCount >= step}

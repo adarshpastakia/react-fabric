@@ -21,7 +21,6 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import classes from "./MdxEditor.module.css";
 import {
   AdmonitionDirectiveDescriptor,
   BlockTypeSelect,
@@ -117,7 +116,7 @@ export const MdxEditor: FC<MdxEditorProps> = ({ value: _value, onChange }) => {
   ) : (
     <MDXEditor
       className={classNames(
-        classes.editor,
+        "fabric-mdxEditor",
         "grid overflow-hidden area-content max-h-full h-full bg-base",
         isDark ? "dark-theme" : "light-theme",
       )}

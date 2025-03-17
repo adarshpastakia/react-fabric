@@ -40,7 +40,6 @@ import { useTranslation } from "react-i18next";
 import { type SuperDateProps } from "../types";
 import { QuickSelect } from "./QuickSelect";
 import { RelativePanel } from "./RelativePanel";
-import classes from "./SuperDate.module.css";
 
 export const SuperDateTabs = ({
   events,
@@ -84,7 +83,7 @@ export const SuperDateTabs = ({
     <div
       className={classNames(
         "rounded-capped outline select-none overflow-hidden grid",
-        classes.superDate,
+        "fabric-superDate",
       )}
     >
       <TabPanel

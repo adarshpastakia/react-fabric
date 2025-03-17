@@ -28,7 +28,6 @@ import { DateUtil } from "../utils/dateUtil";
 import { DateCell, type DateCellProps } from "./DateCell";
 import classNames from "classnames";
 import { PageType } from "../types";
-import classes from "./Date.module.css";
 
 const rows = [0, 1, 2, 3, 4, 5];
 const cols = [0, 1, 2, 3, 4, 5, 6];
@@ -57,7 +56,7 @@ export const DatePage = ({ pageDate, isHijri, ...props }: Props) => {
     >
       <div
         className={classNames(
-          classes.dateHeader,
+          "fabric-dateHeader",
           "px-1 text-center bg-tint-50 h-7",
         )}
       ></div>
@@ -67,7 +66,7 @@ export const DatePage = ({ pageDate, isHijri, ...props }: Props) => {
           <div
             key={dt.toISOString()}
             className={classNames(
-              classes.dateHeader,
+              "fabric-dateHeader",
               "font-medium text-sm p-1 mx-px text-center text-muted bg-tint-50 h-7",
             )}
           >

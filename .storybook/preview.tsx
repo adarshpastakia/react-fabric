@@ -100,16 +100,16 @@ export default {
           const round = localStorage.getItem("storybook-rounding") ?? "normal";
           const [primary, accent] = theme.split(":");
           document.documentElement.style.setProperty(
-            "--primary",
-            `var(--${primary})`,
+            "--color-primary",
+            `var(--color-${primary})`,
           );
           document.documentElement.style.setProperty(
-            "--accent",
-            `var(--${accent})`,
+            "--color-accent",
+            `var(--color-${accent})`,
           );
           document.documentElement.style.setProperty(
-            "--tint",
-            `var(--${tint})`,
+            "--color-tint",
+            `var(--color-${tint})`,
           );
           document.documentElement.dataset.colorScheme = scheme;
           document.documentElement.dataset.rounding = round;
@@ -183,14 +183,17 @@ export default {
         const round = localStorage.getItem("storybook-rounding") ?? "normal";
         const [primary, accent] = theme.split(":");
         document.documentElement.style.setProperty(
-          "--primary",
-          `var(--${primary})`,
+          "--color-primary",
+          `var(--color-${primary})`,
         );
         document.documentElement.style.setProperty(
-          "--accent",
-          `var(--${accent})`,
+          "--color-accent",
+          `var(--color-${accent})`,
         );
-        document.documentElement.style.setProperty("--tint", `var(--${tint})`);
+        document.documentElement.style.setProperty(
+          "--color-tint",
+          `var(--color-${tint})`,
+        );
         document.documentElement.dataset.colorScheme = scheme;
         document.documentElement.dataset.rounding = round;
       }, []);
@@ -225,13 +228,19 @@ addons
   .getChannel()
   .on("THEME_CHANGED", (primary: any = "denim", accent: any = "avacado") => {
     document.documentElement.style.setProperty(
-      "--primary",
-      `var(--${primary})`,
+      "--color-primary",
+      `var(--color-${primary})`,
     );
-    document.documentElement.style.setProperty("--accent", `var(--${accent})`);
+    document.documentElement.style.setProperty(
+      "--color-accent",
+      `var(--color-${accent})`,
+    );
   });
 addons.getChannel().on("TINT_CHANGED", (tint: any = "silver") => {
-  document.documentElement.style.setProperty("--tint", `var(--${tint})`);
+  document.documentElement.style.setProperty(
+    "--color-tint",
+    `var(--color-${tint})`,
+  );
 });
 addons.getChannel().on("ROUNDING_CHANGED", (round: any = "md") => {
   document.documentElement.dataset.rounding = round;

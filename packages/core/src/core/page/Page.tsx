@@ -25,7 +25,6 @@ import classNames from "classnames";
 import { Loading } from "../../components/animations/Animations";
 import { Icon } from "../../components/icon/Icon";
 import { type ChildrenProp, type IconProps, type TestProps } from "../../types";
-import classes from "./Page.module.css";
 
 export interface PageProps extends IconProps, ChildrenProp, TestProps {
   /**
@@ -68,7 +67,7 @@ export const Page = ({
       data-test-value={testValue}
       data-loading={loading}
       className={classNames(
-        classes.page,
+        "fabric-page",
         "overflow-hidden grid area-content",
         paper && "shadow-paper m-[6px] rounded-capped",
       )}
@@ -77,7 +76,7 @@ export const Page = ({
         <div
           data-ref="pageTitle"
           className={classNames(
-            classes.pageTitle,
+            "fabric-pageTitle",
             "select-none flex gap-1 items-center justify-center px-1 py-0.5 font-medium text-center",
             titleClassName,
           )}

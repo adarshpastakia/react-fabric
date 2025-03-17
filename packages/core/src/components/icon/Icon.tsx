@@ -25,6 +25,7 @@ import { isString, isSvgPath } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useMemo } from "react";
 import {
+  type PaletteType,
   type AriaProps,
   type ColorType,
   type CssProp,
@@ -32,8 +33,7 @@ import {
   type SizeType,
   type TestProps,
 } from "../../types";
-import { getBgClass, getColor, getColorClass } from "../../utils";
-import classes from "./Icon.module.css";
+import { getColor } from "../../utils";
 
 export interface IconProps extends CssProp, AriaProps, RefProp, TestProps {
   /**
@@ -43,11 +43,11 @@ export interface IconProps extends CssProp, AriaProps, RefProp, TestProps {
   /**
    * background color (CSS color / tailwind color)
    */
-  bg?: ColorType | string;
+  bg?: ColorType | PaletteType | string;
   /**
    * icon color (CSS color / tailwind color)
    */
-  color?: ColorType | string;
+  color?: ColorType | PaletteType | string;
   /**
    * flip icon in rtl
    */
@@ -157,14 +157,12 @@ export const Icon = ({
       {...rest}
       role="presentation"
       className={classNames(
-        classes.icon,
-        className,
-        "select-none overflow-hidden inline-block box-content leading-none not-italic text-center",
-        bg && getBgClass(bg),
-        color && getColorClass(color),
+        "fabric-icon",
+        "select-none overflow-hidden box-content leading-none not-italic text-center",
         !rounded && "rounded",
         rounded && "rounded-full",
         animate && `animate-${animate}`,
+        className,
       )}
       onClick={onClick}
       data-flip={rtlFlip}

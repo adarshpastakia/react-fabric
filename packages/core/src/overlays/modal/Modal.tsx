@@ -51,7 +51,6 @@ import {
   type TestProps,
 } from "../../types";
 import { CoreIcons } from "../../types/icons";
-import classes from "./Modal.module.css";
 
 export interface ModalProps
   extends AriaProps,
@@ -183,7 +182,7 @@ export const Modal = ({
         <FloatingFocusManager context={context}>
           <dialog
             className={classNames(
-              classes.modal,
+              "fabric-modal",
               "rounded-capped relative overflow-hidden flex flex-col flex-nowrap",
               "ring-1 ring-tint-100 ring-offset-1 focus-within:ring-primary-300 shadow-xl",
               size === "sm" && "w-[20rem]",
@@ -205,7 +204,7 @@ export const Modal = ({
             <HotKeyWrapper>
               <Header
                 flex
-                className={classNames(classes.modalHeader, headerClassName)}
+                className={classNames("fabric-modalHeader", headerClassName)}
               >
                 {isString(icon) && (
                   <Icon
@@ -222,7 +221,7 @@ export const Modal = ({
                 <Icon
                   data-ref="panelClose"
                   className={classNames(
-                    classes.panelAction,
+                    "fabric-panelAction",
                     "cursor-pointer p-1 text-xl self-stretch",
                   )}
                   icon={CoreIcons.close}
@@ -233,7 +232,7 @@ export const Modal = ({
               <div
                 role="dialog"
                 className={classNames(
-                  classes.modalBody,
+                  "fabric-modalBody",
                   "flex-1 grid overflow-hidden",
                 )}
                 {...({ tabIndex: 0 } as AnyObject)}

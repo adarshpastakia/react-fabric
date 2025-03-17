@@ -97,7 +97,7 @@
   }
 
   &.markdown-body mark {
-    @apply bg-warning-300;
+    background-color: var(--color-warning-300);
   }
 
   &.markdown-body small {
@@ -123,9 +123,8 @@
   &.markdown-body img {
     box-sizing: content-box;
     max-width: 100%;
+    background-color: var(--bg-color-muted);
     border-style: none;
-
-    @apply bg-muted;
   }
 
   &.markdown-body code,
@@ -149,10 +148,9 @@
     padding: 0;
 
     background: transparent;
+    background-color: var(--bg-color-muted);
     border: 0;
     border-bottom: 1px solid hsl(210deg 18% 87% / 100%);
-
-    @apply bg-muted;
   }
 
   &.markdown-body a:hover {
@@ -242,8 +240,7 @@
   &.markdown-body h6 {
     font-size: 0.85em;
     font-weight: 600;
-
-    @apply text-muted;
+    color: var(--text-color-muted);
   }
 
   &.markdown-body p {
@@ -257,10 +254,11 @@
   &.markdown-body blockquote {
     margin: 0;
     padding: 0 1em;
-    color: #57606a;
-    border-left: 0.25em solid;
 
-    @apply border-base;
+    color: #57606a;
+
+    border-color: var(--border-color-base);
+    border-left: 0.25em solid;
   }
 
   &.markdown-body ul,
@@ -296,27 +294,42 @@
 
   &.markdown-body tt,
   &.markdown-body :not(pre) code {
+    padding: 0.125rem 0.25rem;
     font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
       "Liberation Mono", monospace;
-
-    @apply text-sm bg-coral-100/50 px-1 py-0.5;
+    font-size: var(--text-sm);
+    background-color: --alpha(var(--color-coral-100) / 10%);
   }
 
   &.markdown-body pre.hljs {
+    position: relative;
+
+    overflow: auto;
+
     margin: 1.5rem 0;
+
     font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
       "Liberation Mono", monospace;
     font-size: 12px;
     word-wrap: normal;
+    white-space: normal;
+
+    background-color: var(--bg-color-base);
+    border: 1px solid var(--border-color-base);
+    border-radius: var(--rounding);
 
     &::after {
-      @apply absolute top-0 end-0 py-1 px-2;
+      position: absolute;
+      top: 0;
+      inset-inline-end: 0;
+      padding: 0.25rem 0.5rem;
     }
 
     & > code {
-      @apply bg-transparent p-6 block whitespace-pre;
-
+      display: block;
+      padding: 1.5rem;
       white-space: pre;
+      background-color: transparent;
     }
 
     &.language-jsx::after,
@@ -369,7 +382,23 @@
     }
 
     & .hljs-copy {
-      @apply absolute end-0 bottom-0 p-2 border bg-base text-primary-600 hover:bg-primary-100 cursor-pointer leading-none;
+      cursor: pointer;
+
+      position: absolute;
+      bottom: 0;
+      inset-inline-end: 0;
+
+      padding: 0.5rem;
+
+      line-height: 1;
+      color: var(--color-primary-600);
+
+      background-color: var(--bg-color-base);
+      border: 1px solid var(--border-color-base);
+
+      &:hover {
+        background-color: var(--color-primary-100);
+      }
 
       & > svg {
         width: 1em;
@@ -378,14 +407,25 @@
     }
 
     & .hljs-copy-success {
-      @apply absolute end-0 bottom-0 p-2 border text-invert bg-invert select-none leading-none hidden;
+      user-select: none;
+
+      position: absolute;
+      bottom: 0;
+      inset-inline-end: 0;
+
+      display: none;
+
+      padding: 0.5rem;
+
+      line-height: 1;
+      color: var(--text-color-invert);
+
+      background-color: var(--bg-color-invert);
 
       &[data-show="true"] {
-        @apply block;
+        display: block;
       }
     }
-
-    @apply bg-base border rounded relative overflow-auto whitespace-normal;
   }
 
   &.markdown-body::before {
@@ -472,18 +512,16 @@
   &.markdown-body table th,
   &.markdown-body table td {
     padding: 6px 13px;
-
-    @apply border-dimmed;
+    border-color: var(--border-color-dimmed);
   }
 
   &.markdown-body table tr {
+    border-color: var(--border-color-dimmed);
     border-top: 1px solid;
-
-    @apply border-dimmed;
   }
 
   &.markdown-body table tr:nth-child(2n) {
-    @apply bg-base;
+    background-color: var(--bg-color-base);
   }
 
   & div[class*="_admonition"] {
@@ -514,23 +552,28 @@
     }
 
     &.admonition-note {
-      @apply bg-muted border-base;
+      background-color: var(--bg-color-muted);
+      border-color: var(--border-color-base);
     }
 
     &.admonition-tip {
-      @apply bg-success border-success;
+      background-color: var(--bg-success-200);
+      border-color: var(--border-success-500);
     }
 
     &.admonition-info {
-      @apply bg-info border-info;
+      background-color: var(--bg-info-200);
+      border-color: var(--border-info-500);
     }
 
     &.admonition-caution {
-      @apply bg-warning border-warning;
+      background-color: var(--bg-warning-200);
+      border-color: var(--border-warning-500);
     }
 
     &.admonition-danger {
-      @apply bg-danger border-danger;
+      background-color: var(--bg-danger-200);
+      border-color: var(--border-danger-500);
     }
   }
 }

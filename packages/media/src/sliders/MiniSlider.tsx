@@ -24,7 +24,6 @@
 import { Button, Dropdown } from "@react-fabric/core";
 import classNames from "classnames";
 import { useRef } from "react";
-import classes from "./TimeSlider.module.css";
 
 export const MiniSlider = ({
   max,
@@ -71,7 +70,7 @@ export const MiniSlider = ({
         variant="link"
         aria-label="slider"
         disabled={disabled}
-        className={classNames(textIcon && classes.btnTextIcon)}
+        className={classNames(textIcon && "fabric-btnTextIcon")}
         icon={icon}
         onClick={onClick}
         onWheel={(e) => {
@@ -95,7 +94,7 @@ export const MiniSlider = ({
           return false;
         }}
         className={classNames(
-          classes.slider,
+          "fabric-media-slider",
           "w-24 absolute -bottom-2 left-4 origin-left -rotate-90",
         )}
       />

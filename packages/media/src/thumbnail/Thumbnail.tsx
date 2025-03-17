@@ -27,7 +27,6 @@ import { getImageColorset, isNumber } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { type SyntheticEvent, useEffect, useReducer } from "react";
 import { NsfwOverlay } from "../nsfw/NsfwOverlay";
-import classes from "./Thumbnail.module.css";
 
 export interface ThumbnailProps extends CssProp {
   /**
@@ -150,9 +149,9 @@ export const Thumbnail = ({
   return (
     <div
       className={classNames(
-        classes.thumbnail,
+        "fabric-thumbnail",
         className,
-        videoReel && classes.reel,
+        videoReel && "fabric-reel",
         "overflow-hidden relative grid place-content-center p-1 shadow-inset",
         state.colorScheme.startsWith("light") && "bg-dark",
         state.colorScheme.startsWith("dark") && "bg-light",
@@ -187,7 +186,7 @@ export const Thumbnail = ({
         <Icon
           icon={CoreIcons.mediaContrast}
           className={classNames(
-            classes.contrastAction,
+            "contrastAction",
             "absolute bottom-2 end-2 rounded-full opacity-50 hover:opacity-100",
           )}
           onClick={(e) => [

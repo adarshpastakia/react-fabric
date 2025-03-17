@@ -34,7 +34,6 @@ import {
 } from "react";
 import { Fragment } from "react/jsx-runtime";
 import { ErrorIcon } from "./ErrorIcon";
-import classes from "./Field.module.css";
 import { FieldWrapper } from "./FieldWrapper";
 
 export const InputWrapper = ({
@@ -104,11 +103,11 @@ export const InputWrapper = ({
       role="none"
       ref={wrapperRef}
       className={classNames(
-        classes.inputWrapper,
-        invalid && classes.invalidWrapper,
+        "fabric-inputWrapper",
+        invalid && "fabric-invalidWrapper",
         !noOutline &&
           !noBorder &&
-          "bg-[var(--fabric-input)] outline overflow-hidden",
+          "bg-(--fabric-input) outline overflow-hidden",
         "flex flex-nowrap items-center flex-1",
         textarea ? "rounded-capped group" : "rounded",
         isExpanded
@@ -129,7 +128,7 @@ export const InputWrapper = ({
         <div
           onClickCapture={doFocus}
           className={classNames(
-            classes.decorate,
+            "fabric-decorate",
             "text-muted leading-none flex-content",
             isString(decorateStart) && "px-1",
           )}
@@ -145,7 +144,7 @@ export const InputWrapper = ({
           onClick={handleClear}
           className={classNames(
             "text-tint-500 hover:text-tint-700 p-1 z-1 flex-content",
-            classes.inputClear,
+            "fabric-inputClear",
             textarea && "self-start mt-1 me-1",
           )}
         />
@@ -154,7 +153,7 @@ export const InputWrapper = ({
         <div
           onClickCapture={doFocus}
           className={classNames(
-            classes.decorate,
+            "fabric-decorate",
             "text-muted leading-none flex-content",
             isString(decorateEnd) && "px-1",
             decorateEndHideWhenEmpty && "peer-placeholder-shown:hidden",

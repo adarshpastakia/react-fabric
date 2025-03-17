@@ -233,7 +233,7 @@ const MenuComponent = ({
                     menuClassName,
                     "flex flex-col bg-base p-1 menu-list",
                     isNested &&
-                      "outline shadow-lg rounded-capped max-h-96 overflow-auto scroll-thin z-[var(--z-popover)]",
+                      "outline shadow-lg rounded-capped max-h-96 overflow-auto scroll-thin z-(--z-popover)",
                   )}
                   autoFocus
                   ref={mergeRefs(isNested ? refs.setFloating : ref)}

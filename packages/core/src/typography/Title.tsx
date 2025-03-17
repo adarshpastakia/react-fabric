@@ -35,9 +35,8 @@ import {
   type CssProp,
   type SizeType,
 } from "../types";
-import { getBgClass, getColor, getColorClass } from "../utils";
+import { getColor } from "../utils";
 import { TitleSizeMap } from "./types";
-import classes from "./Typography.module.css";
 
 export interface TitleProps extends ChildrenProp, CssProp, AriaProps {
   as?: ElementType<
@@ -109,12 +108,10 @@ export const Title = ({
   return (
     <E
       className={classNames(
-        classes.title,
+        "fabric-title",
         className,
         family && `font-${family}`,
         !as && "text-lg",
-        bg && getBgClass(bg),
-        color && getColorClass(color),
       )}
       style={styles}
       {...aria}

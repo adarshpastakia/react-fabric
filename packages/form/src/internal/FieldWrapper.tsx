@@ -22,7 +22,6 @@
  */
 
 import classNames from "classnames";
-import classes from "./Field.module.css";
 
 export const FieldWrapper = ({
   label,
@@ -41,7 +40,7 @@ export const FieldWrapper = ({
   return (
     <div
       className={classNames(
-        classes.fieldWrapper,
+        "fabric-fieldWrapper",
         className,
         inline ? "flex flex-nowrap gap-1" : "block",
       )}

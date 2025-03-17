@@ -36,11 +36,10 @@ import { useTranslation } from "react-i18next";
 import { AnimationIndicator } from "../../components/animations/Animations";
 import { Button } from "../../components/button/Button";
 import { Icon } from "../../components/icon/Icon";
-import { type ColorType, type Elements, type IconProps } from "../../types";
+import { type ColorState, type Elements, type IconProps } from "../../types";
 import { CoreIcons } from "../../types/icons";
 import { Title } from "../../typography/Title";
-import { getBorderClass, getColorClass } from "../../utils";
-import classes from "./Alert.module.css";
+import { getColor } from "../../utils";
 
 export interface AlertProps extends Omit<IconProps, "iconBg" | "iconColor"> {
   /**
@@ -58,7 +57,7 @@ export interface AlertProps extends Omit<IconProps, "iconBg" | "iconColor"> {
   /**
    * theme color
    */
-  color?: ColorType;
+  color?: ColorState;
   /**
    * extra action button
    */
@@ -116,35 +115,20 @@ export const Alert = ({
   const iconType = useMemo(() => {
     if (icon)
       return (
-        <Icon icon={icon} size="md" rtlFlip={rtlFlip} color={color + "-600"} />
+        <Icon icon={icon} size="md" rtlFlip={rtlFlip} color={`${color}-600`} />
       );
     switch (color) {
       case "danger":
-        return (
-          <AnimationIndicator
-            type="cross"
-            className={getColorClass(color + "-600")}
-          />
-        );
+        return <AnimationIndicator type="cross" color={"danger-600"} />;
       case "success":
-        return (
-          <AnimationIndicator
-            type="check"
-            className={getColorClass(color + "-600")}
-          />
-        );
+        return <AnimationIndicator type="check" color={"success-600"} />;
       case "warning":
-        return (
-          <AnimationIndicator
-            type="exclaim"
-            className={getColorClass(color + "-600")}
-          />
-        );
+        return <AnimationIndicator type="exclaim" color={"warning-600"} />;
       default:
         return (
           <AnimationIndicator
             type={type === "confirm" ? "question" : "info"}
-            className={getColorClass(color + "-600")}
+            color={`${color}-600`}
           />
         );
     }
@@ -178,11 +162,13 @@ export const Alert = ({
           <dialog
             role="alertdialog"
             className={classNames(
-              classes.alert,
-              getBorderClass(color + "-300"),
+              "fabric-alert",
               "grid bg-base border-2 pointer-events-auto overflow-hidden rounded-capped select-none",
               "min-w-72 max-w-sm p-6 relative outline-0 shadow-lg",
             )}
+            style={{
+              borderColor: getColor(`${color}-300`),
+            }}
             ref={refs.setFloating}
             {...getFloatingProps()}
           >
@@ -199,8 +185,14 @@ export const Alert = ({
                 value={value}
                 placeholder={placeholder}
                 className={classNames(
-                  `area-[input] appearance-none outline-0 ring-${color}-500 border rounded border-${color}-200 w-full px-2 py-1`,
+                  `area-[input] appearance-none outline-0 border rounded w-full px-2 py-1`,
                 )}
+                style={
+                  {
+                    borderColor: getColor(`${color}-200`),
+                    "--tw-ring-color": getColor(`${color}-500`),
+                  } as AnyObject
+                }
                 ref={(e) => e != null && setTimeout(() => e.focus(), 100)}
                 onBlur={(e) => e.target.focus()}
                 onChange={(e) => setValue(e.target.value)}

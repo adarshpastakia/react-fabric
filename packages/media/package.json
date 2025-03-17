@@ -11,12 +11,23 @@
   "types": "dist/types/index.d.ts",
   "directories": {
     "src": "src",
+    "styles": "css",
     "test": "tests"
   },
   "files": [
+    "css",
     "src",
     "dist"
   ],
+  "exports": {
+    ".": {
+      "default": "./dist/esm/index.js",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./styles": "./css/styles.css"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"

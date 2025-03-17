@@ -21,11 +21,12 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-@layer colors, reset, comp, util, var;
+@import "tailwindcss";
 
-@import url("tailwindcss/base") layer(reset);
-@import url("tailwindcss/components") layer(comp);
-@import url("tailwindcss/utilities") layer(util);
-@import url("tailwindcss/variants") layer(var);
+@import "./theme/index.css";
+@import "./reset/index.css";
 
-@import url("./reset/index.css");
+@import "./core/index.css";
+@import "./components/index.css";
+
+@source "../../";

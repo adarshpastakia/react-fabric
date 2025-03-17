@@ -24,9 +24,8 @@
 import classNames from "classnames";
 import { useCallback, useLayoutEffect, useRef } from "react";
 import { Icon } from "../../components/icon/Icon";
-import { type ColorType, type Elements, type IconProps } from "../../types";
-import { getBgClass, getColorClass } from "../../utils";
-import classes from "./Message.module.css";
+import { type ColorState, type Elements, type IconProps } from "../../types";
+import { getColor } from "../../utils";
 
 export interface MessageProps extends Omit<IconProps, "iconBg" | "iconColor"> {
   /**
@@ -40,7 +39,7 @@ export interface MessageProps extends Omit<IconProps, "iconBg" | "iconColor"> {
   /**
    * theme color
    */
-  color?: ColorType;
+  color?: ColorState;
   /**
    * extra action button
    */
@@ -77,11 +76,15 @@ export const Message = ({
   return (
     <div
       className={classNames(
-        classes.message,
-        color ? getBgClass(color + "-300") : "bg-invert",
-        color ? getColorClass(color + "-900") : "text-invert",
+        "fabric-message",
         "flex flex-nowrap gap-1 px-8 relative justify-center max-w-md pointer-events-auto rounded mb-2 select-none",
       )}
+      style={{
+        backgroundColor: color
+          ? getColor(color + "-300")
+          : "var(--bg-color-invert)",
+        color: color ? getColor(color + "-900") : "var(--text-color-invert)",
+      }}
       ref={elRef}
     >
       {icon && <Icon icon={icon} size="md" rtlFlip={rtlFlip} />}

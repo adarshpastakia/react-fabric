@@ -78,7 +78,7 @@ export const Colors: IconStory = {
         <Icon {...args} color="danger" />
         <Icon {...args} color="success" />
         <Icon {...args} color="warning" />
-        <Icon {...args} color="invert" bg="invert" />
+        <Icon {...args} className="bg-invert text-invert" />
         <Icon {...args} color="#9333ea" />
       </Fragment>
     );

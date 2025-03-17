@@ -32,7 +32,6 @@ import {
   type FC,
 } from "react";
 import { SketchPicker } from "react-color";
-import classes from "./ColorPicker.module.css";
 
 export interface ColorProps {
   /**
@@ -130,7 +129,7 @@ export const ColorPicker: FC<ColorProps> = memo(
     return (
       <SketchPicker
         width="16rem"
-        className={classes.colorPicker}
+        className={"fabric-colorPicker"}
         styles={
           {
             default: {

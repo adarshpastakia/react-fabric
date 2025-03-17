@@ -22,27 +22,15 @@
  */
 
 import classNames from "classnames";
-import { useMemoDebugger } from "../../hooks/useEffectDebugger";
 import {
   type AriaProps,
   type ChildrenProp,
-  type ColorWithGrays,
   type CssProp,
   type TestProps,
 } from "../../types";
-import { getBgClass, getColor, getColorClass } from "../../utils";
-import classes from "./HeadFoot.module.css";
 
 interface BaseProps extends CssProp, AriaProps, ChildrenProp, TestProps {
   dir?: "ltr" | "rtl";
-  /**
-   * background color
-   */
-  bg?: ColorWithGrays | string;
-  /**
-   * background color
-   */
-  color?: ColorWithGrays | string;
 }
 
 type DefaultProps = BaseProps & { flex?: false };
@@ -58,8 +46,6 @@ const HeadFoot = ({
   as: E,
   children,
   className,
-  bg,
-  color,
   flex,
   area,
   dir,
@@ -67,37 +53,18 @@ const HeadFoot = ({
   justify = "start",
   ...aria
 }: KeyValue & { as: "header" | "footer" }) => {
-  /** ***************** style map *******************/
-  const styles = useMemoDebugger(
-    () => {
-      const s: KeyValue = {};
-      if (bg) {
-        s.backgroundColor = getColor(bg);
-      }
-      if (color) {
-        s.color = getColor(color);
-      }
-      return s;
-    },
-    [bg],
-    "HeadFoot styles",
-  );
-
   return (
     <E
       dir={dir}
       className={classNames(
-        classes.headfoot,
+        "fabric-headfoot",
         className,
-        bg && getBgClass(bg),
-        color && getColorClass(color),
         area === "head" ? "area-head" : "area-foot",
         `leading-none`,
         flex && "flex flex-nowrap",
         align && `items-${align}`,
         justify && `justify-${justify}`,
       )}
-      style={styles}
       {...aria}
     >
       {children}

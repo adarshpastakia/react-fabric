@@ -31,7 +31,6 @@ import { Tooltip } from "../../overlays";
 import { type PolymorphicProps } from "../../types";
 import { Badge, getBadgeProps } from "../badge/Badge";
 import { Icon } from "../icon/Icon";
-import classes from "./Menu.module.css";
 import { type MenuItemProps } from "./types";
 
 export const MenuItem = <Tag extends React.ElementType = "button">({
@@ -77,7 +76,7 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
     }
     return (
       <Icon
-        className={classNames(classes.menuIcon, minimal && classes.minimal)}
+        className={classNames("fabric-menuIcon", minimal && "minimal")}
         icon={path ?? ""}
         bg={iconBg}
         color={iconColor}
@@ -146,11 +145,11 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
         data-dropdown-dismiss
         data-color={color}
         className={classNames(
-          classes.menuItem,
+          "fabric-menuItem",
           className,
-          active && classes.active,
-          minimal && classes.minimal,
-          disabled && classes.disabled,
+          active && "active",
+          minimal && "minimal",
+          disabled && "disabled",
           "rounded-capped relative max-w-[50vw] my-0.5",
         )}
         data-active={active}

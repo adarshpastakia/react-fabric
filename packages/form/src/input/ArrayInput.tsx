@@ -44,7 +44,6 @@ import {
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { FieldWrapper } from "../internal/FieldWrapper";
-import classes from "./ArrayInput.module.css";
 
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { CSS } from "@dnd-kit/utilities";
@@ -257,7 +256,7 @@ export const ArrayInput = ({
     () => (
       <div className="flex justify-end">
         <Tooltip
-          color="danger"
+          color="danger-200"
           content={
             isString(error)
               ? `${error}`
@@ -282,7 +281,7 @@ export const ArrayInput = ({
             onClick={() => handleAdd(onAdd?.())}
             data-invalid={!!error}
             disabled={!!disabled || readOnly || fields.length > maxItems}
-            className={classNames(classes.addButton, "me-10")}
+            className={classNames("fabric-addButton", "me-10")}
           >
             {addLabel ?? t("addArray")}
           </Button>
@@ -293,7 +292,7 @@ export const ArrayInput = ({
   );
 
   return (
-    <div className={classes.arrayInput}>
+    <div className={"fabric-arrayInput"}>
       <FieldWrapper
         {...rest}
         appendLabel={

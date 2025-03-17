@@ -26,7 +26,7 @@ import { cloneElement } from "react";
 import {
   type AriaProps,
   type ChildrenProp,
-  type ColorType,
+  type ColorState,
   type CssProp,
   type RefProp,
   type SizeType,
@@ -34,7 +34,6 @@ import {
 } from "../../types";
 import { cloneChildren } from "../../utils";
 import { type Button } from "./Button";
-import classes from "./Button.module.css";
 
 export interface ButtonGroupProps
   extends CssProp,
@@ -57,7 +56,7 @@ export interface ButtonGroupProps
   /**
    * button color
    */
-  color?: ColorType;
+  color?: ColorState;
   /**
    * full rounded edges
    */
@@ -88,11 +87,11 @@ export const ButtonGroup = ({
     <div
       data-ref="buttonGroup"
       className={classNames(
-        classes.buttonGroup,
+        "fabric-buttonGroup",
         className,
         fullWidth ? "flex" : "inline-flex",
         "flex-nowrap align-middle rounded",
-        vertical && classes.vertical,
+        vertical && "vertical",
         vertical && "flex-col items-stretch",
       )}
       {...aria}

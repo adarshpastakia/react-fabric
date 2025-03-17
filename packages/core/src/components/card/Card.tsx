@@ -43,7 +43,6 @@ import {
   type TestProps,
 } from "../../types";
 import { nodeCheck } from "../../utils";
-import classes from "./Card.module.css";
 
 export interface CardProps
   extends CssProp,
@@ -116,20 +115,20 @@ export const Card = ({
   return (
     <div
       className={classNames(
-        classes.cardWrapper,
+        "fabric-cardWrapper",
         "rounded-capped relative grid",
         flex && "flex-1",
-        selected && selectedRibbon && classes.selected,
-        selected && "outline outline-2 outline-accent-500 outline-offset-2",
+        selected && selectedRibbon && "selected",
+        selected && "outline-2 outline-accent-500 outline-offset-2",
       )}
     >
       <ErrorBoundary>
         <div
           className={classNames(
-            classes.card,
+            "fabric-card",
             className,
             "rounded-capped flex flex-col flex-nowrap overflow-hidden",
-            onClick && classes.clickable,
+            onClick && "clickable",
           )}
           draggable={draggable}
           onDragStart={
@@ -145,7 +144,7 @@ export const Card = ({
           {header}
           <div
             role="none"
-            className={classNames(classes.cardBody, bodyClassName, "flex-1")}
+            className={classNames("fabric-cardBody", bodyClassName, "flex-1")}
             onClick={onClick}
           >
             {body}

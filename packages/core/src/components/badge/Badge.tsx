@@ -32,7 +32,6 @@ import {
   type RefProp,
 } from "../../types";
 import { Icon } from "../icon/Icon";
-import classes from "./Badge.module.css";
 
 export interface BadgeProps
   extends CssProp,
@@ -125,8 +124,8 @@ export const Badge = ({
   return (
     <div
       className={classNames(
-        forButton || inline ? "contents" : "relative",
-        block ? "block" : "inline-block",
+        forButton || inline ? "contents" : block ? "block" : "inline-block",
+        forButton || inline ? "" : "relative",
       )}
     >
       {children &&
@@ -140,7 +139,7 @@ export const Badge = ({
           data-ping={ping}
           data-placement={placement}
           className={classNames(
-            classes.badge,
+            "fabric-badge",
             className,
             "inline-block p-px min-w-2 min-h-2 text-center select-none rounded-full leading-none z-2 pointer-events-none",
             (forButton && !placement) || inline ? "relative" : "absolute",

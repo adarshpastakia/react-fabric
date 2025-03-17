@@ -8,6 +8,7 @@
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "css.lint.validProperties": ["@layer", "@global", "@value"],
+  "tailwindCSS.experimental.configFile": ".storybook/styles/styles.css",
   "tailwindCSS.classAttributes": [
     "class",
     "className",

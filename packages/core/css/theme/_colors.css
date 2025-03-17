@@ -1,0 +1,320 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2025 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@theme static {
+  --color-black: #232426;
+  --color-white: #fffefd;
+  --color-silver: #989da5;
+  --color-steel: #7c99af;
+  --color-olive: #769b8d;
+  --color-sand: #9b9789;
+  --color-info: #00bfff;
+  --color-danger: #f24c3d;
+  --color-success: #44bc69;
+  --color-warning: #edaa00;
+  --color-scarlet: #e5484d;
+  --color-pumpkin: #f76a15;
+  --color-marigold: #ffc100;
+  --color-avacado: #46a758;
+  --color-jade: #29a383;
+  --color-denim: #0190ff;
+  --color-iris: #5b5bd6;
+  --color-lilac: #8e4ec6;
+  --color-coral: #e93d82;
+  --color-wood: #ad7f58;
+}
+
+@theme static {
+  /* primary */
+  --color-primary-50: ;
+  --color-primary-100: ;
+  --color-primary-200: ;
+  --color-primary-300: ;
+  --color-primary-400: ;
+  --color-primary-500: ;
+  --color-primary-600: ;
+  --color-primary-700: ;
+  --color-primary-800: ;
+  --color-primary-900: ;
+  --color-primary-950: ;
+
+  /* accent */
+  --color-accent-50: ;
+  --color-accent-100: ;
+  --color-accent-200: ;
+  --color-accent-300: ;
+  --color-accent-400: ;
+  --color-accent-500: ;
+  --color-accent-600: ;
+  --color-accent-700: ;
+  --color-accent-800: ;
+  --color-accent-900: ;
+  --color-accent-950: ;
+
+  /* tint */
+  --color-tint-50: ;
+  --color-tint-100: ;
+  --color-tint-200: ;
+  --color-tint-300: ;
+  --color-tint-400: ;
+  --color-tint-500: ;
+  --color-tint-600: ;
+  --color-tint-700: ;
+  --color-tint-800: ;
+  --color-tint-900: ;
+  --color-tint-950: ;
+
+  /* silver */
+  --color-silver-50: ;
+  --color-silver-100: ;
+  --color-silver-200: ;
+  --color-silver-300: ;
+  --color-silver-400: ;
+  --color-silver-500: ;
+  --color-silver-600: ;
+  --color-silver-700: ;
+  --color-silver-800: ;
+  --color-silver-900: ;
+  --color-silver-950: ;
+
+  /* steel */
+  --color-steel-50: ;
+  --color-steel-100: ;
+  --color-steel-200: ;
+  --color-steel-300: ;
+  --color-steel-400: ;
+  --color-steel-500: ;
+  --color-steel-600: ;
+  --color-steel-700: ;
+  --color-steel-800: ;
+  --color-steel-900: ;
+  --color-steel-950: ;
+
+  /* olive */
+  --color-olive-50: ;
+  --color-olive-100: ;
+  --color-olive-200: ;
+  --color-olive-300: ;
+  --color-olive-400: ;
+  --color-olive-500: ;
+  --color-olive-600: ;
+  --color-olive-700: ;
+  --color-olive-800: ;
+  --color-olive-900: ;
+  --color-olive-950: ;
+
+  /* sand */
+  --color-sand-50: ;
+  --color-sand-100: ;
+  --color-sand-200: ;
+  --color-sand-300: ;
+  --color-sand-400: ;
+  --color-sand-500: ;
+  --color-sand-600: ;
+  --color-sand-700: ;
+  --color-sand-800: ;
+  --color-sand-900: ;
+  --color-sand-950: ;
+
+  /* info */
+  --color-info-50: ;
+  --color-info-100: ;
+  --color-info-200: ;
+  --color-info-300: ;
+  --color-info-400: ;
+  --color-info-500: ;
+  --color-info-600: ;
+  --color-info-700: ;
+  --color-info-800: ;
+  --color-info-900: ;
+  --color-info-950: ;
+
+  /* danger */
+  --color-danger-50: ;
+  --color-danger-100: ;
+  --color-danger-200: ;
+  --color-danger-300: ;
+  --color-danger-400: ;
+  --color-danger-500: ;
+  --color-danger-600: ;
+  --color-danger-700: ;
+  --color-danger-800: ;
+  --color-danger-900: ;
+  --color-danger-950: ;
+
+  /* success */
+  --color-success-50: ;
+  --color-success-100: ;
+  --color-success-200: ;
+  --color-success-300: ;
+  --color-success-400: ;
+  --color-success-500: ;
+  --color-success-600: ;
+  --color-success-700: ;
+  --color-success-800: ;
+  --color-success-900: ;
+  --color-success-950: ;
+
+  /* warning */
+  --color-warning-50: ;
+  --color-warning-100: ;
+  --color-warning-200: ;
+  --color-warning-300: ;
+  --color-warning-400: ;
+  --color-warning-500: ;
+  --color-warning-600: ;
+  --color-warning-700: ;
+  --color-warning-800: ;
+  --color-warning-900: ;
+  --color-warning-950: ;
+
+  /* scarlet */
+  --color-scarlet-50: ;
+  --color-scarlet-100: ;
+  --color-scarlet-200: ;
+  --color-scarlet-300: ;
+  --color-scarlet-400: ;
+  --color-scarlet-500: ;
+  --color-scarlet-600: ;
+  --color-scarlet-700: ;
+  --color-scarlet-800: ;
+  --color-scarlet-900: ;
+  --color-scarlet-950: ;
+
+  /* pumpkin */
+  --color-pumpkin-50: ;
+  --color-pumpkin-100: ;
+  --color-pumpkin-200: ;
+  --color-pumpkin-300: ;
+  --color-pumpkin-400: ;
+  --color-pumpkin-500: ;
+  --color-pumpkin-600: ;
+  --color-pumpkin-700: ;
+  --color-pumpkin-800: ;
+  --color-pumpkin-900: ;
+  --color-pumpkin-950: ;
+
+  /* marigold */
+  --color-marigold-50: ;
+  --color-marigold-100: ;
+  --color-marigold-200: ;
+  --color-marigold-300: ;
+  --color-marigold-400: ;
+  --color-marigold-500: ;
+  --color-marigold-600: ;
+  --color-marigold-700: ;
+  --color-marigold-800: ;
+  --color-marigold-900: ;
+  --color-marigold-950: ;
+
+  /* avacado */
+  --color-avacado-50: ;
+  --color-avacado-100: ;
+  --color-avacado-200: ;
+  --color-avacado-300: ;
+  --color-avacado-400: ;
+  --color-avacado-500: ;
+  --color-avacado-600: ;
+  --color-avacado-700: ;
+  --color-avacado-800: ;
+  --color-avacado-900: ;
+  --color-avacado-950: ;
+
+  /* jade */
+  --color-jade-50: ;
+  --color-jade-100: ;
+  --color-jade-200: ;
+  --color-jade-300: ;
+  --color-jade-400: ;
+  --color-jade-500: ;
+  --color-jade-600: ;
+  --color-jade-700: ;
+  --color-jade-800: ;
+  --color-jade-900: ;
+  --color-jade-950: ;
+
+  /* denim */
+  --color-denim-50: ;
+  --color-denim-100: ;
+  --color-denim-200: ;
+  --color-denim-300: ;
+  --color-denim-400: ;
+  --color-denim-500: ;
+  --color-denim-600: ;
+  --color-denim-700: ;
+  --color-denim-800: ;
+  --color-denim-900: ;
+  --color-denim-950: ;
+
+  /* iris */
+  --color-iris-50: ;
+  --color-iris-100: ;
+  --color-iris-200: ;
+  --color-iris-300: ;
+  --color-iris-400: ;
+  --color-iris-500: ;
+  --color-iris-600: ;
+  --color-iris-700: ;
+  --color-iris-800: ;
+  --color-iris-900: ;
+  --color-iris-950: ;
+
+  /* lilac */
+  --color-lilac-50: ;
+  --color-lilac-100: ;
+  --color-lilac-200: ;
+  --color-lilac-300: ;
+  --color-lilac-400: ;
+  --color-lilac-500: ;
+  --color-lilac-600: ;
+  --color-lilac-700: ;
+  --color-lilac-800: ;
+  --color-lilac-900: ;
+  --color-lilac-950: ;
+
+  /* coral */
+  --color-coral-50: ;
+  --color-coral-100: ;
+  --color-coral-200: ;
+  --color-coral-300: ;
+  --color-coral-400: ;
+  --color-coral-500: ;
+  --color-coral-600: ;
+  --color-coral-700: ;
+  --color-coral-800: ;
+  --color-coral-900: ;
+  --color-coral-950: ;
+
+  /* wood */
+  --color-wood-50: ;
+  --color-wood-100: ;
+  --color-wood-200: ;
+  --color-wood-300: ;
+  --color-wood-400: ;
+  --color-wood-500: ;
+  --color-wood-600: ;
+  --color-wood-700: ;
+  --color-wood-800: ;
+  --color-wood-900: ;
+  --color-wood-950: ;
+}

@@ -22,13 +22,12 @@
  */
 
 import classNames from "classnames";
-import classes from "./ErrorBoundary.module.css";
 
 export const ErrorIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 64 64"
-    className={classNames(classes.boundaryIcon, "size-6 m-2")}
+    className={classNames("fabric-boundaryIcon", "size-6 m-2")}
   >
     <path
       fill="#808080"

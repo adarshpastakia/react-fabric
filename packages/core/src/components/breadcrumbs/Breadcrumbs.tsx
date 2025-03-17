@@ -26,7 +26,6 @@ import { Children, useMemo } from "react";
 import { type AriaProps, type ChildrenProp, type CssProp } from "../../types";
 import { Anchor } from "../../typography/Anchor";
 import { Dropdown } from "../dropdown/Dropdown";
-import classes from "./Breadcrumbs.module.css";
 
 export interface BreadcrumbProps
   extends CssProp,
@@ -68,7 +67,7 @@ export const Breadcrumbs = ({
       data-color={color}
       data-variant={variant}
       className={classNames(
-        classes.breadcrumbs,
+        "fabric-breadcrumbs",
         className,
         "flex flex-nowrap items-center",
       )}
@@ -77,7 +76,7 @@ export const Breadcrumbs = ({
       {start.map((link, idx) => (
         <li
           key={idx}
-          className={classes.breadcrumbLink}
+          className={"fabric-breadcrumbLink"}
           data-separator={separator}
         >
           {link}
@@ -86,7 +85,7 @@ export const Breadcrumbs = ({
       {overflow && (
         <Dropdown closeOnClick showArrow>
           <li
-            className={classes.breadcrumbLink}
+            className={"fabric-breadcrumbLink"}
             data-separator={separator}
             data-ref="breadcrumbOverflow"
           >
@@ -94,7 +93,7 @@ export const Breadcrumbs = ({
           </li>
           <div
             data-color={color}
-            className={classNames(classes.breadcrumbOverflow, "flex flex-col")}
+            className={classNames("fabric-breadcrumbOverflow", "flex flex-col")}
           >
             {overflow}
           </div>
@@ -103,7 +102,7 @@ export const Breadcrumbs = ({
       {end?.map((link, idx) => (
         <li
           key={idx}
-          className={classes.breadcrumbLink}
+          className={"fabric-breadcrumbLink"}
           data-separator={separator}
         >
           {link}

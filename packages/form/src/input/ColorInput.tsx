@@ -127,7 +127,7 @@ export const ColorInput = ({
       className={classNames(
         "flex-content min-h-[1.5em] min-w-[3.5em] self-stretch flex items-center outline-tint-200 rounded",
         !disabled && "bg-base",
-        !noOutline && "bg-[var(--fabric-input)] outline overflow-hidden",
+        !noOutline && "bg-(--fabric-input) outline overflow-hidden",
       )}
     >
       {decorateStart && (

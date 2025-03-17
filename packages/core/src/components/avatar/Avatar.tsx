@@ -26,6 +26,7 @@ import BoringAvatar from "boring-avatars";
 import classNames from "classnames";
 import { useMemo, useState } from "react";
 import {
+  type PaletteType,
   type AriaProps,
   type ColorType,
   type CssProp,
@@ -33,8 +34,7 @@ import {
   type SizeType,
   type TestProps,
 } from "../../types";
-import { getBgClass, getColor, getColorClass } from "../../utils";
-import classes from "./Avatar.module.css";
+import { getColor } from "../../utils";
 
 export interface AvatarProps extends CssProp, AriaProps, TestProps, RefProp {
   /**
@@ -56,11 +56,11 @@ export interface AvatarProps extends CssProp, AriaProps, TestProps, RefProp {
   /**
    * background color (CSS color / tailwind color)
    */
-  bg?: ColorType | string;
+  bg?: ColorType | PaletteType | string;
   /**
    * icon color (CSS color / tailwind color)
    */
-  color?: ColorType | string;
+  color?: ColorType | PaletteType | string;
   /**
    * icon size
    */
@@ -133,7 +133,7 @@ export const Avatar = ({
         <div className="contents">
           <div
             className={classNames(
-              classes.imgPlaceholder,
+              "fabric-imgPlaceholder",
               "absolute inset-0 bg-gray animate-pulse",
             )}
           />
@@ -185,11 +185,9 @@ export const Avatar = ({
     <dfn
       role="presentation"
       className={classNames(
-        classes.avatar,
+        "fabric-avatar",
         className,
         "select-none relative overflow-hidden inline-block box-content leading-none not-italic text-center",
-        bg && getBgClass(bg),
-        color && getColorClass(color),
         !rounded && "rounded",
         rounded && "rounded-full",
       )}

@@ -54,7 +54,6 @@ import {
   useState,
 } from "react";
 import { type ChildProp, type RefProp } from "../../types";
-import classes from "./Dropdown.module.css";
 
 export interface DropdownProps extends RefProp {
   children: [React.ReactNode, React.ReactNode];
@@ -257,7 +256,7 @@ const DropdownElement = ({
               <div
                 role="none"
                 className={classNames(
-                  classes.dropdownBody,
+                  "fabric-dropdownBody",
                   dropdownClassName,
                   !plainDropdown && "shadow-lg bg-base ring-1 ring-tint-100",
                   "rounded-capped overflow-auto scroll-thin grid max-h-[70vh]",
@@ -271,7 +270,7 @@ const DropdownElement = ({
                   ref={arrowRef}
                   context={context}
                   strokeWidth={0.5}
-                  className="fill-base stroke-muted"
+                  className="fill-base stroke-dimmed"
                 />
               )}
             </div>

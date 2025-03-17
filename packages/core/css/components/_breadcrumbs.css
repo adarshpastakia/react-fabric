@@ -1,0 +1,194 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@layer components {
+  .fabric-breadcrumbs,
+  .fabric-breadcrumbOverflow {
+    --color: var(--color-primary-500);
+
+    &[data-color="accent"] {
+      --color: var(--color-accent-500);
+    }
+
+    &[data-color="info"] {
+      --color: var(--color-info-500);
+    }
+
+    &[data-color="danger"] {
+      --color: var(--color-danger-500);
+    }
+
+    &[data-color="success"] {
+      --color: var(--color-success-500);
+    }
+
+    &[data-color="warning"] {
+      --color: var(--color-warning-500);
+    }
+
+    & .link {
+      padding: 0.25em 0.5em;
+      text-decoration: none;
+    }
+  }
+
+  .fabric-breadcrumbs[data-variant="classic"] {
+    & > .fabric-breadcrumbLink {
+      list-style: none;
+
+      &::after {
+        content: attr(data-separator);
+        display: inline-block;
+        margin-inline: 0.125em;
+        color: var(--color-tint-300);
+      }
+
+      &:last-child::after {
+        content: unset;
+      }
+    }
+  }
+
+  [data-ref="viewport"] .fabric-breadcrumbs {
+    grid-area: crumbbar;
+    padding: 0 0.25rem;
+  }
+}
+
+@layer variants {
+  .fabric-breadcrumbs[data-variant="classic"] {
+    & > .fabric-breadcrumbLink > .link {
+      overflow: hidden;
+
+      max-width: 24rem;
+
+      text-decoration: none;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    & > .fabric-breadcrumbLink:last-child > .link {
+      pointer-events: none;
+      color: var(--color-tint-600);
+    }
+  }
+
+  .fabric-breadcrumbs[data-variant="modern"] {
+    & > .fabric-breadcrumbLink {
+      --linkcolor: color-mix(in lab, var(--color) 50%, var(--fabric-bg));
+
+      position: relative;
+      list-style: none;
+      border-radius: var(--rounding);
+
+      &:last-child {
+        --color: var(--color-tint-500);
+
+        pointer-events: none;
+      }
+
+      &:first-child > .link {
+        border-start-start-radius: var(--rounding);
+        border-end-start-radius: var(--rounding);
+      }
+
+      &:last-child > .link {
+        border-start-end-radius: var(--rounding);
+        border-end-end-radius: var(--rounding);
+      }
+
+      &:not(:first-child) {
+        margin-inline-start: -1em;
+
+        &::before {
+          content: "";
+
+          display: inline-block;
+
+          vertical-align: middle;
+
+          border: 0.625em solid transparent;
+          border-block-color: var(--linkcolor);
+          border-inline-end-color: var(--linkcolor);
+        }
+
+        & > .link {
+          margin-inline-start: -0.625em;
+        }
+      }
+
+      &:not(:last-child) {
+        &::after {
+          content: "";
+
+          display: inline-block;
+
+          vertical-align: middle;
+
+          border: 0.625em solid transparent;
+          border-inline-start-color: var(--linkcolor);
+        }
+      }
+
+      & > .link {
+        display: inline-block;
+
+        padding: 0.125em 0.5em;
+
+        line-height: 1;
+        color: color-mix(in lab, var(--color) 50%, var(--fabric-text));
+        text-decoration: none;
+        vertical-align: middle;
+
+        background-color: var(--linkcolor);
+      }
+
+      &:hover {
+        --linkcolor: color-mix(in lab, var(--color) 65%, var(--fabric-bg));
+      }
+
+      &:active {
+        --linkcolor: color-mix(in lab, var(--color) 35%, var(--fabric-bg));
+      }
+    }
+  }
+
+  .fabric-breadcrumbOverflow,
+  .fabric-breadcrumbs[data-variant="classic"] {
+    & .link {
+      color: color-mix(in lab, var(--color) 90%, var(--fabric-text));
+      text-decoration: none;
+    }
+
+    & .link:hover {
+      color: color-mix(in lab, var(--color) 99%, var(--fabric-text));
+      text-decoration: underline;
+      background-color: --alpha(var(--color-tint-50) / 50%);
+    }
+
+    & .link:active {
+      color: color-mix(in lab, var(--color) 85%, var(--fabric-text));
+      background-color: var(--color-tint-50);
+    }
+  }
+}

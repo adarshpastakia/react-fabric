@@ -26,9 +26,13 @@ import classNames from "classnames";
 import { Fragment, useCallback, useMemo } from "react";
 import { useMemoDebugger } from "../hooks/useEffectDebugger";
 import { Tooltip, getTooltipProps } from "../overlays/tooltip/Tooltip";
-import { type ChildProp, type ColorType, type CssProp } from "../types";
-import { getColor, getColorClass } from "../utils";
-import classes from "./Typography.module.css";
+import {
+  type ChildProp,
+  type ColorType,
+  type CssProp,
+  type PaletteType,
+} from "../types";
+import { getColor } from "../utils";
 
 interface AbbrTextProps {
   children: string;
@@ -49,11 +53,7 @@ const AbbrText = ({ color, children, tooltip, content }: AbbrTextProps) => {
   return (
     <TooltipWrapper {...tooltipProps}>
       <abbr
-        className={classNames(
-          classes.abbr,
-          "whitespace-nowrap",
-          color && getColorClass(color),
-        )}
+        className={classNames("fabric-abbr", "whitespace-nowrap")}
         style={
           color ? ({ "--abbr-color": getColor(color) } as AnyObject) : undefined
         }
@@ -74,7 +74,13 @@ export interface AbbrProps extends ChildProp<string>, CssProp {
    *
    * [textPart, tooltip, color (class name or color string)]
    */
-  abbr: Array<[textPart: string, tooltip: string, color?: ColorType | string]>;
+  abbr: Array<
+    [
+      textPart: string,
+      tooltip: string,
+      color?: ColorType | PaletteType | string,
+    ]
+  >;
   /**
    * renderer callback
    */

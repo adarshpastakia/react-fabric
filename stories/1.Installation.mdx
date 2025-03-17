@@ -1,0 +1,87 @@
+import { Meta } from "@storybook/addon-docs";
+import { Anchor, Story, Subheading, Subtitle, Title } from "@storybook/blocks";
+import { Translation } from "react-i18next";
+
+<Meta title="Using the library" />
+
+<Title>Using the library</Title>
+
+<Subheading>Installing</Subheading>
+
+```bash
+# core components
+yarn add @react-fabric/core @react-fabric/utilities
+
+# data components
+yarn add @react-fabric/data
+
+# form components
+yarn add @react-fabric/form
+
+# advanced media viewers
+yarn add @react-fabric/media
+
+# comprehensive searchbar for data tools
+yarn add @react-fabric/searchbar
+
+# relative date selector with event calendar
+yarn add @react-fabric/superdate
+
+# eCharts wrappers
+yarn add @react-fabric/chart
+
+# lexical editor
+yarn add @react-fabric/lexical
+
+# mdx editor for markdown input
+yarn add @react-fabric/mdx
+
+# monaco editor
+yarn add @react-fabric/monaco
+
+```
+
+<Subheading>Setup</Subheading>
+
+- Setup postcss for processing `TailwindCss`
+
+```js
+// .postcssrc.js
+module.exports = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+```
+
+- Include `TailwindCss` and `React Fabric` styles in main stylesheet
+
+```css
+/* main.css */
+@import url("tailwindcss");
+@import url("@react-fabric/core/styles");
+@import url("@react-fabric/data/styles");
+@import url("@react-fabric/date/styles");
+@import url("@react-fabric/form/styles");
+@import url("@react-fabric/lexical/styles");
+@import url("@react-fabric/mdx/styles");
+@import url("@react-fabric/media/styles");
+@import url("@react-fabric/monaco/styles");
+@import url("@react-fabric/superdate/styles");
+
+/* helper css with base64 flag images for windows */
+@import "@react-fabric/core/flags.rect";
+@import "@react-fabric/core/flags.wavy";
+```
+
+- Include `main.css` in react root file
+
+```tsx
+// main.tsx
+import "./main.css";
+
+import { createRoot } from "react-dom/client";
+import { App } from "./App.tsx";
+
+createRoot(document.getElementById("root")!).render(<App />);
+```

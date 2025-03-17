@@ -25,9 +25,8 @@ import { isEmpty, isString, tokenize } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { Fragment, useCallback } from "react";
 import { useMemoDebugger } from "../hooks/useEffectDebugger";
-import { type ChildProp, type ColorType } from "../types";
-import { getBgClass, getColor } from "../utils";
-import classes from "./Typography.module.css";
+import { type ChildProp, type ColorType, type PaletteType } from "../types";
+import { getColor } from "../utils";
 
 interface MarkTextProps {
   children: string;
@@ -37,11 +36,7 @@ interface MarkTextProps {
 const MarkText = ({ color, children }: MarkTextProps) => {
   return (
     <mark
-      className={classNames(
-        classes.mark,
-        "whitespace-nowrap",
-        color && getBgClass(color),
-      )}
+      className={classNames("fabric-mark", "whitespace-nowrap")}
       style={
         color ? ({ "--mark-color": getColor(color) } as AnyObject) : undefined
       }
@@ -57,7 +52,7 @@ export interface MarkProps extends ChildProp<string> {
    *
    * [textPart, color (class name or color string)]
    */
-  mark: Array<[textPart: string, color?: ColorType | string]>;
+  mark: Array<[textPart: string, color?: ColorType | PaletteType | string]>;
   /**
    * renderer callback
    */

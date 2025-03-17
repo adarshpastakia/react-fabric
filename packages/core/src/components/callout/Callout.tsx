@@ -25,13 +25,11 @@ import classNames from "classnames";
 import {
   type AriaProps,
   type ChildrenProp,
-  type ColorType,
+  type ColorState,
   type CssProp,
-  type PaletteType,
   type TestProps,
 } from "../../types";
 import { CoreIcons } from "../../types/icons";
-import { getBgClass, getBorderClass, getColorClass } from "../../utils";
 import { Icon } from "../icon/Icon";
 
 export interface CalloutProps
@@ -42,7 +40,7 @@ export interface CalloutProps
   /**
    * callout color
    */
-  color?: ColorType | PaletteType;
+  color?: ColorState;
   /**
    * legend title
    */
@@ -65,6 +63,16 @@ export interface CalloutProps
   onClose?: () => void;
 }
 
+const colors = {
+  tint: "bg-tint-50/50 text-tint-800 border-tint-300",
+  primary: "bg-primary-50/50 text-primary-800 border-primary-300",
+  accent: "bg-accent-50/50 text-accent-800 border-accent-300",
+  info: "bg-info-50/50 text-info-800 border-info-300",
+  danger: "bg-danger-50/50 text-danger-800 border-danger-300",
+  success: "bg-success-50/50 text-success-800 border-success-300",
+  warning: "bg-warning-50/50 text-warning-800 border-warning-300",
+};
+
 export const Callout = ({
   children,
   // @ts-expect-error ignore
@@ -80,11 +88,9 @@ export const Callout = ({
   return (
     <fieldset
       className={classNames(
-        className,
         "block rounded-capped border max-w-full relative overflow-hidden mb-4",
-        getBgClass(color + "-50"),
-        getColorClass(color + "-700"),
-        getBorderClass(color + "-300"),
+        colors[color],
+        className,
         border === "dashed" && "border-dashed",
         border === "dotted" && "border-dotted",
       )}
