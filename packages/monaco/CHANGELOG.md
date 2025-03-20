@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.39](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.38...v1.0.0-beta.39) (2025-03-20)
+
+**Note:** Version bump only for package @react-fabric/monaco
+
 # [1.0.0-beta.38](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.37...v1.0.0-beta.38) (2025-03-20)
 
 **Note:** Version bump only for package @react-fabric/monaco
