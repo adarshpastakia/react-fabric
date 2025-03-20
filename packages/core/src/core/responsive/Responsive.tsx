@@ -80,7 +80,7 @@ export interface ColProps
   /**
    * column flex
    */
-  flex?: "auto" | "fill" | "full" | "content";
+  flex?: "auto" | "fill" | "full" | "initial" | "content";
   /**
    * stretch inner content
    */
@@ -160,8 +160,9 @@ export const Col = ({
         stretchContent && "stretchContent",
         flex === "fill" && "flex-1",
         flex === "full" && "flex-full",
-        flex === "auto" && "flex-initial",
-        flex === "content" && "flex-content",
+        flex === "auto" && "flex-auto",
+        flex === "initial" && "flex-initial",
+        flex === "content" && "flex-none",
         align && `self-${align}`,
       )}
       {...aria}

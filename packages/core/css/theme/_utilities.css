@@ -85,10 +85,6 @@
   flex: 1 1 100%;
 }
 
-@utility flex-content {
-  flex: 0 0 auto;
-}
-
 @utility rounded {
   border-radius: var(--rounding);
 }
@@ -162,20 +158,36 @@
 }
 
 @utility bg-odd {
-  background-color: color-mix(in oklab, var(--fabric-bg) 99%, var(--color-tint));
+  background-color: color-mix(
+    in oklab,
+    var(--fabric-bg) 99%,
+    var(--color-tint)
+  );
 }
 
 @utility bg-even {
-  background-color: color-mix(in oklab, var(--fabric-bg) 92%, var(--color-tint));
+  background-color: color-mix(
+    in oklab,
+    var(--fabric-bg) 92%,
+    var(--color-tint)
+  );
 }
 
 @utility bg-alternate {
   & > :nth-child(even) {
-    background-color: color-mix(in oklab, var(--fabric-bg) 92%, var(--color-tint));
+    background-color: color-mix(
+      in oklab,
+      var(--fabric-bg) 92%,
+      var(--color-tint)
+    );
   }
 
   & > :nth-child(odd) {
-    background-color: color-mix(in oklab, var(--fabric-bg) 99%, var(--color-tint));
+    background-color: color-mix(
+      in oklab,
+      var(--fabric-bg) 99%,
+      var(--color-tint)
+    );
   }
 }
 
@@ -336,9 +348,11 @@
 }
 
 @utility gap-* {
-  --gutter: calc(var(--spacing) * --value(number));
+  &:where(.fabric-row) {
+    --gutter: calc(var(--spacing) * --value(number));
 
-  gap: calc(var(--spacing) * --value(number));
+    gap: 0 !important;
+  }
 }
 
 @utility span-* {

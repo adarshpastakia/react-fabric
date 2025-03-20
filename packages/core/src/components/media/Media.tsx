@@ -97,7 +97,7 @@ export const Image = ({
       data-ref="image"
       className={classNames(
         "fabric-mediaContainer",
-        "relative overflow-hidden bg-gray inline-block",
+        "relative overflow-hidden inline-block",
         reel && "fabric-mediaReel",
         className,
       )}
@@ -144,7 +144,7 @@ export const Video = ({
       data-ref="video"
       className={classNames(
         "fabric-mediaContainer",
-        "relative overflow-hidden bg-gray inline-block",
+        "relative overflow-hidden inline-block",
         reel && "fabric-mediaReel",
         className,
       )}

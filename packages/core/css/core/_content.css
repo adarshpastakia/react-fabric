@@ -34,11 +34,3 @@
     background-color: var(--fabric-content);
   }
 }
-
-@layer utilities {
-  .fabric-content {
-    width: unset;
-    height: unset;
-    margin: unset;
-  }
-}

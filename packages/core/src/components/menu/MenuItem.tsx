@@ -145,7 +145,7 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
         data-dropdown-dismiss
         data-color={color}
         className={classNames(
-          "fabric-menuItem",
+          "fabric-menuItem cursor-pointer",
           className,
           active && "active",
           minimal && "minimal",
