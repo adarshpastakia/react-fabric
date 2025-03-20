@@ -46,13 +46,81 @@ Overall, this UI framework provides a robust set of components that cater to a w
 ## Install
 
 ```bash
+# core components
+yarn add @react-fabric/core @react-fabric/utilities
 
-# npm
-npm install @react-fabric/core
+# data components
+yarn add @react-fabric/data
 
-# yarn
-yarn add @react-fabric/core
+# form components
+yarn add @react-fabric/form
 
+# advanced media viewers
+yarn add @react-fabric/media
+
+# comprehensive searchbar for data tools
+yarn add @react-fabric/searchbar
+
+# relative date selector with event calendar
+yarn add @react-fabric/superdate
+
+# eCharts wrappers
+yarn add @react-fabric/chart
+
+# lexical editor
+yarn add @react-fabric/lexical
+
+# mdx editor for markdown input
+yarn add @react-fabric/mdx
+
+# monaco editor
+yarn add @react-fabric/monaco
+
+```
+
+## Setup
+
+Setup postcss for processing `TailwindCss`
+
+```js
+// .postcssrc.js
+module.exports = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+```
+
+Include `TailwindCss` and `React Fabric` styles in main stylesheet
+
+```css
+/* main.css */
+@import url("tailwindcss");
+@import url("@react-fabric/core/css/styles.css");
+@import url("@react-fabric/data/css/styles.css");
+@import url("@react-fabric/date/css/styles.css");
+@import url("@react-fabric/form/css/styles.css");
+@import url("@react-fabric/lexical/css/styles.css");
+@import url("@react-fabric/mdx/css/styles.css");
+@import url("@react-fabric/media/css/styles.css");
+@import url("@react-fabric/monaco/css/styles.css");
+@import url("@react-fabric/superdate/css/styles.css");
+
+/* helper css with base64 flag images for windows */
+@import "@react-fabric/core/css/flags.rect.css";
+@import "@react-fabric/core/css/flags.wavy.css";
+```
+
+Include `main.css` in react root file
+
+```tsx
+// main.tsx
+import "./main.css";
+
+import { createRoot } from "react-dom/client";
+import { App } from "./App.tsx";
+
+createRoot(document.getElementById("root")!).render(<App />);
 ```
 
 ## Development
