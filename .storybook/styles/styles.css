@@ -6,15 +6,15 @@
  */
 
 @import "tailwindcss";
-@import "@react-fabric/core/css/styles/css";
-@import "@react-fabric/data/css/styles/css";
-@import "@react-fabric/date/css/styles/css";
-@import "@react-fabric/form/css/styles/css";
-@import "@react-fabric/lexical/css/styles/css";
-@import "@react-fabric/mdx/css/styles/css";
-@import "@react-fabric/media/css/styles/css";
-@import "@react-fabric/monaco/css/styles/css";
-@import "@react-fabric/superdate/css/styles/css";
+@import "@react-fabric/core/css/styles.css";
+@import "@react-fabric/data/css/styles.css";
+@import "@react-fabric/date/css/styles.css";
+@import "@react-fabric/form/css/styles.css";
+@import "@react-fabric/lexical/css/styles.css";
+@import "@react-fabric/mdx/css/styles.css";
+@import "@react-fabric/media/css/styles.css";
+@import "@react-fabric/monaco/css/styles.css";
+@import "@react-fabric/superdate/css/styles.css";
 @import "@react-fabric/core/css/flags.rect.css";
 @import "./_overrides.css";
 @import "./_prism.css";
