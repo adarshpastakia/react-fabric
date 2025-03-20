@@ -67,17 +67,17 @@
 
         & > :first-child {
           color: #fff;
-          background-color: var(--color-black/50%);
+          background-color: --alpha(var(--color-black) / 50%);
 
           &:hover {
             color: var(--color-primary-600);
-            background-color: var(--color-black/80%);
+            background-color: --alpha(var(--color-black) / 80%);
           }
         }
       }
 
       & .fabric-mediaControlAction > :first-child {
-        background-color: var(--color-black/70%);
+        background-color: --alpha(var(--color-black) / 70%);
       }
 
       & .fabric-mediaControlPlaceholder {

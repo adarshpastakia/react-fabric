@@ -176,8 +176,8 @@
       --bg-active: color-mix(in lab, var(--color) 70%, var(--color-black));
 
       & .hotkey-label {
-        color: var(--color-white/70%);
-        background-color: var(--bg-color-dark/30%);
+        color: --alpha(var(--color-white) / 70%);
+        background-color: --alpha(var(--bg-color-dark) / 30%);
       }
     }
 
