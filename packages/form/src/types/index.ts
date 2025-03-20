@@ -34,7 +34,7 @@ export interface InputProps<V = string> extends TestProps {
   /**
    * change handler
    */
-  onChange?: (value?: V | null) => void;
+  onChange?: (value: V | null) => void;
   /**
    * on focus event handler
    */
