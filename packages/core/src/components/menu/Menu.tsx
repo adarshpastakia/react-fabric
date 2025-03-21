@@ -275,6 +275,15 @@ export const Menu = (props: MenuProps) => {
   const parentId = useFloatingParentNodeId();
   const tree = useFloatingTree();
 
+  if (tree) {
+    return (
+      <MenuComponent
+        {...(props as AnyObject)}
+        menuClassName={props.className}
+      />
+    );
+  }
+
   if (parentId === null) {
     return (
       <FloatingTree>
@@ -283,15 +292,6 @@ export const Menu = (props: MenuProps) => {
           menuClassName={props.className}
         />
       </FloatingTree>
-    );
-  }
-
-  if (tree) {
-    return (
-      <MenuComponent
-        {...(props as AnyObject)}
-        menuClassName={props.className}
-      />
     );
   }
 
