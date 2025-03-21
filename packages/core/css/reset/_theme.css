@@ -340,6 +340,7 @@
 
     /* bg */
     --bg-color-base: color-mix(in oklab, var(--fabric-bg) 99%, var(--color-tint));
+    --bg-color-content: color-mix(in lab, var(--fabric-bg) 97%, var(--color-tint));
     --bg-color-dimmed: color-mix(in oklab, var(--fabric-bg) 90%, var(--color-tint));
     --bg-color-muted: color-mix(in oklab, var(--fabric-bg) 80%, var(--color-tint));
     --bg-color-gray: color-mix(in oklab, var(--fabric-bg) 50%, var(--color-tint));

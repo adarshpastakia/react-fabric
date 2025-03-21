@@ -40,7 +40,7 @@
 @variant dark (&:where([data-color-scheme="dark"], [data-color-scheme="dark"] *));
 
 @utility area-* {
-  grid-area: --value([ *]);
+  grid-area: --value([*]);
 }
 
 @utility area-content {
@@ -193,6 +193,10 @@
 
 @utility bg-base {
   background-color: var(--bg-color-base);
+}
+
+@utility bg-content {
+  background-color: var(--bg-color-content);
 }
 
 @utility bg-dimmed {
@@ -349,7 +353,7 @@
 
 @utility gap-* {
   &:where(.fabric-row) {
-    --gutter: calc(var(--spacing) * --value(number));
+    --gutter: calc(var(--spacing) * --value(integer));
 
     gap: 0 !important;
   }

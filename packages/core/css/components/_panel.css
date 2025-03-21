@@ -24,7 +24,7 @@
 @layer components {
   .fabric-panel {
     grid-template: "head" auto "content" 1fr / 1fr;
-    background-color: var(--color-bg);
+    background-color: var(--fabric-bg);
 
     & > * {
       background-color: transparent;

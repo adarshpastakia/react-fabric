@@ -23,14 +23,8 @@
 
 @layer components {
   .fabric-content {
-    --fabric-content: color-mix(
-      in lab,
-      var(--fabric-bg) 97%,
-      var(--color-tint)
-    );
-
     overflow: auto;
     padding: 1rem;
-    background-color: var(--fabric-content);
+    background-color: var(--bg-color-content);
   }
 }
