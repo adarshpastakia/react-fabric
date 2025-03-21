@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.40](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.39...v1.0.0-beta.40) (2025-03-21)
+
+### Bug Fixes
+
+- **Dictation:** add ref prop ([e4ee002](https://github.com/adarshpastakia/react-ui-framework/commit/e4ee0021527a26eecaf7e789e101dbe73d31897e))
+
 # [1.0.0-beta.39](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.38...v1.0.0-beta.39) (2025-03-20)
 
 **Note:** Version bump only for package @react-fabric/media

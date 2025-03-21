@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.40](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.39...v1.0.0-beta.40) (2025-03-21)
+
+### Bug Fixes
+
+- **HotKey:** handle alt+key combo on macos ([873e541](https://github.com/adarshpastakia/react-ui-framework/commit/873e5411f9f62fef331fce51e0171a5a9b0e9521))
+- **Media:** missing media fallback icon ([4bd8e55](https://github.com/adarshpastakia/react-ui-framework/commit/4bd8e55df1cf45fb82cf8ff5068f3f7e8a74010d))
+- **Menu:** dont wrap with FloatingTree is part of dropdown ([79ba61b](https://github.com/adarshpastakia/react-ui-framework/commit/79ba61bc98f17a8c514fe063bc0d1c3d7a21aefb))
+
 # [1.0.0-beta.39](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.38...v1.0.0-beta.39) (2025-03-20)
 
 **Note:** Version bump only for package @react-fabric/core
