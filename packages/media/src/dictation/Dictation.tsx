@@ -22,24 +22,37 @@
  */
 
 import { Button, CoreIcons, HotKey } from "@react-fabric/core";
+import { type ButtonProps } from "@react-fabric/core/dist/types/components/button/Button";
 import { Format } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { Fragment, useEffect, useRef, useState } from "react";
+import {
+  Fragment,
+  type RefObject,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 import WaveSurfer from "wavesurfer.js";
 import RecordPlugin from "wavesurfer.js/dist/plugins/record";
 
-export interface DictationProps {
-  size?: "sm";
-  variant?: "solid" | "outline";
+export interface DictationProps
+  extends Pick<
+    ButtonProps,
+    "size" | "variant" | "icon" | "iconBg" | "iconColor"
+  > {
   hotkey?: string;
-  icon?: string;
   onRecord?: (blob: Blob) => void;
+  ref?: RefObject<{ start: () => void; stop: () => void }>;
 }
 
 export const Dictation = ({
+  ref,
   hotkey = "alt+t",
   size,
   icon,
+  iconBg,
+  iconColor,
   variant,
   onRecord,
 }: DictationProps) => {
@@ -104,6 +117,15 @@ export const Dictation = ({
     record.current?.stopRecording();
   });
 
+  useImperativeHandle(
+    ref,
+    () => ({
+      start: startDictation.current,
+      stop: stopDictation.current,
+    }),
+    [],
+  );
+
   return (
     <div
       className={classNames(
@@ -133,6 +155,8 @@ export const Dictation = ({
           <Button
             size={size}
             icon={icon ?? CoreIcons.mic}
+            iconBg={iconBg}
+            iconColor={iconColor}
             aria-label="Start dictation"
             rounded
             variant={variant}
@@ -142,7 +166,7 @@ export const Dictation = ({
       )}
       {!error && recording && (
         <Fragment>
-          <HotKey global keyCombo="esc" handler={stopDictation.current} />
+          <HotKey global keyCombo={hotkey} handler={stopDictation.current} />
           <span className="text-xs px-2">{Format.duration(progress)}</span>
           <Button
             size={size}
