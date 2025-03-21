@@ -76,7 +76,9 @@ export const HotKeyWrapper: FC<PropsWithChildren> = memo(
       const find = items.find(
         ({ key, alt, ctrl, meta, shift }: KeyValue) =>
           (key.toLowerCase() === keyCode.toLowerCase() ||
-            key.toLowerCase() === code.toLowerCase()) &&
+            key.toLowerCase() === code.toLowerCase() ||
+            // work around for macos alt+key issue
+            `key${key.toLowerCase()}` === code.toLowerCase()) &&
           alt === altKey &&
           ctrl === ctrlKey &&
           meta === metaKey &&
