@@ -54,7 +54,7 @@ export const HotKeyLabel = ({
   );
 
   return (
-    <kbd className="hotkey-label inline-flex gap-1 select-none self-center font-mono items-center text-[0.625rem] leading-4 bg-tint-500/10 text-base/50 whitespace-nowrap rounded px-2 mx-1">
+    <kbd className="hotkey-label inline-flex gap-1 select-none self-center font-mono items-center text-[0.625rem] leading-4 bg-tint-500/20 text-tint-900/65 whitespace-nowrap rounded px-2 mx-1">
       {label}
     </kbd>
   );

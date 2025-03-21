@@ -172,7 +172,9 @@ export const Tab = <Tag extends React.ElementType = "button">({
           />
         )}
         {actions && active && (
-          <DropdownTool className="bg-base/20 me-1 z-5">{actions}</DropdownTool>
+          <DropdownTool className="bg-tint-50/20 me-1 z-5">
+            {actions}
+          </DropdownTool>
         )}
         {onClose && (
           <span

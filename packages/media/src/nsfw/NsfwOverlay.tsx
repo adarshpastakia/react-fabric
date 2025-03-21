@@ -31,7 +31,7 @@ export const NsfwOverlay = ({ size }: { size?: "sm" | "md" }) => {
     <div
       role="none"
       data-inner-clickable="true"
-      className="bg-base/80 backdrop-blur-xl absolute inset-0 grid place-content-center text-center shadow-inset select-none"
+      className="bg-tint-50/80 backdrop-blur-xl absolute inset-0 grid place-content-center text-center shadow-inset select-none"
       onClick={(e) => [setHide(true), e.stopPropagation(), e.preventDefault()]}
     >
       <div className={size === "sm" ? "text-sm" : "text-2xl"}>

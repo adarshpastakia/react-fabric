@@ -248,7 +248,7 @@ export const SchemaField = ({
               placeholder="Label..."
               decorateEndShowWhenEmpty
               decorateEnd={
-                <span className="text-sm text-muted/50 px-1">OPTIONAL</span>
+                <span className="text-sm text-tint-300 px-1">OPTIONAL</span>
               }
             />
           </Controller>
@@ -262,7 +262,7 @@ export const SchemaField = ({
                   placeholder="Regex value..."
                   decorateEndShowWhenEmpty
                   decorateEnd={
-                    <span className="text-sm text-muted/50 px-1">OPTIONAL</span>
+                    <span className="text-sm text-tint-300 px-1">OPTIONAL</span>
                   }
                 />
               </Controller>
@@ -297,7 +297,7 @@ export const SchemaField = ({
                   placeholder="Accept value..."
                   decorateEndShowWhenEmpty
                   decorateEnd={
-                    <span className="text-sm text-muted/50 px-1">OPTIONAL</span>
+                    <span className="text-sm text-tint-300 px-1">OPTIONAL</span>
                   }
                 />
               </Controller>
@@ -315,7 +315,7 @@ export const SchemaField = ({
                   placeholder="Minimum value..."
                   decorateEndShowWhenEmpty
                   decorateEnd={
-                    <span className="text-sm text-muted/50 px-1">OPTIONAL</span>
+                    <span className="text-sm text-tint-300 px-1">OPTIONAL</span>
                   }
                 />
               </Controller>
@@ -327,7 +327,7 @@ export const SchemaField = ({
                   placeholder="Maximum value..."
                   decorateEndShowWhenEmpty
                   decorateEnd={
-                    <span className="text-sm text-muted/50 px-1">OPTIONAL</span>
+                    <span className="text-sm text-tint-300 px-1">OPTIONAL</span>
                   }
                 />
               </Controller>
@@ -339,7 +339,7 @@ export const SchemaField = ({
                   placeholder="Step value..."
                   decorateEndShowWhenEmpty
                   decorateEnd={
-                    <span className="text-sm text-muted/50 px-1">OPTIONAL</span>
+                    <span className="text-sm text-tint-300 px-1">OPTIONAL</span>
                   }
                 />
               </Controller>
@@ -367,7 +367,7 @@ export const SchemaField = ({
                   placeholder="Minimum value..."
                   decorateEndShowWhenEmpty
                   decorateEnd={
-                    <span className="text-sm text-muted/50 px-1">OPTIONAL</span>
+                    <span className="text-sm text-tint-300 px-1">OPTIONAL</span>
                   }
                 />
               </Controller>
@@ -379,7 +379,7 @@ export const SchemaField = ({
                   placeholder="Maximum value..."
                   decorateEndShowWhenEmpty
                   decorateEnd={
-                    <span className="text-sm text-muted/50 px-1">OPTIONAL</span>
+                    <span className="text-sm text-tint-300 px-1">OPTIONAL</span>
                   }
                 />
               </Controller>
@@ -410,7 +410,7 @@ export const SchemaField = ({
                   placeholder="Minimum items..."
                   decorateEndShowWhenEmpty
                   decorateEnd={
-                    <span className="text-sm text-muted/50 px-1">OPTIONAL</span>
+                    <span className="text-sm text-tint-300 px-1">OPTIONAL</span>
                   }
                 />
               </Controller>
@@ -422,7 +422,7 @@ export const SchemaField = ({
                   placeholder="Maximum items..."
                   decorateEndShowWhenEmpty
                   decorateEnd={
-                    <span className="text-sm text-muted/50 px-1">OPTIONAL</span>
+                    <span className="text-sm text-tint-300 px-1">OPTIONAL</span>
                   }
                 />
               </Controller>

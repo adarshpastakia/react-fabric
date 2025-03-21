@@ -202,7 +202,7 @@ export const Flyout = ({
         <FloatingOverlay
           lockScroll
           style={{ zIndex: "var(--z-overlay-mask)" }}
-          className="bg-base/10 backdrop-blur-sm transition-all"
+          className="bg-tint-100/10 backdrop-blur-sm transition-all"
         >
           {children}
         </FloatingOverlay>
@@ -239,6 +239,7 @@ export const Flyout = ({
             <HotKeyWrapper>
               <Header
                 flex
+                align="center"
                 className={classNames("fabric-flyoutHeader", headerClassName)}
               >
                 {isString(icon) && (

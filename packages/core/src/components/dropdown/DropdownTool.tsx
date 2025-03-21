@@ -47,8 +47,8 @@ export const DropdownTool = ({
       <Icon
         icon={icon ?? CoreIcons.caretDown}
         className={classNames(
+          "outline bg-tint-50/50 flex-content pointer-events-auto cursor-pointer",
           className,
-          "outline bg-base/50 flex-content pointer-events-auto cursor-pointer",
           groupHover &&
             "hidden group-hover/tool:inline-block data-[dropdown-open]:inline-block",
         )}

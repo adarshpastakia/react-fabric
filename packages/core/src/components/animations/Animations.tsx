@@ -118,7 +118,7 @@ export const AnimationBars = ({
     >
       <div
         className={classNames(
-          "outline outline-tint-500/20 p-4 bg-base/50 backdrop-blur-sm rounded",
+          "outline outline-tint-500/20 p-4 bg-tint-50/50 backdrop-blur-sm rounded",
         )}
       >
         <div
@@ -146,7 +146,7 @@ export const AnimationSpinner = ({
     >
       <div
         className={classNames(
-          "outline outline-tint-500/20 p-4 bg-base/50 backdrop-blur-sm rounded",
+          "outline outline-tint-500/20 p-4 bg-tint-50/50 backdrop-blur-sm rounded",
         )}
       >
         <div

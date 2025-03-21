@@ -177,7 +177,7 @@ export const Modal = ({
       <FloatingOverlay
         lockScroll
         style={{ zIndex: "var(--z-overlay-mask)" }}
-        className="bg-base/20 backdrop-blur-sm grid place-items-center"
+        className="bg-tint-100/20 backdrop-blur-sm grid place-items-center"
       >
         <FloatingFocusManager context={context}>
           <dialog
@@ -204,6 +204,7 @@ export const Modal = ({
             <HotKeyWrapper>
               <Header
                 flex
+                align="center"
                 className={classNames("fabric-modalHeader", headerClassName)}
               >
                 {isString(icon) && (
