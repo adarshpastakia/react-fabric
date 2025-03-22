@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.41](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.40...v1.0.0-beta.41) (2025-03-22)
+
+### Bug Fixes
+
+- **EmptyContent:** add iconColor prop ([21f9877](https://github.com/adarshpastakia/react-fabric/commit/21f9877a4ccb80ab2ae8b964c64995a0c2c252a0))
+- **Select:** add defaultOpen and hideHandle props ([c10ffb6](https://github.com/adarshpastakia/react-fabric/commit/c10ffb61eaa162ff750bacb49ed11c27eb3b7ec7))
+
 # [1.0.0-beta.40](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.39...v1.0.0-beta.40) (2025-03-21)
 
 ### Bug Fixes
