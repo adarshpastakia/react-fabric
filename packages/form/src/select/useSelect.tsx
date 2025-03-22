@@ -76,6 +76,7 @@ interface State {
 export const useSelect = ({
   options = EMPTY_ARRAY,
   value,
+  defaultOpen = false,
   autoComplete,
   multiple = false,
   allowCreate = false,
@@ -91,6 +92,7 @@ export const useSelect = ({
   value?: AnyObject;
   options?: AnyObject[];
   multiple?: boolean;
+  defaultOpen?: boolean;
   allowCreate?: boolean;
   groupProperty?: AnyObject;
   valueProperty?: AnyObject;
@@ -256,7 +258,7 @@ export const useSelect = ({
     {
       multiple,
       emptyValue,
-      open: false,
+      open: defaultOpen,
       loading: false,
       activeIndex: null,
       selectedIndex: null,

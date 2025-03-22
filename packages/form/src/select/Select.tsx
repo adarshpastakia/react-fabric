@@ -56,6 +56,8 @@ export const Select = <T extends AnyObject = string>({
   autoFocus,
   error,
   options,
+  defaultOpen,
+  hideHandle,
   groupProperty,
   labelProperty = "label" as AnyObject,
   valueProperty = "id" as AnyObject,
@@ -86,6 +88,7 @@ export const Select = <T extends AnyObject = string>({
     value,
     options,
     multiple,
+    defaultOpen,
     groupProperty,
     labelProperty,
     valueProperty,
@@ -301,7 +304,7 @@ export const Select = <T extends AnyObject = string>({
           onChange={(evt) => handleQuery(evt.target.value)}
         />
       </div>
-      {!state.loading && (
+      {!state.loading && !hideHandle && (
         <Icon
           className={classNames(
             "flex-content p-2 z-0 order-9 text-muted cursor-pointer self-stretch flex items-center h-auto",

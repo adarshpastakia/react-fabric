@@ -124,6 +124,14 @@ export interface InputProps<V = string> extends TestProps {
 
 export interface BaseSelectProps<T extends AnyObject = string> {
   /**
+   * open dropdown by default
+   */
+  defaultOpen?: boolean;
+  /**
+   * hide dropdown handle
+   */
+  hideHandle?: boolean;
+  /**
    * list options
    */
   options?: T[];

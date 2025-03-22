@@ -80,6 +80,7 @@ export const AutoComplete = ({
   onInput,
   onFocus,
   onBlur,
+  onQuery,
   onEnterPressed,
   ...rest
 }: AutoCompleteProps) => {
@@ -104,6 +105,7 @@ export const AutoComplete = ({
     multiple,
     onChange,
     onSelect,
+    onQuery,
   });
 
   const dropdownKey = useId();
@@ -292,6 +294,7 @@ export const AutoComplete = ({
           name={name}
           size={1}
           onInput={onInput}
+          autoFocus={autoFocus}
           rows={!multiple && expandOnEdit && state.open ? 5 : 1}
           className={classNames(
             "appearance-none bg-transparent outline-none border-none ring-0 flex-1 resize-none",

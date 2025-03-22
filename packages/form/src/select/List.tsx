@@ -73,7 +73,9 @@ export const List = <T extends AnyObject = string>({
   // @ts-expect-error ignore
   "data-hide-selected": hideSelected,
   ...rest
-}: SelectProps<T> & { height?: string | number }) => {
+}: Omit<SelectProps<T>, "defaultOpen" | "hideHandle"> & {
+  height?: string | number;
+}) => {
   const Wrapper = useMemo(() => (isInner ? Fragment : FieldWrapper), [isInner]);
   const wrapperProps = useMemo(
     () => (isInner ? {} : { ...rest }),
