@@ -24,7 +24,14 @@
 import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { isValidElement } from "react";
-import { type ChildrenProp, type CssProp, type TestProps } from "../../types";
+import {
+  type ChildrenProp,
+  type ColorType,
+  type CssProp,
+  type PaletteType,
+  type TestProps,
+} from "../../types";
+import { getColor } from "../../utils";
 import { Icon } from "../icon/Icon";
 
 export interface EmptyContentProps
@@ -47,6 +54,10 @@ export interface EmptyContentProps
    * empty icon
    */
   icon?: string | React.ReactElement;
+  /**
+   * icon color
+   */
+  iconColor?: ColorType | PaletteType;
 }
 
 const SizeMap: KeyValue = {
@@ -101,6 +112,7 @@ export const EmptyContent = ({
   icon,
   className,
   size,
+  iconColor,
   ...test
 }: EmptyContentProps) => {
   return (
@@ -116,7 +128,10 @@ export const EmptyContent = ({
       }
       {...test}
     >
-      <div className="leading-none" style={{ fontSize: "4em" }}>
+      <div
+        className="leading-none"
+        style={{ fontSize: "4em", color: getColor(iconColor ?? "tint-700") }}
+      >
         {isString(icon) && <Icon icon={icon} />}
         {isValidElement(icon) && icon}
         {!icon && <DefaultIcon />}
