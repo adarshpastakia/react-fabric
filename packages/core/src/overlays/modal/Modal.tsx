@@ -176,15 +176,15 @@ export const Modal = ({
     <FloatingPortal>
       <FloatingOverlay
         lockScroll
-        style={{ zIndex: "var(--z-overlay-mask)" }}
-        className="bg-tint-100/20 backdrop-blur-sm grid place-items-center"
+        style={{ zIndex: "var(--z-overlay-mask)", overflow: "hidden" }}
+        className="bg-tint-100/20 backdrop-blur-sm grid place-items-center p-16"
       >
         <FloatingFocusManager context={context}>
           <dialog
             className={classNames(
               "fabric-modal",
               "rounded-capped relative overflow-hidden flex flex-col flex-nowrap",
-              "ring-1 ring-tint-100 ring-offset-1 focus-within:ring-primary-300 shadow-xl",
+              "ring-2 ring-offset-2 ring-tint-100 focus-within:ring-primary-300 shadow-xl",
               size === "sm" && "w-[20rem]",
               size === "md" && "w-[40rem]",
               size === "lg" && "w-[60vw]",

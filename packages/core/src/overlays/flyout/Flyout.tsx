@@ -33,12 +33,10 @@ import {
 import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import {
-  Fragment,
   isValidElement,
   useCallback,
   useEffect,
   type ElementType,
-  type PropsWithChildren,
 } from "react";
 import { Loading } from "../../components/animations/Animations";
 import { Icon } from "../../components/icon/Icon";
@@ -194,91 +192,79 @@ export const Flyout = ({
     [closeOnClick, handleClose],
   );
 
-  const Wrapper = useCallback(
-    ({ children }: PropsWithChildren) => {
-      if (hideMask) return <Fragment>{children}</Fragment>;
-
-      return (
-        <FloatingOverlay
-          lockScroll
-          style={{ zIndex: "var(--z-overlay-mask)" }}
-          className="bg-tint-100/10 backdrop-blur-sm transition-all"
-        >
-          {children}
-        </FloatingOverlay>
-      );
-    },
-    [hideMask, handleClose],
-  );
-
   return (
     <FloatingPortal>
-      <Wrapper>
-        <FloatingFocusManager context={context}>
-          <div
-            data-align={align}
-            className={classNames(
-              "fabric-flyout",
-              "fixed inset-y-0 overflow-hidden flex flex-col flex-nowrap pointer-events-auto shadow-xl",
-              align === "start" ? "start-0" : "end-0",
-              size === "sm" && "w-[20rem]",
-              size === "md" && "w-[40rem]",
-              size === "lg" && "w-[60vw]",
-              size === "xl" && "w-[80vw]",
-            )}
-            style={{
-              width,
-              minWidth,
-            }}
-            onMouseUpCapture={tryClosing}
-            ref={refs.setFloating}
-            {...getFloatingProps()}
-            {...aria}
-            {...aria}
-          >
-            <HotKeyWrapper>
-              <Header
-                flex
-                align="center"
-                className={classNames("fabric-flyoutHeader", headerClassName)}
-              >
-                {isString(icon) && (
-                  <Icon
-                    icon={icon}
-                    bg={iconBg}
-                    color={iconColor}
-                    className={classNames(iconClassName, "p-1")}
-                    rtlFlip={rtlFlip}
-                  />
-                )}
-                {isValidElement(icon) && icon}
-                <label className="flex-1 truncate py-2 px-1">{title}</label>
-                {actions}
+      {!hideMask && (
+        <FloatingOverlay
+          lockScroll
+          style={{ zIndex: "var(--z-overlay-mask)", overflow: "hidden" }}
+          className="bg-tint-100/10 backdrop-blur-sm transition-all"
+        />
+      )}
+      <FloatingFocusManager context={context}>
+        <div
+          data-align={align}
+          className={classNames(
+            "fabric-flyout",
+            "fixed inset-y-0 overflow-hidden flex flex-col flex-nowrap pointer-events-auto shadow-xl",
+            align === "start" ? "start-0" : "end-0",
+            size === "sm" && "w-[20rem]",
+            size === "md" && "w-[40rem]",
+            size === "lg" && "w-[60vw]",
+            size === "xl" && "w-[80vw]",
+          )}
+          style={{
+            width,
+            minWidth,
+          }}
+          onMouseUpCapture={tryClosing}
+          ref={refs.setFloating}
+          {...getFloatingProps()}
+          {...aria}
+          {...aria}
+        >
+          <HotKeyWrapper>
+            <Header
+              flex
+              align="center"
+              className={classNames("fabric-flyoutHeader", headerClassName)}
+            >
+              {isString(icon) && (
                 <Icon
-                  data-ref="panelClose"
-                  className={classNames(
-                    "fabric-panelAction",
-                    "cursor-pointer p-1 text-xl self-stretch",
-                  )}
-                  icon={CoreIcons.close}
-                  onClick={() => handleClose(false)}
+                  icon={icon}
+                  bg={iconBg}
+                  color={iconColor}
+                  className={classNames(iconClassName, "p-1")}
+                  rtlFlip={rtlFlip}
                 />
-              </Header>
-              {loading && <Loading />}
-              <div
-                role="dialog"
+              )}
+              {isValidElement(icon) && icon}
+              <label className="flex-1 truncate py-2 px-1">{title}</label>
+              {actions}
+              <Icon
+                data-ref="panelClose"
                 className={classNames(
-                  "fabric-flyoutBody",
-                  "flex-1 grid overflow-hidden",
+                  "fabric-panelAction",
+                  "cursor-pointer p-1 text-xl self-stretch",
                 )}
-                {...({ tabIndex: 0 } as AnyObject)}
-              >
-                {children}
-              </div>
-            </HotKeyWrapper>
-          </div>
-        </FloatingFocusManager>
-      </Wrapper>
+                icon={CoreIcons.close}
+                onClick={() => handleClose(false)}
+              />
+            </Header>
+            {loading && <Loading />}
+            <div
+              role="dialog"
+              className={classNames(
+                "fabric-flyoutBody",
+                "flex-1 grid overflow-hidden",
+              )}
+              {...({ tabIndex: 0 } as AnyObject)}
+            >
+              {children}
+            </div>
+          </HotKeyWrapper>
+        </div>
+      </FloatingFocusManager>
     </FloatingPortal>
   );
 };
