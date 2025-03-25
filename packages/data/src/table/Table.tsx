@@ -198,7 +198,7 @@ export const Table = <T extends KeyValue = KeyValue>({
         {loading && <Loading />}
         {data.length > 0 && (
           <div
-            className="area-content flex flex-col flex-nowrap"
+            className="area-content flex flex-col flex-nowrap min-h-full"
             style={{ height: totalSize() }}
             ref={refBody}
           >

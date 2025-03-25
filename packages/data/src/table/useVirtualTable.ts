@@ -37,6 +37,7 @@ import {
 } from "react";
 
 interface DataState<T = KeyValue> {
+  data: T[];
   items: T[];
   grouped: KeyValue<T[]>;
   groups: AnyObject[];
@@ -48,7 +49,7 @@ interface DataState<T = KeyValue> {
 type DataAction =
   | { type: "updateState"; checked: AnyObject[] }
   | { type: "groupExpand"; key: AnyObject }
-  | { type: "grouped"; key: AnyObject }
+  | { type: "reset"; key: AnyObject; data: AnyObject[] }
   | { type: "expand"; key: AnyObject }
   | { type: "check"; key: AnyObject }
   | { type: "checkall" };
@@ -85,11 +86,11 @@ export const useVirtualTable = <T extends KeyValue = KeyValue>(
         if (state.allChecked !== 0) {
           state.checked = [];
         } else if (options.keyProperty) {
-          state.checked = data.map((item) => item[options.keyProperty]);
+          state.checked = state.data.map((item) => item[options.keyProperty]);
         }
         options.onCheckChanged?.(state.checked);
       }
-      const checkList = data.filter((hit) =>
+      const checkList = state.data.filter((hit) =>
         state.checked.includes(hit[options.keyProperty]),
       );
       if (action.type === "groupExpand") {
@@ -106,9 +107,10 @@ export const useVirtualTable = <T extends KeyValue = KeyValue>(
             .filter(Boolean) as any;
         }
       }
-      if (action.type === "grouped") {
+      if (action.type === "reset") {
+        state.data = action.data;
         if (action.key) {
-          state.grouped = groupBy<T>(data, action.key);
+          state.grouped = groupBy<T>(state.data, action.key);
           state.groups = Object.keys(state.grouped)
             .sort(compareValues("asc"))
             .map((group) => ({
@@ -122,17 +124,22 @@ export const useVirtualTable = <T extends KeyValue = KeyValue>(
             .map((group) => [group, ...state.grouped[group.key]])
             .flat() as any;
         } else {
-          state.items = data;
+          state.items = state.data;
         }
       }
       return {
         ...state,
         allChecked:
-          checkList.length === data.length ? 1 : state.checked.length ? 2 : 0,
+          checkList.length === state.data.length
+            ? 1
+            : state.checked.length
+              ? 2
+              : 0,
       } as DataState<T>;
     },
     {
-      items: data,
+      data,
+      items: [],
       grouped: {},
       groups: [],
       checked: [],
@@ -188,8 +195,8 @@ export const useVirtualTable = <T extends KeyValue = KeyValue>(
   );
 
   useEffect(() => {
-    dispatch({ type: "grouped", key: options.groupProperty });
-  }, [options.groupProperty]);
+    dispatch({ type: "reset", key: options.groupProperty, data });
+  }, [data, options.groupProperty]);
 
   useEffect(() => {
     dispatch({ type: "updateState", checked: options.checked ?? [] });
