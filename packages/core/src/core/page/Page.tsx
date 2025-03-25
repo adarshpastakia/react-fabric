@@ -24,9 +24,18 @@
 import classNames from "classnames";
 import { Loading } from "../../components/animations/Animations";
 import { Icon } from "../../components/icon/Icon";
-import { type ChildrenProp, type IconProps, type TestProps } from "../../types";
+import {
+  type ChildrenProp,
+  type IconProps,
+  type RefProp,
+  type TestProps,
+} from "../../types";
 
-export interface PageProps extends IconProps, ChildrenProp, TestProps {
+export interface PageProps
+  extends IconProps,
+    ChildrenProp,
+    TestProps,
+    RefProp<HTMLDivElement> {
   /**
    * page title
    */
@@ -49,6 +58,7 @@ export interface PageProps extends IconProps, ChildrenProp, TestProps {
  * The page component used typically for routes, is a structured layout used within an application to organize and display content in a sectioned format, ensuring a consistent and intuitive user experience.
  */
 export const Page = ({
+  ref,
   children,
   paper,
   title,
@@ -60,6 +70,7 @@ export const Page = ({
   loading,
   "data-testid": testId,
   "data-test-value": testValue,
+  ...rest
 }: PageProps) => {
   return (
     <div
@@ -67,10 +78,12 @@ export const Page = ({
       data-test-value={testValue}
       data-loading={loading}
       className={classNames(
-        "fabric-page",
+        "fabric-page relative",
         "overflow-hidden grid area-content",
         paper && "shadow-paper m-[6px] rounded-capped",
       )}
+      ref={ref}
+      {...rest}
     >
       {title && (
         <div
