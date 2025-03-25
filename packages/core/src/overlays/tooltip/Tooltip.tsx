@@ -186,22 +186,24 @@ export const Tooltip = ({
             }}
             {...getFloatingProps()}
           >
-            <span
-              className={classNames(
-                "font-medium flex-1 break-all",
-                !textColor && "contrast",
-                isString(content) && "whitespace-pre-wrap mixed-lang",
-              )}
-              style={{
-                color: textColor
-                  ? undefined
-                  : color
-                    ? getColor(color)
-                    : "var(--bg-color-muted)",
-              }}
-            >
-              {content}
-            </span>
+            {isValidElement(content) && content}
+            {isString(content) && (
+              <span
+                className={classNames(
+                  "font-medium flex-1 break-all whitespace-pre-wrap mixed-lang",
+                  !textColor && "contrast",
+                )}
+                style={{
+                  color: textColor
+                    ? undefined
+                    : color
+                      ? getColor(color)
+                      : "var(--bg-color-muted)",
+                }}
+              >
+                {content}
+              </span>
+            )}
             {copyEl}
             <FloatingArrow
               ref={arrowRef}
