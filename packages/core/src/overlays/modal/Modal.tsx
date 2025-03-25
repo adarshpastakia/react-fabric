@@ -99,6 +99,14 @@ export interface ModalProps
    */
   minWidth?: string | number;
   /**
+   * portal root element
+   */
+  root?: HTMLElement;
+  /**
+   * hide mask background
+   */
+  noMask?: boolean;
+  /**
    * close handler
    */
   onClose?: (...args: AnyObject) => void;
@@ -121,7 +129,9 @@ export const Modal = ({
   onBeforeClose,
   children,
   loading,
+  root,
   size,
+  noMask,
   width,
   height,
   minHeight,
@@ -173,11 +183,18 @@ export const Modal = ({
   }, []);
 
   return (
-    <FloatingPortal>
+    <FloatingPortal root={root}>
       <FloatingOverlay
         lockScroll
-        style={{ zIndex: "var(--z-overlay-mask)", overflow: "hidden" }}
-        className="bg-tint-100/20 backdrop-blur-sm grid place-items-center p-16"
+        style={{
+          zIndex: "var(--z-overlay-mask)",
+          position: "absolute",
+          overflow: "hidden",
+        }}
+        className={classNames(
+          "grid place-items-center p-16",
+          !noMask && "bg-tint-100/20 backdrop-blur-sm",
+        )}
       >
         <FloatingFocusManager context={context}>
           <dialog
