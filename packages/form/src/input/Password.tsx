@@ -60,6 +60,8 @@ export const Password = ({
   placeholder,
   autoFocus,
   showToggle,
+  onBlur,
+  onFocus,
   onChange,
   onEnterPressed,
   ...rest
@@ -131,6 +133,8 @@ export const Password = ({
         autoComplete="off"
         autoFocus={autoFocus}
         value={actualValue}
+        onBlur={onBlur}
+        onFocus={onFocus}
         onChange={handleChange}
         onKeyDown={handleEnterPressed}
       />

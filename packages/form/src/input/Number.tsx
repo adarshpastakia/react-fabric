@@ -64,6 +64,8 @@ export const Number = ({
   min,
   max,
   step,
+  onBlur,
+  onFocus,
   onChange,
   onEnterPressed,
   ...rest
@@ -118,6 +120,8 @@ export const Number = ({
         autoComplete="off"
         autoFocus={autoFocus}
         value={actualValue}
+        onBlur={onBlur}
+        onFocus={onFocus}
         onChange={handleChange}
         onKeyDown={handleEnterPressed}
       />

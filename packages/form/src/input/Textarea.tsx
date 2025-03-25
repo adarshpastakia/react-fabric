@@ -69,6 +69,8 @@ export const Textarea = ({
   maxRows = 12,
   variableRows,
   expandable,
+  onBlur,
+  onFocus,
   onChange,
   onEnterPressed,
   ...rest
@@ -128,6 +130,8 @@ export const Textarea = ({
         autoComplete="off"
         autoFocus={autoFocus}
         value={actualValue}
+        onBlur={onBlur}
+        onFocus={onFocus}
         onChange={handleChange}
         onKeyDown={handleEnter(onEnterPressed, {
           preventDefault: !!onEnterPressed,

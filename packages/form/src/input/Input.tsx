@@ -53,6 +53,8 @@ export const Input = ({
   autoFocus,
   error,
   type = "text",
+  onBlur,
+  onFocus,
   onChange,
   onEnterPressed,
   ...rest
@@ -106,6 +108,8 @@ export const Input = ({
         autoComplete="off"
         autoFocus={autoFocus}
         value={actualValue}
+        onBlur={onBlur}
+        onFocus={onFocus}
         onChange={handleChange}
         onKeyDown={handleEnterPressed}
       />

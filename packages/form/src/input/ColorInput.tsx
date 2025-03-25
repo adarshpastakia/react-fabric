@@ -70,6 +70,8 @@ export const ColorInput = ({
   defaultColor = "",
   decorateEnd,
   decorateStart,
+  onBlur,
+  onFocus,
   onChange,
   // @ts-expect-error ignore
   noOutline,
@@ -144,7 +146,10 @@ export const ColorInput = ({
         data-ref="button"
         className="flex-1 flex items-center"
         ref={refs.setReference}
-        {...getReferenceProps()}
+        {...getReferenceProps({
+          onBlur,
+          onFocus,
+        })}
         data-inner-clickable="true"
         data-dropdown-open={isOpen ? true : undefined}
       >

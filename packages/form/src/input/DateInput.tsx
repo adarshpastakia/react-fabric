@@ -82,6 +82,8 @@ export const DateInput = ({
   autoFocus,
   error,
   type = "date",
+  onBlur,
+  onFocus,
   onChange,
   onEnterPressed,
   format = "dd/MM/yyyy",
@@ -213,7 +215,10 @@ export const DateInput = ({
         autoFocus={autoFocus}
         value={inputValue}
         ref={mergeRefs(ref, refs.setReference)}
-        {...getReferenceProps()}
+        {...getReferenceProps({
+          onBlur,
+          onFocus,
+        })}
         onChange={handleChange}
         onKeyDown={handleEnterPressed}
       />

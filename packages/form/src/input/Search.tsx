@@ -67,6 +67,8 @@ export const Search = ({
   searchOnChange = true,
   decorateEnd,
   decorateStart,
+  onBlur,
+  onFocus,
   onSearch,
   onChange,
   onEnterPressed,
@@ -152,6 +154,8 @@ export const Search = ({
         autoComplete="off"
         autoFocus={autoFocus}
         value={actualValue}
+        onBlur={onBlur}
+        onFocus={onFocus}
         onChange={handleChange}
         onKeyDown={handleEnterPressed}
       />
