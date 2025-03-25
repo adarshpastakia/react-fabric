@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.42](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.41...v1.0.0-beta.42) (2025-03-25)
+
+### Bug Fixes
+
+- **Inputs:** add onFocus/onBlur props ([9e9dafd](https://github.com/adarshpastakia/react-ui-framework/commit/9e9dafd5bbfd497d5e127b850e816515e3323ed3))
+
 # [1.0.0-beta.41](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.40...v1.0.0-beta.41) (2025-03-22)
 
 ### Bug Fixes

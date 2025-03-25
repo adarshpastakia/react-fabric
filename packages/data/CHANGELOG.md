@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.42](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.41...v1.0.0-beta.42) (2025-03-25)
+
+### Bug Fixes
+
+- **Table:** reset state on data change ([745365c](https://github.com/adarshpastakia/react-ui-framework/commit/745365c4f7dee25dc013e387211516832deb1558))
+
 # [1.0.0-beta.41](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.40...v1.0.0-beta.41) (2025-03-22)
 
 **Note:** Version bump only for package @react-fabric/data
