@@ -27,11 +27,12 @@
       cursor: pointer;
 
       padding-block: 0;
+      padding-inline: 4px;
 
-      color: var(--text-white);
+      color: var(--color-white);
 
       opacity: 0.8;
-      background-color: var(--bg-primary-500);
+      background-color: var(--color-primary-500);
       border: 0;
       border-radius: var(--rounded);
 
@@ -41,7 +42,7 @@
     }
 
     &[aria-invalid="true"]::-webkit-file-upload-button {
-      background-color: var(--bg-danger-500);
+      background-color: var(--color-danger-500);
     }
 
     &:disabled::-webkit-file-upload-button {
