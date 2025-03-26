@@ -126,7 +126,7 @@ export const Tooltip = ({
   });
 
   const hover = useHover(context, {
-    restMs: 250,
+    restMs: 500,
     delay: { open: 1000 },
     handleClose: copyContent ? safePolygon({ buffer: 1 }) : undefined,
   });
