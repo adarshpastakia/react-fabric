@@ -74,7 +74,7 @@ export const BodyCell = ({
 
   return (
     <div
-      className="overflow-hidden bg-inherit start-0 border-e"
+      className="overflow-hidden bg-inherit start-0 border-e group/table-col"
       style={{
         width: width ?? COL_DEFAULT_WIDTH,
         minWidth: column.minWidth ?? COL_MIN_WIDTH,
