@@ -49,6 +49,7 @@ export const InputWrapper = ({
   onClear,
   noOutline,
   noBorder,
+  actionButton,
   textarea = false,
   textareaExpandable = false,
   "data-inner": isInner,
@@ -162,6 +163,17 @@ export const InputWrapper = ({
           )}
         >
           {decorateEnd}
+        </div>
+      )}
+      {actionButton && (
+        <div
+          onClickCapture={doFocus}
+          className={classNames(
+            "fabric-decorate",
+            "text-muted leading-none flex-content",
+          )}
+        >
+          {actionButton}
         </div>
       )}
       {textareaExpandable && (

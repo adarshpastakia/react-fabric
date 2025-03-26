@@ -99,8 +99,9 @@ export const Password = ({
       disabled={disabled}
       required={required}
       {...rest}
-      decorateEnd={
-        showToggle && (
+      actionButton={
+        showToggle &&
+        actualValue && (
           <Tooltip
             color="warning"
             content={t(show ? "password.hide" : "password.show")}
@@ -118,7 +119,7 @@ export const Password = ({
       }
     >
       <input
-        className="appearance-none bg-transparent py-1 px-2 flex-1 border-none outline-none ring-0"
+        className="appearance-none bg-transparent py-1 px-2 flex-1 border-none outline-none ring-0 peer"
         aria-invalid={invalid}
         aria-disabled={disabled}
         aria-readonly={readOnly}

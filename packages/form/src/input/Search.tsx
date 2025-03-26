@@ -47,6 +47,10 @@ export interface SearchProps extends InputProps, RefProp<HTMLInputElement> {
    */
   searchOnChange?: boolean;
   /**
+   * hide search action handle
+   */
+  hideHandle?: boolean;
+  /**
    * search handler
    */
   onSearch?: (query?: string) => void;
@@ -63,10 +67,9 @@ export const Search = ({
   searching,
   placeholder,
   autoFocus,
+  hideHandle,
   allowClear = true,
-  searchOnChange = true,
-  decorateEnd,
-  decorateStart,
+  searchOnChange = false,
   onBlur,
   onFocus,
   onSearch,
@@ -117,14 +120,12 @@ export const Search = ({
       readOnly={readOnly}
       disabled={disabled}
       required={required}
-      decorateStart={decorateStart}
-      decorateEnd={
+      actionButton={
         <Fragment>
-          {decorateEnd}
           {searching && (
             <Icon className="p-2" icon={CoreIcons.spinner} animate="spin" />
           )}
-          {!searching && (
+          {!searching && !hideHandle && (
             <Button
               tabIndex={-1}
               variant="link"
@@ -139,7 +140,7 @@ export const Search = ({
       {...rest}
     >
       <input
-        className="appearance-none bg-transparent py-1 px-2 flex-1 border-none outline-none ring-0"
+        className="appearance-none bg-transparent py-1 px-2 flex-1 border-none outline-none ring-0 peer"
         aria-invalid={invalid}
         aria-disabled={disabled}
         aria-readonly={readOnly}

@@ -193,7 +193,7 @@ export const FileInput = ({
     >
       <input
         className={classNames(
-          "appearance-none bg-transparent py-1 px-2 flex-1 border-none outline-none ring-0",
+          "appearance-none bg-transparent py-1 px-2 flex-1 border-none outline-none ring-0 peer",
           "fabric-fileInput",
           isArray(actualValue) && actualValue?.length && "text-(--fabric-bg)",
         )}

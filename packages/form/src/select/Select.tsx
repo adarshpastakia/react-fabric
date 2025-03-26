@@ -296,7 +296,7 @@ export const Select = <T extends AnyObject = string>({
           ref={ref}
           autoFocus={autoFocus}
           className={classNames(
-            "appearance-none bg-transparent outline-none border-none ring-0 flex-1",
+            "appearance-none bg-transparent outline-none border-none ring-0 flex-1 peer",
             disabled && "cursor-not-allowed pointer-events-none",
             multiple && "min-w-24",
           )}
