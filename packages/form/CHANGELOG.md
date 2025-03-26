@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.43](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.42...v1.0.0-beta.43) (2025-03-26)
+
+### Bug Fixes
+
+- **FieldWrapper:** hide label row when lable is missing ([72d5007](https://github.com/adarshpastakia/react-ui-framework/commit/72d500784cbfcf166de2a0d82b77fffd20b08783))
+- **Inputs:** decorateEnd with peer based show/hide ([a832a8a](https://github.com/adarshpastakia/react-ui-framework/commit/a832a8ab3794389e17acb22c6194c9e9055cd754))
+
 # [1.0.0-beta.42](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.41...v1.0.0-beta.42) (2025-03-25)
 
 ### Bug Fixes

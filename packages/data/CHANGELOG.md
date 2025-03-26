@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.43](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.42...v1.0.0-beta.43) (2025-03-26)
+
+### Bug Fixes
+
+- **Table:** add tw group for descendant styling ([cc102c6](https://github.com/adarshpastakia/react-ui-framework/commit/cc102c67625e99b8a8ab2022f20f30e59dc6b267))
+- **TableCell:** value passed to renderer ([d5ad9c6](https://github.com/adarshpastakia/react-ui-framework/commit/d5ad9c64eb0ed9b34fe4db466b1a99a4d1ee355f))
+
 # [1.0.0-beta.42](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.41...v1.0.0-beta.42) (2025-03-25)
 
 ### Bug Fixes
