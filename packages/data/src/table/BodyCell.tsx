@@ -52,7 +52,7 @@ export const BodyCell = ({
   const content = useMemo(() => {
     const value = getByPath(item, column.id.toString());
     if (column.renderer != null) {
-      return column.renderer(item[column.id], item, index);
+      return column.renderer(value, item, index);
     }
     if (column.dataType === "boolean") {
       const map = column.valueMap ?? { true: "Yes", false: "no" };
