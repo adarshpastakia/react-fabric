@@ -47,7 +47,7 @@ export const FieldWrapper = ({
       data-ref="fieldWrapper"
       style={{ width, flexBasis: width }}
     >
-      {!isInner && (
+      {!isInner && label && (
         <div
           className="flex flex-nowrap flex-content items-end gap-1 py-0.5 px-2"
           style={{ width: inline ? labelWidth : undefined }}
