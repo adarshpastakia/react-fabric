@@ -108,7 +108,7 @@ export const InputWrapper = ({
         invalid && "fabric-invalidWrapper",
         !noOutline &&
           !noBorder &&
-          "bg-(--fabric-input) outline overflow-hidden",
+          "bg-(--fabric-input) outline -outline-offset-1 overflow-hidden",
         "flex flex-nowrap items-center flex-1",
         textarea ? "rounded-capped group" : "rounded",
         isExpanded
@@ -117,7 +117,7 @@ export const InputWrapper = ({
             ? "absolute inset-x-0"
             : "relative",
         !noOutline &&
-          "after:absolute after:bottom-0 after:h-px after:bg-primary-500 after:mx-auto",
+          "after:absolute after:bottom-0 after:h-[2px] after:bg-primary-500 after:mx-auto",
       )}
       onKeyDown={(e) =>
         e.key === "Escape" &&
