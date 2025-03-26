@@ -187,7 +187,10 @@ export const ConfirmButton = <Tag extends React.ElementType = "button">({
                 "select-none not-italic rounded-capped shadow-lg outline outline-muted bg-base",
               )}
               ref={refs.setFloating}
-              style={floatingStyles}
+              style={{
+                zIndex: "var(--z-popover)",
+                ...floatingStyles,
+              }}
               {...getFloatingProps()}
             >
               <div className="font-medium ">
