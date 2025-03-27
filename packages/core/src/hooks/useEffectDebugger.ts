@@ -44,10 +44,9 @@ const compareInputs = (
   logger: ReturnType<typeof useLogger>,
 ) => {
   if (
-    process.env.NODE_ENV === "production" &&
     typeof window !== "undefined" &&
     // @ts-expect-error ignore
-    window.DEBUG_HOOKS !== true
+    window.DEBUG_EFFECTS !== true
   )
     return;
 
