@@ -197,7 +197,7 @@ export const Switch = ({
       </div>
       <ErrorIcon invalid={invalid} error={error} />
       {label && (
-        <span className="flex-initial leading-5 truncate">{label}</span>
+        <span className="flex-initial leading-tight truncate">{label}</span>
       )}
     </label>
   );

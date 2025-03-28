@@ -159,7 +159,7 @@ export const Checkbox = ({
       />
       <ErrorIcon invalid={invalid} error={error} />
       {label && (
-        <span className="flex-initial leading-none truncate">{label}</span>
+        <span className="flex-initial leading-tight truncate">{label}</span>
       )}
     </label>
   );

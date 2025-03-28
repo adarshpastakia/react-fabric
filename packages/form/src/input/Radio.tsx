@@ -139,7 +139,7 @@ export const Radio = ({
         icon={iconOff}
       />
       {label && (
-        <span className="flex-initial leading-none truncate">{label}</span>
+        <span className="flex-initial leading-tight truncate">{label}</span>
       )}
     </label>
   );
