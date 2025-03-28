@@ -44,7 +44,7 @@ export interface CalloutProps
   /**
    * legend title
    */
-  legend?: string;
+  legend?: string | React.ReactElement;
   /**
    * callout icon
    */
