@@ -24,9 +24,10 @@
 import classNames from "classnames";
 import {
   Children,
-  useMemo,
   type DragEvent,
   type MouseEventHandler,
+  useCallback,
+  useMemo,
 } from "react";
 import { ErrorBoundary } from "../../core/boundary/ErrorBoundary";
 import { type ContentProps } from "../../core/content/Content";
@@ -58,6 +59,14 @@ export interface CardProps
    * click handler
    */
   onClick?: MouseEventHandler;
+  /**
+   * drag start handler
+   */
+  onDragStart?: (
+    event: DragEvent,
+    dragKey: string,
+    dragData?: KeyValue,
+  ) => void;
   /**
    * body css classname(s)
    */
@@ -91,6 +100,7 @@ export const Card = ({
   selected,
   selectedRibbon,
   onClick,
+  onDragStart,
   flex,
   draggable,
   dragKey,
@@ -112,6 +122,14 @@ export const Card = ({
     );
   }, [children]);
 
+  const handleDragStart = useCallback(
+    (event: DragEvent) => {
+      dragKey && event.dataTransfer?.setData(dragKey, JSON.stringify(dragData));
+      dragKey && onDragStart?.(event, dragKey, dragData);
+    },
+    [onDragStart, dragKey, dragData],
+  );
+
   return (
     <div
       className={classNames(
@@ -131,13 +149,7 @@ export const Card = ({
             onClick && "clickable",
           )}
           draggable={draggable}
-          onDragStart={
-            !draggable
-              ? undefined
-              : (e: DragEvent) =>
-                  dragKey &&
-                  e.dataTransfer?.setData(dragKey, JSON.stringify(dragData))
-          }
+          onDragStart={!draggable ? undefined : handleDragStart}
           ref={ref}
           {...aria}
         >
