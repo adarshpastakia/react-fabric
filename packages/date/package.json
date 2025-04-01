@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/date",
-  "version": "1.0.0-beta.43",
+  "version": "1.0.0-beta.44",
   "description": "RUF: Date package",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -35,8 +35,8 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@react-fabric/core": "^1.0.0-beta.43",
-    "@react-fabric/utilities": "^1.0.0-beta.43",
+    "@react-fabric/core": "^1.0.0-beta.44",
+    "@react-fabric/utilities": "^1.0.0-beta.44",
     "classnames": "^2.5.1",
     "date-fns": "^4.0.0",
     "resize-observer-polyfill": "^1.5.1"

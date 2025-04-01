@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.44](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.43...v1.0.0-beta.44) (2025-04-01)
+
+### Bug Fixes
+
+- **Callout:** allow element as legend content ([479b0b2](https://github.com/adarshpastakia/react-ui-framework/commit/479b0b2015c16c67e2c33198a6632675e75c7ee3))
+- **Card:** add dragStart handler ([24b9355](https://github.com/adarshpastakia/react-ui-framework/commit/24b935541d369f844bba96f6f3e934e0b415dbb2))
+- **EffectDebugger:** enable only when window.DEBUG_EFFECTS is true ([c03da72](https://github.com/adarshpastakia/react-ui-framework/commit/c03da72eecca983bcae6c96053f05dd6c7816c3f))
+
 # [1.0.0-beta.43](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.42...v1.0.0-beta.43) (2025-03-26)
 
 ### Bug Fixes
