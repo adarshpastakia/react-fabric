@@ -82,7 +82,10 @@ export const FilterTag = ({
       <Chip
         size="sm"
         color={color}
-        className="outline outline-1 max-w-60"
+        className={classNames(
+          "outline max-w-60",
+          filter.disabled && "opacity-65",
+        )}
         variant={filter.pinned ? "solid" : undefined}
         icon={icon}
         iconColor={color}
