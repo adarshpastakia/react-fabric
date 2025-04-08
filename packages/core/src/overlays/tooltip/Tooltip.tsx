@@ -45,6 +45,7 @@ import {
   useMemo,
   useRef,
   useState,
+  type MouseEvent,
   type ReactElement,
 } from "react";
 import { Icon } from "../../components/icon/Icon";
@@ -147,8 +148,9 @@ export const Tooltip = ({
   const copyEl = useMemo(() => {
     if (copyContent) {
       const copyText: AnyObject = isString(copyContent) ? copyContent : content;
-      const handler = () => {
+      const handler = (e: MouseEvent) => {
         setIsOpen(false);
+        e.stopPropagation();
         void navigator.clipboard.writeText(copyText.toString());
       };
       return (
