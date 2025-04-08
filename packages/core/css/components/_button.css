@@ -134,7 +134,7 @@
     --text: color-mix(in lab, var(--color) 80%, var(--fabric-text));
     --bg-hover: color-mix(in lab, var(--color) 18%, var(--fabric-bg));
     --bg-click: color-mix(in lab, var(--color) 25%, var(--fabric-bg));
-    --bg-active: color-mix(in lab, var(--color) 36%, var(--fabric-bg));
+    --bg-active: color-mix(in lab, var(--color) 24%, var(--fabric-bg));
 
     &[data-color="accent"] {
       --color: var(--color-accent-500);

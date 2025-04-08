@@ -56,20 +56,20 @@
     }
 
     &[data-focus="true"] {
-      background-color: color(from var(--color) srgb r g b / 15%);
+      background-color: color-mix(in lab, var(--color) 15%, var(--fabric-bg));
     }
 
     &:active {
-      background-color: color(from var(--color) srgb r g b / 35%);
+      background-color: color-mix(in lab, var(--color) 35%, var(--fabric-bg));
     }
 
     &[data-open="true"] {
-      background-color: color(from var(--color) srgb r g b / 10%);
+      background-color: color-mix(in lab, var(--color) 10%, var(--fabric-bg));
     }
 
     &.active {
       pointer-events: none;
-      background-color: color(from var(--color) srgb r g b / 20%);
+      background-color: color-mix(in lab, var(--color) 20%, var(--fabric-bg));
 
       & > div {
         box-shadow: 4px 0 0 var(--color) inset;
