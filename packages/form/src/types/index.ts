@@ -25,6 +25,7 @@ import {
   type RefProp,
   type TestProps,
 } from "@react-fabric/core/dist/types/types";
+import { type ReactElement } from "react";
 
 export interface InputProps<V = string> extends TestProps {
   /**
@@ -155,6 +156,10 @@ export interface BaseSelectProps<T extends AnyObject = string> {
    * allow create item
    */
   allowCreate?: boolean;
+  /**
+   * empty list display
+   */
+  emptyDisplay?: ReactElement;
   /**
    * create new item object
    */

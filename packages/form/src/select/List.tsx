@@ -63,6 +63,7 @@ export const List = <T extends AnyObject = string>({
   onChange,
   onSelect,
   onEnterPressed,
+  emptyDisplay,
   invalid,
   error,
   allowClear,
@@ -308,6 +309,7 @@ export const List = <T extends AnyObject = string>({
           labelProperty={labelProperty}
           itemRef={setItemRef}
           itemProps={makeItemProps}
+          empty={emptyDisplay}
         >
           {(item, label) => renderer?.(item) ?? label}
         </Options>

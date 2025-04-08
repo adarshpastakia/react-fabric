@@ -64,6 +64,7 @@ export const Select = <T extends AnyObject = string>({
   multiple,
   searchable,
   allowCreate,
+  emptyDisplay,
   createOption,
   matcher,
   renderer,
@@ -345,6 +346,7 @@ export const Select = <T extends AnyObject = string>({
               labelProperty={labelProperty}
               itemRef={setItemRef}
               itemProps={makeItemProps}
+              empty={emptyDisplay}
             >
               {(item, label) => renderer?.(item) ?? label}
             </Options>

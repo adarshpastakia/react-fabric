@@ -24,6 +24,7 @@
 import { Button, ButtonGroup, CoreIcons } from "@react-fabric/core";
 import { type RefProp } from "@react-fabric/core/dist/types/types";
 import {
+  type ReactElement,
   useCallback,
   useDeferredValue,
   useEffect,
@@ -69,6 +70,10 @@ export interface DualListProps<T>
    */
   valueProperty?: keyof T;
   /**
+   * empty list display
+   */
+  emptyDisplay?: ReactElement;
+  /**
    * item renderer
    */
   renderer?: (option: T) => React.ReactNode;
@@ -82,6 +87,7 @@ export const DualList = <T extends AnyObject = string>({
   ref,
   value,
   options,
+  emptyDisplay,
   groupProperty,
   height = "18rem",
   labelProperty = "label" as AnyObject,
@@ -210,6 +216,7 @@ export const DualList = <T extends AnyObject = string>({
             error={error}
             height={height}
             options={leftOptions}
+            emptyDisplay={emptyDisplay}
             groupProperty={groupProperty}
             labelProperty={labelProperty}
             valueProperty={valueProperty}
@@ -268,6 +275,7 @@ export const DualList = <T extends AnyObject = string>({
             allowClear
             height={height}
             options={rightOptions}
+            emptyDisplay={emptyDisplay}
             groupProperty={groupProperty}
             labelProperty={labelProperty}
             valueProperty={valueProperty}
