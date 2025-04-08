@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.45](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.44...v1.0.0-beta.45) (2025-04-08)
+
+### Bug Fixes
+
+- **Select:** add prop for custom empty list ([ed45b4a](https://github.com/adarshpastakia/react-ui-framework/commit/ed45b4af4b9d138e6d474518249d33417cbbcbe1))
+
 # [1.0.0-beta.44](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.43...v1.0.0-beta.44) (2025-04-01)
 
 ### Bug Fixes

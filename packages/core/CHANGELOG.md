@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.45](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.44...v1.0.0-beta.45) (2025-04-08)
+
+### Bug Fixes
+
+- **Tooltip:** avoid click propagation on copy click ([33ec870](https://github.com/adarshpastakia/react-ui-framework/commit/33ec870497696a44d249e1b1c6afbbf3aa342254))
+
 # [1.0.0-beta.44](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.43...v1.0.0-beta.44) (2025-04-01)
 
 ### Bug Fixes
