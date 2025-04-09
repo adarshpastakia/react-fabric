@@ -137,19 +137,19 @@ export const EmptyContent = ({
         {!icon && <DefaultIcon />}
       </div>
       {title && (
-        <p
+        <div
           className="font-medium text-center text-dimmed"
           style={{ fontSize: "1.5em" }}
         >
           {title}
-        </p>
+        </div>
       )}
-      <p
+      <div
         className="font-medium text-center text-muted"
         style={{ fontSize: "0.875em" }}
       >
         {message}
-      </p>
+      </div>
       <div className="flex gap-1 pt-6">{children}</div>
     </div>
   );
