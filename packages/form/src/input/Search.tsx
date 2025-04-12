@@ -113,7 +113,7 @@ export const Search = ({
 
   return (
     <InputWrapper
-      showClear={!!actualValue}
+      showClear={!!actualValue && !disabled && !readOnly}
       onClear={handleChange}
       allowClear={allowClear}
       invalid={invalid}

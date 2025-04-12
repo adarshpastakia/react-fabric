@@ -338,6 +338,7 @@ export const useSelect = ({
       });
     },
     [onQuery],
+    300,
   );
 
   // handlers

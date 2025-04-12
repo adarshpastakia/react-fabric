@@ -151,7 +151,7 @@ export const FileInput = ({
 
   return (
     <InputWrapper
-      showClear={!isEmpty(actualValue)}
+      showClear={!isEmpty(actualValue) && !disabled && !readOnly}
       onClear={handleChange}
       invalid={invalid}
       readOnly={readOnly}

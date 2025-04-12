@@ -90,7 +90,7 @@ export const Form = <K extends KeyValue>({
   });
 
   const [, startTransition] = useTransition();
-  const changeHandler = useDebounce(onChange, [onChange]);
+  const changeHandler = useDebounce(onChange, [onChange], 300);
   useEffect(() => {
     const subscription = form.watch((value) => {
       startTransition(() => changeHandler?.(value as K));

@@ -190,7 +190,7 @@ export const RangeSlider = ({
     >
       <div
         className={classNames(
-          "flex-auto order-3 flex items-center select-none z-0",
+          "flex-1 order-3 flex items-center select-none z-0",
           vertical && "flex-col w-8",
           invalid ? "text-danger-500" : "text-primary-600",
         )}
@@ -201,7 +201,7 @@ export const RangeSlider = ({
         <div
           ref={rangerInstance.trackElRef}
           className={classNames(
-            "flex-auto relative flex items-center",
+            "flex-1 relative flex items-center",
             vertical ? "my-2 w-8" : "mx-2 h-8",
           )}
           style={{ height: vertical ? height : undefined }}

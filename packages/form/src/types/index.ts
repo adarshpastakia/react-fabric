@@ -80,6 +80,8 @@ export interface InputProps<V = string> extends TestProps {
    */
   info?: string;
 
+  monospace?: boolean;
+
   /**
    * required
    */

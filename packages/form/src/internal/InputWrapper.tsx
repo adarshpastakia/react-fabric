@@ -108,7 +108,7 @@ export const InputWrapper = ({
         invalid && "fabric-invalidWrapper",
         !noOutline &&
           !noBorder &&
-          "bg-(--fabric-input) outline -outline-offset-1 overflow-hidden",
+          "bg-(--fabric-input) outline overflow-hidden",
         "flex flex-nowrap items-center flex-1",
         textarea ? "rounded-capped group" : "rounded",
         isExpanded
@@ -117,7 +117,7 @@ export const InputWrapper = ({
             ? "absolute inset-x-0"
             : "relative",
         !noOutline &&
-          "after:absolute after:bottom-0 after:h-[2px] after:bg-primary-500 after:mx-auto",
+          "after:absolute after:bottom-0 after:h-px after:bg-primary-500 after:mx-auto",
       )}
       onKeyDown={(e) =>
         e.key === "Escape" &&
@@ -190,7 +190,10 @@ export const InputWrapper = ({
     <Wrapper {...wrapperProps}>
       <div
         ref={elRef}
-        className="flex-1 relative min-h-8 flex flex-col flex-nowrap"
+        className={classNames(
+          "relative min-h-8 flex flex-col flex-nowrap",
+          width ? "flex-auto" : "flex-1",
+        )}
         style={{ width, flexBasis: width }}
       >
         {el}

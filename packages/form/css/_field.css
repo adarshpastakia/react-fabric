@@ -127,23 +127,47 @@
       line-height: 1;
     }
 
-    > :not(:first-child) {
-      &,
-      & > div,
-      & > [role="button"],
-      & > [data-ref="button"] > [role="button"] {
-        border-start-start-radius: 0;
-        border-end-start-radius: 0;
+    &[data-vertical="false"] {
+      > :not(:first-child) {
+        &,
+        & > div,
+        & > [role="button"],
+        & > [data-ref="button"] > [role="button"] {
+          border-start-start-radius: 0;
+          border-end-start-radius: 0;
+        }
+      }
+
+      > :not(:last-child) {
+        &,
+        & > div,
+        & > [role="button"],
+        & > [data-ref="button"] > [role="button"] {
+          border-start-end-radius: 0;
+          border-end-end-radius: 0;
+        }
       }
     }
 
-    > :not(:last-child) {
-      &,
-      & > div,
-      & > [role="button"],
-      & > [data-ref="button"] > [role="button"] {
-        border-start-end-radius: 0;
-        border-end-end-radius: 0;
+    &[data-vertical="true"] {
+      > :not(:first-child) {
+        &,
+        & > div,
+        & > [role="button"],
+        & > [data-ref="button"] > [role="button"] {
+          border-start-start-radius: 0;
+          border-start-end-radius: 0;
+        }
+      }
+
+      > :not(:last-child) {
+        &,
+        & > div,
+        & > [role="button"],
+        & > [data-ref="button"] > [role="button"] {
+          border-end-start-radius: 0;
+          border-end-end-radius: 0;
+        }
       }
     }
   }

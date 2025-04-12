@@ -104,7 +104,7 @@ export const Textarea = ({
 
   return (
     <InputWrapper
-      showClear={!!actualValue}
+      showClear={!!actualValue && !disabled && !readOnly}
       onClear={handleChange}
       invalid={invalid}
       readOnly={readOnly}

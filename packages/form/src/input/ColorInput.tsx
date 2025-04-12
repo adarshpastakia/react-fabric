@@ -35,8 +35,6 @@ import {
 } from "@floating-ui/react";
 import { CoreIcons, Icon } from "@react-fabric/core";
 import { type RefProp } from "@react-fabric/core/dist/types/types";
-import { isString } from "@react-fabric/utilities";
-import classNames from "classnames";
 import {
   startTransition,
   useCallback,
@@ -45,6 +43,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { InputWrapper } from "../internal/InputWrapper";
 import { type InputProps } from "../types";
 import { ColorPicker, type ColorProps } from "./ColorPicker";
 
@@ -62,14 +61,12 @@ export const ColorInput = ({
   ref,
   required,
   disabled,
-  allowClear,
+  readOnly,
   invalid,
   error,
   value,
   showPicker,
   defaultColor = "",
-  decorateEnd,
-  decorateStart,
   onBlur,
   onFocus,
   onChange,
@@ -113,7 +110,7 @@ export const ColorInput = ({
     ],
   });
   const click = useClick(context, {
-    enabled: !disabled,
+    enabled: !disabled && !readOnly,
   });
   const dismiss = useDismiss(context, {
     referencePress: true,
@@ -125,23 +122,16 @@ export const ColorInput = ({
   ]);
 
   return (
-    <div
-      className={classNames(
-        "flex-content min-h-[1.5em] min-w-[3.5em] self-stretch flex items-center outline-tint-200 rounded",
-        !disabled && "bg-base",
-        !noOutline && "bg-(--fabric-input) outline overflow-hidden",
-      )}
+    <InputWrapper
+      showClear={actualValue !== defaultColor && !disabled && !readOnly}
+      onClear={handleChange}
+      invalid={invalid}
+      readOnly={readOnly}
+      disabled={disabled}
+      required={required}
+      error={error}
+      {...rest}
     >
-      {decorateStart && (
-        <div
-          className={classNames(
-            "text-muted leading-none flex-content",
-            isString(decorateStart) && "px-2",
-          )}
-        >
-          {decorateStart}
-        </div>
-      )}
       <button
         data-ref="button"
         className="flex-1 flex items-center"
@@ -206,25 +196,6 @@ export const ColorInput = ({
           }
         />
       )}
-      {decorateEnd && (
-        <div
-          className={classNames(
-            "text-muted leading-none flex-content",
-            isString(decorateEnd) && "px-2",
-          )}
-        >
-          {decorateEnd}
-        </div>
-      )}
-      {!disabled && allowClear && actualValue !== defaultColor && (
-        <Icon
-          icon={CoreIcons.close}
-          onClick={() => handleChange()}
-          className={classNames(
-            "text-tint-500 hover:text-tint-700 p-[0.25em] flex-content",
-          )}
-        />
-      )}
-    </div>
+    </InputWrapper>
   );
 };

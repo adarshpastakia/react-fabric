@@ -93,7 +93,7 @@ export const Number = ({
 
   return (
     <InputWrapper
-      showClear={!!actualValue}
+      showClear={!!actualValue && !disabled && !readOnly}
       onClear={handleChange}
       invalid={invalid}
       readOnly={readOnly}

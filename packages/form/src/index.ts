@@ -39,6 +39,7 @@ export {
 } from "./types/schema";
 
 export { ArrayInput } from "./input/ArrayInput";
+export { AvatarInput } from "./input/AvatarInput";
 export { Checkbox } from "./input/Checkbox";
 export { ColorInput } from "./input/ColorInput";
 export { ColorPicker } from "./input/ColorPicker";

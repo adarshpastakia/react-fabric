@@ -33,6 +33,7 @@ import {
 import { InputWrapper } from "../internal/InputWrapper";
 import { type InputProps } from "../types";
 import { handleEnter } from "../utils";
+import classNames from "classnames";
 
 export interface TextInputProps extends InputProps, RefProp<HTMLInputElement> {
   /**
@@ -52,6 +53,7 @@ export const Input = ({
   placeholder,
   autoFocus,
   error,
+  monospace,
   type = "text",
   onBlur,
   onFocus,
@@ -82,7 +84,7 @@ export const Input = ({
 
   return (
     <InputWrapper
-      showClear={!!actualValue}
+      showClear={!!actualValue && !disabled && !readOnly}
       onClear={handleChange}
       invalid={invalid}
       readOnly={readOnly}
@@ -92,7 +94,10 @@ export const Input = ({
       {...rest}
     >
       <input
-        className="appearance-none bg-transparent py-1 px-2 flex-1 border-none outline-none ring-0 peer"
+        className={classNames(
+          "appearance-none bg-transparent py-1 px-2 flex-1 border-none outline-none ring-0 peer",
+          monospace && "font-mono text-sm",
+        )}
         aria-invalid={invalid}
         aria-disabled={disabled}
         aria-readonly={readOnly}

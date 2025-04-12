@@ -90,6 +90,7 @@ export const Field = ({
           "flex-1 rounded",
           !vertical && "flex",
         )}
+        data-vertical={!!vertical}
       >
         {cloneChildren(children, (child: AnyObject) =>
           cloneElement(child, {
