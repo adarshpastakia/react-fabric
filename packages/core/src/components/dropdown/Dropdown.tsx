@@ -237,12 +237,7 @@ const DropdownElement = ({
           <FloatingOverlay />
           <FloatingFocusManager context={context} modal>
             <div
-              ref={(el) => {
-                refs.setFloating(el);
-                el
-                  ?.querySelector<HTMLElement>("input,textarea,button")
-                  ?.focus();
-              }}
+              ref={refs.setFloating}
               style={{
                 minWidth,
                 zIndex: "var(--z-popover)",
