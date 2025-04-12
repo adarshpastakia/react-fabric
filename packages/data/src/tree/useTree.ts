@@ -294,9 +294,13 @@ export const useTree = <T extends KeyValue>({
     dispatch({ type: "collapseAll" });
   }, []);
 
-  const onFilter = useDebounce((query: string) => {
-    dispatch({ type: "filter", query });
-  }, []);
+  const onFilter = useDebounce(
+    (query: string) => {
+      dispatch({ type: "filter", query });
+    },
+    [],
+    300,
+  );
 
   return {
     tree: state.tree,

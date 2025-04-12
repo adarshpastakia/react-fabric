@@ -22,13 +22,16 @@
  */
 
 import { ascii } from "./_ascii";
-import { isBoolean, isNumber, isObject, isString } from "./_isType";
+import { isBoolean, isNil, isNumber, isObject, isString } from "./_isType";
 
 /**
  * check equality of objects
  * @internal
  */
 export const isEqual = (obj: unknown, test: unknown): boolean => {
+  if (isNil(obj) && isNil(test)) {
+    return true;
+  }
   if (isString(obj) || isNumber(obj) || isBoolean(obj)) {
     return obj === test;
   } else if (Array.isArray(obj) && Array.isArray(test)) {
