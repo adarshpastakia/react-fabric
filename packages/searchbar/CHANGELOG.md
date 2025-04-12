@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.46](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.45...v1.0.0-beta.46) (2025-04-12)
+
+### Bug Fixes
+
+- **FilterBar:** remote query dropdown for value field ([b933bb6](https://github.com/adarshpastakia/react-ui-framework/commit/b933bb68d3b2814a9cf554151c22b17e92f97d03))
+
 # [1.0.0-beta.45](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.44...v1.0.0-beta.45) (2025-04-08)
 
 **Note:** Version bump only for package @react-fabric/searchbar

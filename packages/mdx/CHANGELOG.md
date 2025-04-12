@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.46](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.45...v1.0.0-beta.46) (2025-04-12)
+
+**Note:** Version bump only for package @react-fabric/mdx
+
 # [1.0.0-beta.45](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.44...v1.0.0-beta.45) (2025-04-08)
 
 **Note:** Version bump only for package @react-fabric/mdx

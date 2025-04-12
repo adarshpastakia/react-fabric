@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.46](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.45...v1.0.0-beta.46) (2025-04-12)
+
+### Bug Fixes
+
+- **Dropdown:** remove autoFocus ([2d2f73f](https://github.com/adarshpastakia/react-ui-framework/commit/2d2f73fc222eced375eb652d0b4ed980e107c2ac))
+- **EmptyContent:** use div in place of p ([68524ac](https://github.com/adarshpastakia/react-ui-framework/commit/68524acd81781ceebfeec8318ba17de0d0b166e5))
+- **ThemeProvider:** default colorScheme to global colorScheme ([18bd1c7](https://github.com/adarshpastakia/react-ui-framework/commit/18bd1c7066805446741ba9434c1f2e9ea34475cd))
+
 # [1.0.0-beta.45](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.44...v1.0.0-beta.45) (2025-04-08)
 
 ### Bug Fixes
