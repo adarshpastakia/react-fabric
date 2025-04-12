@@ -172,6 +172,19 @@ export const FilterForm = ({
             />
           </Controller>
         );
+      } else if (!!field.onSearch || field.values?.length) {
+        return (
+          <Controller name="value">
+            <Select
+              searchable
+              allowCreate
+              allowClear
+              options={field.values ?? []}
+              label={t("label.value")}
+              onQuery={field.onSearch}
+            />
+          </Controller>
+        );
       } else {
         return (
           <Controller name="value">

@@ -30,7 +30,7 @@ import {
   MenuItem,
 } from "@react-fabric/core";
 import { SuperDate } from "@react-fabric/superdate";
-import { shortHash } from "@react-fabric/utilities";
+import { Countries, matchString, shortHash } from "@react-fabric/utilities";
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import { FIELD_TYPE, OPERATOR, SearchBar } from "../src";
@@ -193,6 +193,25 @@ export const _SearchBar: SearchBarStory = {
         field: "extras",
         label: "Extras",
         type: FIELD_TYPE.NONE,
+      },
+      {
+        field: "country",
+        label: "Country",
+        type: FIELD_TYPE.STRING,
+        onSearch(q) {
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              resolve(
+                Countries.list
+                  .filter(
+                    (ctr) =>
+                      matchString(ctr.name, q) || matchString(ctr.fullname, q),
+                  )
+                  .map((c) => c.name),
+              );
+            }, 1000);
+          });
+        },
       },
     ],
     filters: [
