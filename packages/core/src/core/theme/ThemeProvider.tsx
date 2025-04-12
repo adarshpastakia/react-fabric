@@ -25,6 +25,7 @@ import { isColor } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useMemo } from "react";
 import { type ChildrenProp } from "../../types";
+import { useApplicationContext } from "../../context/Global";
 
 export interface ThemeProps {
   /**
@@ -71,6 +72,7 @@ export const ThemeProvider = ({
   colorScheme,
   rounding,
 }: ThemeProps & ChildrenProp) => {
+  const { currentColorScheme } = useApplicationContext();
   const styles = useMemo(() => {
     const ret: KeyValue = {};
     if (primaryColor && isColor(primaryColor)) {
@@ -97,7 +99,7 @@ export const ThemeProvider = ({
   return (
     <div
       style={styles}
-      data-color-scheme={colorScheme}
+      data-color-scheme={colorScheme ?? currentColorScheme}
       data-rounding={rounding}
       className={classNames(
         "fabric-themeProvider",

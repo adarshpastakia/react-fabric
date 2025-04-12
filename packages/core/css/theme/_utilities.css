@@ -81,6 +81,10 @@
   unicode-bidi: plaintext;
 }
 
+@utility flex-auto {
+  flex: 0 0 auto;
+}
+
 @utility flex-full {
   flex: 1 1 100%;
 }

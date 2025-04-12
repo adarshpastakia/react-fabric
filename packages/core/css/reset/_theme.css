@@ -21,7 +21,45 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-@layer theme {
+ @layer theme {
+  :root {
+    /* app default primary */
+    --color-primary: var(--color-denim-500);
+    --color-accent: var(--color-jade-500);
+    --color-tint: var(--color-silver-500);
+
+    /* default rounding */
+    --rounding: 0.25rem;
+    --rounding-cap: 0.25rem;
+    --gutter: 0.5rem;
+
+    /* z levels */
+    --z-overlay-mask: 25;
+    --z-overlay: 30;
+    --z-popover-mask: 45;
+    --z-popover: 50;
+    --z-tooltip: 60;
+    --z-notifications: 60;
+  }
+
+  [data-rounding="sm"] {
+    /* default rounding */
+    --rounding: 2px;
+    --rounding-cap: 2px;
+  }
+
+  [data-rounding="md"] {
+    /* default rounding */
+    --rounding: 0.5rem;
+    --rounding-cap: 0.5rem;
+  }
+
+  [data-rounding="full"] {
+    /* default rounding */
+    --rounding: 9999px;
+    --rounding-cap: 0.5rem;
+  }
+
   [data-color-scheme="light"] {
     --fabric-bg: var(--color-white);
     --fabric-text: var(--color-black);
@@ -43,27 +81,7 @@
   }
 }
 
-@layer base {
-  :root {
-    /* app default primary */
-    --color-primary: var(--color-denim-500);
-    --color-accent: var(--color-jade-500);
-    --color-tint: var(--color-silver-500);
-
-    /* default rounding */
-    --rounding: 0.25rem;
-    --rounding-cap: 0.25rem;
-    --gutter: 0.5rem;
-
-    /* z levels */
-    --z-overlay-mask: 25;
-    --z-overlay: 30;
-    --z-popover-mask: 45;
-    --z-popover: 50;
-    --z-tooltip: 60;
-    --z-notifications: 60;
-  }
-
+@layer theme {
   [data-color-scheme] {
     /* primary */
     --color-primary-50: color-mix(in oklab, var(--color-primary) 10%, var(--fabric-bg));
@@ -366,28 +384,6 @@
     --border-color-light: color-mix(in oklab, var(--color-white) 75%, var(--color-tint));
 
     color: color-mix(in lab, var(--fabric-text) 95%, var(--color-tint));
-    background-color: color-mix(
-      in lab,
-      var(--fabric-bg) 92%,
-      var(--color-tint)
-    );
-  }
-
-  [data-rounding="sm"] {
-    /* default rounding */
-    --rounding: 2px;
-    --rounding-cap: 2px;
-  }
-
-  [data-rounding="md"] {
-    /* default rounding */
-    --rounding: 0.5rem;
-    --rounding-cap: 0.5rem;
-  }
-
-  [data-rounding="full"] {
-    /* default rounding */
-    --rounding: 9999px;
-    --rounding-cap: 0.5rem;
+    background-color: color-mix(in lab, var(--fabric-bg) 92%, var(--color-tint));
   }
 }
