@@ -146,6 +146,10 @@ export const ApplicationProvider: FC<GlobalProps> = ({
     defaultLocale ?? systemLocale(),
   );
 
+  useEffect(() => {
+    defaultColorScheme && setColorScheme(defaultColorScheme);
+  }, [defaultColorScheme]);
+
   /** ***************** set initial theme and locale dir  *******************/
   useEffect(() => {
     document.documentElement.lang = locale;
