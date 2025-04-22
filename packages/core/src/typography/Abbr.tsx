@@ -47,7 +47,7 @@ const AbbrText = ({ color, children, tooltip, content }: AbbrTextProps) => {
     [tooltip],
   );
   const tooltipProps = useMemo(() => {
-    return { ...getTooltipProps(tooltip), copyContent: content };
+    return tooltip ? { ...getTooltipProps(tooltip), copyContent: content } : {};
   }, [tooltip, content]);
 
   return (
