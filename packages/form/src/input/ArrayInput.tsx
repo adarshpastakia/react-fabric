@@ -30,7 +30,7 @@ import {
   Icon,
   Tooltip,
 } from "@react-fabric/core";
-import { isString } from "@react-fabric/utilities";
+import { isFalse, isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import {
   cloneElement,
@@ -48,7 +48,7 @@ import { FieldWrapper } from "../internal/FieldWrapper";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { CSS } from "@dnd-kit/utilities";
 
-export interface ArrayInputProps {
+export interface ArrayInputProps<T extends AnyObject = string> {
   /**
    * input label
    */
@@ -107,13 +107,25 @@ export interface ArrayInputProps {
    */
   fixedList?: boolean;
   arrayRef?: Ref<{
-    addItem: (item: AnyObject) => void;
+    addItem: (item: T) => void;
     removeItem: (idx: number) => void;
   }>;
   /**
-   * Add item
+   * add new item
    */
   onAdd?: () => AnyObject;
+  /**
+   * on item remove
+   */
+  onRemove?: (item: T, idx: number) => void;
+  /**
+   * before item remove
+   */
+  onBeforeRemove?: (item: T, idx: number) => Promise<boolean> | boolean;
+  /**
+   * can remove item
+   */
+  canRemove?: (props: { item: T; index: number; lastItem: boolean }) => boolean;
 
   /**
    * field width
@@ -129,7 +141,7 @@ export interface ArrayInputProps {
   labelWidth?: string;
 }
 
-export const ArrayInput = ({
+export const ArrayInput = <T extends AnyObject = string>({
   name,
   children,
   addLabel,
@@ -137,6 +149,9 @@ export const ArrayInput = ({
   focusName = "",
   buttonPosition = "bottom",
   onAdd,
+  onRemove,
+  onBeforeRemove,
+  canRemove,
   arrayRef,
   enableSorting,
   disabled = false,
@@ -144,7 +159,7 @@ export const ArrayInput = ({
   minItems = 0,
   maxItems = Number.MAX_SAFE_INTEGER,
   ...rest
-}: ArrayInputProps) => {
+}: ArrayInputProps<T>) => {
   const { t } = useTranslation("form");
   const form = useFormContext();
 
@@ -153,6 +168,7 @@ export const ArrayInput = ({
 
   const { fields, append, remove, move } = useFieldArray({
     name,
+    keyName: "__ID__",
     control: form.control,
   });
 
@@ -164,7 +180,7 @@ export const ArrayInput = ({
   );
 
   const handleAdd = useCallback(
-    (item: AnyObject) => {
+    (item: T) => {
       append(item);
       setTimeout(() => {
         form.setFocus(
@@ -173,6 +189,19 @@ export const ArrayInput = ({
       }, 100);
     },
     [name, fields, focusName],
+  );
+
+  const handleRemove = useCallback(
+    (item: T, index: number) => {
+      const ret = onBeforeRemove?.(item, index);
+      void Promise.resolve(ret).then((b) => {
+        if (!isFalse(b)) {
+          remove(index);
+          onRemove?.(item, index);
+        }
+      });
+    },
+    [remove, onRemove, onBeforeRemove],
   );
 
   useImperativeHandle(arrayRef, () => ({
@@ -184,7 +213,7 @@ export const ArrayInput = ({
     ({ children }: PropsWithChildren) => {
       if (enableSorting) {
         // pass id list to dnd context
-        const idMap = fields.map((item) => item.id);
+        const idMap = fields.map((item) => item.__ID__);
         const handleDragEnd = (e: DragEndEvent) => {
           if (e.over && e.active.id !== e.over.id) {
             // find index of item and drop over
@@ -304,8 +333,8 @@ export const ArrayInput = ({
         <Wrapper>
           {fields.map((item, index) => (
             <SortableItem
-              key={item.id}
-              id={item.id}
+              key={item.__ID__}
+              id={item.__ID__}
               className="flex items-center flex-nowrap gap-2 mb-1"
             >
               {typeof children === "function"
@@ -342,8 +371,17 @@ export const ArrayInput = ({
                   color="danger"
                   variant="link"
                   className="self-end"
-                  disabled={disabled || readOnly || fields.length <= minItems}
-                  onClick={() => remove(index)}
+                  disabled={
+                    disabled ||
+                    readOnly ||
+                    fields.length <= minItems ||
+                    canRemove?.({
+                      item: item as T,
+                      index,
+                      lastItem: index + 1 === fields.length,
+                    }) !== false
+                  }
+                  onClick={() => handleRemove(item as T, index)}
                 />
               )}
             </SortableItem>
