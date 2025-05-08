@@ -25,6 +25,7 @@ import {
   createContext,
   type PropsWithChildren,
   type RefObject,
+  type SyntheticEvent,
   useCallback,
   useContext,
   useEffect,
@@ -42,7 +43,7 @@ interface ContextType {
   state: VideoState;
 
   handleLoad: () => void;
-  handleError: () => void;
+  handleError: (e: SyntheticEvent<HTMLVideoElement>) => void;
   reset: () => void;
   fitToSize: () => void;
   fitToView: () => void;
@@ -86,7 +87,7 @@ interface VideoState {
 
 type VideoActions =
   | { type: "loaded" }
-  | { type: "errored" }
+  | { type: "errored"; data?: MediaError }
   | { type: "toggleVtt" }
   | { type: "srcChange"; src: string }
   | {
@@ -141,7 +142,7 @@ export const VideoProvider = ({
         if (state.errorLevel === 2) {
           state.isLoading = false;
           state.isLoaded = true;
-          setTimeout(() => onError?.(), 10);
+          setTimeout(() => onError?.(action.data), 10);
         }
       }
       if (action.type === "metadata") {
@@ -306,8 +307,8 @@ export const VideoProvider = ({
     calculateSize();
   }, []);
 
-  const handleError = useCallback(() => {
-    dispatch({ type: "errored" });
+  const handleError = useCallback((e: SyntheticEvent<HTMLVideoElement>) => {
+    dispatch({ type: "errored", data: e.currentTarget.error ?? undefined });
   }, []);
 
   const handleMetadata = useCallback(() => {

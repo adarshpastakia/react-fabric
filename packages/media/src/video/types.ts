@@ -78,7 +78,7 @@ export interface VideoProps extends RefProp<VideoPlayerRef> {
   /**
    * error handler
    */
-  onError?: () => void;
+  onError?: (error?: MediaError) => void;
   /**
    * onChange playback time
    */
