@@ -28,10 +28,10 @@ export const Cropper = ({ onCrop }: { onCrop?: (box: number[]) => void }) => {
   const currentPos = useRef({
     x: 0,
     y: 0,
-    top: 0,
-    left: 0,
-    width: 0,
-    height: 0,
+    top: 100,
+    left: 100,
+    width: 500,
+    height: 500,
     dragging: false,
   });
   const refContainer = useRef<HTMLDivElement>(null);
@@ -174,7 +174,7 @@ export const Cropper = ({ onCrop }: { onCrop?: (box: number[]) => void }) => {
         {pos && (
           <div
             style={pos}
-            className="absolute border-2 border-dashed border-primary pointer-events-none"
+            className="absolute bg-black/50 border-2 border-dashed border-white mix-blend-difference pointer-events-none"
           />
         )}
       </div>
