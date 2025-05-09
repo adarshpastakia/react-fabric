@@ -32,14 +32,18 @@ export const useResizeObserver = <T extends HTMLElement = HTMLDivElement>(
   const ref = useRef<T>(null);
   const [, startTransition] = useTransition();
 
-  const callbackResize = useDebounce(() => {
-    startTransition(() => {
-      if (onResize && ref.current != null) {
-        const { offsetWidth: width, offsetHeight: height } = ref.current;
-        onResize?.({ width, height });
-      }
-    });
-  }, [onResize]);
+  const callbackResize = useDebounce(
+    () => {
+      startTransition(() => {
+        if (onResize && ref.current != null) {
+          const { offsetWidth: width, offsetHeight: height } = ref.current;
+          onResize?.({ width, height });
+        }
+      });
+    },
+    [onResize],
+    0,
+  );
 
   useEffect(() => {
     if (ref.current != null) {

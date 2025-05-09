@@ -227,7 +227,7 @@
   background-color: var(--bg-color-invert);
 }
 
-@utility text-base {
+@utility text-reset {
   color: var(--text-color-base);
 }
 

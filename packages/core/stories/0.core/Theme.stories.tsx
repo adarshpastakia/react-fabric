@@ -161,8 +161,8 @@ const Sample = memo(() => (
       <div className="flex-1 capitalize text-center font-medium text-warning-600">
         warning
       </div>
-      <div className="flex-1 capitalize text-center font-medium text-base">
-        base
+      <div className="flex-1 capitalize text-center font-medium text-reset">
+        reset
       </div>
       <div className="flex-1 capitalize text-center font-medium text-dimmed">
         dimmed
@@ -337,15 +337,15 @@ const Sample = memo(() => (
     </Divider>
     <Row orient="col">
       <Col>
-        <ProgressBar color="primary" value={63} animate />
+        <ProgressBar color="primary-500" value={63} animate />
       </Col>
       <Col>
-        <ProgressBar color="accent" value={42} animate />
+        <ProgressBar color="accent-500" value={42} animate />
       </Col>
       <Col className="span-6 overflow-hidden" stretchContent>
         <div className="flex gap-4 justify-center items-center p-4">
-          <ProgressCircle size="md" color="primary" value={42} />
-          <ProgressCircle size="md" color="accent" value={63} />
+          <ProgressCircle size="md" color="primary-500" value={42} />
+          <ProgressCircle size="md" color="accent-500" value={63} />
         </div>
       </Col>
     </Row>
