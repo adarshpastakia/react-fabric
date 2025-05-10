@@ -4,7 +4,7 @@
  *
  *
  * The MIT License (MIT)
- * Copyright (c) 2024 Adarsh Pastakia
+ * Copyright (c) 2025 Adarsh Pastakia
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
  * and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -21,11 +21,17 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-export { Annotator } from "./annotator/Annotator";
-export { AudioPlayer, type AudioPlayerRef } from "./audio/AudioPlayer";
-export { type CanvasRef as ImageViewerRef } from "./canvas/Context";
-export { Dictation } from "./dictation/Dictation";
-export { ImageViewer } from "./image/ImageViewer";
-export { Thumbnail } from "./thumbnail/Thumbnail";
-export { type VideoPlayerRef } from "./video/types";
-export { VideoPlayer } from "./video/VideoPlayer";
+import { Section } from "@react-fabric/core";
+import { type AnnotatorProps, AnnotatorProvider } from "./Context";
+
+export const Annotator = <T extends KeyValue = KeyValue>(
+  props: AnnotatorProps<T>,
+) => {
+  return (
+    <Section dir="ltr">
+      <div className="area-content grid place-items-center overflow-auto p-2">
+        <AnnotatorProvider {...props} />
+      </div>
+    </Section>
+  );
+};
