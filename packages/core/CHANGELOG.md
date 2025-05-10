@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.47](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.46...v1.0.0-beta.47) (2025-05-10)
+
+### Bug Fixes
+
+- **Abbr:** tooltip props ([c256720](https://github.com/adarshpastakia/react-ui-framework/commit/c256720344481ea2745eb91a0c29e3e264e9066f))
+- **GlobalContext:** set color scheme on prop value change ([814a3df](https://github.com/adarshpastakia/react-ui-framework/commit/814a3dfc514067ca1d84df20b57865e63e664ca4))
+
 # [1.0.0-beta.46](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.45...v1.0.0-beta.46) (2025-04-12)
 
 ### Bug Fixes

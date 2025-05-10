@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.47](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.46...v1.0.0-beta.47) (2025-05-10)
+
+### Bug Fixes
+
+- **Abbr:** tooltip props ([c256720](https://github.com/adarshpastakia/react-fabric/commit/c256720344481ea2745eb91a0c29e3e264e9066f))
+- **ArrayInput:** add remove handlers for can remove, before and after ([25ad451](https://github.com/adarshpastakia/react-fabric/commit/25ad451fc2c9a95409e6ca2c5365a81361ecfeb3))
+- **GlobalContext:** set color scheme on prop value change ([814a3df](https://github.com/adarshpastakia/react-fabric/commit/814a3dfc514067ca1d84df20b57865e63e664ca4))
+- **ImageViewer:** crop styling ([5464931](https://github.com/adarshpastakia/react-fabric/commit/5464931827ee5375e92dbd588c0a0777582eb6b2))
+- **VideoPlayer:** pass video MediaError ([c5b4368](https://github.com/adarshpastakia/react-fabric/commit/c5b4368a0a4313bd28e043a21e53c581735f56a9))
+
+### Features
+
+- **Annotator:** image annotator for drawing boxes with labels ([b8520c7](https://github.com/adarshpastakia/react-fabric/commit/b8520c75af076ee1959e42b512437e1b4d167731))
+
 # [1.0.0-beta.46](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.45...v1.0.0-beta.46) (2025-04-12)
 
 ### Bug Fixes

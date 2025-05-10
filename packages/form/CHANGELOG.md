@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.47](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.46...v1.0.0-beta.47) (2025-05-10)
+
+### Bug Fixes
+
+- **ArrayInput:** add remove handlers for can remove, before and after ([25ad451](https://github.com/adarshpastakia/react-ui-framework/commit/25ad451fc2c9a95409e6ca2c5365a81361ecfeb3))
+
 # [1.0.0-beta.46](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.45...v1.0.0-beta.46) (2025-04-12)
 
 **Note:** Version bump only for package @react-fabric/form

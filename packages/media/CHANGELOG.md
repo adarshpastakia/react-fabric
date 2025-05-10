@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.47](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.46...v1.0.0-beta.47) (2025-05-10)
+
+### Bug Fixes
+
+- **ImageViewer:** crop styling ([5464931](https://github.com/adarshpastakia/react-ui-framework/commit/5464931827ee5375e92dbd588c0a0777582eb6b2))
+- **VideoPlayer:** pass video MediaError ([c5b4368](https://github.com/adarshpastakia/react-ui-framework/commit/c5b4368a0a4313bd28e043a21e53c581735f56a9))
+
+### Features
+
+- **Annotator:** image annotator for drawing boxes with labels ([b8520c7](https://github.com/adarshpastakia/react-ui-framework/commit/b8520c75af076ee1959e42b512437e1b4d167731))
+
 # [1.0.0-beta.46](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.45...v1.0.0-beta.46) (2025-04-12)
 
 **Note:** Version bump only for package @react-fabric/media
