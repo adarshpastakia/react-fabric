@@ -23,21 +23,26 @@
 
 import { isEmpty } from "./_isType";
 
-export const dedupe = (list: any[], key?: string) => {
+export const dedupe = <T extends AnyObject>(list: T[], key?: keyof T) => {
   const filtered = list.filter((i) => !isEmpty(i));
   if (!key) {
     return Array.from(new Set(filtered).values());
   }
 
-  return Array.from(new Map(filtered.map((obj) => [obj[key], obj])).values());
+  return Array.from(
+    new Map(filtered.map((obj) => [(obj as KeyValue)[key], obj])).values(),
+  );
 };
 
-export const flatten = (list: any[]) => {
+export const flatten = <T extends AnyObject>(list: T[]) => {
   return list.flat(5).filter((i) => !isEmpty(i));
 };
 
-export const flattenAndDedupe = (list: any[] = [], key?: string) => {
-  return dedupe(flatten(list), key);
+export const flattenAndDedupe = <T extends AnyObject>(
+  list: T[] = [],
+  key?: keyof T,
+) => {
+  return dedupe(flatten(list) as T[], key);
 };
 
 export const groupBy = <T extends KeyValue>(
