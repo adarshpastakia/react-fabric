@@ -103,8 +103,8 @@ export const Search = ({
       setActualValue(value ?? "");
       onChange?.(value ?? null);
 
-      // value was cleared so force fire onSearch
-      if (searchOnChange) {
+      // when e is undefined value was cleared so force fire onSearch
+      if (!e || searchOnChange) {
         handleSearch();
       }
     },
