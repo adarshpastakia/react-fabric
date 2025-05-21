@@ -69,6 +69,8 @@ const MenuComponent = ({
   menuClassName,
   onClick,
   // @ts-expect-error ignore
+  trigger = "hover",
+  // @ts-expect-error ignore
   ref,
   ...rest
 }: Partial<MenuProps>) => {
@@ -89,6 +91,8 @@ const MenuComponent = ({
     open: !isNested || isOpen,
     onOpenChange(open, event, reason) {
       isNested && setIsOpen(open);
+      if (reason === "outside-press" && trigger === "click")
+        tree?.events.emit("close");
     },
     placement: isNested ? "right-start" : "bottom-start",
     middleware: [
@@ -100,13 +104,14 @@ const MenuComponent = ({
   });
 
   const hover = useHover(context, {
+    enabled: trigger === "hover",
     delay: { open: 75 },
     handleClose: safePolygon({ blockPointerEvents: true }),
   });
   const click = useClick(context, {
     event: "mousedown",
-    toggle: !isNested,
-    ignoreMouse: isNested,
+    toggle: trigger === "click" || !isNested,
+    ignoreMouse: trigger === "hover" && !isNested,
   });
   const role = useRole(context, { role: "menu" });
   const dismiss = useDismiss(context, { bubbles: true });

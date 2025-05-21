@@ -90,6 +90,7 @@ export interface MenuRootProps extends CssProp {
 export interface MenuInnerProps extends MenuItemProps {
   label: string;
   minimal?: never;
+  trigger?: "hover" | "click";
   /**
    * floating menu className
    */
