@@ -22,6 +22,7 @@
  */
 
 import {
+  Button,
   CoreIcons,
   Divider,
   DropdownTool,
@@ -30,7 +31,9 @@ import {
   MenuItem,
   Tooltip,
 } from "@react-fabric/core";
+import { isEmpty } from "@react-fabric/utilities";
 import { useCallback, useMemo } from "react";
+import { ColumnFilters } from "./ColumnFilters";
 import { useTableContext } from "./Context";
 import {
   COL_DEFAULT_WIDTH,
@@ -42,6 +45,7 @@ import {
 
 export const HeaderCell = ({
   id,
+  dataType,
   label,
   icon,
   iconBg,
@@ -49,6 +53,9 @@ export const HeaderCell = ({
   rtlFlip,
   actions,
   locked,
+  filter,
+  filterable,
+  filterOptions,
   tooltip,
   sortable,
   resizable,
@@ -57,7 +64,8 @@ export const HeaderCell = ({
   minWidth,
   sort,
   onSort,
-}: TableColumn & Pick<TableProps, "sort" | "onSort">) => {
+  onFilter,
+}: TableColumn & Pick<TableProps, "sort" | "onSort" | "onFilter">) => {
   const { startResize, widths } = useTableContext();
 
   const width = useMemo(
@@ -78,7 +86,24 @@ export const HeaderCell = ({
   );
 
   const menus = useMemo(() => {
-    const ret = [];
+    let ret = [];
+    if (filterable && (dataType ?? filterOptions)) {
+      ret.push(
+        <Menu
+          key="filters"
+          label="Filter"
+          icon={filter ? CoreIcons.tick : ""}
+          trigger="click"
+        >
+          <ColumnFilters
+            type={dataType}
+            list={filterOptions}
+            filter={filter}
+            onFilter={(value) => onFilter?.(id, value)}
+          />
+        </Menu>,
+      );
+    }
     if (sortable) {
       ret.push(
         <MenuItem
@@ -95,14 +120,23 @@ export const HeaderCell = ({
         />,
       );
     }
-    if (sortable && actions) {
-      ret.push(<Divider />);
-    }
     if (actions) {
+      ret.push(<Divider key="div" />);
       ret.push(...actions);
     }
+    if (ret.length === 1) {
+      ret = [
+        <ColumnFilters
+          key="filters"
+          type={dataType}
+          list={filterOptions}
+          filter={filter}
+          onFilter={(value) => onFilter?.(id, value)}
+        />,
+      ];
+    }
     return ret;
-  }, [sortable, actions]);
+  }, [sortable, actions, onFilter, handleSort]);
 
   return (
     <div
@@ -135,6 +169,16 @@ export const HeaderCell = ({
         <DropdownTool groupHover placement="bottom-end">
           <Menu className="text-sm">{menus}</Menu>
         </DropdownTool>
+      )}
+      {filterable && !isEmpty(filter) && (
+        <Button
+          size="sm"
+          variant="link"
+          aria-label="clear filter"
+          stopPropagation
+          icon={CoreIcons.funnelRemove}
+          onClick={() => onFilter?.(id)}
+        />
       )}
       {resizable && (
         <div

@@ -32,7 +32,7 @@ export const AddColumn = ({
   onClick: (id: string) => void;
 }) => {
   return (
-    <div className="group font-medium w-6 flex flex-nowrap text-start items-end">
+    <div className="group font-medium w-6 flex flex-nowrap text-start items-center">
       <Dropdown placement="bottom-end">
         <Icon
           icon={CoreIcons.insert}

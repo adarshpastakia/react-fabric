@@ -65,6 +65,7 @@ export const Table = <T extends KeyValue = KeyValue>({
   canExpand,
   children,
   onSort,
+  onFilter,
   onScroll,
   onRowClick,
   onCheckedChanged,
@@ -176,15 +177,33 @@ export const Table = <T extends KeyValue = KeyValue>({
               />
             )}
             {state.start?.map((col, idx) => (
-              <HeaderCell key={idx} {...col} sort={sort} onSort={onSort} />
+              <HeaderCell
+                key={idx}
+                {...col}
+                sort={sort}
+                onSort={onSort}
+                onFilter={onFilter}
+              />
             ))}
           </div>
           {state.cols?.map((col, idx) => (
-            <HeaderCell key={idx} {...col} sort={sort} onSort={onSort} />
+            <HeaderCell
+              key={idx}
+              {...col}
+              sort={sort}
+              onSort={onSort}
+              onFilter={onFilter}
+            />
           ))}
           <div className={wrapperEnd}>
             {state.end?.map((col, idx) => (
-              <HeaderCell key={idx} {...col} sort={sort} onSort={onSort} />
+              <HeaderCell
+                key={idx}
+                {...col}
+                sort={sort}
+                onSort={onSort}
+                onFilter={onFilter}
+              />
             ))}
 
             {hideableColumns && (

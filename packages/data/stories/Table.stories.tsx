@@ -35,7 +35,7 @@ import { Countries, Country } from "@react-fabric/utilities";
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Fragment, useState } from "react";
-import { Table } from "../src";
+import { Table, TableColumn } from "../src";
 
 import africa from "./images/africa.svg";
 import asia from "./images/asia.svg";
@@ -67,7 +67,7 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj<typeof Table>;
 
-const columns: AnyObject = [
+const columns: TableColumn<Country>[] = [
   {
     id: "emoji",
     width: "3rem",
@@ -92,14 +92,26 @@ const columns: AnyObject = [
     sortable: true,
     hideable: false,
     resizable: true,
+    filterable: true,
+    dataType: "string",
     actions: [<MenuItem label="Sort down" />, <MenuItem label="Sort up" />],
   },
   {
     id: "continent",
     label: "Continent",
     width: "12rem",
-    hidden: true,
+    hidden: false,
     resizable: true,
+    filterable: true,
+    filter: ["Asia", "Europe"],
+    filterOptions: [
+      "Asia",
+      "Africa",
+      "Europe",
+      "North America",
+      "South America",
+      "Oceania",
+    ],
   },
   {
     id: "fullname",
@@ -166,6 +178,7 @@ export const _Table: Story = {
           </Fragment>
         )}
         onSort={(o) => (setSort(o), action("onSort")(o))}
+        onFilter={action("onFilter")}
         sort={sort}
         columns={columns}
       />

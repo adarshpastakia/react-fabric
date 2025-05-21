@@ -50,7 +50,8 @@ export interface TableColumn<T = KeyValue>
   resizable?: boolean;
   sortable?: boolean;
   filterable?: boolean;
-  filterList?: AnyObject[];
+  filter?: AnyObject;
+  filterOptions?: AnyObject[];
   width?: string | number;
   minWidth?: string | number;
   maxWidth?: string | number;
@@ -103,4 +104,6 @@ export interface TableProps<T = KeyValue> extends RefProp<TableRef> {
 
   canExpand?: (record: T) => boolean;
   children?: (record: T) => Elements<AnyObject>;
+
+  onFilter?: (id: keyof T | string, value?: AnyObject) => void;
 }
