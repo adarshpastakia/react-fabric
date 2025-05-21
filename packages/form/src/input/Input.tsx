@@ -22,18 +22,17 @@
  */
 
 import { type RefProp } from "@react-fabric/core/dist/types/types";
+import classNames from "classnames";
 import {
   useCallback,
   useDeferredValue,
   useEffect,
-  useMemo,
   useState,
   type ChangeEvent,
 } from "react";
 import { InputWrapper } from "../internal/InputWrapper";
 import { type InputProps } from "../types";
-import { handleEnter } from "../utils";
-import classNames from "classnames";
+import { useHandleEnter } from "../utils";
 
 export interface TextInputProps extends InputProps, RefProp<HTMLInputElement> {
   /**
@@ -64,10 +63,7 @@ export const Input = ({
   const [actualValue, setActualValue] = useState("");
   const deferred = useDeferredValue(value);
 
-  const handleEnterPressed = useMemo(
-    () => handleEnter(onEnterPressed),
-    [onEnterPressed],
-  );
+  const handleEnterPressed = useHandleEnter(onEnterPressed);
 
   useEffect(() => {
     setActualValue(deferred ?? "");

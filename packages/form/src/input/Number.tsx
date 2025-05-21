@@ -26,13 +26,12 @@ import {
   useCallback,
   useDeferredValue,
   useEffect,
-  useMemo,
   useState,
   type ChangeEvent,
 } from "react";
 import { InputWrapper } from "../internal/InputWrapper";
 import { type InputProps } from "../types";
-import { handleEnter } from "../utils";
+import { useHandleEnter } from "../utils";
 
 export interface NumberProps
   extends InputProps<number>,
@@ -73,10 +72,7 @@ export const Number = ({
   const [actualValue, setActualValue] = useState<"" | number>("");
   const deferred = useDeferredValue(value);
 
-  const handleEnterPressed = useMemo(
-    () => handleEnter(onEnterPressed),
-    [onEnterPressed],
-  );
+  const handleEnterPressed = useHandleEnter(onEnterPressed);
 
   useEffect(() => {
     setActualValue(deferred ?? "");

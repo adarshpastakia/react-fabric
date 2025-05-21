@@ -37,6 +37,7 @@ import {
 import { type RefProp } from "@react-fabric/core/dist/types/types";
 import { type DateLike, DatePanel, DateUtil } from "@react-fabric/date";
 import { mergeRefs } from "@react-fabric/utilities";
+import classNames from "classnames";
 import {
   type ChangeEvent,
   startTransition,
@@ -49,8 +50,7 @@ import {
 } from "react";
 import { InputWrapper } from "../internal/InputWrapper";
 import { type InputProps } from "../types";
-import { handleEnter } from "../utils";
-import classNames from "classnames";
+import { useHandleEnter } from "../utils";
 
 export interface DateProps
   extends InputProps<string>,
@@ -105,10 +105,7 @@ export const DateInput = ({
     setInputValue(deferred ? DateUtil.format(deferred, inputFormat) : "");
   }, [deferred, inputFormat]);
 
-  const handleEnterPressed = useMemo(
-    () => handleEnter(onEnterPressed),
-    [onEnterPressed],
-  );
+  const handleEnterPressed = useHandleEnter(onEnterPressed);
 
   const handleChange = useCallback(
     (e?: ChangeEvent<HTMLInputElement>) => {

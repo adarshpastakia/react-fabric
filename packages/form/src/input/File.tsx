@@ -36,14 +36,13 @@ import {
   useCallback,
   useDeferredValue,
   useEffect,
-  useMemo,
   useRef,
   useState,
   type ChangeEvent,
 } from "react";
 import { InputWrapper } from "../internal/InputWrapper";
 import { type InputProps } from "../types";
-import { handleEnter } from "../utils";
+import { useHandleEnter } from "../utils";
 
 export interface FileInputProps
   extends InputProps<AnyObject>,
@@ -100,10 +99,7 @@ export const FileInput = ({
   const [actualValue, setActualValue] = useState<File | File[] | null>();
   const deferred = useDeferredValue(value);
 
-  const handleEnterPressed = useMemo(
-    () => handleEnter(onEnterPressed),
-    [onEnterPressed],
-  );
+  const handleEnterPressed = useHandleEnter(onEnterPressed);
 
   useEffect(() => {
     setActualValue(deferred);

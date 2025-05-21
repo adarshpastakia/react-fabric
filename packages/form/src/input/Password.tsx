@@ -28,14 +28,13 @@ import {
   useCallback,
   useDeferredValue,
   useEffect,
-  useMemo,
   useState,
   type ChangeEvent,
 } from "react";
 import { useTranslation } from "react-i18next";
 import { InputWrapper } from "../internal/InputWrapper";
 import { type InputProps } from "../types";
-import { handleEnter } from "../utils";
+import { useHandleEnter } from "../utils";
 
 export interface PasswordProps extends InputProps, RefProp<HTMLInputElement> {
   /**
@@ -72,10 +71,7 @@ export const Password = ({
   const [actualValue, setActualValue] = useState("");
   const deferred = useDeferredValue(value);
 
-  const handleEnterPressed = useMemo(
-    () => handleEnter(onEnterPressed),
-    [onEnterPressed],
-  );
+  const handleEnterPressed = useHandleEnter(onEnterPressed);
 
   useEffect(() => {
     setActualValue(deferred ?? "");

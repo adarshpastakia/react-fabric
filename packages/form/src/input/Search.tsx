@@ -28,14 +28,13 @@ import {
   useCallback,
   useDeferredValue,
   useEffect,
-  useMemo,
   useRef,
   useState,
   type ChangeEvent,
 } from "react";
 import { InputWrapper } from "../internal/InputWrapper";
 import { type InputProps } from "../types";
-import { handleEnter } from "../utils";
+import { useHandleEnter } from "../utils";
 
 export interface SearchProps extends InputProps, RefProp<HTMLInputElement> {
   /**
@@ -87,10 +86,7 @@ export const Search = ({
     250,
   );
 
-  const handleEnterPressed = useMemo(
-    () => handleEnter(handleSearch),
-    [handleSearch],
-  );
+  const handleEnterPressed = useHandleEnter(handleSearch);
 
   useEffect(() => {
     setActualValue(deferred ?? "");

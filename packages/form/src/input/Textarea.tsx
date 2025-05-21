@@ -32,7 +32,7 @@ import {
 } from "react";
 import { InputWrapper } from "../internal/InputWrapper";
 import { type InputProps } from "../types";
-import { handleEnter } from "../utils";
+import { useHandleEnter } from "../utils";
 
 export interface TextareaProps
   extends InputProps,
@@ -102,6 +102,10 @@ export const Textarea = ({
     }
   }, [actualValue, variableRows, rows, maxRows]);
 
+  const handleEnterPressed = useHandleEnter(onEnterPressed, {
+    preventDefault: !!onEnterPressed,
+  });
+
   return (
     <InputWrapper
       showClear={!!actualValue && !disabled && !readOnly}
@@ -133,9 +137,7 @@ export const Textarea = ({
         onBlur={onBlur}
         onFocus={onFocus}
         onChange={handleChange}
-        onKeyDown={handleEnter(onEnterPressed, {
-          preventDefault: !!onEnterPressed,
-        })}
+        onKeyDown={handleEnterPressed}
       />
     </InputWrapper>
   );

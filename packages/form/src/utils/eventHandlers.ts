@@ -23,19 +23,25 @@
 
 /* istanbul ignore file */
 
-import { debounce } from "@react-fabric/utilities";
+import { useFloatingTree } from "@floating-ui/react";
+import { useDebounce } from "@react-fabric/core";
 import { type KeyboardEvent, type MouseEvent } from "react";
 
 /** ***************** common handler for enter press *******************/
-export const handleEnter = (
+export const useHandleEnter = (
   callback?: (e: KeyboardEvent) => void,
   {
     stopPropagation = false,
     preventDefault = false,
   }: { stopPropagation?: boolean; preventDefault?: boolean } = {},
 ) => {
-  const cbHandle = debounce(callback ?? (() => undefined), 100);
+  const cbHandle = useDebounce(callback ?? (() => undefined), [callback], 100);
+  const tree = useFloatingTree();
   return (e: KeyboardEvent) => {
+    // prevent propagation of event if input within dropdown (work around for floating-ui typeahead)
+    if (tree && e.key !== "Escape") {
+      e?.stopPropagation();
+    }
     if (
       !e.shiftKey &&
       !e.altKey &&
