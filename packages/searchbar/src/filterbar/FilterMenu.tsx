@@ -74,7 +74,7 @@ export const FilterMenu = ({
           onClick={() => onChange({ ...filter, pinned: !filter.pinned })}
         />
       )}
-      {filter.canInvert !== false && (
+      {filter.canInvert !== false && filter.field && (
         <MenuItem
           label={t(filter.negate ? "label.include" : "label.exclude")}
           onClick={() => onChange({ ...filter, negate: !filter.negate })}

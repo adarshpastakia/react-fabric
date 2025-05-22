@@ -140,12 +140,10 @@ interface BaseFilter {
   color?: string;
   value?: FilterValue;
   pinned?: boolean;
-  negate?: boolean;
   disabled?: boolean;
   required?: boolean;
   canPin?: boolean;
   canEdit?: boolean;
-  canInvert?: boolean;
   canDisable?: boolean;
 }
 
@@ -155,12 +153,15 @@ export type FilterObject = BaseFilter &
         field: string;
         operator: OPERATOR;
         value?: FilterValue;
+        negate?: boolean;
+        canInvert?: boolean;
         query?: never;
       }
     | {
         field?: never;
         operator?: never;
         label: string;
+        canInvert?: false;
         query: string;
       }
   );
