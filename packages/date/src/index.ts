@@ -28,6 +28,7 @@ export { DateHeader } from "./components/DateHeader";
 export { DecadePage } from "./components/DecadePage";
 export { YearPage } from "./components/YearPage";
 export { DateDisplay } from "./display/DateDisplay";
+export { DateDuration } from "./display/DateDuration";
 export { DatePanel } from "./panels/DatePanel";
 export { EventPanel } from "./panels/EventPanel";
 export { RangePanel } from "./panels/RangePanel";

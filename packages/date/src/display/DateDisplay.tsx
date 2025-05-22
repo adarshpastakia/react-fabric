@@ -22,7 +22,7 @@
  */
 
 import { Dropdown, Tooltip, useGlobals } from "@react-fabric/core";
-import { type MenuItemProps } from "@react-fabric/core/dist/types/components/menu/types";
+import { type MenuProps } from "@react-fabric/core/dist/types/components/menu/types";
 import {
   type AriaProps,
   type ChildrenProp,
@@ -32,12 +32,13 @@ import {
 import { type ElementType } from "react";
 import { type DateLike } from "../types";
 import { DateUtil } from "../utils/dateUtil";
+import classNames from "classnames";
 
 export interface Props
   extends CssProp,
     AriaProps,
     TestProps,
-    Partial<ChildrenProp<ElementType<MenuItemProps>>> {
+    Partial<ChildrenProp<ElementType<MenuProps>>> {
   /**
    * date like value
    */
@@ -70,7 +71,13 @@ export const DateDisplay = ({
         currentCalendar !== "hijri",
       )}
     >
-      <span className={className} {...aria}>
+      <span
+        className={classNames(
+          className,
+          children && "underline decoration-dotted cursor-pointer",
+        )}
+        {...aria}
+      >
         {DateUtil.format(
           date,
           format,
