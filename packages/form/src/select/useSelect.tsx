@@ -83,6 +83,7 @@ export const useSelect = ({
   groupProperty = "",
   valueProperty = "id",
   labelProperty = "label",
+  sortProperty,
   createOption = makeOption,
   matcher,
   onQuery,
@@ -97,6 +98,7 @@ export const useSelect = ({
   groupProperty?: AnyObject;
   valueProperty?: AnyObject;
   labelProperty?: AnyObject;
+  sortProperty?: AnyObject;
   autoComplete?: boolean;
   matcher?: (item: AnyObject, query: string) => boolean;
   createOption?: (query: string) => AnyObject;
@@ -226,7 +228,9 @@ export const useSelect = ({
         if (autoComplete && action.query !== undefined) {
           optionList = dedupe([action.query, ...optionList]);
         }
-        optionList = optionList.sort(compareValues("asc", labelProperty));
+        optionList = optionList.sort(
+          compareValues("asc", sortProperty ?? labelProperty),
+        );
         const grouped = groupBy(optionList, groupProperty, "");
         if (action.open) newState.open = true;
         newState.items = [];

@@ -151,6 +151,10 @@ export interface BaseSelectProps<T extends AnyObject = string> {
    */
   valueProperty?: keyof T;
   /**
+   * value property name
+   */
+  sortProperty?: keyof T;
+  /**
    * searchable list
    */
   searchable?: boolean;
