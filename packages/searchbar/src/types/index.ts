@@ -30,8 +30,8 @@ export enum FIELD_TYPE {
   NUMBER = "NUMBER",
   DECIMAL = "DECIMAL",
   BOOLEAN = "BOOLEAN",
-  // DATE = "DATE",
-  // DATETIME = "DATETIME",
+  DATE = "DATE",
+  DATETIME = "DATETIME",
   // GEO = "GEO",
   NONE = "NONE",
 }
@@ -40,6 +40,7 @@ export enum OPERATOR {
   EXISTS = "EXISTS",
   IS = "IS",
   IN = "IN",
+  EQ = "EQ",
   LT = "LT",
   GT = "GT",
   LTE = "LTE",
@@ -66,7 +67,7 @@ export const TypeOperators: { [key in FIELD_TYPE]: OPERATOR[] } = {
   ],
   [FIELD_TYPE.NUMBER]: [
     OPERATOR.EXISTS,
-    OPERATOR.IS,
+    OPERATOR.EQ,
     OPERATOR.BETWEEN,
     OPERATOR.LT,
     OPERATOR.GT,
@@ -75,34 +76,41 @@ export const TypeOperators: { [key in FIELD_TYPE]: OPERATOR[] } = {
   ],
   [FIELD_TYPE.DECIMAL]: [
     OPERATOR.EXISTS,
-    OPERATOR.IS,
+    OPERATOR.EQ,
     OPERATOR.BETWEEN,
     OPERATOR.LT,
     OPERATOR.GT,
     OPERATOR.LTE,
     OPERATOR.GTE,
   ],
-  [FIELD_TYPE.BOOLEAN]: [OPERATOR.EXISTS, OPERATOR.IS],
-  // [FIELD_TYPE.DATE]: [
-  //   OPERATOR.BETWEEN,
-  //   OPERATOR.LT,
-  //   OPERATOR.GT,
-  //   OPERATOR.LTE,
-  //   OPERATOR.GTE,
-  // ],
-  // [FIELD_TYPE.DATETIME]: [
-  //   OPERATOR.BETWEEN,
-  //   OPERATOR.LT,
-  //   OPERATOR.GT,
-  //   OPERATOR.LTE,
-  //   OPERATOR.GTE,
-  // ],
+  [FIELD_TYPE.BOOLEAN]: [OPERATOR.EXISTS, OPERATOR.EQ],
+  [FIELD_TYPE.DATE]: [
+    OPERATOR.EXISTS,
+    OPERATOR.EQ,
+    OPERATOR.BETWEEN,
+    OPERATOR.LT,
+    OPERATOR.GT,
+    OPERATOR.LTE,
+    OPERATOR.GTE,
+  ],
+  [FIELD_TYPE.DATETIME]: [
+    OPERATOR.EXISTS,
+    OPERATOR.EQ,
+    OPERATOR.BETWEEN,
+    OPERATOR.LT,
+    OPERATOR.GT,
+    OPERATOR.LTE,
+    OPERATOR.GTE,
+  ],
   // [FIELD_TYPE.GEO]: [],
   [FIELD_TYPE.NONE]: [OPERATOR.EXISTS],
 };
 
 /**
  * @internal
+ * 0 single value
+ * 1 many values
+ * 2 two values
  */
 export const OperatorValueType: {
   [key in OPERATOR]: 0 | 1 | 2;
@@ -115,6 +123,7 @@ export const OperatorValueType: {
   [OPERATOR.STARTS]: 0,
   [OPERATOR.ENDS]: 0,
   [OPERATOR.INCLUDES]: 0,
+  [OPERATOR.EQ]: 0,
   [OPERATOR.LT]: 0,
   [OPERATOR.GT]: 0,
   [OPERATOR.LTE]: 0,

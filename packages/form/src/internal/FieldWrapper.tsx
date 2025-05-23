@@ -22,6 +22,7 @@
  */
 
 import classNames from "classnames";
+import { ErrorIcon } from "./ErrorIcon";
 
 export const FieldWrapper = ({
   label,
@@ -35,6 +36,8 @@ export const FieldWrapper = ({
   children,
   listing,
   className,
+  invalid,
+  error,
   "data-inner": isInner,
 }: KeyValue) => {
   return (
@@ -72,6 +75,7 @@ export const FieldWrapper = ({
               ✽
             </span>
           )}
+          <ErrorIcon invalid={invalid} error={error} />
           <div className="flex-1" />
           {appendLabel && <span className="flex-content">{appendLabel}</span>}
         </div>

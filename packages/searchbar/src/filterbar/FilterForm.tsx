@@ -25,6 +25,7 @@ import { useFloatingTree } from "@floating-ui/react";
 import { Button, Col, Row } from "@react-fabric/core";
 import {
   Controller,
+  DateInput,
   Field,
   Form,
   Input,
@@ -66,6 +67,24 @@ const FilterSchema = new yup.ObjectSchema({
           name: "array-check",
           message: `\${path} is a required field`,
           test: (val: AnyObject = []) => val?.length > 0,
+        }),
+    })
+    .when("operator", {
+      is: OPERATOR.BETWEEN,
+      then: (schema) =>
+        schema.test({
+          name: "array-check",
+          message: `\${path} is a required field`,
+          test: (val: AnyObject = []) => val?.length > 0 && val[0] && val[1],
+        }),
+    })
+    .when("operator", {
+      is: OPERATOR.BETWEEN,
+      then: (schema) =>
+        schema.test({
+          name: "array-check",
+          message: `\${path} min max`,
+          test: (val: AnyObject = []) => val?.length > 0 && val[0] < val[1],
         }),
     }),
 });
@@ -129,6 +148,8 @@ export const FilterForm = ({
       }
     }
     if (
+      field?.type === FIELD_TYPE.DATE ||
+      field?.type === FIELD_TYPE.DATETIME ||
       field?.type === FIELD_TYPE.NUMBER ||
       field?.type === FIELD_TYPE.DECIMAL
     ) {
@@ -140,7 +161,7 @@ export const FilterForm = ({
     }
     if (
       field?.type === FIELD_TYPE.BOOLEAN &&
-      values?.operator === OPERATOR.IS &&
+      [OPERATOR.IS, OPERATOR.EQ].includes(values?.operator) &&
       values?.value === undefined
     ) {
       formRef.current?.setValue("value", false);
@@ -200,20 +221,49 @@ export const FilterForm = ({
       const step = field.type === FIELD_TYPE.DECIMAL ? 0.1 : 1;
       if (values?.operator === OPERATOR.BETWEEN) {
         return (
-          <Field label={t("label.value")}>
-            <Controller name="value[0]">
-              <Number step={step} allowClear />
-            </Controller>
-            <span className="p-2 text-muted">{`≷`}</span>
-            <Controller name="value[1]">
-              <Number step={step} allowClear />
-            </Controller>
-          </Field>
+          <Controller name="value">
+            <Field label={t("label.value")}>
+              <Controller name="value[0]">
+                <Number step={step} allowClear />
+              </Controller>
+              <span className="p-2 text-muted">{`≷`}</span>
+              <Controller name="value[1]">
+                <Number step={step} allowClear />
+              </Controller>
+            </Field>
+          </Controller>
         );
       } else {
         return (
           <Controller name="value">
             <Number label={t("label.value")} step={step} allowClear />
+          </Controller>
+        );
+      }
+    }
+    if (
+      field?.type === FIELD_TYPE.DATE ||
+      field?.type === FIELD_TYPE.DATETIME
+    ) {
+      const type = field.type === FIELD_TYPE.DATETIME ? "datetime" : "date";
+      if (values?.operator === OPERATOR.BETWEEN) {
+        return (
+          <Controller name="value">
+            <Field label={t("label.value")}>
+              <Controller name="value[0]">
+                <DateInput type={type} allowClear />
+              </Controller>
+              <span className="p-2 text-muted">{`≷`}</span>
+              <Controller name="value[1]">
+                <DateInput type={type} allowClear />
+              </Controller>
+            </Field>
+          </Controller>
+        );
+      } else {
+        return (
+          <Controller name="value">
+            <DateInput type={type} allowClear />
           </Controller>
         );
       }

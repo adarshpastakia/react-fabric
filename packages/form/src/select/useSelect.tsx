@@ -228,9 +228,8 @@ export const useSelect = ({
         if (autoComplete && action.query !== undefined) {
           optionList = dedupe([action.query, ...optionList]);
         }
-        optionList = optionList.sort(
-          compareValues("asc", sortProperty ?? labelProperty),
-        );
+        if (sortProperty)
+          optionList = optionList.sort(compareValues("asc", sortProperty));
         const grouped = groupBy(optionList, groupProperty, "");
         if (action.open) newState.open = true;
         newState.items = [];

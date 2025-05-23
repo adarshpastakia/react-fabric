@@ -38,6 +38,7 @@
     "EXISTS": "Exists",
     "IS": "Is",
     "IN": "In",
+    "EQ": "=",
     "LT": "<",
     "GT": ">",
     "LTE": "≤",

@@ -153,7 +153,7 @@ export interface BaseSelectProps<T extends AnyObject = string> {
   /**
    * value property name
    */
-  sortProperty?: keyof T;
+  sortProperty?: keyof T | true;
   /**
    * searchable list
    */

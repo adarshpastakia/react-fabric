@@ -190,6 +190,11 @@ export const _SearchBar: SearchBarStory = {
         type: FIELD_TYPE.NUMBER,
       },
       {
+        field: "dob",
+        label: "DOB",
+        type: FIELD_TYPE.DATE,
+      },
+      {
         field: "extras",
         label: "Extras",
         type: FIELD_TYPE.NONE,
