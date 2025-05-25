@@ -293,6 +293,7 @@ export const AutoComplete = ({
           data-testid={name}
           name={name}
           size={1}
+          ref={ref}
           onInput={onInput}
           autoFocus={autoFocus}
           rows={!multiple && expandOnEdit && state.open ? 5 : 1}
