@@ -99,6 +99,7 @@ export const TreeNode = ({
       aria-selected={node.selected}
       className={classNames(
         "flex flex-nowrap items-center",
+        node.className,
         node.leaf ? leafClassName : nodeClassName,
       )}
       data-testid={node["data-testid"]}
@@ -145,17 +146,24 @@ export const TreeNode = ({
           className={classNames(
             "group/tool data-[selected]:bg-primary-100 flex flex-nowrap flex-1 overflow-hidden select-none",
             node.childSelected && "font-medium",
-            (canSelect || onClick) && "hover:bg-primary-50 cursor-pointer",
+            node.disabled && "text-muted opacity-65",
+            !node.disabled &&
+              (canSelect || onClick) &&
+              "hover:bg-primary-50 cursor-pointer",
           )}
           data-selected={node.selected}
-          onClick={() => {
-            onClick?.(node.id, node.data);
-            canSelect
-              ? onSelect(node.id)
-              : canCheck
-                ? onChecked(node.id)
-                : onToggle(node.id);
-          }}
+          onClick={
+            node.disabled
+              ? undefined
+              : () => {
+                  onClick?.(node.id, node.data);
+                  canSelect
+                    ? onSelect(node.id)
+                    : canCheck
+                      ? onChecked(node.id)
+                      : onToggle(node.id);
+                }
+          }
         >
           {nodeIcon && (
             <div className="flex-content w-6 self-center leading-none">
