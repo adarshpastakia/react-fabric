@@ -55,8 +55,6 @@ export interface BaseEditorProps {
 
   minimal?: boolean;
 
-  language?: "json" | "css" | "html" | "text" | "markdown";
-
   onChange?: (value: string) => void;
 }
 
@@ -71,6 +69,11 @@ type EditorProps = BaseEditorProps &
         language: "html";
         schema?: never;
         handlebarSuggestions?: Array<{ text: string; description?: string }>;
+      }
+    | {
+        language?: "css" | "text" | "markdown";
+        schema?: any;
+        handlebarSuggestions?: never;
       }
   );
 
