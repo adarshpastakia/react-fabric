@@ -37,14 +37,17 @@ export interface Props extends RefProp {
    */
   value?: string;
   /**
-   * avatar stream src
+   * avatar name
    */
-  src?: string;
+  avatarName?: string;
   size?: string | number;
   /**
    * upload handler to store file in temp storage
    */
   uploadHandler: UploadHandler;
+  /**
+   * file stream path
+   */
   fileUrl?: (path: string) => string;
   /**
    * change handler
@@ -57,15 +60,16 @@ export interface Props extends RefProp {
 }
 
 export const AvatarInput = ({
-  src,
   size = "6rem",
+  avatarName,
+  value,
   fileUrl,
   uploadHandler,
   ...rest
 }: Props) => {
   const { files, list, upload, remove } = useFileUploader(
     async (data, config) => await uploadHandler?.(data, config),
-    rest.value,
+    value,
     false,
   );
 
@@ -92,13 +96,13 @@ export const AvatarInput = ({
   }, [files, list]);
 
   useEffect(() => {
-    src && setBase64(fileUrl?.(src) ?? src);
-  }, [src]);
+    value && setBase64(fileUrl?.(value) ?? value);
+  }, [value]);
 
   return (
     <div className="flex flex-nowrap items-end">
       <div className="inline-block leading-none rounded-full relative outline overflow-hidden">
-        <Avatar name="temp" size={size} avatar={base64} />
+        <Avatar name={avatarName ?? "temp"} size={size} avatar={base64} />
         <div className="absolute inset-x-0 bottom-0 cursor-pointer bg-black/20 hover:bg-black/50 text-white text-xs text-center py-1">
           <span>Edit</span>
           <input
