@@ -21,7 +21,10 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { type ChildrenProp } from "@react-fabric/core/dist/types/types";
+import {
+  type ChildrenProp,
+  type RefProp,
+} from "@react-fabric/core/dist/types/types";
 import { type ReactElement } from "react";
 
 export enum FIELD_TYPE {
@@ -193,7 +196,9 @@ export interface FilterField {
   onSearch?: (q: string) => Promise<FieldValue[]> | FieldValue[];
 }
 
-interface BaseSearchBarProps extends Partial<ChildrenProp> {
+interface BaseSearchBarProps
+  extends Partial<ChildrenProp>,
+    RefProp<HTMLInputElement> {
   /**
    * Query string
    */
@@ -299,12 +304,12 @@ export interface FilterBarProps {
   /**
    * Editable filters
    */
-  isEditable?: boolean;
+  editable?: boolean;
 
   /**
    * Disable component
    */
-  isDisabled?: boolean;
+  disabled?: boolean;
 
   /**
    * Message for empty field list
@@ -321,6 +326,8 @@ export interface FilterBarProps {
   excludedColor?: string;
 
   allowAdd?: boolean;
+
+  queryLanguage?: "text" | "json";
   querySchema?: Array<{ uri: string; schema: KeyValue }>;
   defaultQuery?: string;
 

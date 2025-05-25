@@ -61,6 +61,7 @@ export const SearchBar = ({
   onQuery,
   onSearch,
   query,
+  ref,
   multiple,
   filters = EMPTY_ARRAY,
   ...filterProps
@@ -146,6 +147,7 @@ export const SearchBar = ({
           <AutoComplete
             allowClear
             expandOnEdit
+            ref={ref}
             multiple={multiple}
             history={history}
             value={state.query}
