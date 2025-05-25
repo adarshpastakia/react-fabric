@@ -163,7 +163,7 @@ export const _Form: FormStory = {
                 showToggle
                 required
                 label={t("passwd")}
-                onChange={calculateStrength}
+                onChange={(v) => calculateStrength(v ?? "")}
                 strength={strength}
               />
             </Controller>
@@ -301,7 +301,7 @@ const ModalForm = (props: any) => {
               showToggle
               required
               label={t("passwd")}
-              onChange={calculateStrength}
+              onChange={(v) => calculateStrength(v ?? "")}
               strength={strength}
             />
           </Controller>
