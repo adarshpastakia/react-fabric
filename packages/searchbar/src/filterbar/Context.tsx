@@ -25,7 +25,10 @@ import { createContext, useContext } from "react";
 import { type FilterBarProps } from "../types";
 
 export const FilterContext = createContext<
-  Pick<FilterBarProps, "querySchema" | "defaultQuery" | "fields">
+  Pick<
+    FilterBarProps,
+    "querySchema" | "queryLanguage" | "defaultQuery" | "fields"
+  >
 >({});
 
 export const useFilterContext = () => useContext(FilterContext);

@@ -43,7 +43,9 @@ export const FilterBar = ({
   filters = [],
   allowAdd,
   fields,
+  editable,
   querySchema,
+  queryLanguage,
   defaultQuery,
   includedColor,
   excludedColor,
@@ -88,9 +90,10 @@ export const FilterBar = ({
             if (type === "disableAll") filter.disabled = true;
             if (type === "enableAll") filter.disabled = false;
             if (type === "toggleDisable") filter.disabled = !filter.disabled;
-            if (type === "excludeAll") filter.negate = true;
-            if (type === "includeAll") filter.negate = false;
-            if (type === "invertAll") filter.negate = !filter.negate;
+            if (type === "excludeAll" && filter.field) filter.negate = true;
+            if (type === "includeAll" && filter.field) filter.negate = false;
+            if (type === "invertAll" && filter.field)
+              filter.negate = !filter.negate;
             return { ...filter };
           }),
         );
@@ -113,9 +116,19 @@ export const FilterBar = ({
         key.someDisabled = true;
       if (!filter.disabled && filter.canDisable !== false && !key.someEnabled)
         key.someEnabled = true;
-      if (filter.negate && filter.canInvert !== false && !key.someExcluded)
+      if (
+        filter.field &&
+        filter.negate &&
+        filter.canInvert !== false &&
+        !key.someExcluded
+      )
         key.someExcluded = true;
-      if (!filter.negate && filter.canInvert !== false && !key.someIncluded)
+      if (
+        filter.field &&
+        !filter.negate &&
+        filter.canInvert !== false &&
+        !key.someIncluded
+      )
         key.someIncluded = true;
       if (!filter.required && !key.canRemoveAll) key.canRemoveAll = true;
     });
@@ -123,7 +136,9 @@ export const FilterBar = ({
   }, [filters]);
 
   return (
-    <FilterContext.Provider value={{ defaultQuery, querySchema, fields }}>
+    <FilterContext.Provider
+      value={{ defaultQuery, querySchema, queryLanguage, fields }}
+    >
       <div className="flex flex-wrap gap-1 items-center">
         <Dropdown showArrow disabled={isEmpty(filters)}>
           <Icon
@@ -171,6 +186,7 @@ export const FilterBar = ({
           <FilterTag
             key={idx}
             filter={filter}
+            editable={editable}
             includedColor={includedColor}
             excludedColor={excludedColor}
             onRemove={() => handleRemove(idx)}

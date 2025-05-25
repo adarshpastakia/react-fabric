@@ -32,12 +32,14 @@ import { FilterMenu } from "./FilterMenu";
 export const FilterTag = ({
   filter,
   fields,
+  editable,
   includedColor = "primary-500",
   excludedColor = "danger-500",
   onChange,
   onRemove,
 }: {
   filter: FilterObject;
+  editable?: boolean;
   onRemove: () => void;
   onChange: (filter: FilterObject) => void;
 } & Pick<FilterBarProps, "fields" | "includedColor" | "excludedColor">) => {
@@ -46,14 +48,18 @@ export const FilterTag = ({
     if (filter.label)
       return (
         <Fragment>
-          {filter.negate && <span className="font-semibold">NOT</span>}
+          {filter.field && filter.negate && (
+            <span className="font-semibold">NOT</span>
+          )}
           <span>{filter.label}</span>
         </Fragment>
       );
 
     return (
       <Fragment>
-        {filter.negate && <span className="font-semibold">NOT</span>}
+        {filter.field && filter.negate && (
+          <span className="font-semibold">NOT</span>
+        )}
         <span>{filter.field}</span>
         <span className="font-semibold">
           {t(`operator.${filter.operator}`, { defaultValue: filter.operator })}
@@ -68,7 +74,9 @@ export const FilterTag = ({
   }, [filter]);
 
   const color = useMemo(
-    () => filter.color ?? (filter.negate ? excludedColor : includedColor),
+    () =>
+      filter.color ??
+      (filter.field && filter.negate ? excludedColor : includedColor),
     [filter, includedColor, excludedColor],
   );
 
@@ -116,6 +124,7 @@ export const FilterTag = ({
       <FilterMenu
         filter={filter}
         fields={fields}
+        editable={editable}
         onChange={onChange}
         onRemove={onRemove}
       />

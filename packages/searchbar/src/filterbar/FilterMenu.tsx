@@ -31,10 +31,12 @@ import { FilterView } from "./FilterView";
 export const FilterMenu = ({
   filter,
   fields,
+  editable,
   onChange,
   onRemove,
 }: {
   fields?: FilterField[];
+  editable?: boolean;
   filter: FilterObject;
   onRemove: () => void;
   onChange: (filter: FilterObject) => void;
@@ -48,7 +50,7 @@ export const FilterMenu = ({
     <FilterView filter={filter} onRemove={onRemove} />
   ) : (
     <Menu className="text-sm">
-      {filter.canEdit !== false ? (
+      {editable && filter.canEdit !== false ? (
         <MenuItem
           icon={CoreIcons.edit}
           label={t("label.edit")}

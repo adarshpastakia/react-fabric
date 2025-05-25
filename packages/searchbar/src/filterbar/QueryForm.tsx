@@ -60,7 +60,7 @@ export const QueryForm = ({
 }) => {
   const { t } = useTranslation("searchbar");
   const tree = useFloatingTree();
-  const { defaultQuery = "", querySchema } = useFilterContext();
+  const { defaultQuery = "", querySchema, queryLanguage } = useFilterContext();
   const inputRef = useRef<HTMLInputElement>(null);
 
   const filterValue = useMemo(() => {
@@ -126,7 +126,7 @@ export const QueryForm = ({
               }}
             >
               <CodeEditor
-                language="json"
+                language={queryLanguage ?? "text"}
                 minimal
                 required
                 {...field}
