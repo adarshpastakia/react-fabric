@@ -38,6 +38,7 @@ export * from "./_hash";
 export * from "./_interpolate";
 export * from "./_isEqual";
 export * from "./_isType";
+export * from "./_lonlat";
 export * from "./_mergeRefs";
 export * from "./_tokenize";
 export { getImageColorset } from "./getImageColorset";
