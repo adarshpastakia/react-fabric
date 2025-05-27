@@ -79,6 +79,7 @@ export const FormField = ({
     if (rest.datatype === DATA_TYPES.BOOL) return Switch;
     if (rest.datatype === DATA_TYPES.TEXT) return Textarea;
     if (rest.datatype === DATA_TYPES.DATE) return DateInput;
+    if (rest.datatype === DATA_TYPES.DATETIME) return DateInput;
     if (rest.datatype === DATA_TYPES.COLOR) return ColorInput;
     if (hasOptions) return Select;
 
@@ -104,7 +105,13 @@ export const FormField = ({
       return {
         min: rest.min,
         max: rest.max,
-        type: rest.type,
+        type: "date",
+      };
+    if (rest.datatype === DATA_TYPES.DATETIME)
+      return {
+        min: rest.min,
+        max: rest.max,
+        type: "datetime",
       };
     if (rest.datatype === DATA_TYPES.TEXT) return { rows: 3 };
     if (rest.datatype === DATA_TYPES.COLOR) return { showPicker: true };

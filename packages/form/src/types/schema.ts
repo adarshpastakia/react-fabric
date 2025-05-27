@@ -29,6 +29,7 @@ export enum DATA_TYPES {
   COLOR = "color",
   BOOL = "bool",
   DATE = "date",
+  DATETIME = "datetime",
   STRING = "string",
   NUMBER = "number",
   RANGE = "range",
@@ -84,8 +85,7 @@ export interface RangeSchema extends BaseSchema {
 }
 
 export interface DateSchema extends BaseSchema {
-  datatype: DATA_TYPES.DATE;
-  type?: "date" | "datetime";
+  datatype: DATA_TYPES.DATE | DATA_TYPES.DATETIME;
   min?: DateLike;
   max?: DateLike;
 }
