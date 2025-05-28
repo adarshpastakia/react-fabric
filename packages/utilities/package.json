@@ -32,8 +32,8 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "date-fns": "^4.0.0",
-    "libphonenumber-js": "^1.11.8",
+    "date-fns": "^4.1.0",
+    "libphonenumber-js": "^1.12.8",
     "numeral": "^2.0.6",
     "yup": "^1.4.0"
   },

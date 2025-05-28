@@ -40,7 +40,7 @@
     "classnames": "^2.5.1",
     "color": "^4.2.3",
     "date-fns": "^4.0.0",
-    "echarts": "^5.5.1",
+    "echarts": "^5.6.0",
     "echarts-wordcloud": "^2.1.0"
   },
   "peerDependencies": {

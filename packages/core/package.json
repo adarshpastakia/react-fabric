@@ -35,10 +35,10 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.26.24",
+    "@floating-ui/react": "^0.27.9",
     "@react-fabric/utilities": "^1.0.0-beta.47",
     "@tailwindcss/postcss": "~4.0.14",
-    "boring-avatars": "^1.10.2",
+    "boring-avatars": "^1.11.2",
     "classnames": "^2.5.1",
     "color": "^4.2.3",
     "resize-observer-polyfill": "^1.5.1",

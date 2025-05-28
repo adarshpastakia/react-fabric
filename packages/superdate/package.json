@@ -35,13 +35,13 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.26.24",
+    "@floating-ui/react": "^0.27.9",
     "@react-fabric/core": "^1.0.0-beta.47",
     "@react-fabric/date": "^1.0.0-beta.47",
     "@react-fabric/form": "^1.0.0-beta.47",
     "@react-fabric/utilities": "^1.0.0-beta.47",
     "classnames": "^2.5.1",
-    "date-fns": "^4.0.0",
+    "date-fns": "^4.1.0",
     "resize-observer-polyfill": "^1.5.1"
   },
   "peerDependencies": {

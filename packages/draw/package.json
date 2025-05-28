@@ -35,9 +35,9 @@
   "dependencies": {
     "@react-fabric/core": "^1.0.0-beta.47",
     "@react-fabric/utilities": "^1.0.0-beta.47",
-    "@tldraw/assets": "^3.3.1",
-    "@tldraw/editor": "^3.3.1",
-    "@tldraw/tldraw": "^3.3.1",
+    "@tldraw/assets": "^3.13.1",
+    "@tldraw/editor": "^3.13.1",
+    "@tldraw/tldraw": "^3.13.1",
     "classnames": "^2.5.1",
     "dom-to-image": "^2.6.0"
   },

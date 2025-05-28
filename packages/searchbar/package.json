@@ -33,13 +33,13 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.26.24",
+    "@floating-ui/react": "^0.27.9",
     "@react-fabric/core": "^1.0.0-beta.47",
     "@react-fabric/form": "^1.0.0-beta.47",
     "@react-fabric/monaco": "^1.0.0-beta.47",
     "@react-fabric/utilities": "^1.0.0-beta.47",
     "classnames": "^2.5.1",
-    "react-hook-form": "^7.52.1"
+    "react-hook-form": "^7.56.4"
   },
   "peerDependencies": {
     "i18next": "^23.15.1",
