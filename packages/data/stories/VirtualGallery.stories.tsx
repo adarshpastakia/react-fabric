@@ -200,7 +200,7 @@ export const LoadableList: Story = {
             <VirtualGallery
               {...args}
               galleryRef={listRef}
-              defaultHeight={152}
+              defaultHeight={80}
               defaultWidth={608}
               loading={isLoading}
               items={items}
