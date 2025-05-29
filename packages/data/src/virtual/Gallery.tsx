@@ -94,7 +94,7 @@ export interface VirtualGalleryProps<T> extends TestProps {
   /**
    * load more callback
    */
-  onLoadMore?: (page?: number) => void;
+  onLoadMore?: (lastIndex?: number) => void;
   /**
    * scroll handler
    */
@@ -172,6 +172,7 @@ const _VirtualGallery = <T extends KeyValue>({
     count: Math.ceil(count / columnCount),
     getScrollElement: () => scrollerRef.current,
     estimateSize: () => height,
+    overscan: 2,
   });
 
   const virtualItems = virtualizer.getVirtualItems();
@@ -219,16 +220,17 @@ const _VirtualGallery = <T extends KeyValue>({
     if (onLoadMore) {
       const firstItem = virtualItems[0]?.index;
       const lastItem = virtualItems?.slice(-1).pop()?.index;
+      const firstIndex = firstItem * columnCount;
       const lastIndex = (lastItem ?? 0) * columnCount + columnCount;
       const canLoadPrevPage =
-        firstItem !== undefined && items[firstItem * columnCount] === null;
+        firstItem !== undefined && items[firstIndex] === null;
       const canLoadNextPage =
         lastItem !== undefined && lastIndex >= count - 1 && count < total;
       const db = debounce(onLoadMore);
       if (canLoadPrevPage) {
-        db(firstItem);
+        db(firstIndex);
       } else if (!loading && canLoadNextPage) {
-        db(lastItem + 1);
+        db(lastIndex + 1);
       }
       return () => db.cancel();
     }

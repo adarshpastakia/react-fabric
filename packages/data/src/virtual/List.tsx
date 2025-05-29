@@ -101,7 +101,7 @@ export interface VirtualListProps<T> extends TestProps {
   /**
    * load more callback
    */
-  onLoadMore?: (page?: number) => void;
+  onLoadMore?: (lastIndex?: number) => void;
   /**
    * scroll handler
    */
@@ -149,6 +149,7 @@ const _VirtualList = <T extends KeyValue>({
   const scrollerRef = useRef<HTMLDivElement>(null);
   const virtualizer = useVirtualizer({
     count,
+    overscan: 2,
     horizontal: orientation === "horizontal",
     getScrollElement: () => scrollerRef.current,
     estimateSize: () => (orientation === "horizontal" ? width : height),
