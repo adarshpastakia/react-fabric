@@ -35,13 +35,12 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@lexical/headless": "^0.31.2",
-    "@lexical/react": "^0.31.2",
+    "@lexical/react": "^0.27.1",
     "@react-fabric/core": "^1.0.0-beta.47",
     "@react-fabric/form": "^1.0.0-beta.47",
     "@react-fabric/utilities": "^1.0.0-beta.47",
     "classnames": "^2.5.1",
-    "lexical": "^0.31.2"
+    "lexical": "^0.27.1"
   },
   "peerDependencies": {
     "i18next": "^23.15.1",

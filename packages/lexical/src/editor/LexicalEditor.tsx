@@ -25,7 +25,10 @@ import { CodeHighlightNode, CodeNode } from "@lexical/code";
 import { ListItemNode, ListNode } from "@lexical/list";
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
 import { CheckListPlugin } from "@lexical/react/LexicalCheckListPlugin";
-import { LexicalComposer } from "@lexical/react/LexicalComposer";
+import {
+  type InitialConfigType,
+  LexicalComposer,
+} from "@lexical/react/LexicalComposer";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
@@ -42,8 +45,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { StickyNode } from "../nodes/StickyNode";
 import { DraggableBlockPlugin } from "../plugins/DraggableBlockPlugin";
 import { StickyPlugin } from "../plugins/StickyPlugin";
-import { LexicalTheme } from "./theme";
 import { ToolbarPlugin } from "../plugins/ToolbarPlugin";
+import { LexicalTheme } from "./theme";
 
 export interface EditorProps {
   value?: string | AnyObject;
@@ -134,25 +137,26 @@ export const LexicalEditor = ({
   }, [readOnly, publishMode]);
 
   const initialConfig = useMemo(
-    () => ({
-      editorState: initEditor,
-      namespace: "MyEditor",
-      editable: !readOnly && !publishMode,
-      theme: LexicalTheme,
-      nodes: [
-        QuoteNode,
-        HeadingNode,
-        CodeHighlightNode,
-        CodeNode,
-        ListItemNode,
-        ListNode,
-        TableCellNode,
-        TableNode,
-        TableRowNode,
-        StickyNode,
-      ],
-      onError,
-    }),
+    () =>
+      ({
+        editorState: initEditor,
+        namespace: "MyEditor",
+        editable: !readOnly && !publishMode,
+        theme: LexicalTheme,
+        nodes: [
+          QuoteNode,
+          HeadingNode,
+          CodeHighlightNode,
+          CodeNode,
+          ListItemNode,
+          ListNode,
+          TableCellNode,
+          TableNode,
+          TableRowNode,
+          StickyNode,
+        ],
+        onError,
+      }) as InitialConfigType,
     [],
   );
 

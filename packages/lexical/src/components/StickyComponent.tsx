@@ -261,7 +261,7 @@ export const StickyComponent = ({
             placeholder={
               <div className="sticky-placeholder">Sticky note...</div>
             }
-            ErrorBoundary={LexicalErrorBoundary}
+            ErrorBoundary={LexicalErrorBoundary as any}
           />
           <AutoFocusPlugin />
         </LexicalNestedComposer>
