@@ -40,6 +40,12 @@ import {
   type FormState,
 } from "react-hook-form";
 
+type NestedKeyOf<T extends object> = {
+  [K in keyof T & (string | number)]: T[K] extends object
+    ? `${K}` | `${K}.${NestedKeyOf<T[K]>}`
+    : K;
+}[keyof T & (string | number)];
+
 export interface FormRef<K extends KeyValue> {
   state: FormState<K>;
   reset: () => void;
@@ -47,7 +53,7 @@ export interface FormRef<K extends KeyValue> {
   submit: () => void;
   validate: () => Promise<boolean>;
   getValues: () => K;
-  setValue: (key: keyof K, value: AnyObject) => void;
+  setValue: (key: NestedKeyOf<K>, value: AnyObject) => void;
   setValues: (values: K) => void;
 }
 
