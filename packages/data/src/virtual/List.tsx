@@ -264,9 +264,7 @@ const _VirtualList = <T extends AnyObject>({
     <div
       ref={scrollerRef}
       onScroll={handleScroll}
-      className={classNames(
-        "area-content bg-base overflow-auto contain-strict",
-      )}
+      className={classNames("area-content bg-base overflow-auto")}
       {...aria}
     >
       <div
