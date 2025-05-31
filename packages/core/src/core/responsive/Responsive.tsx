@@ -85,6 +85,10 @@ export interface ColProps
    * stretch inner content
    */
   stretchContent?: boolean;
+  /**
+   * truncate text
+   */
+  truncate?: boolean;
 }
 
 /**
@@ -148,6 +152,7 @@ export const Col = ({
   children,
   flex,
   align,
+  truncate,
   className,
   stretchContent,
   ...aria
@@ -164,6 +169,7 @@ export const Col = ({
         flex === "initial" && "flex-initial",
         flex === "content" && "flex-none",
         align && `self-${align}`,
+        truncate && "truncate",
       )}
       {...aria}
     >
