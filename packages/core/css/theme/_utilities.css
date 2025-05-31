@@ -93,14 +93,6 @@
   font-variant: small-caps;
 }
 
-@utility rounded {
-  border-radius: var(--rounding);
-}
-
-@utility rounded-capped {
-  border-radius: var(--rounding-cap);
-}
-
 @utility scroll-hide {
   &::-webkit-scrollbar {
     width: 0;
