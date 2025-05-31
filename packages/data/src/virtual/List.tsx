@@ -110,7 +110,7 @@ export interface VirtualListProps<T> extends TestProps {
 
 const createItemList = memoizeOne((items) => items);
 
-const _VirtualList = <T extends KeyValue>({
+const _VirtualList = <T extends AnyObject>({
   items,
   total = 0,
   children,

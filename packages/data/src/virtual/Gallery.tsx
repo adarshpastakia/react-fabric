@@ -103,7 +103,7 @@ export interface VirtualGalleryProps<T> extends TestProps {
 
 const createItemList = memoize((items) => items);
 
-const _VirtualGallery = <T extends KeyValue>({
+const _VirtualGallery = <T extends AnyObject>({
   items,
   children,
   columns,
