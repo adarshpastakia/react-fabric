@@ -40,7 +40,7 @@
 @variant dark (&:where([data-color-scheme="dark"], [data-color-scheme="dark"] *));
 
 @utility area-* {
-  grid-area: --value([*]);
+  grid-area: --value([ *]);
 }
 
 @utility area-content {
@@ -87,6 +87,10 @@
 
 @utility flex-full {
   flex: 1 1 100%;
+}
+
+@utility font-smallcaps {
+  font-variant: small-caps;
 }
 
 @utility rounded {
