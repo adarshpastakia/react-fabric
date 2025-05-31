@@ -23,6 +23,7 @@
 
 import {
   type ColorState,
+  type SizeType,
   type TestProps,
 } from "@react-fabric/core/dist/types/types";
 
@@ -36,8 +37,10 @@ export interface PresetType {
 export interface SuperDateProps extends TestProps {
   as?: "button" | "chip";
   color?: ColorState;
+  size?: SizeType;
   variant?: "solid" | "outline" | "link";
   disabled?: boolean;
+  fullWidth?: boolean;
   /**
    * relative date value
    */

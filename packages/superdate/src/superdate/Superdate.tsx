@@ -144,8 +144,10 @@ export const SuperDateTabs = ({
 export const SuperDate = ({
   as = "button",
   color = "primary",
+  size,
   variant,
   disabled,
+  fullWidth,
   onChange,
   value,
   "data-test-value": testValue,
@@ -180,8 +182,10 @@ export const SuperDate = ({
       <Tooltip content={DateUtil.relativeTooltip(relValue, isHijri)}>
         <E
           icon={CoreIcons.clock}
+          size={size}
           color={color}
           disabled={disabled}
+          fullWidth={fullWidth}
           variant={variant as AnyObject}
           data-test-value={testValue}
           data-testid={testId}
