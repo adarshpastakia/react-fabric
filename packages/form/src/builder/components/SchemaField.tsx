@@ -190,7 +190,8 @@ export const SchemaField = ({
           } as StringSchema);
         } else if (type === DATA_TYPES.DATE) {
           reset = Object.assign(reset, {
-            type: "date",
+            min: modelRef.min,
+            max: modelRef.max,
           } as DateSchema);
         } else if (type === DATA_TYPES.NUMBER || type === DATA_TYPES.RANGE) {
           reset = Object.assign(reset, {
