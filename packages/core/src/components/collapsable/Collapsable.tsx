@@ -142,13 +142,13 @@ export const Collapsable = ({
           "fabric-collapsableHead",
           "flex gap-1 flex-nowrap py-2 font-medium cursor-pointer items-center select-none hover:opacity-70",
           headerClassName,
-          stickyHeader && "bg-base sticky top-0 px-2 py-1 z-10",
+          stickyHeader && "bg-base sticky top-0 py-1 z-10",
           iconAlign === "end" ? "flex-row-reverse" : "flex-row",
         )}
         onClick={() => !disabled && setOpenState(!openState)}
       >
         <Icon size="1.125em" icon={openState ? iconOpen : iconClosed} rtlFlip />
-        <div className="flex-1 px-2">{head}</div>
+        <div className="flex-1">{head}</div>
       </div>
       {openState && (
         <div
