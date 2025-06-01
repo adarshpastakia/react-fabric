@@ -40,7 +40,7 @@ export interface CalloutProps
   /**
    * callout color
    */
-  color?: ColorState;
+  color?: ColorState | "none";
   /**
    * legend title
    */
@@ -64,6 +64,7 @@ export interface CalloutProps
 }
 
 const colors = {
+  none: "bg-base text-tint-900 border-tint-100",
   tint: "bg-tint-50/50 text-tint-800 border-tint-300",
   primary: "bg-primary-50/50 text-primary-800 border-primary-300",
   accent: "bg-accent-50/50 text-accent-800 border-accent-300",
