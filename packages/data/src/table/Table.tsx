@@ -255,7 +255,7 @@ export const Table = <T extends KeyValue = KeyValue>({
                 </div>
               ) : (
                 <BodyRow
-                  rowKey={key}
+                  rowKey={key.toString()}
                   index={index}
                   checkableRows={checkableRows}
                   checked={
