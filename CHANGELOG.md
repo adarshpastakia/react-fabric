@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.49](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.48...v1.0.0-beta.49) (2025-06-01)
+
+### Bug Fixes
+
+- **Divider:** add divider style dashed/dotted ([4c0d299](https://github.com/adarshpastakia/react-fabric/commit/4c0d299bdf0b258de3572aa37a85723d31b803b4))
+- **Icon:** add disabled prop for clickable icons ([8e6ce2f](https://github.com/adarshpastakia/react-fabric/commit/8e6ce2fddd67d180b67aa995b94eba7f8751ac4e))
+- **Navigator:** add length and current prop to enable/disable nav buttons ([94d42ef](https://github.com/adarshpastakia/react-fabric/commit/94d42efcff4da06695b647b2847e2efdd7f6c93c))
+
 # [1.0.0-beta.48](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.47...v1.0.0-beta.48) (2025-06-01)
 
 ### Bug Fixes
