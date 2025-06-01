@@ -39,7 +39,7 @@ export const flatten = <T extends AnyObject>(list: T[]) => {
 };
 
 export const flattenAndDedupe = <T extends AnyObject>(
-  list: T[] = [],
+  list: T[][] = [],
   key?: keyof T,
 ) => {
   return dedupe(flatten(list) as T[], key);
