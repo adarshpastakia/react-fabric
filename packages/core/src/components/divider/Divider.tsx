@@ -33,10 +33,6 @@ import { getColor } from "../../utils";
 
 export interface DividerProps extends CssProp, Partial<ChildProp> {
   /**
-   * apply text bg
-   */
-  fill?: boolean;
-  /**
    * vertical rule
    */
   vertical?: boolean;
@@ -52,6 +48,10 @@ export interface DividerProps extends CssProp, Partial<ChildProp> {
    * text alignment
    */
   align?: "start" | "end" | "center";
+  /**
+   * divider style
+   */
+  style?: "solid" | "dashed" | "dotted";
 }
 
 export const Divider = ({
@@ -59,7 +59,7 @@ export const Divider = ({
   color = "tint-300",
   vertical,
   labelClassName,
-  fill,
+  style,
   align = "start",
   className,
 }: DividerProps) => {
@@ -67,7 +67,7 @@ export const Divider = ({
     ({ flex, className }: KeyValue) => {
       return (
         <hr
-          style={{ flex, borderColor: getColor(color) }}
+          style={{ flex, borderColor: getColor(color), borderStyle: style }}
           className={classNames(
             className,
             vertical && "vertical",
@@ -85,7 +85,7 @@ export const Divider = ({
   return children ? (
     <div
       className={classNames(
-        "flex flex-nowrap items-center",
+        "flex flex-nowrap items-center fabric-divider",
         vertical && "flex-col",
         className,
       )}
@@ -94,7 +94,9 @@ export const Divider = ({
       <div
         className={classNames(
           "px-2 whitespace-nowrap",
-          vertical ? "fabric-divider--vertical" : "fabric-divider--horizontal",
+          vertical
+            ? "fabric-divider-label--vertical"
+            : "fabric-divider-label--horizontal",
           labelClassName,
           "rounded-full text-[0.75em]",
           vertical && "origin-center -rotate-90 z-1",
