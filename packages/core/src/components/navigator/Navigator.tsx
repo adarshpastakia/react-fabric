@@ -34,12 +34,16 @@ import {
 } from "../../types";
 import { CoreIcons } from "../../types/icons";
 import { Icon } from "../icon/Icon";
+import { isEmpty } from "@react-fabric/utilities";
 
 export interface NavigatorProps
   extends CssProp,
     AriaProps,
     TestProps,
     Partial<ChildProp> {
+  length?: number;
+  current?: number;
+  disableKeyHandlers?: boolean;
   /**
    * navigator button color
    */
@@ -55,18 +59,27 @@ export const Navigator = ({
   onNavigate,
   color,
   children,
+  length,
+  current,
+  disableKeyHandlers,
   ...aria
 }: NavigatorProps) => {
-  const navPrev = useCallback(() => onNavigate(-1), [onNavigate]);
-  const navNext = useCallback(() => onNavigate(+1), [onNavigate]);
+  const navPrev = useCallback(
+    () => (isEmpty(current) || current !== 0) && onNavigate(-1),
+    [onNavigate, current],
+  );
+  const navNext = useCallback(
+    () => (isEmpty(current) || current + 1 < (length ?? 0)) && onNavigate(+1),
+    [onNavigate, current, length],
+  );
   return (
     <div
       data-ref="navigator"
       className={classNames(className, "inline-flex items-center leading-none")}
       {...aria}
     >
-      <HotKey keyCombo="left" handler={navPrev} />
-      <HotKey keyCombo="right" handler={navNext} />
+      {!disableKeyHandlers && <HotKey keyCombo="left" handler={navPrev} />}
+      {!disableKeyHandlers && <HotKey keyCombo="right" handler={navNext} />}
       <Icon
         rtlFlip
         color={color}
@@ -74,7 +87,8 @@ export const Navigator = ({
         aria-label="previous"
         data-ref="previous"
         icon={CoreIcons.chevronLeft}
-        onClick={(e) => [e.stopPropagation(), onNavigate(-1)]}
+        disabled={!isEmpty(current) && current === 0}
+        onClick={(e) => [e.stopPropagation(), navPrev()]}
       />
       {children}
       <Icon
@@ -84,7 +98,8 @@ export const Navigator = ({
         aria-label="next"
         data-ref="next"
         icon={CoreIcons.chevronRight}
-        onClick={(e) => [e.stopPropagation(), onNavigate(1)]}
+        disabled={!isEmpty(current) && current + 1 === length}
+        onClick={(e) => [e.stopPropagation(), navNext()]}
       />
     </div>
   );
