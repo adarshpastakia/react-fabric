@@ -68,6 +68,7 @@ export interface IconProps extends CssProp, AriaProps, RefProp, TestProps {
    * apply animation
    */
   animate?: "spin" | "pulse" | "bounce";
+  disabled?: boolean;
   /**
    * click handler
    */
@@ -95,6 +96,7 @@ export const Icon = ({
   rtlFlip,
   animate,
   rounded,
+  disabled,
   viewBox = "0 0 24 24",
   className,
   onClick,
@@ -162,6 +164,7 @@ export const Icon = ({
         !rounded && "rounded",
         rounded && "rounded-full",
         animate && `animate-${animate}`,
+        !!onClick && disabled && "opacity-30 pointer-events-none",
         className,
       )}
       onClick={onClick}
