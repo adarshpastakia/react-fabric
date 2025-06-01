@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.48](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.47...v1.0.0-beta.48) (2025-06-01)
+
+### Bug Fixes
+
+- add latlon utilties ([67b82a2](https://github.com/adarshpastakia/react-fabric/commit/67b82a298a16fc1a940bb8c6fb8e13c3a8e1fb6d))
+- **AutoComplete:** pass ref to input ([3e21321](https://github.com/adarshpastakia/react-fabric/commit/3e213215fc0a59a20650029525e741475fc2a8ce))
+- **AvatarInput:** replace src with avatarName ([524c5de](https://github.com/adarshpastakia/react-fabric/commit/524c5ded92ddc7a7ec145efea543a4f65318c12c))
+- **CodeEditor:** prop types ([a46b2bd](https://github.com/adarshpastakia/react-fabric/commit/a46b2bdd4d63ffcb7231300efceee73569fc221f))
+- **DateDuration:** add duration label ([2fa17b8](https://github.com/adarshpastakia/react-fabric/commit/2fa17b8e760e93380d3ef5a7666e8c5ba7100d98))
+- **dedupe:** generic typing ([6305a39](https://github.com/adarshpastakia/react-fabric/commit/6305a3938aa76b99d1b361eab30096cb32b1bef3))
+- **Filter:** allow negate only for field filters ([a1cc126](https://github.com/adarshpastakia/react-fabric/commit/a1cc1269524c5429805b4dfc65f960e652e20809))
+- **Filterbar:** add editable, queryLanguage props ([7ec1f4a](https://github.com/adarshpastakia/react-fabric/commit/7ec1f4a387290b153b46bc9a0a14b75dc92a926a))
+- **FilterForm:** add date type filters ([64abb55](https://github.com/adarshpastakia/react-fabric/commit/64abb55412372d2d6ddce3faddb419154be87ca0))
+- **flattenAndDedupe:** generic typing ([d9f065c](https://github.com/adarshpastakia/react-fabric/commit/d9f065c1f50b328a21cbbf99e9f70ebce51500d8))
+- **FlipContent:** add flip content component ([67820da](https://github.com/adarshpastakia/react-fabric/commit/67820da432987aa49396e6b36b74a18f518ef02b))
+- **FormField:** add datetime input ([b36f681](https://github.com/adarshpastakia/react-fabric/commit/b36f68136a110f05406f50f6fdaee511c7e3a6d5))
+- **Form:** use NestedKeyOf for setValue field name inference ([72eb30d](https://github.com/adarshpastakia/react-fabric/commit/72eb30df54eb34fb1b32e27c7b351ec0d2566903))
+- **Input:** keyDown prevent propagation when inside floating tree ([9f3590d](https://github.com/adarshpastakia/react-fabric/commit/9f3590d4e7193b09df3345b84168165047b60c82))
+- **Menu:** add trigger prop ([bc8f994](https://github.com/adarshpastakia/react-fabric/commit/bc8f994923a8c02605a88c049a415969422d33e6))
+- **ResponsiveCol:** add truncate prop ([9a24cea](https://github.com/adarshpastakia/react-fabric/commit/9a24cea5c8d1a4176dd85688093ff01c279d2ee2))
+- **SchemaField:** date field options ([c3a9360](https://github.com/adarshpastakia/react-fabric/commit/c3a93604fc6822c0a544a02ea41dd4a13d158cc7))
+- **Searchbar:** add ref prop for search input ([98666d9](https://github.com/adarshpastakia/react-fabric/commit/98666d9787c162f65c28cf234be84ecd5a34a205))
+- **Search:** fire search on clear ([7f3485e](https://github.com/adarshpastakia/react-fabric/commit/7f3485e8acea471e34f7d2b366ee84ac7e63054b))
+- **Select:** add sortProperty ([479a847](https://github.com/adarshpastakia/react-fabric/commit/479a847f7a5751b2d5917620b0e74081a2015cf8))
+- **SuperDate:** add size, fullWidth props ([51b2d16](https://github.com/adarshpastakia/react-fabric/commit/51b2d1652166fd89c024ff0cf75d7dc43f27e69e))
+- **Table:** add column filters ([9c060bf](https://github.com/adarshpastakia/react-fabric/commit/9c060bf5b2edfbb2d1c2db5bd378a5ff26b712b4))
+- **Table:** row key ([364280f](https://github.com/adarshpastakia/react-fabric/commit/364280f91bda5a6994d13bd6090b70464b590bf6))
+- **TreeNode:** add node className ([c5a47a1](https://github.com/adarshpastakia/react-fabric/commit/c5a47a142dc633398b665179b052298f52f08043))
+- **Virtual:** generic type ([459b8d3](https://github.com/adarshpastakia/react-fabric/commit/459b8d3b5f9e62f21279a42ee9cfbcbe90285ac0))
+- **VirtualGrid:** use virtualizer measureElement ([60ce32a](https://github.com/adarshpastakia/react-fabric/commit/60ce32a1c769814b924e421a05f72c227ff29ed8))
+
 # [1.0.0-beta.47](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.46...v1.0.0-beta.47) (2025-05-10)
 
 ### Bug Fixes

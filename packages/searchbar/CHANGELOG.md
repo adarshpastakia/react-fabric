@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.48](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.47...v1.0.0-beta.48) (2025-06-01)
+
+### Bug Fixes
+
+- **Filter:** allow negate only for field filters ([a1cc126](https://github.com/adarshpastakia/react-ui-framework/commit/a1cc1269524c5429805b4dfc65f960e652e20809))
+- **Filterbar:** add editable, queryLanguage props ([7ec1f4a](https://github.com/adarshpastakia/react-ui-framework/commit/7ec1f4a387290b153b46bc9a0a14b75dc92a926a))
+- **FilterForm:** add date type filters ([64abb55](https://github.com/adarshpastakia/react-ui-framework/commit/64abb55412372d2d6ddce3faddb419154be87ca0))
+- **Searchbar:** add ref prop for search input ([98666d9](https://github.com/adarshpastakia/react-ui-framework/commit/98666d9787c162f65c28cf234be84ecd5a34a205))
+
 # [1.0.0-beta.47](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.46...v1.0.0-beta.47) (2025-05-10)
 
 **Note:** Version bump only for package @react-fabric/searchbar

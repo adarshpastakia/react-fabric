@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.48](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.47...v1.0.0-beta.48) (2025-06-01)
+
+### Bug Fixes
+
+- add latlon utilties ([67b82a2](https://github.com/adarshpastakia/react-fabric/commit/67b82a298a16fc1a940bb8c6fb8e13c3a8e1fb6d))
+- **dedupe:** generic typing ([6305a39](https://github.com/adarshpastakia/react-fabric/commit/6305a3938aa76b99d1b361eab30096cb32b1bef3))
+- **flattenAndDedupe:** generic typing ([d9f065c](https://github.com/adarshpastakia/react-fabric/commit/d9f065c1f50b328a21cbbf99e9f70ebce51500d8))
+
 # [1.0.0-beta.47](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.46...v1.0.0-beta.47) (2025-05-10)
 
 **Note:** Version bump only for package @react-fabric/utilities

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.48](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.47...v1.0.0-beta.48) (2025-06-01)
+
+### Bug Fixes
+
+- **FlipContent:** add flip content component ([67820da](https://github.com/adarshpastakia/react-ui-framework/commit/67820da432987aa49396e6b36b74a18f518ef02b))
+- **Menu:** add trigger prop ([bc8f994](https://github.com/adarshpastakia/react-ui-framework/commit/bc8f994923a8c02605a88c049a415969422d33e6))
+- **ResponsiveCol:** add truncate prop ([9a24cea](https://github.com/adarshpastakia/react-ui-framework/commit/9a24cea5c8d1a4176dd85688093ff01c279d2ee2))
+
 # [1.0.0-beta.47](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.46...v1.0.0-beta.47) (2025-05-10)
 
 ### Bug Fixes

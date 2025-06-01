@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.48](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.47...v1.0.0-beta.48) (2025-06-01)
+
+### Bug Fixes
+
+- **Table:** add column filters ([9c060bf](https://github.com/adarshpastakia/react-ui-framework/commit/9c060bf5b2edfbb2d1c2db5bd378a5ff26b712b4))
+- **Table:** row key ([364280f](https://github.com/adarshpastakia/react-ui-framework/commit/364280f91bda5a6994d13bd6090b70464b590bf6))
+- **TreeNode:** add node className ([c5a47a1](https://github.com/adarshpastakia/react-ui-framework/commit/c5a47a142dc633398b665179b052298f52f08043))
+- **Virtual:** generic type ([459b8d3](https://github.com/adarshpastakia/react-ui-framework/commit/459b8d3b5f9e62f21279a42ee9cfbcbe90285ac0))
+- **VirtualGrid:** use virtualizer measureElement ([60ce32a](https://github.com/adarshpastakia/react-ui-framework/commit/60ce32a1c769814b924e421a05f72c227ff29ed8))
+
 # [1.0.0-beta.47](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.46...v1.0.0-beta.47) (2025-05-10)
 
 **Note:** Version bump only for package @react-fabric/data

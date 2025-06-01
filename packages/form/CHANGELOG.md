@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.48](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.47...v1.0.0-beta.48) (2025-06-01)
+
+### Bug Fixes
+
+- **AutoComplete:** pass ref to input ([3e21321](https://github.com/adarshpastakia/react-ui-framework/commit/3e213215fc0a59a20650029525e741475fc2a8ce))
+- **AvatarInput:** replace src with avatarName ([524c5de](https://github.com/adarshpastakia/react-ui-framework/commit/524c5ded92ddc7a7ec145efea543a4f65318c12c))
+- **FilterForm:** add date type filters ([64abb55](https://github.com/adarshpastakia/react-ui-framework/commit/64abb55412372d2d6ddce3faddb419154be87ca0))
+- **FormField:** add datetime input ([b36f681](https://github.com/adarshpastakia/react-ui-framework/commit/b36f68136a110f05406f50f6fdaee511c7e3a6d5))
+- **Form:** use NestedKeyOf for setValue field name inference ([72eb30d](https://github.com/adarshpastakia/react-ui-framework/commit/72eb30df54eb34fb1b32e27c7b351ec0d2566903))
+- **Input:** keyDown prevent propagation when inside floating tree ([9f3590d](https://github.com/adarshpastakia/react-ui-framework/commit/9f3590d4e7193b09df3345b84168165047b60c82))
+- **SchemaField:** date field options ([c3a9360](https://github.com/adarshpastakia/react-ui-framework/commit/c3a93604fc6822c0a544a02ea41dd4a13d158cc7))
+- **Search:** fire search on clear ([7f3485e](https://github.com/adarshpastakia/react-ui-framework/commit/7f3485e8acea471e34f7d2b366ee84ac7e63054b))
+- **Select:** add sortProperty ([479a847](https://github.com/adarshpastakia/react-ui-framework/commit/479a847f7a5751b2d5917620b0e74081a2015cf8))
+
 # [1.0.0-beta.47](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.46...v1.0.0-beta.47) (2025-05-10)
 
 ### Bug Fixes

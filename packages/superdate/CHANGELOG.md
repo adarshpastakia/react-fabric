@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.48](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.47...v1.0.0-beta.48) (2025-06-01)
+
+### Bug Fixes
+
+- **SuperDate:** add size, fullWidth props ([51b2d16](https://github.com/adarshpastakia/react-ui-framework/commit/51b2d1652166fd89c024ff0cf75d7dc43f27e69e))
+
 # [1.0.0-beta.47](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.46...v1.0.0-beta.47) (2025-05-10)
 
 **Note:** Version bump only for package @react-fabric/superdate
