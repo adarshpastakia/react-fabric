@@ -463,3 +463,16 @@ export interface ScrollObject extends PositionObject, SizeObject {
   scrollWidth?: number;
   scrollHeight: number;
 }
+
+export type ArrayType<T extends readonly any[] | ArrayLike<any> | undefined> =
+  T extends readonly any[]
+    ? T[number]
+    : T extends ArrayLike<any>
+      ? T[number]
+      : undefined;
+
+export type Complete<T> = {
+  [P in keyof Required<T>]: Pick<T, P> extends Required<Pick<T, P>>
+    ? T[P]
+    : T[P] | undefined;
+};
