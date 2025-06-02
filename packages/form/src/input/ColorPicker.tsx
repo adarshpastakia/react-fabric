@@ -49,7 +49,7 @@ export interface ColorProps {
   /**
    * color value
    */
-  value?: string;
+  value?: string | null;
   /**
    * change handler
    */

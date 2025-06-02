@@ -31,7 +31,7 @@ export interface InputProps<V = string> extends TestProps {
   /**
    * value
    */
-  value?: V;
+  value?: V | null;
   /**
    * change handler
    */
