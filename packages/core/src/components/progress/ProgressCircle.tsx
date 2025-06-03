@@ -29,7 +29,7 @@ import { getColor } from "../../utils";
 
 export interface ProgressProps {
   /**
-   * progress value (0-100)
+   * progress value (0-1)
    */
   value: number;
   /**
@@ -57,7 +57,7 @@ export const ProgressCircle = ({
 }: ProgressProps) => {
   /** ***************** make sure value is between 0 and 100 *******************/
   const actualValue = useMemoDebugger(
-    () => Math.min(Math.max(value, 0), 100),
+    () => Math.min(Math.max(value, 0), 1),
     [value],
     "ProgressCirle value",
   );
@@ -66,7 +66,7 @@ export const ProgressCircle = ({
   const strokeDashoffset = useMemoDebugger(
     () => {
       const circumfrence = Math.PI * 2 * 44;
-      return circumfrence * (1 - actualValue / 100);
+      return circumfrence * (1 - actualValue);
     },
     [actualValue],
     "ProgressCirle dashOffset",
@@ -108,7 +108,7 @@ export const ProgressCircle = ({
         />
       </svg>
       <span className="flex w-full h-full items-center justify-center select-none font-bold text-[0.625em]">
-        {Format.percent(actualValue / 100)}
+        {Format.percent(actualValue)}
       </span>
     </div>
   );

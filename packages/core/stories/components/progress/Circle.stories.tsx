@@ -51,7 +51,7 @@ export const _ProgressCircle: ProgressCircleStory = {
     const [value, setValue] = useState(10);
     useEffect(() => {
       setTimeout(() => {
-        setValue(value > 90 ? 10 : value + 2);
+        setValue(value > 0.9 ? 0.1 : value + 0.2);
       }, 100);
     }, [value]);
     return (

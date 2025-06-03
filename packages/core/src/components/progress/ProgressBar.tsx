@@ -29,7 +29,7 @@ import { getColor } from "../../utils";
 
 export interface ProgressProps {
   /**
-   * progress value (0-100)
+   * progress value (0-1)
    */
   value: number;
   /**
@@ -69,14 +69,14 @@ export const ProgressBar = ({
 }: ProgressProps) => {
   /** ***************** make sure value is between 0 and 100 *******************/
   const actualValue = useMemoDebugger(
-    () => Math.min(Math.max(value, 0), 100),
+    () => Math.min(Math.max(value, 0), 1),
     [value],
     "ProgressBar value",
   );
 
   const progressVar = useMemoDebugger<KeyValue>(
     () => ({
-      "--progress": actualValue,
+      "--progress": actualValue * 100,
     }),
     [actualValue],
     "ProgressBar cssVar",
@@ -100,7 +100,7 @@ export const ProgressBar = ({
     >
       {!["xxs", "xs", "sm"].includes(size ?? "") && (
         <div className="absolute inset-0 text-center z-0 align-top">
-          {label} {Format.percent(actualValue / 100)}
+          {label} {Format.percent(actualValue)}
         </div>
       )}
       <div
@@ -113,7 +113,7 @@ export const ProgressBar = ({
       {!["xxs", "xs", "sm"].includes(size ?? "") && (
         <div
           className={classNames("h-full absolute inset-0 overflow-hidden z-1")}
-          data-label={`${label} ${Format.percent(actualValue / 100)}`}
+          data-label={`${label} ${Format.percent(actualValue)}`}
         />
       )}
     </div>

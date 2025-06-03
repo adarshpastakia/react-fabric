@@ -52,7 +52,7 @@ export const _ProgressBar: ProgressBarStory = {
     const [value, setValue] = useState(10);
     useEffect(() => {
       setTimeout(() => {
-        setValue(value > 90 ? 10 : value + 2);
+        setValue(value > 0.9 ? 0.1 : value + 0.2);
       }, 100);
     }, [value]);
     return (
@@ -69,22 +69,22 @@ export const Colors: ProgressBarStory = {
     const [value, setValue] = useState(10);
     useEffect(() => {
       setTimeout(() => {
-        setValue(value > 90 ? 10 : value + 2);
+        setValue(value > 0.9 ? 0.1 : value + 0.2);
       }, 100);
     }, [value]);
     return (
       <Fragment>
         <div className="flex flex-col gap-2">
-          <ProgressBar {...args} color="primary" value={value} />
-          <ProgressBar {...args} size="md" color="accent" value={value} />
-          <ProgressBar {...args} size="lg" color="danger" value={value} />
-          <ProgressBar {...args} size="xl" color="warning" value={value} />
+          <ProgressBar {...args} color="primary-500" value={value} />
+          <ProgressBar {...args} size="md" color="accent-500" value={value} />
+          <ProgressBar {...args} size="lg" color="danger-500" value={value} />
+          <ProgressBar {...args} size="xl" color="warning-500" value={value} />
 
           <div className="flex gap-2 items-center justify-center py-4">
-            <ProgressCircle {...args} color="primary" value={value} />
-            <ProgressCircle {...args} size="md" color="accent" value={value} />
-            <ProgressCircle {...args} size="lg" color="danger" value={value} />
-            <ProgressCircle {...args} size="xl" color="warning" value={value} />
+            <ProgressCircle {...args as any} color="primary-500" value={value} />
+            <ProgressCircle {...args} size="md" color="accent-500" value={value} />
+            <ProgressCircle {...args} size="lg" color="danger-500" value={value} />
+            <ProgressCircle {...args} size="xl" color="warning-500" value={value} />
           </div>
         </div>
       </Fragment>
