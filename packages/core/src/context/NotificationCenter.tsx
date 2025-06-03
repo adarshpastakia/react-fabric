@@ -194,7 +194,7 @@ export const NotificationManager = ({ onLoad }: KeyValue) => {
       {createPortal(
         <div
           style={{ zIndex: "var(--z-overlay)" }}
-          className="ruf-container__overlays pointer-events-none fixed inset-0 p-4 bg-transparent"
+          className="fabric-container__overlays pointer-events-none fixed inset-0 p-4 bg-transparent"
         >
           {Object.values(alerts).map(([el]: AnyObject) => el)}
         </div>,
@@ -203,7 +203,7 @@ export const NotificationManager = ({ onLoad }: KeyValue) => {
       {createPortal(
         <div
           style={{ zIndex: "var(--z-notifications)" }}
-          className="ruf-container__notifs flex flex-nowrap pointer-events-none fixed inset-0 p-2 bg-transparent flex-col-reverse items-center justify-end"
+          className="fabric-container__notifs flex flex-nowrap pointer-events-none fixed inset-0 p-2 bg-transparent flex-col-reverse items-center justify-end"
         >
           {Object.values(messages).map(([el]: AnyObject) => el)}
         </div>,
@@ -212,7 +212,7 @@ export const NotificationManager = ({ onLoad }: KeyValue) => {
       {createPortal(
         <div
           style={{ zIndex: "var(--z-notifications)" }}
-          className="ruf-container__toasts flex flex-nowrap pointer-events-none fixed inset-0 p-4 bg-transparent flex-col items-end justify-end overflow-auto scroll-hide"
+          className="fabric-container__toasts flex flex-nowrap pointer-events-none fixed inset-0 p-4 bg-transparent flex-col items-end justify-end overflow-auto scroll-hide"
         >
           {Object.values(toasts).map(([el]: AnyObject) => el)}
         </div>,
