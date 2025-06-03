@@ -153,4 +153,22 @@
       }
     }
   }
+
+  [data-card-flip-face="front"] {
+    backface-visibility: hidden;
+  }
+
+  [data-card-flip-face="back"] {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+
+  [data-card-flip] {
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+  }
+
+  [data-card-flip="true"] {
+    transform: rotateY(180deg);
+  }
 }

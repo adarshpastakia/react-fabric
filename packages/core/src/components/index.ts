@@ -26,8 +26,8 @@ export {
   AnimationBars,
   AnimationIndicator,
   AnimationSpinner,
-  Skeleton,
   Loading,
+  Skeleton,
 } from "./animations/Animations";
 export { Avatar } from "./avatar/Avatar";
 export { AvatarGroup } from "./avatar/AvatarGroup";
@@ -40,6 +40,7 @@ export { ToggleButtonGroup } from "./button/ToggleButtonGroup";
 export { Callout } from "./callout/Callout";
 export { Card } from "./card/Card";
 export { CardCover } from "./card/CardCover";
+export { FlipContent, type FlipContentRef } from "./card/FlipContent";
 export { Chip } from "./chip/Chip";
 export { Collapsable } from "./collapsable/Collapsable";
 export { Divider } from "./divider/Divider";
