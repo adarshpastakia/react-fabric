@@ -336,6 +336,10 @@ export interface CssProp {
    * css classname(s)
    */
   className?: string;
+  /**
+   * direction
+   */
+  dir?: "ltr" | "rtl";
 }
 
 export interface TestProps {

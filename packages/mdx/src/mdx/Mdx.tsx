@@ -21,11 +21,14 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { type CssProp } from "@react-fabric/core/dist/types/types";
+import {
+  type AriaProps,
+  type CssProp,
+} from "@react-fabric/core/dist/types/types";
 import { useCallback, useEffect, useState, type FC } from "react";
 import { marked } from "../utils/marked";
 
-export interface Props extends CssProp {
+export interface Props extends CssProp, AriaProps {
   text: string;
 }
 
@@ -45,6 +48,7 @@ export const Mdx: FC<Props> = ({ text, className, ...rest }) => {
   return (
     <div
       role="none"
+      {...rest}
       className={`markdown-body ${className ?? ""}`}
       dangerouslySetInnerHTML={{ __html: mdtext }}
       onClick={(e) => {
