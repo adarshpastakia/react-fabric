@@ -480,7 +480,7 @@
   }
 
   &.markdown-body li > p {
-    margin-top: 16px;
+    margin: 16px 0 8px !important;
   }
 
   &.markdown-body li + li {
