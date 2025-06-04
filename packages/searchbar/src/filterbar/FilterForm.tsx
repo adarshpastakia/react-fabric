@@ -279,11 +279,12 @@ export const FilterForm = ({
         operator: model.operator,
         value: model.value as AnyObject,
         label: model.label,
+        type: field?.type,
       };
       onChange?.(filter);
       tree?.events.emit("close");
     },
-    [onChange],
+    [field, onChange],
   );
 
   return (

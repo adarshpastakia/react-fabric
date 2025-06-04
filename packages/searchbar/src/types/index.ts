@@ -168,6 +168,7 @@ export type FilterObject = BaseFilter &
         negate?: boolean;
         canInvert?: boolean;
         query?: never;
+        type?: string;
       }
     | {
         field?: never;
