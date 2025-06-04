@@ -141,6 +141,20 @@
     }
   }
 
+  [dir="rtl"] .fabric-aside[data-align="start"],
+  [dir="ltr"] .fabric-aside[data-align="end"] {
+    & .fabric-asideCollapse {
+      transform: scaleX(-1);
+    }
+  }
+
+  [dir="ltr"] .fabric-aside[data-align="start"],
+  [dir="rtl"] .fabric-aside[data-align="end"] {
+    & .fabric-asideCollapse {
+      transform: scaleX(1);
+    }
+  }
+
   .fabric-aside[data-collapsed="true"] {
     position: relative;
     overflow: visible;
