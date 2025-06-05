@@ -35,20 +35,20 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.27.9",
+    "@floating-ui/react": "^0.27.12",
     "@react-fabric/utilities": "^1.0.0-beta.49",
-    "@tailwindcss/postcss": "~4.0.14",
+    "@tailwindcss/postcss": "~4.1.8",
     "boring-avatars": "^1.11.2",
     "classnames": "^2.5.1",
     "color": "^4.2.3",
     "resize-observer-polyfill": "^1.5.1",
-    "tailwindcss": "^4.0.14"
+    "tailwindcss": "^4.1.8"
   },
   "peerDependencies": {
-    "i18next": "^23.15.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-i18next": "^15.0.2"
+    "i18next": "^25.2.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-i18next": "^15.5.2"
   },
   "engines": {
     "node": ">=18.12.0",

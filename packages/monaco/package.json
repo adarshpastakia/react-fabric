@@ -42,10 +42,10 @@
     "react-monaco-editor": "^0.58.0"
   },
   "peerDependencies": {
-    "i18next": "^23.15.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-i18next": "^15.0.2"
+    "i18next": "^25.2.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-i18next": "^15.5.2"
   },
   "engines": {
     "node": ">=18.12.0",
