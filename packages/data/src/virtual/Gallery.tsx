@@ -150,9 +150,19 @@ const _VirtualGallery = <T extends AnyObject>({
       if (scrollerRef.current) {
         const el = scrollerRef.current;
         const handler = () => {
+          const pad = parseInt(
+            getComputedStyle(el.firstElementChild?.firstElementChild as any)
+              .padding ?? 8,
+          );
           setColumnCount(
             columns ??
-              Math.max(1, Math.floor(((el?.offsetWidth ?? 800) - 32) / width)),
+              Math.max(
+                1,
+                Math.floor(
+                  ((el?.offsetWidth ?? 800) - 32 - (isNaN(pad) ? 8 : pad) * 2) /
+                    width,
+                ),
+              ),
           );
         };
         const ob = new ResizeObserver(handler);
@@ -308,7 +318,7 @@ const _VirtualGallery = <T extends AnyObject>({
             <div style={{ height: virtualItems[0]?.start }} />
             {virtualItems.map(({ key, index }) => (
               <div
-                className="flex justify-start"
+                className="flex justify-center"
                 key={key}
                 data-index={index}
                 ref={virtualizer.measureElement}
