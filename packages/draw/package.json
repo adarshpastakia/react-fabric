@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/draw",
-  "version": "1.0.0-beta.50",
+  "version": "1.0.0-beta.51",
   "description": "RUF: TLDraw canvas",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -33,7 +33,7 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@react-fabric/core": "^1.0.0-beta.50",
+    "@react-fabric/core": "^1.0.0-beta.51",
     "@react-fabric/utilities": "^1.0.0-beta.50",
     "@tldraw/assets": "^3.13.1",
     "@tldraw/editor": "^3.13.1",
