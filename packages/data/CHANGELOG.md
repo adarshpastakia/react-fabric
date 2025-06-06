@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.50](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.49...v1.0.0-beta.50) (2025-06-06)
+
+### Bug Fixes
+
+- **VirtualGallery:** column calculation ([56dcbc5](https://github.com/adarshpastakia/react-ui-framework/commit/56dcbc5d6917b15a4aedf9d7369f15d5e65e19b6))
+
 # [1.0.0-beta.49](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.48...v1.0.0-beta.49) (2025-06-01)
 
 **Note:** Version bump only for package @react-fabric/data

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.50](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.49...v1.0.0-beta.50) (2025-06-06)
+
+### Bug Fixes
+
+- add dir prop ([e33df81](https://github.com/adarshpastakia/react-fabric/commit/e33df819c906fd9a8504e0584258ce84907e0453))
+- add generic ArrayType ([e54b699](https://github.com/adarshpastakia/react-fabric/commit/e54b69916c606cf83841215f6f2351366b52adba))
+- **Filter:** add TEXT type for full-text fields ([5ded394](https://github.com/adarshpastakia/react-fabric/commit/5ded394258690076e112649100b8e8995078be0d))
+- **Filter:** add type to filter model ([45244bf](https://github.com/adarshpastakia/react-fabric/commit/45244bf7c631a2c3626bb5477a7a04659c20dbac))
+- **FlipContent:** add to export ([3680a69](https://github.com/adarshpastakia/react-fabric/commit/3680a69657dae96e8934e087dc11dfaf3fb78b32))
+- **Inputs:** allow value null ([7848bde](https://github.com/adarshpastakia/react-fabric/commit/7848bdeef52cf3497b4be1b090f801ca5550acf1))
+- **Progress:** progress value 0-1 ([fa330c0](https://github.com/adarshpastakia/react-fabric/commit/fa330c0b0ebd8a94b9c8144cbd96f5d17e3affb9))
+- **VirtualGallery:** column calculation ([56dcbc5](https://github.com/adarshpastakia/react-fabric/commit/56dcbc5d6917b15a4aedf9d7369f15d5e65e19b6))
+
 # [1.0.0-beta.49](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.48...v1.0.0-beta.49) (2025-06-01)
 
 ### Bug Fixes

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.50](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.49...v1.0.0-beta.50) (2025-06-06)
+
+### Bug Fixes
+
+- **Filter:** add TEXT type for full-text fields ([5ded394](https://github.com/adarshpastakia/react-ui-framework/commit/5ded394258690076e112649100b8e8995078be0d))
+- **Filter:** add type to filter model ([45244bf](https://github.com/adarshpastakia/react-ui-framework/commit/45244bf7c631a2c3626bb5477a7a04659c20dbac))
+
 # [1.0.0-beta.49](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.48...v1.0.0-beta.49) (2025-06-01)
 
 **Note:** Version bump only for package @react-fabric/searchbar

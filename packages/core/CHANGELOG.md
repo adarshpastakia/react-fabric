@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.50](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.49...v1.0.0-beta.50) (2025-06-06)
+
+### Bug Fixes
+
+- add dir prop ([e33df81](https://github.com/adarshpastakia/react-ui-framework/commit/e33df819c906fd9a8504e0584258ce84907e0453))
+- add generic ArrayType ([e54b699](https://github.com/adarshpastakia/react-ui-framework/commit/e54b69916c606cf83841215f6f2351366b52adba))
+- **FlipContent:** add to export ([3680a69](https://github.com/adarshpastakia/react-ui-framework/commit/3680a69657dae96e8934e087dc11dfaf3fb78b32))
+- **Progress:** progress value 0-1 ([fa330c0](https://github.com/adarshpastakia/react-ui-framework/commit/fa330c0b0ebd8a94b9c8144cbd96f5d17e3affb9))
+
 # [1.0.0-beta.49](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.48...v1.0.0-beta.49) (2025-06-01)
 
 ### Bug Fixes
