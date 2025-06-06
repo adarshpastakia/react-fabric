@@ -74,8 +74,8 @@ EqSlider.displayName = "Audio.EQSlider";
 
 export const Equalizers = memo(() => {
   const { wavesurfer, state } = useAudioContext();
-  const contextRef = useRef<AudioContext>();
-  const mediaModelRef = useRef<MediaElementAudioSourceNode>();
+  const contextRef = useRef<AudioContext>(null);
+  const mediaModelRef = useRef<MediaElementAudioSourceNode>(null);
   const [filters, setFilters] = useState<AnyObject>([]);
 
   const [channelGains, setChannelGains] = useState<AnyObject[]>();

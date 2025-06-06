@@ -71,7 +71,7 @@ export const LexicalEditor = ({
   onChange,
   onDirty,
 }: EditorProps) => {
-  const editorRef = useRef<LXE>();
+  const editorRef = useRef<LXE>(null);
   const [editorContainer, setEditorContainer] = useState<HTMLDivElement | null>(
     null,
   );

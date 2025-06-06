@@ -193,7 +193,9 @@ export const Alert = ({
                     "--tw-ring-color": getColor(`${color}-500`),
                   } as AnyObject
                 }
-                ref={(e) => e != null && setTimeout(() => e.focus(), 100)}
+                ref={(e) => {
+                  e != null && setTimeout(() => e.focus(), 100);
+                }}
                 onBlur={(e) => e.target.focus()}
                 onChange={(e) => setValue(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleClose(value)}

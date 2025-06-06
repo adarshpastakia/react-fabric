@@ -38,13 +38,13 @@ describe("ToggleButtonGroup", () => {
     const fn = jest.fn();
     const fragment = render(
       <Tester onChange={fn} fullWidth>
-        <Button data-testid="one" value="1">
+        <Button key="one" data-testid="one" value="1">
           First
         </Button>
-        <Button data-testid="two" value="2">
+        <Button key="two" data-testid="two" value="2">
           Second
         </Button>
-        <Button data-testid="three" value="3">
+        <Button key="three" data-testid="three" value="3">
           Third
         </Button>
       </Tester>,
@@ -62,13 +62,13 @@ describe("ToggleButtonGroup", () => {
     const fn = jest.fn();
     const fragment = render(
       <Tester onChange={fn} vertical value={[]}>
-        <Button data-testid="one" value="1">
+        <Button key="one" data-testid="one" value="1">
           First
         </Button>
-        <Button data-testid="two" value="2">
+        <Button key="two" data-testid="two" value="2">
           Second
         </Button>
-        <Button data-testid="three" value="3">
+        <Button key="three" data-testid="three" value="3">
           Third
         </Button>
       </Tester>,

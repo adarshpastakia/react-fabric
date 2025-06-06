@@ -35,7 +35,7 @@ export interface ControllerProps {
    */
   name?: string;
   children:
-    | ReactElement
+    | ReactElement<KeyValue>
     | ((props: {
         name: string;
         error?: string;

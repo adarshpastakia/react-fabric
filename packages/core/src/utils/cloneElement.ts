@@ -32,11 +32,14 @@ export const cloneChildren = (
     if (isValidElement(c)) {
       if (c.type === Fragment) {
         // just compare to `Fragment`
-        return cloneChildren(c.props?.children, callback);
+        return cloneChildren((c.props as AnyObject)?.children, callback);
       }
       return c;
     }
-    return c;
+    if (c instanceof Promise) {
+      return undefined;
+    }
+    return c as AnyObject;
   })
     ?.flat()
     .filter(Boolean)

@@ -37,8 +37,8 @@ import {
 import { CanvasProvider, type CanvasRef } from "../canvas/Context";
 
 interface ContextType {
-  imageRef: RefObject<HTMLImageElement>;
-  scrollerRef: RefObject<HTMLDivElement>;
+  imageRef: RefObject<HTMLImageElement | null>;
+  scrollerRef: RefObject<HTMLDivElement | null>;
 
   state: ImageState;
 

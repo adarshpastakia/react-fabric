@@ -25,7 +25,7 @@ import { createContext, type RefObject, useContext } from "react";
 import { type WavesurferInstance } from "./wavesurfer";
 
 interface ContextType {
-  audioRef: RefObject<HTMLAudioElement>;
+  audioRef: RefObject<HTMLAudioElement | null>;
   wavesurfer?: WavesurferInstance;
 
   state: AudioState;

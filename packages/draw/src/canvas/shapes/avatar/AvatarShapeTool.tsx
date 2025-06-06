@@ -207,7 +207,10 @@ export class AvatarShapeUtil extends ShapeUtil<AvatarShape> {
                 spellCheck="true"
                 wrap="off"
                 dir="auto"
-                ref={(el) => [el?.select(), el?.focus()]}
+                ref={(el) => {
+                  el?.select();
+                  el?.focus();
+                }}
                 onKeyDown={(e) =>
                   e.key === "Enter" &&
                   (e.stopPropagation(),

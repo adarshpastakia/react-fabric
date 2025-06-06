@@ -59,8 +59,8 @@ export const Dictation = ({
   const [error, setError] = useState("");
   const [progress, setProgress] = useState(0);
   const [recording, setRecording] = useState(false);
-  const wavesurfer = useRef<WaveSurfer>();
-  const record = useRef<RecordPlugin>();
+  const wavesurfer = useRef<WaveSurfer>(null);
+  const record = useRef<RecordPlugin>(null);
   const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

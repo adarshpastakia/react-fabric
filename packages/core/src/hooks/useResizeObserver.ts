@@ -28,7 +28,7 @@ import { useDebounce } from "./useDebounce";
 
 export const useResizeObserver = <T extends HTMLElement = HTMLDivElement>(
   onResize?: (size: SizeObject) => void,
-): RefObject<T> => {
+): RefObject<T | null> => {
   const ref = useRef<T>(null);
   const [, startTransition] = useTransition();
 

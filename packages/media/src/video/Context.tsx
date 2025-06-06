@@ -37,8 +37,8 @@ import { CanvasProvider, type CanvasRef } from "../canvas/Context";
 import { type VideoProps } from "./types";
 
 interface ContextType {
-  videoRef: RefObject<HTMLVideoElement>;
-  scrollerRef: RefObject<HTMLDivElement>;
+  videoRef: RefObject<HTMLVideoElement | null>;
+  scrollerRef: RefObject<HTMLDivElement | null>;
 
   state: VideoState;
 
@@ -119,7 +119,7 @@ export const VideoProvider = ({
   onPause,
   onPlay,
 }: PropsWithChildren & VideoProps) => {
-  const canvasRef = useRef<CanvasRef>();
+  const canvasRef = useRef<CanvasRef>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
 

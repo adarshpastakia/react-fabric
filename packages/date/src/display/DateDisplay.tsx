@@ -74,7 +74,7 @@ export const DateDisplay = ({
       <span
         className={classNames(
           className,
-          children && "underline decoration-dotted cursor-pointer",
+          !!children && "underline decoration-dotted cursor-pointer",
         )}
         {...aria}
       >

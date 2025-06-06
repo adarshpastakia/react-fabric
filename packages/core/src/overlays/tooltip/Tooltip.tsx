@@ -64,7 +64,7 @@ export interface TooltipProps extends TooltipType, RefProp {
    */
   copyContent?: boolean | string;
   disabled?: boolean;
-  children: ReactElement;
+  children: ReactElement<KeyValue>;
 }
 
 export const getTooltipProps = (

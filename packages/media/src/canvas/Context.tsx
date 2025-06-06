@@ -36,7 +36,7 @@ import {
 } from "react";
 
 interface ContextType {
-  canvasRef: RefObject<HTMLCanvasElement>;
+  canvasRef: RefObject<HTMLCanvasElement | null>;
 }
 
 export interface CanvasRef {

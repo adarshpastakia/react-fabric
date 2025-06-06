@@ -46,7 +46,7 @@ interface Options {
 export const useResize = <T extends HTMLElement = HTMLDivElement>(
   onResize: (diff: { x: number; y: number }) => void,
   { isReverse = false, isVertical = false, onStart, onEnd }: Options,
-): { ref: RefObject<T>; onMouseDown: React.MouseEventHandler } => {
+): { ref: RefObject<T | null>; onMouseDown: React.MouseEventHandler } => {
   const refEl = useRef<T>(null);
   const isRtl = useIsRtl();
 

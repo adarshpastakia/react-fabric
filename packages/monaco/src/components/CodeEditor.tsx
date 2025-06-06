@@ -156,7 +156,7 @@ export const CodeEditor = ({
     [required, language],
   );
 
-  const disposeRef = useRef<AnyObject>();
+  const disposeRef = useRef<AnyObject>(null);
   const schemaUri = useCallback(
     (monaco: typeof monacoEditor) => {
       if (language === "json" && schema) {

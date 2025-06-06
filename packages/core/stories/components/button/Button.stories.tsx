@@ -24,8 +24,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { Fragment } from "react/jsx-runtime";
-import { Badge, Button } from "../../../src";
-import { Tooltip } from "../../../src/overlays";
+import { Badge, Button, Tooltip } from "../../../src";
 
 const meta: Meta = {
   component: Button,

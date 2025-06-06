@@ -28,7 +28,7 @@ export const useDebounce = (
   deps: AnyObject[],
   delay: number = 100,
 ) => {
-  const timerRef = useRef<AnyObject>();
+  const timerRef = useRef<AnyObject>(null);
 
   const cb = useMemo(() => {
     if (typeof window !== "undefined") {

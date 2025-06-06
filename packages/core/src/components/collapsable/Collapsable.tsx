@@ -42,8 +42,8 @@ import { CoreIcons } from "../../types/icons";
 import { Icon } from "../icon/Icon";
 
 interface CollapsableRef {
-  button: RefObject<HTMLElement>;
-  body: RefObject<HTMLElement>;
+  button: RefObject<HTMLElement | null>;
+  body: RefObject<HTMLElement | null>;
   open: boolean;
 }
 
