@@ -32,6 +32,7 @@ import {
   Number,
   Select,
   Switch,
+  Textarea,
   type FormRef,
 } from "@react-fabric/form";
 import { isArray, shortHash, yup } from "@react-fabric/utilities";
@@ -213,6 +214,13 @@ export const FilterForm = ({
           </Controller>
         );
       }
+    }
+    if (field.type === FIELD_TYPE.TEXT) {
+      return (
+        <Controller name="value">
+          <Textarea rows={3} label={t("label.value")} allowClear />
+        </Controller>
+      );
     }
     if (
       field?.type === FIELD_TYPE.DECIMAL ||

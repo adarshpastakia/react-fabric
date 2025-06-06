@@ -30,6 +30,7 @@ import { type ReactElement } from "react";
 export enum FIELD_TYPE {
   ID = "ID",
   STRING = "STRING",
+  TEXT = "TEXT",
   NUMBER = "NUMBER",
   DECIMAL = "DECIMAL",
   BOOLEAN = "BOOLEAN",
@@ -60,10 +61,9 @@ export enum OPERATOR {
  */
 export const TypeOperators: { [key in FIELD_TYPE]: OPERATOR[] } = {
   [FIELD_TYPE.ID]: [OPERATOR.IS, OPERATOR.IN],
-  [FIELD_TYPE.STRING]: [
+  [FIELD_TYPE.STRING]: [OPERATOR.EXISTS, OPERATOR.IS, OPERATOR.IN],
+  [FIELD_TYPE.TEXT]: [
     OPERATOR.EXISTS,
-    OPERATOR.IS,
-    OPERATOR.IN,
     OPERATOR.INCLUDES,
     OPERATOR.STARTS,
     OPERATOR.ENDS,
