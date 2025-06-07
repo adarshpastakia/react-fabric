@@ -1,3 +1,5 @@
+import HijriDate from "./HijriDate";
+
 const dateFormat = (function () {
   const token =
       /P{1,4}|p{1,4}|d{1,2}|e{3,6}|M{1,4}|yy(?:yy)?|([Hhms])\1?|[a]{1,4}|[LloSZ]|('at')|"[^"]*"|'[^']*'/g,
@@ -19,7 +21,7 @@ const dateFormat = (function () {
       utc: false,
     },
   ) {
-    const { locales, defaultLocale } = require("./HijriDate").default;
+    const { locales, defaultLocale } = HijriDate;
     options.locale = options.locale || defaultLocale;
     if (!locales[options.locale]) {
       throw new Error(`Locale ${options.locale} is not supported yet .

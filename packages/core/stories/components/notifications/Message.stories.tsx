@@ -22,11 +22,10 @@
  */
 
 import { faker } from "@faker-js/faker";
-import { useNotificationService } from "@react-fabric/core";
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Fragment } from "react/jsx-runtime";
-import { Button } from "../../../src";
+import { fn } from "storybook/test";
+import { Button, useNotificationService } from "../../../src";
 import { Message } from "../../../src/overlays";
 
 const meta: Meta = {
@@ -54,35 +53,21 @@ export const _Message: MessageStory = {
     const { showMessage } = useNotificationService();
     return (
       <Fragment>
-        <Button
-          onClick={() => showMessage({ ...args }).then(action("messageReturn"))}
-        >
+        <Button onClick={() => showMessage({ ...args }).then(fn())}>
           Simple Message
         </Button>
         <Button
-          onClick={() =>
-            showMessage({ ...args, color: "danger" }).then(
-              action("messageReturn"),
-            )
-          }
+          onClick={() => showMessage({ ...args, color: "danger" }).then(fn())}
         >
           Error Message
         </Button>
         <Button
-          onClick={() =>
-            showMessage({ ...args, color: "success" }).then(
-              action("messageReturn"),
-            )
-          }
+          onClick={() => showMessage({ ...args, color: "success" }).then(fn())}
         >
           Success Message
         </Button>
         <Button
-          onClick={() =>
-            showMessage({ ...args, color: "warning" }).then(
-              action("messageReturn"),
-            )
-          }
+          onClick={() => showMessage({ ...args, color: "warning" }).then(fn())}
         >
           Warning Message
         </Button>

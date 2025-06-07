@@ -33,7 +33,7 @@ Object.defineProperty(window, "CSS", {
 });
 
 // setupFile.js - this will run before the tests in jest.
-import { setProjectAnnotations } from "@storybook/testing-react";
+import { setProjectAnnotations } from "@storybook/react-vite";
 import TestWrapper from "./TestWrapper";
 // path of your preview.js file
 setProjectAnnotations(TestWrapper);

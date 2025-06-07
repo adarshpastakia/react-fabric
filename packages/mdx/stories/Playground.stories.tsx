@@ -21,11 +21,10 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { action } from "@storybook/addon-actions";
+import { Viewport } from "@react-fabric/core";
 import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "storybook/test";
 import { MdxEditor } from "../src";
-
-import { Header, Viewport } from "@react-fabric/core";
 import md from "./demo.md";
 
 const meta: Meta<typeof MdxEditor> = {
@@ -45,7 +44,7 @@ export const Playground: Story = {
     return (
       <div className="min-h-[600px]">
         <Viewport>
-          <MdxEditor {...args} value={md} onChange={action("onChange")} />
+          <MdxEditor {...args} value={md} onChange={fn()} />
         </Viewport>
       </div>
     );

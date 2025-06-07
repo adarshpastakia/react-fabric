@@ -22,9 +22,9 @@
  */
 
 import { faker } from "@faker-js/faker";
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Fragment } from "react/jsx-runtime";
+import { fn } from "storybook/test";
 import {
   Button,
   Content,
@@ -67,9 +67,7 @@ export const _Modal: ModalStory = {
     const [ModalNode, showModal] = useOverlayService(ModalComponent);
     return (
       <Fragment>
-        <Button
-          onClick={() => showModal({ ...args }).then(action("ModalReturn"))}
-        >
+        <Button onClick={() => showModal({ ...args }).then(fn())}>
           Open Modal
         </Button>
         {ModalNode}

@@ -36,7 +36,7 @@ import {
   Viewport,
 } from "@react-fabric/core";
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import { fn } from "storybook/test";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { VirtualGallery, VirtualGalleryRef } from "../src";
 
@@ -56,7 +56,7 @@ const count = 50;
 const lorem = faker.lorem.paragraph();
 export const Gallery: Story = {
   render: (args) => {
-    const listRef = useRef<VirtualGalleryRef>();
+    const listRef = useRef<VirtualGalleryRef>(null);
     const [isLoading, setLoading] = useState(false);
     const [recordCount, setCount] = useState(50);
 
@@ -143,7 +143,7 @@ export const Gallery: Story = {
 
 export const LoadableList: Story = {
   render: (args) => {
-    const listRef = useRef<VirtualGalleryRef>();
+    const listRef = useRef<VirtualGalleryRef>(null);
     const [isLoading, setLoading] = useState(false);
     const [items, setItems] = useState<AnyObject[]>([]);
 

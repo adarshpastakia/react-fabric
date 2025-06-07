@@ -23,8 +23,8 @@
 
 import { useNotificationService, Viewport } from "@react-fabric/core";
 import { isString } from "@react-fabric/utilities";
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "storybook/test";
 import { Annotator } from "../src";
 import form from "/assets/samples/sample_form.png";
 
@@ -60,7 +60,7 @@ export const _Annotator: Story = {
   },
   args: {
     src: form,
-    onChange: action("onChange"),
+    onChange: fn(),
     annotations: [
       {
         box: "30,30,240,48",

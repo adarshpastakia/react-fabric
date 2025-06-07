@@ -22,7 +22,7 @@
  */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import { fn } from "storybook/test";
 import { Search } from "../../src";
 import { HotKeyLabel } from "@react-fabric/core";
 

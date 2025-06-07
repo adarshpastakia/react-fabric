@@ -56,7 +56,7 @@ export const FilteredList: Story = {
       <div className="min-h-[600px]">
         <Viewport>
           <Section>
-            <Header bg="base" className="gap-2 p-2">
+            <Header className="gap-2 p-2">
               <div className="container">
                 <Search
                   autoFocus

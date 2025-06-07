@@ -56,7 +56,7 @@ type Story = StoryObj<typeof VirtualList>;
 
 export const List: Story = {
   render: (args) => {
-    const listRef = useRef<VirtualListRef>();
+    const listRef = useRef<VirtualListRef>(null);
 
     return (
       <div className="min-h-[600px]">
@@ -77,12 +77,12 @@ export const List: Story = {
               </Button>
             </Header>
             <VirtualList
-              {...args}
+              {...(args as any)}
               listRef={listRef}
               defaultHeight={152}
               defaultWidth={608}
             >
-              {({ item, index, isLast }) => (
+              {({ item, index, isLast }: any) => (
                 <div className="flex flex-nowrap gap-4 p-2">
                   <div
                     className={classNames(
@@ -171,7 +171,7 @@ const count = 20;
 const lorem = faker.lorem.paragraph();
 export const LoadableList: Story = {
   render: (args) => {
-    const listRef = useRef<VirtualListRef>();
+    const listRef = useRef<VirtualListRef>(null);
     const [isLoading, setLoading] = useState(false);
     const [items, setItems] = useState<AnyObject[]>([]);
 

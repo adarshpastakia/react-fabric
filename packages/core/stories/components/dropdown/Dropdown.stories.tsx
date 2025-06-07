@@ -21,9 +21,8 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import { fn } from "storybook/test";
 import {
   Button,
   Card,
@@ -64,7 +63,7 @@ export const _Dropdown: DropdownStory = {
     return (
       <Dropdown {...args}>
         <Button altIcon={CoreIcons.chevronDown}>Dropdown Menu</Button>
-        <Menu onClick={action("menu")}>
+        <Menu onClick={fn()}>
           <MenuItem id="1" label="Item One" />
           <MenuItem id="2" label="Item Two" />
           <MenuItem id="3" label="Item Three" />
@@ -112,7 +111,7 @@ export const CardContent: DropdownStory = {
           <Text>Some content</Text>
           <Footer className="p-2" flex justify="end">
             <DropdownDismiss>
-              <Button onClick={action("button")}>Close</Button>
+              <Button onClick={fn()}>Close</Button>
             </DropdownDismiss>
           </Footer>
         </Card>

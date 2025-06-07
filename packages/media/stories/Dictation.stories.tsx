@@ -21,9 +21,8 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { SearchBar } from "@react-fabric/searchbar";
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "storybook/test";
 import { Dictation } from "../src";
 
 const meta: Meta = {
@@ -47,6 +46,6 @@ export const _Dictation: DictationStory = {
     );
   },
   args: {
-    onRecord: action("onRecord"),
+    onRecord: fn(),
   },
 };

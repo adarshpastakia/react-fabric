@@ -21,12 +21,11 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { action } from "@storybook/addon-actions";
-import type { Meta, StoryObj } from "@storybook/react";
-import { LexicalEditor } from "../src";
-
 import { Viewport } from "@react-fabric/core";
+import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
+import { fn } from "storybook/test";
+import { LexicalEditor } from "../src";
 import json from "./demo.json";
 
 const meta: Meta<typeof LexicalEditor> = {
@@ -50,8 +49,8 @@ export const Playground: Story = {
           <LexicalEditor
             {...args}
             value={json}
-            onChange={action("onChange")}
-            onDirty={action("onDirty")}
+            onChange={fn()}
+            onDirty={fn()}
           />
         </Viewport>
       </div>

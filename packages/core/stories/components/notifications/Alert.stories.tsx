@@ -22,11 +22,14 @@
  */
 
 import { faker } from "@faker-js/faker";
-import { useNotificationService, ApplicationProvider } from "../../../src";
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Fragment } from "react/jsx-runtime";
-import { Button } from "../../../src";
+import { fn } from "storybook/test";
+import {
+  ApplicationProvider,
+  Button,
+  useNotificationService,
+} from "../../../src";
 import { Alert } from "../../../src/overlays";
 
 const meta: Meta = {
@@ -56,29 +59,21 @@ export const _Alert: AlertStory = {
     const { showAlert } = useNotificationService();
     return (
       <Fragment>
-        <Button
-          onClick={() => showAlert({ ...args }).then(action("AlertReturn"))}
-        >
+        <Button onClick={() => showAlert({ ...args }).then(fn())}>
           Simple Alert
         </Button>
         <Button
-          onClick={() =>
-            showAlert({ ...args, color: "danger" }).then(action("AlertReturn"))
-          }
+          onClick={() => showAlert({ ...args, color: "danger" }).then(fn())}
         >
           Error Alert
         </Button>
         <Button
-          onClick={() =>
-            showAlert({ ...args, color: "success" }).then(action("AlertReturn"))
-          }
+          onClick={() => showAlert({ ...args, color: "success" }).then(fn())}
         >
           Success Alert
         </Button>
         <Button
-          onClick={() =>
-            showAlert({ ...args, color: "warning" }).then(action("AlertReturn"))
-          }
+          onClick={() => showAlert({ ...args, color: "warning" }).then(fn())}
         >
           Warning Alert
         </Button>

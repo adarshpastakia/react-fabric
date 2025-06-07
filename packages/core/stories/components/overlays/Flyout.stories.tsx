@@ -22,7 +22,6 @@
  */
 
 import { faker } from "@faker-js/faker";
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useCallback } from "react";
 import { Fragment } from "react/jsx-runtime";
@@ -63,9 +62,7 @@ export const _Flyout: FlyoutStory = {
     const [FlyoutNode, showFlyout] = useOverlayService(FlyoutComponent);
     return (
       <Fragment>
-        <Button
-          onClick={() => showFlyout({ ...args }).then(action("FlyoutReturn"))}
-        >
+        <Button onClick={() => showFlyout({ ...args }).then(fn())}>
           Open Flyout
         </Button>
         {FlyoutNode}

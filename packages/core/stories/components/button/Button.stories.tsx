@@ -22,7 +22,7 @@
  */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import { fn } from "storybook/test";
 import { Fragment } from "react/jsx-runtime";
 import { Badge, Button, Tooltip } from "../../../src";
 

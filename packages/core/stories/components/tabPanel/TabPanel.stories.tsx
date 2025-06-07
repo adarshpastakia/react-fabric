@@ -22,9 +22,8 @@
  */
 
 import { faker } from "@faker-js/faker";
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import { fn } from "storybook/test";
 import {
   Content,
   Header,
@@ -69,7 +68,7 @@ export const _TabPanel: TabPanelStory = {
         <Tab
           id="1"
           label={faker.commerce.product()}
-          onClose={action("onClose")}
+          onClose={fn()}
           className="w-32"
           actions={
             <Menu>
@@ -106,7 +105,7 @@ export const RouterTabs: TabPanelStory = {
             id="1"
             as={NavLink}
             label={faker.commerce.product()}
-            onClose={action("onClose")}
+            onClose={fn()}
             className="w-32"
             to="tab1"
             actions={

@@ -22,10 +22,9 @@
  */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
 import { Fragment } from "react/jsx-runtime";
 import { Badge, Chip } from "../../../src";
-import { fn } from "@storybook/test";
+import { fn } from "storybook/test";
 
 const meta: Meta = {
   component: Chip,

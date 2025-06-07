@@ -24,7 +24,6 @@
 import { faker } from "@faker-js/faker";
 import {
   Avatar,
-  Badge,
   Icon,
   MenuItem,
   Section,
@@ -32,16 +31,16 @@ import {
   Viewport,
 } from "@react-fabric/core";
 import { Countries, Country } from "@react-fabric/utilities";
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Fragment, useState } from "react";
+import { fn } from "storybook/test";
 import { Table, TableColumn } from "../src";
 
 import africa from "./images/africa.svg";
 import asia from "./images/asia.svg";
 import europe from "./images/europe.svg";
-import oceania from "./images/oceania.svg";
 import namerica from "./images/north-america.svg";
+import oceania from "./images/oceania.svg";
 import samerica from "./images/south-america.svg";
 
 const meta: Meta = {
@@ -177,8 +176,8 @@ export const _Table: Story = {
             </span>
           </Fragment>
         )}
-        onSort={(o) => (setSort(o), action("onSort")(o))}
-        onFilter={action("onFilter")}
+        onSort={(o) => (setSort(o), fn()(o))}
+        onFilter={fn()}
         sort={sort}
         columns={columns}
       />

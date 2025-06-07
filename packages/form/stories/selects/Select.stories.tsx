@@ -24,7 +24,7 @@
 import { Icon } from "@react-fabric/core";
 import { Countries, Country, matchString } from "@react-fabric/utilities";
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import { fn } from "storybook/test";
 import { AnyObject } from "yup";
 import { Select } from "../../src";
 

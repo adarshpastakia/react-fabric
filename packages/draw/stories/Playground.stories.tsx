@@ -21,8 +21,8 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "storybook/test";
 import { DrawCanvas } from "../src";
 import { Viewport } from "@react-fabric/core";
 import snapshot from "./snapshot.json";
@@ -47,7 +47,7 @@ export const Playground: Story = {
           <DrawCanvas
             {...args}
             snapshot={snapshot as AnyObject}
-            onUpdate={action("onChange")}
+            onUpdate={fn()}
           />
         </Viewport>
       </div>

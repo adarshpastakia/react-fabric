@@ -49,10 +49,10 @@ type ProgressBarStory = StoryObj<typeof ProgressBar>;
 
 export const _ProgressBar: ProgressBarStory = {
   render: (args) => {
-    const [value, setValue] = useState(10);
+    const [value, setValue] = useState(0);
     useEffect(() => {
       setTimeout(() => {
-        setValue(value > 0.9 ? 0.1 : value + 0.2);
+        setValue(value > 0.99 ? 0.0 : value + 0.01);
       }, 100);
     }, [value]);
     return (
@@ -66,10 +66,10 @@ export const _ProgressBar: ProgressBarStory = {
 
 export const Colors: ProgressBarStory = {
   render: (args) => {
-    const [value, setValue] = useState(10);
+    const [value, setValue] = useState(0);
     useEffect(() => {
       setTimeout(() => {
-        setValue(value > 0.9 ? 0.1 : value + 0.2);
+        setValue(value > 0.99 ? 0.0 : value + 0.01);
       }, 100);
     }, [value]);
     return (
@@ -81,10 +81,29 @@ export const Colors: ProgressBarStory = {
           <ProgressBar {...args} size="xl" color="warning-500" value={value} />
 
           <div className="flex gap-2 items-center justify-center py-4">
-            <ProgressCircle {...args as any} color="primary-500" value={value} />
-            <ProgressCircle {...args} size="md" color="accent-500" value={value} />
-            <ProgressCircle {...args} size="lg" color="danger-500" value={value} />
-            <ProgressCircle {...args} size="xl" color="warning-500" value={value} />
+            <ProgressCircle
+              {...(args as any)}
+              color="primary-500"
+              value={value}
+            />
+            <ProgressCircle
+              {...args}
+              size="md"
+              color="accent-500"
+              value={value}
+            />
+            <ProgressCircle
+              {...args}
+              size="lg"
+              color="danger-500"
+              value={value}
+            />
+            <ProgressCircle
+              {...args}
+              size="xl"
+              color="warning-500"
+              value={value}
+            />
           </div>
         </div>
       </Fragment>

@@ -23,7 +23,7 @@
 
 import { faker, fakerAR } from "@faker-js/faker";
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import { fn } from "storybook/test";
 import {
   Section,
   Page,

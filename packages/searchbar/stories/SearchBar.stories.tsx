@@ -31,8 +31,8 @@ import {
 } from "@react-fabric/core";
 import { SuperDate } from "@react-fabric/superdate";
 import { Countries, matchString, shortHash } from "@react-fabric/utilities";
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "storybook/test";
 import { FIELD_TYPE, OPERATOR, SearchBar } from "../src";
 
 const meta: Meta = {
@@ -152,7 +152,7 @@ export const _SearchBar: SearchBarStory = {
     return (
       <SearchBar
         {...args}
-        onSearch={action("onSearch")}
+        onSearch={fn()}
         append={<SuperDate variant="link" value="$year-5|$now" />}
       >
         <Dropdown placement="bottom-end">
@@ -172,6 +172,7 @@ export const _SearchBar: SearchBarStory = {
     excludedColor: "#f00",
     query: "test AND query",
     querySchema: schema,
+    queryLanguage: "json",
     defaultQuery: "{\n\t\n}",
     fields: [
       {

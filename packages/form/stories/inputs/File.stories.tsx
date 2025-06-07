@@ -23,9 +23,8 @@
 
 import { Button, Icon, ProgressBar } from "@react-fabric/core";
 import { FileUtil, Format } from "@react-fabric/utilities";
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import { fn } from "storybook/test";
 import axios from "axios";
 import { http, HttpResponse } from "msw";
 import { useEffect } from "react";
@@ -84,7 +83,7 @@ export const FileUploader = {
     );
 
     useEffect(() => {
-      list && action("filesChanged")(list);
+      list && fn()(list);
     }, [list]);
 
     return (

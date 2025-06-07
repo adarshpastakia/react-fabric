@@ -178,7 +178,7 @@ export const Thumbnail = ({
       {state.errorLevel === 2 && (
         <Icon
           icon={missingIcon ?? CoreIcons.mediaImageBroken}
-          color="muted"
+          className="text-muted"
           size="3rem"
         />
       )}

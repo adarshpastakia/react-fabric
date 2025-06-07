@@ -22,9 +22,9 @@
  */
 
 import { Viewport } from "@react-fabric/core";
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
+import { fn } from "storybook/test";
 import { VideoPlayer } from "../src";
 import src from "/assets/samples/small_video.mp4";
 
@@ -94,6 +94,6 @@ export const _VideoPlayer: Story = {
   },
   args: {
     src,
-    onCut: action("onCut"),
+    onCut: fn(),
   },
 };

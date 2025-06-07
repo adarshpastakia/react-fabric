@@ -21,21 +21,20 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { action } from "@storybook/addon-actions";
-import type { Meta, StoryObj } from "@storybook/react";
-import { CodeEditor } from "../src";
-
 import {
   Button,
   Header,
   ToggleButtonGroup,
   Viewport,
 } from "@react-fabric/core";
+import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
+import { fn } from "storybook/test";
 import json from "../../../package.json";
-import css from "./demo.css.md";
-import html from "./demo.html.md";
-import md from "./demo.md";
+import { CodeEditor } from "../src";
+// import css from "./demo.css.md";
+// import html from "./demo.html.md";
+// import md from "./demo.md";
 
 const meta: Meta<typeof CodeEditor> = {
   component: CodeEditor,
@@ -51,9 +50,9 @@ type Story = StoryObj<typeof CodeEditor>;
 
 const values: KeyValue = {
   json,
-  html,
-  css,
-  md,
+  html: "<html></html>",
+  css: "body { background-color: #fff; }",
+  md: "# Markdown Example\n\nThis is an example of a markdown file.",
 };
 
 export const Playground: Story = {
@@ -79,7 +78,7 @@ export const Playground: Story = {
             {...args}
             language={lang}
             value={values[lang]}
-            onChange={action("onChange")}
+            onChange={fn()}
           />
         </Viewport>
       </div>

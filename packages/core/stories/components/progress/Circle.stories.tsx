@@ -48,10 +48,10 @@ type ProgressCircleStory = StoryObj<typeof ProgressCircle>;
 
 export const _ProgressCircle: ProgressCircleStory = {
   render: (args) => {
-    const [value, setValue] = useState(10);
+    const [value, setValue] = useState(0);
     useEffect(() => {
       setTimeout(() => {
-        setValue(value > 0.9 ? 0.1 : value + 0.2);
+        setValue(value > 0.99 ? 0.0 : value + 0.01);
       }, 100);
     }, [value]);
     return (

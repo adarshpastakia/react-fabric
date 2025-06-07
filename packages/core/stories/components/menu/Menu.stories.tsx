@@ -22,9 +22,8 @@
  */
 
 import { Switch } from "@react-fabric/form";
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import { fn } from "storybook/test";
 import { useMemo } from "react";
 import { Fragment } from "react/jsx-runtime";
 import {
@@ -158,7 +157,7 @@ export const _ContextMenu: MenuStory = {
   render: (args: AnyObject) => {
     const menu = useMemo(
       () => (
-        <Menu onClick={action("context-menu")}>
+        <Menu onClick={fn()}>
           <MenuItem
             id="appItem"
             icon="mdi mdi-react"

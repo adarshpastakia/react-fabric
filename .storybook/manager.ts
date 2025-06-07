@@ -5,7 +5,7 @@
  * @author    : Adarsh Pastakia
  */
 
-import { addons, types } from "@storybook/addons";
+import { addons, types } from "storybook/manager-api";
 import { ThemeToggle } from "./addon-theme/register";
 import { lightTheme } from "./theme";
 

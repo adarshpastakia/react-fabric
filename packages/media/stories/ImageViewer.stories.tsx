@@ -23,8 +23,8 @@
 
 import { faker } from "@faker-js/faker";
 import { Viewport } from "@react-fabric/core";
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "storybook/test";
 import { ImageViewer } from "../src";
 
 const meta: Meta<typeof ImageViewer> = {
@@ -53,6 +53,6 @@ export const _ImageViewer: Story = {
     src: "badimg",
     fallback: faker.image.urlPicsumPhotos(),
     overlay: faker.image.urlPicsumPhotos(),
-    onCrop: action("onCrop"),
+    onCrop: fn(),
   },
 };

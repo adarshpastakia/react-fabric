@@ -5,11 +5,15 @@
  * @author    : Adarsh Pastakia
  */
 
-import { useGlobals, useParameter, useStorybookApi } from "@storybook/api";
-import { IconButton } from "@storybook/components";
 import { MoonIcon, SunIcon } from "@storybook/icons";
-import { themes, ThemeVars } from "@storybook/theming";
 import React, { useCallback, useEffect, useState } from "react";
+import { IconButton } from "storybook/internal/components";
+import {
+  useGlobals,
+  useParameter,
+  useStorybookApi,
+} from "storybook/manager-api";
+import { themes, ThemeVars } from "storybook/theming";
 
 const STORAGE_KEY = "storybook-scheme";
 const CALENDAR_KEY = "storybook-calendar";

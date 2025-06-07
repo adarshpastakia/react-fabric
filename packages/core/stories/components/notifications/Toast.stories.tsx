@@ -22,11 +22,10 @@
  */
 
 import { faker } from "@faker-js/faker";
-import { useNotificationService } from "@react-fabric/core";
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Fragment } from "react/jsx-runtime";
-import { Button } from "../../../src";
+import { fn } from "storybook/test";
+import { Button, useNotificationService } from "../../../src";
 import { Alert, Message, Toast } from "../../../src/overlays";
 
 const meta: Meta = {
@@ -57,29 +56,19 @@ export const _Toast: ToastStory = {
       throw Error("Application not wrapped in `ApplicationProvider`");
     return (
       <Fragment>
+        <Button onClick={() => showToast({ ...args }).then(fn())}>Toast</Button>
         <Button
-          onClick={() => showToast({ ...args }).then(action("toastReturn"))}
-        >
-          Toast
-        </Button>
-        <Button
-          onClick={() =>
-            showToast({ ...args, color: "danger" }).then(action("toastReturn"))
-          }
+          onClick={() => showToast({ ...args, color: "danger" }).then(fn())}
         >
           Error Toast
         </Button>
         <Button
-          onClick={() =>
-            showToast({ ...args, color: "success" }).then(action("toastReturn"))
-          }
+          onClick={() => showToast({ ...args, color: "success" }).then(fn())}
         >
           Success Toast
         </Button>
         <Button
-          onClick={() =>
-            showToast({ ...args, color: "warning" }).then(action("toastReturn"))
-          }
+          onClick={() => showToast({ ...args, color: "warning" }).then(fn())}
         >
           Warning Toast
         </Button>
@@ -96,7 +85,7 @@ export const _Toast: ToastStory = {
                 ),
               },
               0,
-            ).then(action("toastReturn"))
+            ).then(fn())
           }
         >
           With Action

@@ -7,17 +7,17 @@
 import "@mdi/font/css/materialdesignicons.min.css";
 import "./styles/styles.css";
 
-import { ApplicationProvider, useApplicationContext } from "@react-fabric/core";
-import { Anchor } from "@storybook/addon-docs";
-import { withTests } from "@storybook/addon-jest";
-import { DocsContainer } from "@storybook/blocks";
-import { addons, useGlobals } from "@storybook/preview-api";
-import { Preview } from "@storybook/react";
+import { Anchor, DocsContainer } from "@storybook/addon-docs";
+import type { Preview } from "@storybook/react-vite";
 import { initialize, mswLoader } from "msw-storybook-addon";
 import { Fragment, useEffect, useMemo } from "react";
 import { I18nextProvider } from "react-i18next";
+import { addons, useGlobals } from "storybook/internal/preview-api";
+import {
+  ApplicationProvider,
+  useApplicationContext,
+} from "../packages/core/src";
 import { default as i18n } from "./i18n";
-import results from "./jest-test-results.json";
 import { darkTheme, lightTheme } from "./theme";
 
 /*
@@ -35,10 +35,10 @@ document.documentElement.dir = i18n.dir();
 const ContextWrapper = (props: AnyObject) => {
   const { changeLocale, changeCalendar } = useApplicationContext();
   useEffect(() => {
-    addons.getChannel().on("CALENDAR_CHANGE", (calendar: any) => {
+    addons.getChannel().on("CALENDAR_CHANGE", (calendar: AnyObject) => {
       changeCalendar?.(calendar);
     });
-    addons.getChannel().on("LOCALE_CHANGED", (locale: any) => {
+    addons.getChannel().on("LOCALE_CHANGED", (locale: AnyObject) => {
       changeLocale?.(locale);
     });
   }, []);
@@ -49,7 +49,6 @@ export default {
   parameters: {
     layout: "centered",
     backgrounds: { disable: true, grid: { disable: true } },
-    actions: { argTypesRegex: "^on(?!Label).*" },
     a11y: {},
     controls: {
       exclude: /^on(?!Label).*/,
@@ -85,8 +84,13 @@ export default {
     docs: {
       toc: {},
       controls: { sort: "alpha" },
-      container: ({ children, context }: any) => {
-        const globals = context.store.globals.get();
+      container: ({ children, context }: AnyObject) => {
+        const globals = context.store.userGlobals.globals;
+
+        const defaultTheme = useMemo(
+          () => localStorage.getItem("storybook-scheme") ?? "light",
+          [],
+        );
 
         const defaultCalendar = useMemo(
           () => localStorage.getItem("storybook-calendar") ?? "gregorian",
@@ -118,13 +122,13 @@ export default {
         return (
           <ApplicationProvider
             defaultLocale={globals.locale}
-            defaultColorScheme={globals.theme}
+            defaultColorScheme={defaultTheme as AnyObject}
             defaultCalendar={defaultCalendar as AnyObject}
           >
             <ContextWrapper>
               <DocsContainer
                 context={context}
-                theme={globals.theme === "dark" ? darkTheme : lightTheme}
+                theme={defaultTheme === "dark" ? darkTheme : lightTheme}
               >
                 {children}
               </DocsContainer>
@@ -133,20 +137,20 @@ export default {
         );
       },
       components: {
-        h1: ({ storyId, ...props }: any) => (
+        h1: ({ storyId, ...props }: AnyObject) => (
           <Fragment>
             {storyId && <Anchor storyId={storyId} />}
             <div className="sbdocs-title" {...props} />
             <hr />
           </Fragment>
         ),
-        h2: ({ storyId, ...props }: any) => (
+        h2: ({ storyId, ...props }: AnyObject) => (
           <Fragment>
             {storyId && <Anchor storyId={storyId} />}
             <cite className="toc-selector" {...props} />
           </Fragment>
         ),
-        h3: (props: any) => <code {...props} />,
+        h3: (props: AnyObject) => <code {...props} />,
       },
     },
   },
@@ -212,36 +216,39 @@ export default {
         </I18nextProvider>
       );
     },
-    withTests({ results }),
+    // withTests({ results }),
   ],
 } as Preview;
 
-addons.getChannel().on("LOCALE_CHANGED", (locale: any) => {
+addons.getChannel().on("LOCALE_CHANGED", (locale: AnyObject) => {
   i18n.changeLanguage(locale).then(() => {
     document.documentElement.dir = i18n.dir();
   });
 });
-addons.getChannel().on("SCHEME_CHANGED", (theme: any = "light") => {
+addons.getChannel().on("SCHEME_CHANGED", (theme: AnyObject = "light") => {
   document.documentElement.dataset.colorScheme = theme;
 });
 addons
   .getChannel()
-  .on("THEME_CHANGED", (primary: any = "denim", accent: any = "avacado") => {
-    document.documentElement.style.setProperty(
-      "--color-primary",
-      `var(--color-${primary})`,
-    );
-    document.documentElement.style.setProperty(
-      "--color-accent",
-      `var(--color-${accent})`,
-    );
-  });
-addons.getChannel().on("TINT_CHANGED", (tint: any = "silver") => {
+  .on(
+    "THEME_CHANGED",
+    (primary: AnyObject = "denim", accent: AnyObject = "avacado") => {
+      document.documentElement.style.setProperty(
+        "--color-primary",
+        `var(--color-${primary})`,
+      );
+      document.documentElement.style.setProperty(
+        "--color-accent",
+        `var(--color-${accent})`,
+      );
+    },
+  );
+addons.getChannel().on("TINT_CHANGED", (tint: AnyObject = "silver") => {
   document.documentElement.style.setProperty(
     "--color-tint",
     `var(--color-${tint})`,
   );
 });
-addons.getChannel().on("ROUNDING_CHANGED", (round: any = "md") => {
+addons.getChannel().on("ROUNDING_CHANGED", (round: AnyObject = "md") => {
   document.documentElement.dataset.rounding = round;
 });

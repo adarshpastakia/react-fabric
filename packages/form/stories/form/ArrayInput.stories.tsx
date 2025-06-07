@@ -23,10 +23,10 @@
 
 import { Button } from "@react-fabric/core";
 import { yup } from "@react-fabric/utilities";
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { fn } from "storybook/test";
 import { ArrayInput, Controller, Field, Form, Input } from "../../src";
 
 const meta: Meta = {
@@ -71,9 +71,10 @@ export const _ArrayInput: ArrayInputStory = {
 
     return (
       <Form
-        onSubmit={action("onSubmit")}
+        onSubmit={fn()}
         schema={schema.current}
         defaultValues={{
+          // @ts-expect-error ignore
           names: [new String("")],
         }}
       >
