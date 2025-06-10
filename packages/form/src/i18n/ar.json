@@ -1,17 +1,18 @@
 {
   "addArray": "اضافة عنصر",
   "password": {
-    "show": "عرض كلمة المرور",
-    "hide": "اخفاء كلمة المرور"
+    "hide": "اخفاء كلمة المرور",
+    "show": "عرض كلمة المرور"
   },
   "select": {
+    "createOption": "إنشاء خيار جديد ل ",
     "emptyList": "لا توجد خيارات متاحة",
-    "notFound": "لم يتم العثور على خيارات ل ",
-    "createOption": "إنشاء خيار جديد ل "
+    "notFound": "لم يتم العثور على خيارات ل "
   },
   "yup": {
     "arrayMax": "{{label}} حدد ما يصل {{max}} غرض",
     "arrayMin": "{{label}} اختر على الأقل {{min}} غرض",
+    "empty": "{{label}} يجب ألا يكون فارغًا",
     "invalid": "{{label}} نوع بيانات غير صالح",
     "invalidType": "{{label}} غير صالح",
     "numberMax": "{{label}} الحد الأقصى {{max}}",
