@@ -26,7 +26,7 @@ import { isNil } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { Fragment, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { type FilterBarProps, type FilterObject } from "../types";
+import { OPERATOR, type FilterBarProps, type FilterObject } from "../types";
 import { FilterMenu } from "./FilterMenu";
 
 export const FilterTag = ({
@@ -64,11 +64,15 @@ export const FilterTag = ({
         <span className="font-semibold">
           {t(`operator.${filter.operator}`, { defaultValue: filter.operator })}
         </span>
+        {filter.operator === OPERATOR.ALL && "("}
+        {filter.operator === OPERATOR.ANY && "["}
         {"value" in filter && !isNil(filter.value) && (
           <span className="truncate block">
             {filter.value?.toString().substring(0, 24)}
           </span>
         )}
+        {filter.operator === OPERATOR.ALL && ")"}
+        {filter.operator === OPERATOR.ANY && "]"}
       </Fragment>
     );
   }, [filter]);

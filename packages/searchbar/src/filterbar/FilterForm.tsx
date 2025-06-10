@@ -62,7 +62,16 @@ const FilterSchema = new yup.ObjectSchema({
       otherwise: (schema) => schema.required(),
     })
     .when("operator", {
-      is: OPERATOR.IN,
+      is: OPERATOR.ANY,
+      then: (schema) =>
+        schema.test({
+          name: "array-check",
+          message: `\${path} is a required field`,
+          test: (val: AnyObject = []) => val?.length > 0,
+        }),
+    })
+    .when("operator", {
+      is: OPERATOR.ALL,
       then: (schema) =>
         schema.test({
           name: "array-check",
@@ -142,7 +151,7 @@ export const FilterForm = ({
       formRef.current?.setValue("value", undefined);
     }
     if (field?.type === FIELD_TYPE.STRING) {
-      if (values?.operator === OPERATOR.IN) {
+      if ([OPERATOR.ALL, OPERATOR.ANY].includes(values?.operator)) {
         !isArray(values.value) && formRef.current?.setValue("value", []);
       } else {
         isArray(values.value) && formRef.current?.setValue("value", undefined);
@@ -180,7 +189,7 @@ export const FilterForm = ({
       );
     }
     if (field?.type === FIELD_TYPE.STRING || field?.type === FIELD_TYPE.ID) {
-      if (values?.operator === OPERATOR.IN) {
+      if ([OPERATOR.ALL, OPERATOR.ANY].includes(values?.operator)) {
         return (
           <Controller name="value">
             <Select

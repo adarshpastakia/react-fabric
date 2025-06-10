@@ -43,13 +43,14 @@ export enum FIELD_TYPE {
 export enum OPERATOR {
   EXISTS = "EXISTS",
   IS = "IS",
-  IN = "IN",
+  ALL = "ALL",
+  ANY = "ANY",
   EQ = "EQ",
   LT = "LT",
   GT = "GT",
   LTE = "LTE",
   GTE = "GTE",
-  INCLUDES = "INCLUDES",
+  LIKE = "LIKE",
   STARTS = "STARTS",
   ENDS = "ENDS",
   WITHIN = "WITHIN",
@@ -60,11 +61,16 @@ export enum OPERATOR {
  * @internal
  */
 export const TypeOperators: { [key in FIELD_TYPE]: OPERATOR[] } = {
-  [FIELD_TYPE.ID]: [OPERATOR.IS, OPERATOR.IN],
-  [FIELD_TYPE.STRING]: [OPERATOR.EXISTS, OPERATOR.IS, OPERATOR.IN],
+  [FIELD_TYPE.ID]: [OPERATOR.IS, OPERATOR.ANY],
+  [FIELD_TYPE.STRING]: [
+    OPERATOR.EXISTS,
+    OPERATOR.IS,
+    OPERATOR.ANY,
+    OPERATOR.ALL,
+  ],
   [FIELD_TYPE.TEXT]: [
     OPERATOR.EXISTS,
-    OPERATOR.INCLUDES,
+    OPERATOR.LIKE,
     OPERATOR.STARTS,
     OPERATOR.ENDS,
   ],
@@ -120,12 +126,13 @@ export const OperatorValueType: {
 } = {
   [OPERATOR.EXISTS]: 0,
   [OPERATOR.IS]: 0,
-  [OPERATOR.IN]: 1,
+  [OPERATOR.ANY]: 1,
+  [OPERATOR.ALL]: 1,
   [OPERATOR.BETWEEN]: 2,
   [OPERATOR.WITHIN]: 0,
   [OPERATOR.STARTS]: 0,
   [OPERATOR.ENDS]: 0,
-  [OPERATOR.INCLUDES]: 0,
+  [OPERATOR.LIKE]: 0,
   [OPERATOR.EQ]: 0,
   [OPERATOR.LT]: 0,
   [OPERATOR.GT]: 0,
