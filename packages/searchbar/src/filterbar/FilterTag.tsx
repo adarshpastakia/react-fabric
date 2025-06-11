@@ -64,15 +64,11 @@ export const FilterTag = ({
         <span className="font-semibold">
           {t(`operator.${filter.operator}`, { defaultValue: filter.operator })}
         </span>
-        {filter.operator === OPERATOR.ALL && "("}
-        {filter.operator === OPERATOR.ANY && "["}
         {"value" in filter && !isNil(filter.value) && (
           <span className="truncate block">
             {filter.value?.toString().substring(0, 24)}
           </span>
         )}
-        {filter.operator === OPERATOR.ALL && ")"}
-        {filter.operator === OPERATOR.ANY && "]"}
       </Fragment>
     );
   }, [filter]);
