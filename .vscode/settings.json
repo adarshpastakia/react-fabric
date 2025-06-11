@@ -23,5 +23,6 @@
     "packages/form/src/i18n",
     "packages/searchbar/src/i18n",
     "packages/superdate/src/i18n"
-  ]
+  ],
+  "i18n-ally.keystyle": "nested"
 }
