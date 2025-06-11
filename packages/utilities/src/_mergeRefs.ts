@@ -23,6 +23,17 @@
 
 /* istanbul ignore file */
 
+/**
+ * Merge multiple refs into a single ref callback.
+ * This function allows you to combine multiple refs (either callback refs or React refs)
+ * into a single ref callback that can be used in React components.
+ * This is particularly useful when you want to assign a single element to multiple refs,
+ * such as when using third-party libraries that require refs or when you want to share refs between components.
+ * The function iterates over the provided refs and assigns the element to each ref.
+ *
+ * @param {AnyObject[]} refs - An array of refs to merge.
+ * @returns {function} A function that takes an element and assigns it to all provided refs.
+ */
 export const mergeRefs =
   (...refs: AnyObject[]) =>
   (el: AnyObject) => {

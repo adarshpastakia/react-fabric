@@ -55,7 +55,6 @@ export const _AutoComplete: AutoCompleteStory = {
     placeholder: "AutoComplete...",
     allowClear: true,
     onEnterPressed: fn(),
-    // @ts-expect-error ignore
     onChange: fn(),
     history: ["anchor", "tester", "arkwright"],
   },
@@ -70,7 +69,6 @@ export const Multiple: AutoCompleteStory = {
     placeholder: "AutoComplete...",
     allowClear: true,
     onEnterPressed: fn(),
-    // @ts-expect-error ignore
     onChange: fn(),
     history: [
       "anchor",
@@ -107,7 +105,6 @@ export const WithHistory: AutoCompleteStory = {
     placeholder: "AutoComplete...",
     allowClear: true,
     onEnterPressed: fn(),
-    // @ts-expect-error ignore
     onChange: fn(),
     history: [
       "anchor",

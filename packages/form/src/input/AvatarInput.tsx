@@ -59,6 +59,14 @@ export interface Props extends RefProp {
   onChange?: (path: string) => void;
 }
 
+/**
+ * Avatar input component for uploading and displaying user avatars.
+ * It allows users to select an image file, upload it, and display the avatar.
+ * It also provides a way to remove the uploaded file and shows upload progress.
+ *
+ * @param {Props} props - The properties for the AvatarInput component.
+ * @returns {JSX.Element} - The rendered AvatarInput component.
+ */
 export const AvatarInput = ({
   size = "6rem",
   avatarName,

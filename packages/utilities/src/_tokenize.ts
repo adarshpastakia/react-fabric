@@ -24,10 +24,14 @@
 import { isArray, isEmpty } from "./_isType";
 
 /**
- * split text into array of tokens by word boundaries
- * @param str
- * @param keywords
- * @internal
+ * Tokenize a string based on provided keywords.
+ * This function splits the input string into tokens, where each token is an array containing
+ * the substring before the keyword and the keyword itself.
+ * If no keywords are provided, it returns the entire string as a single token.
+ *
+ * @param {string} str - The string to tokenize.
+ * @param {string | string[]} keywords - A string or an array of strings to use as keywords for tokenization.
+ * @returns {Array<[string, string]>} An array of tokens, where each token is an array of [substring, keyword].
  */
 export const tokenize = (str: string, keywords?: string | string[]) => {
   if (isEmpty(keywords)) {
@@ -57,6 +61,14 @@ export const tokenize = (str: string, keywords?: string | string[]) => {
   return tokens;
 };
 
+/**
+ * Generate a token from a string.
+ * This function creates a token by taking the first letter of the first word and the first letter of the last word,
+ * or the first two letters of the first word if there is no last word.
+ *
+ * @param {string} str - The string to tokenize.
+ * @returns {string} A string token consisting of the first letters of the first and last words, or the first two letters of the first word.
+ */
 export const iconToken = (str: string) => {
   const split = str.trim().split(" ");
   const first = split[0];

@@ -1,20 +1,18 @@
 import { Collapsable } from "@react-fabric/core";
 import {
-  Canvas,
-  Description,
-  Primary,
-  Story,
-  Title,
-} from "@storybook/addon-docs";
-import {
   Anchor,
   ArgTypes,
+  Canvas,
   Controls,
+  Description,
   Meta,
+  Primary,
+  Story,
   Subheading,
+  Title,
 } from "@storybook/addon-docs";
 import { Fragment } from "react";
-import { DatePanel } from "../../src";
+import { DatePanel, RangePanel } from "../../src";
 import * as DatePanelStories from "./DatePanel.stories";
 import * as RangePanelStories from "./RangePanel.stories";
 
@@ -40,7 +38,7 @@ import * as RangePanelStories from "./RangePanel.stories";
 <Anchor storyId="rangepanel">
   <Subheading>Range Panel</Subheading>
 </Anchor>
-<Description of={RangePanelStories._RangePanel} />
+<Description of={RangePanel} />
 <Canvas withToolbar of={RangePanelStories._RangePanel} />
 <Collapsable className="control-panel">
   <div>Controls</div>

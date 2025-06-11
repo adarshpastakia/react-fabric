@@ -55,6 +55,16 @@ export interface TextareaProps
   expandable?: boolean;
 }
 
+/**
+ * Textarea component that allows users to input multi-line text.
+ * It supports features like variable row count, expandable behavior,
+ * and handling of focus, blur, and change events.
+ * This component is designed to be flexible and user-friendly,
+ * providing a clear interface for text input with optional validation and accessibility features.
+ *
+ * @param {TextareaProps} props - The properties for the Textarea component.
+ * @returns {JSX.Element} The rendered Textarea component.
+ */
 export const Textarea = ({
   ref,
   value,

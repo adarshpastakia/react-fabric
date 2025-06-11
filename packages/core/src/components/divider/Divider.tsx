@@ -54,6 +54,25 @@ export interface DividerProps extends CssProp, Partial<ChildProp> {
   style?: "solid" | "dashed" | "dotted";
 }
 
+/**
+ * A component that represents a visual divider between content.
+ * It can be used to separate sections of content, with optional text labels.
+ * It supports both horizontal and vertical orientations, customizable colors,
+ * styles, and alignment options.
+ *
+ * @param {DividerProps} props - The properties for the Divider component.
+ * @returns {JSX.Element} The rendered Divider component.
+ *
+ * @example
+ * ```jsx
+ * <Divider color="primary" align="center" style="dashed">
+ *   Divider Text
+ * </Divider>
+ * // Renders a horizontal divider with primary color, centered text, and dashed style.
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-divider--docs} for more details.
+ */
 export const Divider = ({
   children,
   color = "tint-300",

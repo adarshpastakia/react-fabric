@@ -61,7 +61,27 @@ export interface ThemeProps {
 }
 
 /**
- * Theme override
+ * This component provides a way to set the theme for the application.
+ * It allows you to set the primary, accent, and tint colors, as well as the color scheme and rounding.
+ * It uses CSS variables to apply the colors and styles.
+ * It also applies the branding className to the root element.
+ * The component uses the `useApplicationContext` hook to get the current color scheme from the application context.
+ *
+ * @example
+ * ```jsx
+ * <ThemeProvider
+ *   branding="my-branding"
+ *   primaryColor="#ff0000"
+ *   accentColor="#00ff00"
+ *   tintColor="#0000ff"
+ *   colorScheme="dark"
+ *   rounding="md"
+ * >
+ *   <div>Your content here</div>
+ * </ThemeProvider>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-application--theme-provider} for more details.
  */
 export const ThemeProvider = ({
   children,

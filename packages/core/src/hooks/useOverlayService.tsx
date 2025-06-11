@@ -31,6 +31,30 @@ import { type ModalProps } from "../types";
 
 type OverlayComponent = ElementType<ModalProps<AnyObject>>;
 
+/**
+ * Hook to manage overlay components like modals or flyouts.
+ * It provides a way to open an overlay with specified properties and handle its closure.
+ * This hook returns the current overlay component and a function to open it with props.
+ * It is useful for scenarios where you need to display overlays dynamically,
+ * such as modals, flyouts, or any other overlay components in a React application.
+ * The `openOverlay` function returns a promise that resolves with the result
+ * of the overlay when it is closed, allowing you to handle the result in a controlled manner.
+ *
+ * @param ModalOrFlyout - The component to be used as an overlay.
+ * @returns An array containing the current overlay and a function to open it.
+ *
+ * @example
+ * ```jsx
+ * const [Overlay, openOverlay] = useOverlayService(MyModalComponent);
+ * // To open the overlay:
+ * const handleOpen = async () => {
+ *   const result = await openOverlay({ title: "My Modal", content: "Hello World" });
+ *   console.log(result); // Handle the result from the overlay
+ * };
+ * <button onClick={handleOpen}>Open Modal</button>
+ * <Overlay />
+ * ```
+ */
 export const useOverlayService = (
   ModalOrFlyout: OverlayComponent,
 ): [

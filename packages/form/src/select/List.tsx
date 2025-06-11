@@ -39,6 +39,14 @@ import { type SelectProps } from "../types";
 import { Options } from "./Options";
 import { useSelect } from "./useSelect";
 
+/**
+ * List component for selecting items from a list.
+ * It supports single and multiple selections, searching, creating new options,
+ * and custom rendering of options.
+ *
+ * @param {SelectProps<T>} props - The properties for the List component.
+ * @returns {JSX.Element} The rendered List component.
+ */
 export const List = <T extends AnyObject = string>({
   ref,
   name,

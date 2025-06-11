@@ -367,4 +367,37 @@ const _VirtualGallery = <T extends AnyObject>({
 _VirtualGallery.displayName = "VirtualGallery";
 
 const GenericMemo: <T>(c: T) => T = memo;
+
+/**
+ * VirtualGallery component provides a virtualized gallery view for displaying a large list of items efficiently.
+ * It supports features like fixed columns, loading states, and customizable item rendering.
+ * The component uses virtualization to render only the visible items, improving performance for large datasets.
+ * It also provides a scroller for easy navigation through the items.
+ *
+ * @param {VirtualGalleryProps<T>} props - The properties for the VirtualGallery component.
+ * @returns {JSX.Element} The rendered VirtualGallery component.
+ *
+ * @example
+ * ```jsx
+ * <VirtualGallery
+ *   items={items}
+ *   columns={3}
+ *   defaultHeight={100}
+ *   defaultWidth={100}
+ *   fullWidth={true}
+ *   onLoadMore={(lastIndex) => console.log("Load more items from index:", lastIndex)}
+ *   onScroll={(top) => console.log("Scrolled to top:", top)}
+ * >
+ *   {({ item, index, isLast }) => (
+ *     <div className="gallery-item" key={item.id}>
+ *       <img src={item.image} alt={item.label} />
+ *       <p>{item.label}</p>
+ *     </div>
+ *   )}
+ * </VirtualGallery>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/data-virtualgallery--docs}
+ * @see {@link https://tanstack.com/docs/react-virtual/latest/overview}
+ */
 export const VirtualGallery = GenericMemo(_VirtualGallery);

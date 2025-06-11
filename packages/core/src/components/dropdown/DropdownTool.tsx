@@ -27,6 +27,31 @@ import { CoreIcons } from "../../types/icons";
 import { Icon } from "../icon/Icon";
 import { Dropdown, type DropdownProps } from "./Dropdown";
 
+/**
+ * A dropdown component that displays an icon and tool menu.
+ * It can be used to create a dropdown menu that appears when the icon is clicked or hovered over.
+ * This component is useful for creating toolbars or action menus in a user interface.
+ * It accepts children as menu items and can be styled with additional CSS classes.
+ *
+ * @param {ChildProp} children - The content to be displayed inside the dropdown.
+ * @param {CssProp} className - Additional CSS classes to apply to the dropdown.
+ * @param {string} icon - The icon to be displayed in the dropdown.
+ * @param {boolean} groupHover - If true, the dropdown will only be visible when the parent group is hovered.
+ * @param {DropdownProps} props - Additional properties for the dropdown.
+ * @returns {JSX.Element} The rendered DropdownTool component.
+ *
+ * @example
+ * ```jsx
+ * <DropdownTool
+ *   icon="caret-down"
+ *   groupHover={true}
+ *   className="my-dropdown"
+ * >
+ *   <MenuItem>Item 1</MenuItem>
+ *   <MenuItem>Item 2</MenuItem>
+ * </DropdownTool>
+ * ```
+ */
 export const DropdownTool = ({
   children,
   className,

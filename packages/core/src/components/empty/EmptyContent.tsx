@@ -105,6 +105,32 @@ const DefaultIcon = () => (
   </svg>
 );
 
+/**
+ * A component that displays a message and an optional icon when there is no content to show.
+ * It allows customization of title, message, icon, size, and additional CSS properties.
+ * It can also accept children elements for additional actions or information.
+ * This component is useful for displaying a friendly message when data is not available,
+ * such as in empty states of lists, tables, or other content areas.
+ *
+ * @param {EmptyContentProps} props - The properties for the EmptyContent component.
+ * @returns {JSX.Element} The rendered EmptyContent component.
+ *
+ * @example
+ * ```jsx
+ * <EmptyContent
+ *   title="No Data Available"
+ *   message="Please check back later."
+ *   icon="empty"
+ *   iconColor="tint-700"
+ *   size="md"
+ * >
+ *   <Button onClick={() => console.log("Action clicked")}>Retry</Button>
+ * </EmptyContent>
+ * // Renders an empty content area with a title, message, icon, and a button for retrying the action.
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-emptycontent--docs} for more details.
+ */
 export const EmptyContent = ({
   children,
   title,

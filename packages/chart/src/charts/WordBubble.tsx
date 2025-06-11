@@ -96,7 +96,31 @@ const WordBubbleChart: FC<WordBubbleProps> = memo(
 WordBubbleChart.displayName = "WordBubbleChart";
 
 /**
- * Chart to display simple word cloud
+ * WordBubble component renders a word cloud chart using ECharts.
+ * It displays words with sizes proportional to their frequency in the data.
+ * Users can click on words to trigger an action, such as filtering or navigating.
+ * It also supports exporting the chart and displays an empty state when no data is available.
+ *
+ * @param {WordBubbleProps} props - The properties for the WordBubble component.
+ * @returns {JSX.Element} The rendered WordBubble component.
+ *
+ * @example
+ * ```jsx
+ * <WordBubble
+ *   data={[
+ *     { id: "1", label: "Word One", count: 10 },
+ *     { id: "2", label: "Word Two", count: 20 },
+ *     { id: "3", label: "Word Three", count: 30 },
+ *   ]}
+ *   title="Word Frequency"
+ *   onExport={() => console.log("Exporting chart...")}
+ *   onClick={(key) => console.log("Clicked word:", key)}
+ *   theme="light"
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/charts-wordbubble--docs} for the properties that can be passed to this component.
+ * @see {@link https://github.com/ecomfe/echarts-wordcloud} for the underlying chart implementation.
  */
 export const WordBubble: FC<WordBubbleProps> = (props) => (
   <ChartWrapper>

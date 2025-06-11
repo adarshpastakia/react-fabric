@@ -61,6 +61,13 @@ type AutoCompleteProps = Omit<
   onInput?: (query: string) => void;
 };
 
+/**
+ * AutoComplete component for selecting or entering values with history suggestions.
+ * It supports multiple selections, history suggestions, and custom styling.
+ *
+ * @param {AutoCompleteProps} props - The properties for the AutoComplete component.
+ * @returns {JSX.Element} The rendered AutoComplete component.
+ */
 export const AutoComplete = ({
   ref,
   name,

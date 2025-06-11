@@ -75,7 +75,28 @@ type ThumbnailActions =
   | { type: "errored" };
 
 /**
- * media thumbnail with fallback source
+ * Thumbnail component for displaying images with various features.
+ * It supports loading states, error handling, NSFW overlays, and color scheme toggling.
+ * The component is designed to be flexible with width and height, and can display a fallback image if the original fails to load.
+ *
+ * @param {ThumbnailProps} props - The properties for the Thumbnail component.
+ * @returns {JSX.Element} The rendered Thumbnail component.
+ *
+ * @example
+ * ```jsx
+ * <Thumbnail
+ *   src="https://example.com/image.jpg"
+ *   fallback="https://example.com/fallback.jpg"
+ *   nsfw={true}
+ *   videoReel={true}
+ *   width="8rem"
+ *   height="10rem"
+ *   className="custom-thumbnail"
+ *   missingIcon={CoreIcons.mediaImageBroken}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/media-thumbnail--thumbnail} for more details on the properties.
  */
 export const Thumbnail = ({
   src,

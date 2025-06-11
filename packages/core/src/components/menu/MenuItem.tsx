@@ -33,6 +33,27 @@ import { Badge, getBadgeProps } from "../badge/Badge";
 import { Icon } from "../icon/Icon";
 import { type MenuItemProps } from "./types";
 
+/**
+ * A menu item component that can be used in a dropdown or menu.
+ * It supports various features such as icons, badges, hotkeys, and more.
+ * It can be customized with different colors, icons, and behaviors.
+ *
+ * @param {MenuItemProps} props
+ * @returns A JSX element representing the menu item.
+ *
+ * @example
+ * ```jsx
+ * <MenuItem
+ *   label="Settings"
+ *   icon="settings"
+ *   onClick={() => console.log("Settings clicked")}
+ *   hotKey="Ctrl+S"
+ *   badge={{ count: 3, color: "red" }}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-menu--docs} for documentation.
+ */
 export const MenuItem = <Tag extends React.ElementType = "button">({
   as,
   label,

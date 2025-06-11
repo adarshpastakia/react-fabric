@@ -26,7 +26,7 @@ import { Format } from "@react-fabric/utilities";
 import type { Meta, StoryObj } from "@storybook/react";
 import { JsonViewer } from "../../src";
 
-const meta: Meta<typeof JsonViewer> = {
+const meta: Meta = {
   component: JsonViewer,
   title: "@data/JsonViewer",
   parameters: {

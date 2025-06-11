@@ -42,6 +42,25 @@ export interface ContextMenuProps extends ChildrenProp {
   disabled?: boolean;
 }
 
+/**
+ * A component that provides a context menu that appears on right-click.
+ * It uses the Floating UI library to manage the positioning and interactions of the menu.
+ * This component is useful for creating custom context menus that can be triggered by right-clicking on elements.
+ *
+ * @param {ContextMenuProps} props - The properties for the ContextMenu component.
+ * @returns {JSX.Element} The rendered ContextMenu component.
+ *
+ * @example
+ * ```jsx
+ * <ContextMenu
+ *   menu={<Menu items={[{ label: "Option 1" }, { label: "Option 2" }]} />}
+ * >
+ *   <div className="context-menu-target">Right-click me!</div>
+ * </ContextMenu>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-menu--docs}
+ */
 export const ContextMenu = ({ children, menu, disabled }: ContextMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const nodeId = useFloatingNodeId();

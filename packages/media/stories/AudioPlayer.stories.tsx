@@ -26,7 +26,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { AudioPlayer } from "../src";
 import audio from "/assets/samples/sample.mp3";
 
-const meta: Meta<typeof AudioPlayer> = {
+const meta: Meta = {
   component: AudioPlayer,
   title: "@media/AudioPlayer",
   parameters: {

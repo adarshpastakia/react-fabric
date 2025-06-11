@@ -27,7 +27,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useCallback, useEffect, useState } from "react";
 import { TimeSeries } from "../src";
 
-const meta: Meta<typeof TimeSeries> = {
+const meta: Meta = {
   component: TimeSeries,
   title: "@charts/TimeSeries",
   parameters: {

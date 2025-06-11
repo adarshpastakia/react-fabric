@@ -286,7 +286,28 @@ const ActivityMapChart = memo(
 ActivityMapChart.displayName = "ActivityMapChart";
 
 /**
- * Chart showing activity map
+ * ActivityMap component renders a chart that visualizes activity data
+ * over time, using either a scatter plot or a heatmap.
+ * It allows users to switch between different types of visualizations
+ * and customize the color palette used in the chart.
+ *
+ * @param {ActivityMapProps} props - The properties for the ActivityMap component.
+ * @returns {JSX.Element} The rendered ActivityMap component.
+ *
+ * @example
+ * ```jsx
+ * <ActivityMap
+ *   data={activityData}
+ *   time="day-hour"
+ *   type="heatmap"
+ *   heatmapPalette={["#f0f8ff", "#faebd7", "#00ffff", "#7fffd4"]}
+ *   highLabels={["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]}
+ *   lowLabels={["12a", "1a", "2a", "3a", "4a", "5a", "6a", "7a", "8a", "9a", "10a", "11a", "12p", "1p", "2p", "3p", "4p", "5p", "6p", "7p", "8p", "9p", "10p", "11p"]}
+ *   onClick={(highIndex, lowIndex) => console.log(`Clicked on: ${highIndex}, ${lowIndex}`)}
+ * />
+ * ```
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/charts-activitymap--docs} for more details on the properties.
+ * @see {@link https://echarts.apache.org/en/option.html#series-scatter} for more details on the ECharts scatter series.
  */
 export const ActivityMap: FC<ActivityMapProps> = (props) => (
   <ChartWrapper>

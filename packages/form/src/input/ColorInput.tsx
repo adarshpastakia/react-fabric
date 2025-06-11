@@ -57,6 +57,19 @@ export interface ColorInputProps
   showPicker?: boolean;
 }
 
+/**
+ * Color input component that allows users to select a color
+ * and optionally use an eye dropper to pick a color from the screen.
+ * It uses the Floating UI library for positioning the color picker.
+ * It also provides a button to clear the selected color.
+ *
+ * This component is a wrapper around the `ColorPicker` component
+ * and provides additional functionality such as showing an eye dropper
+ * and handling the color selection state.
+ *
+ * @param {ColorInputProps} props - The properties for the ColorInput component.
+ * @returns {JSX.Element} - The rendered ColorInput component.
+ */
 export const ColorInput = ({
   ref,
   required,

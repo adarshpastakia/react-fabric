@@ -58,6 +58,28 @@ type PanelActions =
       pageChange?: boolean;
     };
 
+/**
+ * RangePanel component to display a date range picker with options for selecting a start and end date.
+ * It allows switching between Gregorian and Hijri calendars, and includes buttons for applying or canceling the selection.
+ * It uses the current calendar and locale from the global context.
+ * It handles date selection, time changes, and page navigation within the date picker.
+ * It also supports disabling specific dates and setting minimum and maximum date limits.
+ *
+ * @param {RangeProps} props - The properties for the RangePanel component.
+ * @return {JSX.Element} The rendered RangePanel component.
+ *
+ * @example
+ * ```jsx
+ * <RangePanel
+ *   className="my-range-panel"
+ *   max="2025-12-31"
+ *   min="2020-01-01"
+ *  dateDisabled={["2023-01-01", "2023-12-25"]}
+ *  onChange={(dateRange) => console.log("Selected date range:", dateRange)}
+ * />
+ * ```
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/date-date-panel--range-panel}
+ */
 export const RangePanel = ({
   className,
   max,

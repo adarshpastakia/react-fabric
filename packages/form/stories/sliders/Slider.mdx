@@ -14,7 +14,7 @@ import {
   Subheading,
 } from "@storybook/addon-docs";
 import { Fragment } from "react";
-import { Slider } from "../../src";
+import { RangeSlider, Slider } from "../../src";
 import * as RangeStories from "./Range.stories";
 import * as SliderStories from "./Slider.stories";
 
@@ -40,7 +40,7 @@ import * as SliderStories from "./Slider.stories";
 <Anchor storyId="Range">
   <Subheading>Range</Subheading>
 </Anchor>
-<Description of={RangeStories._Range} />
+<Description of={RangeSlider} />
 <Canvas withToolbar of={RangeStories._Range} />
 <Collapsable className="control-panel">
   <div>Controls</div>

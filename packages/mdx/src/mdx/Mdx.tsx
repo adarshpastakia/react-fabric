@@ -28,11 +28,29 @@ import {
 import { useCallback, useEffect, useState, type FC } from "react";
 import { marked } from "../utils/marked";
 
-export interface Props extends CssProp, AriaProps {
+export interface MdxProps extends CssProp, AriaProps {
   text: string;
 }
 
-export const Mdx: FC<Props> = ({ text, className, ...rest }) => {
+/**
+ * Mdx component to render Markdown text as HTML.
+ * It uses the `marked` library to parse the Markdown text and convert it to HTML.
+ * It also provides a copy-to-clipboard functionality for code blocks.
+ * The component listens for click events on code blocks and copies the code to the clipboard,
+ * displaying a success message for 1 second.
+ *
+ * @param {MdxProps} props - The properties for the Mdx component.
+ * @return {JSX.Element} The rendered Mdx component.
+ *
+ * @example
+ * ```jsx
+ * <Mdx text="## Hello World" className="my-mdx" />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/mdx-playground--playground}
+ * @see {@link https://marked.js.org/}
+ */
+export const Mdx: FC<MdxProps> = ({ text, className, ...rest }) => {
   const [mdtext, setMdtext] = useState("");
 
   const copySuccess = useCallback((el: HTMLElement) => {

@@ -276,6 +276,35 @@ const MenuComponent = ({
   );
 };
 
+/**
+ * A component that displays a menu with items, supports nested menus and various interactions.
+ * It can be triggered by hover or click events, and allows for custom styling and behavior.
+ * This component is designed to be used within a Floating UI context, allowing for dynamic positioning and interaction handling.
+ * It can be nested within other menus to create complex menu structures.
+ *
+ * @param {MenuProps} props - The properties for the Menu component.
+ * @returns {JSX.Element} The rendered Menu component.
+ *
+ * @example
+ * ```jsx
+ * <Menu
+ *   className="my-menu"
+ *   trigger="click"
+ *   onClick={(id) => console.log(`Clicked item with id: ${id}`)}
+ * >
+ *   <MenuItem id="item1" label="Item 1" />
+ *   <MenuItem id="item2" label="Item 2" />
+ *   <MenuItem id="item3" label="Item 3">
+ *     <Menu>
+ *       <MenuItem id="subitem1" label="Sub Item 1" />
+ *       <MenuItem id="subitem2" label="Sub Item 2" />
+ *     </Menu>
+ *   </MenuItem>
+ * </Menu>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-menu--docs} for more details.
+ */
 export const Menu = (props: MenuProps) => {
   const parentId = useFloatingParentNodeId();
   const tree = useFloatingTree();

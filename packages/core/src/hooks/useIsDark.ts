@@ -24,6 +24,14 @@
 import { useCallback, useState } from "react";
 import { useLayoutEffectDebugger } from "./useEffectDebugger";
 
+/**
+ * Custom hook to determine if the current theme is dark.
+ * It checks the background color of the document's root element
+ * and sets the `isDark` state based on the red component of the RGB color.
+ * If the red component is less than 50, it considers the theme to be dark.
+ *
+ * @returns {boolean} - Returns true if the theme is dark, false otherwise.
+ */
 export const useIsDark = () => {
   const [isDark, setDark] = useState(false);
   const checkTheme = useCallback(() => {

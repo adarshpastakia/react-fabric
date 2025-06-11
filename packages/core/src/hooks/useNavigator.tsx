@@ -23,6 +23,24 @@
 
 import { useCallback, useMemo, useRef, useState } from "react";
 
+/**
+ * Custom hook to manage navigation through a list of items.
+ * It provides functionality to navigate forward and backward,
+ * and keeps track of the current index and total count of items.
+ *
+ * @param totalCount - Total number of items to navigate through.
+ * @param defaultIndex - Initial index to start navigation from.
+ * @returns An object containing the current index, a function to navigate,
+ *          a label for the current position, and a function to set the current index.
+ *
+ * @example
+ * ```jsx
+ * const { headLabel, onNavigate, currentIndex, setCurrentIndex } = useNavigator(5, 0);
+ * // headLabel will show "1/5"
+ * // onNavigate(1) will move to the next item, and onNavigate(-1) will move to the previous item.
+ * // currentIndex will be updated accordingly.
+ * ```
+ */
 export const useNavigator = (totalCount = 0, defaultIndex = 0) => {
   const [currentIndex, setCurrentIndex] = useState(defaultIndex);
   const refCurrent = useRef(defaultIndex);

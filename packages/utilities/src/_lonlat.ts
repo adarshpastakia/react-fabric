@@ -39,6 +39,18 @@ type LngLatLike =
   | [lon: number | string, lat: number | string]
   | string;
 
+/**
+ * Convert various formats of longitude and latitude to a tuple of [lon, lat].
+ * This function supports:
+ * - Arrays with two or three elements (e.g., [lon, lat] or [lon, lat, alt])
+ * - Objects with properties `lng`, `lat`, `lon`, or `longitude` and `latitude`
+ * - Strings in the format "lat,lon"
+ * The function will return a tuple of numbers [lon, lat].
+ *
+ * @param {LngLatLike} lonLat - The input longitude and latitude in various formats.
+ * @returns { [lon: number, lat: number] } A tuple of [lon, lat] where lon and lat are numbers.
+ * @throws Error if the input is not a valid format.
+ */
 export const convertLatLng = (
   lonLat: LngLatLike,
 ): [lon: number, lat: number] => {
@@ -64,6 +76,18 @@ export const convertLatLng = (
   throw Error("Invalid geo coordinates");
 };
 
+/**
+ * Convert a coordinate to Degrees, Minutes, Seconds (DMS) format.
+ * This function takes a coordinate and returns a string in the format "degrees˚minutes'seconds" with direction (N/S or E/W).
+ * It handles both latitude and longitude coordinates.
+ * This function assumes that the input coordinate is in decimal degrees format.
+ * It converts the coordinate to DMS format by calculating the degrees, minutes, and seconds,
+ * and then formatting the result as a string.
+ *
+ * @param {number} coord - The coordinate to convert.
+ * @param {boolean} isLat - Whether the coordinate is latitude (default is false for longitude).
+ * @returns {string} A string representation of the coordinate in DMS format.
+ */
 const convertToDMS = (coord: number, isLat = false) => {
   const degree = Math.floor(coord);
   const hour = (coord - degree) * 60;
@@ -74,6 +98,26 @@ const convertToDMS = (coord: number, isLat = false) => {
   }`;
 };
 
+/**
+ * Convert a latitude and longitude to a human-readable text format.
+ * This function takes a latitude and longitude in various formats and
+ * returns a string in the format "degrees˚minutes'seconds" with direction (N/S, E/W).
+ *
+ * This function supports:
+ *
+ * - Objects with properties `lng`, `lat`, `lon`, or `longitude` and `latitude`
+ * - Arrays with two or three elements (e.g., [lon, lat] or [lon, lat, alt])
+ * - Strings in the format "lat,lon"
+ *
+ * @param {LngLatLike} latlon - The latitude and longitude in various formats.
+ * @returns {string} A string representation of the location in DMS format.
+ *
+ * @example
+ * ```jsx
+ * const location = getLocationAsText({ lat: 40.7128, lng: -74.0060 });
+ * console.log(location); // "40˚42'51.36"N, 74˚0'21.60"W"
+ * ```
+ */
 export const getLocationAsText = (latlon: LngLatLike) => {
   const [lon, lat] = convertLatLng(latlon);
   return `${convertToDMS(lat, true)}, ${convertToDMS(lon)}`;

@@ -7,7 +7,7 @@
 import "@mdi/font/css/materialdesignicons.min.css";
 import "./styles/styles.css";
 
-import { Anchor, DocsContainer } from "@storybook/addon-docs";
+import { Anchor, DocsContainer, Subheading } from "@storybook/addon-docs";
 import type { Preview } from "@storybook/react-vite";
 import { initialize, mswLoader } from "msw-storybook-addon";
 import { Fragment, useEffect, useMemo } from "react";
@@ -27,7 +27,7 @@ import { darkTheme, lightTheme } from "./theme";
  */
 initialize({
   onUnhandledRequest: "bypass",
-  serviceWorker: { url: "./serviceWorker.js" },
+  serviceWorker: { url: "/serviceWorker.js" },
 });
 
 document.documentElement.dir = i18n.dir();
@@ -84,6 +84,9 @@ export default {
     docs: {
       toc: {},
       controls: { sort: "alpha" },
+      extractComponentDescription: (comp: AnyObject) => {
+        return comp?.__docgenInfo?.description?.replace(/\n@.*(\n.*)*/g, "");
+      },
       container: ({ children, context }: AnyObject) => {
         const globals = context.store.userGlobals.globals;
 
@@ -147,6 +150,7 @@ export default {
         h2: ({ storyId, ...props }: AnyObject) => (
           <Fragment>
             {storyId && <Anchor storyId={storyId} />}
+            <p>ssdfsdfdf</p>
             <cite className="toc-selector" {...props} />
           </Fragment>
         ),

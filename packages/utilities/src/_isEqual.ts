@@ -25,8 +25,18 @@ import { ascii } from "./_ascii";
 import { isBoolean, isNil, isNumber, isObject, isString } from "./_isType";
 
 /**
- * check equality of objects
- * @internal
+ * Compare two objects or values for equality.
+ * This function checks if two values are equal, including nested objects and arrays.
+ * It handles various data types such as strings, numbers, booleans, arrays, and objects.
+ * If both values are `null` or `undefined`, they are considered equal.
+ * If both values are primitive types (string, number, boolean), they are compared directly.
+ * If both values are arrays, they are compared element by element.
+ * If both values are objects, they are compared by their keys and values.
+ * If the values are of different types or structures, they are considered not equal.
+ *
+ * @param {unknown} obj - The first value to compare.
+ * @param {unknown} test - The second value to compare against the first.
+ * @returns {boolean} - Returns true if the values are equal, false otherwise.
  */
 export const isEqual = (obj: unknown, test: unknown): boolean => {
   if (isNil(obj) && isNil(test)) {
@@ -59,8 +69,20 @@ export const isEqual = (obj: unknown, test: unknown): boolean => {
 };
 
 /**
- * match strings
- * @internal
+ * Match a string against another string with options for equality.
+ * This function checks if the base string starts with, includes, or is equal to the match string,
+ * based on the specified equality condition.
+ * It normalizes both strings to lowercase and ASCII format before comparison.
+ * This is useful for case-insensitive and ASCII-only comparisons,
+ * such as when filtering or searching through text data.
+ *
+ * @param {string} base - The base string to match against.
+ * @param {string} match - The string to match with the base string.
+ * @param {("start" | boolean)} equality - The type of match to perform:
+ *                   - "start": checks if the base string starts with the match string.
+ *                   - true: checks for exact equality.
+ *                   - false (default): checks if the base string includes the match string.
+ * @returns {boolean} - Returns true if the base string matches the conditions specified by the match string and equality.
  */
 export const matchString = (
   base: string,
@@ -78,8 +100,17 @@ export const matchString = (
 };
 
 /**
- * compare values
- * @internal
+ * Compare two values for sorting.
+ * This function compares two values based on the specified order (ascending or descending).
+ * If a key is provided, it compares the values of that key in the objects.
+ * It handles various data types such as strings, numbers, booleans, and objects.
+ * It returns a comparison function that can be used with array sorting methods.
+ * * The comparison is done in a case-insensitive manner for strings,
+ *  treating special characters as their ASCII equivalents.
+ *
+ * @param {("asc" | "desc")} order - The order of comparison, either "asc" for ascending or "desc" for descending.
+ * @param {string} key - An optional key to compare values within objects.
+ * @returns {Function} A comparison function that can be used with array sorting methods.
  */
 export const compareValues =
   (order: "asc" | "desc" = "asc", key?: string) =>

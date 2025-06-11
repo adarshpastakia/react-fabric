@@ -1,20 +1,18 @@
 import { Collapsable } from "@react-fabric/core";
 import {
-  Canvas,
-  Description,
-  Primary,
-  Story,
-  Title,
-} from "@storybook/addon-docs";
-import {
   Anchor,
   ArgTypes,
+  Canvas,
   Controls,
+  Description,
   Meta,
+  Primary,
+  Story,
   Subheading,
+  Title,
 } from "@storybook/addon-docs";
 import { Fragment } from "react";
-import { DateDisplay, DatePanel } from "../../src";
+import { DateDisplay, DateDuration, DatePanel } from "../../src";
 import * as DateDisplayStories from "./DateDisplay.stories";
 import * as DateDurationStories from "./DateDuration.stories";
 
@@ -40,7 +38,7 @@ import * as DateDurationStories from "./DateDuration.stories";
 <Anchor storyId="rangepanel">
   <Subheading>Date Distance</Subheading>
 </Anchor>
-<Description of={DateDurationStories._DateDuration} />
+<Description of={DateDuration} />
 <Canvas withToolbar of={DateDurationStories._DateDuration} />
 <Collapsable className="control-panel">
   <div>Controls</div>

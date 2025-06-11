@@ -25,11 +25,22 @@ import { useCallback, useRef, useState, type RefObject } from "react";
 import { useLayoutEffectDebugger } from "./useEffectDebugger";
 
 /**
- * hook to control boolean props
- * @param isOn (is prop true)
- * @param callback (optional callback)
- * @param key (optional key to pass to callback)
- * @returns
+ * This hook is used to manage a toggle state based on a prop value.
+ * It allows you to toggle the state and also provides a reference to the current state.
+ * It is useful for scenarios where you want to control a toggle state from a parent component while also allowing local toggling.
+ *
+ * @param isOn - Initial state of the toggle (default: false)
+ * @param onToggle - Callback function that is called when the toggle state changes.
+ * @param key - Optional key to identify the toggle state, useful for multiple toggles.
+ * @returns A tuple containing the current toggle state, a function to toggle the state, and a reference to the current state.
+ *
+ * @example
+ * ```jsx
+ * const [isToggled, toggle, toggleRef] = usePropToggle(false, (newState) => {
+ *   console.log("Toggle state changed to:", newState);
+ * });
+ * toggle(); // This will toggle the state and call the onToggle callback
+ * ```
  */
 export const usePropToggle = (
   isOn = false,

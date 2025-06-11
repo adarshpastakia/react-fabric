@@ -45,6 +45,40 @@ type SearchActions =
   | { type: "query"; query: string | string[] }
   | { type: "filter"; filters: FilterObject[] };
 
+/**
+ * This component provides a search input with autocomplete functionality,
+ * a button to trigger search, and an optional filter bar.
+ * It supports history of search queries, multiple selection, and custom decorations.
+ * It can be collapsed to hide filters and has options for customization.
+ *
+ * @param {SearchBarProps} props - The properties for the SearchBar component.
+ * @returns {JSX.Element} The rendered SearchBar component.
+ *
+ * @example
+ * ```jsx
+ * <SearchBar
+ *   historyKey="myApp:searchHistory"
+ *   historyCount={10}
+ *   defaultQueryList={["example", "test"]}
+ *   prepend={<span>Prepend</span>}
+ *   append={<span>Append</span>}
+ *   decorateEnd={<span>End Decoration</span>}
+ *   decorateStart={<span>Start Decoration</span>}
+ *   hideFilters={false}
+ *   defaultCollapsed={false}
+ *   disabled={false}
+ *   onCollapsed={(collapsed) => console.log("Collapsed:", collapsed)}
+ *   onQuery={(query) => console.log("Query:", query)}
+ *   onSearch={({ query, filters }) => console.log("Search:", query, filters)}
+ *   query={""}
+ *   ref={searchInputRef}
+ *   multiple={false}
+ *   filters={[{ name: "filter1", value: "value1" }]}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/searchbar-searchbar--search-bar} for more details on the properties.
+ */
 export const SearchBar = ({
   historyKey = "ruf:search",
   historyCount = 20,

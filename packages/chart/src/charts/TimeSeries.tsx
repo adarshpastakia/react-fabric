@@ -227,7 +227,30 @@ const TimeSeriesChart: FC<TimeSeriesProps> = memo(
 TimeSeriesChart.displayName = "TimeSeriesChart";
 
 /**
- * Chart to display simple data time series
+ * TimeSeries component renders a time series chart using the provided data and options.
+ * It supports different chart types such as line, column, and stacked variants.
+ * It also allows for interaction through click and brush events.
+ *
+ * @param {TimeSeriesProps} props - The properties for the TimeSeries component.
+ * @returns {JSX.Element} The rendered TimeSeries component.
+ *
+ * @example
+ * ```jsx
+ * <TimeSeries
+ *   data={data}
+ *   onExport={handleExport}
+ *   categoryAxisName="Time"
+ *   valueAxisName="Value"
+ *   title="Time Series Chart"
+ *   type="line"
+ *   onClick={(data) => console.log(data)}
+ *   onBrush={(range) => console.log(range)}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/charts-timeseries--docs} for more details on the properties.
+ * @see {@link https://echarts.apache.org/en/option.html#series-line} for more details on the ECharts line series options.
+ * @see {@link https://echarts.apache.org/en/option.html#series-bar} for more details on the ECharts bar series options.
  */
 export const TimeSeries: FC<TimeSeriesProps> = (props) => (
   <ChartWrapper>

@@ -24,9 +24,11 @@
 import { isEmpty } from "./_isType";
 
 /**
- * calculate hash from string
+ * Generate a hash from a string.
+ * This function computes a simple hash by iterating over each character in the string,
+ * performing bitwise operations to produce a 32-bit integer hash.
  * @param str
- * @internal
+ * @returns {number} A 32-bit integer hash of the input string.
  */
 export const hash = (str: string) => {
   let hash = 0;
@@ -42,16 +44,20 @@ export const hash = (str: string) => {
 };
 
 /**
- * generate short hash from current time
- * @internal
+ * Generate a short hash using the current timestamp and a random number.
+ * This function creates a unique identifier by combining the current time in milliseconds
+ * with a random number, and then converting it to a base-36 string.
+ * @returns {string} A short hash string.
  */
 export const shortHash = () => {
   return (new Date().getTime() * Math.random()).toString(36);
 };
 
 /**
- * generate uuid using `crypto.getRandomValues`
- * @internal
+ * Generate a UUID (Universally Unique Identifier).
+ * This function creates a version 4 UUID by generating random numbers
+ * and formatting them according to the UUID standard.
+ * @returns {string} A UUID string in the format xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx.
  */
 export const uuid = () => {
   return [1e7, 1e3, 4e3, 8e3, 1e11]

@@ -46,6 +46,35 @@ export interface SelectableProps {
   onClick?: (id: string, isNegative: boolean) => void;
 }
 
+/**
+ * Custom hook to manage selection of items in a list.
+ * It allows toggling selection state of items, handling both selected and non-selected states.
+ * The hook maintains a selection state and provides a function to toggle the selection of items.
+ * It also supports callbacks for when the selection changes or when an item is clicked.
+ *
+ * @param items - The list of items to manage selection for.
+ * @param selected - An array of item IDs that are currently selected.
+ * @param nonselected - An array of item IDs that are currently non-selected.
+ * @param onChange - Callback function that is called when the selection changes.
+ * @param onClick - Callback function that is called when an item is clicked.
+ * @returns An object containing the current selection state and a function to toggle selection of items.
+ *
+ * @example
+ * ```jsx
+ * const { selection, toggleSelection } = useSelectableList({
+ *   items: [{ id: '1', label: 'Item 1' }, { id: '2', label: 'Item 2' }],
+ *   selected: ['1'],
+ *   nonselected: ['2'],
+ *   onChange: (selectedIds, nonSelectedIds) => {
+ *     console.log('Selected:', selectedIds);
+ *     console.log('Non-selected:', nonSelectedIds);
+ *   },
+ *   onClick: (id, isNegative) => {
+ *     console.log(`Item ${id} clicked, isNegative: ${isNegative}`);
+ *   },
+ * });
+ * ```
+ */
 export const useSelectableList = ({
   items,
   selected,

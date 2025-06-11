@@ -74,7 +74,6 @@ export const _List: ListStory = {
     groupProperty: "alpha",
     allowClear: true,
     onEnterPressed: fn(),
-    // @ts-expect-error ignore
     onChange: fn(),
   },
 };
@@ -106,7 +105,6 @@ export const Multiple: ListStory = {
     groupProperty: "alpha",
     allowClear: true,
     onEnterPressed: fn(),
-    // @ts-expect-error ignore
     onChange: fn(),
   },
 };
@@ -158,7 +156,6 @@ export const Remote: ListStory = {
     allowClear: true,
     searchable: true,
     onEnterPressed: fn(),
-    // @ts-expect-error ignore
     onChange: fn(),
   },
 };

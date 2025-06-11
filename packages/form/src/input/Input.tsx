@@ -41,6 +41,14 @@ export interface TextInputProps extends InputProps, RefProp<HTMLInputElement> {
   type?: "email" | "file" | "search" | "tel" | "text" | "url";
 }
 
+/**
+ * This component is used to render a text input field with various properties such as name, value, invalid state, read-only, disabled, required, placeholder, autoFocus, error message, monospace font option, and event handlers for blur, focus, change, and enter key press.
+ * It also includes a clear button that appears when there is a value in the input field, allowing users to clear the input easily.
+ * The component uses a wrapper to handle the clear button and styling, and it supports deferred value updates to optimize performance.
+ *
+ * @param {TextInputProps} props - The properties for the text input component.
+ * @returns {JSX.Element} - A JSX element representing the text input field.
+ */
 export const Input = ({
   ref,
   name,

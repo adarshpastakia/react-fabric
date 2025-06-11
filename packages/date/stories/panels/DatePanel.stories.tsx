@@ -24,7 +24,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { DatePanel, RangePanel } from "../../src";
 
-const meta: Meta<typeof DatePanel> = {
+const meta: Meta = {
   component: DatePanel,
   subcomponents: { RangePanel } as AnyObject,
   title: "@date/Date Panel",

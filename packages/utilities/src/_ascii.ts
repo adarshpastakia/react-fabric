@@ -80,8 +80,13 @@ const conversions = {
 };
 
 /**
- * latin to ascii converter for convenient searching
- * @internal
+ * Converts a string to its ASCII representation by replacing
+ * special characters with their ASCII equivalents.
+ * This function is useful for normalizing strings for search or display purposes.
+ * It replaces characters like "Ä" with "Ae", "ß" with "ss", etc.
+ *
+ * @param {string} str - The input string to be converted.
+ * @returns {string} - The ASCII representation of the input string.
  */
 export const ascii = (str: string) => {
   if (isEmpty(str)) return "";

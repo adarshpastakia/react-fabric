@@ -62,7 +62,25 @@ const SizeMap: KeyValue<string> = {
 };
 
 /**
- * Group multiple avatars together
+ * A component that groups multiple avatars together, displaying a count of additional avatars if the total exceeds the visible ones.
+ * It allows customization of size, rounding, and additional aria attributes.
+ * This component is useful for displaying a collection of user avatars in a compact format, such as in a chat application or user list.
+ * It automatically calculates the number of additional avatars based on the `totalCount` prop and the number of children provided.
+ *
+ * @param {AvatarGroupProps} props - The properties for the AvatarGroup component.
+ * @returns {JSX.Element} The rendered AvatarGroup component.
+ *
+ * @example
+ * ```jsx
+ * <AvatarGroup totalCount={5} size="md" className="my-avatar-group">
+ *   <Avatar name="John Doe" avatar="https://example.com/avatar1.jpg" />
+ *   <Avatar name="Jane Smith" avatar="https://example.com/avatar2.jpg" />
+ *   <Avatar name="Alice Johnson" avatar="https://example.com/avatar3.jpg" />
+ *   <Avatar name="Bob Brown" avatar="https://example.com/avatar4.jpg" />
+ * </AvatarGroup>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-avatar--docs} for more details.
  */
 export const AvatarGroup = ({
   ref,

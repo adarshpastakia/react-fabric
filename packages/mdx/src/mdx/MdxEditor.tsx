@@ -80,6 +80,29 @@ export interface MdxEditorProps {
   onChange?: (value: string) => void;
 }
 
+/**
+ * MdxEditor component to edit and preview MDX content.
+ * It uses the MDXEditor from @mdxeditor/editor to provide a rich text editing experience.
+ * The component allows users to write MDX content, format it, and preview the rendered output.
+ * It supports various plugins for headings, lists, quotes, tables, thematic breaks, links, code blocks, and directives.
+ * The editor also includes a toolbar with options for formatting and inserting elements.
+ * When the preview mode is active, it displays the rendered MDX content using the Mdx component.
+ * The component is responsive and adapts to dark mode based on the user's preference.
+ *
+ * @param {MdxEditorProps} props - The properties for the MdxEditor component.
+ * @returns {JSX.Element} The rendered MdxEditor component.
+ *
+ * @example
+ * ```jsx
+ * <MdxEditor
+ *   value="## Hello World"
+ *   onChange={(value) => console.log(value)}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/mdx-playground--playground}
+ * @see {@link https://mdxeditor.dev/editor/docs/getting-started}
+ */
 export const MdxEditor: FC<MdxEditorProps> = ({ value: _value, onChange }) => {
   const isDark = useIsDark();
   const [showPreview, setShowPreview] = useState(false);

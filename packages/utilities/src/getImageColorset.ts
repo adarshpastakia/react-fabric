@@ -23,6 +23,21 @@
 
 /* istanbul ignore file */
 
+/**
+ * Get the color set of an image element.
+ * This function analyzes the pixel data of an image to determine if it is predominantly light or dark.
+ * It returns "light", "dark", or "light_transparent"/"dark_transparent" based on the pixel analysis.
+ * It uses a canvas to draw the image and extract pixel data for analysis.
+ * * The function calculates the brightness of each pixel using the formula:
+ *  brightness = 0.2126 * R + 0.7152 * G + 0.0722 * B
+ * * It counts the number of light and dark pixels, and determines the overall color set based on the ratio of light to dark pixels.
+ * * If the image has transparent pixels, it appends "_transparent" to the result.
+ * * This function is useful for determining the color scheme of an image, which can be helpful for UI design,
+ *   theming, and accessibility considerations.
+ *
+ * @param {HTMLImageElement} el - The HTMLImageElement to analyze.
+ * @returns {string} A string indicating the color set of the image.
+ */
 export const getImageColorset = (el: HTMLImageElement) => {
   // create canvas
   const canvas = document.createElement("canvas");

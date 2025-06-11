@@ -276,12 +276,52 @@ const DropdownElement = ({
   );
 };
 
+/**
+ * A component that displays a dropdown menu with an anchor and a panel.
+ * It supports various features such as placement, arrow display, click handling,
+ * and event handling for opening and closing the dropdown.
+ *
+ * @param props - Dropdown properties
+ * @returns JSX Element
+ *
+ * @example
+ * ```jsx
+ * <Dropdown
+ *   placement="bottom"
+ *   showArrow
+ *   closeOnClick
+ *   fitToParent
+ *   onOpen={() => console.log("Dropdown opened")}
+ *   onClose={() => console.log("Dropdown closed")}
+ * >
+ *   <button>Open Dropdown</button>
+ *   <div>
+ *     <DropdownDismiss>
+ *       <button>Dismiss</button>
+ *     </DropdownDismiss>
+ *     <p>Dropdown Content</p>
+ *   </div>
+ * </Dropdown>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-dropdown--docs} for more details.
+ * @see {@link https://floating-ui.com/docs/react} for more details on Floating UI.
+ */
 export const Dropdown = (props: DropdownProps) => (
   <FloatingTree>
     <DropdownElement {...props} />
   </FloatingTree>
 );
 
+/**
+ * A component that allows dismissing the dropdown when clicked.
+ * It can be used inside the dropdown panel to provide a dismiss area.
+ * It supports an optional `dismiss` prop to control whether the dropdown should be dismissed on click.
+ *
+ * @param children - The children elements to render inside the dismiss area.
+ * @param dismiss - Whether to dismiss the dropdown on click (default: true).
+ * @returns JSX Element
+ */
 export const DropdownDismiss = ({
   children,
   dismiss = true,

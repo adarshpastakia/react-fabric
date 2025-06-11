@@ -35,13 +35,18 @@ declare interface FetchOptions {
 const _signals = new Map<string, AbortController>();
 
 /**
- * Fetch helper
- * @param method
- * @param url
- * @param options.headers
- * @param options.body
- * @param options.signal
- * @internal
+ * Fetch utility function to make HTTP requests.
+ * It supports GET, POST, PUT, and DELETE methods.
+ * It automatically handles JSON responses and error codes.
+ * It also supports aborting requests using an AbortController.
+ *
+ * @param method - The HTTP method to use (GET, POST, PUT, DELETE).
+ * @param url - The URL to send the request to.
+ * @param options.headers - Headers to include in the request.
+ * @param options.body - The body of the request (for POST and PUT requests).
+ * @param options.signal - An AbortSignal to cancel the request.
+ * @returns A promise that resolves to the JSON response from the server.
+ * @throws An error if the request fails or if the response contains an error code.
  */
 export const _fetch = async (
   method: METHODS,

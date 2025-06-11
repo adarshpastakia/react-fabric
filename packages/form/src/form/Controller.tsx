@@ -50,6 +50,51 @@ export interface ControllerProps {
       }) => ReactElement);
 }
 
+/**
+ * This component is used to wrap form controls
+ * and provide them with the necessary props and state management.
+ *
+ * It uses the `Controller` component from `react-hook-form`
+ * to manage the form state and validation.
+ *
+ * It accepts a `name` prop to identify the form control,
+ * and a `children` prop which can either be a React element
+ * or a function that receives the necessary props to render the control.
+ *
+ * The component will pass down the following props to the child:
+ * - `name`: the name of the form control
+ * - `error`: any validation error message
+ * - `checked`: whether the control is checked (for checkboxes/radios)
+ * - `value`: the current value of the control
+ * - `invalid`: whether the control is invalid
+ * - `readOnly`: whether the control is read-only (disabled during submission)
+ * - `disabled`: whether the control is disabled
+ * - `onBlur`: function to call when the control loses focus
+ * - `onChange`: function to call when the control value changes
+ * - `ref`: a ref to the control element
+ * * The component also handles the `ref` prop to ensure that it is passed correctly
+ * to the child component, allowing for proper focus management and DOM access.
+ *
+ * @param {ControllerProps} props - The properties for the Controller component.
+ * @returns {JSX.Element} The rendered Controller component.
+ *
+ * @example
+ * ```jsx
+ * <Controller
+ *   name="username"
+ *   children={({ name, error, checked, value, invalid, readOnly, onChange }) => (
+ *     <input
+ *       type="text"
+ *       name={name}
+ *       onChange={onChange}
+ *       readOnly={readOnly}
+ *       aria-invalid={invalid}
+ *       value={value}
+ *     />
+ *   )}
+ * />
+ * ```
+ */
 export const Controller = ({ name, children, ...rest }: ControllerProps) => {
   if (!name) throw Error("Form Controller missing `name` prop");
   return (

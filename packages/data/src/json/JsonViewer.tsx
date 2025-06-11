@@ -346,6 +346,32 @@ const JsonEntry = ({
   );
 };
 
+/**
+ * JsonViewer component to display JSON data in a structured format.
+ * It supports inline display, property filtering, and custom formatting.
+ * The component can handle nested objects and arrays, displaying them in a tree-like structure.
+ * It also provides options for copying values and filtering properties.
+ *
+ * @param {JsonViewProps<T>} props - The properties for the JsonViewer component.
+ * @returns {JSX.Element} The rendered JsonViewer component.
+ *
+ * @example
+ * ```jsx
+ * <JsonViewer
+ *   json={{ name: "John", age: 30, address: { city: "New York", zip: "10001" } }}
+ *   copy={true}
+ *   filters={true}
+ *   propertyScheme={{ date: ["createdAt"], phone: ["contact"] }}
+ *   inline={true}
+ *   labelWidth="25%"
+ *   formatter={(path, value) => (path === "age" ? `${value} years` : value)}
+ *   labeler={(path) => path.replace(/_/g, " ").toUpperCase()}
+ *   onFilter={(path, value, negate) => console.log(`Filter ${negate ? "negate" : ""} on ${path}:`, value)}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/data-jsonviewer--docs}
+ */
 export const JsonViewer = <T extends KeyValue = KeyValue>({
   className,
   json,

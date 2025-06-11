@@ -70,6 +70,15 @@ export interface DateProps
   max?: DateLike;
 }
 
+/**
+ * Date input component that allows users to select a date or datetime.
+ * It uses the Floating UI library for positioning the date picker.
+ * It also provides a button to clear the selected date.
+ * The component supports both date and datetime types, with appropriate formatting.
+ *
+ * @param {DateProps} props - The properties for the DateInput component.
+ * @returns {JSX.Element} - The rendered DateInput component.
+ */
 export const DateInput = ({
   ref,
   name,

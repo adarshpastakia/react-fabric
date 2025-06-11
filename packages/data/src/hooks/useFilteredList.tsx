@@ -51,6 +51,25 @@ const filterList = (
   return newList;
 };
 
+/**
+ * Custom hook to filter a list of items based on a query.
+ * It provides a way to search through the items and returns the filtered list.
+ * The hook uses a deferred value to optimize performance during transitions.
+ * It also allows for a custom matcher function to define how items should be matched against the query.
+ *
+ * @param items - The list of items to filter.
+ * @param matcher - An optional function to match items against the query.
+ * @returns An object containing the search function, current query, filtered list, and a boolean indicating if a search is in progress.
+ *
+ * @example
+ * ```jsx
+ * useFilteredList(items, (item, query) => {
+ *   return item.name.includes(query);
+ * });
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/data-usefilteredlist--docs}
+ */
 export const useFilteredList = <
   T extends AnyObject = KeyValue,
   Q extends AnyObject = string,

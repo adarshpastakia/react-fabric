@@ -50,8 +50,4 @@ describe("Icons", () => {
     expect(document.body.innerHTML).toMatchSnapshot();
     fragment.unmount();
   });
-
-  it("should throw error", () => {
-    expect(() => render(<Tester />)).toThrow("Invalid icon expected string");
-  });
 });

@@ -40,7 +40,7 @@ import { fn } from "storybook/test";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { VirtualGallery, VirtualGalleryRef } from "../src";
 
-const meta: Meta<typeof VirtualGallery> = {
+const meta: Meta = {
   component: VirtualGallery,
   title: "@data/Virtual/Gallery",
   parameters: {

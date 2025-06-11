@@ -48,6 +48,16 @@ export interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 
+/**
+ * Pagination component to navigate through pages of data.
+ * It displays buttons for navigating to the first, previous, next, and last pages,
+ * as well as buttons for specific page numbers based on the provided ranges.
+ * The component supports a minimal view that shows the current page and total pages.
+ * It uses memoization to optimize rendering performance.
+ *
+ * @param {PaginationProps} props - The properties for the Pagination component.
+ * @returns {JSX.Element} The rendered Pagination component.
+ */
 export const Pagination = memo(
   ({ page, ranges, totalPages, minimal, onPageChange }: PaginationProps) => {
     const [start, mid, last] = ranges;

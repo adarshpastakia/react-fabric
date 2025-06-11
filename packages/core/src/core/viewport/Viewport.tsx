@@ -25,7 +25,21 @@ import classNames from "classnames";
 import { type PropsWithChildren } from "react";
 
 /**
- * The application viewport is the main container that defines the visible area where content is displayed and interacted with.
+ * This component is used to create a full-screen viewport
+ * that can be used to display content in a grid layout.
+ * It is typically used as a container for the main content of the application.
+ * It is styled to take up the full width and height of the viewport,
+ * and it uses absolute positioning to ensure it covers the entire screen.
+ * The component accepts children as props, allowing you to nest other components inside it.
+ *
+ * @example
+ * ```jsx
+ * <Viewport>
+ *   <YourContentComponent />
+ * </Viewport>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-application--viewport} for more details.
  */
 export const Viewport = ({ children }: PropsWithChildren) => {
   return (

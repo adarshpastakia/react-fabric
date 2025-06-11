@@ -15,7 +15,7 @@ addons.setConfig({
     showRoots: true,
     filters: {
       patterns: (item) => {
-        return item.name !== "Tester";
+        return !item.name.includes("Tester");
       },
     },
     renderLabel: ({ name }) => {

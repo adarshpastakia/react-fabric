@@ -55,7 +55,32 @@ export interface PageProps
 }
 
 /**
- * The page component used typically for routes, is a structured layout used within an application to organize and display content in a sectioned format, ensuring a consistent and intuitive user experience.
+ * Page component that wraps children in a div element.
+ * It includes a title section with an optional icon and a loading indicator.
+ * The component can be styled with a paper effect, page icon and title.
+ * It also accepts a loading prop to display a loading indicator.
+ *
+ * @param {PageProps} props - The properties for the Page component.
+ * @returns A div element containing the title and children, with optional loading indicator.
+ *
+ * @example
+ * ```jsx
+ * <Page
+ *   title="My Page"
+ *   icon="home"
+ *   iconBg="bg-blue-500"
+ *   iconColor="text-white"
+ *   loading={false}
+ *   paper={true}
+ *   data-testid="my-page"
+ *   data-test-value="page-value"
+ * >
+ *   <p>This is the content of the page.</p>
+ * </Page>
+ * // Renders a page with a title, icon, and content.
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-application--page} for more details.
  */
 export const Page = ({
   ref,

@@ -39,6 +39,14 @@ interface Props {
   onChange?: (value: AnyObject) => void;
 }
 
+/**
+ * Hidden input component to handle hidden values in forms.
+ * It will trigger the onChange handler with the hidden value after a short delay.
+ * This is useful for cases where you need to update the form state without user interaction.
+ *
+ * @param {Object} props - Component properties.
+ * @returns {JSX.Element} The rendered hidden input field and error icon.
+ */
 export const HiddenInput = ({
   hiddenValue,
   onChange,

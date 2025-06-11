@@ -29,6 +29,21 @@ import { Tooltip } from "../overlays/tooltip/Tooltip";
 import { type CssProp, type SizeType } from "../types";
 import { CoreIcons } from "../types/icons";
 
+/**
+ * A component that provides a button to copy text to the clipboard.
+ * It uses the Clipboard API to write the specified text to the clipboard.
+ * The button displays a tooltip feedback when the text is successfully copied.
+ *
+ * @param {CopyProps} props - The properties for the Copy component.
+ * @returns {JSX.Element} The rendered Copy component.
+ *
+ * @example
+ * ```jsx
+ * <Copy text="Text to copy" size="small" />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-typography--copy} for more details.
+ */
 export interface CopyProps extends CssProp {
   text: string;
   /**

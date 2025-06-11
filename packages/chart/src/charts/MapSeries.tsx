@@ -208,7 +208,30 @@ const MapSeriesChart: FC<MapSeriesProps> = memo(
 MapSeriesChart.displayName = "MapSeriesChart";
 
 /**
- * Chart to display simple map data series
+ * MapSeries component renders a map chart using ECharts.
+ * It displays data on a world map, allowing users to visualize counts or other metrics by country.
+ * It supports zooming and switching between map and column views.
+ *
+ * @param {MapSeriesProps} props - The properties for the MapSeries component.
+ * @returns {JSX.Element} The rendered MapSeries component.
+ *
+ * @example
+ * ```jsx
+ * <MapSeries
+ *   data={[
+ *     { id: "US", label: "United States", count: 100 },
+ *     { id: "IN", label: "India", count: 200 },
+ *     { id: "CN", label: "China", count: 300 },
+ *   ]}
+ *   onExport={() => console.log("Exporting chart")}
+ *   title="World Map Series"
+ *   onClick={(key) => console.log("Clicked country:", key)}
+ *   theme="light"
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/charts-mapseries--docs} for more details on the properties.
+ * @see {@link https://echarts.apache.org/en/option.html#series-map} for ECharts map series options documentation.
  */
 export const MapSeries: FC<MapSeriesProps> = (props) => (
   <ChartWrapper>

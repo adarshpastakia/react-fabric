@@ -66,7 +66,22 @@ export interface TitleProps extends ChildrenProp, CssProp, AriaProps {
 }
 
 /**
- * Typography title component
+ * A component that renders a title with customizable styles such as background color, text color, size, alignment, and font family.
+ * It can be rendered as different HTML elements based on the `as` prop.
+ * This component is useful for creating headings or titles in a consistent style across an application.
+ *
+ * @param {TitleProps} props - The properties for the Title component.
+ * @returns {JSX.Element} The rendered Title component.
+ *
+ * @example
+ * ```jsx
+ * <Title as="h1" bg="blue-500" color="white" size="2xl" align="center">
+ *   This is a Title
+ * </Title>
+ * // Renders a title as an h1 element with a blue background, white text color, size of 2xl, and centered alignment.
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-typography--title} for more details.
  */
 export const Title = ({
   children,

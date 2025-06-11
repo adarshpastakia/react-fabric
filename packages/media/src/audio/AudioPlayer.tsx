@@ -97,6 +97,40 @@ export interface AudioPlayerRef {
   playRegion: (start: number) => void;
 }
 
+/**
+ * Audio player component that uses Wavesurfer.js to render audio waveforms.
+ * It supports loading audio files, displaying waveforms, and managing playback.
+ * It also allows for defining regions within the audio for interaction.
+ * It provides a context for managing audio state and actions.
+ * It includes tools for playback control, equalizers, and loading indicators.
+ * It supports user-defined regions for custom interaction.
+ * It provides callbacks for various audio events such as loading, error handling, playback control, and region management.
+ * It allows customization of colors for the waveform and progress indicators.
+ *
+ * @param {AudioProps} props - The properties for the AudioPlayer component.
+ * @returns {JSX.Element} The rendered AudioPlayer component.
+ *
+ * @example
+ * ```jsx
+ * <AudioPlayer
+ *   src="path/to/audio.mp3"
+ *   fallback="path/to/fallback.mp3"
+ *   colors={[["#ff0000", "#00ff00"], ["#0000ff", "#ffff00"]]}
+ *   regions={[{ id: "1", start: 0, end: 10 }, { id: "2", start: 15, end: 20 }]}
+ *   onRegionChange={(regions) => console.log(regions)}
+ *   onLoad={() => console.log("Audio loaded")}
+ *   onError={() => console.error("Error loading audio")}
+ *   onChange={(time) => console.log("Current time:", time)}
+ *   onPlay={() => console.log("Audio playing")}
+ *   onPause={() => console.log("Audio paused")}
+ *   onRegionStart={(id) => console.log("Region started:", id)}
+ *   onRegionEnd={(id) => console.log("Region ended:", id)}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/media-audioplayer--audio-player} for more details on the properties.
+ * @see {@link https://wavesurfer-js.org/} for more details on Wavesurfer.js.
+ */
 export const AudioPlayer = ({
   ref,
   src,

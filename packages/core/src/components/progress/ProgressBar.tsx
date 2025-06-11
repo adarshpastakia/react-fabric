@@ -60,6 +60,26 @@ const SizeMap: KeyValue = {
   xl: "2rem",
 };
 
+/**
+ * A component that displays a progress bar indicating the completion percentage of a task or operation.
+ * The progress bar is styled with a background color and a track that fills based on the value provided.
+ * It can also display a label showing the percentage value.
+ * The label can be customized or hidden based on the props provided.
+ *
+ * @param {ProgressProps} props - The properties for the ProgressBar component.
+ * @returns {JSX.Element} The rendered ProgressBar component.
+ *
+ * @example
+ * ```jsx
+ * <ProgressBar value={0.75} size="md" color="primary-500" label="Loading" animate />
+ * // Renders a progress bar with 75% completion, medium size, primary color, and a label "Loading"
+ *
+ * <ProgressBar value={0.5} size="lg" color="success-500" />
+ * // Renders a progress bar with 50% completion, large size, and success color without a label
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-progress--docs} for more details.
+ */
 export const ProgressBar = ({
   value = 0,
   size,

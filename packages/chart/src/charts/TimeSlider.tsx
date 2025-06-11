@@ -227,7 +227,27 @@ const TimeSliderChart: FC<TimeSliderProps> = memo(
 TimeSliderChart.displayName = "TimeSliderChart";
 
 /**
- * Chart to display time scale data with zoom and brush */
+ * TimeSlider component renders a time slider chart.
+ * It allows users to visualize time-based data and interactively select a range.
+ * The chart supports brushing to select a specific time range,
+ * and it emits an event when the range is changed.
+ *
+ * @param {TimeSliderProps} props - The properties for the TimeSlider component.
+ * @returns {JSX.Element} The rendered TimeSlider component.
+ *
+ * @example
+ * ```jsx
+ * <TimeSlider
+ *   data={data}
+ *   range={{ start: new Date("2023-01-01"), end: new Date("2023-12-31") }}
+ *   onBrush={(range) => console.log("Selected range:", range)}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/charts-timeslider--docs} for more details on the properties.
+ * @see {@link https://echarts.apache.org/en/option.html#dataZoom} for more details on the ECharts dataZoom feature.
+ * @see {@link https://echarts.apache.org/en/option.html#series-line} for more details on the ECharts line series.
+ */
 export const TimeSlider: FC<TimeSliderProps> = (props) => (
   <ChartWrapper>
     <TimeSliderChart {...props} />

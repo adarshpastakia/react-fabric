@@ -44,6 +44,14 @@ import { type SelectProps } from "../types";
 import { Options } from "./Options";
 import { useSelect } from "./useSelect";
 
+/**
+ * Select component for selecting items from a dropdown list.
+ * It supports single and multiple selections, searching, creating new options,
+ * and custom rendering of options.
+ *
+ * @param {SelectProps<T>} props - The properties for the Select component.
+ * @returns {JSX.Element} The rendered Select component.
+ */
 export const Select = <T extends AnyObject = string>({
   ref,
   name,

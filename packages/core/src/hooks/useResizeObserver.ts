@@ -26,6 +26,25 @@ import ResizeObserver from "resize-observer-polyfill";
 import { type SizeObject } from "../types";
 import { useDebounce } from "./useDebounce";
 
+/**
+ * Custom hook to observe size changes of an element using ResizeObserver.
+ * It returns a ref that can be attached to the element you want to observe.
+ * The hook will call the provided `onResize` callback with the new size of the element
+ * whenever it changes.
+ * * This is useful for responsive designs where you need to adjust the layout or styles
+ * based on the size of an element.
+ *
+ * @param onResize Callback function that receives the new size of the element.
+ * @returns A ref object to be attached to the element you want to observe.
+ *
+ * @example
+ * ```jsx
+ * const ref = useResizeObserver((size) => {
+ *   console.log("Element resized:", size);
+ * });
+ * <div ref={ref}>Resize me!</div>
+ * ```
+ */
 export const useResizeObserver = <T extends HTMLElement = HTMLDivElement>(
   onResize?: (size: SizeObject) => void,
 ): RefObject<T | null> => {

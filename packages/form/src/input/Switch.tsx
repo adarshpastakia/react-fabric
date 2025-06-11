@@ -87,6 +87,15 @@ export interface SwitchProps extends RefProp<HTMLInputElement> {
   offLabelColor?: string | ColorType;
 }
 
+/**
+ * Switch input component with custom labels and colors.
+ * This component renders a switch input with optional labels for the "on" and "off" states,
+ * and allows for custom colors for the switch background and labels.
+ * It supports disabled and invalid states, and handles change events.
+ *
+ * @param {SwitchProps} props - The properties for the Switch component.
+ * @returns {JSX.Element} The rendered Switch input component.
+ */
 export const Switch = ({
   ref,
   label,

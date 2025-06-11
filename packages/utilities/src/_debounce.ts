@@ -24,8 +24,14 @@
 /* istanbul ignore file */
 
 /**
- * debounce callback
- * @internal
+ * Debounce function to limit the rate at which a function can fire.
+ * It will delay the execution of the function until after a specified timeout
+ * has elapsed since the last time the function was invoked.
+ *
+ * @param fn - The function to debounce.
+ * @param timeout - The number of milliseconds to wait before invoking the function.
+ * @returns A debounced version of the function that can be called with any arguments.
+ *          The debounced function also has a `cancel` method to clear the timeout.
  */
 export const debounce = (fn: (...rest: any) => any, timeout = 500) => {
   /** ***************** create debounce timer id using callback hash *******************/

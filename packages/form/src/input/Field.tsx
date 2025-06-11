@@ -72,6 +72,11 @@ export interface FieldProps extends ChildrenProp, CssProp {
   vertical?: boolean;
 }
 
+/**
+ * Field component for rendering multiple form fields under a single label.
+ * It supports various properties for customization, including label, info, required state,
+ * and styling options.
+ */
 export const Field = ({
   children,
   vertical,

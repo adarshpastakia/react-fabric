@@ -219,7 +219,32 @@ const DataSeriesChart: FC<DataSeriesProps> = memo(
 DataSeriesChart.displayName = "DataSeriesChart";
 
 /**
- * Chart to display simple data category series
+ * DataSeries component renders a chart for visualizing data series.
+ * It supports various chart types such as column, line, bar, radar, and stacked variants.
+ * It allows users to click on data points to trigger custom actions.
+ *
+ * @param {DataSeriesProps} props - The properties for the DataSeries component.
+ * @returns {JSX.Element} The rendered DataSeries component.
+ *
+ * @example
+ * ```jsx
+ * <DataSeries
+ *   data={[{ id: "1", label: "Series 1", values: [10, 20, 30] }]}
+ *   categories={["Category 1", "Category 2", "Category 3"]}
+ *   categoryAxisName="Categories"
+ *   valueAxisName="Values"
+ *   title="Data Series Example"
+ *   type="column"
+ *   onClick={(data) => console.log("Clicked data:", data)}
+ *   onExport={() => console.log("Exporting chart data")}
+ *   theme="light"
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/charts-dataseries--docs} for more details on the properties.
+ * @see {@link https://echarts.apache.org/en/option.html#series-bar} for ECharts bar series options.
+ * @see {@link https://echarts.apache.org/en/option.html#series-line} for ECharts line series options.
+ * @see {@link https://echarts.apache.org/en/option.html#series-radar} for ECharts radar series options.
  */
 export const DataSeries: FC<DataSeriesProps> = (props) => (
   <ChartWrapper>

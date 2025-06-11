@@ -72,6 +72,13 @@ export interface BadgeProps
     | "end";
 }
 
+/**
+ * Utility function to get badge properties from a badge value or object.
+ * It checks if the badge is an object and returns its properties,
+ *
+ * @param {string | number | BadgeType} badge - The badge value or object.
+ * @returns {AnyObject} An object containing badge properties.
+ */
 export const getBadgeProps = (
   badge?: string | number | BadgeType,
 ): AnyObject => {
@@ -86,6 +93,24 @@ export const getBadgeProps = (
   }
 };
 
+/**
+ * A component that displays a badge with a value, icon, and optional ping animation.
+ * It can be used to indicate notifications, messages, or other important information.
+ * It supports various placements, inline or block display, and custom styling.
+ * It can also wrap children elements, allowing for flexible usage in buttons or other components.
+ *
+ * @param {BadgeProps} props - The properties for the Badge component.
+ * @returns {JSX.Element} The rendered Badge component.
+ *
+ * @example
+ * ```jsx
+ * <Badge value={5} max={10} ping>
+ *   <button>Notifications</button>
+ * </Badge>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-badge--docs} for more details.
+ */
 export const Badge = ({
   ref,
   className,

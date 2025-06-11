@@ -101,6 +101,43 @@ export interface PanelProps
   onClose?: () => void;
 }
 
+/**
+ * A component that represents a panel with a header, body, and optional actions.
+ * It supports expandable and collapsible functionality, loading state, and customizable styles.
+ * The panel can be resized and has a fixed position when expanded.
+ * It can be customized with different colors, icons, and behaviors.
+ * This component is useful for displaying content in a structured way, allowing users to interact with it through actions and toggles.
+ * It can be used in various applications where panels are needed, such as dashboards, settings pages, or content management systems.
+ *
+ * @param {PanelProps} props - The properties for the Panel component.
+ * @returns {JSX.Element} The rendered Panel component.
+ *
+ * @example
+ * ```jsx
+ * <Panel
+ *   title="Panel Title"
+ *   icon={CoreIcons.info}
+ *   iconBg="bg-blue-500"
+ *   iconColor="text-white"
+ *   actions={<button>Action</button>}
+ *   expandable
+ *   collapsable
+ *   onExpand={() => console.log("Expanded")}
+ *   onCollapse={() => console.log("Collapsed")}
+ *   onClose={() => console.log("Closed")}
+ *   height="400px"
+ *   width="300px"
+ *   minHeight="200px"
+ *   minWidth="200px"
+ *   maxHeight="600px"
+ *   maxWidth="600px"
+ * >
+ *   <p>This is the content of the panel.</p>
+ * </Panel>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-panel--docs} for more details.
+ */
 export const Panel = ({
   children,
   className,

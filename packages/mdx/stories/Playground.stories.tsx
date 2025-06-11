@@ -27,7 +27,7 @@ import { fn } from "storybook/test";
 import { MdxEditor } from "../src";
 import md from "./demo.md";
 
-const meta: Meta<typeof MdxEditor> = {
+const meta: Meta = {
   component: MdxEditor,
   title: "@mdx/_Playground_",
   parameters: {

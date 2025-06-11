@@ -25,7 +25,7 @@ import { faker } from "@faker-js/faker";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Histogram } from "../../src";
 
-const meta: Meta<typeof Histogram> = {
+const meta: Meta = {
   component: Histogram,
   title: "@data/Histogram",
   parameters: {

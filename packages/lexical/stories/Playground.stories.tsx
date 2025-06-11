@@ -28,7 +28,7 @@ import { fn } from "storybook/test";
 import { LexicalEditor } from "../src";
 import json from "./demo.json";
 
-const meta: Meta<typeof LexicalEditor> = {
+const meta: Meta = {
   component: LexicalEditor,
   title: "@lexical/_Playground_",
   parameters: {

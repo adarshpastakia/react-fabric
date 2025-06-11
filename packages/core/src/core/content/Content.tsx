@@ -51,7 +51,12 @@ export interface ContentProps
 }
 
 /**
- * Scrollable content element
+ * Content component that wraps children in a section element.
+ * It uses a resize observer to handle resizing and a debounced scroll handler.
+ * It also includes an error boundary to catch any errors in the children.
+ *
+ * @param {ContentProps} props - The properties for the Content component.
+ * @returns A section element containing the children wrapped in an error boundary.
  */
 export const Content = ({
   ref,

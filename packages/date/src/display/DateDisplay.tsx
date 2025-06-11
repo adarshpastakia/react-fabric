@@ -51,6 +51,23 @@ export interface Props
   showAlternateDate?: boolean;
 }
 
+/**
+ * DateDisplay component to display a formatted gregorian or hijri date with optional tooltip and dropdown.
+ * It uses the current calendar and locale from the global context.
+ * It formats the date using the provided format or a default format.
+ * If `showAlternateDate` is true, it shows a tooltip with the formatted date.
+ * If `children` are provided, it wraps the date in a dropdown.
+ *
+ * @param {Object} props - The component props.
+ * @returns {JSX.Element} - The rendered component.
+ *
+ * @example
+ * ```jsx
+ * <DateDisplay date={new Date()} />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/date-date-display--docs}
+ */
 export const DateDisplay = ({
   date,
   className,

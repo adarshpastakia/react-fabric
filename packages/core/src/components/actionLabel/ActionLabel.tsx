@@ -51,8 +51,27 @@ export interface ActionLabelProps
 }
 
 /**
- * A simple label component with additional actions (like a button or icon) that becomes visible only when the user hovers over the label,
- * useful in interfaces where space is limited or where it's important to keep the UI clean and focused
+ * A label with action buttons that can be aligned to the start or end.
+ * This component is useful for displaying a label with associated actions, such as buttons, that can be aligned based on the design requirements.
+ * It automatically calculates the width of the action buttons to ensure that the label text does not overflow the container.
+ * It uses CSS variables to manage the width of the label text dynamically based on the action buttons' width.
+ * This component is designed to be flexible and can be used in various contexts where a label with actions is needed.
+ * It supports custom alignment, disabled states, and can be easily styled with additional CSS classes.
+ *
+ * @param {ActionLabelProps} props - The properties for the ActionLabel component.
+ * @returns {JSX.Element} The rendered ActionLabel component.
+ *
+ * @example
+ * ```jsx
+ * <ActionLabel
+ *   actions={[<Button>Action 1</Button>, <Button>Action 2</Button>]}
+ *   align="end"
+ * >
+ *   Label Text
+ * </ActionLabel>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-action-label--docs} for more details.
  */
 export const ActionLabel = ({
   children,
@@ -62,9 +81,8 @@ export const ActionLabel = ({
   disabled,
   ...rest
 }: ActionLabelProps) => {
-  /**
-   * calculate the width of the action box, width will be used for a delayed transition on hover
-   */
+  // Calculate the width of the action buttons to set a CSS variable
+  // This is used to ensure the label text does not overflow the container
   const calculateBasis = useCallback((el: HTMLElement | null) => {
     if (el) {
       const clone = el.cloneNode(true) as HTMLElement;

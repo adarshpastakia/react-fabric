@@ -44,6 +44,28 @@ export interface AnimationProps extends CssProp, AriaProps {
   strokeColor?: ColorType | PaletteType | string;
 }
 
+/**
+ * A component that displays an animated indicator with a customizable icon type and colors.
+ * It can be used to indicate various states such as success, error, or information.
+ * The component supports different icon types like check, cross, question, and exclamation.
+ * It also allows customization of the icon color and stroke color.
+ *
+ * @param {AnimationProps} props - The properties for the AnimationIndicator component.
+ * @returns {JSX.Element} The rendered AnimationIndicator component.
+ *
+ * @example
+ * ```jsx
+ * <AnimationIndicator
+ *   type="check"
+ *   color="primary-500"
+ *   strokeColor="primary-700"
+ *   className="my-custom-class"
+ *   aria-label="Loading"
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-components-animations--docs} for more details.
+ */
 export const AnimationIndicator = ({
   className,
   color,
@@ -103,6 +125,23 @@ export const AnimationIndicator = ({
   );
 };
 
+/**
+ * A component that displays an animated bars loader.
+ * It can be customized with color and size properties.
+ * This component is typically used to indicate loading states in the UI.
+ *
+ * @param {Object} props - The properties for the AnimationBars component.
+ * @param {ColorType | PaletteType | string} [props.color="tint-500"] - The color of the bars.
+ * @param {number | string} [props.size="2rem"] - The size of the bars.
+ * @returns {JSX.Element} The rendered AnimationBars component.
+ *
+ * @example
+ * ```jsx
+ * <AnimationBars color="primary-500" size="3rem" />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-components-animations--docs} for more details.
+ */
 export const AnimationBars = ({
   color = "tint-500",
   size = "2rem",
@@ -130,6 +169,23 @@ export const AnimationBars = ({
   );
 };
 
+/**
+ * A component that displays a spinner animation.
+ * It can be customized with color and size properties.
+ * This component is typically used to indicate loading states in the UI.
+ *
+ * @param {Object} props - The properties for the AnimationSpinner component.
+ * @param {ColorType | PaletteType | string} [props.color="tint-700"] - The color of the spinner.
+ * @param {number | string} [props.size="2rem"] - The size of the spinner.
+ * @returns {JSX.Element} The rendered AnimationSpinner component.
+ *
+ * @example
+ * ```jsx
+ * <AnimationSpinner color="primary-500" size="3rem" />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-components-animations--docs} for more details.
+ */
 export const AnimationSpinner = ({
   color = "tint-700",
   size = "2rem",
@@ -158,20 +214,23 @@ export const AnimationSpinner = ({
   );
 };
 
-export const Loading = () => {
-  return (
-    <div
-      className={classNames(
-        "fabric-loader",
-        "area-[loader] relative overflow-x-clip",
-      )}
-      data-ref="loading"
-    >
-      <div className="absolute z-10 py-px inset-x-0 top-0 after:h-0.5 after:block after:bg-primary-500" />
-    </div>
-  );
-};
-
+/**
+ * A component that displays a skeleton loader with a placeholder for content.
+ * It can be customized with color and size properties.
+ * This component is typically used to indicate loading states in the cards, panels and virtual lists,
+ * providing a visual placeholder for content that is being loaded.
+ *
+ * @param {CssProp} props - The properties for the Skeleton component.
+ * @returns {JSX.Element} The rendered Skeleton component.
+ *
+ * @example
+ * ```jsx
+ * <Skeleton className="my-skeleton" />
+ * * // Renders a skeleton loader with a placeholder for content.
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-components-animations--docs} for more details.
+ */
 export const Skeleton = ({ className, ...rest }: CssProp) => {
   return (
     <div
@@ -191,6 +250,26 @@ export const Skeleton = ({ className, ...rest }: CssProp) => {
           <div className="bg-tint-100 h-2 rounded-full basis-[60%]" />
         </div>
       </div>
+    </div>
+  );
+};
+
+/**
+ * A component that displays a loading animation with a top border.
+ * It is typically used to indicate that content is being loaded in pages and page sections.
+ *
+ * @returns {JSX.Element} The rendered Loading component.
+ */
+export const Loading = () => {
+  return (
+    <div
+      className={classNames(
+        "fabric-loader",
+        "area-[loader] relative overflow-x-clip",
+      )}
+      data-ref="loading"
+    >
+      <div className="absolute z-10 py-px inset-x-0 top-0 after:h-0.5 after:block after:bg-primary-500" />
     </div>
   );
 };

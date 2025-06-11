@@ -88,7 +88,32 @@ const SizeMap: KeyValue<string> = {
 };
 
 /**
- * An avatar is a graphical representation of a user's identity.
+ * A component that displays an avatar image or a fallback icon with customizable styles and properties.
+ * It supports various avatar types, including text-based avatars, and allows for customization of background color, icon color, size, and rounded corners.
+ * This component is useful for displaying user avatars in applications, providing a visual representation of users or entities.
+ * It can also handle cases where the avatar image fails to load by displaying a fallback icon or text.
+ * It uses the Boring Avatars library for generating fallback avatars based on the user's name.
+ *
+ * @param {AvatarProps} props - The properties for the Avatar component.
+ * @returns {JSX.Element} The rendered Avatar component.
+ *
+ * @example
+ * ```jsx
+ * <Avatar
+ *   name="John Doe"
+ *   avatar="https://example.com/avatar.jpg"
+ *   fallbackIcon="fas fa-user"
+ *   bg="bg-blue-500"
+ *   color="text-white"
+ *   size="md"
+ *   rounded
+ *   variant="beam"
+ *   onClick={() => console.log("Avatar clicked")}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-components-avatar--docs} for more details.
+ * @see {@link https://boringavatars.com/} for more information on Boring Avatars.
  */
 export const Avatar = ({
   ref,
@@ -107,7 +132,8 @@ export const Avatar = ({
 }: AvatarProps) => {
   const [fallback, setFallback] = useState(true);
 
-  /** ***************** style map *******************/
+  // Memoize styles to avoid unnecessary recalculations
+  // and to ensure styles are only recalculated when dependencies change
   const styles = useMemo(() => {
     const s: KeyValue = {};
     if (bg) {
@@ -125,7 +151,8 @@ export const Avatar = ({
     return s;
   }, [bg, color, size]);
 
-  /** ***************** render icon *******************/
+  // avatar image
+  // if avatar is not provided, fallback to icon or text
   const avatarImage = useMemo(() => {
     setFallback(!avatar);
     return (
@@ -149,6 +176,7 @@ export const Avatar = ({
     );
   }, [avatar]);
 
+  // render fallback icon or text
   const fallbackAvatar = useMemo(() => {
     if (fallbackIcon) {
       return isSvgPath(fallbackIcon) ? (
@@ -178,6 +206,7 @@ export const Avatar = ({
         </svg>
       );
     }
+    // Fallback to BoringAvatar
     return <BoringAvatar square size={64} variant={variant} name={name} />;
   }, [name, variant, fallbackIcon]);
 

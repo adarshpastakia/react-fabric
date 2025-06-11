@@ -25,6 +25,18 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLayoutEffectDebugger } from "./useEffectDebugger";
 
+/**
+ * Custom hook to determine if the current locale is RTL (Right-to-Left).
+ * It uses the i18n instance from react-i18next to check the direction.
+ *
+ * @returns {boolean} - Returns true if the current locale is RTL, false otherwise.
+ *
+ * @example
+ * ```jsx
+ * const isRtl = useIsRtl();
+ * // This will return true if the current locale is RTL, false otherwise.
+ * ```
+ */
 export const useIsRtl = () => {
   const { i18n } = useTranslation("core");
   const [isRtl, setIsRtl] = useState(false);

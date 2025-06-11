@@ -198,7 +198,15 @@ const logger = () => {
 };
 
 /**
- * @internal
+ * useLogger is a custom hook that provides logging functionality.
+ * It allows you to log messages with different levels (log, debug, info, error, warning)
+ * and also provides a timer function to measure the duration of processes.
+ * The logs can include additional details such as the module name, process name, duration, and total time.
+ * It is designed to work in both Node.js and browser environments, adapting the log format accordingly.
+ * It uses ANSI escape codes for terminal colors in Node.js and CSS styles for console logs in the browser.
+ *
+ * @param mod - Optional module name to include in the log details.
+ * @returns An object with methods for logging messages and a timer function.
  */
 export const useLogger = (mod?: string) => ({
   timer(process: string) {

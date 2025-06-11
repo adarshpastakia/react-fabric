@@ -57,6 +57,25 @@ const makeRange = (start: number, end: number) => {
   return Array.from({ length }, (_: AnyObject, idx: number) => idx + start);
 };
 
+/**
+ * Custom hook to manage pagination state and logic.
+ * It calculates the total number of pages, generates page ranges,
+ * and provides a way to change the current page.
+ * It also handles the transition of page changes to optimize performance.
+ *
+ * @param options - The pagination options including total records, current page, records per page, and change handler.
+ * @returns An object containing the current page, total pages, head label, ranges for pagination pills, and a function to change the page.
+ *
+ * @example
+ * ```jsx
+ * const { page, totalPages, headLabel, ranges, onPageChange } = usePagination({
+ *   totalRecords: 100,
+ *   currentPage: 0,
+ *   perPage: 10,
+ *   onChange: (newPage) => console.log("Page changed to:", newPage),
+ * });
+ * ```
+ */
 export const usePagination = ({
   totalRecords,
   currentPage = 0,

@@ -92,6 +92,26 @@ const SizeMap: KeyValue<string> = {
   xl: "2rem",
 };
 
+/**
+ * A component that represents a small block of information, often used for tags, categories, or actions.
+ * It allows customization of size, color, variant, and includes optional icon and remove functionality.
+ * It supports various properties for styling and interaction, including click handlers and disabled state.
+ * It can be used in various contexts, such as filtering options, displaying tags, or representing user actions.
+ * It can be styled with custom CSS classes and supports features like rounded edges and click handling.
+ * It can also include an icon and a remove button, making it versatile for different use cases.
+ *
+ * @param {ChipProps} props - The properties for the Chip component.
+ * @returns {JSX.Element} The rendered Chip component.
+ *
+ * @example
+ * ```jsx
+ * <Chip color="primary" size="md" className="my-chip">
+ *   Example Chip
+ * </Chip>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-chip--docs} for more details.
+ */
 export const Chip = <Tag extends React.ElementType = "div">({
   ref,
   children,

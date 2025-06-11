@@ -60,7 +60,26 @@ export interface MarkProps extends ChildProp<string> {
 }
 
 /**
- * Typography mark component to wrap text parts in `mark`
+ * A component that highlights specific text parts with a mark element, allowing for custom rendering and color.
+ * It tokenizes the children string based on the provided `mark` array,
+ * which contains pairs of text parts and their corresponding colors.
+ * The component can use a custom renderer to display the marked text,
+ * allowing for greater flexibility in how the text is presented.
+ *
+ * @param {MarkProps} props - The properties for the Mark component.
+ * @returns {JSX.Element} The rendered Mark component.
+ *
+ * @example
+ * <Mark
+ *   mark={[
+ *     ["important", "red"],
+ *     ["note", "blue"],
+ *   ]}
+ * >
+ *   This is an important note that should be highlighted.
+ * </Mark>
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-typography--mark} for more details.
  */
 export const Mark = ({ children, mark, renderer }: MarkProps) => {
   /** ***************** abbr text renderer *******************/

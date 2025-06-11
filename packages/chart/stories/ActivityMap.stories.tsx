@@ -27,7 +27,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useCallback, useEffect, useState } from "react";
 import { ActivityMap } from "../src";
 
-const meta: Meta<typeof ActivityMap> = {
+const meta: Meta = {
   component: ActivityMap,
   title: "@charts/ActivityMap",
   parameters: {

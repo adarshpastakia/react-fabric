@@ -92,6 +92,35 @@ const makeYupField = (field: SchemaDef) => {
   return yupField.label(field.label);
 };
 
+/**
+ * useFormBuilder hook to create a form definition based on a schema.
+ * It generates a Yup validation schema and a form definition component.
+ *
+ * @param {FormSchema} schema - The schema defining the form fields.
+ * @param {Object} options - Optional parameters for the form builder.
+ * @returns An object containing the form definition and the Yup validation schema.
+ *
+ * @example
+ * ```jsx
+ * const { formDef, schemaDef } = useFormBuilder(schema, {
+ *   prefix: "form",
+ *   inline: true,
+ *   fileUrl: (path) => `/files/${path}`,
+ *   uploadHandler: async (file) => {
+ *    // handle file upload
+ *   },
+ *  optionLists: {
+ *    // define option lists for select fields
+ *  }
+ * * });
+ * <FormBuilder
+ *   schema={schemaDef}
+ *   onSubmit={(data) => console.log(data)}
+ * >
+ *   {formDef}
+ * </FormBuilder>
+ * ```
+ */
 export const useFormBuilder = <T extends AnyObject = string>(
   schema: FormSchema,
   options: {

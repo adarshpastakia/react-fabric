@@ -79,6 +79,37 @@ export interface FormProps<K extends KeyValue = KeyValue> {
 
 const DEFAULT_SUBMIT = () => undefined;
 
+/**
+ * Form component for managing form state and validation using react-hook-form and yup.
+ * It provides a simple interface for form handling, including submission, validation, and value management.
+ * It supports nested form structures and allows for custom validation schemas using Yup.
+ *
+ * @param {FormProps<K>} props - The properties for the Form component.
+ * @returns {JSX.Element} The rendered Form component.
+ *
+ * @example
+ * ```jsx
+ * <Form
+ *   formRef={formRef}
+ *   schema={yup.object().shape({
+ *     name: yup.string().required("Name is required"),
+ *     email: yup.string().email("Invalid email").required("Email is required"),
+ *   })}
+ *   defaultValues={{ name: "", email: "" }}
+ *   onSubmit={(values) => {
+ *     console.log("Form submitted with values:", values);
+ *   }}
+ * >
+ *   <input name="name" ref={form.register} placeholder="Name" />
+ *   <input name="email" ref={form.register} placeholder="Email" />
+ *   <button type="submit">Submit</button>
+ * </Form>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/form-form--docs} for the properties that can be passed to this component.
+ * @see {@link https://react-hook-form.com/docs/useform} for more details on the properties.
+ * @see {@link https://github.com/jquense/yup} for more details on the Yup validation schema.
+ */
 export const Form = <K extends KeyValue>({
   formRef,
   schema,

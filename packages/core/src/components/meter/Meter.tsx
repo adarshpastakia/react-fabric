@@ -37,6 +37,30 @@ export interface MeterProps extends CssProp, AriaProps, TestProps {
   hideLabel?: boolean;
 }
 
+/**
+ * A component that displays a visual representation of a value as a series of dots.
+ * It is useful for showing progress or completion status in a compact form.
+ * The meter consists of 6 dots, each representing approximately 16.67% of the total value.
+ * The active dots are filled based on the value provided, and the remaining dots are empty.
+ * The component can also display a label showing the percentage value.
+ *
+ * @param {MeterProps} props - The properties for the Meter component.
+ * @returns {JSX.Element} The rendered Meter component.
+ *
+ * @example
+ * ```jsx
+ * <Meter value={75} />
+ * // Renders a meter with 4 active dots and a label showing "75%"
+ *
+ * <Meter value={50} hideLabel />
+ * // Renders a meter with 3 active dots and no label
+ *
+ * <Meter value={100} className="custom-meter" />
+ * // Renders a meter with all 6 active dots and a custom class name
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-meter--docs} for more details.
+ */
 export const Meter = ({ value, hideLabel, className, ...aria }: MeterProps) => {
   /** ***************** calculate active meter dots *******************/
   const activeCount = useMemoDebugger(

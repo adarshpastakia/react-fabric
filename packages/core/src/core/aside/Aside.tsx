@@ -105,7 +105,44 @@ export interface AsideProps
 }
 
 /**
- * Side panel
+ * A sidebar component that can be collapsed, resized, and has a flyout feature.
+ * It supports a title, icon, actions, and loading state.
+ * It can be aligned to the start or end of the page.
+ *
+ * @param {AsideProps} props - The properties for the Aside component.
+ * @returns {JSX.Element} The rendered Aside component.
+ *
+ * @example
+ * ```jsx
+ * <Aside
+ *   title="Sidebar Title"
+ *   icon={CoreIcons.menu}
+ *   iconBg="bg-gray-200"
+ *   iconColor="text-gray-800"
+ *   rtlFlip={true}
+ *   className="custom-aside"
+ *   bodyClassName="custom-aside-body"
+ *   headerClassName="custom-aside-header"
+ *   resizeable={true}
+ *   flyout={true}
+ *   onFlyout={() => console.log("Flyout triggered")}
+ *   collapsed={false}
+ *   collapsable={true}
+ *   onCollapse={() => console.log("Collapsed toggled")}
+ *   actions={<button>Action</button>}
+ *   loading={false}
+ *   align="start"
+ *   width="20rem"
+ *   minWidth="2rem"
+ *   maxWidth="30vw"
+ *   data-testid="aside-test"
+ *   data-test-value="aside-value"
+ * >
+ *   <Content>This is the content of the aside.</Content>
+ * </Aside>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-application--aside} for more details.
  */
 export const Aside = ({
   children,

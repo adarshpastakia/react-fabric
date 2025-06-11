@@ -71,6 +71,32 @@ export interface ButtonGroupProps
   fullWidth?: boolean;
 }
 
+/**
+ * A component that groups buttons together, allowing for consistent styling and behavior across multiple buttons.
+ * It supports vertical orientation, various button styles, and can handle properties like size, color, and disabled state.
+ * This component is useful for creating button groups that maintain a uniform appearance and functionality,
+ * such as toolbars, action groups, or navigation buttons.
+ *
+ * @param {ButtonGroupProps} props - The properties for the ButtonGroup component.
+ * @returns {JSX.Element} The rendered ButtonGroup component.
+ *
+ * @example
+ * ```jsx
+ * <ButtonGroup
+ *   variant="solid"
+ *   color="primary"
+ *   className="my-custom-class"
+ *   aria-label="Button Group"
+ *   vertical
+ * >
+ *   <Button>Button 1</Button>
+ *   <Button>Button 2</Button>
+ *   <Button>Button 3</Button>
+ * </ButtonGroup>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-buttongroup--docs} for more details.
+ */
 export const ButtonGroup = ({
   vertical,
   className,

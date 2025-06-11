@@ -42,7 +42,7 @@ import classNames from "classnames";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { VirtualList, VirtualListRef } from "../src";
 
-const meta: Meta<typeof VirtualList> = {
+const meta: Meta = {
   component: VirtualList,
   title: "@data/Virtual/List",
   parameters: {

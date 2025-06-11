@@ -27,7 +27,7 @@ import { DrawCanvas } from "../src";
 import { Viewport } from "@react-fabric/core";
 import snapshot from "./snapshot.json";
 
-const meta: Meta<typeof DrawCanvas> = {
+const meta: Meta = {
   component: DrawCanvas,
   title: "@draw/_Playground_",
   parameters: {

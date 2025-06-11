@@ -81,6 +81,15 @@ interface CheckboxProps extends RefProp<HTMLInputElement> {
   name?: string;
 }
 
+/**
+ * Checkbox component for rendering a checkbox input with label and error handling.
+ * It supports custom icons for checked and unchecked states, and handles disabled and invalid states.
+ * The component uses a deferred value to manage the checked state, ensuring smooth updates.
+ * It also provides an error icon to indicate validation errors.
+ *
+ * @param {CheckboxProps} props - The properties for the Checkbox component.
+ * @returns {JSX.Element} The rendered Checkbox component.
+ */
 export const Checkbox = ({
   ref,
   label,

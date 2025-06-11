@@ -27,7 +27,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useCallback, useEffect, useState } from "react";
 import { WordBubble } from "../src";
 
-const meta: Meta<typeof WordBubble> = {
+const meta: Meta = {
   component: WordBubble,
   title: "@charts/WordBubble",
   parameters: {

@@ -38,6 +38,47 @@ import { useTree } from "./useTree";
 
 // TODO: implement keyboard handler for navigating tree
 
+/**
+ * TreePanel component renders a virtualized tree structure with support for
+ * selection, expansion, and filtering. It allows for custom rendering of tree
+ * nodes and supports checkable nodes.
+ *
+ * @param {TreePanelProps<T>} props - The properties for the TreePanel component.
+ * @returns {JSX.Element} The rendered TreePanel component.
+ * @template T - The type of items in the tree, extending KeyValue.
+ *
+ * @example
+ * ```jsx
+ * <TreePanel
+ *   items={items}
+ *   selected={selectedItem}
+ *   checked={checkedItems}
+ *   checkable={true}
+ *   renderer={(item) => <span>{item.name}</span>}
+ *   searchable={true}
+ *   selectable={true}
+ *   matcher={(item, query) => item.name.toLowerCase().includes(query.toLowerCase())}
+ *   filterPlaceholder="Search..."
+ *   defaultLeafIcon={<Icon icon={CoreIcons.file} />}
+ *   defaultNodeIcon={<Icon icon={CoreIcons.folder} />}
+ *   expander="caret"
+ *   onChecked={(checkedItems) => console.log(checkedItems)}
+ *   onLoad={(id) => console.log(`Load children for ${id}`)}
+ *   onQuery={(query) => console.log(`Query: ${query}`)}
+ *   onSelect={(selectedItem) => console.log(selectedItem)}
+ *   onClick={(item) => console.log(`Clicked on ${item.id}`)}
+ *   sorter={(a, b) => a.label.localeCompare(b.label)}
+ *   makeLabel={(item) => item.name}
+ *   makeIcon={(item) => item.icon ? <Icon icon={item.icon} /> : null}
+ *   defaultExpanded={["root"]}
+ *   onExpandToggle={(id, expanded) => console.log(`Toggle expand for ${id}: ${expanded}`)}
+ *   leafClassName="leaf-node"
+ *   nodeClassName="tree-node"
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/data-treepanel--docs}
+ */
 export const TreePanel = <T extends KeyValue>({
   ref,
   items,

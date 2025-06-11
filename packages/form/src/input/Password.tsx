@@ -47,6 +47,12 @@ export interface PasswordProps extends InputProps, RefProp<HTMLInputElement> {
   strength?: number;
 }
 
+/**
+ * Password input component with optional strength meter and toggle visibility.
+ *
+ * @param {PasswordProps} props - The properties for the Password component.
+ * @returns {JSX.Element} The rendered Password input component.
+ */
 export const Password = ({
   ref,
   value,

@@ -84,6 +84,39 @@ export interface TabPanelProps extends ChildrenProp<typeof Tab> {
 
 // TODO: implement append/prepend tab-bar items
 
+/**
+ * A component that provides a tabbed interface for displaying content.
+ * It allows users to switch between different tabs, each containing its own content.
+ * It supports various orientations, justify options, and variants for the tab header.
+ * It also provides hooks for handling tab changes before and after they occur.
+ * This component is useful for organizing content into separate sections that can be easily navigated by the user.
+ * It can be customized with different styles and behaviors to fit the needs of the application.
+ *
+ * @param {TabPanelProps} props - The properties for the TabPanel component.
+ * @returns {JSX.Element} The rendered TabPanel component.
+ *
+ * @example
+ * ```jsx
+ * <TabPanel
+ *   orientation="top"
+ *   activeTab="tab1"
+ *   justify="start"
+ *   variant="solid"
+ *   tabFlex={true}
+ *   onBeforeChange={(nextTab, currentTab) => {
+ *     console.log(`Switching from ${currentTab} to ${nextTab}`);
+ *     return true; // or false to prevent change
+ *   }}
+ *   onChange={(id) => console.log(`Active tab changed to: ${id}`)}
+ * >
+ *   <Tab id="tab1" label="Tab 1">Content for Tab 1</Tab>
+ *   <Tab id="tab2" label="Tab 2">Content for Tab 2</Tab>
+ *   <Tab id="tab3" label="Tab 3">Content for Tab 3</Tab>
+ * </TabPanel>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-tabpanel--docs} for more details.
+ */
 export const TabPanel = ({
   children,
   headerClassName,

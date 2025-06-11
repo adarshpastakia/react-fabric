@@ -24,6 +24,18 @@
 import { useDeferredValue, useState } from "react";
 import { useEffectDebugger } from "./useEffectDebugger";
 
+/**
+ * Custom hook to manage a controlled value with a default fallback for inputs.
+ * It updates the current value whenever the deferred value changes.
+ * This is useful for scenarios where you want to control the value of a component
+ * while also providing a default value if the controlled value is not set.
+ * This hook is particularly useful for form inputs or components that require a controlled value
+ * but also need to handle cases where the value might not be immediately available.
+ *
+ * @param value - The controlled value that may change.
+ * @param defaultValue - The default value to use if the controlled value is not set.
+ * @returns An object containing the current value and a function to update it.
+ */
 export const useControlledValue = <T extends AnyObject = string>(
   value: T,
   defaultValue: T,

@@ -28,6 +28,36 @@ import { Tools } from "./Tools";
 import { Video } from "./Video";
 import { type VideoProps } from "./types";
 
+/**
+ * Video player component that provides a video player with tools for annotations, markers, and zoom functionality.
+ * It also supports NSFW overlays and video poster images.
+ *
+ * It includes features such as:
+ * - Video playback with support for subtitles (VTT)
+ * - Annotation tools for adding text to specific timestamps in the video
+ * - Marker support for displaying marker bars on timebar at specific timestamps in the video
+ * - NSFW overlay for content that may not be suitable for all audiences
+ * - Zoom functionality to enhance video viewing experience
+ *
+ * @param {VideoProps} props - The properties for the video player.
+ * @returns {JSX.Element} The rendered video player component.
+ *
+ * @example
+ * ```jsx
+ * <VideoPlayer
+ *   src="https://example.com/video.mp4"
+ *   poster="https://example.com/poster.jpg"
+ *   vttText="https://example.com/subtitles.vtt"
+ *   nsfw={true}
+ *   markers={[{ time: 10, label: "Marker 1" }, { time: 20, label: "Marker 2" }]}
+ *   annotations={[{ start: 5, end: 15, text: "Annotation 1" }]}
+ *   onAnnotationChange={(annotations) => console.log(annotations)}
+ *   onCut={(start, end) => console.log(`Cut from ${start} to ${end}`)}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/media-videoplayer--video-player} for more details on the properties.
+ */
 export const VideoPlayer = ({
   nsfw,
   poster,

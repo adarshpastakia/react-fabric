@@ -28,7 +28,7 @@ import { fn } from "storybook/test";
 import { VideoPlayer } from "../src";
 import src from "/assets/samples/small_video.mp4";
 
-const meta: Meta<typeof VideoPlayer> = {
+const meta: Meta = {
   component: VideoPlayer,
   title: "@media/VideoPlayer",
   parameters: {

@@ -23,6 +23,18 @@
 
 import { useMemo, useRef } from "react";
 
+/**
+ * Custom hook to debounce a function.
+ * This hook delays the processing of the function until after a specified delay period
+ * has elapsed since the last time the function was invoked. This is useful for optimizing
+ * performance in scenarios where a function may be called frequently, such as during
+ * user input or window resizing events.
+ *
+ * @param callback - The function to debounce.
+ * @param deps - The dependency array for the hook.
+ * @param delay - The debounce delay in milliseconds.
+ * @returns A debounced version of the callback function.
+ */
 export const useDebounce = (
   callback: undefined | ((...rest: AnyObject) => AnyObject),
   deps: AnyObject[],

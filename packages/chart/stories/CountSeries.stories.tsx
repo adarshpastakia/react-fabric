@@ -27,7 +27,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useCallback, useEffect, useState } from "react";
 import { CountSeries } from "../src";
 
-const meta: Meta<typeof CountSeries> = {
+const meta: Meta = {
   component: CountSeries,
   title: "@charts/CountSeries",
   parameters: {

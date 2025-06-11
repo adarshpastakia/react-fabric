@@ -34,7 +34,7 @@ import { Countries, matchString } from "@react-fabric/utilities";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useFilteredList, VirtualList } from "../../src";
 
-const meta: Meta<typeof useFilteredList> = {
+const meta: Meta = {
   title: "@data/useFilteredList",
   parameters: {
     layout: "fullscreen",

@@ -92,6 +92,37 @@ export interface TabProps
   onClick?: (id: string) => CallbackReturn;
 }
 
+/**
+ * A component that represents a tab in a tabbed interface. It can display an icon, label, badge, and actions.
+ * It supports polymorphic rendering, allowing it to be rendered as different HTML elements.
+ * It also supports tooltips, active states, and click handling.
+ *
+ * @param {TabProps} props - The properties for the Tab component.
+ * @returns {JSX.Element} The rendered Tab component.
+ *
+ * @example
+ * ```jsx
+ * <Tab
+ *   id="tab1"
+ *   label="Tab 1"
+ *   icon="home"
+ *   iconBg="bg-blue-500"
+ *   iconColor="text-white"
+ *   badge="New"
+ *   onClick={(id) => console.log(`Tab clicked: ${id}`)}
+ *   onClose={() => console.log("Tab closed")}
+ *   active={true}
+ *   actions={<button>Action</button>}
+ *   color="primary"
+ *   tooltip="This is a tab"
+ *   activeClassName="bg-blue-100"
+ * />
+ * // Renders a tab with label "Tab 1", home icon, blue background, white text, badge "New",
+ * // and an action button. The tab is active and has a tooltip.
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-tabpanel--docs} for more details.
+ */
 export const Tab = <Tag extends React.ElementType = "button">({
   ref,
   as,

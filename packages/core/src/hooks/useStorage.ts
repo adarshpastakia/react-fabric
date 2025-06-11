@@ -25,6 +25,24 @@ import { useState } from "react";
 import { useClientService } from "./useClientService";
 import { useEffectDebugger } from "./useEffectDebugger";
 
+/**
+ * Custom hook to manage local storage state.
+ * This hook allows you to store and retrieve values from the browser's local storage,
+ * and provides a way to update the stored value while keeping the state in sync with local storage.
+ * It initializes the state with the value from local storage if it exists, or uses a default value if it does not.
+ * The hook returns a tuple containing the current value and a function to update the value.
+ * This is useful for persisting user preferences or application state across page reloads.
+ *
+ * @param key - The key under which the value is stored in local storage.
+ * @param defaultValue - The default value to use if the key does not exist in local storage.
+ * @returns A tuple containing the current value and a function to update the value.
+ *
+ * @example
+ * ```jsx
+ * const [settings, setSettings] = useLocalStorage("userSettings", { theme: "light" });
+ * // This will initialize the settings state from local storage or use the default value.
+ * ```
+ */
 export const useLocalStorage = <T>(
   key: string,
   defaultValue: T,
@@ -50,6 +68,26 @@ export const useLocalStorage = <T>(
   return [value, changeValue];
 };
 
+/**
+ * Custom hook to manage session storage state.
+ * This hook allows you to store and retrieve values from the browser's session storage,
+ * and provides a way to update the stored value while keeping the state in sync with session storage.
+ * It initializes the state with the value from session storage if it exists, or uses a default value if it does not.
+ * The hook returns a tuple containing the current value and a function to update the value.
+ * This is useful for persisting user preferences or application state during a single session,
+ * such as form data or temporary settings that should not persist across page reloads.
+ * This hook is similar to `useLocalStorage`, but it uses session storage instead of local storage.
+ *
+ * @param key - The key under which the value is stored in session storage.
+ * @param defaultValue - The default value to use if the key does not exist in session storage.
+ * @returns A tuple containing the current value and a function to update the value.
+ *
+ * @example
+ * ```jsx
+ * const [user, setUser] = useSessionStorage("user", { name: "", age: 0 });
+ * // This will initialize the user state from session storage or use the default value.
+ * ```
+ */
 export const useSessionStorage = <T>(
   key: string,
   defaultValue: T,

@@ -88,7 +88,34 @@ export interface AbbrProps extends ChildProp<string>, CssProp {
 }
 
 /**
- * Typography abbr component to wrap text parts in `abbr` with tooltip
+ * A component that renders abbreviated text with tooltips for additional information.
+ * It allows you to define a list of abbreviations, each with a tooltip and optional color.
+ * The component will tokenize the children text and replace matching parts with the abbreviated version.
+ * It supports a copy action that can either copy the text or the tooltip content.
+ * This component is useful for displaying technical terms or acronyms in a user-friendly way,
+ * while providing additional context through tooltips.
+ *
+ * @param {AbbrProps} props - The properties for the Abbr component.
+ * @returns {JSX.Element} The rendered Abbr component.
+ *
+ * @example
+ * ```jsx
+ * <Abbr
+ * abbr={[
+ *   ["HTML", "HyperText Markup Language", "primary"],
+ *   ["CSS", "Cascading Style Sheets", "secondary"],
+ *   ["JS", "JavaScript", "success"],
+ * ]}
+ * className="text-sm"
+ * copyContent="tooltip"
+ * >
+ *   Learn more about HTML, CSS, and JS.
+ * </Abbr>
+ * // Renders the text with abbreviations for HTML, CSS, and JS,
+ * // each with a tooltip showing the full form and colored according to the specified color.
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-typography--abbr} for more details.
  */
 export const Abbr = ({
   children,

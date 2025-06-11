@@ -48,6 +48,31 @@ const scheme = {
   dark: "dark",
 };
 
+/**
+ * A cover component for cards that can contain media and content.
+ * It allows for flexible layout options and supports different color schemes.
+ * It can be used to create visually appealing card layouts with media content.
+ *
+ * @param {CardCoverProps} props - The properties for the CardCover component.
+ * @returns {JSX.Element} The rendered CardCover component.
+ *
+ * @example
+ * ```jsx
+ * <CardCover
+ *   height={200}
+ *   colorScheme="light"
+ *   justify="center"
+ *   className="my-custom-class"
+ *   aria-label="Card Cover"
+ * >
+ *   <Image src="image.jpg" alt="Card Image" />
+ *   <div>Card Content</div>
+ * </CardCover>
+ * // Renders a card cover with a height of 200px, light color scheme, centered content, and a custom class name.
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-components-card--docs} for more details.
+ */
 export const CardCover = ({
   className,
   children,

@@ -46,6 +46,34 @@ export interface DictationProps
   ref?: RefObject<{ start: () => void; stop: () => void }>;
 }
 
+/**
+ * Dictation component for recording audio using the microphone.
+ * It uses WaveSurfer.js for audio visualization and recording.
+ * The component provides a button to start and stop recording,
+ * and displays the recording progress.
+ * It also supports a hotkey to start/stop recording.
+ *
+ * @param {DictationProps} props - The properties for the Dictation component.
+ * @returns {JSX.Element} The rendered Dictation component.
+ *
+ * @example
+ * ```jsx
+ * <Dictation
+ *   hotkey="alt+t"
+ *   size="md"
+ *   icon={CoreIcons.mic}
+ *   iconBg="bg-blue-500"
+ *   iconColor="text-white"
+ *   variant="solid"
+ *   onRecord={(blob) => {
+ *     // Handle the recorded audio blob
+ *     console.log("Recorded audio blob:", blob);
+ *   }}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/media-dictation--dictation} for more details on the properties.
+ */
 export const Dictation = ({
   ref,
   hotkey = "alt+t",

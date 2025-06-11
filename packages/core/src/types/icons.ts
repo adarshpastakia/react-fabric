@@ -24,7 +24,11 @@
 /* istanbul ignore file */
 /* eslint-disable @typescript-eslint/no-namespace */
 
-export module CoreIcons {
+/**
+ * Core icons used in the application.
+ * These icons are typically used for navigation, actions, and other UI elements.
+ */
+export namespace CoreIcons {
   /**
    * carets
    */

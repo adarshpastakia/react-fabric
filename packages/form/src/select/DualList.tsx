@@ -83,6 +83,17 @@ export interface DualListProps<T>
   onChange?: (value?: string[]) => void;
 }
 
+/**
+ * DualList component allows users to select items from two lists.
+ * It displays two lists side by side, one for unselected items and one for selected items.
+ * Users can move items between the lists using buttons or drag-and-drop functionality.
+ * It supports multiple selections and provides options for grouping, labeling, and rendering items.
+ * It also includes features for handling empty states and custom rendering of items.
+ * This component is useful for scenarios where users need to manage selections from a larger set of options, such as in forms or settings.
+ *
+ * @param {DualListProps<T>} props - The properties for the DualList component.
+ * @returns {JSX.Element} The rendered DualList component.
+ */
 export const DualList = <T extends AnyObject = string>({
   ref,
   value,

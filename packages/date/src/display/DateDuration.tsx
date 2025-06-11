@@ -52,6 +52,22 @@ export interface Props
   format?: string;
 }
 
+/**
+ * DateDuration component to display the duration from a given date to now.
+ * It calculates the difference in years, months, weeks, days, hours, minutes, and seconds,
+ * and displays it in a human-readable format.
+ * It uses the current locale for translations.
+ *
+ * @param {Props} props - The properties for the component.
+ * @returns {JSX.Element} The rendered component.
+ *
+ * @example
+ * ```jsx
+ * <DateDuration date={new Date("2020-01-01")} />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/date-date-display--docs}
+ */
 export const DateDuration = ({
   date,
   children,

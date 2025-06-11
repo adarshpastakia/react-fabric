@@ -149,6 +149,28 @@ const CheckItem: FC<
   );
 };
 
+/**
+ * CheckList component to display a list of selectable items with checkboxes.
+ * It supports selection, deselection, and allows for negative selections.
+ *
+ * @param {CheckListProps} props - The properties for the CheckList component.
+ * @returns {JSX.Element} The rendered CheckList component.
+ *
+ * @example
+ * ```jsx
+ * <CheckList
+ *   items={[
+ *     { id: "1", label: "Item 1", icon: "icon1" },
+ *     { id: "2", label: "Item 2", icon: "icon2", badge: { text: "New" } },
+ *   ]}
+ *   maxCount={5}
+ *   allowNegative={true}
+ *   emptyMessage="No items available"
+ *   onChange={(selectedItems) => console.log(selectedItems)}
+ *   onClick={(itemId, isNegative) => console.log(itemId, isNegative)}
+ * />
+ * ```
+ */
 export const CheckList: FC<CheckListProps> = ({
   items = [],
   maxCount = 0,

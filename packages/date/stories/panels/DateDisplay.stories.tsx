@@ -25,7 +25,7 @@ import { Col, Menu, MenuItem, Row } from "@react-fabric/core";
 import type { Meta, StoryObj } from "@storybook/react";
 import { DateDisplay, DateDuration } from "../../src";
 
-const meta: Meta<typeof DateDisplay> = {
+const meta: Meta = {
   component: DateDisplay,
   subcomponents: { DateDuration } as AnyObject,
   title: "@date/Date Display",

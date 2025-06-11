@@ -28,7 +28,7 @@ import { fn } from "storybook/test";
 import { Annotator } from "../src";
 import form from "/assets/samples/sample_form.png";
 
-const meta: Meta<typeof Annotator> = {
+const meta: Meta = {
   component: Annotator,
   title: "@media/Annotator",
   parameters: {

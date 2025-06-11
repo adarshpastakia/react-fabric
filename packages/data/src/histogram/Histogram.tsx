@@ -80,6 +80,34 @@ export interface HistogramProps extends TestProps {
   onClick?: (id: string, negative?: true) => void;
 }
 
+/**
+ * Histogram component displays a bar chart of items with counts.
+ * It allows users to visualize the distribution of counts across different items.
+ * The component supports sorting, custom colors, and click handling for each item.
+ * It also provides an empty state when there are no items to display.
+ *
+ * @param {HistogramProps} props - The properties for the Histogram component.
+ * @returns {JSX.Element} - The rendered Histogram component.
+ *
+ * @example
+ * ```jsx
+ * <Histogram
+ *   items={[
+ *     { id: "1", label: "Item 1", count: 10 },
+ *     { id: "2", label: "Item 2", count: 20 },
+ *     { id: "3", label: "Item 3", count: 5, disabled: true },
+ *   ]}
+ *   total={30}
+ *   color="primary-500"
+ *   sortBy="count"
+ *   emptyTitle="No Data Available"
+ *   emptyMessage="Please check back later."
+ *   onClick={(id, negative) => console.log(`Clicked on ${id}`, negative ? "Negative" : "Positive")}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/data-histogram--docs}
+ */
 export const Histogram = ({
   items = [],
   total,

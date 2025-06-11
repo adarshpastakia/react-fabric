@@ -96,7 +96,13 @@ export interface SliderProps
 }
 
 /**
- * Number slider input
+ * Slider component for rendering a slider input with labels and value display.
+ * It supports vertical orientation, custom min/max labels, and step ranges.
+ * The component handles value changes, displays tooltips, and integrates with ranger for slider functionality.
+ * It also supports deferred value updates for smoother interactions.
+ *
+ * @param {SliderProps} props - The properties for the Slider component.
+ * @returns {JSX.Element} The rendered Slider component.
  */
 export const Slider = ({
   error,

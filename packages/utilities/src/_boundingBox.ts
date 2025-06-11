@@ -38,8 +38,13 @@ const _getBox = (
 };
 
 /**
- * box "x,y,w,h" | [x,y,w,h]
- * returns canvas box [x,y,w,h]
+ * Get bounding box from a string or array.
+ * The box can be in the format "x,y,w,h" or [x,y,w,h].
+ * The box is adjusted to ensure that x and y are non-negative.
+ * The width and height are adjusted accordingly.
+ *
+ * @param box "x,y,w,h" | [x,y,w,h]
+ * @returns canvas box [x,y,w,h]
  */
 export const getBox = (
   box: string | [number, number, number, number] = "0,0,0,0",
@@ -55,8 +60,15 @@ export const getBox = (
 };
 
 /**
- * box "x1,y1,x2,y2" | [x1,y1,x2,y2]
- * returns canvas box [x,y,w,h]
+ * Get bounding box from a string or array.
+ * The box can be in the format "x1,y1,x2,y2" or [x1,y1,x2,y2].
+ * The box is adjusted to ensure that x1 and y1 are non-negative.
+ * The width and height are calculated as x2 - x1 and y2 - y1 respectively.
+ * If x1 or y1 are negative, they are set to 0 and the width and height are adjusted accordingly.
+ * This is useful for ensuring that the bounding box is always within the canvas area.
+ *
+ * @param box "x1,y1,x2,y2" | [x1,y1,x2,y2]
+ * @returns canvas box [x,y,w,h]
  */
 export const getBoundingBox = (
   box: string | [number, number, number, number] = "0,0,0,0",

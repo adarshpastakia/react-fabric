@@ -24,12 +24,13 @@
 import { Menu, MenuItem } from "@react-fabric/core";
 import { DateDisplay, DateUtil } from "@react-fabric/date";
 import type { Meta, StoryObj } from "@storybook/react";
+import { action } from "storybook/actions";
 import { addDays, addMonths, addWeeks } from "date-fns";
 import { useMemo, useState } from "react";
 import { SuperDate } from "../../src";
 import { SuperDateTabs } from "../../src/superdate/Superdate";
 
-const meta: Meta<typeof SuperDate> = {
+const meta: Meta = {
   component: SuperDate,
   title: "@superdate/Superdate",
   parameters: {
@@ -68,7 +69,14 @@ export const Playground: Story = {
     return (
       <div>
         <div className="inline-block">
-          <SuperDateTabs {...args} value={value} onChange={setValue} />
+          <SuperDateTabs
+            {...args}
+            value={value}
+            onChange={(...args) => {
+              setValue(args[0]);
+              action("onChange")(...args);
+            }}
+          />
         </div>
         <div className="mt-8">
           <span className="text-muted">Relative value: </span>

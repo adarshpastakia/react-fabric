@@ -54,6 +54,28 @@ export interface NavigatorProps
   onNavigate: (dir: -1 | 1) => void;
 }
 
+/**
+ * A component that provides navigation controls for traversing through items.
+ * It includes previous and next buttons, and supports keyboard navigation.
+ *
+ * @param {NavigatorProps} props - The properties for the Navigator component.
+ * @returns {JSX.Element} The rendered Navigator component.
+ *
+ * @example
+ * ```jsx
+ * <Navigator
+ *   className="my-navigator"
+ *   onNavigate={(dir) => console.log(`Navigate ${dir === -1 ? 'previous' : 'next'}`)}
+ *   color="blue"
+ *   length={10}
+ *   current={0}
+ * >
+ *   <span>Current Item: 1</span>
+ * </Navigator>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-navigator--docs} for more details.
+ */
 export const Navigator = ({
   className,
   onNavigate,

@@ -183,6 +183,19 @@ const GenericChartBase: FC<GenericProps> = memo(
 );
 GenericChartBase.displayName = "GenericChart";
 
+/**
+ * GenericChart component renders a generic chart using ECharts.
+ * It accepts various chart options and configurations, allowing for flexible chart rendering.
+ * It supports click events, brush events, and custom actions.
+ * It can be used to create a wide range of chart types by passing the appropriate ECharts options.
+ *
+ * @param props - The properties for the GenericChart component, including chart options, event handlers, and custom actions.
+ * @returns A React functional component that renders the chart within a ChartWrapper.
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/charts-genericchart--docs} for more details on the properties.
+ * @see {@link https://echarts.apache.org/en/option.html} for ECharts options documentation.
+ * @see {@link https://echarts.apache.org/en/api.html#echartsInstance} for ECharts instance methods and properties.
+ */
 export const GenericChart: FC<GenericProps> = (props) => (
   <ChartWrapper>
     <GenericChartBase {...props} />

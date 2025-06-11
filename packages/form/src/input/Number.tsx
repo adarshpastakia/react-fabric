@@ -50,6 +50,14 @@ export interface NumberProps
   step?: number;
 }
 
+/**
+ * This component allows users to input numeric values with optional minimum, maximum, and step constraints.
+ * It provides a clear interface for entering numbers, with support for validation and accessibility features.
+ * It also includes a clear button to reset the input value.
+ *
+ * @param {NumberProps} props - The properties for the Number input component.
+ * @returns {JSX.Element} The rendered Number input component.
+ */
 export const Number = ({
   ref,
   value,

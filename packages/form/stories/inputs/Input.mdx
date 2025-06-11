@@ -14,7 +14,19 @@ import {
   Subheading,
 } from "@storybook/addon-docs";
 import { Fragment } from "react";
-import { Input } from "../../src";
+import {
+  Checkbox,
+  ColorInput,
+  DateInput,
+  FileInput,
+  Input,
+  Number,
+  Password,
+  Radio,
+  Search,
+  Switch,
+  Textarea,
+} from "../../src";
 import * as InputStories from "./Input.stories";
 import * as DateInputStories from "./DateInput.stories";
 import * as NumberStories from "./Number.stories";
@@ -38,6 +50,8 @@ import * as SearchStories from "./Search.stories";
   </div>
 </Anchor>
 
+<Description of={Input} />
+
 <Primary />
 
 <Collapsable className="control-panel">
@@ -48,7 +62,7 @@ import * as SearchStories from "./Search.stories";
 <Anchor storyId="password">
   <Subheading>Password</Subheading>
 </Anchor>
-<Description of={PasswordStories._Password} />
+<Description of={Password} />
 <Canvas withToolbar of={PasswordStories._Password} />
 <Collapsable className="control-panel">
   <div>Controls</div>
@@ -58,7 +72,7 @@ import * as SearchStories from "./Search.stories";
 <Anchor storyId="number">
   <Subheading>Number</Subheading>
 </Anchor>
-<Description of={NumberStories._Number} />
+<Description of={Number} />
 <Canvas withToolbar of={NumberStories._Number} />
 <Collapsable className="control-panel">
   <div>Controls</div>
@@ -68,7 +82,7 @@ import * as SearchStories from "./Search.stories";
 <Anchor storyId="date">
   <Subheading>Date Input</Subheading>
 </Anchor>
-<Description of={DateInputStories._DateInput} />
+<Description of={DateInput} />
 <Canvas withToolbar of={DateInputStories._DateInput} />
 <Collapsable className="control-panel">
   <div>Controls</div>
@@ -78,7 +92,7 @@ import * as SearchStories from "./Search.stories";
 <Anchor storyId="search">
   <Subheading>Search</Subheading>
 </Anchor>
-<Description of={SearchStories._Search} />
+<Description of={Search} />
 <Canvas withToolbar of={SearchStories._Search} />
 <Collapsable className="control-panel">
   <div>Controls</div>
@@ -88,7 +102,7 @@ import * as SearchStories from "./Search.stories";
 <Anchor storyId="textarea">
   <Subheading>Textarea</Subheading>
 </Anchor>
-<Description of={TextareaStories._Textarea} />
+<Description of={Textarea} />
 <Canvas withToolbar of={TextareaStories._Textarea} />
 <Collapsable className="control-panel">
   <div>Controls</div>
@@ -98,7 +112,7 @@ import * as SearchStories from "./Search.stories";
 <Anchor storyId="file">
   <Subheading>File</Subheading>
 </Anchor>
-<Description of={FileStories._FileInput} />
+<Description of={FileInput} />
 <Canvas withToolbar of={FileStories._FileInput} />
 <Collapsable className="control-panel">
   <div>Controls</div>
@@ -108,7 +122,7 @@ import * as SearchStories from "./Search.stories";
 <Anchor storyId="color">
   <Subheading>Color Input</Subheading>
 </Anchor>
-<Description of={ColorInputStories._ColorInput} />
+<Description of={ColorInput} />
 <Canvas withToolbar of={ColorInputStories._ColorInput} />
 <Collapsable className="control-panel">
   <div>Controls</div>
@@ -118,7 +132,7 @@ import * as SearchStories from "./Search.stories";
 <Anchor storyId="checkbox">
   <Subheading>Checkbox</Subheading>
 </Anchor>
-<Description of={CheckboxStories._Checkbox} />
+<Description of={Checkbox} />
 <Canvas withToolbar of={CheckboxStories._Checkbox} />
 <Collapsable className="control-panel">
   <div>Controls</div>
@@ -128,7 +142,7 @@ import * as SearchStories from "./Search.stories";
 <Anchor storyId="radio">
   <Subheading>Radio</Subheading>
 </Anchor>
-<Description of={RadioStories._Radio} />
+<Description of={Radio} />
 <Canvas withToolbar of={RadioStories._Radio} />
 <Collapsable className="control-panel">
   <div>Controls</div>
@@ -138,7 +152,7 @@ import * as SearchStories from "./Search.stories";
 <Anchor storyId="switch">
   <Subheading>Switch</Subheading>
 </Anchor>
-<Description of={SwitchStories._Switch} />
+<Description of={Switch} />
 <Canvas withToolbar of={SwitchStories._Switch} />
 <Collapsable className="control-panel">
   <div>Controls</div>

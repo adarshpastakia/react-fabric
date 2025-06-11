@@ -91,7 +91,23 @@ const ErrorStack = ({ error, stack }: KeyValue) => {
 };
 
 /**
- * An error boundary wrapper higher-order component designed to provide consistent error display across the application will trap runtime errors
+ * ErrorBoundary component to catch JavaScript errors anywhere in the child component tree,
+ * log those errors, and display a fallback UI.
+ * It can also display a custom error element if provided.
+ * This component is useful for preventing the entire application from crashing
+ * when an error occurs in a part of the component tree.
+ * It can be used to wrap any part of the application.
+ * It supports custom error display components and provides a default error message.
+ * It also conditionally displays the error stack trace in development mode.
+ *
+ * @example
+ * ```jsx
+ * <ErrorBoundary errorElement={CustomErrorComponent}>
+ *   <YourComponent />
+ * </ErrorBoundary>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-application--error-boundary}
  */
 export class ErrorBoundary extends Component<
   {

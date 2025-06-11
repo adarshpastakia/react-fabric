@@ -46,6 +46,32 @@ type PanelActions =
   | { type: "changePage"; page: PageType }
   | { type: "changePageDate"; date: Date; pageChange: boolean };
 
+/**
+ * DatePanel component to display a date picker with options for selecting a date and time.
+ * It allows switching between Gregorian and Hijri calendars, and includes buttons for selecting today or canceling the selection.
+ * It uses the current calendar and locale from the global context.
+ * It handles date selection, time changes, and page navigation within the date picker.
+ * It also supports disabling specific dates and setting minimum and maximum date limits.
+ *
+ * @param {DateProps} props - The properties for the DatePanel component.
+ * @return {JSX.Element} The rendered DatePanel component.
+ *
+ * @example
+ * ```jsx
+ * <DatePanel
+ *   className="my-date-panel"
+ *   max="2025-12-31"
+ *   min="2020-01-01"
+ *   dateDisabled={["2023-01-01", "2023-12-25"]}
+ *   onChange={(date) => console.log("Selected date:", date)}
+ *   showHijriToggle={true}
+ *   value={new Date()}
+ *   withTime={true}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/date-date-panel--datepanels}
+ */
 export const DatePanel = ({
   className,
   max,

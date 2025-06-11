@@ -14,7 +14,7 @@ import {
   Subheading,
 } from "@storybook/addon-docs";
 import { Fragment } from "react";
-import { Form } from "../../src";
+import { Form, ArrayInput } from "../../src";
 import * as FormStories from "./Form.stories";
 import * as ArrayInputStories from "./ArrayInput.stories";
 
@@ -40,7 +40,7 @@ import * as ArrayInputStories from "./ArrayInput.stories";
 <Anchor storyId="array">
   <Subheading>Array Input</Subheading>
 </Anchor>
-<Description of={ArrayInputStories._ArrayInput} />
+<Description of={ArrayInput} />
 <Canvas withToolbar of={ArrayInputStories._ArrayInput} />
 <Collapsable className="control-panel">
   <div>Controls</div>

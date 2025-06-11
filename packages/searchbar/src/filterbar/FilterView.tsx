@@ -47,8 +47,11 @@ export const FilterView = ({
         value = `[${filter.value?.join(" - ")}]`;
       }
 
-      if (filter.operator === OPERATOR.IN && isArray(filter.value)) {
+      if (filter.operator === OPERATOR.ANY && isArray(filter.value)) {
         value = `[${filter.value?.join(", ")}]`;
+      }
+      if (filter.operator === OPERATOR.ALL && isArray(filter.value)) {
+        value = `(${filter.value?.join(", ")})`;
       }
 
       return (

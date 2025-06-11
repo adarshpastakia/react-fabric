@@ -68,6 +68,28 @@ export interface ImageProps extends RefProp<CanvasRef> {
   onError?: () => void;
 }
 
+/**
+ * ImageViewer component for displaying and interacting with images.
+ * It provides features like zooming, cropping, and NSFW overlay.
+ *
+ * @param {ImageProps} props - The properties for the ImageViewer component.
+ * @returns {JSX.Element} The rendered ImageViewer component.
+ *
+ * @example
+ * ```jsx
+ * <ImageViewer
+ *   src="https://example.com/image.jpg"
+ *   fallback="https://example.com/convert?image=image.jpg"
+ *   nsfw={true}
+ *   enableZoom={true}
+ *   onCrop={(box) => console.log("Cropped box:", box)}
+ *   onLoad={() => console.log("Image loaded")}
+ *   onError={() => console.log("Image failed to load")}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/media-imageviewer--image-viewer} for more details on the properties.
+ */
 export const ImageViewer = ({
   nsfw,
   enableZoom,

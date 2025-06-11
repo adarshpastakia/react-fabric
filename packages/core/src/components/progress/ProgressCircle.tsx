@@ -50,6 +50,25 @@ const SizeMap: KeyValue = {
   xl: "2rem",
 };
 
+/**
+ * A circular progress indicator that visually represents a percentage of completion.
+ * It displays a circular track with a stroke that fills based on the `value` prop.
+ * The component is customizable with size and color props.
+ *
+ * @param {ProgressProps} props - The properties for the ProgressCircle component.
+ * @returns {JSX.Element} - A circular progress indicator.
+ *
+ * @example
+ * ```jsx
+ * <ProgressCircle value={0.75} size="md" color="primary-500" />
+ * // Renders a circular progress indicator with 75% completion, medium size, and primary color.
+ *
+ * <ProgressCircle value={0.5} size="lg" color="secondary-500" />
+ * // Renders a circular progress indicator with 50% completion, large size, and secondary color.
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-progress--docs} for more details.
+ */
 export const ProgressCircle = ({
   value = 0,
   size = "sm",

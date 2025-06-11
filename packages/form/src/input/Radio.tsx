@@ -69,6 +69,15 @@ export interface RadioProps extends RefProp<HTMLInputElement> {
   iconChecked?: string;
 }
 
+/**
+ * Radio input component with custom icons and label.
+ *
+ * This component renders a radio button with an optional label and custom icons for checked and unchecked states.
+ * It supports disabled and invalid states, and allows for custom width.
+ *
+ * @param {RadioProps} props - The properties for the Radio component.
+ * @returns {JSX.Element} The rendered Radio input component.
+ */
 export const Radio = ({
   ref,
   name,

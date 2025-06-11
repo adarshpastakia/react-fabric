@@ -45,6 +45,35 @@ export interface BreadcrumbProps
   color?: "primary" | "accent";
 }
 
+/**
+ * A navigation component that displays the current page's location within a hierarchy and allows users to navigate back to previous pages.
+ * It supports different styles, separators, and colors, and can handle a variable number of breadcrumb links.
+ * This component is useful for enhancing user navigation experience in applications with multiple levels of content hierarchy.
+ * It automatically manages the display of overflow items when there are too many links to fit in the available space, providing a dropdown for additional links.
+ *
+ * @param {BreadcrumbProps} props - The properties for the Breadcrumbs component.
+ * @returns {JSX.Element} The rendered Breadcrumbs component.
+ *
+ * @example
+ * ```jsx
+ * <Breadcrumbs
+ *   variant="classic"
+ *   separator=">"
+ *   color="primary"
+ *   className="my-custom-class"
+ *   aria-label="Breadcrumbs"
+ * >
+ *   <Anchor href="/">Home</Anchor>
+ *   <Anchor href="/products">Products</Anchor>
+ *   <Anchor href="/products/shoes">Shoes</Anchor>
+ *   <Anchor href="/products/shoes/sneakers">Sneakers</Anchor>
+ *   <Anchor href="/products/shoes/sneakers/nike">Nike</Anchor>
+ *   <Anchor href="/products/shoes/sneakers/nike/airmax">Air Max</Anchor>
+ * </Breadcrumbs>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-breadcrumbs--docs} for more details.
+ */
 export const Breadcrumbs = ({
   variant = "classic",
   className,

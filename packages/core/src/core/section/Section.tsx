@@ -26,7 +26,22 @@ import { type ChildrenProp, type CssProp, type RefProp } from "../../types";
 import { ErrorBoundary } from "../boundary/ErrorBoundary";
 
 /**
- * The section component provides a structured layout used within a page to organize and display content in a sectioned format, ensuring a consistent and intuitive user experience.
+ * A component that represents a section of content within a page, with templated grid layout.
+ * It can be used to group related content together and can be styled with additional CSS classes.
+ * It supports RTL (right-to-left) text direction.
+ *
+ * @param {ChildrenProp} children - The children to be rendered inside the section.
+ * @param {CssProp} className - Additional CSS classes to apply to the section.
+ * @param {RefProp<HTMLDivElement>} ref - A ref to the section element.
+ *
+ * @example
+ * ```jsx
+ * <Section className="my-section" ref={sectionRef}>
+ *   <p>This is a section.</p>
+ * </Section>
+ * ```
+ *
+ *  @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-application--section} for more details.
  */
 export const Section = ({
   children,

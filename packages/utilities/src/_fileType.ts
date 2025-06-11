@@ -23,7 +23,20 @@
 
 /* istanbul ignore file */
 
+/**
+ * File type utility to get the file type from a MIME type.
+ * This utility provides a mapping of common MIME types to their human-readable names.
+ * It can be used to display file types in a user-friendly manner.
+ */
 export default {
+  /**
+   * Get the human-readable file type from a MIME type.
+   * This method looks up the MIME type in a predefined list
+   * and returns a user-friendly name.
+   *
+   * @param mime MIME type string, e.g. "application/pdf"
+   * @returns {string} - The human-readable file type.
+   */
   mime(mime: string = "") {
     const ret = (this.mimeList as KeyValue)[mime.split(";")[0]];
     if (!ret && !!mime) {
@@ -32,6 +45,9 @@ export default {
     }
     return ret || "Unknown type";
   },
+  /**
+   * List of common MIME types and their human-readable names.
+   */
   mimeList: {
     "application/x-tika-msoffice": "Microsft Office File",
     "application/x-tika-ooxml": "Open Office File",

@@ -49,6 +49,37 @@ export interface PanelStackProps extends CssProp, ChildrenProp {
   onBack?: (panelId: string, nextPanelId: string) => boolean | undefined;
 }
 
+/**
+ * A component that manages a stack of panels, allowing navigation between them.
+ * This component allows you to manage a stack of panels where you can navigate between them.
+ * It accepts an `active` prop to control which panel is currently active,
+ * an `onPanelChange` callback that is triggered when the active panel changes,
+ * and an `onBack` callback to handle navigation to the previous panel in the history.
+ * It uses the `Panel` component to render each individual panel within the stack.
+ * The component maintains a history of panels to allow back navigation,
+ * and it updates the active panel based on user interactions.
+ *
+ * @param {PanelStackProps} props - The properties for the PanelStack component.
+ * @returns {JSX.Element} The rendered PanelStack component.
+ *
+ * @example
+ * ```jsx
+ * <PanelStack
+ *   active="panel1"
+ *   onPanelChange={(panelId) => console.log(`Active panel changed to: ${panelId}`)}
+ *   onBack={(currentPanel, nextPanel) => {
+ *     console.log(`Navigating back from ${currentPanel} to ${nextPanel}`);
+ *     return true; // return false to prevent navigation
+ *   }}
+ * >
+ *   <Panel panelId="panel1" title="Panel 1">Content for Panel 1</Panel>
+ *   <Panel panelId="panel2" title="Panel 2">Content for Panel 2</Panel>
+ *   <Panel panelId="panel3" title="Panel 3">Content for Panel 3</Panel>
+ * </PanelStack>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-panelstack--docs} for more details.
+ */
 export const PanelStack = ({
   active,
   children,

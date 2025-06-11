@@ -141,6 +141,45 @@ export interface ArrayInputProps<T extends AnyObject = string> {
   labelWidth?: string;
 }
 
+/**
+ * ArrayInput component for managing an array of items in a form.
+ * It allows adding, removing, and sorting items within the array.
+ * It integrates with react-hook-form for form state management and validation.
+ * It supports fixed-length lists, custom add/remove handlers, and can display validation errors.
+ * It also provides options for inline display and custom button positioning.
+ *
+ * It uses the `useFieldArray` hook from `react-hook-form` to manage the array state and provides a simple interface for adding and removing items.
+ *
+ * It also supports drag-and-drop sorting using `@dnd-kit/core` and `@dnd-kit/sortable` for a better user experience when reordering items.
+ *
+ * @param {ArrayInputProps<T>} props - The properties for the ArrayInput component.
+ * @returns {JSX.Element} The rendered ArrayInput component.
+ *
+ * @example
+ * ```jsx
+ * <ArrayInput
+ *   name="items"
+ *   label="Items"
+ *   addLabel="Add Item"
+ *   onAdd={() => ({ name: "", value: "" })}
+ *   onRemove={(item, index) => console.log("Removed item:", item, "at index:", index)}
+ *   onBeforeRemove={(item, index) => confirm(`Are you sure you want to remove item at index ${index}?`)}
+ *   canRemove={({ item, index, lastItem }) => !lastItem} // Prevent removing the last item
+ * >
+ *   {({ index, name }) => (
+ *     <Input
+ *       name={name}
+ *       label={`Item ${index + 1}`}
+ *       placeholder="Enter item value"
+ *       required={index === 0} // Make the first item required
+ *     />
+ *   )}
+ * </ArrayInput>
+ * ```
+ *
+ * @see {@link https://react-hook-form.com/api/usefieldarray} for more details on `useFieldArray`.
+ * @see {@link https://react-dnd.github.io/react-dnd/about} for more details on DnD context and sorting.
+ */
 export const ArrayInput = <T extends AnyObject = string>({
   name,
   children,

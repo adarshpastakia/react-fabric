@@ -85,7 +85,33 @@ const SizeMap: KeyValue<string> = {
 };
 
 /**
- * An icon is a display component for svg icon path / image
+ * A versatile icon component that supports SVG paths, webfont icons, and text icons.
+ * It can be styled with background color, icon color, size, and animations.
+ * It also supports RTL flipping and rounded corners.
+ * The component can be used as a standalone icon or as part of other components.
+ * It accepts various properties to customize its appearance and behavior.
+ * These include `bg`, `color`, `size`, `rtlFlip`, `animate`, and `rounded`.
+ *
+ * @param {IconProps} props - The properties for the Icon component.
+ * @returns {JSX.Element} The rendered Icon component.
+ *
+ * @example
+ * ```jsx
+ * <Icon
+ *   icon="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
+ *   bg="bg-blue-500"
+ *   color="text-white"
+ *   size="lg"
+ *   rtlFlip={true}
+ *   animate="spin"
+ *   rounded={true}
+ *   onClick={() => console.log("Icon clicked")}
+ * />
+ * // Renders an icon with a SVG path, blue background, white text color,
+ * // large size, RTL flip, spin animation, rounded corners, and a click handler.
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-icon--docs} for more details.
  */
 export const Icon = ({
   ref,

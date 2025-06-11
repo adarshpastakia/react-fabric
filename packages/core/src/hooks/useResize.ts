@@ -43,6 +43,24 @@ interface Options {
   onEnd?: () => void;
 }
 
+/**
+ * Custom hook to handle resizing of an element.
+ * It provides a ref to the element and a mouse down event handler to initiate resizing.
+ * The resizing is done by tracking mouse movements and calculating the difference in x and y coordinates.
+ * It supports both horizontal and vertical resizing, and can be configured to reverse the direction based on RTL (Right-to-Left) layout.
+ *
+ * @param onResize - callback to handle resize event with the difference in x and y
+ * @param options - options for resizing behavior
+ * @returns ref to the element and a mouse down event handler to initiate resizing
+ *
+ * @example
+ * ```jsx
+ * const { ref, onMouseDown } = useResize((diff) => {
+ *   console.log("Resize difference:", diff);
+ * }, { isReverse: true, isVertical: false });
+ * <div ref={ref} onMouseDown={onMouseDown}>Resize Me</div>
+ * ```
+ */
 export const useResize = <T extends HTMLElement = HTMLDivElement>(
   onResize: (diff: { x: number; y: number }) => void,
   { isReverse = false, isVertical = false, onStart, onEnd }: Options,

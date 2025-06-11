@@ -24,8 +24,13 @@
 import { getByPath } from "./_getByPath";
 
 /**
- * interpolate string template using model
- * @internal
+ * Interpolate a string with values from a model.
+ * This function replaces placeholders in the format ${key} with corresponding values from the model object.
+ * If the value is not a string or number, it returns an empty string.
+ *
+ * @param {string} str - The string to interpolate.
+ * @param {KeyValue} model - The model object containing key-value pairs for interpolation.
+ * @returns {string} The interpolated string with placeholders replaced by values from the model.
  */
 export const interpolate = (str: string, model: KeyValue) => {
   return str.replace(/\${([^{}]*)}/g, (a: string, b: string): string => {
@@ -34,6 +39,16 @@ export const interpolate = (str: string, model: KeyValue) => {
   });
 };
 
+/**
+ * Render a template string with values from a model.
+ * This function replaces placeholders in the format {{key}} with corresponding values from the model object.
+ * If the value is not a string or number, it returns an empty string.
+ * This is similar to the interpolate function but for handlebar templates.
+ *
+ * @param {string} str - The template string to render.
+ * @param {KeyValue} model - The model object containing key-value pairs for rendering the template.
+ * @returns {string} The rendered template string with placeholders replaced by values from the model.
+ */
 export const renderTemplate = (str: string, model: KeyValue) => {
   return str.replace(/{{([^{}]*)}}/g, (a: string, b: string): string => {
     const r = getByPath(model, b);

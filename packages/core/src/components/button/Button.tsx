@@ -156,7 +156,28 @@ export type ButtonProps<Tag extends React.ElementType = "button"> = BaseProps &
   PolymorphicProps<Tag>;
 
 /**
- * Clickable action button
+ * A versatile button component that supports various styles, icons, and actions.
+ * It can be used as a primary action button, with options for loading states, action messages, and more.
+ * It supports polymorphic rendering, allowing it to be used as different HTML elements (e.g., button, a, div).
+ * It also includes features like after action tooltips, badges, and keyboard shortcuts.
+ *
+ * @param {ButtonProps} props - The properties for the Button component.
+ * @returns {JSX.Element} The rendered Button component.
+ *
+ * @example
+ * ```jsx
+ * <Button
+ *   color="primary"
+ *   size="md"
+ *   variant="solid"
+ *   icon="check"
+ *   onClick={() => console.log("Button clicked!")}
+ * >
+ *   Click Me
+ * </Button>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-button--docs} for more details.
  */
 export const Button = <Tag extends React.ElementType = "button">({
   as,
@@ -195,6 +216,7 @@ export const Button = <Tag extends React.ElementType = "button">({
   const [busy, setBusy] = useState(false);
   const [actionDone, setActionDone] = useState(false);
 
+  // Handle click events
   const clickHandler = useCallback(
     (e: React.MouseEvent) => {
       setBusy(true);

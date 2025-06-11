@@ -57,6 +57,22 @@ type UploaderActions =
   | { type: "remove"; key: string }
   | { type: "abort"; key: string };
 
+/**
+ * useFileUploader hook provides a way to handle file uploads
+ * with progress tracking, error handling, and file management.
+ * It uses a reducer to manage the state of uploaded files and their statuses.
+ *
+ * @param uploader - The function that handles the file upload.
+ * @param initialList - Initial list of files to be managed by the uploader.
+ * @param multiple - Whether to allow multiple file uploads or not.
+ * @returns An object containing methods to upload, remove, retry files,
+ *          and the current state of the uploader including pending uploads and file list.
+ *
+ * @example
+ * ```jsx
+ * const { upload, remove, retry, state } = useFileUploader(uploader, initialList, multiple);
+ * ```
+ */
 export const useFileUploader = (
   uploader: UploadHandler,
   initialList?: string | FileInfo | FileInfo[],

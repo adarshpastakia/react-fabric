@@ -232,13 +232,36 @@ export const ApplicationProvider: FC<GlobalProps> = ({
 export const useGlobals = () => useContext(GlobalContext);
 
 /**
- * global application context
+ * Hook to access the global application context.
+ * This hook provides access to the global context values, including the current locale, calendar, and color scheme.
+ *
+ * @returns {GlobalContextType} The global context values excluding the error element.
+ *
+ * @example
+ * ```jsx
+ * const { changeLocale, currentLocale, toggleColorScheme } = useApplicationContext();
+ * ```
  */
 export const useApplicationContext = () => {
   const { errorElement, ...rest } = useContext(GlobalContext);
   return rest;
 };
 
+/**
+ * Hook to access the notification manager from the global context.
+ * This hook provides methods to show alerts, errors, messages, and toasts.
+ * It returns a reference to the notification manager, which can be used to display notifications in the application.
+ *
+ * @returns {NotificationManagerRef} The notification manager reference.
+ *
+ * @example
+ * ```jsx
+ * const notificationService = useNotificationService();
+ * notificationService.showMessage("Hello World");
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-notifications--notifications} for more details on available methods.
+ */
 export const useNotificationService = () => {
   const { notificationManager } = useContext(GlobalContext);
   return notificationManager ?? {};

@@ -82,6 +82,30 @@ const loadIndicator = (
   </div>
 );
 
+/**
+ * Component for displaying images with optional reel decoration.
+ * A versatile media component that supports images and videos with various display options.
+ * It can display images with a reel decoration, handle loading states, and show error icons if the media fails to load.
+ * This component is useful for displaying images in a visually appealing way, with support for lazy loading and error handling.
+ * It automatically adjusts the display based on the provided fit property, allowing for different styles such as cover, contain, or fill.
+ *
+ * @param {ImageProps | VideoProps} props - The properties for the Media component.
+ * @returns {JSX.Element} The rendered Media component.
+ *
+ * @example
+ * ```jsx
+ * <Image
+ *   src="image.jpg"
+ *   alt="Example Image"
+ *   reel={true}
+ *   fit="cover"
+ *   className="custom-class"
+ * />
+ * // Renders an image with reel decoration, cover fit, and a custom class name.
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-media--docs} for more details.
+ */
 export const Image = ({
   src,
   alt,
@@ -139,6 +163,36 @@ export const Image = ({
   );
 };
 
+/**
+ * Component for displaying videos with optional controls and reel decoration.
+ * A versatile video component that supports autoplay, hover play, and various display options.
+ * It can display videos with a reel decoration, handle loading states, and show error icons if the video fails to load.
+ * This component is useful for displaying videos in a visually appealing way, with support for controls, autoplay, and error handling.
+ * It automatically adjusts the display based on the provided fit property, allowing for different styles such as cover, contain, or fill.
+ * It also includes controls for play/pause and volume, enhancing user interaction with the video content.
+ * This component is ideal for media-rich applications where video content needs to be displayed with user-friendly controls and visual effects.
+ * It supports features like autoplay, play on hover, and custom fit options for the video display.
+ * It also includes a reel decoration for a more engaging visual presentation.
+ *
+ * @param {VideoProps} props - The properties for the Video component.
+ * @returns {JSX.Element} The rendered Video component.
+ *
+ * @example
+ * ```jsx
+ * <Video
+ *   src="video.mp4"
+ *   poster="poster.jpg"
+ *   reel={true}
+ *   autoPlay={true}
+ *   playOnHover={true}
+ *   fit="cover"
+ *   className="custom-class"
+ * />
+ * // Renders a video with reel decoration, autoplay, play on hover, cover fit, and a custom class name.
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-video--docs} for more details.
+ */
 export const Video = ({
   src,
   poster,

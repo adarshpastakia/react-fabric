@@ -73,7 +73,33 @@ export interface TextProps extends ChildrenProp, CssProp, AriaProps, TestProps {
 }
 
 /**
- * Typography text component
+ * A component that renders text with various styles, supports line clamping, and provides a "show more" link if the text is clipped.
+ * It can be rendered as an inline element or a block element, and allows customization of background color, text color, font size, font family, and text alignment.
+ * It also supports line clamping to limit the number of visible lines, and provides a toggle to show more or less text when the content exceeds the specified clamp.
+ * The component uses a combination of CSS and JavaScript to achieve the desired effects, ensuring a smooth user experience.
+ * It leverages the ResizeObserver API to detect changes in the text container's size and adjust the line clamping accordingly.
+ *
+ * @param {TextProps} props - The properties for the Text component.
+ * @returns {JSX.Element} The rendered Text component.
+ *
+ * @example
+ * ```jsx
+ * <Text
+ *   inline={false}
+ *   bg="bg-gray-100"
+ *   color="text-gray-800"
+ *   size="md"
+ *   family="sans"
+ *   clamp={2}
+ *   align="start"
+ * >
+ *   This is a sample text that demonstrates the Text component with various styles applied.
+ * </Text>
+ * // Renders a block-level text with gray background, dark gray text, medium font size,
+ * // sans-serif font family, clamped to 2 lines, and left-aligned.
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-typography--text} for more details.
  */
 export const Text = ({
   children,

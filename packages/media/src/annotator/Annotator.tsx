@@ -24,6 +24,27 @@
 import { Section } from "@react-fabric/core";
 import { type AnnotatorProps, AnnotatorProvider } from "./Context";
 
+/**
+ * Annotator component provides a user interface for annotating images.
+ * It allows users to draw shapes, add text, and highlight areas on the image.
+ * It is designed to be used within a section of the application,
+ * providing a grid layout for the content area.
+ *
+ * @param {AnnotatorProps<T>} props - The properties for the Annotator component.
+ * @returns {JSX.Element} The rendered Annotator component.
+ *
+ * @example
+ * ```jsx
+ * <Annotator
+ *   imageUrl="https://example.com/image.jpg"
+ *   annotations={[]}
+ *   onSave={(annotations) => console.log(annotations)}
+ *   onCancel={() => console.log("Cancelled")}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/media-annotator--annotator} for more details on the properties.
+ */
 export const Annotator = <T extends KeyValue = KeyValue>(
   props: AnnotatorProps<T>,
 ) => {

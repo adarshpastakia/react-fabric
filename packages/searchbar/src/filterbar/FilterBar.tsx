@@ -39,6 +39,32 @@ import { FilterTag } from "./FilterTag";
 import classNames from "classnames";
 import { FilterContext } from "./Context";
 
+/**
+ * FilterBar component allows users to manage a list of filters.
+ * It provides options to add, remove, and modify filters,
+ * as well as to enable or disable all filters at once.
+ * It also supports toggling between included and excluded filters.
+ *
+ * @param {FilterBarProps} props - The properties for the FilterBar component.
+ * @returns {JSX.Element} The rendered FilterBar component.
+ *
+ * @example
+ * ```jsx
+ * <FilterBar
+ *   filters={filters}
+ *   allowAdd={true}
+ *   fields={fields}
+ *   editable={true}
+ *   querySchema={querySchema}
+ *   queryLanguage="lucene"
+ *   defaultQuery="*"
+ *   includedColor="green"
+ *   excludedColor="red"
+ *   onFilterChanged={(newFilters) => console.log(newFilters)}
+ * />
+ * ```
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/searchbar-searchbar--search-bar} for more details on the properties.
+ */
 export const FilterBar = ({
   filters = [],
   allowAdd,

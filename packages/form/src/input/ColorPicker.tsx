@@ -102,6 +102,16 @@ const DEFAULT_SWATCHES = [
   "#f1f3f4",
 ];
 
+/**
+ * ColorPicker component allows users to select a color using a color picker UI.
+ * It supports swatches, alpha transparency, and custom styles.
+ * The component uses the `react-color` library for the color picker functionality.
+ *
+ * @param {ColorProps} props - The properties for the ColorPicker component.
+ * @returns {JSX.Element} The rendered ColorPicker component.
+ *
+ * @see {@link https://react-color.github.io/react-color/} for more details on the color picker library.
+ */
 // eslint-disable-next-line react/display-name
 export const ColorPicker: FC<ColorProps> = memo(
   ({

@@ -93,6 +93,34 @@ export type ToggleButtonGroupProps = BaseProps &
       }
   );
 
+/**
+ * A component that groups toggle buttons together, allowing for consistent styling and behavior across multiple toggle buttons.
+ * It supports vertical orientation, various button styles, and can handle properties like size, color, and disabled state.
+ * This component is useful for creating toggle button groups that maintain a uniform appearance and functionality,
+ * such as toggle switches, selection groups, or multi-select options.
+ *
+ * @param {ToggleButtonGroupProps} props - The properties for the ToggleButtonGroup component.
+ * @returns {JSX.Element} The rendered ToggleButtonGroup component.
+ *
+ * @example
+ * ```jsx
+ * <ToggleButtonGroup
+ *   value={selectedValues}
+ *   onChange={(newValues) => setSelectedValues(newValues)}
+ *   variant="outline"
+ *   color="primary"
+ *   size="md"
+ *   rounded
+ *   fullWidth
+ * >
+ *   <Button value="option1">Option 1</Button>
+ *   <Button value="option2">Option 2</Button>
+ *   <Button value="option3">Option 3</Button>
+ * </ToggleButtonGroup>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-togglebuttongroup--docs} for more details.
+ */
 export const ToggleButtonGroup = ({
   vertical,
   className,

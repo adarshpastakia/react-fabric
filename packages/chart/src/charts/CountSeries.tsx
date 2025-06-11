@@ -177,7 +177,33 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
 CountSeriesChart.displayName = "CountSeriesChart";
 
 /**
- * Chart to display simple data count series
+ * CountSeries component renders a chart that displays counts of items in various formats.
+ * It supports pie, bar, and column charts.
+ * It can be used to visualize the distribution of counts across different categories.
+ * It allows users to switch between different types of visualizations and customize the color palette used in the chart.
+ *
+ * @param {CountSeriesProps} props - The properties for the CountSeries component.
+ * @returns {JSX.Element} The rendered CountSeries component.
+ *
+ * @example
+ * ```jsx
+ * <CountSeries
+ *   data={[
+ *     { id: "A", label: "Category A", count: 10 },
+ *     { id: "B", label: "Category B", count: 20 },
+ *     { id: "C", label: "Category C", count: 30 },
+ *   ]}
+ *   title="Count Distribution"
+ *   onExport={() => console.log("Exporting chart data")}
+ *   theme="light"
+ *   type="pie"
+ *   onClick={(key) => console.log("Clicked on:", key)}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/charts-countseries--docs} for more details on the properties.
+ * @see {@link https://echarts.apache.org/en/option.html#series-pie} for more details on the ECharts pie series options.
+ * @see {@link https://echarts.apache.org/en/option.html#series-bar} for more details on the ECharts bar series options.
  */
 export const CountSeries: FC<CountSeriesProps> = (props) => (
   <ChartWrapper>

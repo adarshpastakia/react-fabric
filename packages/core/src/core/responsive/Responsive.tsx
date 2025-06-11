@@ -92,7 +92,20 @@ export interface ColProps
 }
 
 /**
- * Responsive layout container
+ * Container component that wraps children in a div element.
+ * It supports full width, gutter size, and additional CSS classes.
+ * It can be used to create a responsive layout with optional gutters for spacing.
+ * It accepts properties for full width, gutter size, and additional CSS classes.
+ *
+ * @param {ContainerProps} props - The properties for the Container component.
+ * @returns A div element containing the children with optional full width and gutter size.
+ *
+ * @example
+ * ```jsx
+ * <Container fullWidth={true} gutter="16px" className="custom-container">
+ *   <p>This is a container with full width and gutter.</p>
+ * </Container>
+ * ```
  */
 export const Container = ({
   children,
@@ -116,6 +129,26 @@ export const Container = ({
   );
 };
 
+/**
+ * Row component that allows for flexible layout of columns.
+ * It supports various flex properties, alignment, and wrapping.
+ * It can be used to create a responsive layout with optional gutters for spacing.
+ * It accepts properties for gutter size, orientation, alignment, justification, and additional CSS classes.
+ *
+ * @param {RowProps} props - The properties for the Row component.
+ * @returns A div element representing a row with the specified flex and alignment properties.
+ *
+ * @example
+ * ```jsx
+ * <Row gutter="16px" orient="row" align="center" justify="between">
+ *   <Col flex="fill">Column 1</Col>
+ *   <Col flex="fill">Column 2</Col>
+ * </Row>
+ * // Renders a row with two columns, each taking equal space, centered vertically and spaced evenly.
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-application--responsive} for more details.
+ */
 export const Row = ({
   children,
   gutter,
@@ -148,6 +181,24 @@ export const Row = ({
   );
 };
 
+/**
+ * Column component that allows for flexible layout within a row.
+ * It supports various flex properties, alignment, and truncation.
+ * It can be used to create a responsive layout with optional stretching of inner content.
+ * It accepts properties for flex size, alignment, truncation, and additional CSS classes.
+ *
+ * @param {ColProps} props - The properties for the Col component.
+ * @returns A div element representing a column with the specified flex and alignment properties.
+ *
+ * @example
+ * ```jsx
+ * <Col flex="fill" align="center" truncate className="custom-col">
+ *   <p>This is a column with flexible layout.</p>
+ * </Col>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-application--responsive} for more details.
+ */
 export const Col = ({
   children,
   flex,

@@ -37,7 +37,7 @@ import { useState } from "react";
 import { Form, FormSchema, SchemaEditor, useFormBuilder } from "../src";
 import { DATA_TYPES } from "../src/types/schema";
 
-const meta: Meta<typeof Form> = {
+const meta: Meta = {
   component: Form,
   title: "@form/_Form Builder_",
   parameters: {

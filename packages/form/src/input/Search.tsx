@@ -55,6 +55,15 @@ export interface SearchProps extends InputProps, RefProp<HTMLInputElement> {
   onSearch?: (query?: string) => void;
 }
 
+/**
+ * Search input component with optional searching state and search handler.
+ * This component allows users to input search queries and trigger a search action.
+ * It supports features like searching on value change, showing a search handle,
+ * and handling search actions with a debounce mechanism.
+ *
+ * @param {SearchProps} props - The properties for the Search component.
+ * @returns {JSX.Element} The rendered Search input component.
+ */
 export const Search = ({
   ref,
   value,

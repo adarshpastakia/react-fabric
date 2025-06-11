@@ -48,6 +48,19 @@ import { type TableProps } from "./types";
 import { useTableColumns } from "./useTableColumns";
 import { useVirtualTable } from "./useVirtualTable";
 
+/**
+ * Table component for displaying data in a tabular format with features like sorting, filtering, and virtual scrolling.
+ * It supports expandable rows, checkable rows, and customizable columns.
+ * The component is designed to handle large datasets efficiently by rendering only the visible rows.
+ * It also provides a way to manage column visibility and allows for custom rendering of group headers.
+ * Uses TanStack's `useVirtual` for virtualization and React's `useMemo` for performance optimization.
+ *
+ * @param {TableProps<T>} props - The properties for the Table component.
+ * @returns {JSX.Element} The rendered Table component.
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/data-table--table}
+ * @see {@link https://tanstack.com/table/v8/docs/api/virtual}
+ */
 export const Table = <T extends KeyValue = KeyValue>({
   ref,
   data,

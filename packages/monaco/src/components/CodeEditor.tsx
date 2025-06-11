@@ -77,6 +77,33 @@ type EditorProps = BaseEditorProps &
       }
   );
 
+/**
+ * CodeEditor component to render a code editor using Monaco Editor.
+ * It supports JSON and HTML languages with optional schema validation and handlebar suggestions.
+ * The editor can be configured to be read-only, minimal, and can handle changes in the code.
+ * It provides a ref to access the editor's value and validation methods.
+ *
+ * @param {EditorProps} props - The properties for the CodeEditor component.
+ * @param {RefProp<MonacoEditorRef>} ref - The ref to access the editor methods.
+ * @return {JSX.Element} The rendered CodeEditor component.
+ *
+ * @example
+ * ```jsx
+ * <CodeEditor
+ *   value={initialValue}
+ *   schema={[{ uri: "http://example.com/schema.json", schema: {} }]}
+ *   handlebarSuggestions={[{ text: "example", description: "An example suggestion" }]}
+ *   required={true}
+ *   readOnly={false}
+ *   minimal={false}
+ *   onChange={(value) => console.log("Code changed:", value)}
+ *   language="json"
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/monaco-playground--playground}
+ * @see {@link https://microsoft.github.io/monaco-editor/}
+ */
 export const CodeEditor = ({
   ref,
   value,

@@ -93,6 +93,40 @@ export interface CardProps
   dragData?: KeyValue;
 }
 
+/**
+ * A component that displays a card with a header, body, and footer. It can be used to display content in a structured format.
+ * It supports various features such as click handling, drag-and-drop functionality, and customizable styles.
+ * The Card component is designed to be flexible and can be used in various contexts, such as displaying user profiles, product information, or any other content that benefits from a card layout.
+ * The component accepts children that can include a Header, body content, and a Footer.
+ * It also supports additional properties for styling, accessibility, and interaction.
+ * It can be styled with custom CSS classes and supports features like selection indication and drag-and-drop functionality.
+ *
+ * @param {CardProps} props - The properties for the Card component.
+ * @returns {JSX.Element} The rendered Card component.
+ *
+ * @example
+ * ```jsx
+ * <Card
+ *   className="my-custom-class"
+ *   bodyClassName="my-body-class"
+ *   selected={true}
+ *   selectedRibbon={true}
+ *   onClick={() => console.log("Card clicked")}
+ *   onDragStart={(event, key, data) => console.log("Drag started", key, data)}
+ *   flex={true}
+ *   draggable={true}
+ *   dragKey="my-drag-key"
+ *   dragData={{ id: 1, name: "Card Data" }}
+ *   aria-label="My Card"
+ * >
+ *   <Header>Card Header</Header>
+ *   <div>Card Body Content</div>
+ *   <Footer>Card Footer</Footer>
+ * </Card>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-card--docs} for more details.
+ */
 export const Card = ({
   children,
   className,

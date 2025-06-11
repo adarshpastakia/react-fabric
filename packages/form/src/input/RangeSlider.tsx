@@ -95,7 +95,15 @@ export interface RangeProps
 }
 
 /**
- * Number Range input
+ * RangeSlider component for rendering a range slider input.
+ * It supports vertical orientation, custom colors, step increments,
+ * min/max values, and display of labels and value tooltips.
+ * The component uses the Ranger library for handling the slider functionality.
+ * It also provides error handling and supports disabled and read-only states.
+ * The component is designed to be flexible and customizable, allowing for various configurations.
+ *
+ * @param {RangeProps} props - The properties for the RangeSlider component.
+ * @returns {JSX.Element} The rendered RangeSlider component.
  */
 export const RangeSlider = ({
   error,

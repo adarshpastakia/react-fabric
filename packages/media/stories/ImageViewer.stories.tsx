@@ -27,7 +27,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "storybook/test";
 import { ImageViewer } from "../src";
 
-const meta: Meta<typeof ImageViewer> = {
+const meta: Meta = {
   component: ImageViewer,
   title: "@media/ImageViewer",
   parameters: {

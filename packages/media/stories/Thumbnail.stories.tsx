@@ -26,7 +26,7 @@ import { Col, Row } from "@react-fabric/core";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Thumbnail } from "../src";
 
-const meta: Meta<typeof Thumbnail> = {
+const meta: Meta = {
   component: Thumbnail,
   title: "@media/Thumbnail",
   parameters: {

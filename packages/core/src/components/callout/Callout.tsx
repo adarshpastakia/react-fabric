@@ -63,6 +63,7 @@ export interface CalloutProps
   onClose?: () => void;
 }
 
+// colors for different callout types
 const colors = {
   none: "bg-base text-tint-900 border-tint-100",
   tint: "bg-tint-50/50 text-tint-800 border-tint-300",
@@ -74,6 +75,32 @@ const colors = {
   warning: "bg-warning-50/50 text-warning-800 border-warning-300",
 };
 
+/**
+ * A component that displays a callout box with an optional title, icon, and legend.
+ * It can be used to highlight important information, warnings, or notices.
+ * The callout can be styled with different colors and border styles, and it supports a close action.
+ * This component is useful for drawing attention to specific content within a page or application,
+ * such as alerts, notifications, or important messages.
+ *
+ * @param {CalloutProps} props - The properties for the Callout component.
+ * @returns {JSX.Element} The rendered Callout component.
+ *
+ * @example
+ * ```jsx
+ * <Callout
+ *   color="primary"
+ *   legend="Important Notice"
+ *   title="Attention Required"
+ *   icon="info"
+ *   onClose={() => console.log("Callout closed")}
+ * >
+ *   This is an important message that requires your attention.
+ * </Callout>
+ * // Renders a callout box with a primary color, an icon, a title, and a close button.
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-components-callout--docs} for more details.
+ */
 export const Callout = ({
   children,
   // @ts-expect-error ignore

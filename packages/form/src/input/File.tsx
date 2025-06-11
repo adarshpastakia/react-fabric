@@ -75,6 +75,15 @@ const FileExists = (prop: AnyObject) => {
   );
 };
 
+/**
+ * File input component that allows users to select files from their system.
+ * It supports multiple file selection and displays a list of selected files.
+ * The component also provides functionality to remove files from the list.
+ * It handles file changes, invalid states, and read-only or disabled states.
+ *
+ * @param {FileInputProps} props - The properties for the FileInput component.
+ * @returns {JSX.Element} - The rendered FileInput component.
+ */
 export const FileInput = ({
   ref,
   value,

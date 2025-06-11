@@ -112,5 +112,7 @@ export const Sizes: IconStory = {
 
 export const Tester: IconStory = {
   render: (args) => <Icon {...args} />,
-  args: {},
+  args: {
+    icon: "mdi mdi-react",
+  },
 };

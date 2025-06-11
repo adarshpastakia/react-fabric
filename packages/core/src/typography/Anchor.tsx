@@ -59,7 +59,24 @@ export interface AnchorProps extends ChildrenProp, CssProp, RefProp, AriaProps {
 }
 
 /**
- * Typography link component
+ * A versatile link component that supports polymorphic rendering, allowing it to be used as an anchor (`<a>`), button, or any other HTML element.
+ * It can be styled with background color, text color, font size, and font family.
+ * It accepts various properties such as `bg`, `color`, `size`, and `family` to customize its appearance.
+ * This component is useful for creating links that need to be styled consistently across an application, while also providing flexibility in terms of the HTML element used.
+ *
+ * @param {AnchorProps} props - The properties for the Anchor component.
+ * @param {Tag} as - The HTML element type to render as (default is "a").
+ * @returns {JSX.Element} - A styled anchor element with the specified properties.
+ *
+ * @example
+ * ```jsx
+ * <Anchor href="https://example.com" bg="blue-500" color="white" size="md">
+ *   Click here
+ * </Anchor>
+ * // Renders a link with a blue background, white text, and medium font size.
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-typography--anchor} for more details.
  */
 export const Anchor = <Tag extends React.ElementType = "a">({
   ref,

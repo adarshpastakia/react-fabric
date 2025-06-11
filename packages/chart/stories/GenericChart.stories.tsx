@@ -28,7 +28,7 @@ import { GenericChart } from "../src";
 import coffeeJson from "./coffee";
 import sankeyJson from "./sankey";
 
-const meta: Meta<typeof GenericChart> = {
+const meta: Meta = {
   component: GenericChart,
   title: "@charts/GenericChart",
   parameters: {

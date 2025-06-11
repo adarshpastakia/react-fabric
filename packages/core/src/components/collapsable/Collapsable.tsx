@@ -95,6 +95,32 @@ export interface CollapsableProps
   onClose?: () => void;
 }
 
+/**
+ * A component that can be expanded or collapsed to show or hide content.
+ * It is useful for organizing content in a way that allows users to focus on the information they are interested in.
+ * It supports custom icons for open and closed states, alignment options, and can be made sticky.
+ * This component is ideal for creating accordions, expandable panels, or sections that can be toggled by the user.
+ *
+ * @param {CollapsableProps} props - The properties for the Collapsable component.
+ * @returns {JSX.Element} The rendered Collapsable component.
+ *
+ * @example
+ * ```jsx
+ * <Collapsable
+ *   iconAlign="start"
+ *   iconOpen={CoreIcons.chevronDown}
+ *   iconClosed={CoreIcons.chevronRight}
+ *   open={true}
+ *   onOpen={() => console.log("Opened")}
+ *   onClose={() => console.log("Closed")}
+ * >
+ *   <div>Header Content</div>
+ *   <div>Body Content</div>
+ * </Collapsable>
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-collapsable--docs} for more details.
+ */
 export const Collapsable = ({
   ref,
   disabled,

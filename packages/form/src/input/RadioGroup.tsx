@@ -74,6 +74,14 @@ export interface RadioGroupProps extends ChildrenProp<typeof Radio>, CssProp {
   onChange?: (value: AnyObject) => void;
 }
 
+/**
+ * RadioGroup component for rendering a group of radio buttons.
+ * It allows for customization of the label, options, and layout.
+ * The component supports inline and vertical orientations, and can handle change events.
+ *
+ * @param {RadioGroupProps} props - The properties for the RadioGroup component.
+ * @returns {JSX.Element} The rendered RadioGroup component.
+ */
 export const RadioGroup = ({
   children,
   name,

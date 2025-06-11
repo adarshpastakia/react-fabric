@@ -24,7 +24,7 @@
 /* istanbul ignore file */
 
 /**
- * @internal
+ * Country interface
  */
 export interface Country {
   continent: string;
@@ -42,28 +42,38 @@ export interface Country {
 }
 
 /**
- * country list with helper functions
+ * Country list with helper functions
+ * This is a list of all countries with their details.
+ * It includes information such as continent, ISO codes, name, full name, capital, top-level domain (TLD), currency, phone code, and emoji.
+ * This list can be used to retrieve country information based on various codes or names.
+ * @type {Country[]}
  */
 export default {
   /**
-   * Get iso2 code
-   * @param code
+   * Get ISO2 country code
+   *
+   * @param code - The country code to search for. It can be an ISO2 code, ISO3 code, or an alternative code.
+   * @return {string | undefined} - Returns the ISO2 country code if found, otherwise undefined.
    */
   toIso2(code: string) {
     const ctry = this.find(code);
     return ctry != null ? ctry.iso2 : undefined;
   },
   /**
-   * Get iso3 code
-   * @param code
+   * Get ISO3 country code
+   *
+   * @param code - The country code to search for. It can be an ISO2 code, ISO3 code, or an alternative code.
+   * @return {string | undefined} - Returns the ISO3 country code if found, otherwise undefined.
    */
   toIso3(code: string) {
     const ctry = this.find(code);
     return ctry != null ? ctry.iso3 : undefined;
   },
   /**
-   * Country flag emoji
-   * @param code
+   * Get country emoji
+   *
+   * @param code - The country code to search for. It can be an ISO2 code, ISO3 code, or an alternative code.
+   * @return {string} - Returns the emoji representation of the country if found, otherwise returns a default flag emoji.
    */
   emoji(code: string) {
     const ctry = this.find(code);
@@ -71,25 +81,25 @@ export default {
   },
   /**
    * Get country name
-   * @param code
+   *
+   * @param code - The country code to search for. It can be an ISO2 code, ISO3 code, or an alternative code.
+   * @return {string} - Returns the name of the country if found, otherwise returns the code itself.
    */
   name: function (code: string) {
     const ctry = this.find(code);
     return ctry != null ? ctry.name : code;
   },
   /**
-   * Find country by code
-   * @param code
-   * @return continent: string;
-   * @return iso2: string;
-   * @return iso3: string;
-   * @return name: string;
-   * @return fullname: string;
-   * @return capital: string;
-   * @return tld: string;
-   * @return currency: string;
-   * @return phone: string;
-   * @return emoji: string;
+   * This function searches for a country in the list by its code.
+   * It supports various formats:
+   * - ISO2 code (e.g., "US")
+   * - ISO3 code (e.g., "USA")
+   * - Alternative code (e.g., "US", "USA", "United States")
+   * It returns the first matching country object or undefined if not found.
+   * This function is useful for retrieving country details based on different code formats.
+   *
+   * @param code - The country code to search for. It can be an ISO2 code, ISO3 code, or an alternative code.
+   * @return {Country | undefined} - Returns the country object if found, otherwise undefined.
    */
   find(code: string): Country | undefined {
     return this.list.find(
@@ -99,6 +109,14 @@ export default {
         ct.iso2.toLowerCase() === code.toLowerCase(),
     );
   },
+  /**
+   * Country list
+   * This is a list of all countries with their details.
+   * It includes information such as continent, ISO codes, name, full name, capital, top-level domain (TLD), currency, phone code, and emoji.
+   * This list can be used to retrieve country information based on various codes or names.
+   *
+   * @type {Country[]}
+   */
   list: [
     {
       continent: "Asia",

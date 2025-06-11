@@ -112,6 +112,27 @@ const TypeMap: KeyValue = {
   card: "data-card",
 };
 
+/**
+ * DrawCanvas component to render a Tldraw editor canvas.
+ * It allows users to create and manipulate shapes, images, videos, audio, files, and cards.
+ * It supports drag-and-drop functionality for adding shapes to the canvas.
+ * It also provides a method to export the current pages as snapshots.
+ *
+ * @param {DrawProps} props - The properties for the component.
+ * @returns {JSX.Element} The rendered DrawCanvas component.
+ *
+ * @example
+ * ```jsx
+ * <DrawCanvas
+ *   snapshot={snapshot}
+ *   onUpdate={(snapshot) => console.log(snapshot)}
+ *   canvasRef={canvasRef}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/draw-playground--playground}
+ * @see {@link https://tldraw.com/docs/}
+ */
 export const DrawCanvas: FC<DrawProps> = ({
   snapshot,
   renderer,

@@ -73,7 +73,6 @@ export const _Select: SelectStory = {
     groupProperty: "alpha",
     allowClear: true,
     onEnterPressed: fn(),
-    // @ts-expect-error ignore
     onChange: fn(),
   },
 };
@@ -105,7 +104,6 @@ export const Multiple: SelectStory = {
     groupProperty: "alpha",
     allowClear: true,
     onEnterPressed: fn(),
-    // @ts-expect-error ignore
     onChange: fn(),
   },
 };
@@ -140,7 +138,6 @@ export const Searchable: SelectStory = {
     allowClear: true,
     searchable: true,
     onEnterPressed: fn(),
-    // @ts-expect-error ignore
     onChange: fn(),
   },
 };
@@ -192,7 +189,6 @@ export const Remote: SelectStory = {
     allowClear: true,
     searchable: true,
     onEnterPressed: fn(),
-    // @ts-expect-error ignore
     onChange: fn(),
   },
 };

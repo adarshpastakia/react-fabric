@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { differenceInDays, format, parseISO } from "date-fns";
+import { differenceInDays, format as dtformat, parseISO } from "date-fns";
 import {
   parsePhoneNumberFromString,
   type CountryCode,
@@ -30,9 +30,12 @@ import numeral from "numeral";
 import Countries from "./_countries";
 import { isEmpty, isNil } from "./_isType";
 
+/**
+ * Format utility functions for various data types.
+ * This namespace provides methods to format phone numbers, numbers, bytes, percentages, dates, and durations.
+ */
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Format {
-  /** ***************** get phone number object using `libphonenumber-js` *******************/
   const getPhone = (value: string, country: string) => {
     const phone =
       value.match(/^[0+]/) != null ? value.replace(/^00/, "+") : `+${value}`;
@@ -46,7 +49,6 @@ export namespace Format {
     );
   };
 
-  /** ***************** common number format method using `numeral` *******************/
   const numberFormat = (number?: string | number, format = "0,0[.]00a") => {
     if (isNil(number)) {
       return "";
@@ -59,7 +61,7 @@ export namespace Format {
     if (!isNaN(value)) {
       const days = differenceInDays(value, 0);
       const prefix = days > 0 ? `${days}d:` : "";
-      let time = format(
+      let time = dtformat(
         parseISO(new Date(value).toISOString().replace("Z", "")),
         fmt,
       );
@@ -68,7 +70,19 @@ export namespace Format {
     }
   };
 
-  /** ***************** format phone number using `libphonenumber-js` *******************/
+  /**
+   * Format phone number with country flag or emoji.
+   * It takes a phone number string, a country code, and a boolean to indicate whether to use CSS classes for flags.
+   * If the phone number is empty, less than 6 characters, or does not match the regex for valid phone numbers,
+   * it returns the original value.
+   * If the phone number is valid, it formats the phone number using `libphonenumber-js` and returns it with the country flag or emoji.
+   * The country flag is represented as a CSS class, and the emoji is obtained from the `Countries` module.
+   *
+   * @param {string} value - The phone number to format.
+   * @param {string} country - The country code to use for formatting.
+   * @param {boolean} useCss - Whether to use CSS classes for flags.
+   * @returns {string} The formatted phone number with country flag or emoji.
+   */
   export const phone = (value?: string, country = "AE", useCss = false) => {
     if (isEmpty(value) || value.length < 6 || !/^[\d+\s\-()]+$/.test(value))
       return value;
@@ -80,28 +94,74 @@ export namespace Format {
         : Countries.emoji(phone.country ?? "")
     } ${phone.formatInternational()}`;
   };
-  /** ***************** format whole number using `numeral` *******************/
+  /**
+   * Format number using `numeral`.
+   * It takes a number or string and a format string, and returns the formatted number.
+   * If the number is undefined or null, it returns an empty string.
+   * If the number starts with a '+', it retains the '+' sign in the formatted output.
+   * This function is useful for displaying numbers in a human-readable format,
+   * such as for financial data, statistics, or any numerical representation.
+   *
+   * @param {string | number} number - number or string to format
+   * @param {string} [format] - optional format string, defaults to "0,0[.]00a"
+   * @returns {string} formatted number
+   */
   export const number = (number?: string | number, format?: string) => {
     return numberFormat(number, format);
   };
-  /** ***************** format bytes using `numeral` *******************/
+  /**
+   * Format bytes using `numeral`.
+   * It takes a number or string and returns the formatted bytes.
+   * If the number is undefined or null, it returns an empty string.
+   * If the number starts with a '+', it retains the '+' sign in the formatted output.
+   * This function is useful for displaying file sizes or data transfer amounts in a human-readable format.
+   *
+   * @param {string | number} number - number or string to format
+   * @returns {string} formatted bytes
+   */
   export const bytes = (number?: string | number) => {
     return numberFormat(number, "0,0[.]00b");
   };
-  /** ***************** format percentage using `numeral` *******************/
+  /**
+   * Format percentage using `numeral`.
+   * It takes a number or string and returns the formatted percentage.
+   * If the number is undefined or null, it returns an empty string.
+   * If the number starts with a '+', it retains the '+' sign in the formatted output.
+   *
+   * @param {string | number} number - number or string to format
+   * @returns {string} formatted percentage
+   */
   export const percent = (number?: string | number) => {
     return numberFormat(number, "0,0[.]00%");
   };
-  /** ***************** format date using `date-fns` *******************/
-  export const date = (date?: Date | string | number, fmt = "d-M-y") => {
-    return date ? format(new Date(date), fmt) : "";
+  /**
+   * Format date using `date-fns`.
+   * It takes a date (as a Date object, string, or number) and a format string.
+   * If the date is undefined or null, it returns an empty string.
+   * If the date is a valid date, it formats it using the provided format string.
+   * Format defaults to "d-M-y" if not provided.
+   *
+   * @param {date | string | number} date - Date object, string, or number to format
+   * @typedef {string} format - Optional format string, defaults to "d-M-y"
+   * @returns {string} - Formatted date string
+   */
+  export const date = (date?: Date | string | number, format = "d-M-y") => {
+    return date ? dtformat(new Date(date), format) : "";
   };
   /** ***************** format time duration from total seconds/milliseconds *******************/
   /**
    * Format time duration with milliseconds
-   * @param number
-   * @param isFraction
-   * @returns
+   * This function takes a number or string representing a duration in seconds or milliseconds,
+   * and returns a formatted string in the format "HH:mm:ss.SSS".
+   * If the input is undefined or null, it returns "00:00.000".
+   * If the input is Infinity, it returns "∞".
+   * The function also accepts an optional boolean parameter `isFraction` to indicate whether the input is in seconds (true) or milliseconds (false).
+   * If `isFraction` is true, the input is multiplied by 1000 to convert seconds to milliseconds.
+   * The function uses the `makeDuration` helper function to format the duration.
+   *
+   * @param {string | number} number - The duration to format, can be a string or number.
+   * @param {boolean} isFraction - Optional parameter to indicate if the input is in seconds (true) or milliseconds (false).
+   * @returns {string} - The formatted duration string.
    */
   export const duration = (number?: string | number, isFraction?: boolean) => {
     if (isNil(number)) {
@@ -117,10 +177,19 @@ export namespace Format {
     return "00:00.000";
   };
   /**
-   * Format time duration without milliseconds
-   * @param number
-   * @param isFraction
-   * @returns
+   * Format time duration in seconds
+   * This function takes a number or string representing a duration in seconds,
+   * and returns a formatted string in the format "HH:mm:ss".
+   * If the input is undefined or null, it returns "00:00".
+   * If the input is Infinity, it returns "∞".
+   * The function also accepts an optional boolean parameter `isFraction` to indicate whether the input is in seconds (true) or milliseconds (false).
+   * If `isFraction` is true, the input is multiplied by 1000 to convert seconds to milliseconds.
+   * The function uses the `makeDuration` helper function to format the duration.
+   * This function is useful for displaying durations in a human-readable format, such as for timers or elapsed time.
+   *
+   * @param {string | number} number - The duration to format, can be a string or number.
+   * @param {boolean} isFraction - Optional parameter to indicate if the input is in seconds (true) or milliseconds (false).
+   * @returns {string} - The formatted duration string.
    */
   export const durationSeconds = (
     number?: string | number,

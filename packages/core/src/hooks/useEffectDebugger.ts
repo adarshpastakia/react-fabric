@@ -86,6 +86,19 @@ const compareInputs = (
   });
 };
 
+/**
+ * Custom hook to debug useMemo hooks.
+ * It compares the current and previous dependency arrays and logs any differences.
+ * @param func - The function to be memoized or executed in the effect.
+ * @param inputs - The dependency array for the hook.
+ * @param prefix - A prefix for the log messages to identify the hook.
+ * @returns The result of the memoized function or the effect.
+ *
+ * @example
+ * ```jsx
+ * const value = useMemoDebugger(() => computeValue(), [dependency1, dependency2], "MyComponent");
+ * ```
+ */
 export const useMemoDebugger = <T>(
   func: () => T,
   inputs: DependencyList,
@@ -108,6 +121,24 @@ export const useMemoDebugger = <T>(
   }, inputs);
 };
 
+/**
+ * Custom hook to debug useEffect and useLayoutEffect hooks.
+ * It compares the current and previous dependency arrays and logs any differences.
+ * @param func - The effect function to be executed.
+ * @param inputs - The dependency array for the effect.
+ * @param prefix - A prefix for the log messages to identify the effect.
+ * @returns A cleanup function if the effect returns one.
+ *
+ * @example
+ * ```jsx
+ * useEffectDebugger(() => {
+ *   // Effect logic here
+ *   return () => {
+ *     // Cleanup logic here
+ *   };
+ * }, [dependency1, dependency2], "MyComponent");
+ * ```
+ */
 export const useEffectDebugger = (
   func: EffectCallback,
   inputs: DependencyList,
@@ -130,6 +161,24 @@ export const useEffectDebugger = (
   }, inputs);
 };
 
+/**
+ * Custom hook to debug useLayoutEffect hooks.
+ * It compares the current and previous dependency arrays and logs any differences.
+ * @param func - The layout effect function to be executed.
+ * @param inputs - The dependency array for the layout effect.
+ * @param prefix - A prefix for the log messages to identify the layout effect.
+ * @returns A cleanup function if the layout effect returns one.
+ *
+ * @example
+ * ```jsx
+ * useLayoutEffectDebugger(() => {
+ *   // Layout effect logic here
+ *   return () => {
+ *     // Cleanup logic here
+ *   };
+ * }, [dependency1, dependency2], "MyComponent");
+ * ```
+ */
 export const useLayoutEffectDebugger = (
   func: EffectCallback,
   inputs: DependencyList,

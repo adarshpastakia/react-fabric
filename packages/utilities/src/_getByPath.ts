@@ -80,8 +80,14 @@ const _get = (hit: any, field: string): any => {
 };
 
 /**
- * get property value by path
- * @internal
+ * Get a value from an object by a given path.
+ * This function allows you to retrieve a value from a nested object structure using a dot-separated path.
+ * If the path does not exist or the object is empty, it returns a default value.
+ * @param {KeyValue} obj - The object from which to retrieve the value.
+ * @param {string} path - The dot-separated path to the value within the object.
+ * @param {any} defaultValue - The value to return if the path does not exist or the object is empty.
+ * @typedef {T} AnyObject - The type of the value to be returned.
+ * @returns {T} The value at the specified path, or the default value if the path does not exist.
  */
 export const getByPath = <T = any>(
   obj: KeyValue,
@@ -100,8 +106,13 @@ export const getByPath = <T = any>(
 };
 
 /**
- * get first available value in list
- * @internal
+ * Get the first non-empty value from the provided arguments.
+ * This function is useful for finding a default value or fallback when multiple values are provided.
+ * It checks each argument in order and returns the first one that is not empty.
+ * If all arguments are empty, it returns `undefined`.
+ *
+ * @param {...any} args - The values to check for non-emptiness.
+ * @returns {any} The first non-empty value, or `undefined` if all are empty.
  */
 export const getValue = (...args: any[]) => {
   return args.find((a) => !isEmpty(a));

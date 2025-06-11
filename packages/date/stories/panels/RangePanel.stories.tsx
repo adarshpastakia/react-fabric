@@ -24,7 +24,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { RangePanel } from "../../src";
 
-const meta: Meta<typeof RangePanel> = {
+const meta: Meta = {
   component: RangePanel,
   title: "@date/Date Panel",
   parameters: {

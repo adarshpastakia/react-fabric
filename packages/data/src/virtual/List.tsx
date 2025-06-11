@@ -360,4 +360,41 @@ const _VirtualList = <T extends AnyObject>({
 _VirtualList.displayName = "VirtualList";
 
 const GenericMemo: <T>(c: T) => T = memo;
+
+/**
+ * VirtualList component for rendering large lists efficiently using virtualization.
+ * It supports horizontal and vertical orientations, custom item heights and widths,
+ * and provides a scroller for navigating through the list.
+ * It also supports loading more items on scroll and provides a way to hilight items.
+ * It can be used with a ref to control scrolling and hilighting of items.
+ *
+ * @param {VirtualListProps<T>} props - The properties for the VirtualList component.
+ * @returns {JSX.Element} The rendered VirtualList component.
+ * @template T - The type of items in the list, extending AnyObject.
+ *
+ * @example
+ * ```jsx
+ * <VirtualList
+ *   items={items}
+ *   children={({ item, index, isLast }) => (
+ *     <div key={index} className="item">
+ *       {item.label}
+ *     </div>
+ *   )}
+ *   fullWidth={true}
+ *   orientation="vertical"
+ *   defaultHeight={50}
+ *   onLoadMore={(lastIndex) => console.log("Load more items from index:", lastIndex)}
+ *   onScroll={(top) => console.log("Scrolled to top:", top)}
+ *   listRef={virtualListRef}
+ * >
+ *   {({ item, index, isLast }) => (
+ *     <div className="gallery-item" key={item.id}>
+ *       <img src={item.image} alt={item.label} />
+ *       <p>{item.label}</p>
+ *     </div>
+ *   )}
+ * </VirtualList>
+ * ```
+ */
 export const VirtualList = GenericMemo(_VirtualList);

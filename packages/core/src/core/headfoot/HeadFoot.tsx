@@ -72,10 +72,50 @@ const HeadFoot = ({
   );
 };
 
+/**
+ * Header component that wraps children in a header element.
+ * It uses the HeadFoot component to handle layout and styling.
+ * It accepts properties for direction, alignment, and justification,
+ * allowing for flexible layout configurations.
+ * The `as` prop is set to "header" to render the element as a header.
+ * The `area` prop is set to "head" to indicate that this is a header area.
+ * It can be used to create a consistent header layout across an application.
+ *
+ * @param {HeadFootProps} props - The properties for the Header component.
+ * @returns A header element containing the children wrapped in the HeadFoot component.
+ *
+ * @example
+ * ```jsx
+ * <Header className="custom-header" dir="ltr">
+ *   <h1>Header content goes here</h1>
+ * </Header>
+ * ```
+ */
 export const Header = (props: HeadFootProps) => (
   <HeadFoot as="header" area="head" {...props} />
 );
 
+/**
+ * Footer component that wraps children in a footer element.
+ * It uses the HeadFoot component to handle layout and styling.
+ * It accepts properties for direction, alignment, and justification,
+ * allowing for flexible layout configurations.
+ * The `as` prop is set to "footer" to render the element as a footer.
+ * The `area` prop is set to "foot" to indicate that this is a footer area.
+ * It can be used to create a consistent footer layout across an application.
+ * * The Footer component is designed to be flexible and can be styled with custom classes.
+ * It supports both default and flex layouts, allowing for alignment and justification of its children.
+ *
+ * @param {HeadFootProps} props - The properties for the Footer component.
+ * @returns A footer element containing the children wrapped in the HeadFoot component.
+ *
+ * @example
+ * ```jsx
+ * <Footer className="custom-footer" dir="ltr">
+ *   <p>Footer content goes here</p>
+ * </Footer>
+ * ```
+ */
 export const Footer = (props: HeadFootProps) => (
   <HeadFoot as="footer" area="foot" {...props} />
 );

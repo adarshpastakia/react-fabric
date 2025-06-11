@@ -64,6 +64,31 @@ export interface EditorProps {
   onDirty?: (isDirty: boolean) => void;
 }
 
+/**
+ * LexicalEditor component is a rich text editor built using Lexical.
+ * It supports various features such as code highlighting, lists, tables, and sticky notes.
+ * It provides a customizable toolbar and handles editor state changes.
+ * It also supports drag-and-drop functionality for blocks.
+ * It can be used in both read-only and editable modes, and supports publishing mode for exporting content.
+ * It uses a custom theme and provides error handling for Lexical updates.
+ *
+ * @param {EditorProps} props - The properties for the LexicalEditor component.
+ * @returns {JSX.Element} The rendered LexicalEditor component.
+ *
+ * @example
+ * ```jsx
+ * <LexicalEditor
+ *   value={initialValue}
+ *   readOnly={false}
+ *   publishMode={false}
+ *   onChange={(value) => console.log("Editor value changed:", value)}
+ *   onDirty={(isDirty) => console.log("Editor is dirty:", isDirty)}
+ * />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/lexical-playground--playground}
+ * @see {@link https://lexical.dev/docs/}
+ */
 export const LexicalEditor = ({
   value,
   readOnly,

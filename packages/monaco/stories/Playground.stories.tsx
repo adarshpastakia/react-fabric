@@ -36,7 +36,7 @@ import { CodeEditor } from "../src";
 // import html from "./demo.html.md";
 // import md from "./demo.md";
 
-const meta: Meta<typeof CodeEditor> = {
+const meta: Meta = {
   component: CodeEditor,
   title: "@monaco/_Playground_",
   parameters: {
