@@ -23,7 +23,7 @@
 
 import { isNil, isNumber, isObject, mergeRefs } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { cloneElement, useMemo } from "react";
+import { cloneElement, isValidElement, useMemo } from "react";
 import {
   type BadgeType,
   type ChildProp,
@@ -82,7 +82,7 @@ export interface BadgeProps
 export const getBadgeProps = (
   badge?: string | number | BadgeType,
 ): AnyObject => {
-  if (isObject(badge)) {
+  if (isObject(badge) && !isValidElement(badge)) {
     return Object.assign({ forButton: true, placement: "" }, badge);
   } else {
     return {
@@ -130,6 +130,9 @@ export const Badge = ({
   ...rest
 }: BadgeProps) => {
   const label = useMemo(() => {
+    if (isValidElement(value)) {
+      return value;
+    }
     if (!isNil(value)) {
       if (isNumber(value) && max && value > max) {
         return `${max}+`;
