@@ -269,7 +269,7 @@ const _VirtualList = <T extends AnyObject>({
     >
       <div
         className={classNames(
-          "inline-flex flex-nowrap gap-2 justify-center min-h-full min-w-full",
+          "flex flex-nowrap gap-2 justify-center min-h-full min-w-full",
           orientation === "horizontal" && "flex-col",
         )}
       >

@@ -294,7 +294,7 @@ const _VirtualGallery = <T extends AnyObject>({
     >
       <div
         className={classNames(
-          "inline-flex flex-nowrap gap-2 justify-center min-h-full min-w-full",
+          "flex flex-nowrap justify-center gap-2 min-h-full",
         )}
       >
         <div
@@ -318,7 +318,7 @@ const _VirtualGallery = <T extends AnyObject>({
             <div style={{ height: virtualItems[0]?.start }} />
             {virtualItems.map(({ key, index }) => (
               <div
-                className="flex justify-center"
+                className="flex"
                 key={key}
                 data-index={index}
                 ref={virtualizer.measureElement}
