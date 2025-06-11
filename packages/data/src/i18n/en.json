@@ -32,5 +32,10 @@
     "uncheckAll": "Uncheck All",
     "addFilter": "Add Filter",
     "addFilterNot": "Add not Filter"
+  },
+  "data": {
+    "tree": {
+      "noItems": "No tree items available"
+    }
   }
 }
