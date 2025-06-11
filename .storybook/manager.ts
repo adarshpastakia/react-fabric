@@ -29,6 +29,7 @@ addons.setConfig({
 addons.register("themeChanger", () => {
   // Register the tool
   addons.add("themeChanger", {
+    id: "themeChanger",
     type: types.TOOL,
     title: "Theme toggle",
     match: ({ viewMode }) => viewMode === "story" || viewMode === "docs",
