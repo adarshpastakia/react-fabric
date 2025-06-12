@@ -23,7 +23,7 @@
 
 import { EMPTY_ARRAY, isArray } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { cloneElement, useCallback, useMemo } from "react";
+import { cloneElement, useCallback } from "react";
 import { useControlledValue } from "../../hooks/useControlledValue";
 import {
   type AriaProps,
@@ -35,10 +35,7 @@ import {
 import { cloneChildren } from "../../utils";
 import { type ButtonProps } from "./Button";
 
-interface BaseProps
-  extends CssProp,
-    AriaProps,
-    ChildrenProp<React.ReactElement<ButtonProps & { value: string }>> {
+interface BaseProps extends CssProp, AriaProps {
   /**
    * vertical orientation
    */
@@ -69,29 +66,31 @@ interface BaseProps
   fullWidth?: boolean;
 }
 
-export type ToggleButtonGroupProps = BaseProps &
-  (
-    | {
-        /**
-         *
-         */
-        value: string;
-        /**
-         * change handler
-         */
-        onChange?: (value: string) => void;
-      }
-    | {
-        /**
-         *
-         */
-        value: string[];
-        /**
-         * change handler
-         */
-        onChange?: (value: string[]) => void;
-      }
-  );
+export type ToggleButtonGroupValueProps<T> =
+  | {
+      /**
+       *
+       */
+      value: T;
+      /**
+       * change handler
+       */
+      onChange?: (value: T | null) => void;
+    }
+  | {
+      /**
+       *
+       */
+      value: T[];
+      /**
+       * change handler
+       */
+      onChange?: (value: T[] | null) => void;
+    };
+
+export type ToggleButtonGroupProps<T> = BaseProps &
+  ChildrenProp<React.ReactElement<ButtonProps & { value: T }>> &
+  ToggleButtonGroupValueProps<T>;
 
 /**
  * A component that groups toggle buttons together, allowing for consistent styling and behavior across multiple toggle buttons.
@@ -121,7 +120,7 @@ export type ToggleButtonGroupProps = BaseProps &
  *
  * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-togglebuttongroup--docs} for more details.
  */
-export const ToggleButtonGroup = ({
+export const ToggleButtonGroup = <T extends AnyObject = string>({
   vertical,
   className,
   children,
@@ -134,23 +133,24 @@ export const ToggleButtonGroup = ({
   value,
   onChange,
   ...aria
-}: ToggleButtonGroupProps) => {
-  const isMultiple = useMemo(() => isArray(value), [value]);
-  const { currentValue, updateValue } = useControlledValue<typeof value>(
+}: ToggleButtonGroupProps<T>) => {
+  const { currentValue, updateValue } = useControlledValue(
     value,
-    isArray(value) ? EMPTY_ARRAY : "",
+    isArray(value) ? EMPTY_ARRAY : null,
   );
 
   const clickHandler = useCallback(
-    (cb: AnyObject) => (e: React.MouseEvent<HTMLElement>) => {
-      let newValue: AnyObject = `${e.currentTarget.dataset.value}`;
+    (cb: AnyObject, childValue: T) => (e: React.MouseEvent<HTMLElement>) => {
+      let newValue;
       if (isArray(currentValue)) {
-        if (currentValue.includes(newValue))
-          newValue = currentValue.filter((v) => v !== newValue);
-        else newValue = [...currentValue, newValue];
+        if (currentValue.includes(childValue))
+          newValue = currentValue.filter((v) => v !== childValue);
+        else newValue = [...currentValue, childValue];
+      } else {
+        newValue = childValue;
       }
       updateValue(newValue);
-      onChange?.(newValue);
+      onChange?.(newValue as AnyObject);
       cb?.(e);
     },
     [currentValue, onChange],
@@ -177,10 +177,9 @@ export const ToggleButtonGroup = ({
           rounded,
           fullWidth,
           ...child.props,
-          onClick: clickHandler(child.props.onClick),
-          "data-value": child.props.value,
-          "data-checked": isMultiple
-            ? currentValue.includes(child.props.value)
+          onClick: clickHandler(child.props.onClick, child.props.value),
+          "data-checked": isArray(currentValue)
+            ? currentValue?.includes(child.props.value)
             : currentValue === child.props.value,
         }),
       )}

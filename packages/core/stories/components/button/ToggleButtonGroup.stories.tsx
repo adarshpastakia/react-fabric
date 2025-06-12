@@ -51,15 +51,15 @@ export const _ToggleButtonGroup: ToggleButtonGroupStory = {
     return (
       <Fragment>
         <ToggleButtonGroup {...args}>
-          <Button value="1">First</Button>
-          <Button value="2">Second</Button>
-          <Button value="3">Third</Button>
+          <Button value={1}>First</Button>
+          <Button value={2}>Second</Button>
+          <Button value={3}>Third</Button>
         </ToggleButtonGroup>
       </Fragment>
     );
   },
   args: {
-    value: ["1", "2"],
+    value: [1, 2],
     onChange: fn<any>(),
   },
 };
@@ -69,15 +69,15 @@ export const SingleSelection: ToggleButtonGroupStory = {
     return (
       <Fragment>
         <ToggleButtonGroup {...args}>
-          <Button value="1">First</Button>
-          <Button value="2">Second</Button>
-          <Button value="3">Third</Button>
+          <Button value={1}>First</Button>
+          <Button value={2}>Second</Button>
+          <Button value={3}>Third</Button>
         </ToggleButtonGroup>
       </Fragment>
     );
   },
   args: {
-    value: "1",
+    value: 1,
     onChange: fn<any>(),
   },
 };
@@ -87,7 +87,11 @@ export const EditorToolbar: ToggleButtonGroupStory = {
     return (
       <Fragment>
         <div className="border border-muted p-1 flex gap-2 rounded">
-          <ToggleButtonGroup value="left" variant="link">
+          <ToggleButtonGroup
+            value="left"
+            variant="link"
+            onChange={args.onChange as any}
+          >
             <Button
               icon="mdi mdi-format-align-left"
               value="left"
@@ -110,7 +114,7 @@ export const EditorToolbar: ToggleButtonGroupStory = {
             />
           </ToggleButtonGroup>
           <Divider vertical />
-          <ToggleButtonGroup value={[]} variant="link">
+          <ToggleButtonGroup value={[]} variant="link" onChange={args.onChange}>
             <Button icon="mdi mdi-format-bold" value="bold" aria-label="bold" />
             <Button
               icon="mdi mdi-format-italic"
@@ -127,7 +131,9 @@ export const EditorToolbar: ToggleButtonGroupStory = {
       </Fragment>
     );
   },
-  args: {},
+  args: {
+    onChange: fn<any>(),
+  },
 };
 
 export const Tester: ToggleButtonGroupStory = {
