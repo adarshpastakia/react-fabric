@@ -1,1 +1,0 @@
-import{j as a,m as o}from"./iframe-BcXNitKG.js";import{E as c}from"./ErrorBoundary-C8J7aorp.js";var l=function(r){var e=r.children,i=r.className,s=r.dir,n=r.ref;return a.jsx("div",{"data-ref":"section",dir:s,ref:n,className:o("fabric-section",i,"grid area-content overflow-hidden"),children:a.jsx(c,{children:e})})};export{l as S};
