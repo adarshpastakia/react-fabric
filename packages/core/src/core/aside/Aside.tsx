@@ -310,7 +310,7 @@ export const Aside = ({
           {...resizeHandleProps}
           className={classNames(
             "fabric-asideResizer",
-            "before:absolute before:inset-0 before:w-1 before:top-1/2 before:-translate-y-1/2 before:transition-all",
+            "before:absolute before:inset-0 before:w-1 before:top-1/2 before:-translate-y-1/2 before:transition-all before:delay-150",
           )}
         />
       )}
