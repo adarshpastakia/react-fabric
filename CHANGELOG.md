@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.52](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.51...v1.0.0-beta.52) (2025-06-13)
+
+### Bug Fixes
+
+- **Badge:** enhance badge value handling to support valid React elements ([36dc3d7](https://github.com/adarshpastakia/react-fabric/commit/36dc3d737ea931c71e3719b736a3f48eb3db2357))
+- **Chip:** update icon class to include flex-auto for better layout ([1f2c163](https://github.com/adarshpastakia/react-fabric/commit/1f2c163510c15031d3b0e588306e4f0822696050))
+- **Filter:** add operator for match all/any ([6774091](https://github.com/adarshpastakia/react-fabric/commit/6774091499acaf61bd97fd117b8dbd956f8d0f1f))
+- **FilterTag:** simplify operator display logic by removing unnecessary parentheses ([2156d8a](https://github.com/adarshpastakia/react-fabric/commit/2156d8a1f2791156692dc91295c1bfb90ef050cf))
+- **Table:** adjust z-index values for header and row elements ([28a34ad](https://github.com/adarshpastakia/react-fabric/commit/28a34ad2537d2b7db999c7a0f6b123d4cf05f671))
+- **ToggleButtonGroup:** update value type to generic inference ([2c4db26](https://github.com/adarshpastakia/react-fabric/commit/2c4db26ce4b3bcb73683a8c052fdd06e1283a29c))
+- **VirtualGallery, VirtualList:** update flex classes for improved layout consistency ([48005f4](https://github.com/adarshpastakia/react-fabric/commit/48005f48c69ee650352c037c880b62e02d1b02ff))
+
 # [1.0.0-beta.51](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.50...v1.0.0-beta.51) (2025-06-06)
 
 **Note:** Version bump only for package react-fabric

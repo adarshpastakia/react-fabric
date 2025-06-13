@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.52](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.51...v1.0.0-beta.52) (2025-06-13)
+
+### Bug Fixes
+
+- **Table:** adjust z-index values for header and row elements ([28a34ad](https://github.com/adarshpastakia/react-ui-framework/commit/28a34ad2537d2b7db999c7a0f6b123d4cf05f671))
+- **VirtualGallery, VirtualList:** update flex classes for improved layout consistency ([48005f4](https://github.com/adarshpastakia/react-ui-framework/commit/48005f48c69ee650352c037c880b62e02d1b02ff))
+
 # [1.0.0-beta.51](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.50...v1.0.0-beta.51) (2025-06-06)
 
 **Note:** Version bump only for package @react-fabric/data

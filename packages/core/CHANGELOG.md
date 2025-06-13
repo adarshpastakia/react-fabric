@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.52](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.51...v1.0.0-beta.52) (2025-06-13)
+
+### Bug Fixes
+
+- **Badge:** enhance badge value handling to support valid React elements ([36dc3d7](https://github.com/adarshpastakia/react-ui-framework/commit/36dc3d737ea931c71e3719b736a3f48eb3db2357))
+- **Chip:** update icon class to include flex-auto for better layout ([1f2c163](https://github.com/adarshpastakia/react-ui-framework/commit/1f2c163510c15031d3b0e588306e4f0822696050))
+- **ToggleButtonGroup:** update value type to generic inference ([2c4db26](https://github.com/adarshpastakia/react-ui-framework/commit/2c4db26ce4b3bcb73683a8c052fdd06e1283a29c))
+
 # [1.0.0-beta.51](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.50...v1.0.0-beta.51) (2025-06-06)
 
 **Note:** Version bump only for package @react-fabric/core
