@@ -329,7 +329,7 @@ export const Button = <Tag extends React.ElementType = "button">({
             </label>
           )}
           {!isNil(badge) && <Badge {...badgeProps} />}
-          {hotKey && <HotKeyLabel keyCombo={hotKey} />}
+          {hotKey && children && <HotKeyLabel keyCombo={hotKey} />}
           {altIcon && (
             <Icon className={"fabric-altIcon"} icon={altIcon} rtlFlip />
           )}
