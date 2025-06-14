@@ -85,6 +85,10 @@
   flex: 0 0 auto;
 }
 
+@utility flex-content {
+  flex: 0 0 1em;
+}
+
 @utility flex-full {
   flex: 1 1 100%;
 }

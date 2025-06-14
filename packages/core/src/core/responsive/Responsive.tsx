@@ -218,7 +218,7 @@ export const Col = ({
         flex === "full" && "flex-full",
         flex === "auto" && "flex-auto",
         flex === "initial" && "flex-initial",
-        flex === "content" && "flex-none",
+        flex === "content" && "flex-content",
         align && `self-${align}`,
         truncate && "truncate",
       )}
