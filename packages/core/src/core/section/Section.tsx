@@ -22,7 +22,12 @@
  */
 
 import classNames from "classnames";
-import { type ChildrenProp, type CssProp, type RefProp } from "../../types";
+import {
+  TestProps,
+  type ChildrenProp,
+  type CssProp,
+  type RefProp,
+} from "../../types";
 import { ErrorBoundary } from "../boundary/ErrorBoundary";
 
 /**
@@ -48,14 +53,17 @@ export const Section = ({
   className,
   dir,
   ref,
+  ...rest
 }: ChildrenProp &
   CssProp &
+  TestProps &
   RefProp<HTMLDivElement> & { dir?: "ltr" | "rtl" }) => {
   return (
     <div
       data-ref="section"
       dir={dir}
       ref={ref}
+      {...rest}
       className={classNames(
         "fabric-section",
         className,
