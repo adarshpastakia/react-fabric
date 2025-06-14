@@ -166,7 +166,7 @@ export const TreeNode = ({
           }
         >
           {nodeIcon && (
-            <div className="flex-content w-6 self-center leading-none">
+            <div className="flex-content max-w-6 me-1 self-center leading-none">
               {isValidElement(nodeIcon) && nodeIcon}
               {isString(nodeIcon) && (
                 <Icon
