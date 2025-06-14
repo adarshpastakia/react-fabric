@@ -164,7 +164,7 @@ export const Dictation = ({
       <div
         ref={container}
         className={classNames(
-          "overflow-hidden w-24 bg-base rounded-full shadow-inner",
+          "overflow-hidden w-24 bg-base rounded-full",
           size === "sm" ? "h-7" : "h-8",
           !recording && "hidden",
         )}
@@ -179,7 +179,9 @@ export const Dictation = ({
       )}
       {!error && !recording && (
         <Fragment>
-          <HotKey global keyCombo={hotkey} handler={startDictation.current} />
+          {hotkey && (
+            <HotKey global keyCombo={hotkey} handler={startDictation.current} />
+          )}
           <Button
             size={size}
             icon={icon ?? CoreIcons.mic}
@@ -194,7 +196,9 @@ export const Dictation = ({
       )}
       {!error && recording && (
         <Fragment>
-          <HotKey global keyCombo={hotkey} handler={stopDictation.current} />
+          {hotkey && (
+            <HotKey global keyCombo={hotkey} handler={stopDictation.current} />
+          )}
           <span className="text-xs px-2">{Format.duration(progress)}</span>
           <Button
             size={size}
