@@ -95,7 +95,7 @@
 
   .fabric-breadcrumbs[data-variant="modern"] {
     & > .fabric-breadcrumbLink {
-      --linkcolor: color-mix(in lab, var(--color) 50%, var(--fabric-bg));
+      --linkcolor: color-mix(in lab, var(--color) 35%, var(--fabric-bg));
 
       position: relative;
       list-style: none;
@@ -164,11 +164,11 @@
       }
 
       &:hover {
-        --linkcolor: color-mix(in lab, var(--color) 65%, var(--fabric-bg));
+        --linkcolor: color-mix(in lab, var(--color) 40%, var(--fabric-bg));
       }
 
       &:active {
-        --linkcolor: color-mix(in lab, var(--color) 35%, var(--fabric-bg));
+        --linkcolor: color-mix(in lab, var(--color) 45%, var(--fabric-bg));
       }
     }
   }

@@ -83,7 +83,7 @@ export const Breadcrumbs = ({
   ...aria
 }: BreadcrumbProps) => {
   const [start, overflow, end] = useMemo(() => {
-    const nodeList = Children.toArray(children as AnyObject);
+    const nodeList = Children.toArray(children as AnyObject).filter(Boolean);
     if (nodeList.length > 7) {
       return [nodeList.slice(0, 3), nodeList.slice(3, -3), nodeList.slice(-3)];
     }
