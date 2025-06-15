@@ -171,7 +171,7 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
           active && "active",
           minimal && "minimal",
           disabled && "disabled",
-          "rounded-capped relative max-w-[50vw] my-0.5",
+          "rounded relative max-w-[50vw] my-0.5",
         )}
         data-active={active}
         data-open={childOpen}

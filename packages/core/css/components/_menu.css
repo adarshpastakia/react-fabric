@@ -69,6 +69,8 @@
 
     &.active {
       pointer-events: none;
+      border-end-start-radius: 0;
+      border-start-start-radius: 0;
       background-color: color-mix(in lab, var(--color) 20%, var(--fabric-bg));
 
       & > div {
