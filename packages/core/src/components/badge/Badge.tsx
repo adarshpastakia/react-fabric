@@ -170,7 +170,9 @@ export const Badge = ({
             "fabric-badge",
             className,
             "inline-block p-px min-w-2 min-h-2 text-center select-none rounded-full leading-none z-2 pointer-events-none",
-            (forButton && !placement) || inline ? "relative" : "absolute",
+            (forButton && !placement) || inline
+              ? "relative flex-content"
+              : "absolute",
           )}
         >
           {label && <span className="p-1">{label}</span>}
