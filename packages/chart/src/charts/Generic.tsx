@@ -27,12 +27,14 @@ import {
   useEffect,
   useImperativeHandle,
   useRef,
+  useState,
   type FC,
   type Ref,
 } from "react";
 import { type BaseChart } from "../types";
 import { ChartContainer } from "../wrapper/ChartContainer";
 import { ChartWrapper } from "../wrapper/ChartWrapper";
+import { PaletteSelect } from "../wrapper/PaletteSelect";
 
 export interface GenericProps extends BaseChart {
   chartRef?: Ref<EChartsType>;
@@ -96,7 +98,7 @@ export interface GenericProps extends BaseChart {
   dataTableRenderer?: (chartOption: EChartOption) => string;
 }
 
-const GenericChartBase: FC<GenericProps> = memo(
+const GenericChartBase = memo(
   ({
     chartRef: _ref,
     onBrush,
@@ -105,12 +107,14 @@ const GenericChartBase: FC<GenericProps> = memo(
     dataTableRenderer,
     onClick,
     onRendered,
+    showThemeSelector,
     actions,
     title,
-    theme,
+    theme: chartTheme,
     ...options
-  }: GenericProps) => {
+  }: Omit<GenericProps, "showTypeSelector">) => {
     const chartRef = useRef<EChartsType>(null);
+    const [theme, setTheme] = useState(chartTheme);
 
     useImperativeHandle<EChartsType | null, EChartsType | null>(
       _ref,
@@ -170,13 +174,16 @@ const GenericChartBase: FC<GenericProps> = memo(
 
     return (
       <ChartContainer
-        theme={theme}
         options={options}
         chartRef={chartRef}
+        theme={theme}
         title={title}
         dataTableRenderer={dataTableRenderer}
       >
         {actions}
+        {showThemeSelector && (
+          <PaletteSelect theme={theme} onClick={setTheme} />
+        )}
       </ChartContainer>
     );
   },
