@@ -37,6 +37,7 @@ import { activityRenderer } from "../types/utils";
 import { ChartContainer } from "../wrapper/ChartContainer";
 import { ChartWrapper } from "../wrapper/ChartWrapper";
 import { PaletteSelect } from "../wrapper/PaletteSelect";
+import { E } from "react-router/dist/development/register-DCE0tH5m";
 
 export interface ActivityMapProps extends BaseChart {
   heatmapPalette?: string[];
@@ -142,6 +143,8 @@ const ActivityMapChart = memo(
     heatmapPalette,
     highLabels,
     lowLabels,
+    showThemeSelector,
+    showTypeSelector,
     time = "day-hour",
     type: chartType = "scatter",
     onClick,
@@ -161,7 +164,7 @@ const ActivityMapChart = memo(
       () => {
         const defaultMap = time === "day-hour" ? DAY_HOUR : MONTH_DAY;
 
-        const options: KeyValue = {
+        const options: EChartOption = {
           series: [],
         };
 
@@ -191,7 +194,7 @@ const ActivityMapChart = memo(
         options.series = data.map((points, index) => {
           const total = points.reduce((t, p) => t + p[2], 0);
           return {
-            id: index,
+            id: `${index}`,
             name: defaultMap.high[index],
             type,
             symbolSize: function (dataItem: number[]) {
@@ -201,7 +204,7 @@ const ActivityMapChart = memo(
             },
             data: points,
             universalTransition: true,
-          };
+          } as EChartOption.SeriesScatter;
         });
 
         if (type === "heatmap") {
@@ -210,19 +213,28 @@ const ActivityMapChart = memo(
           );
           options.grid = {
             top: 32,
-            bottom: 128,
+            bottom: 64,
           };
-          options.visualMap = {
-            type: "piecewise",
-            min: 1,
-            show: type === "heatmap",
-            color: heatmapPalette ?? [...ChartPalette.Heatmap],
-            max: Math.max(...dataPoints),
-            calculable: true,
-            orient: "horizontal",
-            left: "center",
-            bottom: 48,
+          options.legend = {
+            show: false,
           };
+          options.visualMap = [
+            {
+              type: "piecewise",
+              min: 1,
+              show: type === "heatmap",
+              max: Math.max(...dataPoints),
+              // calculable: true,inRange:
+              orient: "horizontal",
+              left: "center",
+              bottom: 4,
+            },
+          ];
+          if (heatmapPalette) {
+            options.visualMap[0].inRange = {
+              color: heatmapPalette,
+            };
+          }
         }
 
         return {
@@ -234,6 +246,7 @@ const ActivityMapChart = memo(
             trigger: "item",
             confine: true,
             position: "top",
+            appendToBody: true,
             valueFormatter: (c: AnyObject) => {
               return isArray(c) ? c[2] : c;
             },
@@ -241,7 +254,7 @@ const ActivityMapChart = memo(
           ...options,
         };
       },
-      [data, title, type],
+      [data, title, type, heatmapPalette],
       "ActivityChart options",
     );
 
@@ -257,28 +270,32 @@ const ActivityMapChart = memo(
         dataTableRenderer={activityRenderer}
         onClick={(e) => onClick?.(e.seriesIndex, e.dataIndex)}
       >
-        <ToggleButtonGroup value={type} onChange={setType as AnyObject}>
-          <Button
-            size="sm"
-            variant="link"
-            value="scatter"
-            aria-label="scatter"
-            icon={CoreIcons.chartActivityScatter}
+        {showTypeSelector && (
+          <ToggleButtonGroup value={type} onChange={setType as AnyObject}>
+            <Button
+              size="sm"
+              variant="link"
+              value="scatter"
+              aria-label="scatter"
+              icon={CoreIcons.chartActivityScatter}
+            />
+            <Button
+              size="sm"
+              variant="link"
+              value="heatmap"
+              aria-label="heatmap"
+              icon={CoreIcons.chartActivityCalendar}
+            />
+          </ToggleButtonGroup>
+        )}
+        {showTypeSelector && showThemeSelector && <Divider vertical />}
+        {showThemeSelector && (
+          <PaletteSelect
+            theme={theme}
+            onClick={setTheme}
+            defaultTheme="activity"
           />
-          <Button
-            size="sm"
-            variant="link"
-            value="heatmap"
-            aria-label="heatmap"
-            icon={CoreIcons.chartActivityCalendar}
-          />
-        </ToggleButtonGroup>
-        <Divider vertical />
-        <PaletteSelect
-          theme={theme}
-          onClick={setTheme}
-          defaultTheme="activity"
-        />
+        )}
       </ChartContainer>
     );
   },

@@ -57,6 +57,8 @@ const DataSeriesChart: FC<DataSeriesProps> = memo(
     categoryAxisName,
     valueAxisName,
     title,
+    showThemeSelector,
+    showTypeSelector,
     theme: chartTheme,
     type: chartType = "column",
     onClick,
@@ -140,6 +142,7 @@ const DataSeriesChart: FC<DataSeriesProps> = memo(
             trigger: _type === "radar" ? "item" : "axis",
             confine: true,
             position: "top",
+            appendToBody: true,
           } as AnyObject,
         };
       },
@@ -159,59 +162,63 @@ const DataSeriesChart: FC<DataSeriesProps> = memo(
         dataTableRenderer={seriesRenderer}
         onClick={(e) => onClick?.({ category: e.name, series: e.seriesId })}
       >
-        <ToggleButtonGroup value={type} onChange={setType as AnyObject}>
-          <Button
-            size="sm"
-            variant="link"
-            icon={CoreIcons.chartLine}
-            aria-label="line"
-            value="line"
-          />
-          <Button
-            size="sm"
-            variant="link"
-            icon={CoreIcons.chartColumn}
-            aria-label="column"
-            value="column"
-          />
-          <Button
-            size="sm"
-            variant="link"
-            icon={CoreIcons.chartBar}
-            aria-label="bar"
-            value="bar"
-          />
-          <Button
-            size="sm"
-            variant="link"
-            icon={CoreIcons.chartRadar}
-            aria-label="radar"
-            value="radar"
-          />
-          <Button
-            size="sm"
-            variant="link"
-            icon={CoreIcons.chartLineStacked}
-            aria-label="line-stacked"
-            value="line-stacked"
-          />
-          <Button
-            size="sm"
-            variant="link"
-            icon={CoreIcons.chartColumnStacked}
-            aria-label="column-stacked"
-            value="column-stacked"
-          />
-          <Button
-            size="sm"
-            variant="link"
-            icon={CoreIcons.chartBarStacked}
-            aria-label="bar-stacked"
-            value="bar-stacked"
-          />
-        </ToggleButtonGroup>
-        <Divider vertical />
-        <PaletteSelect theme={theme} onClick={setTheme} />
+        {showTypeSelector && (
+          <ToggleButtonGroup value={type} onChange={setType as AnyObject}>
+            <Button
+              size="sm"
+              variant="link"
+              icon={CoreIcons.chartLine}
+              aria-label="line"
+              value="line"
+            />
+            <Button
+              size="sm"
+              variant="link"
+              icon={CoreIcons.chartColumn}
+              aria-label="column"
+              value="column"
+            />
+            <Button
+              size="sm"
+              variant="link"
+              icon={CoreIcons.chartBar}
+              aria-label="bar"
+              value="bar"
+            />
+            <Button
+              size="sm"
+              variant="link"
+              icon={CoreIcons.chartRadar}
+              aria-label="radar"
+              value="radar"
+            />
+            <Button
+              size="sm"
+              variant="link"
+              icon={CoreIcons.chartLineStacked}
+              aria-label="line-stacked"
+              value="line-stacked"
+            />
+            <Button
+              size="sm"
+              variant="link"
+              icon={CoreIcons.chartColumnStacked}
+              aria-label="column-stacked"
+              value="column-stacked"
+            />
+            <Button
+              size="sm"
+              variant="link"
+              icon={CoreIcons.chartBarStacked}
+              aria-label="bar-stacked"
+              value="bar-stacked"
+            />
+          </ToggleButtonGroup>
+        )}
+        {showTypeSelector && showThemeSelector && <Divider vertical />}
+        {showThemeSelector && (
+          <PaletteSelect theme={theme} onClick={setTheme} />
+        )}
       </ChartContainer>
     );
   },

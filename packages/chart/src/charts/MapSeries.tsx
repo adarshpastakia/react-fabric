@@ -50,7 +50,14 @@ export interface MapSeriesProps extends BaseChart, CountType {
 }
 
 const MapSeriesChart: FC<MapSeriesProps> = memo(
-  ({ data, onExport, theme: chartTheme, title, onClick }: MapSeriesProps) => {
+  ({
+    data,
+    onExport,
+    theme: chartTheme,
+    showTypeSelector,
+    title,
+    onClick,
+  }: MapSeriesProps) => {
     const chartRef = useRef<EChartsType>(null);
     const [type, setType] = useState("map");
     const [zoom, setZoom] = useState(1.25);
@@ -185,22 +192,24 @@ const MapSeriesChart: FC<MapSeriesProps> = memo(
             onChange={(e) => setZoom(e.target.valueAsNumber)}
           />
         )}
-        <ToggleButtonGroup value={type} onChange={setType as AnyObject}>
-          <Button
-            size="sm"
-            variant="link"
-            icon={CoreIcons.map}
-            aria-label="map"
-            value="map"
-          />
-          <Button
-            size="sm"
-            variant="link"
-            icon={CoreIcons.chartColumn}
-            aria-label="column"
-            value="column"
-          />
-        </ToggleButtonGroup>
+        {showTypeSelector && (
+          <ToggleButtonGroup value={type} onChange={setType as AnyObject}>
+            <Button
+              size="sm"
+              variant="link"
+              icon={CoreIcons.map}
+              aria-label="map"
+              value="map"
+            />
+            <Button
+              size="sm"
+              variant="link"
+              icon={CoreIcons.chartColumn}
+              aria-label="column"
+              value="column"
+            />
+          </ToggleButtonGroup>
+        )}
       </ChartContainer>
     );
   },

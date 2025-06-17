@@ -305,11 +305,6 @@ export const LightThemeBase = {
       },
     },
   },
-  visualMap: {
-    textStyle: {
-      color: "#666",
-    },
-  },
   toolbox: {
     iconStyle: {
       borderColor: "#999999",

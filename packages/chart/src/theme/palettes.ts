@@ -225,7 +225,7 @@ const Spectral = [
   "#abdda4",
   "#66c2a5",
   "#3288bd",
-  "#5e4fa2",
+  "#134F74",
 ];
 
 const PurpleBlueYellow = [
@@ -236,11 +236,8 @@ const PurpleBlueYellow = [
   "#5EA28D",
   "#82BB92",
   "#AECEA1",
-  "#D6DEBF",
 ];
 const YellowGreen = [
-  "#ffffe5",
-  "#f7fcb9",
   "#d9f0a3",
   "#addd8e",
   "#78c679",
@@ -250,8 +247,6 @@ const YellowGreen = [
   "#004529",
 ];
 const YellowGreenBlue = [
-  "#ffffd9",
-  "#edf8b1",
   "#c7e9b4",
   "#7fcdbb",
   "#41b6c4",
@@ -261,8 +256,6 @@ const YellowGreenBlue = [
   "#081d58",
 ];
 const GreenBlue = [
-  "#f7fcf0",
-  "#e0f3db",
   "#ccebc5",
   "#a8ddb5",
   "#7bccc4",
@@ -272,8 +265,6 @@ const GreenBlue = [
   "#084081",
 ];
 const BlueGreen = [
-  "#f7fcfd",
-  "#e5f5f9",
   "#ccece6",
   "#99d8c9",
   "#66c2a4",
@@ -283,8 +274,6 @@ const BlueGreen = [
   "#00441b",
 ];
 const PurpleBlueGreen = [
-  "#fff7fb",
-  "#ece2f0",
   "#d0d1e6",
   "#a6bddb",
   "#67a9cf",
@@ -294,8 +283,6 @@ const PurpleBlueGreen = [
   "#014636",
 ];
 const PurpleBlue = [
-  "#fff7fb",
-  "#ece7f2",
   "#d0d1e6",
   "#a6bddb",
   "#74a9cf",
@@ -305,8 +292,6 @@ const PurpleBlue = [
   "#023858",
 ];
 const BluePurple = [
-  "#f7fcfd",
-  "#e0ecf4",
   "#bfd3e6",
   "#9ebcda",
   "#8c96c6",
@@ -316,8 +301,6 @@ const BluePurple = [
   "#4d004b",
 ];
 const RedPurple = [
-  "#fff7f3",
-  "#fde0dd",
   "#fcc5c0",
   "#fa9fb5",
   "#f768a1",
@@ -327,8 +310,6 @@ const RedPurple = [
   "#49006a",
 ];
 const PurpleRed = [
-  "#f7f4f9",
-  "#e7e1ef",
   "#d4b9da",
   "#c994c7",
   "#df65b0",
@@ -338,8 +319,6 @@ const PurpleRed = [
   "#67001f",
 ];
 const OrangeRed = [
-  "#fff7ec",
-  "#fee8c8",
   "#fdd49e",
   "#fdbb84",
   "#fc8d59",
@@ -349,8 +328,6 @@ const OrangeRed = [
   "#7f0000",
 ];
 const YellowOrangeRed = [
-  "#ffffcc",
-  "#ffeda0",
   "#fed976",
   "#feb24c",
   "#fd8d3c",
@@ -360,8 +337,6 @@ const YellowOrangeRed = [
   "#800026",
 ];
 const YellowOrangeBrown = [
-  "#ffffe5",
-  "#fff7bc",
   "#fee391",
   "#fec44f",
   "#fe9929",
@@ -371,8 +346,6 @@ const YellowOrangeBrown = [
   "#662506",
 ];
 const Purple = [
-  "#fcfbfd",
-  "#efedf5",
   "#dadaeb",
   "#bcbddc",
   "#9e9ac8",
@@ -382,8 +355,6 @@ const Purple = [
   "#3f007d",
 ];
 const Blue = [
-  "#f7fbff",
-  "#deebf7",
   "#c6dbef",
   "#9ecae1",
   "#6baed6",
@@ -393,8 +364,6 @@ const Blue = [
   "#08306b",
 ];
 const Green = [
-  "#f7fcf5",
-  "#e5f5e0",
   "#c7e9c0",
   "#a1d99b",
   "#74c476",
@@ -404,8 +373,6 @@ const Green = [
   "#00441b",
 ];
 const Orange = [
-  "#fff5eb",
-  "#fee6ce",
   "#fdd0a2",
   "#fdae6b",
   "#fd8d3c",
@@ -415,8 +382,6 @@ const Orange = [
   "#7f2704",
 ];
 const Red = [
-  "#fff5f0",
-  "#fee0d2",
   "#fcbba1",
   "#fc9272",
   "#fb6a4a",
@@ -426,8 +391,6 @@ const Red = [
   "#67000d",
 ];
 const Grey = [
-  "#ffffff",
-  "#f0f0f0",
   "#d9d9d9",
   "#bdbdbd",
   "#969696",
@@ -442,8 +405,6 @@ const OrangePurple = [
   "#e08214",
   "#fdb863",
   "#fee0b6",
-  "#f7f7f7",
-  "#d8daeb",
   "#b2abd2",
   "#8073ac",
   "#542788",
@@ -455,8 +416,6 @@ const BrownGreen = [
   "#bf812d",
   "#dfc27d",
   "#f6e8c3",
-  "#f5f5f5",
-  "#c7eae5",
   "#80cdc1",
   "#35978f",
   "#01665e",
@@ -467,8 +426,6 @@ const PurpleGreen = [
   "#762a83",
   "#9970ab",
   "#c2a5cf",
-  "#e7d4e8",
-  "#f7f7f7",
   "#d9f0d3",
   "#a6dba0",
   "#5aae61",
@@ -480,8 +437,6 @@ const PinkGreen = [
   "#c51b7d",
   "#de77ae",
   "#f1b6da",
-  "#fde0ef",
-  "#f7f7f7",
   "#e6f5d0",
   "#b8e186",
   "#7fbc41",
@@ -494,8 +449,6 @@ const RedBlue = [
   "#d6604d",
   "#f4a582",
   "#fddbc7",
-  "#f7f7f7",
-  "#d1e5f0",
   "#92c5de",
   "#4393c3",
   "#2166ac",
@@ -507,8 +460,6 @@ const RedGray = [
   "#d6604d",
   "#f4a582",
   "#fddbc7",
-  "#ffffff",
-  "#e0e0e0",
   "#bababa",
   "#878787",
   "#4d4d4d",
@@ -520,8 +471,6 @@ const RedYellowBlue = [
   "#f46d43",
   "#fdae61",
   "#fee090",
-  "#ffffbf",
-  "#e0f3f8",
   "#abd9e9",
   "#74add1",
   "#4575b4",

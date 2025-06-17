@@ -34,11 +34,16 @@ export type Theme =
   | "warming"
   | "sunrise"
   | "ocean"
-  | "wine";
+  | "wine"
+  | "red"
+  | "green"
+  | "blue";
 
 export interface BaseChart {
   title?: string;
   theme?: Theme;
+  showThemeSelector?: boolean;
+  showTypeSelector?: boolean;
   onExport?: (chart: { title: string; image: string }) => void;
 }
 

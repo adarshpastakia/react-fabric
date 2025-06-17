@@ -49,6 +49,8 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
     onExport,
     theme: chartTheme,
     type: chartType = "pie",
+    showThemeSelector,
+    showTypeSelector,
     onClick,
   }: CountSeriesProps) => {
     const chartRef = useRef<EChartsType>(null);
@@ -145,31 +147,35 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
         dataTableRenderer={countRenderer}
         onClick={(e) => onClick?.(e.data.id ?? e.seriesId)}
       >
-        <ToggleButtonGroup value={type} onChange={setType as AnyObject}>
-          <Button
-            size="sm"
-            variant="link"
-            value="pie"
-            aria-label="pie"
-            icon={CoreIcons.chartPie}
-          />
-          <Button
-            size="sm"
-            variant="link"
-            value="column"
-            aria-label="column"
-            icon={CoreIcons.chartColumn}
-          />
-          <Button
-            size="sm"
-            variant="link"
-            value="bar"
-            aria-label="bar"
-            icon={CoreIcons.chartBar}
-          />
-        </ToggleButtonGroup>
-        <Divider vertical />
-        <PaletteSelect theme={theme} onClick={setTheme} />
+        {showTypeSelector && (
+          <ToggleButtonGroup value={type} onChange={setType as AnyObject}>
+            <Button
+              size="sm"
+              variant="link"
+              value="pie"
+              aria-label="pie"
+              icon={CoreIcons.chartPie}
+            />
+            <Button
+              size="sm"
+              variant="link"
+              value="column"
+              aria-label="column"
+              icon={CoreIcons.chartColumn}
+            />
+            <Button
+              size="sm"
+              variant="link"
+              value="bar"
+              aria-label="bar"
+              icon={CoreIcons.chartBar}
+            />
+          </ToggleButtonGroup>
+        )}
+        {showTypeSelector && showThemeSelector && <Divider vertical />}
+        {showThemeSelector && (
+          <PaletteSelect theme={theme} onClick={setTheme} />
+        )}
       </ChartContainer>
     );
   },

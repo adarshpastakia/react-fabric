@@ -21,10 +21,10 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import Color from "color";
 import { DarkThemeBase } from "./darkBase";
 import { LightThemeBase } from "./lightBase";
 import { ChartPalette } from "./palettes";
-import Color from "color";
 
 const makePaletteSequence = (colors: string[]) => {
   return [...colors, ...[...colors.slice(1, -1)].reverse()];
@@ -34,6 +34,7 @@ export const registerTheme = (
   echarts: AnyObject,
   key: string,
   colors: string[],
+  heatmap: string[],
 ) => {
   const base = colors[0];
   const handles = Color(base).mix(Color("#f1f5f9"), 0.15).hex();
@@ -62,6 +63,17 @@ export const registerTheme = (
         },
       },
     },
+    visualMap: {
+      textStyle: {
+        color: "#666",
+      },
+      inRange: {
+        color: heatmap,
+      },
+      outOfRange: {
+        color: "#d9d9d9",
+      },
+    },
     color: makePaletteSequence(colors),
   });
   echarts.registerTheme(`${key}_dark`, {
@@ -86,6 +98,17 @@ export const registerTheme = (
         },
       },
     },
+    visualMap: {
+      textStyle: {
+        color: "#eee",
+      },
+      inRange: {
+        color: heatmap,
+      },
+      outOfRange: {
+        color: "#363636",
+      },
+    },
     color: makePaletteSequence(colors),
   });
 };
@@ -100,23 +123,74 @@ export const registerThemes = (echarts: AnyObject) => {
     color: ChartPalette.Default,
   });
 
-  echarts.registerTheme("activity", {
-    ...LightThemeBase,
-    color: ChartPalette.Activity,
-  });
-  echarts.registerTheme("activity_dark", {
-    ...DarkThemeBase,
-    color: ChartPalette.Activity,
-  });
-
-  registerTheme(echarts, "qualitative", ChartPalette.Qualitative);
-  registerTheme(echarts, "diverging", ChartPalette.Diverging);
-  registerTheme(echarts, "sequential", ChartPalette.Sequential);
-  registerTheme(echarts, "spectral", ChartPalette.Spectral);
-  registerTheme(echarts, "uber", ChartPalette.UberPool);
-  registerTheme(echarts, "fireice", ChartPalette.FireIce);
-  registerTheme(echarts, "warming", ChartPalette.GlobalWarming);
-  registerTheme(echarts, "sunrise", ChartPalette.Sunrise);
-  registerTheme(echarts, "ocean", ChartPalette.Ocean);
-  registerTheme(echarts, "wine", ChartPalette.Wine);
+  registerTheme(echarts, "activity", ChartPalette.Activity, [
+    ChartPalette.Activity[2],
+    ChartPalette.Activity[0],
+    ChartPalette.Activity[1],
+  ]);
+  registerTheme(echarts, "qualitative", ChartPalette.Qualitative, [
+    ChartPalette.Qualitative[2],
+    ChartPalette.Qualitative[1],
+    ChartPalette.Qualitative[0],
+  ]);
+  registerTheme(echarts, "diverging", ChartPalette.Diverging, [
+    ChartPalette.Diverging[0],
+    ChartPalette.Diverging[4],
+    ChartPalette.Diverging[10],
+  ]);
+  registerTheme(echarts, "sequential", ChartPalette.Sequential, [
+    ChartPalette.Sequential[4],
+    ChartPalette.Sequential[2],
+    ChartPalette.Sequential[0],
+  ]);
+  registerTheme(echarts, "spectral", ChartPalette.Spectral, [
+    ChartPalette.Spectral[9],
+    ChartPalette.Spectral[5],
+    ChartPalette.Spectral[1],
+  ]);
+  registerTheme(echarts, "uber", ChartPalette.UberPool, [
+    ChartPalette.UberPool[1],
+    ChartPalette.UberPool[4],
+    ChartPalette.UberPool[8],
+  ]);
+  registerTheme(echarts, "fireice", ChartPalette.FireIce, [
+    ChartPalette.FireIce[0],
+    ChartPalette.FireIce[4],
+    ChartPalette.FireIce[7],
+  ]);
+  registerTheme(echarts, "warming", ChartPalette.GlobalWarming, [
+    ChartPalette.GlobalWarming[0],
+    ChartPalette.GlobalWarming[3],
+    ChartPalette.GlobalWarming[6],
+  ]);
+  registerTheme(echarts, "sunrise", ChartPalette.Sunrise, [
+    ChartPalette.Sunrise[1],
+    ChartPalette.Sunrise[4],
+    ChartPalette.Sunrise[7],
+  ]);
+  registerTheme(echarts, "ocean", ChartPalette.Ocean, [
+    ChartPalette.Ocean[1],
+    ChartPalette.Ocean[3],
+    ChartPalette.Ocean[5],
+  ]);
+  registerTheme(echarts, "wine", ChartPalette.Wine, [
+    ChartPalette.Wine[1],
+    ChartPalette.Wine[3],
+    ChartPalette.Wine[5],
+  ]);
+  registerTheme(echarts, "blue", ChartPalette.GreenBlue, [
+    ChartPalette.GreenBlue[6],
+    ChartPalette.GreenBlue[3],
+    ChartPalette.GreenBlue[0],
+  ]);
+  registerTheme(echarts, "green", ChartPalette.YellowGreen, [
+    ChartPalette.YellowGreen[6],
+    ChartPalette.YellowGreen[3],
+    ChartPalette.YellowGreen[0],
+  ]);
+  registerTheme(echarts, "red", ChartPalette.OrangeRed, [
+    ChartPalette.OrangeRed[6],
+    ChartPalette.OrangeRed[3],
+    ChartPalette.OrangeRed[0],
+  ]);
 };

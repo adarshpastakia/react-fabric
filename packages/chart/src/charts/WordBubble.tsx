@@ -49,6 +49,12 @@ const WordBubbleChart: FC<WordBubbleProps> = memo(
 
         return {
           legend: undefined,
+          tooltip: {
+            trigger: "axis",
+            confine: true,
+            position: "top",
+            appendToBody: true,
+          } as EChartOption.Tooltip,
           series: [
             {
               name: title,

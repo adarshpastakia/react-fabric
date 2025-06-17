@@ -50,6 +50,8 @@ const TimeSeriesChart: FC<TimeSeriesProps> = memo(
     categoryAxisName,
     valueAxisName,
     title,
+    showThemeSelector,
+    showTypeSelector,
     theme: chartTheme,
     type: chartType = "column",
     onClick,
@@ -169,7 +171,8 @@ const TimeSeriesChart: FC<TimeSeriesProps> = memo(
             trigger: "axis",
             confine: true,
             position: "top",
-          } as AnyObject,
+            appendToBody: true,
+          } as EChartOption.Tooltip,
         };
       },
       [data, type, categoryAxisName, valueAxisName],
@@ -188,38 +191,42 @@ const TimeSeriesChart: FC<TimeSeriesProps> = memo(
         dataTableRenderer={timeSeriesRenderer}
         onClick={(e) => onClick?.({ category: e.data[0], series: e.seriesId })}
       >
-        <ToggleButtonGroup value={type} onChange={setType as AnyObject}>
-          <Button
-            size="sm"
-            variant="link"
-            icon={CoreIcons.chartLine}
-            value="line"
-            aria-label="line"
-          />
-          <Button
-            size="sm"
-            variant="link"
-            icon={CoreIcons.chartColumn}
-            value="column"
-            aria-label="column"
-          />
-          <Button
-            size="sm"
-            variant="link"
-            icon={CoreIcons.chartLineStacked}
-            value="line-stacked"
-            aria-label="line-stacked"
-          />
-          <Button
-            size="sm"
-            variant="link"
-            icon={CoreIcons.chartColumnStacked}
-            value="column-stacked"
-            aria-label="column-stacked"
-          />
-        </ToggleButtonGroup>
-        <Divider vertical />
-        <PaletteSelect theme={theme} onClick={setTheme} />
+        {showTypeSelector && (
+          <ToggleButtonGroup value={type} onChange={setType as AnyObject}>
+            <Button
+              size="sm"
+              variant="link"
+              icon={CoreIcons.chartLine}
+              value="line"
+              aria-label="line"
+            />
+            <Button
+              size="sm"
+              variant="link"
+              icon={CoreIcons.chartColumn}
+              value="column"
+              aria-label="column"
+            />
+            <Button
+              size="sm"
+              variant="link"
+              icon={CoreIcons.chartLineStacked}
+              value="line-stacked"
+              aria-label="line-stacked"
+            />
+            <Button
+              size="sm"
+              variant="link"
+              icon={CoreIcons.chartColumnStacked}
+              value="column-stacked"
+              aria-label="column-stacked"
+            />
+          </ToggleButtonGroup>
+        )}
+        {showTypeSelector && showThemeSelector && <Divider vertical />}
+        {showThemeSelector && (
+          <PaletteSelect theme={theme} onClick={setTheme} />
+        )}
       </ChartContainer>
     );
   },

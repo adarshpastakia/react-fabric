@@ -58,6 +58,7 @@ const defaultOptions = {
     trigger: "item",
     confine: true,
     position: "top",
+    appendToBody: true,
   } as AnyObject,
   legend: {
     type: "scroll",

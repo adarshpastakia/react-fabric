@@ -307,11 +307,6 @@ export const DarkThemeBase = {
       },
     },
   },
-  visualMap: {
-    textStyle: {
-      color: "#eee",
-    },
-  },
   toolbox: {
     iconStyle: {
       borderColor: "#999999",

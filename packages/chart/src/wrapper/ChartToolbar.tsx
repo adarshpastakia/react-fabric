@@ -30,7 +30,7 @@ export const ChartToolbar: FC<ChildrenProp> = ({ children }) => {
     <div
       className={classNames(
         "flex flex-nowrap items-center justify-end bg-base area-head",
-        "rf-chartToolbar",
+        "rf-chartToolbar empty:hidden",
       )}
     >
       {children}

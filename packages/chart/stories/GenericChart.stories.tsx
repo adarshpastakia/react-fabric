@@ -118,7 +118,7 @@ export const TreeMap: Story = {
           series={[series]}
           legend={{ show: false }}
           actions={
-            <ToggleButtonGroup value={type} onChange={setType}>
+            <ToggleButtonGroup value={type} onChange={setType as any}>
               <Button
                 value="treemap"
                 icon="mdi mdi-view-dashboard-variant"
