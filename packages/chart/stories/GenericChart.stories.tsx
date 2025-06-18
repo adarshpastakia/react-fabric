@@ -27,6 +27,7 @@ import React, { useEffect, useState } from "react";
 import { GenericChart } from "../src";
 import coffeeJson from "./coffee";
 import sankeyJson from "./sankey";
+import { fn } from "storybook/test";
 
 const meta: Meta = {
   component: GenericChart,
@@ -135,7 +136,7 @@ export const TreeMap: Story = {
       </Panel>
     );
   },
-  args: {},
+  args: { onClick: fn(), onBrush: fn() },
 };
 
 export const Sankey: Story = {
@@ -163,5 +164,5 @@ export const Sankey: Story = {
       </Panel>
     );
   },
-  args: {},
+  args: { onClick: fn(), onBrush: fn() },
 };

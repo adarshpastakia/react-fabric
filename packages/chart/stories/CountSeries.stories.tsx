@@ -25,6 +25,7 @@ import { faker } from "@faker-js/faker";
 import { Button, Panel } from "@react-fabric/core";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useCallback, useEffect, useState } from "react";
+import { fn } from "storybook/test";
 import { CountSeries } from "../src";
 
 const meta: Meta = {
@@ -72,5 +73,7 @@ export const Example: Story = {
       </Panel>
     );
   },
-  args: {},
+  args: {
+    onClick: fn(),
+  },
 };

@@ -26,6 +26,7 @@ import { Button, Panel } from "@react-fabric/core";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useCallback, useEffect, useState } from "react";
 import { TimeSeries } from "../src";
+import { fn } from "storybook/test";
 
 const meta: Meta = {
   component: TimeSeries,
@@ -99,5 +100,5 @@ export const Example: Story = {
       </Panel>
     );
   },
-  args: {},
+  args: { onBrush: fn(), onClick: fn() },
 };
