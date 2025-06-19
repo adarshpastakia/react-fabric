@@ -31,12 +31,12 @@
     border-bottom-width: 2px;
 
     &:has(.monaco-editor.focused) {
-      border-color: var(--border-primary-500);
+      border-color: var(--color-primary-500);
     }
 
     .fabric-editor {
       & > .monaco-editor {
-        --vscode-menu-background: var(--color-tint.50) !important;
+        --vscode-menu-background: var(--color-tint-50) !important;
         --vscode-menu-border: var(--border-color-base) !important;
         --vscode-focusBorder: transparent !important;
         --vscode-menu-selectionBackground: color(
