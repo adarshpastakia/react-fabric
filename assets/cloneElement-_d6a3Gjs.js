@@ -1,1 +1,0 @@
-import{r as t,j as a}from"./iframe-DL5PLccW.js";var u=function o(l,i){var n;return(n=t.Children.map(l,function(r){if(t.isValidElement(r)){if(r.type===a.Fragment){var e;return o((e=r.props)===null||e===void 0?void 0:e.children,i)}return r}if(!(r instanceof Promise))return r}))===null||n===void 0?void 0:n.flat().filter(Boolean).map(i)};export{u as c};
