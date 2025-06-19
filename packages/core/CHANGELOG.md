@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.53](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.52...v1.0.0-beta.53) (2025-06-19)
+
+### Bug Fixes
+
+- **Badge:** update class assignment to include 'flex-content' for better layout handling ([e280d5e](https://github.com/adarshpastakia/react-ui-framework/commit/e280d5e57da6c4f0aed5f24e415e71a0db35ba23))
+- **Breadcrumbs:** filter out falsy children before processing node list ([735ee67](https://github.com/adarshpastakia/react-ui-framework/commit/735ee67e58039a97f1c30245c72d076d1b5d6509))
+- **Button:** ensure HotKeyLabel only renders when both hotKey and label are present ([4fc85f8](https://github.com/adarshpastakia/react-ui-framework/commit/4fc85f855c43f11b8d9b33324c3500b848287dac))
+- **MenuItem:** adjust border radius for active state and update class for consistency ([2e6210e](https://github.com/adarshpastakia/react-ui-framework/commit/2e6210e178ca18aa33887c2e2f3939411308b9ae))
+- **Section:** add TestProps to component props for enhanced functionality ([1f8256b](https://github.com/adarshpastakia/react-ui-framework/commit/1f8256b3c5a1d4c4e8f70cff8ebf1087164066a1))
+
 # [1.0.0-beta.52](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.51...v1.0.0-beta.52) (2025-06-13)
 
 ### Bug Fixes

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.53](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.52...v1.0.0-beta.53) (2025-06-19)
+
+### Bug Fixes
+
+- **Charts:** add theme and type selectors toggle props ([8124ca4](https://github.com/adarshpastakia/react-ui-framework/commit/8124ca465811ba43fec2d9f85aba4101a0b907cf))
+- **Charts:** update registerTheme function to include heatmap color stops ([9d4b7e6](https://github.com/adarshpastakia/react-ui-framework/commit/9d4b7e6a191765bf20046e3330f72c098edd322c))
+- **GenericChart:** add theme state management and theme selector ([72de0bf](https://github.com/adarshpastakia/react-ui-framework/commit/72de0bf9fc1e5a996905997c8faa640eb0bb1b41))
+
 # [1.0.0-beta.52](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.51...v1.0.0-beta.52) (2025-06-13)
 
 **Note:** Version bump only for package @react-fabric/chart

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.53](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.52...v1.0.0-beta.53) (2025-06-19)
+
+### Bug Fixes
+
+- **Dictation:** conditionally render HotKey component based on hotkey presence ([2e4aae5](https://github.com/adarshpastakia/react-ui-framework/commit/2e4aae51170e778f5b13b441e031578fb27e05ae))
+
 # [1.0.0-beta.52](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.51...v1.0.0-beta.52) (2025-06-13)
 
 **Note:** Version bump only for package @react-fabric/media

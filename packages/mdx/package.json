@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/mdx",
-  "version": "1.0.0-beta.52",
+  "version": "1.0.0-beta.53",
   "description": "RUF: Markdown display and editor",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@mdxeditor/editor": "^3.33.0",
-    "@react-fabric/core": "^1.0.0-beta.52",
+    "@react-fabric/core": "^1.0.0-beta.53",
     "@react-fabric/utilities": "^1.0.0-beta.52",
     "classnames": "^2.5.1",
     "dom-to-image": "^2.6.0",

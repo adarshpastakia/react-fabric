@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.53](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.52...v1.0.0-beta.53) (2025-06-19)
+
+### Bug Fixes
+
+- **Badge:** update class assignment to include 'flex-content' for better layout handling ([e280d5e](https://github.com/adarshpastakia/react-fabric/commit/e280d5e57da6c4f0aed5f24e415e71a0db35ba23))
+- **Breadcrumbs:** filter out falsy children before processing node list ([735ee67](https://github.com/adarshpastakia/react-fabric/commit/735ee67e58039a97f1c30245c72d076d1b5d6509))
+- **Button:** ensure HotKeyLabel only renders when both hotKey and label are present ([4fc85f8](https://github.com/adarshpastakia/react-fabric/commit/4fc85f855c43f11b8d9b33324c3500b848287dac))
+- **Charts:** add theme and type selectors toggle props ([8124ca4](https://github.com/adarshpastakia/react-fabric/commit/8124ca465811ba43fec2d9f85aba4101a0b907cf))
+- **Charts:** update registerTheme function to include heatmap color stops ([9d4b7e6](https://github.com/adarshpastakia/react-fabric/commit/9d4b7e6a191765bf20046e3330f72c098edd322c))
+- **Dictation:** conditionally render HotKey component based on hotkey presence ([2e4aae5](https://github.com/adarshpastakia/react-fabric/commit/2e4aae51170e778f5b13b441e031578fb27e05ae))
+- **GenericChart:** add theme state management and theme selector ([72de0bf](https://github.com/adarshpastakia/react-fabric/commit/72de0bf9fc1e5a996905997c8faa640eb0bb1b41))
+- **MenuItem:** adjust border radius for active state and update class for consistency ([2e6210e](https://github.com/adarshpastakia/react-fabric/commit/2e6210e178ca18aa33887c2e2f3939411308b9ae))
+- **Section:** add TestProps to component props for enhanced functionality ([1f8256b](https://github.com/adarshpastakia/react-fabric/commit/1f8256b3c5a1d4c4e8f70cff8ebf1087164066a1))
+
 # [1.0.0-beta.52](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.51...v1.0.0-beta.52) (2025-06-13)
 
 ### Bug Fixes
