@@ -27,6 +27,10 @@ import { registerThemes, registerTheme as RT } from "../theme";
 registerThemes(echarts);
 
 export default echarts;
-export const registerTheme = (key: string, colors: string[]) => {
-  RT(echarts, key, colors);
+export const registerTheme = (
+  key: string,
+  colors: string[],
+  heatmap: string[],
+) => {
+  RT(echarts, key, colors, heatmap);
 };
