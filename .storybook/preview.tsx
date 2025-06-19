@@ -6,6 +6,7 @@
  */
 import "@mdi/font/css/materialdesignicons.min.css";
 import "./styles/styles.css";
+import "./monaco";
 
 import { Anchor, DocsContainer, Subheading } from "@storybook/addon-docs";
 import type { Preview } from "@storybook/react-vite";
