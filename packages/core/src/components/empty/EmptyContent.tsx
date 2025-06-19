@@ -164,14 +164,14 @@ export const EmptyContent = ({
       </div>
       {title && (
         <div
-          className="font-medium text-center text-dimmed"
+          className="font-medium text-center opacity-85"
           style={{ fontSize: "1.5em" }}
         >
           {title}
         </div>
       )}
       <div
-        className="font-medium text-center text-muted"
+        className="font-medium text-center opacity-65"
         style={{ fontSize: "0.875em" }}
       >
         {message}
