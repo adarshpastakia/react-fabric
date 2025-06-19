@@ -15,7 +15,6 @@
     "ngClass",
     ".*ClassName"
   ],
-  "stylelint.stylelintPath": "",
   "i18n-ally.localesPaths": [
     "packages/core/src/i18n",
     "packages/data/src/i18n",

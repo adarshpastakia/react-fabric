@@ -69,9 +69,9 @@
 
     &.active {
       pointer-events: none;
-      border-end-start-radius: 0;
-      border-start-start-radius: 0;
       background-color: color-mix(in lab, var(--color) 20%, var(--fabric-bg));
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
 
       & > div {
         box-shadow: 4px 0 0 var(--color) inset;
