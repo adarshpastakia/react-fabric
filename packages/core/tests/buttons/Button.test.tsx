@@ -120,7 +120,9 @@ describe("Button", () => {
     const fn = jest.fn();
     const fragment = render(
       <HotKeyWrapper>
-        <Tester onClick={fn} hotKey="shift+a" />
+        <Tester onClick={fn} hotKey="shift+a">
+          Click Me
+        </Tester>
       </HotKeyWrapper>,
     );
     expect(
