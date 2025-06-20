@@ -31,13 +31,11 @@ import {
 import { isArray, isEmpty } from "@react-fabric/utilities";
 import { type EChartOption, type EChartsType } from "echarts";
 import { memo, useEffect, useRef, useState, type FC } from "react";
-import { ChartPalette } from "../theme/palettes";
 import { type BaseChart } from "../types";
 import { activityRenderer } from "../types/utils";
 import { ChartContainer } from "../wrapper/ChartContainer";
 import { ChartWrapper } from "../wrapper/ChartWrapper";
 import { PaletteSelect } from "../wrapper/PaletteSelect";
-import { E } from "react-router/dist/development/register-DCE0tH5m";
 
 export interface ActivityMapProps extends BaseChart {
   heatmapPalette?: string[];
