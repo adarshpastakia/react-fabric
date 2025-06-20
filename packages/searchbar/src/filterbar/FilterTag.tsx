@@ -118,7 +118,7 @@ export const FilterTag = ({
               icon={filter.icon ?? CoreIcons.pin}
             />
           )}
-          {label}
+          <div className="truncate">{label}</div>
         </div>
       </Chip>
       <FilterMenu
