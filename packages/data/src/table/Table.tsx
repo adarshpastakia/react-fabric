@@ -179,7 +179,7 @@ export const Table = <T extends KeyValue = KeyValue>({
       >
         <div
           data-ref="tableHeader"
-          className="bg-base font-medium sticky top-0 h-8 area-head border-b select-none flex flex-nowrap z-2"
+          className="bg-base font-medium sticky top-0 h-8 area-head border-b select-none flex flex-nowrap z-3"
         >
           <div className={wrapperStart}>
             {canExpand && <div className="w-6" />}
@@ -247,7 +247,7 @@ export const Table = <T extends KeyValue = KeyValue>({
                   ref={measureElement}
                   data-index={index}
                   className={classNames(
-                    "px-2 py-1 text-md bg-base border-y border-tint-100 cursor-pointer flex items-center gap-1 z-1",
+                    "px-2 py-1 text-md bg-base border-y border-tint-100 cursor-pointer flex items-center gap-1 z-2",
                     isActiveSticky(index) && "sticky top-8",
                   )}
                   role="none"
