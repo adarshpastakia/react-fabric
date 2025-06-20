@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import { build, InlineConfig, mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: [
@@ -17,6 +18,21 @@ const config: StorybookConfig = {
   framework: {
     name: "@storybook/react-vite",
     options: {},
+  },
+  async viteFinal(config: InlineConfig) {
+    return mergeConfig(config, {
+      build: {
+        rollupOptions: {
+          output: {
+            compact: true,
+            chunkFileNames: (chunkInfo) => {
+              // Example: Remove underscores from chunk file names
+              return "assets/" + chunkInfo.name.replace(/^_/, "") + ".js";
+            },
+          },
+        },
+      },
+    });
   },
 };
 export default config;
