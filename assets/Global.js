@@ -1,0 +1,1 @@
+import{r as o,_ as a}from"./iframe-DC4r-n7i.js";import"./index2.js";var i=["errorElement"],r=o.createContext({}),c=function(){return o.useContext(r)},l=function(){var e=o.useContext(r);e.errorElement;var t=a(e,i);return t},x=function(){var e=o.useContext(r),t=e.notificationManager;return t??{}};export{l as a,x as b,c as u};

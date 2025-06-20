@@ -1,0 +1,27 @@
+import{j as r,s as p}from"./iframe-DC4r-n7i.js";import"./index2.js";import{b as l}from"./Global.js";import{V as c}from"./Viewport.js";import{A as m}from"./VideoPlayer.js";import"./Section.js";import"./ErrorBoundary.js";import"./createClass.js";import"./Button.js";import"./Tooltip.js";import"./useResizeObserver.js";import"./useDebounce.js";import"./HeadFoot.js";import"./Divider.js";import"./Text.js";import"./usePropToggle.js";import"./types.js";import"./ColorPicker.js";import"./Google.js";import"./zh-CN.js";import"./endOfDay.js";import"./index5.js";import"./index3.js";import"./InputWrapper.js";import"./debounce.js";import"./isEqual.js";import"./ThemeProvider.js";import"./Dropdown.js";import"./Panel.js";import"./Content.js";import"./Textarea.js";import"./eventHandlers.js";import"./floating-ui.react.js";const d=""+new URL("sample_form-DG1G8AND.png",import.meta.url).href,{fn:f}=__STORYBOOK_MODULE_TEST__,J={component:m,title:"@media/Annotator",parameters:{layout:"fullscreen",controls:{exclude:"children"}}},o={render:s=>{const{showAlert:a}=l();return r.jsx("div",{className:"min-h-[600px]",children:r.jsx(c,{children:r.jsx(m,{...s,onAdd:()=>a({type:"prompt",message:"Annotation label"}).then(t=>p(t)?t:void 0)})})})},args:{src:d,onChange:f(),annotations:[{box:"30,30,240,48",label:"Tester"},{box:"30,90,240,48",label:"Tester",color:"#29a383"}]}};var n,e,i;o.parameters={...o.parameters,docs:{...(n=o.parameters)==null?void 0:n.docs,source:{originalSource:`{
+  render: args => {
+    const {
+      showAlert
+    } = useNotificationService();
+    return <div className="min-h-[600px]">
+        <Viewport>
+          <Annotator {...args} onAdd={() => showAlert({
+          type: "prompt",
+          message: "Annotation label"
+        }).then(b => isString(b) ? b : undefined)} />
+        </Viewport>
+      </div>;
+  },
+  args: {
+    src: form,
+    onChange: fn(),
+    annotations: [{
+      box: "30,30,240,48",
+      label: "Tester"
+    }, {
+      box: "30,90,240,48",
+      label: "Tester",
+      color: "#29a383"
+    }]
+  }
+}`,...(i=(e=o.parameters)==null?void 0:e.docs)==null?void 0:i.source}}};const P=["_Annotator"];export{o as _Annotator,P as __namedExportsOrder,J as default};

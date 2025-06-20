@@ -1,1 +1,0 @@
-var d=function(n){var i=arguments.length>1&&arguments[1]!==void 0?arguments[1]:500,t,r=function(){for(var u=arguments.length,o=new Array(u),e=0;e<u;e++)o[e]=arguments[e];clearTimeout(t),typeof window<"u"&&(t=window.setTimeout(function(){return n==null?void 0:n.apply(void 0,o)},i))};return r.cancel=function(){return clearTimeout(t)},r};export{d};
