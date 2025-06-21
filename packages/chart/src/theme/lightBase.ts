@@ -317,9 +317,17 @@ export const LightThemeBase = {
   },
   legend: {
     inactiveColor: "rgb(96 96 96 / .75)",
+    itemHeight: 8,
     textStyle: {
+      fontSize: 10,
       color: "#565656",
     },
+    pageTextStyle: {
+      fontSize: 8,
+    },
+    pageIconSize: 8,
+    pageIconColor: "#487884",
+    pageIconInactiveColor: "#CCD3D1",
   },
   tooltip: {
     backgroundColor: "#FCFDFD",

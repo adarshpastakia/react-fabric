@@ -319,9 +319,17 @@ export const DarkThemeBase = {
   },
   legend: {
     inactiveColor: "rgb(192 192 192 / .75)",
+    itemHeight: 8,
     textStyle: {
+      fontSize: 10,
       color: "#5d6d7d6",
     },
+    pageTextStyle: {
+      fontSize: 8,
+    },
+    pageIconSize: 8,
+    pageIconColor: "#6997A3",
+    pageIconInactiveColor: "#474B4A",
   },
   tooltip: {
     backgroundColor: "#0C141D",
