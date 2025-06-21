@@ -195,7 +195,7 @@ export const DarkThemeBase = {
     splitLine: {
       show: true,
       lineStyle: {
-        color: ["#444"],
+        color: ["#363636"],
       },
     },
     splitArea: {
@@ -229,7 +229,7 @@ export const DarkThemeBase = {
     splitLine: {
       show: true,
       lineStyle: {
-        color: ["#444"],
+        color: ["#363636"],
       },
     },
     splitArea: {
@@ -263,7 +263,7 @@ export const DarkThemeBase = {
     splitLine: {
       show: true,
       lineStyle: {
-        color: ["#444"],
+        color: ["#363636"],
       },
     },
     splitArea: {
@@ -297,7 +297,7 @@ export const DarkThemeBase = {
     splitLine: {
       show: true,
       lineStyle: {
-        color: ["#444"],
+        color: ["#363636"],
       },
     },
     splitArea: {

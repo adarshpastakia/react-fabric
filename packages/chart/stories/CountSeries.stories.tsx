@@ -47,7 +47,7 @@ export const Example: Story = {
       setData(
         Array.from(Array(Math.ceil(24)), (_, i) => ({
           id: `key-${i}`,
-          label: faker.animal.cat(),
+          name: faker.animal.cat(),
           count: faker.number.int({ min: 99, max: 12489 }),
         })),
       );
@@ -69,7 +69,7 @@ export const Example: Story = {
           />
         }
       >
-        <CountSeries {...args} data={data} />
+        <CountSeries {...args} series={data} />
       </Panel>
     );
   },

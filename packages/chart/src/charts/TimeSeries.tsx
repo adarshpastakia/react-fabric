@@ -45,7 +45,7 @@ export interface TimeSeriesProps extends BaseChart, TimeSeriesType {
 
 const TimeSeriesChart: FC<TimeSeriesProps> = memo(
   ({
-    data,
+    series: _series,
     onExport,
     categoryAxisName,
     valueAxisName,
@@ -54,6 +54,7 @@ const TimeSeriesChart: FC<TimeSeriesProps> = memo(
     showTypeSelector,
     theme: chartTheme,
     type: chartType = "column",
+    options: optionOverride,
     onClick,
     onBrush,
   }: TimeSeriesProps) => {
@@ -108,7 +109,7 @@ const TimeSeriesChart: FC<TimeSeriesProps> = memo(
 
     const options = useMemoDebugger<EChartOption>(
       () => {
-        if (isEmpty(data)) {
+        if (isEmpty(_series)) {
           chartRef.current?.clear();
           return {};
         }
@@ -116,66 +117,73 @@ const TimeSeriesChart: FC<TimeSeriesProps> = memo(
         const stack = type.includes("stacked") ? "stack" : undefined;
 
         const [_type, stacked] = type.split("-");
-        const categoryAxis: AnyObject = {
-          name: categoryAxisName,
-          type: "time",
-          nameGap: 32,
-          nameLocation: "center",
-          axisTick: {
-            show: false,
-          },
-          axisLabel: {
-            formatter: {
-              year: "{yyyy}",
-              month: "{MMM}",
-              day: "{d}",
-              hour: "{HH}:{mm}",
-              minute: "{HH}:{mm}",
-              second: "{HH}:{mm}:{ss}",
-              millisecond: "{hh}:{mm}:{ss} {SSS}",
-              none: "{yyyy}-{MM}-{dd} {hh}:{mm}:{ss} {SSS}",
-            } as AnyObject,
-          },
-        } as EChartOption.XAxis;
-        const valueAxis: AnyObject = {
+        const categoryAxis: AnyObject = Object.assign(
+          {},
+          optionOverride?.xAxis,
+          {
+            name: categoryAxisName,
+            type: "time",
+            nameGap: 32,
+            nameLocation: "center",
+            axisTick: {
+              show: false,
+            },
+            axisLabel: {
+              formatter: {
+                year: "{yyyy}",
+                month: "{MMM}",
+                day: "{d}",
+                hour: "{HH}:{mm}",
+                minute: "{HH}:{mm}",
+                second: "{HH}:{mm}:{ss}",
+                millisecond: "{hh}:{mm}:{ss} {SSS}",
+                none: "{yyyy}-{MM}-{dd} {hh}:{mm}:{ss} {SSS}",
+              } as AnyObject,
+            },
+          } as EChartOption.XAxis,
+        );
+        const valueAxis: AnyObject = Object.assign({}, optionOverride?.yAxis, {
           name: valueAxisName,
           type: "value",
           nameGap: 32,
           nameLocation: "center",
-        } as EChartOption.YAxis;
+        } as EChartOption.YAxis);
 
-        const series = data?.map(
+        const series = _series?.map(
           (item) =>
             ({
-              id: item.id,
-              stack,
+              ...item,
+              stack: item.stack ?? stack,
               areaStyle: stacked ? {} : undefined,
               symbol: "none",
               type: _type === "column" ? "bar" : _type,
-              name: item.label ?? item.id,
-              data: item.values,
+              name: item.name ?? item.id,
               universalTransition: true,
             }) as AnyObject,
         );
 
         return {
-          xAxis: categoryAxis,
-          yAxis: valueAxis,
-          series,
           brush: {
             toolbox: ["lineX", "clear"],
             brushType: "lineX",
             xAxisIndex: 0,
           },
-          tooltip: {
-            trigger: "axis",
-            confine: true,
-            position: "top",
-            appendToBody: true,
-          } as EChartOption.Tooltip,
+          ...optionOverride,
+          tooltip: Object.assign(
+            {
+              trigger: "axis",
+              confine: true,
+              position: "top",
+              appendToBody: true,
+            } as EChartOption.Tooltip,
+            optionOverride?.tooltip,
+          ),
+          xAxis: categoryAxis,
+          yAxis: valueAxis,
+          series,
         };
       },
-      [data, type, categoryAxisName, valueAxisName],
+      [_series, type, categoryAxisName, valueAxisName, optionOverride],
       "TimeChart options",
     );
 
@@ -186,7 +194,7 @@ const TimeSeriesChart: FC<TimeSeriesProps> = memo(
         theme={theme}
         options={options}
         chartRef={chartRef}
-        isEmpty={isEmpty(data)}
+        isEmpty={isEmpty(_series)}
         emptyIcon={CoreIcons.chartColumn}
         dataTableRenderer={timeSeriesRenderer}
         onClick={(e) => onClick?.({ category: e.data[0], series: e.seriesId })}

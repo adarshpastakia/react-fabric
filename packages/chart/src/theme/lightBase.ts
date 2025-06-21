@@ -62,7 +62,7 @@ export const LightThemeBase = {
     splitLine: {
       show: true,
       lineStyle: {
-        color: ["#ccc"],
+        color: ["#d9d9d9"],
       },
     },
     splitArea: {
@@ -174,7 +174,7 @@ export const LightThemeBase = {
     axisLine: {
       show: true,
       lineStyle: {
-        color: "#cccccc",
+        color: "#c5c5c5",
       },
     },
     axisTick: {
@@ -193,7 +193,7 @@ export const LightThemeBase = {
     splitLine: {
       show: true,
       lineStyle: {
-        color: ["#eee"],
+        color: ["#d9d9d9"],
       },
     },
     splitArea: {
@@ -208,7 +208,7 @@ export const LightThemeBase = {
     axisLine: {
       show: true,
       lineStyle: {
-        color: "#cccccc",
+        color: "#c5c5c5",
       },
     },
     axisTick: {
@@ -227,7 +227,7 @@ export const LightThemeBase = {
     splitLine: {
       show: true,
       lineStyle: {
-        color: ["#eee"],
+        color: ["#d9d9d9"],
       },
     },
     splitArea: {
@@ -242,7 +242,7 @@ export const LightThemeBase = {
     axisLine: {
       show: true,
       lineStyle: {
-        color: "#cccccc",
+        color: "#969696",
       },
     },
     axisTick: {
@@ -261,7 +261,7 @@ export const LightThemeBase = {
     splitLine: {
       show: true,
       lineStyle: {
-        color: ["#eee"],
+        color: ["#d9d9d9"],
       },
     },
     splitArea: {
@@ -276,7 +276,7 @@ export const LightThemeBase = {
     axisLine: {
       show: true,
       lineStyle: {
-        color: "#cccccc",
+        color: "#969696",
       },
     },
     axisTick: {
@@ -295,7 +295,7 @@ export const LightThemeBase = {
     splitLine: {
       show: true,
       lineStyle: {
-        color: ["#eee"],
+        color: ["#d9d9d9"],
       },
     },
     splitArea: {

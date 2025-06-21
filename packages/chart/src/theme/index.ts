@@ -178,17 +178,17 @@ export const registerThemes = (echarts: AnyObject) => {
     ChartPalette.Wine[3],
     ChartPalette.Wine[5],
   ]);
-  registerTheme(echarts, "blue", ChartPalette.GreenBlue, [
+  registerTheme(echarts, "blue", ChartPalette.GreenBlue.slice().reverse(), [
     ChartPalette.GreenBlue[6],
     ChartPalette.GreenBlue[3],
     ChartPalette.GreenBlue[0],
   ]);
-  registerTheme(echarts, "green", ChartPalette.YellowGreen, [
+  registerTheme(echarts, "green", ChartPalette.YellowGreen.slice().reverse(), [
     ChartPalette.YellowGreen[6],
     ChartPalette.YellowGreen[3],
     ChartPalette.YellowGreen[0],
   ]);
-  registerTheme(echarts, "red", ChartPalette.OrangeRed, [
+  registerTheme(echarts, "red", ChartPalette.OrangeRed.slice().reverse(), [
     ChartPalette.OrangeRed[6],
     ChartPalette.OrangeRed[3],
     ChartPalette.OrangeRed[0],

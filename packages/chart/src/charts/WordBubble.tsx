@@ -31,7 +31,8 @@ import { countRenderer } from "../types/utils";
 import { ChartContainer } from "../wrapper/ChartContainer";
 import { ChartWrapper } from "../wrapper/ChartWrapper";
 
-export interface WordBubbleProps extends Omit<BaseChart, "theme">, CountType {
+export interface WordBubbleProps extends Omit<BaseChart, "theme"> {
+  data: Array<{ id: string; label?: string; count: number }>;
   onClick?: (key: string) => void;
 }
 

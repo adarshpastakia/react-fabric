@@ -21,6 +21,8 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { type EChartOption } from "echarts";
+
 export type Theme =
   | "default"
   | "activity"
@@ -41,14 +43,35 @@ export type Theme =
 
 export interface BaseChart {
   title?: string;
+  /**
+   * The theme to be applied to the chart.
+   * This can be one of the predefined themes or a custom theme object.
+   * Predefined themes include "default", "activity", "cloud", "qualitative", "diverging", "sequential",
+   * "spectral", "uber", "fireice", "warming", "sunrise", "ocean", "wine", "red", "green", and "blue".
+   */
   theme?: Theme;
+  /**
+   * Additional options for the chart.
+   * This can include any ECharts options to customize the chart's appearance and behavior.
+   */
+  options?: EChartOption;
+  /**
+   * Whether to show the theme selector in the chart.
+   * This is useful for allowing users to switch between different themes.
+   * If set to true, the chart will render a toggle button group to select the theme.
+   */
   showThemeSelector?: boolean;
+  /**
+   * Whether to show the type selector in the chart.
+   * This is useful for charts that can have multiple types (e.g., line, column, etc.).
+   * If set to true, the chart will render a toggle button group to select the type.
+   */
   showTypeSelector?: boolean;
   onExport?: (chart: { title: string; image: string }) => void;
 }
 
 export interface CountType {
-  data: Array<{ id: string; label?: string; count: number }>;
+  series: Array<EChartOption.SeriesPie & { count: number }>;
 }
 
 export interface SeriesType {
@@ -56,11 +79,19 @@ export interface SeriesType {
   valueAxisName?: string;
   valueFormat?: string;
   categories: string[];
-  data: Array<{ id: string; label?: string; values: number[] }>;
+  series: Array<
+    EChartOption.SeriesBar & {
+      data: number[];
+    }
+  >;
 }
 
 export interface TimeSeriesType {
   categoryAxisName?: string;
   valueAxisName?: string;
-  data: Array<{ id: string; label?: string; values: Array<[Date, number]> }>;
+  series: Array<
+    EChartOption.SeriesBar & {
+      data: Array<[Date, number]>;
+    }
+  >;
 }

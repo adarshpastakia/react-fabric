@@ -51,12 +51,13 @@ export interface DataSeriesProps extends BaseChart, SeriesType {
 
 const DataSeriesChart: FC<DataSeriesProps> = memo(
   ({
-    data,
+    series: _series,
     onExport,
     categories,
     categoryAxisName,
     valueAxisName,
     title,
+    options: optionOverride,
     showThemeSelector,
     showTypeSelector,
     theme: chartTheme,
@@ -76,7 +77,7 @@ const DataSeriesChart: FC<DataSeriesProps> = memo(
 
     const options = useMemoDebugger<EChartOption>(
       () => {
-        if (isEmpty(data)) {
+        if (isEmpty(_series)) {
           chartRef.current?.clear();
           return {};
         }
@@ -84,7 +85,9 @@ const DataSeriesChart: FC<DataSeriesProps> = memo(
         const stack = type.includes("stacked") ? "stack" : undefined;
 
         const [_type, stacked] = type.split("-");
-        const categoryAxis: AnyObject =
+        const categoryAxis: AnyObject = Object.assign(
+          {},
+          optionOverride?.xAxis,
           _type === "radar"
             ? undefined
             : ({
@@ -96,8 +99,11 @@ const DataSeriesChart: FC<DataSeriesProps> = memo(
                   show: false,
                 },
                 data: categories,
-              } as EChartOption.XAxis);
-        const valueAxis: AnyObject =
+              } as EChartOption.XAxis),
+        );
+        const valueAxis: AnyObject = Object.assign(
+          {},
+          optionOverride?.yAxis,
           _type === "radar"
             ? undefined
             : ({
@@ -105,18 +111,19 @@ const DataSeriesChart: FC<DataSeriesProps> = memo(
                 type: "value",
                 nameGap: 32,
                 nameLocation: "center",
-              } as EChartOption.YAxis);
+              } as EChartOption.YAxis),
+        );
         const radar =
           _type !== "radar"
             ? undefined
-            : ({
+            : Object.assign({}, optionOverride?.radar, {
                 shape: "circle",
                 indicator: categories?.map((c) => ({ name: c })),
               } as AnyObject);
 
-        const series = data?.map((item, index) => ({
-          id: item.id,
-          stack,
+        const series = _series?.map((item, index) => ({
+          ...item,
+          stack: item.stack ?? stack,
           areaStyle: stacked ? {} : undefined,
           type: _type === "column" ? "bar" : _type,
           name: item.label ?? item.id,
@@ -125,28 +132,39 @@ const DataSeriesChart: FC<DataSeriesProps> = memo(
             _type === "radar"
               ? [
                   {
-                    value: item.values,
+                    value: item.data,
                     id: item.id,
-                    name: item.label ?? item.id,
+                    name: item.name ?? item.id,
                   },
                 ]
-              : item.values,
+              : item.data,
         }));
 
         return {
+          ...optionOverride,
           xAxis: type.startsWith("bar") ? valueAxis : categoryAxis,
           yAxis: type.startsWith("bar") ? categoryAxis : valueAxis,
           radar,
           series,
-          tooltip: {
-            trigger: _type === "radar" ? "item" : "axis",
-            confine: true,
-            position: "top",
-            appendToBody: true,
-          } as AnyObject,
+          tooltip: Object.assign(
+            {
+              trigger: _type === "radar" ? "item" : "axis",
+              confine: true,
+              position: "top",
+              appendToBody: true,
+            } as AnyObject,
+            optionOverride?.tooltip,
+          ),
         };
       },
-      [data, type, categories, categoryAxisName, valueAxisName],
+      [
+        _series,
+        type,
+        categories,
+        categoryAxisName,
+        valueAxisName,
+        optionOverride,
+      ],
       "DataChart options",
     );
 
@@ -157,7 +175,7 @@ const DataSeriesChart: FC<DataSeriesProps> = memo(
         theme={theme}
         options={options}
         chartRef={chartRef}
-        isEmpty={isEmpty(data)}
+        isEmpty={isEmpty(_series)}
         emptyIcon={CoreIcons.chartColumn}
         dataTableRenderer={seriesRenderer}
         onClick={(e) => onClick?.({ category: e.name, series: e.seriesId })}

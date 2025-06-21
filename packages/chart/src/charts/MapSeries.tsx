@@ -45,7 +45,8 @@ import {
 import WorldMap from "../types/world.svg";
 echarts.registerMap("world", { svg: WorldMap });
 
-export interface MapSeriesProps extends BaseChart, CountType {
+export interface MapSeriesProps extends BaseChart {
+  data: Array<{ id: string; label?: string; count: number }>;
   onClick?: (key: string) => void;
 }
 

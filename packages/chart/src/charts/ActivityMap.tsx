@@ -137,6 +137,7 @@ const ActivityMapChart = memo(
     data = [],
     title,
     onExport,
+    options: optionOverride,
     theme: chartTheme = "activity",
     heatmapPalette,
     highLabels,
@@ -168,7 +169,7 @@ const ActivityMapChart = memo(
 
         if (isEmpty(data)) return {};
 
-        options.xAxis = {
+        options.xAxis = Object.assign({}, optionOverride?.xAxis, {
           type: "category",
           data: lowLabels ?? defaultMap.low,
           boundaryGap: type === "heatmap",
@@ -178,8 +179,8 @@ const ActivityMapChart = memo(
           axisLine: {
             show: false,
           },
-        };
-        options.yAxis = {
+        });
+        options.yAxis = Object.assign({}, optionOverride?.yAxis, {
           type: "category",
           axisLabel: {
             margin: 16,
@@ -188,7 +189,7 @@ const ActivityMapChart = memo(
           axisLine: {
             show: false,
           },
-        };
+        });
         options.series = data.map((points, index) => {
           const total = points.reduce((t, p) => t + p[2], 0);
           return {
@@ -240,19 +241,23 @@ const ActivityMapChart = memo(
             top: 32,
             bottom: 64,
           },
-          tooltip: {
-            trigger: "item",
-            confine: true,
-            position: "top",
-            appendToBody: true,
-            valueFormatter: (c: AnyObject) => {
-              return isArray(c) ? c[2] : c;
-            },
-          } as AnyObject,
+          tooltip: Object.assign(
+            {
+              trigger: "item",
+              confine: true,
+              position: "top",
+              appendToBody: true,
+              valueFormatter: (c: AnyObject) => {
+                return isArray(c) ? c[2] : c;
+              },
+            } as AnyObject,
+            optionOverride?.tooltip,
+          ),
+          ...optionOverride,
           ...options,
         };
       },
-      [data, title, type, heatmapPalette],
+      [data, title, type, heatmapPalette, optionOverride],
       "ActivityChart options",
     );
 

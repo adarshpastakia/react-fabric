@@ -49,25 +49,25 @@ export const Example: Story = {
         categoryAxisName: "Months",
         valueAxisName: "Items",
         categories,
-        data: [
+        series: [
           {
             id: faker.string.alpha(5),
-            label: faker.animal.dog(),
-            values: categories.map(() =>
+            name: faker.animal.dog(),
+            data: categories.map(() =>
               faker.number.int({ min: 100, max: 500 }),
             ),
           },
           {
             id: faker.string.alpha(5),
-            label: faker.animal.dog(),
-            values: categories.map(() =>
+            name: faker.animal.dog(),
+            data: categories.map(() =>
               faker.number.int({ min: 100, max: 500 }),
             ),
           },
           {
             id: faker.string.alpha(5),
-            label: faker.animal.dog(),
-            values: categories.map(() =>
+            name: faker.animal.dog(),
+            data: categories.map(() =>
               faker.number.int({ min: 100, max: 500 }),
             ),
           },

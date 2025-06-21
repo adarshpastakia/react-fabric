@@ -44,11 +44,12 @@ export interface CountSeriesProps extends BaseChart, CountType {
 
 const CountSeriesChart: FC<CountSeriesProps> = memo(
   ({
-    data,
+    series: _series,
     title,
     onExport,
     theme: chartTheme,
     type: chartType = "pie",
+    options: optionOverride,
     showThemeSelector,
     showTypeSelector,
     onClick,
@@ -66,28 +67,32 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
 
     const options = useMemoDebugger<EChartOption>(
       () => {
-        if (isEmpty(data)) {
+        if (isEmpty(_series)) {
           chartRef.current?.clear();
           return {};
         }
 
-        const sorted = data?.sort(compareValues("desc", "count"));
+        const sorted = _series?.sort(compareValues("desc", "count"));
 
-        const categoryAxis: AnyObject = {
-          type: "category",
-          name: title ?? "Count Series",
-          nameLocation: "center",
-          axisTick: {
-            show: false,
-          },
-          data: [],
-        } as EChartOption.XAxis;
-        const valueAxis: AnyObject = {
+        const categoryAxis: AnyObject = Object.assign(
+          {},
+          optionOverride?.xAxis,
+          {
+            type: "category",
+            name: title ?? "Count Series",
+            nameLocation: "center",
+            axisTick: {
+              show: false,
+            },
+            data: [],
+          } as EChartOption.XAxis,
+        );
+        const valueAxis: AnyObject = Object.assign({}, optionOverride?.yAxis, {
           type: "value",
           axisLabel: {
             formatter: (val: AnyObject) => Format.number(val),
           },
-        } as EChartOption.YAxis;
+        } as EChartOption.YAxis);
 
         const series =
           type === "pie"
@@ -123,6 +128,7 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
                 universalTransition: true,
               }));
         return {
+          ...optionOverride,
           series,
           countSeries: true,
           xAxis:
@@ -131,7 +137,7 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
             type === "pie" ? null : type === "bar" ? categoryAxis : valueAxis,
         };
       },
-      [data, title, type],
+      [_series, title, type, optionOverride],
       "CountChart options",
     );
 
@@ -142,7 +148,7 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
         theme={theme}
         options={options}
         chartRef={chartRef}
-        isEmpty={isEmpty(data)}
+        isEmpty={isEmpty(_series)}
         emptyIcon={CoreIcons.chartPie}
         dataTableRenderer={countRenderer}
         onClick={(e) => onClick?.(e.data.id ?? e.seriesId)}
