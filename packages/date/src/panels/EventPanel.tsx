@@ -189,6 +189,7 @@ export const EventPanel = ({
             <div
               role="none"
               key={evt.label}
+              data-dropdown-dismiss="true"
               onClick={() => {
                 onChange?.(
                   `${evt.start.toISOString()}|${evt.end.toISOString()}`,

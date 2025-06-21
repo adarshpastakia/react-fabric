@@ -105,7 +105,10 @@ export const QuickSelect = ({
         </Form>
       </div>
       <Divider>{t("superdate:label.preset")}</Divider>
-      <div className="grid grid-cols-3 flex-row text-sm gap-2">
+      <div
+        data-dropdown-dismiss="true"
+        className="grid grid-cols-3 flex-row text-sm gap-2"
+      >
         {presets.map((pr: KeyValue) => (
           <button
             key={pr.value}

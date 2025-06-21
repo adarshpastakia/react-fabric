@@ -55,7 +55,7 @@ export const RelativeInput = ({ label, prefix, showApply }: KeyValue) => {
         />
       </Controller>
       {showApply && (
-        <Button variant="solid" type="submit">
+        <Button variant="solid" type="submit" data-dropdown-dismiss="true">
           {t("label.apply")}
         </Button>
       )}

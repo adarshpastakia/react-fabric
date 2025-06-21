@@ -405,6 +405,7 @@ export const RangePanel = ({
             variant="solid"
             color="primary"
             disabled={!state.selected}
+            data-dropdown-dismiss="true"
             className="my-1"
             onClick={() =>
               fireChange?.([

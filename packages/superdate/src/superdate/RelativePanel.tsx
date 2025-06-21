@@ -92,7 +92,7 @@ export const RelativePanel = ({ value = "", onChange }: KeyValue) => {
           <RelativeInput label={t("label.from")} prefix="from" />
           <RelativeInput label={t("label.to")} prefix="to" />
           <div className="flex justify-end">
-            <Button variant="solid" type="submit">
+            <Button variant="solid" type="submit" data-dropdown-dismiss="true">
               {t("label.apply")}
             </Button>
           </div>
