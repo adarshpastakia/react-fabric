@@ -240,7 +240,7 @@ export const Modal = ({
                   data-ref="panelClose"
                   className={classNames(
                     "fabric-panelAction",
-                    "cursor-pointer p-1 text-xl self-stretch",
+                    "cursor-pointer p-1 text-xl self-center",
                   )}
                   icon={CoreIcons.close}
                   onClick={() => handleClose(false)}
