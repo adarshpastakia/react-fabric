@@ -38,6 +38,7 @@ import {
 import { CoreIcons } from "../../types/icons";
 import { Loading } from "../animations/Animations";
 import { Icon } from "../icon/Icon";
+import { HotKey } from "../../hotkeys/HotKey";
 
 export interface PanelProps
   extends CssProp,
@@ -205,6 +206,7 @@ export const Panel = ({
       }
       {...aria}
     >
+      {expanded && <HotKey keyCombo="esc" handler={toggleExpand} />}
       <header
         role="none"
         className={classNames(
