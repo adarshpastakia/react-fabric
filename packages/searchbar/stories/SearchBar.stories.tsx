@@ -152,7 +152,6 @@ export const _SearchBar: SearchBarStory = {
     return (
       <SearchBar
         {...args}
-        onSearch={fn()}
         append={<SuperDate variant="link" value="$year-5|$now" />}
       >
         <Dropdown placement="bottom-end">
@@ -174,6 +173,7 @@ export const _SearchBar: SearchBarStory = {
     querySchema: schema,
     queryLanguage: "json",
     defaultQuery: "{\n\t\n}",
+    onSearch: fn(),
     fields: [
       {
         field: "id",

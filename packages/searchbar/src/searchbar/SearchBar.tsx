@@ -135,7 +135,11 @@ export const SearchBar = ({
       }
       if (action.type === "query") {
         !multiple && fireSearch(action.query ?? emptyValue, state.filters);
-        return { ...state, dirty: false, query: action.query ?? emptyValue };
+        return {
+          ...state,
+          dirty: !!multiple,
+          query: action.query ?? emptyValue,
+        };
       }
       if (action.type === "filter") {
         fireSearch(state.query, action.filters ?? []);
@@ -187,7 +191,7 @@ export const SearchBar = ({
             value={state.query}
             decorateEnd={decorateEnd}
             decorateStart={decorateStart}
-            onInput={() => dispatch({ type: "dirty", dirty: true })}
+            onInput={() => dispatch({ type: "dirty", dirty: !multiple })}
             onSelect={updateHistory}
             data-ref="searchbarInput"
             onEnterPressed={() => fireSearch(state.query, state.filters)}
