@@ -1,4 +1,4 @@
-import{r as t,j as i}from"./iframe-DC4r-n7i.js";import{f as a}from"./index4.js";import{B as g}from"./Button.js";import"./index2.js";import{P as h}from"./Panel.js";import{T as u}from"./WordBubble.js";const{fn:m}=__STORYBOOK_MODULE_TEST__,x={component:u,title:"@charts/TimeSeries",parameters:{layout:"centered",controls:{exclude:"children"}}},n={render:d=>{const[p,f]=t.useState({}),s=t.useCallback(()=>{const r=Array.from(Array(24),(e,b)=>new Date(2021,b,1));f({categoryAxisName:"Months",valueAxisName:"Items",categories:r,data:[{id:a.string.alphanumeric(5),label:a.animal.bear(),values:r.map(e=>[e,a.number.int({min:100,max:500})])},{id:a.string.alphanumeric(5),label:a.animal.cat(),values:r.map(e=>[e,a.number.int({min:100,max:500})])},{id:a.string.alphanumeric(5),label:a.animal.bird(),values:r.map(e=>[e,a.number.int({min:100,max:500})])}]})},[]);return t.useEffect(()=>{s()},[]),i.jsx(h,{width:"48rem",height:"24rem",title:"Time Series chart",expandable:!0,actions:i.jsx(g,{"aria-label":"loadData",variant:"link",icon:"mdi mdi-refresh",onClick:s}),children:i.jsx(u,{...d,...p})})},args:{onBrush:m(),onClick:m()}};var o,l,c;n.parameters={...n.parameters,docs:{...(o=n.parameters)==null?void 0:o.docs,source:{originalSource:`{
+import{r as t,j as i}from"./iframe-wCO-hNtP.js";import{f as a}from"./index4.js";import{B as h}from"./Button.js";import"./index2.js";import{P as x}from"./Panel.js";import{T as d}from"./WordBubble.js";const{fn:s}=__STORYBOOK_MODULE_TEST__,b={component:d,title:"@charts/TimeSeries",parameters:{layout:"centered",controls:{exclude:"children"}}},n={render:u=>{const[p,f]=t.useState({}),m=t.useCallback(()=>{const r=Array.from(Array(24),(e,g)=>new Date(2021,g,1));f({categoryAxisName:"Months",valueAxisName:"Items",categories:r,series:[{id:a.string.alphanumeric(5),name:a.animal.bear(),data:r.map(e=>[e,a.number.int({min:100,max:500})])},{id:a.string.alphanumeric(5),name:a.animal.cat(),data:r.map(e=>[e,a.number.int({min:100,max:500})])},{id:a.string.alphanumeric(5),name:a.animal.bird(),data:r.map(e=>[e,a.number.int({min:100,max:500})])}]})},[]);return t.useEffect(()=>{m()},[]),i.jsx(x,{width:"48rem",height:"24rem",title:"Time Series chart",expandable:!0,actions:i.jsx(h,{"aria-label":"loadData",variant:"link",icon:"mdi mdi-refresh",onClick:m}),children:i.jsx(d,{...u,...p})})},args:{onBrush:s(),onClick:s()}};var o,c,l;n.parameters={...n.parameters,docs:{...(o=n.parameters)==null?void 0:o.docs,source:{originalSource:`{
   render: args => {
     const [data, setData] = useState<AnyObject>({});
     const loadData = useCallback(() => {
@@ -7,24 +7,24 @@ import{r as t,j as i}from"./iframe-DC4r-n7i.js";import{f as a}from"./index4.js";
         categoryAxisName: "Months",
         valueAxisName: "Items",
         categories,
-        data: [{
+        series: [{
           id: faker.string.alphanumeric(5),
-          label: faker.animal.bear(),
-          values: categories.map(c => [c, faker.number.int({
+          name: faker.animal.bear(),
+          data: categories.map(c => [c, faker.number.int({
             min: 100,
             max: 500
           })])
         }, {
           id: faker.string.alphanumeric(5),
-          label: faker.animal.cat(),
-          values: categories.map(c => [c, faker.number.int({
+          name: faker.animal.cat(),
+          data: categories.map(c => [c, faker.number.int({
             min: 100,
             max: 500
           })])
         }, {
           id: faker.string.alphanumeric(5),
-          label: faker.animal.bird(),
-          values: categories.map(c => [c, faker.number.int({
+          name: faker.animal.bird(),
+          data: categories.map(c => [c, faker.number.int({
             min: 100,
             max: 500
           })])
@@ -42,4 +42,4 @@ import{r as t,j as i}from"./iframe-DC4r-n7i.js";import{f as a}from"./index4.js";
     onBrush: fn(),
     onClick: fn()
   }
-}`,...(c=(l=n.parameters)==null?void 0:l.docs)==null?void 0:c.source}}};const k=["Example"],E=Object.freeze(Object.defineProperty({__proto__:null,Example:n,__namedExportsOrder:k,default:x},Symbol.toStringTag,{value:"Module"}));export{n as E,E as T};
+}`,...(l=(c=n.parameters)==null?void 0:c.docs)==null?void 0:l.source}}};const k=["Example"],A=Object.freeze(Object.defineProperty({__proto__:null,Example:n,__namedExportsOrder:k,default:b},Symbol.toStringTag,{value:"Module"}));export{n as E,A as T};

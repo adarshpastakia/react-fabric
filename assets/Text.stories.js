@@ -1,4 +1,4 @@
-import{j as a,$ as i,Z as g,a0 as u,Y as T,a1 as j,h as n}from"./iframe-DC4r-n7i.js";import{f as d,m as x}from"./index4.js";const _={component:n,subcomponents:{Title:j,Abbr:T,Mark:u,Anchor:g,Copy:i},title:"@core/Typography",parameters:{controls:{exclude:/^(on.*|children|as)/},jest:["core/tests/Typpography.test.tsx"]},decorators:[e=>a.jsx("div",{className:"max-w-2xl p-4",children:a.jsx(e,{})})]},h=d.lorem.sentences(5)+`
+import{j as a,$ as i,Z as g,a0 as u,Y as T,a1 as j,h as n}from"./iframe-wCO-hNtP.js";import{f as d,m as x}from"./index4.js";const _={component:n,subcomponents:{Title:j,Abbr:T,Mark:u,Anchor:g,Copy:i},title:"@core/Typography",parameters:{controls:{exclude:/^(on.*|children|as)/},jest:["core/tests/Typpography.test.tsx"]},decorators:[e=>a.jsx("div",{className:"max-w-2xl p-4",children:a.jsx(e,{})})]},h=d.lorem.sentences(5)+`
 
 `+x.lorem.sentences(5),y=d.lorem.sentences(10)+`
 

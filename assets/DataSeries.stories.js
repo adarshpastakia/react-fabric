@@ -1,4 +1,4 @@
-import{r as t,j as r}from"./iframe-DC4r-n7i.js";import{f as a}from"./index4.js";import{B as p}from"./Button.js";import"./index2.js";import{P as g}from"./Panel.js";import{D as m}from"./WordBubble.js";const{fn:f}=__STORYBOOK_MODULE_TEST__,b={component:m,title:"@charts/DataSeries",parameters:{layout:"centered",controls:{exclude:"children"}}},e={render:c=>{const[d,u]=t.useState({}),s=t.useCallback(()=>{const n=["Jan","Feb","Mar","Apr","May","Jun"];u({categoryAxisName:"Months",valueAxisName:"Items",categories:n,data:[{id:a.string.alpha(5),label:a.animal.dog(),values:n.map(()=>a.number.int({min:100,max:500}))},{id:a.string.alpha(5),label:a.animal.dog(),values:n.map(()=>a.number.int({min:100,max:500}))},{id:a.string.alpha(5),label:a.animal.dog(),values:n.map(()=>a.number.int({min:100,max:500}))}]})},[]);return t.useEffect(()=>{s()},[]),r.jsx(g,{width:"48rem",height:"24rem",title:"Data Series chart",expandable:!0,actions:r.jsx(p,{"aria-label":"loadData",variant:"link",icon:"mdi mdi-refresh",onClick:s}),children:r.jsx(m,{...c,...d})})},args:{onClick:f()}};var i,o,l;e.parameters={...e.parameters,docs:{...(i=e.parameters)==null?void 0:i.docs,source:{originalSource:`{
+import{r as t,j as r}from"./iframe-wCO-hNtP.js";import{f as a}from"./index4.js";import{B as u}from"./Button.js";import"./index2.js";import{P as g}from"./Panel.js";import{D as l}from"./WordBubble.js";const{fn:f}=__STORYBOOK_MODULE_TEST__,x={component:l,title:"@charts/DataSeries",parameters:{layout:"centered",controls:{exclude:"children"}}},e={render:c=>{const[d,p]=t.useState({}),i=t.useCallback(()=>{const n=["Jan","Feb","Mar","Apr","May","Jun"];p({categoryAxisName:"Months",valueAxisName:"Items",categories:n,series:[{id:a.string.alpha(5),name:a.animal.dog(),data:n.map(()=>a.number.int({min:100,max:500}))},{id:a.string.alpha(5),name:a.animal.dog(),data:n.map(()=>a.number.int({min:100,max:500}))},{id:a.string.alpha(5),name:a.animal.dog(),data:n.map(()=>a.number.int({min:100,max:500}))}]})},[]);return t.useEffect(()=>{i()},[]),r.jsx(g,{width:"48rem",height:"24rem",title:"Data Series chart",expandable:!0,actions:r.jsx(u,{"aria-label":"loadData",variant:"link",icon:"mdi mdi-refresh",onClick:i}),children:r.jsx(l,{...c,...d})})},args:{onClick:f()}};var s,o,m;e.parameters={...e.parameters,docs:{...(s=e.parameters)==null?void 0:s.docs,source:{originalSource:`{
   render: args => {
     const [data, setData] = useState<AnyObject>({});
     const loadData = useCallback(() => {
@@ -7,24 +7,24 @@ import{r as t,j as r}from"./iframe-DC4r-n7i.js";import{f as a}from"./index4.js";
         categoryAxisName: "Months",
         valueAxisName: "Items",
         categories,
-        data: [{
+        series: [{
           id: faker.string.alpha(5),
-          label: faker.animal.dog(),
-          values: categories.map(() => faker.number.int({
+          name: faker.animal.dog(),
+          data: categories.map(() => faker.number.int({
             min: 100,
             max: 500
           }))
         }, {
           id: faker.string.alpha(5),
-          label: faker.animal.dog(),
-          values: categories.map(() => faker.number.int({
+          name: faker.animal.dog(),
+          data: categories.map(() => faker.number.int({
             min: 100,
             max: 500
           }))
         }, {
           id: faker.string.alpha(5),
-          label: faker.animal.dog(),
-          values: categories.map(() => faker.number.int({
+          name: faker.animal.dog(),
+          data: categories.map(() => faker.number.int({
             min: 100,
             max: 500
           }))
@@ -41,4 +41,4 @@ import{r as t,j as r}from"./iframe-DC4r-n7i.js";import{f as a}from"./index4.js";
   args: {
     onClick: fn()
   }
-}`,...(l=(o=e.parameters)==null?void 0:o.docs)==null?void 0:l.source}}};const x=["Example"],E=Object.freeze(Object.defineProperty({__proto__:null,Example:e,__namedExportsOrder:x,default:b},Symbol.toStringTag,{value:"Module"}));export{E as D,e as E};
+}`,...(m=(o=e.parameters)==null?void 0:o.docs)==null?void 0:m.source}}};const h=["Example"],j=Object.freeze(Object.defineProperty({__proto__:null,Example:e,__namedExportsOrder:h,default:x},Symbol.toStringTag,{value:"Module"}));export{j as D,e as E};

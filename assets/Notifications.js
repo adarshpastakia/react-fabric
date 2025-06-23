@@ -1,4 +1,4 @@
-import{j as n,M as m,T as h,A as o,S as t,D as r,aC as f,P as u,c as a,C as i,b as x,a as p}from"./iframe-DC4r-n7i.js";import{useMDXComponents as j}from"./index.js";import{_Alert as c}from"./Alert.stories.js";import{_Message as l}from"./Message.stories.js";import{T as C,_ as g}from"./Toast.stories.js";import"./index4.js";function d(s){const e={code:"code",pre:"pre",...j(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(m,{of:C}),`
+import{j as n,M as m,T as h,A as o,S as t,D as r,aC as f,P as u,c as a,C as i,b as x,a as p}from"./iframe-wCO-hNtP.js";import{useMDXComponents as j}from"./index.js";import{_Alert as c}from"./Alert.stories.js";import{_Message as l}from"./Message.stories.js";import{T as C,_ as g}from"./Toast.stories.js";import"./index4.js";function d(s){const e={code:"code",pre:"pre",...j(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(m,{of:C}),`
 `,n.jsx(h,{children:"Notifications"}),`
 `,n.jsx(o,{storyId:"notifications",children:n.jsx(t,{children:"Toasts"})}),`
 `,n.jsx(r,{of:f}),`

@@ -1,4 +1,4 @@
-import{j as r,M as x,T as m,A as e,S as o,D as a,af as h,P as j,c as t,C as d,b as u,a as p}from"./iframe-DC4r-n7i.js";import{useMDXComponents as l}from"./index.js";import{B as f,_ as b,S as c}from"./Breadcrumbs.stories.js";function i(n){const s={code:"code",pre:"pre",...l(),...n.components};return r.jsxs(r.Fragment,{children:[r.jsx(x,{of:f}),`
+import{j as r,M as x,T as m,A as e,S as o,D as a,af as h,P as j,c as t,C as d,b as u,a as p}from"./iframe-wCO-hNtP.js";import{useMDXComponents as l}from"./index.js";import{B as f,_ as b,S as c}from"./Breadcrumbs.stories.js";function i(n){const s={code:"code",pre:"pre",...l(),...n.components};return r.jsxs(r.Fragment,{children:[r.jsx(x,{of:f}),`
 `,r.jsx(m,{children:"Breadcrumbs"}),`
 `,r.jsx(e,{storyId:"Breadcrumbs",children:r.jsx("div",{className:"hidden-anchor",children:r.jsx(o,{children:"Breadcrumbs"})})}),`
 `,r.jsx(a,{of:h}),`
