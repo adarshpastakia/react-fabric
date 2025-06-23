@@ -39,7 +39,7 @@ import { PaletteSelect } from "../wrapper/PaletteSelect";
 
 export interface ActivityMapProps extends BaseChart {
   heatmapPalette?: string[];
-  data: Array<Array<[low: number, high: number, count: number]>>;
+  series: Array<Array<[low: number, high: number, count: number]>>;
   time?: "day-hour" | "month-day";
   type?: "scatter" | "heatmap";
   /**
@@ -134,7 +134,7 @@ const MONTH_DAY = {
 
 const ActivityMapChart = memo(
   ({
-    data = [],
+    series = [],
     title,
     onExport,
     options: optionOverride,
@@ -167,7 +167,7 @@ const ActivityMapChart = memo(
           series: [],
         };
 
-        if (isEmpty(data)) return {};
+        if (isEmpty(series)) return {};
 
         options.xAxis = Object.assign({}, optionOverride?.xAxis, {
           type: "category",
@@ -190,7 +190,7 @@ const ActivityMapChart = memo(
             show: false,
           },
         });
-        options.series = data.map((points, index) => {
+        options.series = series.map((points, index) => {
           const total = points.reduce((t, p) => t + p[2], 0);
           return {
             id: `${index}`,
@@ -207,7 +207,7 @@ const ActivityMapChart = memo(
         });
 
         if (type === "heatmap") {
-          const dataPoints = data.map((points) =>
+          const dataPoints = series.map((points) =>
             Math.max(...points.map((pt) => pt[2])),
           );
           options.grid = {
@@ -257,7 +257,7 @@ const ActivityMapChart = memo(
           ...options,
         };
       },
-      [data, title, type, heatmapPalette, optionOverride],
+      [series, title, type, heatmapPalette, optionOverride],
       "ActivityChart options",
     );
 
@@ -268,7 +268,7 @@ const ActivityMapChart = memo(
         theme={theme}
         options={options}
         chartRef={chartRef}
-        isEmpty={isEmpty(data)}
+        isEmpty={isEmpty(series)}
         emptyIcon={CoreIcons.chartActivityScatter}
         dataTableRenderer={activityRenderer}
         onClick={(e) => onClick?.(e.seriesIndex, e.dataIndex)}

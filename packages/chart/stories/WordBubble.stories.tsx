@@ -25,8 +25,8 @@ import { faker } from "@faker-js/faker";
 import { Button, Panel } from "@react-fabric/core";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useCallback, useEffect, useState } from "react";
-import { WordBubble } from "../src";
 import { fn } from "storybook/test";
+import { WordBubble } from "../src";
 
 const meta: Meta = {
   component: WordBubble,
@@ -70,7 +70,7 @@ export const Example: Story = {
           />
         }
       >
-        <WordBubble {...args} data={data} />
+        <WordBubble {...args} series={data} />
       </Panel>
     );
   },

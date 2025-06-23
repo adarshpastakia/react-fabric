@@ -26,23 +26,23 @@ import { compareValues, isEmpty } from "@react-fabric/utilities";
 import { type EChartOption } from "echarts";
 import { memo, type FC } from "react";
 import { ChartPalette } from "../theme/palettes";
-import { type BaseChart, type CountType } from "../types";
+import { type BaseChart } from "../types";
 import { countRenderer } from "../types/utils";
 import { ChartContainer } from "../wrapper/ChartContainer";
 import { ChartWrapper } from "../wrapper/ChartWrapper";
 
 export interface WordBubbleProps extends Omit<BaseChart, "theme"> {
-  data: Array<{ id: string; label?: string; count: number }>;
+  series: Array<{ id: string; label?: string; count: number }>;
   onClick?: (key: string) => void;
 }
 
 const WordBubbleChart: FC<WordBubbleProps> = memo(
-  ({ data, title, onExport, onClick }: WordBubbleProps) => {
+  ({ series, title, onExport, onClick }: WordBubbleProps) => {
     const isDark = useIsDark();
 
     const options = useMemoDebugger<EChartOption>(
       () => {
-        if (isEmpty(data)) return {};
+        if (isEmpty(series)) return {};
 
         const palette = isDark
           ? ChartPalette.CloudDark
@@ -73,7 +73,7 @@ const WordBubbleChart: FC<WordBubbleProps> = memo(
                 color: ({ dataIndex }: KeyValue) =>
                   palette[dataIndex % palette.length],
               },
-              data: data
+              data: series
                 .sort(compareValues("desc", "count"))
                 .map(({ id: key, label, count }, index) => ({
                   name: label ?? key,
@@ -83,7 +83,7 @@ const WordBubbleChart: FC<WordBubbleProps> = memo(
           ],
         };
       },
-      [data, title, isDark],
+      [series, title, isDark],
       "WordChart options",
     );
 
@@ -92,7 +92,7 @@ const WordBubbleChart: FC<WordBubbleProps> = memo(
         title={title}
         onExport={onExport}
         options={options}
-        isEmpty={isEmpty(data)}
+        isEmpty={isEmpty(series)}
         emptyIcon={CoreIcons.chartActivityScatter}
         dataTableRenderer={countRenderer}
         onClick={(e) => onClick?.(e?.name ?? "")}

@@ -23,11 +23,11 @@
 
 import { Button, Panel, ToggleButtonGroup } from "@react-fabric/core";
 import type { Meta, StoryObj } from "@storybook/react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { fn } from "storybook/test";
 import { GenericChart } from "../src";
 import coffeeJson from "./coffee";
 import sankeyJson from "./sankey";
-import { fn } from "storybook/test";
 
 const meta: Meta = {
   component: GenericChart,

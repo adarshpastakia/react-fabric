@@ -68,7 +68,7 @@ export const Example: Story = {
           />
         }
       >
-        <MapSeries {...args} data={data} />
+        <MapSeries {...args} series={data} />
       </Panel>
     );
   },

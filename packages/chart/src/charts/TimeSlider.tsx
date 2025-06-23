@@ -35,13 +35,13 @@ import { ChartContainer } from "../wrapper/ChartContainer";
 import { ChartWrapper } from "../wrapper/ChartWrapper";
 
 export interface TimeSliderProps extends BaseChart {
-  data: Array<[Date, number]>;
+  series: Array<[Date, number]>;
   range?: { start: Date; end: Date };
   onBrush?: (range: { start: Date; end: Date }) => void;
 }
 
 const TimeSliderChart: FC<TimeSliderProps> = memo(
-  ({ data, range: sliderRange, onBrush }: TimeSliderProps) => {
+  ({ series: dataSeries, range: sliderRange, onBrush }: TimeSliderProps) => {
     const chartRef = useRef<EChartsType>(null);
 
     const [range, setRange] = useState({ startValue: 0, endValue: 0 });
@@ -53,9 +53,12 @@ const TimeSliderChart: FC<TimeSliderProps> = memo(
     );
 
     useEffect(() => {
-      const defaultStart = data.length > 0 ? data?.[0]?.[0]?.getTime() : 0;
+      const defaultStart =
+        dataSeries.length > 0 ? dataSeries?.[0]?.[0]?.getTime() : 0;
       const defaultEnd =
-        data.length > 0 ? data?.[data.length - 1]?.[0]?.getTime() : 32;
+        dataSeries.length > 0
+          ? dataSeries?.[dataSeries.length - 1]?.[0]?.getTime()
+          : 32;
 
       const getRangeValue = (v: number = 0, def = 0) =>
         v >= defaultStart && v <= defaultEnd ? v : def;
@@ -63,7 +66,7 @@ const TimeSliderChart: FC<TimeSliderProps> = memo(
         startValue: getRangeValue(sliderRange?.start.getTime(), defaultStart),
         endValue: getRangeValue(sliderRange?.end.getTime(), defaultEnd),
       });
-    }, [sliderRange, data]);
+    }, [sliderRange, dataSeries]);
 
     const enableBrush = useCallback(() => {
       chartRef.current?.dispatchAction({
@@ -107,7 +110,7 @@ const TimeSliderChart: FC<TimeSliderProps> = memo(
 
     const options = useMemoDebugger<EChartOption>(
       () => {
-        if (isEmpty(data)) {
+        if (isEmpty(dataSeries)) {
           chartRef.current?.clear();
           return {};
         }
@@ -152,7 +155,7 @@ const TimeSliderChart: FC<TimeSliderProps> = memo(
             type: "line",
             smooth: true,
             lineStyle: { width: 2 },
-            data,
+            data: dataSeries,
           } as AnyObject,
         ];
 
@@ -194,7 +197,7 @@ const TimeSliderChart: FC<TimeSliderProps> = memo(
           } as AnyObject,
         };
       },
-      [data],
+      [dataSeries],
       "TimeSlider options",
     );
 
@@ -219,7 +222,7 @@ const TimeSliderChart: FC<TimeSliderProps> = memo(
       <ChartContainer
         options={options}
         chartRef={chartRef}
-        isEmpty={isEmpty(data)}
+        isEmpty={isEmpty(dataSeries)}
       />
     );
   },

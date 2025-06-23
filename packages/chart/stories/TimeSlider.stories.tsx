@@ -72,7 +72,7 @@ export const Example: Story = {
       >
         <TimeSlider
           {...args}
-          data={data}
+          series={data}
           range={{ start: new Date(2022, 9, 1), end: new Date(2023, 9, 1) }}
         />
       </Panel>

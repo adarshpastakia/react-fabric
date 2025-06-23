@@ -73,7 +73,7 @@ export const Example: Story = {
           />
         }
       >
-        <ActivityMap {...args} data={data} />
+        <ActivityMap {...args} series={data} />
       </Panel>
     );
   },

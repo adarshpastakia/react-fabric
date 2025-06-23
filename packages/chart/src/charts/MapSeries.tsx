@@ -46,13 +46,13 @@ import WorldMap from "../types/world.svg";
 echarts.registerMap("world", { svg: WorldMap });
 
 export interface MapSeriesProps extends BaseChart {
-  data: Array<{ id: string; label?: string; count: number }>;
+  series: Array<{ id: string; label?: string; count: number }>;
   onClick?: (key: string) => void;
 }
 
 const MapSeriesChart: FC<MapSeriesProps> = memo(
   ({
-    data,
+    series,
     onExport,
     theme: chartTheme,
     showTypeSelector,
@@ -65,15 +65,15 @@ const MapSeriesChart: FC<MapSeriesProps> = memo(
 
     const options = useMemoDebugger<EChartOption>(
       () => {
-        if (isEmpty(data)) return {};
+        if (isEmpty(series)) return {};
 
-        const sorted = data
+        const sorted = series
           .map((d) => ({
             ...d,
             label: d.label ?? Countries.name(d.id),
           }))
           .sort(compareValues("desc", "count"));
-        const valueMap = data.map((d) => d.count);
+        const valueMap = series.map((d) => d.count);
 
         if (type === "column") {
           return {
@@ -156,13 +156,13 @@ const MapSeriesChart: FC<MapSeriesProps> = memo(
           ],
         };
       },
-      [data, title, type],
+      [series, title, type],
       "MapChart options",
     );
 
     useEffect(() => {
       setZoom(1.25);
-    }, [data, type]);
+    }, [series, type]);
 
     useEffect(() => {
       chartRef.current?.setOption({
