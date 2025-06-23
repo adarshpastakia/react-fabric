@@ -147,7 +147,7 @@ export const Textarea = ({
         onBlur={onBlur}
         onFocus={onFocus}
         onChange={handleChange}
-        onKeyDown={handleEnterPressed}
+        onKeyDown={handleEnterPressed as any}
       />
     </InputWrapper>
   );
