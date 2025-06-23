@@ -190,7 +190,7 @@ export const Chip = <Tag extends React.ElementType = "div">({
       {icon && (
         <Icon
           data-ref="chipIcon"
-          className={classNames("fabric-chipIcon", "m-1 flex-auto")}
+          className={classNames("fabric-chipIcon", "m-1 flex-content")}
           icon={icon}
           bg={iconBg}
           onClick={onIconClick}
