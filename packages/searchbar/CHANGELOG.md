@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.54](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.53...v1.0.0-beta.54) (2025-06-23)
+
+### Bug Fixes
+
+- **FilterTag:** wrap label in a div with truncate class for better overflow handling ([cba3f32](https://github.com/adarshpastakia/react-ui-framework/commit/cba3f32d293b084967565f042519aa68c19debcf))
+- **SearchBar:** dirty state for mulitple phrase input ([1df2074](https://github.com/adarshpastakia/react-ui-framework/commit/1df2074122c7652a1faa3d62a967551bc30c1ce4))
+
 # [1.0.0-beta.53](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.52...v1.0.0-beta.53) (2025-06-19)
 
 **Note:** Version bump only for package @react-fabric/searchbar

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.54](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.53...v1.0.0-beta.54) (2025-06-23)
+
+### Bug Fixes
+
+- **Panel:** add escape key handler to unexpand ([e8ebfc5](https://github.com/adarshpastakia/react-ui-framework/commit/e8ebfc514c4aea029e84746718feba6740543563))
+
 # [1.0.0-beta.53](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.52...v1.0.0-beta.53) (2025-06-19)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.54](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.53...v1.0.0-beta.54) (2025-06-23)
+
+### Bug Fixes
+
+- **Inputs:** blur input on escape key press ([9f44395](https://github.com/adarshpastakia/react-ui-framework/commit/9f44395a24c25f8fe3a582bf186ad271ea0f400c))
+
 # [1.0.0-beta.53](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.52...v1.0.0-beta.53) (2025-06-19)
 
 **Note:** Version bump only for package @react-fabric/form

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.54](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.53...v1.0.0-beta.54) (2025-06-23)
+
+### Bug Fixes
+
+- correct service worker URL path in initialization ([0139aa1](https://github.com/adarshpastakia/react-fabric/commit/0139aa10c65bfedb6fe1e4579955ae773706caf0))
+- **FilterTag:** wrap label in a div with truncate class for better overflow handling ([cba3f32](https://github.com/adarshpastakia/react-fabric/commit/cba3f32d293b084967565f042519aa68c19debcf))
+- **Inputs:** blur input on escape key press ([9f44395](https://github.com/adarshpastakia/react-fabric/commit/9f44395a24c25f8fe3a582bf186ad271ea0f400c))
+- **Panel:** add escape key handler to unexpand ([e8ebfc5](https://github.com/adarshpastakia/react-fabric/commit/e8ebfc514c4aea029e84746718feba6740543563))
+- **SearchBar:** dirty state for mulitple phrase input ([1df2074](https://github.com/adarshpastakia/react-fabric/commit/1df2074122c7652a1faa3d62a967551bc30c1ce4))
+- **Superdate:** add data-dropdown-dismiss attribute ([f8f7e1f](https://github.com/adarshpastakia/react-fabric/commit/f8f7e1fad67f0b1e3c2a949a39c113419453a585))
+
 # [1.0.0-beta.53](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.52...v1.0.0-beta.53) (2025-06-19)
 
 ### Bug Fixes
