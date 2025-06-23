@@ -37,10 +37,14 @@ export const useHandleEnter = (
 ) => {
   const cbHandle = useDebounce(callback ?? (() => undefined), [callback], 100);
   const tree = useFloatingTree();
-  return (e: KeyboardEvent) => {
+  return (e: KeyboardEvent<HTMLInputElement>) => {
     // prevent propagation of event if input within dropdown (work around for floating-ui typeahead)
     if (tree && e.key !== "Escape") {
       e?.stopPropagation();
+    }
+    // blur input on escape key press
+    if (e.key === "Escape") {
+      e.currentTarget.blur();
     }
     if (
       !e.shiftKey &&
