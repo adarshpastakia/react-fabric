@@ -45,6 +45,7 @@ import {
 
 export const HeaderCell = ({
   id,
+  field,
   dataType,
   label,
   icon,
@@ -99,7 +100,7 @@ export const HeaderCell = ({
             type={dataType}
             list={filterOptions}
             filter={filter}
-            onFilter={(value) => onFilter?.(id, value)}
+            onFilter={(value) => onFilter?.(field ?? id, value)}
           />
         </Menu>,
       );
@@ -131,7 +132,7 @@ export const HeaderCell = ({
           type={dataType}
           list={filterOptions}
           filter={filter}
-          onFilter={(value) => onFilter?.(id, value)}
+          onFilter={(value) => onFilter?.(field ?? id, value)}
         />,
       ];
     }

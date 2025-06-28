@@ -67,6 +67,7 @@ export interface TableColumn<T = KeyValue>
     IconProps,
     TestProps {
   id: keyof T | string;
+  field?: string;
   label?: string;
   tooltip?: string;
   actions?: ReactElement[];
