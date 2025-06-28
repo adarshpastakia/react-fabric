@@ -56,8 +56,6 @@ const defaultOptions = {
   },
   tooltip: {
     trigger: "item",
-    confine: true,
-    position: "top",
     appendToBody: true,
   } as AnyObject,
   legend: {
@@ -165,6 +163,10 @@ export const ChartContainer = memo(
           ...defaultOptions,
           toolbox,
           ...options,
+          tooltip: {
+            ...defaultOptions.tooltip,
+            ...options.tooltip,
+          },
         },
         true,
       );
@@ -182,7 +184,7 @@ export const ChartContainer = memo(
       <Fragment>
         <ChartToolbar>
           {title && (
-            <Title className="flex-fill px-2 py-1 text-dimmed">{title}</Title>
+            <Title className="flex-1 px-2 py-1 text-dimmed">{title}</Title>
           )}
           {children}
           {onExport && (

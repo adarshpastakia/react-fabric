@@ -38,6 +38,7 @@ import { ChartWrapper } from "../wrapper/ChartWrapper";
 import { PaletteSelect } from "../wrapper/PaletteSelect";
 
 export interface CountSeriesProps extends BaseChart, CountType {
+  seriesName?: string;
   type?: "pie" | "bar" | "column";
   onClick?: (key: string) => void;
 }
@@ -46,6 +47,7 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
   ({
     series: _series,
     title,
+    seriesName,
     onExport,
     theme: chartTheme,
     type: chartType = "pie",
@@ -79,7 +81,7 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
           optionOverride?.xAxis,
           {
             type: "category",
-            name: title ?? "Count Series",
+            name: seriesName ?? "Count Series",
             nameLocation: "center",
             axisTick: {
               show: false,
@@ -99,11 +101,11 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
             ? [
                 {
                   type: "pie",
-                  name: title ?? "Count Series",
+                  name: seriesName ?? "Count Series",
                   data: sorted.map((item, index) => ({
                     id: item.id,
                     value: item.count,
-                    name: item.label ?? item.id,
+                    name: item.name ?? item.id,
                   })),
                   universalTransition: true,
                 },
@@ -120,7 +122,7 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
                 },
                 data: [
                   {
-                    name: title ?? "Count Series",
+                    name: seriesName ?? "Count Series",
                     value: item.count,
                   },
                 ],
@@ -137,7 +139,7 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
             type === "pie" ? null : type === "bar" ? categoryAxis : valueAxis,
         };
       },
-      [_series, title, type, optionOverride],
+      [_series, name, type, optionOverride],
       "CountChart options",
     );
 
