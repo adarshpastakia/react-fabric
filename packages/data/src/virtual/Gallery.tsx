@@ -189,7 +189,7 @@ const _VirtualGallery = <T extends AnyObject>({
 
   const currentIndex = useRef(0);
   useEffect(() => {
-    currentIndex.current = virtualItems[1]?.index ?? 0;
+    currentIndex.current = virtualItems[2]?.index ?? 0;
     if (
       scrollerRef.current &&
       virtualItems[0] &&
