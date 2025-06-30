@@ -47,7 +47,7 @@ export interface TabPanelProps extends ChildrenProp<typeof Tab> {
   /**
    * tab variations
    */
-  variant?: "soft" | "solid" | "outline";
+  variant?: "soft" | "solid" | "outline" | "pills";
   /**
    * tab button flex to fill tabs
    */
@@ -64,6 +64,10 @@ export interface TabPanelProps extends ChildrenProp<typeof Tab> {
    * tab list className
    */
   headerClassName?: string;
+  /**
+   * active tab className
+   */
+  activeClassName?: string;
   /**
    * append element
    */
@@ -122,6 +126,7 @@ export const TabPanel = ({
   headerClassName,
   orientation = "top",
   activeTab,
+  activeClassName,
   justify,
   variant,
   tabFlex,
@@ -196,6 +201,7 @@ export const TabPanel = ({
           {tabs.map((node: AnyObject) =>
             cloneElement(node, {
               tabFlex: node.props.tabFlex ?? tabFlex,
+              activeClassName: node.props.activeClassName ?? activeClassName,
               onClick: handleClick,
               active: node.props.id === active,
             }),

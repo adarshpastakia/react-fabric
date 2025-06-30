@@ -120,13 +120,14 @@
       }
     }
 
-    &[data-variant="soft"] {
+    &[data-variant="soft"],
+    &[data-variant="pills"] {
       & .fabric-tabList > .fabric-tabButton.active {
         background-color: color-mix(in lab, var(--color) 20%, var(--fabric-bg));
       }
     }
 
-    &[data-orientation="top"] .fabric-tabList {
+    &[data-orientation="top"]:not([data-variant="pills"]) .fabric-tabList {
       & > .fabric-tabButton.active {
         box-shadow:
           0 -2px 0 var(--active-color) inset,
@@ -134,7 +135,7 @@
       }
     }
 
-    &[data-orientation="bottom"] .fabric-tabList {
+    &[data-orientation="bottom"]:not([data-variant="pills"]) .fabric-tabList {
       & > .fabric-tabButton.active {
         box-shadow:
           0 2px 0 var(--active-color) inset,
@@ -142,7 +143,7 @@
       }
     }
 
-    &[data-orientation="start"] .fabric-tabList {
+    &[data-orientation="start"]:not([data-variant="pills"]) .fabric-tabList {
       & > .fabric-tabButton.active {
         box-shadow:
           -2px 0 0 var(--active-color) inset,
@@ -150,7 +151,7 @@
       }
     }
 
-    &[data-orientation="end"] .fabric-tabList {
+    &[data-orientation="end"]:not([data-variant="pills"]) .fabric-tabList {
       & > .fabric-tabButton.active {
         box-shadow:
           2px 0 0 var(--active-color) inset,
@@ -158,32 +159,47 @@
       }
     }
 
-    &[data-orientation="top"] .fabric-tabList > .fabric-tabButton {
+    &[data-orientation="top"]:not([data-variant="pills"])
+      .fabric-tabList
+      > .fabric-tabButton {
       margin-top: 2px;
       margin-inline: 1px;
       border-end-start-radius: 0;
       border-end-end-radius: 0;
     }
 
-    &[data-orientation="bottom"] .fabric-tabList > .fabric-tabButton {
+    &[data-orientation="bottom"]:not([data-variant="pills"])
+      .fabric-tabList
+      > .fabric-tabButton {
       margin-bottom: 2px;
       margin-inline: 1px;
       border-start-start-radius: 0;
       border-start-end-radius: 0;
     }
 
-    &[data-orientation="start"] .fabric-tabList > .fabric-tabButton {
+    &[data-orientation="start"]:not([data-variant="pills"])
+      .fabric-tabList
+      > .fabric-tabButton {
       margin-block: 1px;
       margin-inline-start: 2px;
       border-start-end-radius: 0;
       border-end-end-radius: 0;
     }
 
-    &[data-orientation="end"] .fabric-tabList > .fabric-tabButton {
+    &[data-orientation="end"]:not([data-variant="pills"])
+      .fabric-tabList
+      > .fabric-tabButton {
       margin-block: 1px;
       margin-inline-end: 2px;
       border-start-start-radius: 0;
       border-end-start-radius: 0;
+    }
+
+    &[data-variant="pills"] {
+      .fabric-tabList > .fabric-tabButton {
+        margin: 2px;
+        box-shadow: 0 0 2px var(--active-color) inset;
+      }
     }
   }
 }
