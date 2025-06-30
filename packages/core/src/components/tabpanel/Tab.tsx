@@ -174,8 +174,8 @@ export const Tab = <Tag extends React.ElementType = "button">({
           active && activeClassName,
           disabled && "text-tint-500 pointer-events-none",
           tabFlex ? "flex-1" : "flex-initial max-w-36",
-          minimal ? "min-w-6" : "min-w-18",
-          "flex items-center justify-center px-1 rounded overflow-hidden cursor-pointer",
+          minimal ? "min-w-6 rounded" : "min-w-18 rounded-capped",
+          "flex items-center justify-center px-1 overflow-hidden cursor-pointer",
         )}
         onClick={() => !active && onClick?.(id)}
         ref={ref as AnyObject}
