@@ -82,6 +82,8 @@ export const Table = <T extends KeyValue = KeyValue>({
   onScroll,
   onRowClick,
   onCheckedChanged,
+  total = 0,
+  onLoadMore,
 }: TableProps<T>) => {
   const { t } = useTranslation("data");
   const fireCheckChanged = useDebounce(
@@ -109,6 +111,9 @@ export const Table = <T extends KeyValue = KeyValue>({
     checked,
     keyProperty,
     groupProperty,
+    total,
+    loading,
+    onLoadMore,
     onCheckChanged: fireCheckChanged,
   });
   const refBody = useRef<HTMLDivElement>(null);

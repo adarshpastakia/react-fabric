@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { compareValues, groupBy } from "@react-fabric/utilities";
+import { compareValues, debounce, groupBy } from "@react-fabric/utilities";
 import {
   defaultRangeExtractor,
   type Range,
@@ -60,6 +60,9 @@ export const useVirtualTable = <T extends KeyValue = KeyValue>(
     checked?: AnyObject[];
     keyProperty: keyof T;
     groupProperty?: keyof T;
+    loading?: boolean;
+    total: number;
+    onLoadMore?: (startIndex: number) => void;
     onCheckChanged?: (checked: AnyObject[]) => void;
   },
 ) => {
@@ -201,6 +204,26 @@ export const useVirtualTable = <T extends KeyValue = KeyValue>(
   useEffect(() => {
     dispatch({ type: "updateState", checked: options.checked ?? [] });
   }, [options.checked]);
+
+  useEffect(() => {
+    if (options.onLoadMore) {
+      const firstItem = virtualItems[0]?.index;
+      const lastItem = virtualItems?.slice(-1).pop()?.index;
+      const canLoadPrevPage =
+        firstItem !== undefined && state.items[firstItem] === null;
+      const canLoadNextPage =
+        lastItem !== undefined &&
+        lastItem === state.items.length - 1 &&
+        state.items.length < options.total;
+      const db = debounce(options.onLoadMore);
+      if (canLoadPrevPage) {
+        db(firstItem);
+      } else if (!options.loading && canLoadNextPage) {
+        db(lastItem + 1);
+      }
+      return () => db.cancel();
+    }
+  }, [options.onLoadMore, virtualItems]);
 
   return {
     scrollerRef,

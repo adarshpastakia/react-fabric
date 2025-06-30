@@ -135,4 +135,7 @@ export interface TableProps<T = KeyValue> extends RefProp<TableRef> {
   children?: (record: T) => Elements<AnyObject>;
 
   onFilter?: (id: keyof T | string, value?: AnyObject) => void;
+
+  total?: number;
+  onLoadMore?: (lastIndex?: number) => void;
 }
