@@ -147,7 +147,7 @@ export const Switch = ({
           actualValue && getBgClass(color ? `${color}-500` : "primary-500"),
           !actualValue &&
             (defaultColor ? getBgClass(`${defaultColor}-500`) : "bg-tint-200"),
-          "relative grid grid-cols-2 items-center h-6 min-w-10 cursor-pointer rounded-full p-1 transition-colors duration-200 ease-in-out",
+          "relative grid grid-cols-2 items-center h-[1.5em] min-w-[2.5em] cursor-pointer rounded-full p-[0.25em] transition-colors duration-200 ease-in-out",
         )}
         style={{
           backgroundColor: actualValue
@@ -177,10 +177,10 @@ export const Switch = ({
           className={classNames(
             !disabled && "shadow-sm",
             actualValue ? "translate-x-[100%]" : "translate-x-0",
-            "pointer-events-none inline-block h-4 start-1 absolute rounded-full bg-white ring-0 transition duration-200 ease-in-out",
+            "pointer-events-none inline-block h-[1em] start-[0.25em] absolute rounded-full bg-white ring-0 transition duration-200 ease-in-out",
           )}
           style={{
-            width: "calc(50% - 0.25rem)",
+            width: "calc(50% - 0.25em)",
           }}
         />
         {(!!onLabel || !!offLabel) && (
