@@ -64,7 +64,7 @@ interface ThumbnailState {
   loading: boolean;
   transparent: boolean;
   errorLevel: number;
-  colorScheme: "light" | "dark" | "light_transparent" | "dark_transparent";
+  colorScheme: "" | "light" | "dark" | "light_transparent" | "dark_transparent";
 }
 
 type ThumbnailActions =
@@ -150,7 +150,7 @@ export const Thumbnail = ({
       loading: true,
       errorLevel: 0,
       transparent: false,
-      colorScheme: "light",
+      colorScheme: "",
     } as ThumbnailState,
   );
 
@@ -174,8 +174,12 @@ export const Thumbnail = ({
         className,
         videoReel && "fabric-reel",
         "overflow-hidden relative grid place-content-center p-1 shadow-inset",
-        state.colorScheme.startsWith("light") && "bg-dark",
-        state.colorScheme.startsWith("dark") && "bg-light",
+        state.errorLevel !== 2 &&
+          state.colorScheme.startsWith("light") &&
+          "bg-dark",
+        state.errorLevel !== 2 &&
+          state.colorScheme.startsWith("dark") &&
+          "bg-light",
       )}
       style={{
         width,
