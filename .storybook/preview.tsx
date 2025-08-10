@@ -28,7 +28,7 @@ import { darkTheme, lightTheme } from "./theme";
  */
 initialize({
   onUnhandledRequest: "bypass",
-  serviceWorker: { url: "/serviceWorker.js" },
+  serviceWorker: { url: "./serviceWorker.js" },
 });
 
 document.documentElement.dir = i18n.dir();
