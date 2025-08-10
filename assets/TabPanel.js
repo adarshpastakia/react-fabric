@@ -1,4 +1,4 @@
-import{j as n,M as l,T as i,A as s,S as r,D as c,aK as d,P as x,c as b,C as T,a as j}from"./iframe-DZ_tjZ0H.js";import{useMDXComponents as o}from"./index.js";import{T as m,_ as p}from"./TabPanel.stories.js";import"./index4.js";function t(e){const a={code:"code",pre:"pre",...o(),...e.components};return n.jsxs(n.Fragment,{children:[n.jsx(l,{of:m}),`
+import{j as n,M as l,T as i,A as s,S as r,D as c,aK as d,P as x,c as b,C as T,a as j}from"./iframe-BTaJxP5y.js";import{useMDXComponents as o}from"./index.js";import{T as m,_ as p}from"./TabPanel.stories.js";import"./index4.js";function t(e){const a={code:"code",pre:"pre",...o(),...e.components};return n.jsxs(n.Fragment,{children:[n.jsx(l,{of:m}),`
 `,n.jsx(i,{children:"Tabbed Panel"}),`
 `,n.jsx(s,{storyId:"TabPanel",children:n.jsx("div",{className:"hidden-anchor",children:n.jsx(r,{children:"Tab Panel"})})}),`
 `,n.jsx(c,{of:d}),`

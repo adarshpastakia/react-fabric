@@ -1,4 +1,4 @@
-import{j as s,M as m,T as C,A as e,S as r,D as a,ae as p,P as f,c as t,C as l,b as c,a as u}from"./iframe-DZ_tjZ0H.js";import{useMDXComponents as h}from"./index.js";import{C as T,_ as b,a as d,H as i,b as x}from"./Card.stories.js";import"./index4.js";import"./small_video.js";function j(n){const o={code:"code",pre:"pre",...h(),...n.components};return s.jsxs(s.Fragment,{children:[s.jsx(m,{of:T}),`
+import{j as s,M as m,T as C,A as e,S as r,D as a,ae as p,P as f,c as t,C as l,b as c,a as u}from"./iframe-BTaJxP5y.js";import{useMDXComponents as h}from"./index.js";import{C as T,_ as b,a as d,H as i,b as x}from"./Card.stories.js";import"./index4.js";import"./small_video.js";function j(n){const o={code:"code",pre:"pre",...h(),...n.components};return s.jsxs(s.Fragment,{children:[s.jsx(m,{of:T}),`
 `,s.jsx(C,{children:"Card"}),`
 `,s.jsx(e,{storyId:"card",children:s.jsx("div",{className:"hidden-anchor",children:s.jsx(r,{children:"Card"})})}),`
 `,s.jsx(a,{of:p}),`

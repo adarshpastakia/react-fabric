@@ -1,4 +1,4 @@
-import{j as n,M as h,T as p,A as r,S as o,D as i,a7 as f,P as u,c as t,C as a,b as c,a as C}from"./iframe-DZ_tjZ0H.js";import{useMDXComponents as m}from"./index.js";import{A,_ as y}from"./Animations.stories.js";import{_Bars as l}from"./Bars.stories.js";import{_Spinner as x}from"./Spinner.stories.js";import{_Skeleton as d}from"./Skeleton.stories.js";import"./index4.js";function j(s){const e={code:"code",pre:"pre",...m(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(h,{of:A}),`
+import{j as n,M as h,T as p,A as r,S as o,D as i,a7 as f,P as u,c as t,C as a,b as c,a as C}from"./iframe-BTaJxP5y.js";import{useMDXComponents as m}from"./index.js";import{A,_ as y}from"./Animations.stories.js";import{_Bars as l}from"./Bars.stories.js";import{_Spinner as x}from"./Spinner.stories.js";import{_Skeleton as d}from"./Skeleton.stories.js";import"./index4.js";function j(s){const e={code:"code",pre:"pre",...m(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(h,{of:A}),`
 `,n.jsx(p,{children:"Animations"}),`
 `,n.jsx(r,{storyId:"animations",children:n.jsx("div",{className:"hidden-anchor",children:n.jsx(o,{children:"Indicators"})})}),`
 `,n.jsx(i,{of:f}),`
