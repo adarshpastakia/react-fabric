@@ -1,0 +1,69 @@
+{
+  "name": "@react-fabric/graph",
+  "version": "1.0.0-beta.54",
+  "description": "RUF: SigmaJS link analysis graph",
+  "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
+  "license": "MIT",
+  "private": true,
+  "repository": "https://github.com/adarshpastakia/react-ui-framework/tree/main/packages/graph",
+  "source": "src/index.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "directories": {
+    "src": "src",
+    "styles": "css",
+    "test": "tests"
+  },
+  "files": [
+    "css",
+    "src",
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "makelink": "yarn link",
+    "removelink": "yarn unlink",
+    "prebuild": "rm -rf ./dist",
+    "build:dts": "tsc -p ./tsconfig.build.json",
+    "build:rollup": "rollup -c ../../rollup.config.mjs",
+    "build": "npm-run-all -p build:rollup build:dts",
+    "watch:dts": "tsc -w -p ./tsconfig.build.json",
+    "watch:rollup": "rollup -w -c ../../rollup.config.mjs",
+    "watch": "npm-run-all -p watch:rollup watch:dts"
+  },
+  "dependencies": {
+    "@react-fabric/core": "^1.0.0-beta.54",
+    "@react-fabric/utilities": "^1.0.0-beta.52",
+    "@sigma/edge-curve": "^3.1.0",
+    "@sigma/utils": "^3.0.0",
+    "classnames": "^2.5.1",
+    "dom-to-image": "^2.6.0",
+    "graphology": "^0.26.0",
+    "graphology-canvas": "^0.4.2",
+    "graphology-layout": "^0.6.1",
+    "graphology-layout-forceatlas2": "^0.10.1",
+    "graphology-shortest-path": "^2.1.0",
+    "graphology-types": "^0.24.8",
+    "sigma": "^3.0.2"
+  },
+  "peerDependencies": {
+    "i18next": "^25.2.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-i18next": "^15.5.2"
+  },
+  "devDependencies": {
+    "@types/dom-to-image": "^2.6.7",
+    "@types/dompurify": "^3.0.4",
+    "@types/highlight.js": "^10.1.0",
+    "@types/react-color": "^3.0.6"
+  },
+  "engines": {
+    "node": ">=18.12.0",
+    "npm": ">=8.19.0"
+  }
+}

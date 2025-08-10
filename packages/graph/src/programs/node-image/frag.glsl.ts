@@ -1,0 +1,97 @@
+/* istanbul ignore file */
+
+// language=GLSL
+const SHADER_SOURCE = /* glsl */ `
+precision highp float;
+
+varying vec4 v_fill;
+varying vec4 v_color;
+varying vec4 v_texture;
+varying vec2 v_diffVector;
+varying float v_opacity;
+varying float v_radius;
+varying float v_colorMode;
+
+uniform sampler2D u_atlas;
+uniform float u_correctionRatio;
+uniform float u_cameraAngle;
+uniform float u_percentagePadding;
+uniform bool u_keepWithinCircle;
+uniform bool u_shape;
+
+const vec4 transparent = vec4(0.0, 0.0, 0.0, 0.0);
+
+const float radius = 0.5;
+
+void main(void) {
+  float border = 2.0 * u_correctionRatio;
+  float dist = length(v_diffVector);
+  vec4 color = v_fill;
+
+  float c = cos(-u_cameraAngle);
+  float s = sin(-u_cameraAngle);
+  vec2 diffVector = mat2(c, s, -s, c) * (v_diffVector);
+
+  // No antialiasing for picking mode:
+  #ifdef PICKING_MODE
+  border = 0.0;
+  color = v_color;
+
+  #else
+  // First case: No image to display
+  if (v_texture.w <= 0.0) {
+    if (v_colorMode==0.0) {
+      color = v_fill;
+    }
+  }
+
+  // Second case: Image loaded into the texture
+  else {
+    float paddingRatio = 1.0 + 2.0 * u_percentagePadding;
+    float coef = u_keepWithinCircle ? 1.0 : ${Math.SQRT2};
+    vec2 coordinateInTexture = diffVector * vec2(paddingRatio, -paddingRatio) / v_radius / 2.0 * coef + vec2(0.5, 0.5);
+    vec4 texel = texture2D(u_atlas, (v_texture.xy + coordinateInTexture * v_texture.zw), -1.0);
+
+    // Colorize all visible image pixels:
+    if (v_colorMode==1.0) {
+      color = mix(v_fill, v_color, texel.a);
+    }
+
+    // Colorize background pixels, keep image pixel colors:
+    else {
+      color = vec4(mix(v_color, texel, texel.a).rgb, max(texel.a, v_color.a));
+    }
+
+    // Erase pixels "in the padding":
+    if (abs(diffVector.x) > v_radius / paddingRatio || abs(diffVector.y) > v_radius / paddingRatio) {
+      color = v_colorMode == 1.0 ? gl_FragColor : v_fill;
+    }
+  }
+  #endif
+
+  // Crop in a circle when u_keepWithinCircle is truthy:
+  if (u_keepWithinCircle) {
+    if (dist - v_radius + border > border)
+      gl_FragColor = transparent;
+    else if (dist - v_radius + border > 0.0) {
+      gl_FragColor = mix(v_fill, transparent, (dist - v_radius + border) / border);
+    }
+    else  {
+      gl_FragColor = mix(v_fill, color, v_opacity);
+    }
+  }
+
+  // Crop in a square else:
+  else {
+    float squareHalfSize = v_radius * ${Math.SQRT1_2 * Math.cos(Math.PI / 12)};
+    if (abs(diffVector.x) > squareHalfSize || abs(diffVector.y) > squareHalfSize) {
+      gl_FragColor = transparent;
+    } else {
+      gl_FragColor = mix(v_fill, color, v_opacity);
+    }
+  }
+
+}
+`;
+
+export default SHADER_SOURCE;

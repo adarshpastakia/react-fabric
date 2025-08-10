@@ -19,7 +19,12 @@
     "noEmit": true,
     "typeRoots": ["node_modules/@types", "packages/core/src/types"]
   },
-  "include": ["**/*.ts", "**/*.tsx", ".storybook/preview.tsx"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".storybook/manager.ts",
+    ".storybook/preview.tsx"
+  ],
   "exclude": ["skeleton-project"],
   "files": ["./packages/core/src/types/global.d.ts"]
 }
