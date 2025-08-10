@@ -98,10 +98,6 @@
     & > .fabric-buttonWrapper {
       flex: 0 1 1em;
     }
-
-    &:not(.flex) + &:not(.flex) {
-      margin-inline-start: 0.5rem;
-    }
   }
 }
 
@@ -328,6 +324,10 @@
         border-start-start-radius: 0;
         border-end-start-radius: 0;
       }
+
+      &:not(.flex) + &:not(.flex) {
+        margin-inline-start: 0.5rem;
+      }
     }
 
     &.vertical {
@@ -359,6 +359,10 @@
       & > :not(:first-child) .fabric-button {
         border-start-start-radius: 0;
         border-start-end-radius: 0;
+      }
+
+      &:not(.flex) + &:not(.flex) {
+        margin-top: 0.5rem;
       }
     }
   }
