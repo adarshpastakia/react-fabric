@@ -1,4 +1,4 @@
-import{j as n,M as j,T as p,A as r,S as o,D as t,ap as h,P as u,c as i,C as a,b as x,a as M}from"./iframe-wCO-hNtP.js";import{useMDXComponents as m}from"./index.js";import{M as f,_ as C,a as c,b as l}from"./Menu.stories.js";import"./ColorPicker.js";import"./index2.js";import"./Tooltip.js";import"./Google.js";import"./createClass.js";import"./zh-CN.js";import"./endOfDay.js";import"./index5.js";import"./index3.js";import"./Switch.js";function d(s){const e={code:"code",pre:"pre",...m(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(j,{of:f}),`
+import{j as n,M as j,T as p,A as r,S as o,D as t,ap as h,P as u,c as i,C as a,b as x,a as M}from"./iframe-DZ_tjZ0H.js";import{useMDXComponents as m}from"./index.js";import{M as f,_ as C,a as c,b as l}from"./Menu.stories.js";import"./ColorPicker.js";import"./index2.js";import"./Google.js";import"./createClass.js";import"./zh-CN.js";import"./endOfDay.js";import"./index5.js";import"./index3.js";import"./Switch.js";import"./ErrorIcon.js";import"./Tooltip.js";function d(s){const e={code:"code",pre:"pre",...m(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(j,{of:f}),`
 `,n.jsx(p,{children:"Menu"}),`
 `,n.jsx(r,{storyId:"icon",children:n.jsx("div",{className:"hidden-anchor",children:n.jsx(o,{children:"Menu"})})}),`
 `,n.jsx(t,{of:h}),`
@@ -25,4 +25,4 @@ export const Example = () => {
     </Menu>
   );
 };
-`})})]})}function S(s={}){const{wrapper:e}={...m(),...s.components};return e?n.jsx(e,{...s,children:n.jsx(d,{...s})}):d(s)}export{S as default};
+`})})]})}function X(s={}){const{wrapper:e}={...m(),...s.components};return e?n.jsx(e,{...s,children:n.jsx(d,{...s})}):d(s)}export{X as default};

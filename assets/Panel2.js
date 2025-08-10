@@ -1,4 +1,4 @@
-import{j as n,M as p,T as m,A as e,S as o,D as t,aw as f,P as C,c as l,C as a,b as i,a as u}from"./iframe-wCO-hNtP.js";import{useMDXComponents as h}from"./index.js";import{P,_ as y,a as c}from"./Panel.stories.js";import{_PanelGroup as x,AsideContent as d}from"./PanelGroup.stories.js";import"./index4.js";function j(s){const r={code:"code",pre:"pre",...h(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(p,{of:P}),`
+import{j as n,M as p,T as m,A as e,S as o,D as t,aw as f,P as C,c as l,C as a,b as i,a as u}from"./iframe-DZ_tjZ0H.js";import{useMDXComponents as h}from"./index.js";import{P,_ as y,a as c}from"./Panel.stories.js";import{_PanelGroup as x,AsideContent as d}from"./PanelGroup.stories.js";import"./index4.js";function j(s){const r={code:"code",pre:"pre",...h(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(p,{of:P}),`
 `,n.jsx(m,{children:"Panel"}),`
 `,n.jsx(e,{storyId:"panel",children:n.jsx("div",{className:"hidden-anchor",children:n.jsx(o,{children:"Panel"})})}),`
 `,n.jsx(t,{of:f}),`

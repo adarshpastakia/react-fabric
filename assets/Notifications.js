@@ -1,9 +1,9 @@
-import{j as n,M as m,T as h,A as o,S as t,D as r,aC as f,P as u,c as a,C as i,b as x,a as p}from"./iframe-wCO-hNtP.js";import{useMDXComponents as j}from"./index.js";import{_Alert as c}from"./Alert.stories.js";import{_Message as l}from"./Message.stories.js";import{T as C,_ as g}from"./Toast.stories.js";import"./index4.js";function d(s){const e={code:"code",pre:"pre",...j(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(m,{of:C}),`
+import{j as n,M as m,T as h,A as o,S as t,D as r,aD as f,P as u,c as a,C as i,b as x,a as p}from"./iframe-DZ_tjZ0H.js";import{useMDXComponents as j}from"./index.js";import{_Alert as c}from"./Alert.stories.js";import{_Message as l}from"./Message.stories.js";import{T as g,_ as C}from"./Toast.stories.js";import"./index4.js";function d(s){const e={code:"code",pre:"pre",...j(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(m,{of:g}),`
 `,n.jsx(h,{children:"Notifications"}),`
 `,n.jsx(o,{storyId:"notifications",children:n.jsx(t,{children:"Toasts"})}),`
 `,n.jsx(r,{of:f}),`
 `,n.jsx(u,{}),`
-`,n.jsxs(a,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(i,{of:g})]}),`
+`,n.jsxs(a,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(i,{of:C})]}),`
 `,n.jsx(o,{storyId:"messages",children:n.jsx(t,{children:"Messages"})}),`
 `,n.jsx(r,{of:l}),`
 `,n.jsx(x,{withToolbar:!0,of:l}),`
