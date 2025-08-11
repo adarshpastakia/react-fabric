@@ -313,6 +313,7 @@ export const Menu = (props: MenuProps) => {
     return (
       <MenuComponent
         {...(props as AnyObject)}
+        className=""
         menuClassName={props.className}
       />
     );
@@ -323,6 +324,7 @@ export const Menu = (props: MenuProps) => {
       <FloatingTree>
         <MenuComponent
           {...(props as AnyObject)}
+          className=""
           menuClassName={props.className}
         />
       </FloatingTree>

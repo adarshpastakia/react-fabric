@@ -168,7 +168,7 @@ export const _ContextMenu: MenuStory = {
           <MenuItem id="collapsable1" label="Collapsable Item" />
           <MenuItem id="collapsable2" label="Collapsable Item" />
           <MenuItem id="sectionItem" label="Section Item" />
-          <Menu label="Floating Item">
+          <Menu label="Floating Item" className="text-xs">
             <MenuItem id="inner1" label="Inner Item" />
             <MenuItem id="inner2" label="Inner Item" />
           </Menu>
