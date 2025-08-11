@@ -11,6 +11,11 @@ import { useDragSelection } from "../hooks/sigmaDragActions";
 import { useGraphology } from "../hooks/useGraphology";
 import { useSigma } from "../hooks/useSigma";
 import { EdgeAttributes, GraphProps, NodeAttributes } from "../types";
+import {
+  SigmaEdgeEventPayload,
+  SigmaNodeEventPayload,
+  SigmaStageEventPayload,
+} from "sigma/types";
 
 interface Context<N = KeyValue, E = KeyValue> {
   sigma: ReturnType<typeof useSigma>;
@@ -32,6 +37,8 @@ export const GraphProvider = <N = KeyValue, E = KeyValue>({
   nodeReducer,
   edgeReducer,
   onSelectChange,
+  onNodeDoubleClick,
+  onContextMenu,
 }: PropsWithChildren<GraphProps<N, E>>) => {
   const { graph, selected } = useGraphology<N, E>(data);
   const sigma = useSigma<N, E>(graph, nodeReducer, edgeReducer);
@@ -61,6 +68,21 @@ export const GraphProvider = <N = KeyValue, E = KeyValue>({
       onSelectChange && graph.off("nodesSelected", onSelectChange);
     };
   }, [graph, sigma, onSelectChange]);
+
+  useEffect(() => {
+    const handleClick = (e: SigmaNodeEventPayload) => {
+      onNodeDoubleClick?.(e.node, graph.getNodeAttributes(e.node));
+      e.event.original.preventDefault();
+      e.event.preventSigmaDefault();
+      e.preventSigmaDefault();
+      return false;
+    };
+    sigma.instance?.on("doubleClickNode", handleClick);
+
+    return () => {
+      sigma.instance?.off("doubleClickNode", handleClick);
+    };
+  }, [sigma, graph, onNodeDoubleClick]);
 
   useImperativeHandle(
     ref,

@@ -171,4 +171,10 @@ export interface GraphProps<N = KeyValue, E = KeyValue> {
   edgeReducer?: (edge: EdgeAttributes<E>) => EdgeAttributes<E>;
 
   onSelectChange?: (selected: string[]) => void;
+
+  onNodeDoubleClick?: (node: string, attributes: NodeAttributes<N>) => void;
+  onContextMenu?: (
+    type: "canvas" | "node" | "edge",
+    nodesOrEdge?: string | string[],
+  ) => void;
 }

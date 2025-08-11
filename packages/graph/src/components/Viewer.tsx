@@ -26,6 +26,7 @@ import { GraphProps } from "../types";
 import { GraphProvider, useGraph } from "./Context";
 import { Tools } from "./Tools";
 import { useEffect, useRef } from "react";
+import { GraphContextMenu } from "./ContextMenu";
 
 const Graph = () => {
   const { sigma, graph } = useGraph();
@@ -67,6 +68,7 @@ export const SigmaGraph = <N = KeyValue, E = KeyValue>(
       <Section className="relative">
         <Tools />
         <Graph />
+        <GraphContextMenu />
       </Section>
     </GraphProvider>
   );

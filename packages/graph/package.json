@@ -36,6 +36,7 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
+    "@floating-ui/react": "^0.27.12",
     "@react-fabric/core": "^1.0.0-beta.54",
     "@react-fabric/utilities": "^1.0.0-beta.52",
     "@sigma/edge-curve": "^3.1.0",
