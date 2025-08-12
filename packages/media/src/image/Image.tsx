@@ -64,7 +64,16 @@ export const Image = ({ onCrop }: { onCrop?: (box: number[]) => void }) => {
   return (
     <div
       ref={scrollerRef}
-      className="area-content overflow-auto relative scroll-hide grid bg-tint-50 select-none p-[8px]"
+      className="media-container area-content overflow-auto relative scroll-hide grid bg-tint-50 select-none p-[8px]"
+      style={
+        {
+          "--brightness": state.colorscape.brightness,
+          "--invert": state.colorscape.invert,
+          "--hue": `${state.colorscape.hue}deg`,
+          "--contrast": state.colorscape.contrast,
+          "--saturate": state.colorscape.saturate,
+        } as AnyObject
+      }
     >
       <ErrorBoundary>
         <div

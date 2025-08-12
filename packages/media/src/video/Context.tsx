@@ -58,6 +58,12 @@ interface ContextType {
   handleVolumeChange: () => void;
   handleSeeking: () => void;
   handleTimeUpdate: () => void;
+
+  resetColor: () => void;
+  adjustColor: (
+    property: "contrast" | "brightness" | "saturate" | "invert" | "hue",
+    value: number,
+  ) => void;
 }
 
 const Context = createContext<ContextType>({} as ContextType);
@@ -83,6 +89,7 @@ interface VideoState {
   volume: number;
   speed: number;
   showVtt: boolean;
+  colorscape: KeyValue;
 }
 
 type VideoActions =
@@ -106,7 +113,13 @@ type VideoActions =
   | { type: "volume"; volume: number }
   | { type: "speed"; speed: number }
   | { type: "play" }
-  | { type: "pause" };
+  | { type: "pause" }
+  | { type: "resetColor" }
+  | {
+      type: "adjustColor";
+      property: "contrast" | "brightness" | "invert" | "hue" | "saturate";
+      value: number;
+    };
 
 export const VideoProvider = ({
   children,
@@ -195,6 +208,18 @@ export const VideoProvider = ({
         state.rotate =
           state.rotate > 270 ? 0 : state.rotate < 0 ? 270 : state.rotate;
       }
+      if (action.type === "resetColor") {
+        state.colorscape = {
+          brightness: 1,
+          invert: 0,
+          hue: 0,
+          contrast: 1,
+          saturate: 1,
+        };
+      }
+      if (action.type === "adjustColor") {
+        state.colorscape[action.property] = action.value;
+      }
       if (state.zoom === 0) {
         const { containerWidth: cw, containerHeight: ch, ratio } = state;
         let [fitWidth, fitHeight] =
@@ -244,6 +269,13 @@ export const VideoProvider = ({
       volume: 0.5,
       speed: 1,
       showVtt: false,
+      colorscape: {
+        brightness: 1,
+        invert: 0,
+        hue: 0,
+        contrast: 1,
+        saturate: 1,
+      },
     } as VideoState,
   );
 
@@ -379,6 +411,20 @@ export const VideoProvider = ({
     [],
   );
 
+  const resetColor = useCallback(() => {
+    dispatch({ type: "resetColor" });
+  }, []);
+
+  const adjustColor = useCallback(
+    (
+      property: "contrast" | "brightness" | "invert" | "saturate" | "hue",
+      value: number,
+    ) => {
+      dispatch({ type: "adjustColor", property, value });
+    },
+    [],
+  );
+
   return (
     <Context.Provider
       value={{
@@ -400,6 +446,8 @@ export const VideoProvider = ({
         handleVolumeChange,
         handleSeeking,
         handleTimeUpdate,
+        adjustColor,
+        resetColor,
       }}
     >
       <CanvasProvider ref={ref} mediaEl={videoRef} width={state.width}>

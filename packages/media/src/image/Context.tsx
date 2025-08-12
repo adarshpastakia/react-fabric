@@ -55,6 +55,11 @@ interface ContextType {
   rotate: (rotation: -90 | 90) => void;
   zoomScale: (zoom: number) => void;
   changeZoom: (zoom: number, reset?: boolean) => void;
+  resetColor: () => void;
+  adjustColor: (
+    property: "contrast" | "brightness" | "saturate" | "invert" | "hue",
+    value: number,
+  ) => void;
 }
 
 const Context = createContext<ContextType>({} as ContextType);
@@ -79,6 +84,7 @@ interface ImageState {
   isLoaded: boolean;
   isErrored: boolean;
   showSplitter: boolean;
+  colorscape: KeyValue;
   colorScheme: "light" | "dark" | "light_transparent" | "dark_transparent";
 }
 
@@ -102,7 +108,14 @@ type ImageActions =
   | { type: "cancelCropping" }
   | { type: "zoom"; zoom: number; reset: boolean }
   | { type: "zoomScale"; zoom: number }
-  | { type: "rotate"; rotate: number };
+  | { type: "rotate"; rotate: number }
+  | { type: "reset" }
+  | { type: "resetColor" }
+  | {
+      type: "adjustColor";
+      property: "contrast" | "brightness" | "invert" | "hue" | "saturate";
+      value: number;
+    };
 
 export const ImageProvider = ({
   children,
@@ -213,6 +226,29 @@ export const ImageProvider = ({
         state.rotate =
           state.rotate > 270 ? 0 : state.rotate < 0 ? 270 : state.rotate;
       }
+      if (action.type === "reset") {
+        state.rotate = 0;
+        state.zoom = 0;
+        state.colorscape = {
+          brightness: 1,
+          invert: 0,
+          hue: 0,
+          contrast: 1,
+          saturate: 1,
+        };
+      }
+      if (action.type === "resetColor") {
+        state.colorscape = {
+          brightness: 1,
+          invert: 0,
+          hue: 0,
+          contrast: 1,
+          saturate: 1,
+        };
+      }
+      if (action.type === "adjustColor") {
+        state.colorscape[action.property] = action.value;
+      }
       if (state.zoom === 0) {
         const { containerWidth: cw, containerHeight: ch, ratio } = state;
         let [fitWidth, fitHeight] =
@@ -259,7 +295,14 @@ export const ImageProvider = ({
       isLoaded: false,
       isErrored: false,
       showSplitter: true,
-    } as ImageState,
+      colorscape: {
+        brightness: 1,
+        invert: 0,
+        hue: 0,
+        contrast: 1,
+        saturate: 1,
+      },
+    } as unknown as ImageState,
   );
 
   useEffect(() => {
@@ -354,9 +397,22 @@ export const ImageProvider = ({
   }, []);
 
   const reset = useCallback(() => {
-    dispatch({ type: "zoomScale", zoom: 0 });
-    dispatch({ type: "rotate", rotate: 0 });
+    dispatch({ type: "reset" });
   }, []);
+
+  const resetColor = useCallback(() => {
+    dispatch({ type: "resetColor" });
+  }, []);
+
+  const adjustColor = useCallback(
+    (
+      property: "contrast" | "brightness" | "invert" | "saturate" | "hue",
+      value: number,
+    ) => {
+      dispatch({ type: "adjustColor", property, value });
+    },
+    [],
+  );
 
   return (
     <Context.Provider
@@ -377,6 +433,8 @@ export const ImageProvider = ({
         toggleCropping,
         cancelCropping,
         startCropping,
+        adjustColor,
+        resetColor,
       }}
     >
       <CanvasProvider ref={ref} mediaEl={imageRef} width={state.width}>

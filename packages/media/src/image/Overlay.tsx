@@ -99,7 +99,7 @@ export const Overlay = ({ src }: { src: string }) => {
           ref={ref}
           onMouseDown={onMouseDown}
           className={classNames(
-            "bg-white outline outline-2 outline-black -outline-offset-2 absolute pointer-events-auto",
+            "bg-white outline-2 outline-black -outline-offset-2 absolute pointer-events-auto",
             orientVertical && "h-2 inset-x-0 bottom-0 cursor-ns-resize",
             !orientVertical && "w-2 inset-y-0 end-0 cursor-ew-resize",
           )}

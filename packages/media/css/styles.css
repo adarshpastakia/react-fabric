@@ -23,3 +23,12 @@
 
 @import "./_thumbnail.css";
 @import "./_timeSlider.css";
+
+.media-container {
+  img,
+  video {
+    filter: brightness(var(--brightness, 1)) contrast(var(--contrast, 1))
+      saturate(var(--saturate, 1)) hue-rotate(var(--hue))
+      invert(var(--invert, 0));
+  }
+}

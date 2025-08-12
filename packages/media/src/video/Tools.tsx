@@ -21,7 +21,18 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Button, CoreIcons, Divider, Footer, HotKey } from "@react-fabric/core";
+import {
+  Button,
+  Card,
+  CoreIcons,
+  Divider,
+  Dropdown,
+  Footer,
+  Header,
+  HotKey,
+  Icon,
+} from "@react-fabric/core";
+import { Slider } from "@react-fabric/form";
 import {
   Fragment,
   useCallback,
@@ -34,8 +45,8 @@ import { MiniSlider } from "../sliders/MiniSlider";
 import { TimeSlider } from "../sliders/TimeSlider";
 import { AnnotationTag, AnnotationTool } from "./Annotations";
 import { useVideoContext } from "./Context";
-import { type VideoProps } from "./types";
 import { CutStrip } from "./CutStrip";
+import { type VideoProps } from "./types";
 
 export const Tools = ({
   hasVtt = false,
@@ -48,8 +59,16 @@ export const Tools = ({
   VideoProps,
   "markers" | "annotations" | "onAnnotationChange" | "onCut" | "enableZoom"
 >) => {
-  const { videoRef, state, fitToSize, fitToView, toggleFit, toggleVtt } =
-    useVideoContext();
+  const {
+    videoRef,
+    state,
+    fitToSize,
+    fitToView,
+    toggleFit,
+    toggleVtt,
+    adjustColor,
+    resetColor,
+  } = useVideoContext();
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [cut, setCut] = useState(false);
@@ -235,6 +254,106 @@ export const Tools = ({
               videoRef.current && (videoRef.current.playbackRate = v)
             }
           />
+          <Dropdown placement="top">
+            <Button
+              variant="link"
+              disabled={!state.isLoaded}
+              aria-label="rotate-ccw"
+              icon={CoreIcons.settings}
+            />
+            <Card bodyClassName="p-1" className="w-64">
+              <Header flex justify="end">
+                <Button size="xs" onClick={resetColor}>
+                  Reset
+                </Button>
+              </Header>
+              <Slider
+                min={0}
+                max={10}
+                step={0.1}
+                showLabels
+                value={state.colorscape.saturate}
+                onSlide={(v) => adjustColor("saturate", v ?? 0)}
+                onChange={(v) => adjustColor("saturate", v ?? 0)}
+                minLabel={(<Icon icon={CoreIcons.mediaSaturate} />) as any}
+                maxLabel={
+                  (
+                    <div className="text-xs w-12">
+                      {state.colorscape.saturate.toFixed(2)}
+                    </div>
+                  ) as any
+                }
+              />
+              <Slider
+                min={0}
+                max={10}
+                step={0.1}
+                showLabels
+                value={state.colorscape.contrast}
+                onSlide={(v) => adjustColor("contrast", v ?? 0)}
+                onChange={(v) => adjustColor("contrast", v ?? 0)}
+                minLabel={(<Icon icon={CoreIcons.mediaContrast} />) as any}
+                maxLabel={
+                  (
+                    <div className="text-xs w-12">
+                      {state.colorscape.contrast.toFixed(2)}
+                    </div>
+                  ) as any
+                }
+              />
+              <Slider
+                min={0}
+                max={10}
+                step={0.1}
+                showLabels
+                value={state.colorscape.brightness}
+                onSlide={(v) => adjustColor("brightness", v ?? 0)}
+                onChange={(v) => adjustColor("brightness", v ?? 0)}
+                minLabel={(<Icon icon={CoreIcons.mediaLightness} />) as any}
+                maxLabel={
+                  (
+                    <div className="text-xs w-12">
+                      {state.colorscape.brightness.toFixed(2)}
+                    </div>
+                  ) as any
+                }
+              />
+              <Slider
+                min={0}
+                max={360}
+                step={1}
+                showLabels
+                value={state.colorscape.hue}
+                onSlide={(v) => adjustColor("hue", v ?? 0)}
+                onChange={(v) => adjustColor("hue", v ?? 0)}
+                minLabel={(<Icon icon={CoreIcons.mediaColor} />) as any}
+                maxLabel={
+                  (
+                    <div className="text-xs w-12">
+                      {state.colorscape.hue.toFixed(2)}
+                    </div>
+                  ) as any
+                }
+              />
+              <Slider
+                min={0}
+                max={1}
+                step={1}
+                showLabels
+                value={state.colorscape.invert}
+                onSlide={(v) => adjustColor("invert", v ?? 0)}
+                onChange={(v) => adjustColor("invert", v ?? 0)}
+                minLabel={(<Icon icon={CoreIcons.mediaInvert} />) as any}
+                maxLabel={
+                  (
+                    <div className="text-xs w-12">
+                      {state.colorscape.invert.toFixed(2)}
+                    </div>
+                  ) as any
+                }
+              />
+            </Card>
+          </Dropdown>
           <Divider vertical />
           {enableZoom && (
             <Fragment>

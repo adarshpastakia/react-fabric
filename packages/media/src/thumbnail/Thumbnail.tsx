@@ -209,7 +209,7 @@ export const Thumbnail = ({
       )}
       {state.transparent && (
         <Icon
-          icon={CoreIcons.mediaContrast}
+          icon={CoreIcons.mediaSaturate}
           className={classNames(
             "contrastAction",
             "absolute bottom-2 end-2 rounded-full opacity-50 hover:opacity-100",
