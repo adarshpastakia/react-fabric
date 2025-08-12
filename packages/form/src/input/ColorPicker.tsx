@@ -137,50 +137,55 @@ export const ColorPicker: FC<ColorProps> = memo(
     );
 
     return (
-      <SketchPicker
-        width="16rem"
-        className={"fabric-colorPicker"}
-        styles={
-          {
-            default: {
-              hue: {
-                boxShadow: "0 0 1px 1px var(--color-shadow)",
+      <div
+        // prevent default on mouse down to avoid selection issues
+        onMouseDown={(e) => e.preventDefault()}
+      >
+        <SketchPicker
+          width="16rem"
+          className={"fabric-colorPicker"}
+          styles={
+            {
+              default: {
+                hue: {
+                  boxShadow: "0 0 1px 1px var(--color-shadow)",
+                },
+                alpha: {
+                  backgroundColor: "var(--fabric-bg)",
+                  boxShadow: "0 0 1px 1px var(--color-shadow)",
+                },
+                color: {
+                  boxShadow: "0 0 1px 1px var(--color-shadow)",
+                },
+                saturation: {
+                  boxShadow: "0 0 1px 1px var(--color-shadow)",
+                },
+                activeColor: {
+                  boxShadow: "0 0 1px 1px var(--color-shadow)",
+                },
+                picker: {
+                  backgroundColor: "var(--fabric-bg)",
+                  boxShadow:
+                    "0 0 0 1px var(--color-shadow), 0 0 8px var(--fabric-shadow)",
+                },
+                checkboard: {
+                  white: "transparent",
+                  black: "red",
+                },
               },
-              alpha: {
-                backgroundColor: "var(--fabric-bg)",
-                boxShadow: "0 0 1px 1px var(--color-shadow)",
-              },
-              color: {
-                boxShadow: "0 0 1px 1px var(--color-shadow)",
-              },
-              saturation: {
-                boxShadow: "0 0 1px 1px var(--color-shadow)",
-              },
-              activeColor: {
-                boxShadow: "0 0 1px 1px var(--color-shadow)",
-              },
-              picker: {
-                backgroundColor: "var(--fabric-bg)",
-                boxShadow:
-                  "0 0 0 1px var(--color-shadow), 0 0 8px var(--fabric-shadow)",
-              },
-              checkboard: {
-                white: "transparent",
-                black: "red",
-              },
-            },
-          } as AnyObject
-        }
-        color={actualValue}
-        presetColors={swatches}
-        disableAlpha={hideAlpha}
-        onChange={({ rgb: { a = 1, ...rgb } }) =>
-          setActualValue(Color(rgb).alpha(a)[a < 1 ? "hexa" : "hex"]())
-        }
-        onChangeComplete={({ rgb: { a = 1, ...rgb } }) =>
-          handleChange(Color(rgb).alpha(a)[a < 1 ? "hexa" : "hex"]())
-        }
-      />
+            } as AnyObject
+          }
+          color={actualValue}
+          presetColors={swatches}
+          disableAlpha={hideAlpha}
+          onChange={({ rgb: { a = 1, ...rgb } }) =>
+            setActualValue(Color(rgb).alpha(a)[a < 1 ? "hexa" : "hex"]())
+          }
+          onChangeComplete={({ rgb: { a = 1, ...rgb } }) =>
+            handleChange(Color(rgb).alpha(a)[a < 1 ? "hexa" : "hex"]())
+          }
+        />
+      </div>
     );
   },
 );
