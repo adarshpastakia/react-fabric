@@ -222,7 +222,10 @@ export const LexicalEditor = ({
             >
               <RichTextPlugin
                 contentEditable={
-                  <ContentEditable className="lexical-editor px-[2cm] py-[1cm] min-h-screen" />
+                  <ContentEditable
+                    readOnly={readOnly || publishMode}
+                    className="lexical-editor px-[2cm] py-[1cm] min-h-screen"
+                  />
                 }
                 placeholder={
                   <div className="text-muted overflow-hidden absolute mt-6 top-[1cm] left-[2cm] select-none pointer-events-none">

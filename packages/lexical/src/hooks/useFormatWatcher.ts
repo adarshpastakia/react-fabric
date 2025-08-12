@@ -60,6 +60,7 @@ import {
   $isRangeSelection,
   $isRootOrShadowRoot,
   $isTextNode,
+  $setSelection,
   CAN_REDO_COMMAND,
   CAN_UNDO_COMMAND,
   COMMAND_PRIORITY_CRITICAL,
@@ -71,7 +72,7 @@ import {
   type RangeSelection,
   type TextNode,
 } from "lexical";
-import { useCallback, useEffect, useState, useTransition } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const blockTypeToBlockName = {
   bullet: "Bulleted List",
@@ -111,7 +112,6 @@ export function getSelectedNode(
 }
 
 export const useFormatWatcher = () => {
-  const [, startTransition] = useTransition();
   const [editor] = useLexicalComposerContext();
   const [activeEditor, setActiveEditor] = useState(editor);
   const [currentSelection, setCurrentSelection] = useState<AnyObject>();
@@ -292,8 +292,10 @@ export const useFormatWatcher = () => {
 
   const applyStyleText = useCallback(
     (styles: Record<string, string>) => {
+      // activeEditor.focus();
       activeEditor.update(() => {
         if (!isNil(currentSelection)) {
+          $setSelection(currentSelection.clone());
           $patchStyleText(currentSelection, styles);
         }
       });
@@ -435,7 +437,6 @@ export const useFormatWatcher = () => {
 
   const onSizeChange = useCallback(
     (value: string) => {
-      startTransition(() => setFontColor(value));
       applyStyleText({ "font-size": +value + "px" });
     },
     [applyStyleText],

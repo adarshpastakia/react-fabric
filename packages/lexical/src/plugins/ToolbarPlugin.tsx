@@ -289,7 +289,6 @@ export const ToolbarPlugin = () => {
         icon={CoreIcons.formatClear}
         onClick={() => watch.clearFormatting()}
       />
-      <Divider />
     </div>
   );
 };
