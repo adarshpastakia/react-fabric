@@ -53,7 +53,7 @@ export class NodeCircleBorder extends NodeProgram<
   ) {
     const array = this.array;
     const color = floatColor(
-      data.strokeColor ?? this.renderer.getSetting("defaultEdgeColor"),
+      data.borderColor ?? this.renderer.getSetting("defaultEdgeColor"),
     );
 
     array[startIndex++] = data.x;

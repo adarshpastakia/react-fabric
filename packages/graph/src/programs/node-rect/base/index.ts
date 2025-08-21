@@ -66,7 +66,7 @@ export class NodeRectBase extends NodeProgram<
     array[startIndex++] = data.x;
     array[startIndex++] = data.y;
     array[startIndex++] =
-      data.size - (data.stroke ?? 0.5) - (data.pie?.length ? 6 : 0);
+      data.size - (data.border ?? 0.5) - (data.pie?.length ? 6 : 0);
     array[startIndex++] = data.opacity ?? 1;
     array[startIndex++] = base;
     array[startIndex++] = color;

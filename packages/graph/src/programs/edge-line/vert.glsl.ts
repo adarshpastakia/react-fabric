@@ -10,16 +10,25 @@ attribute float a_normalCoef;
 attribute vec2 a_positionStart;
 attribute vec2 a_positionEnd;
 attribute float a_positionCoef;
+attribute float a_sourceRadius;
+attribute float a_targetRadius;
+attribute float a_sourceRadiusCoef;
+attribute float a_targetRadiusCoef;
 
 uniform mat3 u_matrix;
 uniform float u_sizeRatio;
 uniform float u_zoomRatio;
+uniform float u_pixelRatio;
 uniform float u_correctionRatio;
+uniform float u_minEdgeThickness;
+uniform float u_lengthToThicknessRatio;
+uniform float u_feather;
 
 varying vec4 v_color;
 varying vec2 v_normal;
 varying float v_opacity;
 varying float v_thickness;
+varying float v_feather;
 
 const float minThickness = 1.7;
 const float bias = 255.0 / 254.0;
@@ -40,8 +49,34 @@ void main() {
   // ratio:
   float webGLThickness = pixelsThickness * u_correctionRatio / u_sizeRatio;
 
+  // Here, we move the point to leave space for the arrow heads:
+  // Source arrow head
+  float sourceRadius = a_sourceRadius * a_sourceRadiusCoef;
+  float sourceDirection = sign(sourceRadius);
+  float webGLSourceRadius = sourceDirection * sourceRadius * 2.0 * u_correctionRatio / u_sizeRatio;
+  float webGLSourceArrowHeadLength = webGLThickness * u_lengthToThicknessRatio * 2.0;
+  vec2 sourceCompensationVector =
+    vec2(-sourceDirection * unitNormal.y, sourceDirection * unitNormal.x)
+    * (webGLSourceRadius + webGLSourceArrowHeadLength);
+    
+  // Target arrow head
+  float targetRadius = a_targetRadius * a_targetRadiusCoef;
+  float targetDirection = sign(targetRadius);
+  float webGLTargetRadius = targetDirection * targetRadius * 2.0 * u_correctionRatio / u_sizeRatio;
+  float webGLTargetArrowHeadLength = webGLThickness * u_lengthToThicknessRatio * 2.0;
+  vec2 targetCompensationVector =
+  vec2(-targetDirection * unitNormal.y, targetDirection * unitNormal.x)
+    * (webGLTargetRadius + webGLTargetArrowHeadLength);
+
+  if(a_sourceRadius == 0.0) {
+    sourceCompensationVector = vec2(0.0, 0.0);
+  }
+  if(a_targetRadius == 0.0) {
+    targetCompensationVector = vec2(0.0, 0.0);
+  }
+
   // Here is the proper position of the vertex
-  gl_Position = vec4((u_matrix * vec3(position + unitNormal * webGLThickness, 1)).xy, 0, 1);
+  gl_Position = vec4((u_matrix * vec3(position + unitNormal * webGLThickness + sourceCompensationVector + targetCompensationVector, 1)).xy, 0, 1);
 
   // For the fragment shader though, we need a thickness that takes the "magic"
   // correction ratio into account (as in webGLThickness), but so that the
@@ -50,6 +85,8 @@ void main() {
   v_thickness = webGLThickness / u_zoomRatio;
 
   v_normal = unitNormal;
+
+  v_feather = u_feather * u_correctionRatio / u_zoomRatio / u_pixelRatio * 2.0;
 
   #ifdef PICKING_MODE
   // For picking mode, we use the ID as the color:

@@ -61,7 +61,7 @@ export class NodeCircleBase extends NodeProgram<
     array[startIndex++] = data.x;
     array[startIndex++] = data.y;
     array[startIndex++] =
-      data.size - (data.stroke ?? 1) - (data.pie?.length ? 6 : 0);
+      data.size - (data.border ?? 1) - (data.pie?.length ? 6 : 0);
     array[startIndex++] = data.opacity ?? 1;
     array[startIndex++] = base;
     array[startIndex++] = color;

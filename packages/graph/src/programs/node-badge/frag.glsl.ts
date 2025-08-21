@@ -27,6 +27,10 @@ void main(void) {
   float dist = length(v_diffVector);
   vec4 color = v_fill;
 
+  if(v_opacity == 0.0) {
+    discard;
+  }
+
   float c = cos(-u_cameraAngle);
   float s = sin(-u_cameraAngle);
   vec2 diffVector = mat2(c, s, -s, c) * (v_diffVector);

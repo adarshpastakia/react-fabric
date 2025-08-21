@@ -7,10 +7,17 @@ precision highp float;
 varying vec4 v_color;
 varying float v_opacity;
 varying float v_thickness;
+varying float v_feather;
 varying vec2 v_cpA;
 varying vec2 v_cpB;
 varying vec2 v_cpC;
+varying float v_sourceSize;
+varying vec2 v_sourcePoint;
+varying float v_targetSize;
+varying vec2 v_targetPoint;
 
+uniform float u_lengthToThicknessRatio;
+uniform float u_widenessToThicknessRatio;
 
 float det(vec2 a, vec2 b) {
   return a.x * b.y - b.x * a.y;
@@ -40,12 +47,34 @@ void main(void) {
   float dist = distToQuadraticBezierCurve(gl_FragCoord.xy, v_cpA, v_cpB, v_cpC);
   float thickness = v_thickness;
 
-  if (dist < thickness + epsilon) {
+  if(v_sourceSize > 0.0) {
+    float distToSource = length(gl_FragCoord.xy - v_sourcePoint);
+    float sourceArrowLength = v_sourceSize + (thickness) * u_lengthToThicknessRatio;
+    if (distToSource < sourceArrowLength) {
+      thickness = (distToSource - v_sourceSize) / (sourceArrowLength - v_sourceSize) * u_widenessToThicknessRatio * thickness;
+    }
+  }
+
+  if(v_targetSize > 0.0) {
+    float distToTarget = length(gl_FragCoord.xy - v_targetPoint);
+    float targetArrowLength = v_targetSize + (thickness) * u_lengthToThicknessRatio;
+    if (distToTarget < targetArrowLength) {
+      thickness = (distToTarget - v_targetSize) / (targetArrowLength - v_targetSize) * u_widenessToThicknessRatio * thickness;
+    }
+  }
+
+  float halfThickness = thickness / 2.0;
+  if (dist < halfThickness) {
     #ifdef PICKING_MODE
     gl_FragColor = v_color;
     #else
-    float inCurve = 1.0 - smoothstep(thickness - epsilon, thickness + epsilon, dist);
-    gl_FragColor = inCurve * vec4(v_color.rgb * v_color.a, v_color.a);
+    float t = smoothstep(
+      halfThickness - v_feather,
+      halfThickness,
+      dist
+    );
+
+    gl_FragColor = mix(v_color, transparent, t);
     gl_FragColor = mix(transparent, gl_FragColor, v_opacity);
     #endif
   } else {

@@ -6,7 +6,12 @@ import { EdgeCurveProgram } from "../programs/edge-curve";
 import { EdgeLineProgram } from "../programs/edge-line";
 import { NodeCircleProgram } from "../programs/node-circle";
 import { NodeRectProgram } from "../programs/node-rect";
-import { EdgeAttributes, NodeAttributes } from "../types";
+import {
+  EdgeAttributes,
+  InternalEdgeAttributes,
+  InternalNodeAttributes,
+  NodeAttributes,
+} from "../types";
 import { attachHighlighter } from "./sigmaHilighter";
 import { attachMouseActions } from "./sigmaMouseActions";
 
@@ -26,44 +31,58 @@ export const useSigma = <N, E>(
 
   useEffect(() => {
     if (containerRef) {
-      const renderer = new Sigma<NodeAttributes<N>, EdgeAttributes<E>>(
-        graph as any,
-        containerRef,
-        {
-          allowInvalidContainer: true,
-          enableEdgeEvents: true,
-          renderEdgeLabels: true,
-          renderLabels: true,
-          labelSize: 14,
-          defaultEdgeType: "line",
-          defaultNodeType: "circle",
-          edgeProgramClasses: {
-            line: EdgeLineProgram,
-            curved: EdgeCurveProgram,
-          },
-          // for some reason max ratio is min zoom and min ratio is max zoom
-          maxCameraRatio: 10,
-          minCameraRatio: 0.01,
-          nodeProgramClasses: {
-            rect: NodeRectProgram,
-            circle: NodeCircleProgram,
-          },
-          nodeReducer(key, data) {
-            const nodeData = nodeReducer?.(data) || data;
-            // Ensure node size is at least 16 for visibility
-            if ((nodeData.size ?? 0) < 16) {
-              nodeData.size = 16;
-            }
-            // ensure node label renderer is called in order to render selected border
-            nodeData.label = nodeData.label || "";
-            nodeData.id = key;
-            return nodeData;
-          },
-          edgeReducer(_, data) {
-            return edgeReducer?.(data) || data;
-          },
+      const renderer = new Sigma<
+        InternalNodeAttributes<N>,
+        InternalEdgeAttributes<E>
+      >(graph as any, containerRef, {
+        allowInvalidContainer: true,
+        enableEdgeEvents: true,
+        renderEdgeLabels: true,
+        renderLabels: true,
+        labelSize: 14,
+        defaultEdgeType: "line",
+        defaultNodeType: "circle",
+        edgeProgramClasses: {
+          line: EdgeLineProgram,
+          curved: EdgeCurveProgram,
         },
-      );
+        // for some reason max ratio is min zoom and min ratio is max zoom
+        maxCameraRatio: 10,
+        minCameraRatio: 0.01,
+        nodeProgramClasses: {
+          rect: NodeRectProgram,
+          circle: NodeCircleProgram,
+        },
+        nodeReducer(key, data) {
+          const nodeData: InternalNodeAttributes<N> =
+            nodeReducer?.(data) || data;
+          // Ensure node size is at least 16 for visibility
+          if (!nodeData.size && nodeData.weight) {
+            nodeData.size = Math.max(16, nodeData.weight * 3);
+          }
+          if ((nodeData.size ?? 0) < 16) {
+            nodeData.size = 16;
+          }
+
+          // ensure node label renderer is called in order to render selected border
+          nodeData.label = nodeData.label || "";
+          nodeData.id = key;
+          return nodeData;
+        },
+        edgeReducer(key, data) {
+          const edgeData: InternalEdgeAttributes<E> =
+            edgeReducer?.(data) || data;
+          // Ensure edge size is at least 0.5 for visibility
+          if (!edgeData.size && edgeData.weight) {
+            edgeData.size = Math.max(0.5, edgeData.weight * 6);
+          }
+          if ((edgeData.size ?? 0) < 0.5) {
+            edgeData.size = 0.5;
+          }
+          edgeData.id = key;
+          return edgeData;
+        },
+      });
 
       attachMouseActions(renderer);
       attachHighlighter(renderer);

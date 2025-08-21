@@ -11,22 +11,31 @@ attribute vec2 a_source;
 attribute vec2 a_target;
 attribute float a_current;
 attribute float a_curvature;
+attribute float a_sourceSize;
+attribute float a_targetSize;
 
 uniform mat3 u_matrix;
 uniform float u_sizeRatio;
 uniform float u_pixelRatio;
 uniform vec2 u_dimensions;
+uniform float u_minEdgeThickness;
+uniform float u_feather;
+uniform float u_widenessToThicknessRatio;
 
 varying vec4 v_color;
 varying float v_opacity;
 varying float v_thickness;
+varying float v_feather;
 varying vec2 v_cpA;
 varying vec2 v_cpB;
 varying vec2 v_cpC;
+varying float v_sourceSize;
+varying vec2 v_sourcePoint;
+varying float v_targetSize;
+varying vec2 v_targetPoint;
 
 const float bias = 255.0 / 254.0;
 const float epsilon = 0.7;
-const float minThickness = 0.3;
 
 vec2 clipspaceToViewport(vec2 pos, vec2 dimensions) {
   return vec2(
@@ -43,6 +52,7 @@ vec2 viewportToClipspace(vec2 pos, vec2 dimensions) {
 }
 
 void main() {
+  float minThickness = u_minEdgeThickness;
   // Selecting the correct position
   // Branchless "position = a_source if a_current == 1.0 else a_target"
   vec2 position = a_source * max(0.0, a_current) + a_target * max(0.0, 1.0 - a_current);
@@ -63,6 +73,7 @@ void main() {
   float curveThickness = max(minThickness, a_thickness / 2.0 / u_sizeRatio * u_pixelRatio);
 
   v_thickness = curveThickness;
+  v_feather = u_feather;
 
   v_cpA = viewportSource;
   v_cpB = 0.5 * (viewportSource + viewportTarget) + unitNormal * a_direction * boundingBoxThickness;
@@ -76,6 +87,12 @@ void main() {
 
   position = viewportToClipspace(viewportOffsetPosition, u_dimensions);
   gl_Position = vec4(position, 0, 1);
+
+  v_sourceSize = a_sourceSize * u_pixelRatio / u_sizeRatio;
+  v_sourcePoint = viewportSource;
+  
+  v_targetSize = a_targetSize * u_pixelRatio / u_sizeRatio;
+  v_targetPoint = viewportTarget;
     
   #ifdef PICKING_MODE
   // For picking mode, we use the ID as the color:

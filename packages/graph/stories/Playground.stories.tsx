@@ -68,8 +68,8 @@ const rawGraph: RawGraph = {
       attributes: {
         x: -1,
         y: -1,
-        stroke: 2,
-        strokeColor: faker.color.rgb(),
+        border: 2,
+        borderColor: faker.color.rgb(),
         iconColor: faker.color.rgb(),
         path: mdiAccountSupervisor,
       },
@@ -85,8 +85,8 @@ nodeKeys.forEach((key) => {
       label: faker.word.sample(),
       x: faker.number.int({ min: -1, max: 1 }),
       y: faker.number.int({ min: -1, max: 1 }),
-      stroke: 2,
-      strokeColor: faker.color.rgb(),
+      border: 2,
+      borderColor: faker.color.rgb(),
       iconColor: faker.color.rgb(),
       path: faker.helpers.arrayElement(nodeIcons),
       badge: [
@@ -119,7 +119,9 @@ nodeKeys.forEach((key) => {
       target: key,
       attributes: {
         color: faker.color.rgb(),
-        size: faker.number.float({ min: 0.25, max: 1 }),
+        label: faker.word.sample(),
+        arrow: faker.helpers.arrayElement(["target"]) as any,
+        size: faker.number.float({ min: 0.25, max: 4 }),
       },
     });
   });

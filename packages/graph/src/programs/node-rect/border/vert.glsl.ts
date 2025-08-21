@@ -15,6 +15,7 @@ uniform float u_cameraAngle;
 uniform float u_correctionRatio;
 
 varying vec4 v_color;
+varying float v_opacity;
 
 const float bias = 255.0 / 254.0;
 const float sqrt_8 = sqrt(8.0);

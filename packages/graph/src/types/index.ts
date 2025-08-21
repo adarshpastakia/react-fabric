@@ -36,13 +36,17 @@ export interface NodeAttributes<N = KeyValue> {
    */
   size?: number;
   /**
+   * node weight to apply proportional size
+   */
+  weight?: number;
+  /**
    * label color
    */
   labelColor?: string;
   /**
-   * stroke width
+   * border color
    */
-  strokeColor?: string;
+  borderColor?: string;
   /**
    * icon color
    */
@@ -52,9 +56,9 @@ export interface NodeAttributes<N = KeyValue> {
    */
   color?: string;
   /**
-   * stroke width
+   * border width
    */
-  stroke?: number;
+  border?: number;
   /**
    * hover color
    */
@@ -92,12 +96,9 @@ export interface NodeAttributes<N = KeyValue> {
 
   x?: number;
   y?: number;
-  fixed?: boolean;
   hidden?: boolean;
 
   data?: N;
-
-  [key: string]: any;
 }
 
 export interface EdgeAttributes<E = KeyValue> {
@@ -114,7 +115,11 @@ export interface EdgeAttributes<E = KeyValue> {
    */
   size?: number;
   /**
-   * stroke color
+   * edge weight to apply proportional size
+   */
+  weight?: number;
+  /**
+   * edge color
    */
   color?: string;
   /**
@@ -128,7 +133,11 @@ export interface EdgeAttributes<E = KeyValue> {
   /**
    * define edge type
    */
-  edgeType?: string;
+  edgeType?: "curved" | "line";
+  /**
+   * edge arrow head
+   */
+  arrow?: "source" | "target" | "both";
   /**
    * edge count
    */
@@ -143,9 +152,30 @@ export interface EdgeAttributes<E = KeyValue> {
    */
   highlight?: boolean;
 
-  hidden?: boolean;
-
   data?: E;
+}
+
+export interface InternalNodeAttributes<N = KeyValue>
+  extends NodeAttributes<N> {
+  groupId?: string;
+  isGroup?: boolean;
+  expanded?: boolean;
+  nodeList?: string[];
+  opacity?: number;
+  id?: string;
+  fixed?: boolean;
+  originalEdges?: Array<{
+    key: string;
+    source: string;
+    target: string;
+    attributes?: KeyValue;
+  }>;
+}
+export interface InternalEdgeAttributes<E = KeyValue>
+  extends EdgeAttributes<E> {
+  opacity?: number;
+  curvature?: number;
+  id?: string;
 }
 
 export interface RawGraph<N = KeyValue, E = KeyValue> {

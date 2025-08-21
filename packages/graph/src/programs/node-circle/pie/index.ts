@@ -63,7 +63,7 @@ export class NodeCirclePie extends NodeProgram<
 
     array[startIndex++] = data.x;
     array[startIndex++] = data.y;
-    array[startIndex++] = data.size - (data.stroke ?? 1);
+    array[startIndex++] = data.size - (data.border ?? 1);
     array[startIndex++] = !data.pie?.length ? 0 : data.opacity ?? 1;
     array[startIndex++] = Math.min(10, data.pie?.length ?? 0);
     Array(10)

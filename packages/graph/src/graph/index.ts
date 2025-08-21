@@ -10,7 +10,12 @@ import forceAtlas2, {
 } from "graphology-layout-forceatlas2";
 import { GraphEvents, GraphOptions } from "graphology-types";
 import { animateNodes } from "sigma/utils";
-import { EdgeAttributes, NodeAttributes, RawGraph } from "../types";
+import {
+  EdgeAttributes,
+  InternalNodeAttributes,
+  NodeAttributes,
+  RawGraph,
+} from "../types";
 
 interface ExtendedEvents extends GraphEvents {
   nodesLoaded: (nodes: string[]) => void;
@@ -20,7 +25,7 @@ interface ExtendedEvents extends GraphEvents {
 }
 
 export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
-  NodeAttributes<N>,
+  InternalNodeAttributes<N>,
   EdgeAttributes<E>,
   KeyValue
 > {
@@ -226,7 +231,7 @@ export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
     const expanded = force ?? !this.getNodeAttribute(node, "expanded");
     const nodes = this.getNodeAttribute(node, "nodeList");
     this.setNodeAttribute(node, "expanded", expanded);
-    nodes.forEach((n: string) => {
+    nodes?.forEach((n: string) => {
       this.setNodeAttribute(n, "hidden", !expanded);
     });
     return this;
@@ -269,7 +274,7 @@ export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
     return this;
   }
 
-  forceLayout(iterations = 1000, settings?: ForceAtlas2Settings) {
+  forceLayout(iterations = 100, settings: ForceAtlas2Settings = {}) {
     if (this.size === 0) return this;
     const sensibleSettings = forceAtlas2.inferSettings(this as any);
     const positions = forceAtlas2(this as any, {

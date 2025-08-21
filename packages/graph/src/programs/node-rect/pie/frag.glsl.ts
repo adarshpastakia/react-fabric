@@ -20,6 +20,10 @@ const vec4 transparent = vec4(0.0, 0.0, 0.0, 0.0);
 void main(void) {
   float border = u_correctionRatio * 2.0;
 
+  if(v_opacity == 0.0) {
+    discard;
+  }
+
   float angle = atan(v_diffVector.y / v_diffVector.x);
   if (v_diffVector.x < 0.0 && v_diffVector.y < 0.0) angle += ${Math.PI};
   else if (v_diffVector.x < 0.0) angle += ${Math.PI};

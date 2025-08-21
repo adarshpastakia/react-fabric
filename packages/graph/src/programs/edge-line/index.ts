@@ -1,13 +1,19 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import { type Attributes } from "graphology-types";
-import { EdgeProgram, type ProgramInfo } from "sigma/rendering";
+import {
+  createEdgeCompoundProgram,
+  EdgeProgram,
+  type ProgramInfo,
+} from "sigma/rendering";
 import {
   type EdgeDisplayData,
   type NodeDisplayData,
   type RenderParams,
 } from "sigma/types";
 import { floatColor } from "sigma/utils";
+import { InternalEdgeAttributes } from "../../types";
+import { createEdgeArrowHeadProgram } from "../arrow-head";
 import { drawLineLabel } from "./drawLabel";
 import FRAGMENT_SHADER_SOURCE from "./frag.glsl";
 import VERTEX_SHADER_SOURCE from "./vert.glsl";
@@ -21,9 +27,13 @@ const UNIFORMS = [
   "u_zoomRatio",
   "u_sizeRatio",
   "u_correctionRatio",
+  "u_pixelRatio",
+  "u_feather",
+  "u_minEdgeThickness",
+  "u_lengthToThicknessRatio",
 ] as const;
 
-export class EdgeLineProgram<
+class EdgeLineProgramBase<
   N extends Attributes = Attributes,
   E extends Attributes = Attributes,
   G extends Attributes = Attributes,
@@ -44,20 +54,24 @@ export class EdgeLineProgram<
         { name: "a_color", size: 4, type: UNSIGNED_BYTE, normalized: true },
         { name: "a_opacity", size: 1, type: FLOAT },
         { name: "a_id", size: 4, type: UNSIGNED_BYTE, normalized: true },
+        { name: "a_sourceRadius", size: 1, type: FLOAT },
+        { name: "a_targetRadius", size: 1, type: FLOAT },
       ],
       CONSTANT_ATTRIBUTES: [
         // If 0, then position will be a_positionStart
         // If 2, then position will be a_positionEnd
         { name: "a_positionCoef", size: 1, type: FLOAT },
         { name: "a_normalCoef", size: 1, type: FLOAT },
+        { name: "a_sourceRadiusCoef", size: 1, type: FLOAT },
+        { name: "a_targetRadiusCoef", size: 1, type: FLOAT },
       ],
       CONSTANT_DATA: [
-        [0, 1],
-        [0, -1],
-        [1, 1],
-        [1, 1],
-        [0, -1],
-        [1, -1],
+        [0, 1, -1, 0],
+        [0, -1, 1, 0],
+        [1, 1, 0, 1],
+        [1, 1, 0, 1],
+        [0, -1, 1, 0],
+        [1, -1, 0, -1],
       ],
     };
   }
@@ -67,19 +81,14 @@ export class EdgeLineProgram<
     startIndex: number,
     sourceData: NodeDisplayData,
     targetData: NodeDisplayData,
-    data: EdgeDisplayData & {
-      opacity: number;
-      selected?: boolean;
-      highlight?: boolean;
-    },
+    data: EdgeDisplayData & InternalEdgeAttributes,
   ) {
     let color = data.color ?? this.renderer.getSetting("defaultEdgeColor");
     if (data.selected) color = "#f00";
     if (data.highlight) color = "#F54A4A";
 
     const thickness =
-      Math.min(data.size || 1, 0.5) *
-      (data.selected || data.highlight ? 16 : 8);
+      Math.min(data.size || 1, 0.5) * (data.selected || data.highlight ? 8 : 4);
     const x1 = sourceData.x;
     const y1 = sourceData.y;
     const x2 = targetData.x;
@@ -88,6 +97,9 @@ export class EdgeLineProgram<
     // Computing normals
     const dx = x2 - x1;
     const dy = y2 - y1;
+
+    const sourceRadius = sourceData.size || 1;
+    const targetRadius = targetData.size || 1;
 
     let len = dx * dx + dy * dy;
     let n1 = 0;
@@ -111,18 +123,42 @@ export class EdgeLineProgram<
     array[startIndex++] = floatColor(color);
     array[startIndex++] = data.opacity ?? 1;
     array[startIndex++] = edgeIndex;
+    array[startIndex++] = ["both", "source"].includes(data.arrow ?? "")
+      ? sourceRadius
+      : 0;
+    array[startIndex++] = ["both", "target"].includes(data.arrow ?? "")
+      ? targetRadius
+      : 0;
   }
 
   setUniforms(
     params: RenderParams,
     { gl, uniformLocations }: ProgramInfo,
   ): void {
-    const { u_matrix, u_zoomRatio, u_correctionRatio, u_sizeRatio } =
-      uniformLocations;
+    const {
+      u_matrix,
+      u_zoomRatio,
+      u_feather,
+      u_pixelRatio,
+      u_correctionRatio,
+      u_sizeRatio,
+      u_minEdgeThickness,
+      u_lengthToThicknessRatio,
+    } = uniformLocations;
 
     gl.uniformMatrix3fv(u_matrix, false, params.matrix);
     gl.uniform1f(u_zoomRatio, params.zoomRatio);
     gl.uniform1f(u_sizeRatio, params.sizeRatio);
     gl.uniform1f(u_correctionRatio, params.correctionRatio);
+    gl.uniform1f(u_pixelRatio, params.pixelRatio);
+    gl.uniform1f(u_feather, params.antiAliasingFeather);
+    gl.uniform1f(u_minEdgeThickness, params.minEdgeThickness);
+    gl.uniform1f(u_lengthToThicknessRatio, 2.5);
   }
 }
+
+export const EdgeLineProgram = createEdgeCompoundProgram([
+  EdgeLineProgramBase,
+  createEdgeArrowHeadProgram({ extremity: "source" }),
+  createEdgeArrowHeadProgram({ extremity: "target" }),
+]);

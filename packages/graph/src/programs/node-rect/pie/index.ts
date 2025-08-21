@@ -68,7 +68,7 @@ export class NodeRectPie extends NodeProgram<
 
     array[startIndex++] = data.x;
     array[startIndex++] = data.y;
-    array[startIndex++] = data.size - (data.stroke ?? 0.5);
+    array[startIndex++] = data.size - (data.border ?? 0.5);
     array[startIndex++] = !data.pie?.length ? 0 : data.opacity ?? 1;
     array[startIndex++] = Math.min(10, data.pie?.length ?? 0);
     Array(10)
