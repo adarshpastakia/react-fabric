@@ -21,6 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { AvatarProps } from "@react-fabric/core/dist/types/components/avatar/Avatar";
 import {
   type BadgeType,
   type ChildProp,
@@ -56,7 +57,7 @@ interface TreeBaseNode<T> extends Omit<IconProps, "icon">, CssProp, TestProps {
   disabled?: boolean;
   data?: T;
 
-  icon?: ElementType<IconProps> | string;
+  icon?: Elements<JSX.Element>;
 }
 
 export type TreeNodeType<T extends KeyValue = KeyValue> = TreeBaseNode<T> &
@@ -90,7 +91,7 @@ export interface InternalNode
   loaded: boolean;
   parent?: string;
   empty?: boolean;
-  icon?: ElementType<IconProps> | string;
+  icon?: Elements<JSX.Element>;
   errored?: string;
   selected?: true;
   childSelected?: true;
@@ -103,8 +104,8 @@ export interface InternalNode
 export interface TreeNodeProps extends ChildProp {
   node: InternalNode;
   expanders: [string, string];
-  defaultNodeIcon?: string;
-  defaultLeafIcon?: string;
+  defaultNodeIcon?: Elements<JSX.Element>;
+  defaultLeafIcon?: Elements<JSX.Element>;
   noLines?: boolean;
   selectable?: true | "leafOnly";
   checkable?: true | "leafOnly";
@@ -185,23 +186,22 @@ export interface TreePanelProps<T extends KeyValue = KeyValue>
   /**
    * callback on selection of tree node
    */
-  onSelect?: (id: string, data: T) => void;
+  onSelect?: (id: string, data: T) => boolean | undefined;
   /**
    * callback on change of checked list
+   * @param leafs - list of checked leaf nodes
+   * @param nodes - list of checked nodes
+   * @param partials - list of partially checked nodes
    */
-  onChecked?: (leafs: string[], nodes: string[]) => void;
-  /**
-   * item label renderer
-   */
-  renderer?: (data: T) => JSX.Element;
+  onChecked?: (leafs: string[], nodes: string[], partials: string[]) => void;
   /**
    * item filter matcher
    */
   matcher?: (data: T, query: string) => boolean;
 
   sorter?: false | ((a: T, b: T) => number);
-  makeLabel?: (node: T) => string;
-  makeIcon?: (node: T) => string;
+  makeLabel?: (node: T) => Elements<JSX.Element>;
+  makeIcon?: (node: T) => Elements<JSX.Element>;
 
   defaultExpanded?: string[];
   onExpandToggle?: (id: string[]) => void;

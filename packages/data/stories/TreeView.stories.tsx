@@ -100,7 +100,7 @@ export const _TreePanel: Story = {
         onLoad={loadTreeNodes}
         selected="BH"
         defaultExpanded={["Asia", "Asia-B"]}
-        renderer={(data) => {
+        makeLabel={(data) => {
           if (data.type == "group") {
             return (
               <div>

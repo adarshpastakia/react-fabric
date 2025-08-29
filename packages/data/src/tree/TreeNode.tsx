@@ -97,11 +97,7 @@ export const TreeNode = ({
     <div
       role="treeitem"
       aria-selected={node.selected}
-      className={classNames(
-        "flex flex-nowrap items-center",
-        node.className,
-        node.leaf ? leafClassName : nodeClassName,
-      )}
+      className={classNames("flex flex-nowrap items-center")}
       data-testid={node["data-testid"]}
       data-test-value={node["data-test-value"]}
     >
@@ -147,6 +143,8 @@ export const TreeNode = ({
             "group/tool data-[selected]:bg-primary-100 flex flex-nowrap flex-1 overflow-hidden select-none",
             node.childSelected && "font-medium",
             node.disabled && "text-muted opacity-65",
+            node.className,
+            node.leaf ? leafClassName : nodeClassName,
             !node.disabled &&
               (canSelect || onClick) &&
               "hover:bg-primary-50 cursor-pointer",

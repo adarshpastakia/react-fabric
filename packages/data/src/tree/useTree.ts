@@ -57,6 +57,10 @@ type TreeActions =
    */
   | { type: "checked"; id: string[] }
   /**
+   * toggle item select, used as action handler
+   */
+  | { type: "toggleSelect"; id: string }
+  /**
    * toggle item check, used as action handler
    */
   | { type: "toggleCheck"; id: string }
@@ -85,6 +89,7 @@ interface TreeState {
   items: InternalNode[];
   itemMap: Map<string, InternalNode>;
   tree: InternalNode[];
+  query?: string;
   selected?: string;
   checked?: string[];
 }
@@ -151,12 +156,29 @@ export const useTree = <T extends KeyValue>({
     [onLoad],
   );
 
+  const fireSelected = useDebounce(
+    (nodeId: string, data: T) => {
+      componentEvents.current.onSelect?.(nodeId, data);
+    },
+    [onSelect],
+  );
+
+  const fireChecked = useDebounce(
+    (leafs: string[], nodes: string[], partials: string[]) => {
+      componentEvents.current.onChecked?.(leafs, nodes, partials);
+    },
+    [onChecked],
+  );
+
   const [state, dispatch] = useReducer(
     (state: TreeState, action: TreeActions) => {
       if (action.type === "load") {
         state.items = refactorTree(action.items, { sorter, defaultExpanded });
         state.itemMap = makeTreeMap(state.items);
         state.tree = flattenTree(state.items);
+        state.selected = undefined;
+        state.checked = undefined;
+        state.query = "";
         return { ...state };
       }
       if (action.type === "toggleExpand") {
@@ -172,6 +194,7 @@ export const useTree = <T extends KeyValue>({
         fireExpandToggle(Array.from(state.itemMap.values()));
         state.tree = flattenTree(state.items);
         state.selected && updateSelection(state.itemMap, state.selected, true);
+        state.checked?.forEach((id) => updateChecked(state.itemMap, id, 1));
         return { ...state };
       }
       if (action.type === "expand") {
@@ -210,32 +233,49 @@ export const useTree = <T extends KeyValue>({
         } else {
           filterTree(state.itemMap, action.query, matcher);
           state.tree = flattenTree(state.items);
-          return { ...state };
         }
+        return { ...state, query: action.query };
+      }
+      if (action.type === "toggleSelect") {
+        if (state.selected) {
+          updateSelection(state.itemMap, state.selected);
+        }
+        if (!onSelect) {
+          updateSelection(state.itemMap, action.id, true);
+          state.selected = action.id;
+          state.tree = flattenTree(state.items);
+        } else {
+          fireSelected(action.id, state.itemMap.get(action.id)?.data);
+        }
+        return { ...state };
       }
       if (action.type === "select") {
         if (state.selected) {
           updateSelection(state.itemMap, state.selected);
         }
         updateSelection(state.itemMap, action.id, true);
+        state.selected = action.id;
         state.tree = flattenTree(state.items);
-        componentEvents.current.onSelect?.(
-          action.id,
-          state.itemMap.get(action.id)?.data,
-        );
-        return { ...state, selected: action.id };
+        return { ...state };
       }
       if (action.type === "toggleCheck") {
         updateChecked(state.itemMap, action.id);
-        const checkList: string[][] = [[], []];
+        const checkList: string[][] = [[], [], []];
         Array.from(state.itemMap.values())
-          .filter((node) => node.checked === 1)
-          .forEach((node) => checkList[node.leaf ? 0 : 1].push(node.id));
-        componentEvents.current.onChecked?.(checkList[0], checkList[1]);
-        return { ...state };
+          .filter((node) => node.checked !== 0)
+          .forEach((node) =>
+            checkList[node.leaf ? 0 : node.checked].push(node.id),
+          );
+        fireChecked(
+          checkList[0], // leafs
+          checkList[1], // nodes
+          checkList[2], // partials
+        );
+        return { ...state, checked: checkList[0] };
       }
       if (action.type === "checked") {
-        action.id.forEach((id) => updateChecked(state.itemMap, id));
+        state.itemMap.forEach((item) => (item.checked = 0));
+        action.id.forEach((id) => updateChecked(state.itemMap, id, 1));
         return { ...state, checked: action.id };
       }
       return state;
@@ -245,6 +285,7 @@ export const useTree = <T extends KeyValue>({
       items: [],
       tree: [],
       checked: [],
+      query: "",
     },
   );
 
@@ -260,6 +301,8 @@ export const useTree = <T extends KeyValue>({
         type: "expand",
         id: intialExpand.current.shift() as unknown as string,
       });
+    selected && dispatch({ type: "select", id: selected });
+    checked && dispatch({ type: "checked", id: checked });
   }, [itemList]);
 
   useEffect(() => {
@@ -279,7 +322,7 @@ export const useTree = <T extends KeyValue>({
   }, []);
 
   const select = useCallback((id: string) => {
-    dispatch({ type: "select", id });
+    dispatch({ type: "toggleSelect", id });
   }, []);
 
   const expand = useCallback((id: string) => {
@@ -304,6 +347,7 @@ export const useTree = <T extends KeyValue>({
 
   return {
     tree: state.tree,
+    query: state.query,
     toggleExpand,
     expandAll,
     collapseAll,

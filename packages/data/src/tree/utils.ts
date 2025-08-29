@@ -139,16 +139,21 @@ export const updateSelection = (
     while (parent) {
       const parentNode = nodes.get(parent);
       parentNode && (parentNode.childSelected = selected);
-      selected && parentNode && (parentNode.open = true);
+      // selected && parentNode && (parentNode.open = true);
       parent = parentNode?.parent;
     }
   }
 };
 
-export const updateChecked = (list: Map<string, AnyObject>, id: string) => {
+export const updateChecked = (
+  list: Map<string, AnyObject>,
+  id: string,
+  checked?: 0 | 1 | 2,
+) => {
   const node = list.get(id);
   if (node) {
-    node.checked = node.checked === 1 ? 0 : 1;
+    node.checked =
+      checked === undefined ? (node.checked === 0 ? 1 : 0) : checked;
     // check all children
     node.children &&
       getChildren(node.children).forEach(

@@ -86,7 +86,6 @@ export const TreePanel = <T extends KeyValue>({
   checked,
   checkable,
   noLines,
-  renderer,
   searchable,
   selectable,
   matcher,
@@ -110,6 +109,7 @@ export const TreePanel = <T extends KeyValue>({
 }: TreePanelProps<T>) => {
   const {
     tree,
+    query,
     toggleExpand,
     toggleCheck,
     expandAll,
@@ -167,6 +167,7 @@ export const TreePanel = <T extends KeyValue>({
       >
         {searchable && (
           <Search
+            value={query}
             onSearch={onFilter}
             allowClear
             placeholder={filterPlaceholder}
@@ -216,8 +217,7 @@ export const TreePanel = <T extends KeyValue>({
                 leafClassName={leafClassName}
                 nodeClassName={nodeClassName}
               >
-                {(tree[index].data && renderer?.(tree[index].data)) ??
-                  makeLabel?.(tree[index].data) ??
+                {(tree[index].data && makeLabel?.(tree[index].data)) ??
                   tree[index].label}
               </TreeNode>
             </div>
