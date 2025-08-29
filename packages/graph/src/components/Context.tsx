@@ -7,7 +7,7 @@ import {
   useImperativeHandle,
 } from "react";
 import { Graph } from "../graph";
-import { useDragSelection } from "../hooks/sigmaDragActions";
+import { useDragSelection } from "../hooks/sigmaDragSelect";
 import { useGraphology } from "../hooks/useGraphology";
 import { useSigma } from "../hooks/useSigma";
 import { EdgeAttributes, GraphProps, NodeAttributes } from "../types";
