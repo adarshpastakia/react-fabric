@@ -38,8 +38,6 @@ class EdgeLineProgramBase<
   E extends Attributes = Attributes,
   G extends Attributes = Attributes,
 > extends EdgeProgram<(typeof UNIFORMS)[number], N, E, G> {
-  drawLabel = drawLineLabel;
-
   getDefinition() {
     return {
       VERTICES: 6,
@@ -157,8 +155,11 @@ class EdgeLineProgramBase<
   }
 }
 
-export const EdgeLineProgram = createEdgeCompoundProgram([
-  EdgeLineProgramBase,
-  createEdgeArrowHeadProgram({ extremity: "source" }),
-  createEdgeArrowHeadProgram({ extremity: "target" }),
-]);
+export const EdgeLineProgram = createEdgeCompoundProgram(
+  [
+    EdgeLineProgramBase,
+    createEdgeArrowHeadProgram({ extremity: "source" }),
+    createEdgeArrowHeadProgram({ extremity: "target" }),
+  ],
+  drawLineLabel as any,
+);

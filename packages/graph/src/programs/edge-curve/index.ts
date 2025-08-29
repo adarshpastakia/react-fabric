@@ -14,7 +14,6 @@ import {
 } from "sigma/types";
 import { floatColor } from "sigma/utils";
 import { InternalEdgeAttributes } from "../../types";
-import { createEdgeArrowHeadProgram } from "../arrow-head";
 import { createDrawCurvedEdgeLabel } from "./drawLabel";
 import FRAGMENT_SHADER_SOURCE from "./frag.glsl";
 import VERTEX_SHADER_SOURCE from "./vert.glsl";
@@ -39,12 +38,6 @@ export class EdgeCurveProgramBase<
   E extends Attributes = Attributes,
   G extends Attributes = Attributes,
 > extends EdgeProgram<(typeof UNIFORMS)[number], N, E, G> {
-  drawLabel = createDrawCurvedEdgeLabel<N, E, G>({
-    curvatureAttribute: "curvature",
-    defaultCurvature: DEFAULT_EDGE_CURVATURE,
-    arrowHead: null,
-  });
-
   getDefinition() {
     return {
       VERTICES: 6,
@@ -151,8 +144,15 @@ export class EdgeCurveProgramBase<
   }
 }
 
-export const EdgeCurveProgram = createEdgeCompoundProgram([
-  EdgeCurveProgramBase,
-  // createEdgeArrowHeadProgram({ extremity: "source" }),
-  // createEdgeArrowHeadProgram({ extremity: "target" }),
-]);
+export const EdgeCurveProgram = createEdgeCompoundProgram(
+  [
+    EdgeCurveProgramBase,
+    // createEdgeArrowHeadProgram({ extremity: "source" }),
+    // createEdgeArrowHeadProgram({ extremity: "target" }),
+  ],
+  createDrawCurvedEdgeLabel({
+    curvatureAttribute: "curvature",
+    defaultCurvature: DEFAULT_EDGE_CURVATURE,
+    arrowHead: null,
+  }) as any,
+);

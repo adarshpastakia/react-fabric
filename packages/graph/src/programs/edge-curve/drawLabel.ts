@@ -155,12 +155,8 @@ export function createDrawCurvedEdgeLabel<
       context.translate(point.x, point.y);
       context.rotate(angle);
 
-      if (i === 0) {
-        context.fillStyle = settings.defaultNodeColor || "#fff";
-        context.fillRect(-4, 0, textLength + 8, size + 2);
-      }
       context.fillStyle = color;
-      context.fillText(character, 0, size - 2);
+      context.fillText(character, 0, 0);
 
       context.restore();
 
