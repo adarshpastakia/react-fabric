@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.55](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.54...v1.0.0-beta.55) (2025-08-29)
+
+### Bug Fixes
+
+- **Lexical:** color change issue ([3b5277d](https://github.com/adarshpastakia/react-ui-framework/commit/3b5277d5079e1d5ca32d38a2c1319912b43a49d0))
+
 # [1.0.0-beta.54](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.53...v1.0.0-beta.54) (2025-06-23)
 
 **Note:** Version bump only for package @react-fabric/lexical

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.55](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.54...v1.0.0-beta.55) (2025-08-29)
+
+### Bug Fixes
+
+- **Gallery, List:** update currentIndex logic to reference the correct virtualItems index ([6d9eb48](https://github.com/adarshpastakia/react-ui-framework/commit/6d9eb48ea86b9133be6aeeb81e825c05d23e81d2))
+- **Table:** add optional field prop for filter functionality ([b81c20f](https://github.com/adarshpastakia/react-ui-framework/commit/b81c20ff76c2e26825e8f61a8a3be7ce3a915d1b))
+- **Table:** add total and onLoadMore props for infinite scroll ([49f3cf0](https://github.com/adarshpastakia/react-ui-framework/commit/49f3cf03a8246a0b67dd9a6ba37d32b07b8e0345))
+- **TreePanel:** improved event handling ([0b0936c](https://github.com/adarshpastakia/react-ui-framework/commit/0b0936c4892b83202b50a471dfb5961692bc5679))
+- **useFilteredList:** enhance filtering logic to support array queries and matchAll option ([50fadfe](https://github.com/adarshpastakia/react-ui-framework/commit/50fadfeeac068a56a48970f3efa9de59ab482701))
+
 # [1.0.0-beta.54](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.53...v1.0.0-beta.54) (2025-06-23)
 
 **Note:** Version bump only for package @react-fabric/data

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.55](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.54...v1.0.0-beta.55) (2025-08-29)
+
+### Bug Fixes
+
+- **ColorPicker:** prevent default mouse down behavior to avoid selection issues ([91d4dbe](https://github.com/adarshpastakia/react-fabric/commit/91d4dbed802e3318955e6112544db9ba6cef6aca))
+- **CountSeries:** add optional seriesName prop for tooltip series title ([40dbc46](https://github.com/adarshpastakia/react-fabric/commit/40dbc46b30edf05d977cdd0311f6238ad9b2f29e))
+- **Gallery, List:** update currentIndex logic to reference the correct virtualItems index ([6d9eb48](https://github.com/adarshpastakia/react-fabric/commit/6d9eb48ea86b9133be6aeeb81e825c05d23e81d2))
+- **Lexical:** color change issue ([3b5277d](https://github.com/adarshpastakia/react-fabric/commit/3b5277d5079e1d5ca32d38a2c1319912b43a49d0))
+- **Table:** add optional field prop for filter functionality ([b81c20f](https://github.com/adarshpastakia/react-fabric/commit/b81c20ff76c2e26825e8f61a8a3be7ce3a915d1b))
+- **Table:** add total and onLoadMore props for infinite scroll ([49f3cf0](https://github.com/adarshpastakia/react-fabric/commit/49f3cf03a8246a0b67dd9a6ba37d32b07b8e0345))
+- **Tab:** update minimal prop styles for improved layout consistency ([ab58c61](https://github.com/adarshpastakia/react-fabric/commit/ab58c61fee348f8ad6f0d3344ef3ac94338f0ed7))
+- **TreePanel:** improved event handling ([0b0936c](https://github.com/adarshpastakia/react-fabric/commit/0b0936c4892b83202b50a471dfb5961692bc5679))
+- **useFilteredList:** enhance filtering logic to support array queries and matchAll option ([50fadfe](https://github.com/adarshpastakia/react-fabric/commit/50fadfeeac068a56a48970f3efa9de59ab482701))
+
+### Features
+
+- **media:** add color adjustment features ([aab673d](https://github.com/adarshpastakia/react-fabric/commit/aab673dd0f9185e4299b0ae6be4ee2e70288384a))
+
 # [1.0.0-beta.54](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.53...v1.0.0-beta.54) (2025-06-23)
 
 ### Bug Fixes
