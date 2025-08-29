@@ -34,23 +34,23 @@ export const attachMouseActions = (
     };
 
   const stopDragging = (graph: Graph) => {
-    if (draggedNode) {
-      Object.entries<KeyValue>(draggedNode).forEach(([node, xy]) => {
-        const atts = graph.getNodeAttributes(node);
-        if (atts.isGroup) {
-          const diff = { x: atts.x - xy.x, y: atts.y - xy.y };
-          atts.nodes?.forEach((id: string) => {
-            try {
-              const { x, y } = graph.getNodeAttributes(id);
-              graph.setNodeAttribute(id, "x", x + diff.x);
-              graph.setNodeAttribute(id, "y", y + diff.y);
-            } catch {
-              //
-            }
-          });
-        }
-      });
-    }
+    // if (draggedNode) {
+    //   Object.entries<KeyValue>(draggedNode).forEach(([node, xy]) => {
+    //     const atts = graph.getNodeAttributes(node);
+    //     if (atts.isGroup) {
+    //       const diff = { x: atts.x - xy.x, y: atts.y - xy.y };
+    //       atts.nodes?.forEach((id: string) => {
+    //         try {
+    //           const { x, y } = graph.getNodeAttributes(id);
+    //           graph.setNodeAttribute(id, "x", x + diff.x);
+    //           graph.setNodeAttribute(id, "y", y + diff.y);
+    //         } catch {
+    //           //
+    //         }
+    //       });
+    //     }
+    //   });
+    // }
     isDragging = false;
     draggedNode = undefined;
   };
