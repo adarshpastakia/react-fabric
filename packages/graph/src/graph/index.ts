@@ -8,6 +8,7 @@ import { circular, random } from "graphology-layout";
 import forceAtlas2, {
   ForceAtlas2Settings,
 } from "graphology-layout-forceatlas2";
+import forceAtlas2Worker from "graphology-layout-forceatlas2/worker";
 import { GraphEvents, GraphOptions } from "graphology-types";
 import { animateNodes } from "sigma/utils";
 import {
@@ -250,11 +251,17 @@ export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
     this.emit("nodesLoaded", newNodes);
     // apply random positions for nodes
     const positions = random(this as any);
-    animateNodes(this as any, positions, {
-      duration: 1000,
-    });
-    // fire layout done event
-    this.emit("layoutDone");
+    animateNodes(
+      this as any,
+      positions,
+      {
+        duration: 200,
+      },
+      () => {
+        // fire layout done event
+        this.emit("layoutDone");
+      },
+    );
     return this;
   }
 
@@ -265,7 +272,7 @@ export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
       this as any,
       positions,
       {
-        duration: 1000,
+        duration: 200,
       },
       () => {
         this.emit("layoutDone");
@@ -274,26 +281,26 @@ export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
     return this;
   }
 
-  forceLayout(iterations = 100, settings: ForceAtlas2Settings = {}) {
+  private _timer: any;
+  private _worker?: forceAtlas2Worker;
+  forceLayout(settings: ForceAtlas2Settings = {}) {
     if (this.size === 0) return this;
     const sensibleSettings = forceAtlas2.inferSettings(this as any);
-    const positions = forceAtlas2(this as any, {
-      iterations,
+    if (this._worker?.isRunning()) {
+      clearTimeout(this._timer);
+      this._worker.kill();
+    }
+    this._worker = new forceAtlas2Worker(this as any, {
       settings: {
         ...sensibleSettings,
         ...settings,
       },
     });
-    animateNodes(
-      this as any,
-      positions,
-      {
-        duration: 1000,
-      },
-      () => {
-        this.emit("layoutDone");
-      },
-    );
+    this._worker.start();
+    this._timer = setTimeout(() => {
+      this._worker?.stop();
+      this.emit("layoutDone");
+    }, this.nodes().length * 10);
     return this;
   }
 
