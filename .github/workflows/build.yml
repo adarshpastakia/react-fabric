@@ -31,15 +31,15 @@ jobs:
       # Build library
       - name: Build library
         run: |
-          yarn dist
+          yarn dist && yarn test --coverage
 
       # Collect test coverage
       - name: Run coverage
-        uses: paambaati/codeclimate-action@v5.0.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.COVERAGE_TOKEN }}
+        uses: qltysh/qlty-action/coverage@v2
         with:
-          coverageCommand: yarn test --coverage --json --outputFile=./.storybook/jest-test-results.json
+          token: ${{ secrets.QLTY_COVERAGE_TOKEN }}
+          files: coverage/lcov.info
+          skip-errors: true
 
       # Runs a set of commands using the runners shell
       - name: Build storybook
