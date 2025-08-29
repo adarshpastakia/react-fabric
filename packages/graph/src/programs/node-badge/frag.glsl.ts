@@ -34,7 +34,7 @@ void main(void) {
   // No antialiasing for picking mode:
   #ifdef PICKING_MODE
   border = 0.0;
-  color = v_color;
+  gl_FragColor = v_color;
 
   #else
   // First case: No image to display
@@ -57,7 +57,6 @@ void main(void) {
       color = v_fill;
     }
   }
-  #endif
 
   // Crop in a circle when u_keepWithinCircle is truthy:
   if(v_opacity == 0.0) {
@@ -71,6 +70,7 @@ void main(void) {
   else  {
     gl_FragColor = mix(v_fill, color, v_opacity);
   }
+  #endif
   
 
 }
