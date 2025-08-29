@@ -5,6 +5,7 @@ import {
   useContext,
   useEffect,
   useImperativeHandle,
+  useState,
 } from "react";
 import { Graph } from "../graph";
 import { useDragSelection } from "../hooks/sigmaDragSelect";
@@ -16,6 +17,7 @@ import {
   SigmaNodeEventPayload,
   SigmaStageEventPayload,
 } from "sigma/types";
+import { AnimationSpinner, CoreIcons, Icon } from "@react-fabric/core";
 
 interface Context<N = KeyValue, E = KeyValue> {
   sigma: ReturnType<typeof useSigma>;
@@ -45,6 +47,8 @@ export const GraphProvider = <N = KeyValue, E = KeyValue>({
 
   const dragSelector = useDragSelection(sigma.instance);
 
+  const [layoutRunning, setLayoutRunning] = useState(false);
+
   const resetViewport = () => {
     if (graph.size === 0) return this;
     sigma.instance &&
@@ -60,11 +64,13 @@ export const GraphProvider = <N = KeyValue, E = KeyValue>({
           animate: true,
         });
     };
+    graph.on("layoutRunning", setLayoutRunning);
     graph.on("layoutDone", resetHandler);
     onSelectChange && graph.on("nodesSelected", onSelectChange);
 
     return () => {
       graph.off("layoutDone", resetHandler);
+      graph.off("layoutRunning", setLayoutRunning);
       onSelectChange && graph.off("nodesSelected", onSelectChange);
     };
   }, [graph, sigma, onSelectChange]);
@@ -100,6 +106,12 @@ export const GraphProvider = <N = KeyValue, E = KeyValue>({
       }
     >
       {children}
+
+      {layoutRunning && (
+        <div className="absolute top-0 end-0 p-1">
+          <Icon icon={CoreIcons.spinner} animate="spin" />
+        </div>
+      )}
     </GraphContext.Provider>
   );
 };

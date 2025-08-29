@@ -64,12 +64,12 @@ export const SigmaGraph = <N = KeyValue, E = KeyValue>(
   props: GraphProps<N, E>,
 ) => {
   return (
-    <GraphProvider {...props}>
-      <Section className="relative">
+    <Section className="relative">
+      <GraphProvider {...props}>
         <Tools />
         <Graph />
         <GraphContextMenu />
-      </Section>
-    </GraphProvider>
+      </GraphProvider>
+    </Section>
   );
 };

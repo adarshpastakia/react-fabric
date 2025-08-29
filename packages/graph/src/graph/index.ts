@@ -22,6 +22,7 @@ interface ExtendedEvents extends GraphEvents {
   nodesLoaded: (nodes: string[]) => void;
   nodesDropped: (nodes: string[]) => void;
   nodesSelected: (nodes: string[]) => void;
+  layoutRunning: (isRunning: boolean) => void;
   layoutDone: () => void;
 }
 
@@ -296,9 +297,11 @@ export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
         ...settings,
       },
     });
+    this.emit("layoutRunning", true);
     this._worker.start();
     this._timer = setTimeout(() => {
       this._worker?.stop();
+      this.emit("layoutRunning", false);
       this.emit("layoutDone");
     }, this.nodes().length * 10);
     return this;
