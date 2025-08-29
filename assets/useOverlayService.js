@@ -1,1 +1,1 @@
-import{r as c,j as o}from"./iframe-BTaJxP5y.js";const y=a=>{const[s,r]=c.useState(null);return[s,async({onClose:e,...n}={})=>await new Promise(l=>{const u=t=>{r(null),l(t),e==null||e(t)};r(o.jsx(a,{...n,onClose:u}))})]};export{y as u};
+import{r as c,j as o}from"./iframe-DvMcemLF.js";const y=a=>{const[s,r]=c.useState(null);return[s,async({onClose:e,...n}={})=>await new Promise(l=>{const u=t=>{r(null),l(t),e==null||e(t)};r(o.jsx(a,{...n,onClose:u}))})]};export{y as u};

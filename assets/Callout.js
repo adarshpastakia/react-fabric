@@ -1,22 +1,22 @@
-import{j as s,M as h,T as m,A as o,S as r,D as l,am as p,P as u,c as t,C as a,b as d,a as C}from"./iframe-BTaJxP5y.js";import{useMDXComponents as j}from"./index.js";import{C as f,_ as g,W as i,a as c}from"./Callout.stories.js";import"./index4.js";function x(n){const e={code:"code",pre:"pre",...j(),...n.components};return s.jsxs(s.Fragment,{children:[s.jsx(h,{of:f}),`
-`,s.jsx(m,{children:"Callout"}),`
-`,s.jsx(o,{storyId:"callout",children:s.jsx("div",{className:"hidden-anchor",children:s.jsx(r,{children:"Callout"})})}),`
-`,s.jsx(l,{of:p}),`
-`,s.jsx(u,{}),`
-`,s.jsxs(t,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(a,{of:g})]}),`
-`,s.jsx(o,{storyId:"withlegend",children:s.jsx(r,{children:"With Legend"})}),`
-`,s.jsx(l,{of:i}),`
-`,s.jsx(d,{withToolbar:!0,of:i}),`
-`,s.jsxs(t,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(a,{of:i})]}),`
-`,s.jsx(o,{storyId:"colors",children:s.jsx(r,{children:"Colors"})}),`
-`,s.jsx(l,{of:c}),`
-`,s.jsx(d,{withToolbar:!0,of:c}),`
-`,s.jsxs(t,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(a,{of:c})]}),`
-`,s.jsx("hr",{}),`
-`,s.jsx(o,{storyId:"props",children:s.jsx(r,{children:"Props"})}),`
-`,s.jsx(C,{sort:"requiredFirst"}),`
-`,s.jsx(o,{storyId:"sample",children:s.jsx(r,{children:"Example"})}),`
-`,s.jsx(e.pre,{children:s.jsx(e.code,{className:"language-tsx",children:`import { Callout } from "@react-fabric/core";
+import{j as n,M as h,T as m,A as o,S as r,D as l,an as p,P as u,c as t,C as a,b as d,a as C}from"./iframe-DvMcemLF.js";import{useMDXComponents as j}from"./index.js";import{C as f,_ as g,W as i,a as c}from"./Callout.stories.js";import"./index4.js";function x(s){const e={code:"code",pre:"pre",...j(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(h,{of:f}),`
+`,n.jsx(m,{children:"Callout"}),`
+`,n.jsx(o,{storyId:"callout",children:n.jsx("div",{className:"hidden-anchor",children:n.jsx(r,{children:"Callout"})})}),`
+`,n.jsx(l,{of:p}),`
+`,n.jsx(u,{}),`
+`,n.jsxs(t,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(a,{of:g})]}),`
+`,n.jsx(o,{storyId:"withlegend",children:n.jsx(r,{children:"With Legend"})}),`
+`,n.jsx(l,{of:i}),`
+`,n.jsx(d,{withToolbar:!0,of:i}),`
+`,n.jsxs(t,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(a,{of:i})]}),`
+`,n.jsx(o,{storyId:"colors",children:n.jsx(r,{children:"Colors"})}),`
+`,n.jsx(l,{of:c}),`
+`,n.jsx(d,{withToolbar:!0,of:c}),`
+`,n.jsxs(t,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(a,{of:c})]}),`
+`,n.jsx("hr",{}),`
+`,n.jsx(o,{storyId:"props",children:n.jsx(r,{children:"Props"})}),`
+`,n.jsx(C,{sort:"requiredFirst"}),`
+`,n.jsx(o,{storyId:"sample",children:n.jsx(r,{children:"Example"})}),`
+`,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-tsx",children:`import { Callout } from "@react-fabric/core";
 
 export const Example = () => {
   return (
@@ -25,4 +25,4 @@ export const Example = () => {
     </Callout>
   );
 };
-`})})]})}function D(n={}){const{wrapper:e}={...j(),...n.components};return e?s.jsx(e,{...n,children:s.jsx(x,{...n})}):x(n)}export{D as default};
+`})})]})}function D(s={}){const{wrapper:e}={...j(),...s.components};return e?n.jsx(e,{...s,children:n.jsx(x,{...s})}):x(s)}export{D as default};

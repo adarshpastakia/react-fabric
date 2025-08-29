@@ -1,9 +1,9 @@
-import{j as r,M as x,T as m,A as e,S as o,D as a,af as h,P as j,c as t,C as d,b as u,a as p}from"./iframe-BTaJxP5y.js";import{useMDXComponents as l}from"./index.js";import{B as f,_ as b,S as c}from"./Breadcrumbs.stories.js";function i(n){const s={code:"code",pre:"pre",...l(),...n.components};return r.jsxs(r.Fragment,{children:[r.jsx(x,{of:f}),`
+import{j as r,M as x,T as m,A as e,S as o,D as a,ag as h,P as j,c as t,C as d,b as u,a as p}from"./iframe-DvMcemLF.js";import{useMDXComponents as l}from"./index.js";import{B as b,_ as f,S as c}from"./Breadcrumbs.stories.js";function i(n){const s={code:"code",pre:"pre",...l(),...n.components};return r.jsxs(r.Fragment,{children:[r.jsx(x,{of:b}),`
 `,r.jsx(m,{children:"Breadcrumbs"}),`
 `,r.jsx(e,{storyId:"Breadcrumbs",children:r.jsx("div",{className:"hidden-anchor",children:r.jsx(o,{children:"Breadcrumbs"})})}),`
 `,r.jsx(a,{of:h}),`
 `,r.jsx(j,{}),`
-`,r.jsxs(t,{className:"control-panel",children:[r.jsx("div",{children:"Controls"}),r.jsx(d,{of:b})]}),`
+`,r.jsxs(t,{className:"control-panel",children:[r.jsx("div",{children:"Controls"}),r.jsx(d,{of:f})]}),`
 `,r.jsx(e,{storyId:"card",children:r.jsx(o,{children:"Styles"})}),`
 `,r.jsx(a,{of:c}),`
 `,r.jsx(u,{withToolbar:!0,of:c}),`
