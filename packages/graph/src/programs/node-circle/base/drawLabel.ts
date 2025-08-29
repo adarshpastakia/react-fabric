@@ -1,12 +1,15 @@
 import { type Settings } from "sigma/settings";
-import { EdgeAttributes, NodeAttributes } from "../../../types";
-import { ICONS } from "../../../constants";
+import {
+  EdgeAttributes,
+  InternalNodeAttributes,
+  NodeAttributes,
+} from "../../../types";
 
 /* istanbul ignore file */
 
 export function drawNodeLabel(
   context: CanvasRenderingContext2D,
-  data: NodeAttributes & {
+  data: InternalNodeAttributes & {
     opacity: number;
     x: number;
     y: number;
