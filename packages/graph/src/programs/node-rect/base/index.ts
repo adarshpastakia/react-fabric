@@ -35,9 +35,20 @@ export class NodeRectBase extends NodeProgram<
       ATTRIBUTES: [
         { name: "a_position", size: 2, type: FLOAT },
         { name: "a_size", size: 1, type: FLOAT },
+        { name: "a_border", size: 1, type: FLOAT },
         { name: "a_opacity", size: 1, type: FLOAT },
         { name: "a_base", size: 4, type: UNSIGNED_BYTE, normalized: true },
         { name: "a_color", size: 4, type: UNSIGNED_BYTE, normalized: true },
+        { name: "a_stroke", size: 4, type: UNSIGNED_BYTE, normalized: true },
+        { name: "a_segments", size: 1, type: FLOAT },
+        ...Array(7)
+          .fill(0)
+          .map((_, idx) => ({
+            name: "a_colors_" + idx,
+            size: 4,
+            type: UNSIGNED_BYTE,
+            normalized: true,
+          })),
         { name: "a_id", size: 4, type: UNSIGNED_BYTE, normalized: true },
       ],
       CONSTANT_ATTRIBUTES: [{ name: "a_angle", size: 1, type: FLOAT }],
@@ -62,14 +73,24 @@ export class NodeRectBase extends NodeProgram<
     const color = floatColor(
       data.color ?? this.renderer.getSetting("defaultNodeColor"),
     );
+    const stroke = floatColor(
+      data.borderColor ?? this.renderer.getSetting("defaultEdgeColor"),
+    );
 
     array[startIndex++] = data.x;
     array[startIndex++] = data.y;
-    array[startIndex++] =
-      data.size - (data.border ?? 0.5) - (data.pie?.length ? 6 : 0);
+    array[startIndex++] = data.size;
+    array[startIndex++] = Math.min(data.border ?? 0, 4);
     array[startIndex++] = data.opacity ?? 1;
     array[startIndex++] = base;
     array[startIndex++] = color;
+    array[startIndex++] = stroke;
+    array[startIndex++] = Math.min(7, data.pie?.length ?? 0);
+    Array(7)
+      .fill(0)
+      .forEach((_, idx) => {
+        array[startIndex++] = floatColor(data.pie?.[idx] ?? "#0000");
+      });
     array[startIndex++] = nodeIndex;
   }
 

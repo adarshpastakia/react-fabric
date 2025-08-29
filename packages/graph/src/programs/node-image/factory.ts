@@ -249,7 +249,7 @@ export default function getNodeImageProgram(
       array[startIndex++] = data.x;
       array[startIndex++] = data.y;
       array[startIndex++] =
-        data.size - (data.stroke ?? 0) - (data.pie?.length ? 10 : 4);
+        data.size - (data.border ?? 0) - (data.pie?.length ? 4 : 2);
       array[startIndex++] = data.opacity ?? 1;
       array[startIndex++] = isSvgPath(imageSource) ? 1 : 0;
       array[startIndex++] = fill;
