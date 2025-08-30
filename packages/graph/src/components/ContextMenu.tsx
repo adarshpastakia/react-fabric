@@ -55,7 +55,7 @@ export const GraphContextMenu = () => {
       const target = evt?.target as HTMLElement;
       if (!target?.closest(".menu-list")) setIsOpen(open);
     },
-    strategy: "fixed",
+    strategy: "absolute",
     placement: "bottom-start",
     whileElementsMounted: autoUpdate,
     middleware: [offset(8), flip()],
