@@ -75,6 +75,8 @@ void main() {
       v_colors_6 = mix(a_base, a_colors_6, a_opacity * bias);
     }
   #endif
+
+  v_color.a *= bias;
 }
 `;
 

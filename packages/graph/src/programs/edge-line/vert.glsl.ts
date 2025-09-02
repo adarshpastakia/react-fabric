@@ -96,6 +96,8 @@ void main() {
   v_color = a_color;
   v_opacity = a_opacity;
   #endif
+
+  v_color.a *= bias;
 }
 `;
 

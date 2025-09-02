@@ -52,6 +52,8 @@ void main() {
   // Pass the texture coordinates:
   v_texture = a_texture;
   #endif
+
+  v_color.a *= bias;
 }
 `;
 
