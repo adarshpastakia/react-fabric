@@ -22,7 +22,7 @@
  */
 
 import { useDebounce } from "@react-fabric/core";
-import { EMPTY_ARRAY } from "@react-fabric/utilities";
+import { EMPTY_ARRAY, isEmpty } from "@react-fabric/utilities";
 import memoizeOne from "memoize-one";
 import { useCallback, useEffect, useReducer, useRef } from "react";
 import {
@@ -110,7 +110,7 @@ export const useTree = <T extends KeyValue>({
   onExpandToggle,
 }: Partial<TreePanelProps<T>>) => {
   const componentEvents = useRef({ onSelect, onChecked });
-  const intialExpand = useRef(defaultExpanded ?? EMPTY_ARRAY);
+  const intialExpand = useRef([...(defaultExpanded ?? EMPTY_ARRAY)]);
   const itemList = createItemList(items);
 
   const fireExpandToggle = useCallback(
@@ -127,23 +127,26 @@ export const useTree = <T extends KeyValue>({
     (node: InternalNode) => {
       if (node.open && !node.leaf && !node.children?.length) {
         node.loading = true;
-        void Promise.resolve(onLoad?.(node.id))
-          .then((resp = EMPTY_ARRAY) => {
-            node.children = refactorTree(
-              resp,
-              { sorter, defaultExpanded },
-              { level: node.level + 1, parent: node.id },
-            );
-          })
-          .finally(() => {
-            node.loading = false;
-            dispatch({ type: "loaded" });
-            intialExpand.current?.length > 0 &&
-              dispatch({
-                type: "expand",
-                id: intialExpand.current.shift() as unknown as string,
-              });
-          });
+        // delay onload callback to avoid state issues
+        setTimeout(() => {
+          void Promise.resolve(onLoad?.(node.id))
+            .then((resp = EMPTY_ARRAY) => {
+              node.children = refactorTree(
+                resp,
+                { sorter, defaultExpanded },
+                { level: node.level + 1, parent: node.id },
+              );
+            })
+            .finally(() => {
+              node.loading = false;
+              dispatch({ type: "loaded" });
+              intialExpand.current?.length > 0 &&
+                dispatch({
+                  type: "expand",
+                  id: intialExpand.current.shift() as unknown as string,
+                });
+            });
+        }, 100);
       } else {
         dispatch({ type: "loaded" });
         intialExpand.current?.length > 0 &&
@@ -170,6 +173,13 @@ export const useTree = <T extends KeyValue>({
     [onChecked],
   );
 
+  const fireQuery = useDebounce(
+    (query: string) => {
+      onQuery?.(query);
+    },
+    [onQuery],
+  );
+
   const [state, dispatch] = useReducer(
     (state: TreeState, action: TreeActions) => {
       if (action.type === "load") {
@@ -193,7 +203,7 @@ export const useTree = <T extends KeyValue>({
         state.itemMap = makeTreeMap(state.items);
         fireExpandToggle(Array.from(state.itemMap.values()));
         state.tree = flattenTree(state.items);
-        state.selected && updateSelection(state.itemMap, state.selected, true);
+        state.selected = updateSelection(state.itemMap, selected, true);
         state.checked?.forEach((id) => updateChecked(state.itemMap, id, 1));
         return { ...state };
       }
@@ -229,7 +239,16 @@ export const useTree = <T extends KeyValue>({
       }
       if (action.type === "filter") {
         if (onQuery) {
-          onQuery(action.query ?? "");
+          // TODO: onQuery should provide new tree listing
+          // save current tree state as preQueryState
+          // on clearing filter restore preQueryState
+          if (!isEmpty(action.query)) {
+            // state.prevItems = state.items;
+            fireQuery(action.query);
+          } else {
+            // state.items = state.prevItems;
+            // build tree map
+          }
         } else {
           filterTree(state.itemMap, action.query, matcher);
           state.tree = flattenTree(state.items);
@@ -237,12 +256,11 @@ export const useTree = <T extends KeyValue>({
         return { ...state, query: action.query };
       }
       if (action.type === "toggleSelect") {
-        if (state.selected) {
-          updateSelection(state.itemMap, state.selected);
-        }
         if (!onSelect) {
-          updateSelection(state.itemMap, action.id, true);
-          state.selected = action.id;
+          if (state.selected) {
+            updateSelection(state.itemMap, state.selected);
+          }
+          state.selected = updateSelection(state.itemMap, action.id, true);
           state.tree = flattenTree(state.items);
         } else {
           fireSelected(action.id, state.itemMap.get(action.id)?.data);
@@ -253,8 +271,7 @@ export const useTree = <T extends KeyValue>({
         if (state.selected) {
           updateSelection(state.itemMap, state.selected);
         }
-        updateSelection(state.itemMap, action.id, true);
-        state.selected = action.id;
+        state.selected = updateSelection(state.itemMap, action.id, true);
         state.tree = flattenTree(state.items);
         return { ...state };
       }
@@ -329,6 +346,13 @@ export const useTree = <T extends KeyValue>({
     dispatch({ type: "expand", id });
   }, []);
 
+  const expandAndLoad = useCallback((expandList: string[]) => {
+    if (expandList.length > 0) {
+      intialExpand.current = [...expandList];
+      dispatch({ type: "expand", id: intialExpand.current.shift() as string });
+    }
+  }, []);
+
   const expandAll = useCallback(() => {
     dispatch({ type: "expandAll" });
   }, []);
@@ -348,10 +372,12 @@ export const useTree = <T extends KeyValue>({
   return {
     tree: state.tree,
     query: state.query,
+    selected: state.selected,
     toggleExpand,
     expandAll,
     collapseAll,
     toggleCheck,
+    expandAndLoad,
     select,
     expand,
     onFilter,

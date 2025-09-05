@@ -127,10 +127,10 @@ export const flattenTree = (
 
 export const updateSelection = (
   nodes: Map<string, InternalNode>,
-  id: string,
+  id?: string,
   selected?: true,
 ) => {
-  const node = nodes.get(id);
+  const node = nodes.get(id ?? "");
   if (node) {
     // change selection
     node.selected = selected;
@@ -142,6 +142,7 @@ export const updateSelection = (
       // selected && parentNode && (parentNode.open = true);
       parent = parentNode?.parent;
     }
+    return id;
   }
 };
 

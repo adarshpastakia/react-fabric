@@ -21,7 +21,6 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { AvatarProps } from "@react-fabric/core/dist/types/components/avatar/Avatar";
 import {
   type BadgeType,
   type ChildProp,
@@ -31,7 +30,6 @@ import {
   type RefProp,
   type TestProps,
 } from "@react-fabric/core/dist/types/types";
-import { type ElementType } from "react";
 
 interface TreeBaseNode<T> extends Omit<IconProps, "icon">, CssProp, TestProps {
   id: string;
@@ -120,6 +118,7 @@ export interface TreeNodeProps extends ChildProp {
 export interface TreeRef {
   select: (id: string) => void;
   open: (id: string) => void;
+  openAndLoad: (list: string[]) => void;
 }
 
 export interface TreePanelProps<T extends KeyValue = KeyValue>

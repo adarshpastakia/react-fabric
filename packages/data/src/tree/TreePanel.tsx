@@ -31,7 +31,7 @@ import {
 } from "@react-fabric/core";
 import { Search } from "@react-fabric/form";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { useImperativeHandle, useMemo, useRef } from "react";
+import { useEffect, useImperativeHandle, useMemo, useRef } from "react";
 import { TreeNode } from "./TreeNode";
 import { iconCollapseAll, iconExpandAll, type TreePanelProps } from "./types";
 import { useTree } from "./useTree";
@@ -110,10 +110,12 @@ export const TreePanel = <T extends KeyValue>({
   const {
     tree,
     query,
+    selected: currentSelected,
     toggleExpand,
     toggleCheck,
     expandAll,
     collapseAll,
+    expandAndLoad,
     select,
     expand,
     onFilter,
@@ -154,10 +156,16 @@ export const TreePanel = <T extends KeyValue>({
     ref,
     () => ({
       open: (id: string) => expand(id),
+      openAndLoad: (list: string[]) => expandAndLoad(list),
       select: (id: string) => select(id),
     }),
     [],
   );
+
+  useEffect(() => {
+    const index = tree.findIndex((n) => n.id === currentSelected);
+    virtualizer.scrollToIndex(index, { align: "auto" });
+  }, [currentSelected]);
 
   return (
     <Section>

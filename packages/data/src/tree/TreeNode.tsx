@@ -100,6 +100,7 @@ export const TreeNode = ({
       className={classNames("flex flex-nowrap items-center")}
       data-testid={node["data-testid"]}
       data-test-value={node["data-test-value"]}
+      data-id={node.id}
     >
       {filler}
       {node.loading && (
