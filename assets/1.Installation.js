@@ -1,4 +1,4 @@
-import{j as s,M as t,T as i,S as r}from"./iframe-DvMcemLF.js";import{useMDXComponents as a}from"./index.js";function c(e){const n={code:"code",li:"li",pre:"pre",ul:"ul",...a(),...e.components};return s.jsxs(s.Fragment,{children:[s.jsx(t,{title:"Using the library"}),`
+import{j as s,M as t,T as i,S as r}from"./iframe-6XIGnDH8.js";import{useMDXComponents as a}from"./index.js";function c(e){const n={code:"code",li:"li",pre:"pre",ul:"ul",...a(),...e.components};return s.jsxs(s.Fragment,{children:[s.jsx(t,{title:"Using the library"}),`
 `,s.jsx(i,{children:"Using the library"}),`
 `,s.jsx(r,{children:"Installing"}),`
 `,s.jsx(n.pre,{children:s.jsx(n.code,{className:"language-bash",children:`# core components

@@ -1,4 +1,4 @@
-import{j as s,M as m,T as C,A as n,S as o,D as l,ap as f,P as u,c as a,C as i,b as t,a as y}from"./iframe-DvMcemLF.js";import{useMDXComponents as p}from"./index.js";import{C as b,_ as S,S as c,a as x,b as d,c as j}from"./Chip.stories.js";function h(e){const r={code:"code",pre:"pre",...p(),...e.components};return s.jsxs(s.Fragment,{children:[s.jsx(m,{of:b}),`
+import{j as s,M as m,T as C,A as n,S as o,D as l,ap as f,P as u,c as a,C as i,b as t,a as y}from"./iframe-6XIGnDH8.js";import{useMDXComponents as p}from"./index.js";import{C as b,_ as S,S as c,a as x,b as d,c as j}from"./Chip.stories.js";function h(e){const r={code:"code",pre:"pre",...p(),...e.components};return s.jsxs(s.Fragment,{children:[s.jsx(m,{of:b}),`
 `,s.jsx(C,{children:"Chip"}),`
 `,s.jsx(n,{storyId:"chip",children:s.jsx("div",{className:"hidden-anchor",children:s.jsx(o,{children:"Chip"})})}),`
 `,s.jsx(l,{of:f}),`

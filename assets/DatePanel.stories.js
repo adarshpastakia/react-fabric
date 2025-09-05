@@ -1,4 +1,4 @@
-import{j as a}from"./iframe-DvMcemLF.js";import{R as l,b as o}from"./RangePanel.js";import"./index2.js";const i={component:o,subcomponents:{RangePanel:l},title:"@date/Date Panel",parameters:{layout:"centered",controls:{exclude:"children",matchers:{date:/value|min|max/}}}},e={render:s=>a.jsx("div",{className:"outline",children:a.jsx(o,{...s})}),args:{withTime:!0,showHijriToggle:!0,max:new Date}};var r,t,n;e.parameters={...e.parameters,docs:{...(r=e.parameters)==null?void 0:r.docs,source:{originalSource:`{
+import{j as a}from"./iframe-6XIGnDH8.js";import{R as l,b as o}from"./RangePanel.js";import"./index2.js";const i={component:o,subcomponents:{RangePanel:l},title:"@date/Date Panel",parameters:{layout:"centered",controls:{exclude:"children",matchers:{date:/value|min|max/}}}},e={render:s=>a.jsx("div",{className:"outline",children:a.jsx(o,{...s})}),args:{withTime:!0,showHijriToggle:!0,max:new Date}};var r,t,n;e.parameters={...e.parameters,docs:{...(r=e.parameters)==null?void 0:r.docs,source:{originalSource:`{
   render: args => {
     return <div className="outline">
         <DatePanel {...args} />
