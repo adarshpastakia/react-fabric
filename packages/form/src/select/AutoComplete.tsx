@@ -190,7 +190,7 @@ export const AutoComplete = ({
             return false;
           } else {
             onEnterPressed?.(evt);
-            submitRef.current?.click();
+            setOpen(false);
           }
         } else if (evt.key === "Backspace") {
           !state.query && multiple && handleRemove();
