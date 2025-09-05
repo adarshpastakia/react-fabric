@@ -289,8 +289,8 @@ export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
     const sensibleSettings = forceAtlas2.inferSettings(this as any);
     if (this._worker?.isRunning()) {
       clearTimeout(this._timer);
-      this._worker.kill();
     }
+    this._worker?.kill();
     this._worker = new forceAtlas2Worker(this as any, {
       settings: {
         ...sensibleSettings,
@@ -299,11 +299,16 @@ export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
     });
     this.emit("layoutRunning", true);
     this._worker.start();
-    this._timer = setTimeout(() => {
-      this._worker?.stop();
-      this.emit("layoutRunning", false);
-      this.emit("layoutDone");
-    }, this.nodes().length * 10);
+    this._timer = setTimeout(
+      () => {
+        this._worker?.stop();
+        this._worker?.kill();
+        this.emit("layoutRunning", false);
+        this.emit("layoutDone");
+      },
+      // @ts-expect-error ignore
+      this.nodes().length * window.__GRAPH_LAYOUT_DURATION_MULTIPLIER__,
+    );
     return this;
   }
 

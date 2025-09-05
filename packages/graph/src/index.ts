@@ -29,3 +29,6 @@ export type {
   NodeAttributes,
   RawGraph,
 } from "./types";
+
+// @ts-expect-error ignore
+window.__GRAPH_LAYOUT_DURATION_MULTIPLIER__ = 10;
