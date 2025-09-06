@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Avatar, Icon, ProgressBar } from "@react-fabric/core";
+import { Avatar, CoreIcons, Icon, ProgressBar } from "@react-fabric/core";
 import { type RefProp } from "@react-fabric/core/dist/types/types";
 import { useEffect, useState } from "react";
 import { useFileUploader, type UploadHandler } from "../hooks/useFileUploader";
@@ -133,7 +133,7 @@ export const AvatarInput = ({
             )}
             {file.progress && (
               <Icon
-                icon="mdi mdi-stop-circle"
+                icon={CoreIcons.stop}
                 bg="danger"
                 color="white"
                 size="sm"
@@ -144,7 +144,7 @@ export const AvatarInput = ({
             )}
             {!file.progress && (
               <Icon
-                icon="mdi mdi-trash-can"
+                icon={CoreIcons.trash}
                 color="danger"
                 size="sm"
                 aria-label="remove"

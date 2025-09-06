@@ -55,6 +55,7 @@ import "@mdxeditor/editor/style.css";
 import {
   Button,
   Content,
+  CoreIcons,
   Header,
   Section,
   useIsDark,
@@ -125,7 +126,7 @@ export const MdxEditor: FC<MdxEditorProps> = ({ value: _value, onChange }) => {
       <Header flex justify="end" className="py-1 px-2 bg-base">
         <Button
           aria-label="close"
-          icon="mdi mdi-close"
+          icon={CoreIcons.close}
           className="self-center"
           onClick={() => setShowPreview(false)}
           variant="link"
@@ -236,7 +237,7 @@ export const MdxEditor: FC<MdxEditorProps> = ({ value: _value, onChange }) => {
               />
               <Button
                 aria-label="preview"
-                icon="mdi mdi-eye"
+                icon={CoreIcons.eye}
                 className="m-0 self-center"
                 onClick={() => setShowPreview(true)}
                 variant="link"
