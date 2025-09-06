@@ -74,6 +74,7 @@ export const Textarea = ({
   disabled,
   required,
   placeholder,
+  defaultValue,
   autoFocus,
   rows = 5,
   maxRows = 12,
@@ -87,7 +88,7 @@ export const Textarea = ({
 }: TextareaProps) => {
   const [actualValue, setActualValue] = useState("");
   const [fixedRows, setFixedRows] = useState(rows);
-  const deferred = useDeferredValue(value);
+  const deferred = useDeferredValue(value ?? defaultValue);
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -96,11 +97,11 @@ export const Textarea = ({
 
   const handleChange = useCallback(
     (e?: ChangeEvent<HTMLTextAreaElement>) => {
-      const value = e?.target.value;
+      const value = e?.target.value ?? defaultValue;
       setActualValue(value ?? "");
       onChange?.(value ?? null);
     },
-    [onChange],
+    [onChange, defaultValue],
   );
 
   useEffect(() => {

@@ -37,6 +37,10 @@ export interface Props extends RefProp {
    */
   value?: string;
   /**
+   * default avatar image
+   */
+  defaultValue?: string;
+  /**
    * avatar name
    */
   avatarName?: string;
@@ -71,6 +75,7 @@ export const AvatarInput = ({
   size = "6rem",
   avatarName,
   value,
+  defaultValue,
   fileUrl,
   uploadHandler,
   ...rest
@@ -99,16 +104,19 @@ export const AvatarInput = ({
         })
       );
     } else {
-      setBase64("");
+      setBase64(fileUrl?.(defaultValue ?? "") ?? defaultValue ?? "");
     }
-  }, [files, list]);
+  }, [files, list, defaultValue]);
 
   useEffect(() => {
+    !value &&
+      defaultValue &&
+      setBase64(fileUrl?.(defaultValue) ?? defaultValue);
     value && setBase64(fileUrl?.(value) ?? value);
-  }, [value]);
+  }, [value, defaultValue]);
 
   return (
-    <div className="flex flex-nowrap items-end">
+    <div className="flex flex-nowrap items-end overflow-hidden">
       <div className="inline-block leading-none rounded-full relative outline overflow-hidden">
         <Avatar name={avatarName ?? "temp"} size={size} avatar={base64} />
         <div className="absolute inset-x-0 bottom-0 cursor-pointer bg-black/20 hover:bg-black/50 text-white text-xs text-center py-1">
@@ -121,9 +129,9 @@ export const AvatarInput = ({
           />
         </div>
       </div>
-      <HiddenInput hiddenValue={list?.[0]?.path} {...rest} />
+      <HiddenInput hiddenValue={list?.[0]?.path ?? defaultValue} {...rest} />
       {files.map((file, idx) => (
-        <div key={idx} className="px-2 py-1 flex-1">
+        <div key={idx} className="px-2 py-1 flex-1 overflow-hidden">
           <div className="flex flex-nowrap gap-1 items-center">
             <div className="flex-initial truncate pe-2">{file.filename}</div>
             {file.error && (
@@ -137,7 +145,7 @@ export const AvatarInput = ({
                 bg="danger"
                 color="white"
                 size="sm"
-                className="p-[2px]"
+                className="p-[2px] flex-content"
                 aria-label="abort"
                 onClick={() => file.abort?.()}
               />
@@ -147,6 +155,7 @@ export const AvatarInput = ({
                 icon={CoreIcons.trash}
                 color="danger"
                 size="sm"
+                className="flex-content"
                 aria-label="remove"
                 onClick={() => remove(file.key)}
               />

@@ -88,6 +88,7 @@ export const DateInput = ({
   disabled,
   required,
   placeholder,
+  defaultValue,
   autoFocus,
   error,
   type = "date",
@@ -102,7 +103,7 @@ export const DateInput = ({
 }: DateProps) => {
   const [actualValue, setActualValue] = useState("");
   const [inputValue, setInputValue] = useState("");
-  const deferred = useDeferredValue(value);
+  const deferred = useDeferredValue(value ?? defaultValue);
 
   const inputFormat = useMemo(
     () => (type === "datetime" ? "yyyy-MM-dd HH:mm" : "yyyy-MM-dd"),
@@ -118,7 +119,7 @@ export const DateInput = ({
 
   const handleChange = useCallback(
     (e?: ChangeEvent<HTMLInputElement>) => {
-      const value = e?.currentTarget.value;
+      const value = e?.currentTarget.value ?? defaultValue;
       if (value) {
         const parsed = DateUtil.parseDate(value);
         setActualValue(parsed?.toISOString?.());
@@ -131,7 +132,7 @@ export const DateInput = ({
         onChange != null && startTransition(() => onChange(null));
       }
     },
-    [onChange, inputFormat],
+    [onChange, inputFormat, defaultValue],
   );
 
   const handleDateChange = useCallback(

@@ -74,6 +74,7 @@ export const Search = ({
   required,
   searching,
   placeholder,
+  defaultValue,
   autoFocus,
   hideHandle,
   allowClear = true,
@@ -86,7 +87,7 @@ export const Search = ({
   ...rest
 }: SearchProps) => {
   const [actualValue, setActualValue] = useState("");
-  const deferred = useDeferredValue(value);
+  const deferred = useDeferredValue(value ?? defaultValue);
 
   const refValue = useRef("");
   const handleSearch = useDebounce(
@@ -103,7 +104,7 @@ export const Search = ({
 
   const handleChange = useCallback(
     (e?: ChangeEvent<HTMLInputElement>) => {
-      const value = e?.target.value;
+      const value = e?.target.value ?? defaultValue;
       refValue.current = value ?? "";
       setActualValue(value ?? "");
       onChange?.(value ?? null);
@@ -113,7 +114,7 @@ export const Search = ({
         handleSearch();
       }
     },
-    [onChange, searchOnChange, handleSearch],
+    [onChange, searchOnChange, handleSearch, defaultValue],
   );
 
   return (

@@ -66,6 +66,7 @@ export const Number = ({
   disabled,
   required,
   placeholder,
+  defaultValue,
   autoFocus,
   name,
   min,
@@ -78,7 +79,7 @@ export const Number = ({
   ...rest
 }: NumberProps) => {
   const [actualValue, setActualValue] = useState<"" | number>("");
-  const deferred = useDeferredValue(value);
+  const deferred = useDeferredValue(value ?? defaultValue);
 
   const handleEnterPressed = useHandleEnter(onEnterPressed);
 
@@ -88,11 +89,11 @@ export const Number = ({
 
   const handleChange = useCallback(
     (e?: ChangeEvent<HTMLInputElement>) => {
-      const number = e?.target.valueAsNumber;
+      const number = e?.target.valueAsNumber ?? defaultValue;
       setActualValue(number ?? "");
       onChange?.(number ?? null);
     },
-    [onChange],
+    [onChange, defaultValue],
   );
 
   return (

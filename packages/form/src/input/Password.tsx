@@ -63,6 +63,7 @@ export const Password = ({
   disabled,
   required,
   placeholder,
+  defaultValue,
   autoFocus,
   showToggle,
   onBlur,
@@ -75,7 +76,7 @@ export const Password = ({
   const [show, setShow] = useState(false);
 
   const [actualValue, setActualValue] = useState("");
-  const deferred = useDeferredValue(value);
+  const deferred = useDeferredValue(value ?? defaultValue);
 
   const handleEnterPressed = useHandleEnter(onEnterPressed);
 
@@ -85,11 +86,11 @@ export const Password = ({
 
   const handleChange = useCallback(
     (e?: ChangeEvent<HTMLInputElement>) => {
-      const value = e?.target.value;
+      const value = e?.target.value ?? defaultValue;
       setActualValue(value ?? "");
       onChange?.(value ?? null);
     },
-    [onChange],
+    [onChange, defaultValue],
   );
 
   return (

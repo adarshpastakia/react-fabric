@@ -58,6 +58,7 @@ export const Input = ({
   disabled,
   required,
   placeholder,
+  defaultValue,
   autoFocus,
   error,
   monospace,
@@ -69,7 +70,7 @@ export const Input = ({
   ...rest
 }: TextInputProps) => {
   const [actualValue, setActualValue] = useState("");
-  const deferred = useDeferredValue(value);
+  const deferred = useDeferredValue(value ?? defaultValue);
 
   const handleEnterPressed = useHandleEnter(onEnterPressed);
 
@@ -79,11 +80,11 @@ export const Input = ({
 
   const handleChange = useCallback(
     (e?: ChangeEvent<HTMLInputElement>) => {
-      const value = e?.target.value;
+      const value = e?.target.value ?? defaultValue;
       setActualValue(value ?? "");
       onChange?.(value ?? null);
     },
-    [onchange],
+    [onChange, defaultValue],
   );
 
   return (

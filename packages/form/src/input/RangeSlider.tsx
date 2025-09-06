@@ -38,7 +38,7 @@ import { type InputProps } from "../types";
 export interface RangeProps
   extends Omit<
     InputProps<[number, number]>,
-    "placeholder" | "allowClear" | "children"
+    "placeholder" | "allowClear" | "children" | "defaultValue"
   > {
   /**
    * min value

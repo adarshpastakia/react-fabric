@@ -96,10 +96,11 @@ export const ColorInput = ({
 
   const handleChange = useCallback(
     (e?: string) => {
-      setActualValue(e ?? defaultColor);
-      onChange != null && startTransition(() => onChange(e ?? null));
+      const value = e ?? defaultColor;
+      setActualValue(value);
+      onChange != null && startTransition(() => onChange(value ?? null));
     },
-    [onChange],
+    [onChange, defaultColor],
   );
 
   const arrowRef = useRef(null);
@@ -200,6 +201,7 @@ export const ColorInput = ({
       )}
       {!disabled && showPicker && (
         <Icon
+          className="flex-content p-1"
           icon={CoreIcons.colorPicker}
           onClick={() =>
             (window as AnyObject).EyeDropper &&

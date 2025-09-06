@@ -33,6 +33,10 @@ export interface InputProps<V = string> extends TestProps {
    */
   value?: V | null;
   /**
+   * default value
+   */
+  defaultValue?: V | null;
+  /**
    * change handler
    */
   onChange?: (value: V | null) => void;

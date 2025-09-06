@@ -36,7 +36,10 @@ import { useRanger } from "../ranger";
 import { type InputProps } from "../types";
 
 export interface SliderProps
-  extends Omit<InputProps<number>, "placeholder" | "allowClear" | "children"> {
+  extends Omit<
+    InputProps<number>,
+    "placeholder" | "allowClear" | "children" | "defaultValue"
+  > {
   /**
    * min value
    */
