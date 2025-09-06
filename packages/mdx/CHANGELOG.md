@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.56](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.55...v1.0.0-beta.56) (2025-09-06)
+
+### Bug Fixes
+
+- replace icon classnames with core icons ([d42fbe2](https://github.com/adarshpastakia/react-ui-framework/commit/d42fbe23e7304e8e70fd5d03a29140e3a74df480))
+
 # [1.0.0-beta.55](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.54...v1.0.0-beta.55) (2025-08-29)
 
 **Note:** Version bump only for package @react-fabric/mdx

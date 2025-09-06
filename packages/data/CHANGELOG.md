@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.56](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.55...v1.0.0-beta.56) (2025-09-06)
+
+### Bug Fixes
+
+- **TreePanel:** update for intial expand and load, lazy loaded nodes ([99fede2](https://github.com/adarshpastakia/react-ui-framework/commit/99fede2dd16fc61a89f3c7f75feee39adbda5d0f))
+
 # [1.0.0-beta.55](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.54...v1.0.0-beta.55) (2025-08-29)
 
 ### Bug Fixes

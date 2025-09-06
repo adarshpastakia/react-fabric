@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/media",
-  "version": "1.0.0-beta.55",
+  "version": "1.0.0-beta.56",
   "description": "RUF: Media package",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@react-fabric/core": "^1.0.0-beta.55",
-    "@react-fabric/form": "^1.0.0-beta.55",
+    "@react-fabric/form": "^1.0.0-beta.56",
     "@react-fabric/utilities": "^1.0.0-beta.52",
     "classnames": "^2.5.1",
     "color": "^4.2.3",

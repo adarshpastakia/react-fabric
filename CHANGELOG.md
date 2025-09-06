@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.56](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.55...v1.0.0-beta.56) (2025-09-06)
+
+### Bug Fixes
+
+- **AutoComplete:** close dropdown when entr key pressed ([c6f241e](https://github.com/adarshpastakia/react-fabric/commit/c6f241eb32c8737023e6c2a8f0a47d2eca156035))
+- **Inputs:** add defaultValue prop ([a10f9f7](https://github.com/adarshpastakia/react-fabric/commit/a10f9f769da986fabb31afc98982a37bd0ea872e))
+- **NsfwOverlay:** use image to scale accoridng to media display size ([ded9a22](https://github.com/adarshpastakia/react-fabric/commit/ded9a229719f9f0c9b91991222ab0734a4b9416c))
+- replace icon classnames with core icons ([d42fbe2](https://github.com/adarshpastakia/react-fabric/commit/d42fbe23e7304e8e70fd5d03a29140e3a74df480))
+- **TreePanel:** update for intial expand and load, lazy loaded nodes ([99fede2](https://github.com/adarshpastakia/react-fabric/commit/99fede2dd16fc61a89f3c7f75feee39adbda5d0f))
+
 # [1.0.0-beta.55](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.54...v1.0.0-beta.55) (2025-08-29)
 
 ### Bug Fixes
