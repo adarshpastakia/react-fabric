@@ -328,13 +328,13 @@ export const FilterForm = ({
               />
             </Controller>
           </Col>
-          <Col flex="auto" className="text-center">
+          <Col flex="content" className="text-center">
             <label className="block py-0.5 text-sm">{t("label.exclude")}</label>
             <Controller name="negate">
               <Switch color="danger" />
             </Controller>
           </Col>
-          <Col flex="auto" className="basis-28">
+          <Col flex="content" className="basis-28">
             <Controller name="operator">
               <Select
                 label={t("label.operator")}

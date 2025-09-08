@@ -186,6 +186,11 @@ export const _SearchBar: SearchBarStory = {
         type: FIELD_TYPE.STRING,
       },
       {
+        field: "notes",
+        label: "Notes",
+        type: FIELD_TYPE.TEXT,
+      },
+      {
         field: "age",
         label: "Age",
         type: FIELD_TYPE.NUMBER,
