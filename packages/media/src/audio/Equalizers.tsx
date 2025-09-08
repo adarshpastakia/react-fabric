@@ -48,6 +48,7 @@ const EqSlider = memo(
     forChannel = false,
   }: AnyObject) => (
     <div
+      className="flex"
       style={{ width: "2.5rem" }}
       data-negative={value === 0 ? "zero" : value < 0}
       data-for-channel={forChannel}
@@ -342,13 +343,17 @@ export const Equalizers = memo(() => {
       <Divider vertical />
       <div style={{ width: 196 }} className="self-center">
         <Text className="text-muted text-sm text-center">Presets</Text>
-        <Button fullWidth onClick={() => resetFrequency("speech")}>
+        <Button
+          fullWidth
+          variant="link"
+          onClick={() => resetFrequency("speech")}
+        >
           Speech
         </Button>
-        <Button fullWidth onClick={() => resetFrequency("back")}>
+        <Button fullWidth variant="link" onClick={() => resetFrequency("back")}>
           Background Noise
         </Button>
-        <Button fullWidth onClick={reset} color="danger">
+        <Button fullWidth variant="link" onClick={reset} color="danger">
           Reset
         </Button>
       </div>
