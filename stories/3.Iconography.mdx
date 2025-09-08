@@ -24,6 +24,7 @@ import { CoreIcons, Icon } from "../packages/core/src";
       <IconItem key={key} name={key}>
         <Icon
           icon={icon}
+          className="p-2"
           onClick={() => {
             navigator.clipboard.writeText(`CoreIcons.${key}`);
           }}
