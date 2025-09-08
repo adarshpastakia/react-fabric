@@ -3,14 +3,15 @@ import { ICONS } from "../constants";
 import { useGraph } from "./Context";
 
 export const Tools = () => {
-  const { dragSelector, graph, selected, resetViewport } = useGraph();
+  const { dragSelector, graph, selected, resetViewport, zoomIn, zoomOut } =
+    useGraph();
 
   return (
     <div className="flex flex-nowrap outline absolute top-0 start-0 p-0 z-1 bg-base">
       <ButtonGroup variant="link">
         <Button aria-label="Home" icon={ICONS.focus} onClick={resetViewport} />
-        <Button aria-label="Zoomin" icon={ICONS.zoomIn} />
-        <Button aria-label="Zoomout" icon={ICONS.zoomOut} />
+        <Button aria-label="Zoomin" icon={ICONS.zoomIn} onClick={zoomIn} />
+        <Button aria-label="Zoomout" icon={ICONS.zoomOut} onClick={zoomOut} />
       </ButtonGroup>
       <ButtonGroup variant="link">
         {dragSelector.selectionMode !== "lasso" && (
