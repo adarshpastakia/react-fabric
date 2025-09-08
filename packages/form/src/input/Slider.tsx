@@ -214,8 +214,8 @@ export const Slider = ({
         <div
           ref={rangerInstance.trackElRef}
           className={classNames(
-            "flex-1 relative flex items-center",
-            vertical ? "my-2 w-8" : "mx-2 h-8",
+            "relative flex items-center",
+            vertical ? "my-2 w-8" : "flex-1 mx-2 h-8",
           )}
           style={{ height: vertical ? height : undefined }}
         >
@@ -262,10 +262,10 @@ export const Slider = ({
                 {displayValue && (
                   <div
                     className={classNames(
-                      "bg-invert text-invert py-px px-2 text-xs absolute rounded z-[5] whitespace-nowrap",
+                      "bg-invert text-invert py-px px-2 text-xs absolute rounded z-[5] whitespace-nowrap pointer-events-none",
                       "before:absolute before:h-1.5 before:w-1.5 before:z-[-1] before:bg-invert before:top-1/2 before:-translate-y-1/2 before:rotate-45",
                       vertical
-                        ? "end-0 ltr:translate-x-full rtl:-translate-x-full translate-y-2"
+                        ? "end-0 ltr:translate-x-full rtl:-translate-x-full translate-y-2 ltr:before:-translate-x-[0.125rem] rtl:before:translate-x-[0.125rem] before:start-0"
                         : "top-1/2 -translate-y-1/2",
                       !vertical &&
                         (percentage > 50
