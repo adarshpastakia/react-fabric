@@ -131,7 +131,7 @@ export const Textarea = ({
       {...rest}
     >
       <textarea
-        className="appearance-none self-stretch bg-transparent py-1 px-2 flex-1 border-none outline-none ring-0 min-h-20 resize-none"
+        className="appearance-none self-stretch bg-transparent py-1 px-2 flex-1 border-none outline-none ring-0 min-h-12 resize-none"
         aria-invalid={invalid}
         aria-disabled={disabled}
         aria-readonly={readOnly}
