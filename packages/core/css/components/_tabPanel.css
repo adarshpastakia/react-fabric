@@ -30,6 +30,10 @@
 
       .fabric-tabHeader {
         box-shadow: 0 -1px 0 var(--border-color-dimmed) inset;
+
+        .fabric-tabButton {
+          padding: 0.25rem 0.5rem;
+        }
       }
     }
 
@@ -39,6 +43,10 @@
       .fabric-tabHeader {
         margin-top: 1px;
         box-shadow: 0 1px 0 var(--border-color-dimmed) inset;
+
+        .fabric-tabButton {
+          padding: 0.25rem 0.5rem;
+        }
       }
     }
 
@@ -47,6 +55,22 @@
 
       .fabric-tabHeader {
         box-shadow: -1px 0 0 var(--border-color-dimmed) inset;
+
+        .fabric-tabButton {
+          min-width: 5rem;
+          padding: 0.5rem 0.25rem;
+        }
+
+        &.tab-rotate .fabric-tabButton {
+          flex-flow: column;
+          width: unset !important;
+          min-width: unset !important;
+          min-height: 5rem;
+
+          & > label {
+            writing-mode: sideways-lr;
+          }
+        }
       }
     }
 
@@ -55,6 +79,22 @@
 
       .fabric-tabHeader {
         box-shadow: 1px 0 0 var(--border-color-dimmed) inset;
+
+        .fabric-tabButton {
+          min-width: 5rem;
+          padding: 0.5rem 0.25rem;
+        }
+
+        &.tab-rotate .fabric-tabButton {
+          flex-flow: column;
+          width: unset !important;
+          min-width: unset !important;
+          min-height: 5rem;
+
+          & > label {
+            writing-mode: sideways-rl;
+          }
+        }
       }
     }
   }

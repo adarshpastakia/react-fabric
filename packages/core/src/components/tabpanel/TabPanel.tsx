@@ -53,6 +53,10 @@ export interface TabPanelProps extends ChildrenProp<typeof Tab> {
    */
   tabFlex?: boolean;
   /**
+   * rotate tab sideways for start/end orientation
+   */
+  tabRotate?: boolean;
+  /**
    * tab button gap
    */
   gap?: number;
@@ -132,6 +136,7 @@ export const TabPanel = ({
   tabFlex,
   append,
   prepend,
+  tabRotate,
   gap,
   onBeforeChange,
   onChange,
@@ -182,6 +187,7 @@ export const TabPanel = ({
         className={classNames(
           "fabric-tabHeader",
           headerClassName,
+          tabRotate && "tab-rotate",
           justify && `justify-${justify}`,
           ["start", "end"].includes(orientation) && "flex-col",
           "flex flex-nowrap overflow-hidden items-center",

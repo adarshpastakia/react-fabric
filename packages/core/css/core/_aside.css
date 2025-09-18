@@ -202,9 +202,8 @@
     }
 
     & .fabric-asideTitle {
-      right: calc(2rem + 2px);
-      transform-origin: 100% 100%;
-      transform: rotate(-90deg) translateY(2rem);
+      transform: translateY(2rem);
+      writing-mode: sideways-lr;
     }
 
     & .fabric-asideCollapse {
@@ -227,9 +226,8 @@
     }
 
     & .fabric-asideTitle {
-      left: calc(2rem + 2px);
-      transform-origin: 0 100%;
-      transform: rotate(90deg) translateY(2rem);
+      transform: translateY(2rem);
+      writing-mode: sideways-rl;
     }
 
     & .fabric-asideCollapse {
