@@ -193,7 +193,11 @@ export const Icon = ({
         !!onClick && disabled && "opacity-30 pointer-events-none",
         className,
       )}
-      onClick={onClick}
+      onClick={(e) => {
+        onClick && e.stopPropagation();
+        onClick && e.preventDefault();
+        onClick?.(e);
+      }}
       data-flip={rtlFlip}
       style={styles}
       data-clickable={!!onClick}

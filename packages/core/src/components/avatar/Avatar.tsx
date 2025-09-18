@@ -74,6 +74,10 @@ export interface AvatarProps extends CssProp, AriaProps, TestProps, RefProp {
    */
   rounded?: boolean;
   /**
+   * prevent click default, useful when component is within a `a` link
+   */
+  preventDefault?: boolean;
+  /**
    * click handler
    */
   onClick?: React.MouseEventHandler;
@@ -127,6 +131,7 @@ export const Avatar = ({
   variant = "beam",
   className,
   viewBox = "0 0 24 24",
+  preventDefault,
   onClick,
   ...aria
 }: AvatarProps) => {
@@ -220,7 +225,10 @@ export const Avatar = ({
         !rounded && "rounded",
         rounded && "rounded-full",
       )}
-      onClick={onClick}
+      onClick={(e) => {
+        preventDefault && e.preventDefault();
+        onClick?.(e);
+      }}
       style={styles}
       data-clickable={!!onClick}
       ref={ref}

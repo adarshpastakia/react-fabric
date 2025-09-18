@@ -221,6 +221,7 @@ const DropdownElement = ({
           onClick: (e) => {
             anchor.props.onClick?.(e);
             e.stopPropagation();
+            e.preventDefault();
           },
         }),
         "data-inner-clickable": "true",

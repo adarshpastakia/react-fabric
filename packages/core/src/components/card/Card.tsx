@@ -24,10 +24,10 @@
 import classNames from "classnames";
 import {
   Children,
-  type DragEvent,
-  type MouseEventHandler,
   useCallback,
   useMemo,
+  type DragEvent,
+  type MouseEventHandler,
 } from "react";
 import { ErrorBoundary } from "../../core/boundary/ErrorBoundary";
 import { type ContentProps } from "../../core/content/Content";
@@ -37,6 +37,7 @@ import {
   type HeadFootProps,
 } from "../../core/headfoot/HeadFoot";
 import {
+  PolymorphicProps,
   type AriaProps,
   type ChildrenProp,
   type CssProp,
@@ -45,7 +46,7 @@ import {
 } from "../../types";
 import { nodeCheck } from "../../utils";
 
-export interface CardProps
+interface BaseProps
   extends CssProp,
     AriaProps,
     TestProps,
@@ -93,6 +94,9 @@ export interface CardProps
   dragData?: KeyValue;
 }
 
+export type CardProps<Tag extends React.ElementType = "div"> = BaseProps &
+  PolymorphicProps<Tag>;
+
 /**
  * A component that displays a card with a header, body, and footer. It can be used to display content in a structured format.
  * It supports various features such as click handling, drag-and-drop functionality, and customizable styles.
@@ -127,7 +131,7 @@ export interface CardProps
  *
  * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-card--docs} for more details.
  */
-export const Card = ({
+export const Card = <Tag extends React.ElementType = "div">({
   children,
   className,
   bodyClassName,
@@ -140,8 +144,9 @@ export const Card = ({
   dragKey,
   dragData,
   ref,
+  as,
   ...aria
-}: CardProps) => {
+}: CardProps<Tag>) => {
   const [header, body, footer] = useMemo(() => {
     return Children.toArray(children as AnyObject).reduce<AnyObject[]>(
       (ret, node) => {
@@ -164,6 +169,7 @@ export const Card = ({
     [onDragStart, dragKey, dragData],
   );
 
+  const E = as ?? "div";
   return (
     <div
       className={classNames(
@@ -171,7 +177,7 @@ export const Card = ({
         "rounded-capped relative grid",
         flex && "flex-1",
         selected && selectedRibbon && "selected",
-        selected && "outline-2 outline-accent-500 outline-offset-2",
+        selected && "outline-1 outline-accent-500 outline-offset-2",
       )}
     >
       <ErrorBoundary>
@@ -179,22 +185,25 @@ export const Card = ({
           className={classNames(
             "fabric-card",
             className,
-            "rounded-capped flex flex-col flex-nowrap overflow-hidden",
+            "rounded-capped relative flex flex-col flex-nowrap overflow-hidden",
+            "href" in aria && "clickable",
+            "to" in aria && "clickable",
             onClick && "clickable",
+            E && "floating-link",
           )}
           draggable={draggable}
           onDragStart={!draggable ? undefined : handleDragStart}
           ref={ref}
-          {...aria}
         >
           {header}
-          <div
-            role="none"
-            className={classNames("fabric-cardBody", bodyClassName, "flex-1")}
-            onClick={onClick}
-          >
-            {body}
-          </div>
+          <E role="none" onClick={onClick} {...aria} className="contents">
+            <object
+              type="none"
+              className={classNames("fabric-cardBody", bodyClassName, "flex-1")}
+            >
+              {body}
+            </object>
+          </E>
           {footer}
         </div>
       </ErrorBoundary>

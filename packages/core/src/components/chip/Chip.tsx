@@ -67,6 +67,10 @@ export interface ChipProps
    */
   disabled?: boolean;
   /**
+   * prevent click default, useful when component is within a `a` link
+   */
+  preventDefault?: boolean;
+  /**
    * prevent click propagation
    */
   stopPropagation?: boolean;
@@ -128,6 +132,7 @@ export const Chip = <Tag extends React.ElementType = "div">({
   onIconClick,
   onRemove,
   rounded,
+  preventDefault,
   stopPropagation,
   as,
   ...aria
@@ -153,10 +158,11 @@ export const Chip = <Tag extends React.ElementType = "div">({
 
   const clickHandler = useCallback(
     (e: React.MouseEvent) => {
-      if (stopPropagation) e.stopPropagation();
+      preventDefault && e.preventDefault();
+      stopPropagation && e.stopPropagation();
       onClick?.(e);
     },
-    [onClick, stopPropagation],
+    [onClick, preventDefault, stopPropagation],
   );
 
   const removeHandler = useCallback(

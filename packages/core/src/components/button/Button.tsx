@@ -136,6 +136,10 @@ export interface BaseProps
    */
   hotKey?: string;
 
+  /**
+   * prevent click default, useful when button is within a `a` link
+   */
+  preventDefault?: boolean;
   stopPropagation?: boolean;
 
   onMouseOut?: MouseEventHandler;
@@ -202,6 +206,7 @@ export const Button = <Tag extends React.ElementType = "button">({
   spinOnHover,
   onClick,
   actionMessage,
+  preventDefault,
   stopPropagation,
   type = "button",
   hotKey,
@@ -220,6 +225,7 @@ export const Button = <Tag extends React.ElementType = "button">({
   const clickHandler = useCallback(
     (e: React.MouseEvent) => {
       setBusy(true);
+      preventDefault && e.preventDefault();
       stopPropagation && e.stopPropagation();
       const ret = onClick?.(e);
       void Promise.resolve(ret).then((b) => {
@@ -229,7 +235,14 @@ export const Button = <Tag extends React.ElementType = "button">({
         }
       });
     },
-    [onClick, disabled, actionMessage, showActionDoneEvent, stopPropagation],
+    [
+      onClick,
+      disabled,
+      preventDefault,
+      actionMessage,
+      showActionDoneEvent,
+      stopPropagation,
+    ],
   );
 
   /** ***************** reset done state on timeout *******************/
