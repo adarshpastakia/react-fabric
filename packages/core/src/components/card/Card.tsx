@@ -189,7 +189,6 @@ export const Card = <Tag extends React.ElementType = "div">({
             "href" in aria && "clickable",
             "to" in aria && "clickable",
             onClick && "clickable",
-            E && "floating-link",
           )}
           draggable={draggable}
           onDragStart={!draggable ? undefined : handleDragStart}

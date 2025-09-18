@@ -63,11 +63,6 @@
       background-color: transparent;
     }
 
-    &.floating-link > :first-child {
-      position: absolute;
-      inset: 0;
-    }
-
     & .fabric-cardCover {
       &.inheritScheme:has([data-colorset="dark"]) > .fabric-cardCoverContent,
       &.dark > .fabric-cardCoverContent {
