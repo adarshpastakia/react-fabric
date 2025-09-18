@@ -54,11 +54,18 @@
   }
 
   .fabric-card {
+    --tw-shadow-color: var(--border-color-muted);
+
     background-color: var(--fabric-bg);
-    box-shadow: 0 0 0 1px var(--border-color-muted);
+    box-shadow: 0 0 0 1px var(--tw-shadow-color);
 
     & > * {
       background-color: transparent;
+    }
+
+    &.floating-link > :first-child {
+      position: absolute;
+      inset: 0;
     }
 
     & .fabric-cardCover {
@@ -82,8 +89,10 @@
     }
 
     &.clickable {
+      --tw-shadow-color: var(--border-color-dimmed);
+
       box-shadow:
-        0 0 0 1px var(--border-color-dimmed),
+        0 0 0 1px var(--tw-shadow-color),
         0 1px 2px 0 var(--fabric-shadow);
       transition: box-shadow 0ms;
 
@@ -91,7 +100,7 @@
           :has([data-inner-clickable="true"]:hover)
         ) {
         box-shadow:
-          0 0 0 1px var(--border-color-dimmed),
+          0 0 0 1px var(--tw-shadow-color),
           0 1px 4px 0 var(--fabric-shadow),
           0 8px 16px 0 color-mix(in lab, var(--fabric-shadow) 35%, #0000);
         transition-delay: 150ms;
@@ -101,7 +110,7 @@
           :has([data-inner-clickable="true"]:hover)
         ) {
         transform: translateY(1px);
-        box-shadow: 0 0 0 1px var(--border-color-dimmed);
+        box-shadow: 0 0 0 1px var(--tw-shadow-color);
         transition-delay: 0ms;
       }
 
