@@ -34,6 +34,7 @@ export const Options = ({
   className,
   itemRef,
   empty,
+  info,
   valueProperty = "id",
   labelProperty = "label",
   itemProps,
@@ -41,6 +42,7 @@ export const Options = ({
   ...rest
 }: {
   ref: AnyObject;
+  info?: AnyObject;
   itemRef: AnyObject;
   style?: AnyObject;
   items: AnyObject[];
@@ -55,29 +57,48 @@ export const Options = ({
   return (
     <div
       ref={ref}
-      className={classNames(
-        "bg-base select-none overflow-x-hidden overflow-y-auto",
-        className,
-      )}
+      className={classNames("bg-base select-none flex flex-col", className)}
       style={style}
       {...rest}
     >
-      {items.length === 0 &&
-        (empty ?? (
-          <EmptyContent message={<Trans i18nKey="form:select.emptyList" />} />
-        ))}
-      {items.map((item, index) => {
-        if (item.___group___)
-          return (
-            <p
-              key={index}
-              className="px-2 py-1 text-muted text-xs sticky -top-px z-2 bg-base border-t"
-            >
-              {item.label}
-            </p>
-          );
+      <div className={classNames("overflow-x-hidden overflow-y-auto flex-1")}>
+        {items.length === 0 &&
+          (empty ?? (
+            <EmptyContent message={<Trans i18nKey="form:select.emptyList" />} />
+          ))}
+        {items.map((item, index) => {
+          if (item.___group___)
+            return (
+              <p
+                key={index}
+                className="px-2 py-1 text-muted text-xs sticky -top-px z-2 bg-base border-t"
+              >
+                {item.label}
+              </p>
+            );
 
-        if (item.___create___)
+          if (item.___create___)
+            return (
+              <div
+                role="none"
+                key={index}
+                tabIndex={active === index ? 0 : -1}
+                ref={(el: AnyObject) => itemRef(index, el)}
+                data-active={active === index ? true : undefined}
+                className={classNames(
+                  "block text-start truncate px-2 py-1 leading-normal cursor-pointer select-none",
+                  "data-[active]:bg-primary-200 data-[selected]:bg-primary-600 data-[selected]:text-white data-[active]:data-[selected]:underline",
+                )}
+                {...itemProps(item)}
+              >
+                <Trans
+                  i18nKey="form:select.createOption"
+                  values={{ query: item.value ?? item }}
+                  components={[<strong key="t0">query</strong>]}
+                />
+              </div>
+            );
+
           return (
             <div
               role="none"
@@ -86,36 +107,19 @@ export const Options = ({
               ref={(el: AnyObject) => itemRef(index, el)}
               data-active={active === index ? true : undefined}
               className={classNames(
-                "block text-start truncate px-2 py-1 leading-normal cursor-pointer select-none",
+                "block text-start truncate px-2 py-1 leading-normal cursor-pointer",
                 "data-[active]:bg-primary-200 data-[selected]:bg-primary-600 data-[selected]:text-white data-[active]:data-[selected]:underline",
               )}
               {...itemProps(item)}
             >
-              <Trans
-                i18nKey="form:select.createOption"
-                values={{ query: item.value ?? item }}
-                components={[<strong key="t0">query</strong>]}
-              />
+              {children(item, item[labelProperty] ?? item)}
             </div>
           );
-
-        return (
-          <div
-            role="none"
-            key={index}
-            tabIndex={active === index ? 0 : -1}
-            ref={(el: AnyObject) => itemRef(index, el)}
-            data-active={active === index ? true : undefined}
-            className={classNames(
-              "block text-start truncate px-2 py-1 leading-normal cursor-pointer",
-              "data-[active]:bg-primary-200 data-[selected]:bg-primary-600 data-[selected]:text-white data-[active]:data-[selected]:underline",
-            )}
-            {...itemProps(item)}
-          >
-            {children(item, item[labelProperty] ?? item)}
-          </div>
-        );
-      })}
+        })}
+      </div>
+      {info && (
+        <div className="px-2 py-1 text-sm bg-dimmed text-muted">{info}</div>
+      )}
     </div>
   );
 };

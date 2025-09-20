@@ -70,6 +70,7 @@ export const Select = <T extends AnyObject = string>({
   labelProperty = "label" as AnyObject,
   valueProperty = "id" as AnyObject,
   sortProperty,
+  infoProperty,
   multiple,
   searchable,
   allowCreate,
@@ -357,6 +358,7 @@ export const Select = <T extends AnyObject = string>({
               itemRef={setItemRef}
               itemProps={makeItemProps}
               empty={emptyDisplay}
+              info={state.activeItem?.[infoProperty ?? "info"]}
             >
               {(item, label) => renderer?.(item) ?? label}
             </Options>

@@ -61,6 +61,7 @@ export const List = <T extends AnyObject = string>({
   groupProperty,
   labelProperty,
   valueProperty,
+  infoProperty,
   sortProperty,
   multiple,
   allowCreate,
@@ -106,6 +107,7 @@ export const List = <T extends AnyObject = string>({
     value,
     options,
     multiple,
+    alwaysOpen: true,
     groupProperty,
     labelProperty,
     valueProperty,
@@ -320,6 +322,7 @@ export const List = <T extends AnyObject = string>({
           itemRef={setItemRef}
           itemProps={makeItemProps}
           empty={emptyDisplay}
+          info={state.activeItem?.[infoProperty ?? "info"]}
         >
           {(item, label) => renderer?.(item) ?? label}
         </Options>

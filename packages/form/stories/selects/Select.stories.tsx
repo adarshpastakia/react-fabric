@@ -55,6 +55,7 @@ export const _Select: SelectStory = {
         options={Countries.list}
         labelProperty="name"
         valueProperty="iso3"
+        infoProperty="fullname"
         renderer={(opt) => (
           <div className="flex gap-2 items-center">
             <Icon icon={`flag ${opt.iso2}`} />

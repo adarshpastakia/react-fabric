@@ -65,6 +65,7 @@ interface State {
   open: boolean;
   loading: boolean;
   activeIndex: number | null;
+  activeItem: AnyObject;
   selectedIndex: number | null;
   value: AnyObject;
   // filter
@@ -76,8 +77,9 @@ interface State {
 export const useSelect = ({
   options = EMPTY_ARRAY,
   value,
-  defaultOpen = false,
   autoComplete,
+  alwaysOpen = false,
+  defaultOpen = false,
   multiple = false,
   allowCreate = false,
   groupProperty = "",
@@ -93,6 +95,7 @@ export const useSelect = ({
   value?: AnyObject;
   options?: AnyObject[];
   multiple?: boolean;
+  alwaysOpen?: boolean;
   defaultOpen?: boolean;
   allowCreate?: boolean;
   groupProperty?: AnyObject;
@@ -149,12 +152,16 @@ export const useSelect = ({
         };
       }
       if (action.type === "close") {
-        return { ...state, activeIndex: null, open: false };
+        return { ...state, activeIndex: null, activeItem: null, open: false };
       }
       if (action.type === "active" && state.open) {
         if (autoComplete && action.index !== null)
           state.query = state.items[action.index];
-        return { ...state, activeIndex: action.index };
+        return {
+          ...state,
+          activeIndex: action.index,
+          activeItem: state.items[action.index ?? -1],
+        };
       }
       if (action.type === "setValue") {
         return {
@@ -170,6 +177,7 @@ export const useSelect = ({
           ...state,
           value: state.emptyValue,
           activeIndex: null,
+          activeItem: null,
           selectedIndex: autoComplete
             ? state.multiple
               ? action.value?.length
@@ -192,7 +200,7 @@ export const useSelect = ({
             newState.value = action.value;
           }
         }
-        if (!state.multiple) newState.open = false;
+        if (!state.multiple) newState.open = alwaysOpen;
         fireChange(newState.value);
         return newState;
       }
@@ -261,9 +269,10 @@ export const useSelect = ({
     {
       multiple,
       emptyValue,
-      open: defaultOpen,
+      open: alwaysOpen || defaultOpen,
       loading: false,
       activeIndex: null,
+      activeItem: null,
       selectedIndex: null,
       value: emptyValue,
       // filter
@@ -407,7 +416,7 @@ export const useSelect = ({
   }, []);
 
   const setActiveIndex = useCallback((index: number | null) => {
-    dispatch({ type: "active", index });
+    index && index > -1 && dispatch({ type: "active", index });
   }, []);
 
   return {
