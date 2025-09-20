@@ -337,8 +337,10 @@ const _VirtualGallery = <T extends AnyObject>({
                 ))}
               </div>
             ))}
-            {onLoadMore && (
-              <div className="h-16">{loading && <Skeleton />}</div>
+            {loading && (
+              <div>
+                <Skeleton />
+              </div>
             )}
           </div>
         </div>
