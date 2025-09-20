@@ -34,6 +34,10 @@ interface Props {
    */
   hiddenValue?: AnyObject;
   /**
+   * default avatar image
+   */
+  defaultValue?: string;
+  /**
    * form onChange handler
    */
   onChange?: (value: AnyObject) => void;
@@ -49,6 +53,7 @@ interface Props {
  */
 export const HiddenInput = ({
   hiddenValue,
+  defaultValue,
   onChange,
   // @ts-expect-error ignore
   // eslint-disable-next-line react/prop-types
@@ -62,11 +67,10 @@ export const HiddenInput = ({
   name,
 }: Props) => {
   useEffect(() => {
-    hiddenValue &&
-      setTimeout(() => {
-        onChange?.(hiddenValue);
-      }, 50);
-  }, [hiddenValue]);
+    setTimeout(() => {
+      onChange?.(hiddenValue ?? defaultValue);
+    }, 50);
+  }, [hiddenValue, defaultValue]);
   return (
     <Fragment>
       <input type="hidden" onChange={onChange} value={value} name={name} />
