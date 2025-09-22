@@ -4,12 +4,11 @@ import json from "@rollup/plugin-json";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import * as fs from "fs";
-import path from "path";
-import { createTransform } from "rollup-copy-transform-css";
-import copy from "rollup-plugin-copy";
+import path, { resolve } from "path";
 import excludeDependenciesFromBundle from "rollup-plugin-exclude-dependencies-from-bundle";
 import css from "rollup-plugin-import-css";
 import svg from "rollup-plugin-svg-import";
+import webWorkerLoader from "rollup-plugin-web-worker-loader";
 
 const PACKAGE_NAME = process.cwd();
 const pkg = JSON.parse(
@@ -30,6 +29,7 @@ const babelOptions = {
 };
 const nodeOptions = {
   extensions,
+  preferBuiltins: true,
 };
 const typescriptOptions = {
   tsconfig: `${PACKAGE_NAME}/tsconfig.json`,
@@ -68,36 +68,20 @@ export default [
         peerDependencies: true,
         dependencies: true,
       }),
+      webWorkerLoader({
+        external: [],
+        tragetPlatform: "browser",
+        webWorkerPattern: /(.+)\?worker/,
+      }),
       nodeResolve(nodeOptions),
       typescript(typescriptOptions),
       commonjs(commonjsOptions),
       babel(babelOptions),
-      copy({
-        targets: [
-          {
-            src: "src/**/*.module.css",
-            dest: ["dist/cjs", "dist/esm"],
-            flatten: false,
-            transform: createTransform({ inline: true, minify: true }),
-            rename: (name, extension, fullPath) => {
-              return fullPath.replace("src/", "");
-            },
-          },
-        ],
-      }),
       svg({
         stringify: true,
       }),
       json(),
       css(),
-      {
-        generateBundle(options, bundle) {
-          Object.entries(bundle).forEach(([file, content]) => {
-            if (file.includes(".module.css.js")) delete bundle[file];
-            content.code = content.code.replace("module.css.js", "module.css");
-          });
-        },
-      },
     ],
   },
 ];

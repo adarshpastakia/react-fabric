@@ -19,6 +19,7 @@ interface Context<N = KeyValue, E = KeyValue> {
   sigma: ReturnType<typeof useSigma>;
   graph: Graph<NodeAttributes<N>, EdgeAttributes<E>>;
   selected: string[];
+  layoutRunning: boolean;
   dragSelector: ReturnType<typeof useDragSelection>;
   resetViewport: () => void;
   zoomIn: () => void;
@@ -48,7 +49,7 @@ export const GraphProvider = <N = KeyValue, E = KeyValue>({
   const [layoutRunning, setLayoutRunning] = useState(false);
 
   const resetViewport = () => {
-    if (graph.size === 0) return this;
+    if (graph.size === 0) return;
     sigma.instance &&
       fitViewportToNodes(sigma.instance, graph.nodes(), {
         animate: true,
@@ -56,12 +57,12 @@ export const GraphProvider = <N = KeyValue, E = KeyValue>({
   };
 
   const zoomIn = () => {
-    if (graph.size === 0) return this;
+    if (graph.size === 0) return;
     sigma.instance?.getCamera().animatedZoom();
   };
 
   const zoomOut = () => {
-    if (graph.size === 0) return this;
+    if (graph.size === 0) return;
     sigma.instance?.getCamera().animatedUnzoom();
   };
 
@@ -115,6 +116,7 @@ export const GraphProvider = <N = KeyValue, E = KeyValue>({
           graph,
           selected,
           dragSelector,
+          layoutRunning,
           resetViewport,
           zoomIn,
           zoomOut,

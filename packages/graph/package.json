@@ -52,6 +52,7 @@
     "sigma": "^3.0.2"
   },
   "peerDependencies": {
+    "elkjs": "^0.11.0",
     "i18next": "^25.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -61,7 +62,8 @@
     "@types/dom-to-image": "^2.6.7",
     "@types/dompurify": "^3.0.4",
     "@types/highlight.js": "^10.1.0",
-    "@types/react-color": "^3.0.6"
+    "@types/react-color": "^3.0.6",
+    "elkjs": "^0.11.0"
   },
   "engines": {
     "node": ">=18.12.0",

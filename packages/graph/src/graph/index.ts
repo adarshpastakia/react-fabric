@@ -3,12 +3,11 @@ import {
   DEFAULT_EDGE_CURVATURE,
   indexParallelEdgesIndex,
 } from "@sigma/edge-curve";
+import ElkConstructor, { ELK } from "elkjs/lib/elk.bundled";
+// @ts-expect-error ignore
+import ElkWorker from "../../../../node_modules/elkjs/lib/elk-worker?worker";
 import Graphology from "graphology";
-import { circular, random } from "graphology-layout";
-import forceAtlas2, {
-  ForceAtlas2Settings,
-} from "graphology-layout-forceatlas2";
-import forceAtlas2Worker from "graphology-layout-forceatlas2/worker";
+import { random } from "graphology-layout";
 import { GraphEvents, GraphOptions } from "graphology-types";
 import { animateNodes } from "sigma/utils";
 import {
@@ -266,50 +265,109 @@ export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
     return this;
   }
 
-  circularLayout() {
-    if (this.size === 0) return this;
-    const positions = circular(this as any);
-    animateNodes(
-      this as any,
-      positions,
-      {
-        duration: 200,
-      },
-      () => {
-        this.emit("layoutDone");
-      },
-    );
-    return this;
-  }
+  // circularLayout() {
+  //   if (this.size === 0) return this;
+  //   const positions = circular(this as any);
+  //   animateNodes(
+  //     this as any,
+  //     positions,
+  //     {
+  //       duration: 200,
+  //     },
+  //     () => {
+  //       this.emit("layoutDone");
+  //     },
+  //   );
+  //   return this;
+  // }
 
-  private _timer: any;
-  private _worker?: forceAtlas2Worker;
-  forceLayout(settings: ForceAtlas2Settings = {}) {
-    if (this.size === 0) return this;
-    const sensibleSettings = forceAtlas2.inferSettings(this as any);
-    if (this._worker?.isRunning()) {
-      clearTimeout(this._timer);
-    }
-    this._worker?.kill();
-    this._worker = new forceAtlas2Worker(this as any, {
-      settings: {
-        ...sensibleSettings,
-        ...settings,
-      },
-    });
+  // private _timer: any;
+  // private _worker?: forceAtlas2Worker;
+  // forceLayout(settings: ForceAtlas2Settings = {}) {
+  //   if (this.size === 0) return this;
+  //   const sensibleSettings = forceAtlas2.inferSettings(this as any);
+  //   if (this._worker?.isRunning()) {
+  //     clearTimeout(this._timer);
+  //   }
+  //   this._worker?.kill();
+  //   this._worker = new forceAtlas2Worker(this as any, {
+  //     settings: {
+  //       ...sensibleSettings,
+  //       ...settings,
+  //     },
+  //   });
+  //   this.emit("layoutRunning", true);
+  //   this._worker.start();
+  //   this._timer = setTimeout(
+  //     () => {
+  //       this._worker?.stop();
+  //       this._worker?.kill();
+  //       this.emit("layoutRunning", false);
+  //       this.emit("layoutDone");
+  //     },
+  //     // @ts-expect-error ignore
+  //     this.nodes().length * window.__GRAPH_LAYOUT_DURATION_MULTIPLIER__,
+  //   );
+  //   return this;
+  // }
+
+  // @ts-expect-error ignore
+  private elk: ELK;
+  async elkLayout(type: string) {
+    if (!this.elk)
+      this.elk = new ElkConstructor({
+        workerFactory() {
+          return new ElkWorker();
+        },
+      });
     this.emit("layoutRunning", true);
-    this._worker.start();
-    this._timer = setTimeout(
-      () => {
-        this._worker?.stop();
-        this._worker?.kill();
+    this.elk
+      .layout(
+        {
+          id: "root",
+          width: 1600,
+          height: 900,
+          children: this.mapNodes((node, atts) => ({
+            id: node,
+            width: atts.size ?? Math.max(16, (atts.weight ?? 0) * 3),
+            height: atts.size ?? Math.max(16, (atts.weight ?? 0) * 3),
+          })),
+          edges: this.mapEdges((edge, _, source, target) => ({
+            id: edge,
+            sources: [source],
+            targets: [target],
+          })),
+        },
+        {
+          logging: true,
+          measureExecutionTime: true,
+          layoutOptions: { "elk.algorithm": type },
+        },
+      )
+      .then((graph) => {
+        const positions = Object.fromEntries(
+          graph.children?.map((node) => [
+            node.id,
+            { x: node.x ?? 0, y: node.y ?? 0 },
+          ]) ?? [],
+        );
+        animateNodes(
+          this as any,
+          positions,
+          {
+            duration: 200,
+          },
+          () => {
+            setTimeout(() => {
+              this.emit("layoutDone");
+            }, 100);
+          },
+        );
+      })
+      .catch(console.error)
+      .finally(() => {
         this.emit("layoutRunning", false);
-        this.emit("layoutDone");
-      },
-      // @ts-expect-error ignore
-      this.nodes().length * window.__GRAPH_LAYOUT_DURATION_MULTIPLIER__,
-    );
-    return this;
+      });
   }
 
   dropNodes(nodes: string[]) {
