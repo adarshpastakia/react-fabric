@@ -148,6 +148,7 @@ export const ColorInput = ({
     >
       <button
         data-ref="button"
+        type="button"
         className="flex-1 flex items-center"
         ref={refs.setReference}
         {...getReferenceProps({
