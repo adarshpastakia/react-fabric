@@ -23,7 +23,7 @@
 
 @layer components {
   .fabric-fieldWrapper {
-    /* later */
+    padding: 1px;
   }
 }
 
