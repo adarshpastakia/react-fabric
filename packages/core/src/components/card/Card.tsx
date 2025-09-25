@@ -196,12 +196,18 @@ export const Card = <Tag extends React.ElementType = "div">({
         >
           {header}
           <E role="none" onClick={onClick} {...aria} className="contents">
-            <object
-              type="none"
-              className={classNames("fabric-cardBody", bodyClassName, "flex-1")}
-            >
-              {body}
-            </object>
+            {body && (
+              <object
+                type="none"
+                className={classNames(
+                  "fabric-cardBody",
+                  bodyClassName,
+                  "flex-1",
+                )}
+              >
+                {body}
+              </object>
+            )}
           </E>
           {footer}
         </div>
