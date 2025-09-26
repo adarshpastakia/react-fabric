@@ -31,59 +31,31 @@ import {
   type FC,
   type Ref,
 } from "react";
-import { type BaseChart } from "../types";
+import { Theme } from "../types";
 import { ChartContainer } from "../wrapper/ChartContainer";
 import { ChartWrapper } from "../wrapper/ChartWrapper";
 import { PaletteSelect } from "../wrapper/PaletteSelect";
 
-export interface GenericProps extends BaseChart {
+export interface GenericProps extends Omit<EChartOption, "title"> {
   chartRef?: Ref<EChartsType>;
 
-  legend?: EChartOption["legend"];
-  toolbox?: EChartOption["toolbox"];
-  tooltip?: EChartOption["tooltip"];
+  title?: string;
 
   actions?: JSX.Element;
 
   /**
-   * 2d axis
+   * The theme to be applied to the chart.
+   * This can be one of the predefined themes or a custom theme object.
+   * Predefined themes include "default", "activity", "cloud", "qualitative", "diverging", "sequential",
+   * "spectral", "uber", "fireice", "warming", "sunrise", "ocean", "wine", "red", "green", and "blue".
    */
-  xAxis?: EChartOption["xAxis"];
+  theme?: Theme;
   /**
-   * 2d axis
+   * Whether to show the theme selector in the chart.
+   * This is useful for allowing users to switch between different themes.
+   * If set to true, the chart will render a toggle button group to select the theme.
    */
-  yAxis?: EChartOption["yAxis"];
-  /**
-   * chart series
-   */
-  series?: EChartOption["series"];
-
-  /**
-   * polar series
-   */
-  polar?: EChartOption["polar"];
-  /**
-   * polar axis
-   */
-  angleAxis?: EChartOption["angleAxis"];
-  /**
-   * polar axis
-   */
-  radiusAxis?: EChartOption["radiusAxis"];
-
-  /**
-   * radar series
-   */
-  radar?: EChartOption["radar"];
-
-  /**
-   * paarllel series
-   */
-  parallel?: EChartOption["parallel"];
-  /**
-   * parallel axis
-   */
-  parallelAxis?: EChartOption["parallelAxis"];
+  showThemeSelector?: boolean;
 
   onClick?: (e: KeyValue) => void;
   onRendered?: (e: KeyValue) => void;

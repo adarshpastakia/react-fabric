@@ -126,7 +126,7 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
                     value: item.count,
                   },
                 ],
-                name: item.label ?? item.id,
+                name: item.name ?? item.id,
                 universalTransition: true,
               }));
         return {
@@ -139,7 +139,7 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
             type === "pie" ? null : type === "bar" ? categoryAxis : valueAxis,
         };
       },
-      [_series, name, type, optionOverride],
+      [_series, seriesName, type, optionOverride],
       "CountChart options",
     );
 
