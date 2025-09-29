@@ -208,7 +208,7 @@ export const ImageProvider = ({
         state.cropping = !state.cropping;
       }
       if (action.type === "startCropping") {
-        state.cropping = false;
+        state.cropping = true;
       }
       if (action.type === "cancelCropping") {
         state.cropping = false;
