@@ -67,13 +67,14 @@ export const VideoPlayer = ({
   enableZoom = true,
   onAnnotationChange,
   onCut,
+  onCrop,
   ...props
 }: VideoProps) => {
   return (
     <ThemeProvider colorScheme="dark">
       <VideoProvider {...props}>
         <Section dir="ltr">
-          <Video poster={poster} vttText={vttText} />
+          <Video poster={poster} vttText={vttText} onCrop={onCrop} />
           <Tools
             enableZoom={enableZoom}
             hasVtt={!!vttText}
@@ -81,6 +82,7 @@ export const VideoPlayer = ({
             annotations={annotations}
             onAnnotationChange={onAnnotationChange}
             onCut={onCut}
+            onCrop={onCrop}
           />
           {nsfw && <NsfwOverlay />}
         </Section>

@@ -25,13 +25,16 @@ import { AnimationBars, ErrorBoundary } from "@react-fabric/core";
 import { useCallback, useEffect, useState } from "react";
 import { useCanvasContext } from "../canvas/Context";
 import { useVideoContext } from "./Context";
+import { Cropper } from "./Cropper";
 
 export const Video = ({
   poster,
   vttText,
+  onCrop,
 }: {
   poster?: string;
   vttText?: string;
+  onCrop?: (ts: number, box: number[], base64: string) => void;
 }) => {
   const {
     videoRef,
@@ -131,6 +134,7 @@ export const Video = ({
           </div>
         </div>
 
+        {state.cropping && <Cropper onCrop={onCrop} />}
         {state.isLoading && <AnimationBars />}
       </ErrorBoundary>
     </div>

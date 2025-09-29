@@ -54,10 +54,16 @@ export const Tools = ({
   annotations = [],
   enableZoom = true,
   onAnnotationChange,
+  onCrop,
   onCut,
 }: { hasVtt?: boolean } & Pick<
   VideoProps,
-  "markers" | "annotations" | "onAnnotationChange" | "onCut" | "enableZoom"
+  | "markers"
+  | "annotations"
+  | "onAnnotationChange"
+  | "onCut"
+  | "onCrop"
+  | "enableZoom"
 >) => {
   const {
     videoRef,
@@ -68,6 +74,9 @@ export const Tools = ({
     toggleVtt,
     adjustColor,
     resetColor,
+    toggleCropping,
+    startCropping,
+    cancelCropping,
   } = useVideoContext();
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -125,6 +134,8 @@ export const Tools = ({
     () => ({
       toggleFit: () => toggleFit(),
       toggleVtt: () => toggleVtt(),
+      startCropping: () => startCropping(),
+      cancelCropping: () => cancelCropping(),
       pause: () => videoRef.current?.pause(),
       togglePlay: async () =>
         videoRef.current?.paused
@@ -197,7 +208,13 @@ export const Tools = ({
             <HotKey global keyCombo="escape" handler={handlers.cutStop} />
           )}
           {hasVtt && (
-            <HotKey global keyCombo="c" handler={handlers.toggleVtt} />
+            <HotKey global keyCombo="v" handler={handlers.toggleVtt} />
+          )}
+          {!state.isPlaying && (
+            <HotKey global keyCombo="c" handler={handlers.startCropping} />
+          )}
+          {state.cropping && (
+            <HotKey global keyCombo="esc" handler={handlers.cancelCropping} />
           )}
           <HotKey global keyCombo="0" handler={handlers.mute} />
           <HotKey global keyCombo="," handler={handlers.jumpDown} />
@@ -378,6 +395,15 @@ export const Tools = ({
             <AnnotationTool
               onChange={updateAnnotation}
               onOpen={handlers.pause}
+            />
+          )}
+          {onCrop && !state.isPlaying && (
+            <Button
+              aria-label="crop"
+              disabled={!state.isLoaded}
+              variant={state.cropping ? "solid" : "link"}
+              icon={CoreIcons.mediaCrop}
+              onClick={toggleCropping}
             />
           )}
           {onCut && (

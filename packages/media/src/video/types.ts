@@ -70,7 +70,19 @@ export interface VideoProps extends RefProp<VideoPlayerRef> {
   onAnnotationChange?: (
     annotations: Array<[time: number, text: string]>,
   ) => void;
+  /**
+   * cut handler
+   * @param start - start time
+   * @param end - end time
+   */
   onCut?: (start: number, end: number) => void;
+  /**
+   * crop selection handler
+   * @param ts - timestamp
+   * @param box - crop box coordinates
+   * @param base64 - base64 image data
+   */
+  onCrop?: (ts: number, box: number[], base64: string) => void;
   /**
    * error handler
    */

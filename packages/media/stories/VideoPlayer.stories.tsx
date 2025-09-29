@@ -95,5 +95,6 @@ export const _VideoPlayer: Story = {
   args: {
     src,
     onCut: fn(),
+    onCrop: fn(),
   },
 };

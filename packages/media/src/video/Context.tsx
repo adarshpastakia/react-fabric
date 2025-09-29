@@ -49,6 +49,9 @@ interface ContextType {
   fitToView: () => void;
   toggleFit: () => void;
   toggleVtt: () => void;
+  toggleCropping: () => void;
+  cancelCropping: () => void;
+  startCropping: () => void;
   handleMetadata: () => void;
   rotate: (rotation: -90 | 90) => void;
 
@@ -80,6 +83,7 @@ interface VideoState {
   zoom: number;
   src: string;
   errorLevel: number;
+  cropping: boolean;
   isLoading: boolean;
   isLoaded: boolean;
   isErrored: boolean;
@@ -106,6 +110,9 @@ type VideoActions =
   | { type: "toggleFit" }
   | { type: "fitToView" }
   | { type: "fitToSize" }
+  | { type: "toggleCropping" }
+  | { type: "startCropping" }
+  | { type: "cancelCropping" }
   | { type: "rotate"; rotate: number }
   | { type: "metadata"; duration: number; volume: number; speed: number }
   | { type: "reset"; audio: string }
@@ -217,6 +224,15 @@ export const VideoProvider = ({
           saturate: 1,
         };
       }
+      if (action.type === "toggleCropping") {
+        state.cropping = !state.cropping;
+      }
+      if (action.type === "startCropping") {
+        state.cropping = true;
+      }
+      if (action.type === "cancelCropping") {
+        state.cropping = false;
+      }
       if (action.type === "adjustColor") {
         state.colorscape[action.property] = action.value;
       }
@@ -260,6 +276,7 @@ export const VideoProvider = ({
       zoom: 0,
       errorLevel: 0,
       src: "",
+      cropping: false,
       isLoading: true,
       isLoaded: false,
       isErrored: false,
@@ -411,6 +428,18 @@ export const VideoProvider = ({
     [],
   );
 
+  const toggleCropping = useCallback(() => {
+    dispatch({ type: "toggleCropping" });
+  }, []);
+
+  const startCropping = useCallback(() => {
+    dispatch({ type: "startCropping" });
+  }, []);
+
+  const cancelCropping = useCallback(() => {
+    dispatch({ type: "cancelCropping" });
+  }, []);
+
   const resetColor = useCallback(() => {
     dispatch({ type: "resetColor" });
   }, []);
@@ -439,6 +468,9 @@ export const VideoProvider = ({
         fitToView,
         toggleFit,
         toggleVtt,
+        toggleCropping,
+        cancelCropping,
+        startCropping,
         handleMetadata,
         handlePlay,
         handlePause,
