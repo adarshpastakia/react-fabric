@@ -57,7 +57,7 @@ export interface ImageProps extends RefProp<CanvasRef> {
   /**
    * crop selection handler
    */
-  onCrop?: (box: number[]) => void;
+  onCrop?: (box: number[], base64: string) => void;
   /**
    * error handler
    */

@@ -24,7 +24,11 @@
 import { useCallback, useRef, useState, type MouseEvent } from "react";
 import { useImageContext } from "./Context";
 
-export const Cropper = ({ onCrop }: { onCrop?: (box: number[]) => void }) => {
+export const Cropper = ({
+  onCrop,
+}: {
+  onCrop?: (box: number[], base64: string) => void;
+}) => {
   const currentPos = useRef({
     x: 0,
     y: 0,
@@ -73,8 +77,17 @@ export const Cropper = ({ onCrop }: { onCrop?: (box: number[]) => void }) => {
         w = w / zoomLevel;
         h = h / zoomLevel;
 
+        const canvas = document.createElement("canvas");
+        canvas.width = w;
+        canvas.height = h;
+        const context = canvas.getContext("2d");
+        if (context) {
+          context.drawImage(imageRef.current, x, y, w, h, 0, 0, w, h);
+        }
+        const base64 = canvas.toDataURL("image/webp");
+
         toggleCropping();
-        onCrop?.([x, y, w, h]);
+        onCrop?.([x, y, w, h], base64);
       }
     },
     [onCrop, state.zoom, state.rotate, state.width, state.height],

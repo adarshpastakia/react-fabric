@@ -28,7 +28,11 @@ import { Cropper } from "./Cropper";
 import { Overlay } from "./Overlay";
 import classNames from "classnames";
 
-export const Image = ({ onCrop }: { onCrop?: (box: number[]) => void }) => {
+export const Image = ({
+  onCrop,
+}: {
+  onCrop?: (box: number[], base64: string) => void;
+}) => {
   const { imageRef, scrollerRef, state, handleLoad, handleError } =
     useImageContext();
   const { canvasRef } = useCanvasContext();
