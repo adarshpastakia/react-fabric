@@ -82,6 +82,12 @@ export const Cropper = ({
         canvas.height = h;
         const context = canvas.getContext("2d");
         if (context) {
+          context.filter = `
+            brightness(${state.colorscape.brightness}) 
+            contrast(${state.colorscape.contrast}) 
+            saturate(${state.colorscape.saturate}) 
+            hue-rotate(${state.colorscape.hue}deg)
+            invert(${state.colorscape.invert})`;
           context.drawImage(videoRef.current, x, y, w, h, 0, 0, w, h);
         }
         const base64 = canvas.toDataURL("image/webp");
