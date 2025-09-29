@@ -105,7 +105,7 @@ export interface ModalProps
   /**
    * hide mask background
    */
-  noMask?: boolean;
+  hideMask?: boolean;
   /**
    * close handler
    */
@@ -131,7 +131,7 @@ export const Modal = ({
   loading,
   root,
   size,
-  noMask,
+  hideMask,
   width,
   height,
   minHeight,
@@ -193,7 +193,7 @@ export const Modal = ({
         }}
         className={classNames(
           "grid place-items-center p-16",
-          !noMask && "bg-tint-100/20 backdrop-blur-sm",
+          !hideMask && "bg-tint-100/20 backdrop-blur-sm",
         )}
       >
         <FloatingFocusManager context={context}>

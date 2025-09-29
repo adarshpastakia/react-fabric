@@ -95,6 +95,10 @@ export interface FlyoutProps
    */
   minWidth?: string | number;
   /**
+   * portal root element
+   */
+  root?: HTMLElement;
+  /**
    * hide backdrop mask
    */
   hideMask?: boolean;
@@ -129,6 +133,7 @@ export const Flyout = ({
   size,
   width,
   minWidth,
+  root,
   hideMask,
   align = "start",
   ...aria
@@ -193,7 +198,7 @@ export const Flyout = ({
   );
 
   return (
-    <FloatingPortal>
+    <FloatingPortal root={root}>
       {!hideMask && (
         <FloatingOverlay
           lockScroll
