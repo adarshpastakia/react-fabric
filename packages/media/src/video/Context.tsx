@@ -93,7 +93,13 @@ interface VideoState {
   volume: number;
   speed: number;
   showVtt: boolean;
-  colorscape: KeyValue;
+  colorscape: {
+    brightness: number;
+    contrast: number;
+    saturate: number;
+    hue: number;
+    invert: number;
+  };
 }
 
 type VideoActions =
@@ -299,23 +305,20 @@ export const VideoProvider = ({
   useImperativeHandle(
     ref,
     () =>
-      videoRef.current && canvasRef.current
-        ? {
-            seek: (ts: number) =>
-              videoRef.current && (videoRef.current.currentTime = ts),
-            play: async () => await videoRef.current?.play(),
-            playAt: async (time: number) =>
-              await (videoRef.current &&
-                ((videoRef.current.currentTime = time),
-                videoRef.current?.play())),
-            pause: () => videoRef.current?.pause(),
-            currentTime: () => videoRef.current?.currentTime ?? 0,
-            on: videoRef.current?.addEventListener.bind(videoRef.current),
-            off: videoRef.current?.removeEventListener.bind(videoRef.current),
-            ...canvasRef.current,
-          }
-        : (null as AnyObject),
-    [],
+      ({
+        seek: (ts: number) =>
+          videoRef.current && (videoRef.current.currentTime = ts),
+        play: async () => await videoRef.current?.play(),
+        playAt: async (time: number) =>
+          await (videoRef.current &&
+            ((videoRef.current.currentTime = time), videoRef.current?.play())),
+        pause: () => videoRef.current?.pause(),
+        currentTime: () => videoRef.current?.currentTime ?? 0,
+        on: videoRef.current?.addEventListener.bind(videoRef.current),
+        off: videoRef.current?.removeEventListener.bind(videoRef.current),
+        ...canvasRef.current,
+      }) as any,
+    [canvasRef, videoRef],
   );
 
   useEffect(() => {
@@ -454,6 +457,26 @@ export const VideoProvider = ({
     [],
   );
 
+  const exportToBase64 = useCallback(() => {
+    if (!videoRef.current?.paused)
+      throw Error("Pause the video to capture video frame");
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+    if (context && videoRef.current) {
+      canvas.width = videoRef.current.videoWidth;
+      canvas.height = videoRef.current.videoHeight;
+      context.filter = `
+            brightness(${state.colorscape.brightness}) 
+            contrast(${state.colorscape.contrast}) 
+            saturate(${state.colorscape.saturate}) 
+            hue-rotate(${state.colorscape.hue}deg)
+            invert(${state.colorscape.invert})`;
+      context.drawImage(videoRef.current, 0, 0);
+      return canvas.toDataURL("image/png");
+    }
+    return null;
+  }, [state.colorscape]);
+
   return (
     <Context.Provider
       value={{
@@ -482,7 +505,12 @@ export const VideoProvider = ({
         resetColor,
       }}
     >
-      <CanvasProvider ref={ref} mediaEl={videoRef} width={state.width}>
+      <CanvasProvider
+        ref={canvasRef}
+        mediaEl={videoRef}
+        width={state.width}
+        exportToBase64={exportToBase64}
+      >
         {children}
       </CanvasProvider>
     </Context.Provider>

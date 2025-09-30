@@ -42,6 +42,13 @@ interface ContextType {
 export interface CanvasRef {
   clear: () => void;
   unhilight: () => void;
+  /**
+   * export current image or video frame as base64 string
+   * with applied css filters
+   *
+   * NOTE: video must be paused before calling this method
+   */
+  toBase64: () => string | null;
   drawBox: (
     boundingBox: BoxObject["box"],
     options?: Omit<BoxObject, "box" | "polygon">,
@@ -72,9 +79,11 @@ export const CanvasProvider = ({
   ref,
   mediaEl,
   width,
+  exportToBase64,
 }: PropsWithChildren &
   RefProp<CanvasRef> & {
     width: number;
+    exportToBase64: () => string | null;
     mediaEl: RefObject<HTMLImageElement | HTMLVideoElement | null>;
   }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -105,6 +114,9 @@ export const CanvasProvider = ({
         unhilight: () => {
           dispatch({ type: "unhilight" });
         },
+        toBase64: () => {
+          return exportToBase64();
+        },
         drawBox: (box, options = {}) => {
           dispatch({ type: "drawBox", payload: { box, ...options } });
         },
@@ -119,7 +131,7 @@ export const CanvasProvider = ({
         },
       };
     },
-    [canvasRef, dispatch],
+    [canvasRef, exportToBase64, dispatch],
   );
 
   const getRatio = useCallback(() => {

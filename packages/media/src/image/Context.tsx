@@ -84,7 +84,13 @@ interface ImageState {
   isLoaded: boolean;
   isErrored: boolean;
   showSplitter: boolean;
-  colorscape: KeyValue;
+  colorscape: {
+    brightness: number;
+    contrast: number;
+    saturate: number;
+    hue: number;
+    invert: number;
+  };
   colorScheme: "light" | "dark" | "light_transparent" | "dark_transparent";
 }
 
@@ -414,6 +420,24 @@ export const ImageProvider = ({
     [],
   );
 
+  const exportToBase64 = useCallback(() => {
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+    if (context && imageRef.current) {
+      canvas.width = imageRef.current.naturalWidth;
+      canvas.height = imageRef.current.naturalHeight;
+      context.filter = `
+            brightness(${state.colorscape.brightness}) 
+            contrast(${state.colorscape.contrast}) 
+            saturate(${state.colorscape.saturate}) 
+            hue-rotate(${state.colorscape.hue}deg)
+            invert(${state.colorscape.invert})`;
+      context.drawImage(imageRef.current, 0, 0);
+      return canvas.toDataURL("image/png");
+    }
+    return null;
+  }, [state.colorscape]);
+
   return (
     <Context.Provider
       value={{
@@ -437,7 +461,12 @@ export const ImageProvider = ({
         resetColor,
       }}
     >
-      <CanvasProvider ref={ref} mediaEl={imageRef} width={state.width}>
+      <CanvasProvider
+        ref={ref}
+        mediaEl={imageRef}
+        width={state.width}
+        exportToBase64={exportToBase64}
+      >
         {children}
       </CanvasProvider>
     </Context.Provider>
