@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.57](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.56...v1.0.0-beta.57) (2025-09-30)
+
+### Bug Fixes
+
+- add preventDefault prop for clickable components ([d31ed2a](https://github.com/adarshpastakia/react-fabric/commit/d31ed2a7917aa467055885b3a08d69286a0989ee))
+- **Audio:** equalizer button styling ([ae679a9](https://github.com/adarshpastakia/react-fabric/commit/ae679a9070bab8d0f7990319ce23733337b8ee24))
+- **Card:** render body wrapper only when body available ([863f0fc](https://github.com/adarshpastakia/react-fabric/commit/863f0fc4e0cfad01b72595991c3fd448aa62ab8c))
+- **Card:** wrap body content in object to allow nested links ([429d269](https://github.com/adarshpastakia/react-fabric/commit/429d269a1ef45c58db6291ca0e9a979c737ea59f))
+- **ColorInput:** button role ([7cdc65a](https://github.com/adarshpastakia/react-fabric/commit/7cdc65a15c7b05231fb6cd956db620a2fed17d30))
+- **Flyout:** add flyout portal root prop ([0b2eac8](https://github.com/adarshpastakia/react-fabric/commit/0b2eac802d703685d931314c884bdfd6cee9eb2b))
+- **GenericChart:** pass echart options as props ([c0c16af](https://github.com/adarshpastakia/react-fabric/commit/c0c16af041c6d2d30ece62ff5575ea6d86666fc3))
+- hidden and avatar input with defaultValue ([6a14275](https://github.com/adarshpastakia/react-fabric/commit/6a1427585d6977ab2e8f2fce6d79c7840234fa1e))
+- **ImageViewer,VideoPlayer:** add toBase64 ref method ([3fd57fc](https://github.com/adarshpastakia/react-fabric/commit/3fd57fc108d0097091467ebbe15004f23bc2f47f))
+- **ImageViewer:** onCrop pass base64 image portion ([7a870f1](https://github.com/adarshpastakia/react-fabric/commit/7a870f1104167c067e81ccea8ca50b45c7e92a3b))
+- **Media:** cropper apply colorscape state to canvas ([a0e3e02](https://github.com/adarshpastakia/react-fabric/commit/a0e3e0298502659e2409f30e1f3b5c1c191af734))
+- **Searchbar:** filter form flex layout ([af59a3a](https://github.com/adarshpastakia/react-fabric/commit/af59a3ae8f6c4032280de3ca49a8c5399a169777))
+- **Select:** add option info ([6288f35](https://github.com/adarshpastakia/react-fabric/commit/6288f353119d9f748b86240f2d2502df0064db6d))
+- **Slider:** vertical orientation ([a485de7](https://github.com/adarshpastakia/react-fabric/commit/a485de74a44abb8c397e59babab176f03e9be161))
+- **VideoPlayer:** add cropping tool to capture portion of paused video ([4dc22a9](https://github.com/adarshpastakia/react-fabric/commit/4dc22a92df2655e57488f355f8576b88e9871af0))
+- **VirtualGallery:** loading skeleton ([5c095e2](https://github.com/adarshpastakia/react-fabric/commit/5c095e2644839bc604db00658b057337960d0e76))
+
 # [1.0.0-beta.56](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.55...v1.0.0-beta.56) (2025-09-06)
 
 ### Bug Fixes

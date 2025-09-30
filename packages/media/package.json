@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/media",
-  "version": "1.0.0-beta.56",
+  "version": "1.0.0-beta.57",
   "description": "RUF: Media package",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -35,8 +35,8 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@react-fabric/core": "^1.0.0-beta.55",
-    "@react-fabric/form": "^1.0.0-beta.56",
+    "@react-fabric/core": "^1.0.0-beta.57",
+    "@react-fabric/form": "^1.0.0-beta.57",
     "@react-fabric/utilities": "^1.0.0-beta.52",
     "classnames": "^2.5.1",
     "color": "^4.2.3",

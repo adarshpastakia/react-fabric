@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.57](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.56...v1.0.0-beta.57) (2025-09-30)
+
+### Bug Fixes
+
+- **Audio:** equalizer button styling ([ae679a9](https://github.com/adarshpastakia/react-ui-framework/commit/ae679a9070bab8d0f7990319ce23733337b8ee24))
+- **ImageViewer,VideoPlayer:** add toBase64 ref method ([3fd57fc](https://github.com/adarshpastakia/react-ui-framework/commit/3fd57fc108d0097091467ebbe15004f23bc2f47f))
+- **ImageViewer:** onCrop pass base64 image portion ([7a870f1](https://github.com/adarshpastakia/react-ui-framework/commit/7a870f1104167c067e81ccea8ca50b45c7e92a3b))
+- **Media:** cropper apply colorscape state to canvas ([a0e3e02](https://github.com/adarshpastakia/react-ui-framework/commit/a0e3e0298502659e2409f30e1f3b5c1c191af734))
+- **VideoPlayer:** add cropping tool to capture portion of paused video ([4dc22a9](https://github.com/adarshpastakia/react-ui-framework/commit/4dc22a92df2655e57488f355f8576b88e9871af0))
+
 # [1.0.0-beta.56](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.55...v1.0.0-beta.56) (2025-09-06)
 
 ### Bug Fixes

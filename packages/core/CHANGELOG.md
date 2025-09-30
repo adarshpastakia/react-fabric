@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.57](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.56...v1.0.0-beta.57) (2025-09-30)
+
+### Bug Fixes
+
+- add preventDefault prop for clickable components ([d31ed2a](https://github.com/adarshpastakia/react-ui-framework/commit/d31ed2a7917aa467055885b3a08d69286a0989ee))
+- **Card:** render body wrapper only when body available ([863f0fc](https://github.com/adarshpastakia/react-ui-framework/commit/863f0fc4e0cfad01b72595991c3fd448aa62ab8c))
+- **Card:** wrap body content in object to allow nested links ([429d269](https://github.com/adarshpastakia/react-ui-framework/commit/429d269a1ef45c58db6291ca0e9a979c737ea59f))
+- **Flyout:** add flyout portal root prop ([0b2eac8](https://github.com/adarshpastakia/react-ui-framework/commit/0b2eac802d703685d931314c884bdfd6cee9eb2b))
+
 # [1.0.0-beta.55](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.54...v1.0.0-beta.55) (2025-08-29)
 
 ### Bug Fixes

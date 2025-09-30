@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.57](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.56...v1.0.0-beta.57) (2025-09-30)
+
+### Bug Fixes
+
+- **GenericChart:** pass echart options as props ([c0c16af](https://github.com/adarshpastakia/react-ui-framework/commit/c0c16af041c6d2d30ece62ff5575ea6d86666fc3))
+
 # [1.0.0-beta.55](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.54...v1.0.0-beta.55) (2025-08-29)
 
 ### Bug Fixes
