@@ -24,7 +24,7 @@
 import { faker } from "@faker-js/faker";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Fragment } from "react/jsx-runtime";
-import { Badge, Collapsable, Content, Text, Title } from "../../../src";
+import { Collapsable, Content, Title } from "../../../src";
 
 const meta: Meta = {
   component: Collapsable,
@@ -92,4 +92,9 @@ export const Multiple: CollapsableStory = {
     );
   },
   args: { iconAlign: "end" },
+};
+
+export const Tester: CollapsableStory = {
+  render: (args) => <Collapsable {...args} />,
+  args: {},
 };

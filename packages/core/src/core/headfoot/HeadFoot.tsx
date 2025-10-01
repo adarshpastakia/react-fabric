@@ -92,7 +92,7 @@ const HeadFoot = ({
  * ```
  */
 export const Header = (props: HeadFootProps) => (
-  <HeadFoot as="header" area="head" {...props} />
+  <HeadFoot as="header" area="head" data-ref="header" {...props} />
 );
 
 /**
@@ -117,5 +117,5 @@ export const Header = (props: HeadFootProps) => (
  * ```
  */
 export const Footer = (props: HeadFootProps) => (
-  <HeadFoot as="footer" area="foot" {...props} />
+  <HeadFoot as="footer" area="foot" data-ref="footer" {...props} />
 );

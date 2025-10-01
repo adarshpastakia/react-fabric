@@ -23,8 +23,9 @@
 
 import { faker } from "@faker-js/faker";
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "storybook/test";
+import { useRef } from "react";
 import { Fragment } from "react/jsx-runtime";
+import { fn } from "storybook/test";
 import {
   Badge,
   Button,
@@ -33,7 +34,10 @@ import {
   CardCover,
   Chip,
   Col,
+  Content,
   Dropdown,
+  FlipContent,
+  FlipContentRef,
   Footer,
   Header,
   Icon,
@@ -318,4 +322,32 @@ export const _CardCover: CardCoverStory = {
   args: {
     ...({ playOnHover: false, autoPlay: true } as AnyObject),
   },
+};
+
+export const Tester: CardStory = {
+  render: (args) => <Card {...args} />,
+  args: {},
+};
+
+export const FlipCardTester: CardStory = {
+  render: (args) => {
+    const ref = useRef<FlipContentRef>(null);
+    return (
+      <Card {...args}>
+        <Header>
+          <Button
+            data-testid="flipToggle"
+            onClick={() => ref.current?.flipCard()}
+          >
+            Toggle Flip
+          </Button>
+        </Header>
+        <FlipContent ref={ref}>
+          <Content data-testid="frontContent">Front Content</Content>
+          <Content data-testid="backContent">Back Content</Content>
+        </FlipContent>
+      </Card>
+    );
+  },
+  args: {},
 };

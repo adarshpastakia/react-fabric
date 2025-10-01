@@ -25,7 +25,8 @@
   "modulePathIgnorePatterns": ["<rootDir>/packages/*/dist"],
   "moduleNameMapper": {
     "^@mdi/font/css/materialdesignicons.min.css": "<rootDir>/jest/blank.js",
-    "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+    "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules",
+    "\\.(mp4|mp3)$": "<rootDir>/jest/blank.js"
   },
   "collectCoverageFrom": [
     "packages/**/src/**/*.{ts,tsx}",
