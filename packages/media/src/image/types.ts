@@ -4,7 +4,7 @@
  *
  *
  * The MIT License (MIT)
- * Copyright (c) 2024 Adarsh Pastakia
+ * Copyright (c) 2025 Adarsh Pastakia
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
  * and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -21,33 +21,53 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { createContext, type RefObject, useContext } from "react";
-import { AudioState } from "../types";
-import { type WavesurferInstance } from "./wavesurfer";
+import { RefProp } from "@react-fabric/core/dist/types/types";
+import { CanvasRef } from "../components/Canvas";
+import { ImageAnnotation } from "../types";
 
-interface ContextType {
-  audioRef: RefObject<HTMLAudioElement | null>;
-  wavesurfer?: WavesurferInstance;
-
-  state: AudioState;
-
-  toggleEqs: () => void;
-  handleLoad: () => void;
-  handleError: () => void;
+export interface ImageProps<T> extends RefProp<CanvasRef> {
+  /**
+   * image source
+   */
+  src: string;
+  /**
+   * fallback alternate source
+   */
+  fallback?: string;
+  /**
+   * NSFW overlay
+   */
+  nsfw?: boolean;
+  /**
+   * image overlay
+   */
+  overlay?: string;
+  /**
+   * default splitter toggle (default: true)
+   */
+  defaultSplitter?: boolean;
+  /**
+   * enable zoom tool (default: true)
+   */
+  enableZoom?: boolean;
+  /**
+   * annotations to be rendered on image
+   */
+  annotations?: ImageAnnotation<T>[];
+  /**
+   * export current view as base64
+   */
+  onExport?: (base64: string) => void;
+  /**
+   * crop selection handler
+   */
+  onCrop?: (box: number[], base64: string) => void;
+  /**
+   * error handler
+   */
+  onLoad?: () => void;
+  /**
+   * error handler
+   */
+  onError?: () => void;
 }
-
-export type AudioActions =
-  | { type: "loaded" }
-  | { type: "metadata"; duration: number; volume: number; speed: number }
-  | { type: "reset"; audio: string }
-  | { type: "playing"; time: number }
-  | { type: "volume"; volume: number }
-  | { type: "speed"; speed: number }
-  | { type: "toggleEqs" }
-  | { type: "errored" }
-  | { type: "play" }
-  | { type: "pause" };
-
-export const AudioContext = createContext<ContextType>({} as ContextType);
-
-export const useAudioContext = () => useContext(AudioContext);

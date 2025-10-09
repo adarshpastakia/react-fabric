@@ -33,7 +33,8 @@ import {
   useRef,
   useState,
 } from "react";
-import { type AudioActions, AudioContext, type AudioState } from "./Context";
+import { AudioState } from "../types";
+import { type AudioActions, AudioContext } from "./Context";
 import { Equalizers } from "./Equalizers";
 import { Loading } from "./Loading";
 import { Tools } from "./Tools";

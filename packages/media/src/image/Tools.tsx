@@ -36,13 +36,17 @@ import { Slider } from "@react-fabric/form";
 import { Fragment, useMemo } from "react";
 import { useImageContext } from "./Context";
 import { ZoomMeter } from "./ZoomMeter";
+import { Colorscape } from "../components/Colorscape";
+import { TooltipButton } from "../components/TooltipButton";
 
 export const Tools = ({
   enableZoom = true,
   enableCrop = true,
+  onExport,
 }: {
   enableZoom?: boolean;
   enableCrop?: boolean;
+  onExport?: (base64: string) => void;
 }) => {
   const {
     state,
@@ -59,6 +63,7 @@ export const Tools = ({
     startCropping,
     adjustColor,
     resetColor,
+    exportToBase64,
   } = useImageContext();
 
   const startDrag = (e: React.MouseEvent) => {
@@ -132,17 +137,17 @@ export const Tools = ({
           <label className="text-xs basis-16 whitespace-nowrap">
             Zoom: {state.zoom === 0 ? "FIT" : state.zoom.toFixed(2)}
           </label>
-          <Button
-            variant="link"
+          <TooltipButton
             aria-label="fit-to-view"
+            tooltip="Fit to View (F)"
             onClick={fitToView}
             disabled={!state.isLoaded}
             icon={CoreIcons.mediaFitToView}
           />
           {!state.splitter && (
-            <Button
-              variant="link"
+            <TooltipButton
               aria-label="fit-to-size"
+              tooltip="Fit to Size (F)"
               onClick={fitToSize}
               disabled={!state.isLoaded}
               icon={CoreIcons.mediaAspect}
@@ -154,9 +159,9 @@ export const Tools = ({
               dropdownEvent="hover"
               dropdownClassName="overflow-hidden bg-black/80 backdrop-blur-md w-[12rem] h-[6rem] rounded-t-full"
             >
-              <Button
-                variant="link"
+              <TooltipButton
                 aria-label="zoom"
+                tooltip="Zoom (. / ,)"
                 icon={CoreIcons.mediaZoomer}
                 disabled={!state.isLoaded}
                 onWheel={(e) => {
@@ -181,111 +186,18 @@ export const Tools = ({
               </div>
             </Dropdown>
           )}
-          <Dropdown placement="top">
-            <Button
-              variant="link"
-              disabled={!state.isLoaded}
-              aria-label="rotate-ccw"
-              icon={CoreIcons.settings}
-            />
-            <Card bodyClassName="p-1" className="w-64">
-              <Header flex justify="end">
-                <Button size="xs" onClick={resetColor}>
-                  Reset
-                </Button>
-              </Header>
-              <Slider
-                min={0}
-                max={10}
-                step={0.1}
-                showLabels
-                value={state.colorscape.saturate}
-                onSlide={(v) => adjustColor("saturate", v ?? 0)}
-                onChange={(v) => adjustColor("saturate", v ?? 0)}
-                minLabel={(<Icon icon={CoreIcons.mediaSaturate} />) as any}
-                maxLabel={
-                  (
-                    <div className="text-xs w-12">
-                      {state.colorscape.saturate.toFixed(2)}
-                    </div>
-                  ) as any
-                }
-              />
-              <Slider
-                min={0}
-                max={10}
-                step={0.1}
-                showLabels
-                value={state.colorscape.contrast}
-                onSlide={(v) => adjustColor("contrast", v ?? 0)}
-                onChange={(v) => adjustColor("contrast", v ?? 0)}
-                minLabel={(<Icon icon={CoreIcons.mediaContrast} />) as any}
-                maxLabel={
-                  (
-                    <div className="text-xs w-12">
-                      {state.colorscape.contrast.toFixed(2)}
-                    </div>
-                  ) as any
-                }
-              />
-              <Slider
-                min={0}
-                max={10}
-                step={0.1}
-                showLabels
-                value={state.colorscape.brightness}
-                onSlide={(v) => adjustColor("brightness", v ?? 0)}
-                onChange={(v) => adjustColor("brightness", v ?? 0)}
-                minLabel={(<Icon icon={CoreIcons.mediaLightness} />) as any}
-                maxLabel={
-                  (
-                    <div className="text-xs w-12">
-                      {state.colorscape.brightness.toFixed(2)}
-                    </div>
-                  ) as any
-                }
-              />
-              <Slider
-                min={0}
-                max={360}
-                step={1}
-                showLabels
-                value={state.colorscape.hue}
-                onSlide={(v) => adjustColor("hue", v ?? 0)}
-                onChange={(v) => adjustColor("hue", v ?? 0)}
-                minLabel={(<Icon icon={CoreIcons.mediaColor} />) as any}
-                maxLabel={
-                  (
-                    <div className="text-xs w-12">
-                      {state.colorscape.hue.toFixed(2)}
-                    </div>
-                  ) as any
-                }
-              />
-              <Slider
-                min={0}
-                max={1}
-                step={1}
-                showLabels
-                value={state.colorscape.invert}
-                onSlide={(v) => adjustColor("invert", v ?? 0)}
-                onChange={(v) => adjustColor("invert", v ?? 0)}
-                minLabel={(<Icon icon={CoreIcons.mediaInvert} />) as any}
-                maxLabel={
-                  (
-                    <div className="text-xs w-12">
-                      {state.colorscape.invert.toFixed(2)}
-                    </div>
-                  ) as any
-                }
-              />
-            </Card>
-          </Dropdown>
+          <Colorscape
+            disabled={!state.isLoaded}
+            colorscape={state.colorscape}
+            resetColor={resetColor}
+            adjustColor={adjustColor}
+          />
           <Divider vertical />
         </Fragment>
       )}
       {state.overlay && (
-        <Button
+        <TooltipButton
+          tooltip="Toggle Splitter"
           aria-label="splitter"
           disabled={!state.isLoaded}
           variant={state.splitter ? "solid" : "link"}
@@ -294,7 +206,10 @@ export const Tools = ({
         />
       )}
       {!state.splitter && enableCrop && (
-        <Button
+        <TooltipButton
+          tooltip={
+            state.cropping ? "Cancel Cropping (Esc)" : "Start Cropping (C)"
+          }
           aria-label="crop"
           disabled={!state.isLoaded}
           variant={state.cropping ? "solid" : "link"}
@@ -302,16 +217,25 @@ export const Tools = ({
           onClick={toggleCropping}
         />
       )}
+      {!state.splitter && onExport && (
+        <TooltipButton
+          tooltip="Export Image"
+          aria-label="export"
+          disabled={!state.isLoaded}
+          icon={CoreIcons.mediaCapture}
+          onClick={() => onExport?.(exportToBase64() ?? "")}
+        />
+      )}
       <Divider vertical />
-      <Button
-        variant="link"
+      <TooltipButton
+        tooltip="Rotate Counter Clockwise ([)"
         disabled={!state.isLoaded}
         aria-label="rotate-ccw"
         icon={CoreIcons.mediaRotateCCW}
         onClick={handlers.rotateDown}
       />
-      <Button
-        variant="link"
+      <TooltipButton
+        tooltip="Rotate Clockwise (])"
         disabled={!state.isLoaded}
         aria-label="rotate-cw"
         icon={CoreIcons.mediaRotateCW}

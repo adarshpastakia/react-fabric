@@ -23,7 +23,7 @@
 
 export { Annotator } from "./annotator/Annotator";
 export { AudioPlayer, type AudioPlayerRef } from "./audio/AudioPlayer";
-export { type CanvasRef as ImageViewerRef } from "./canvas/Context";
+export { type CanvasRef as ImageViewerRef } from "./components/Canvas";
 export { Dictation } from "./dictation/Dictation";
 export { ImageViewer } from "./image/ImageViewer";
 export { Thumbnail } from "./thumbnail/Thumbnail";

@@ -24,8 +24,11 @@
 import { faker } from "@faker-js/faker";
 import { Viewport } from "@react-fabric/core";
 import type { Meta, StoryObj } from "@storybook/react";
+import { useState } from "react";
 import { fn } from "storybook/test";
 import { ImageViewer } from "../src";
+import { ImageAnnotation } from "../src/types";
+import src from "/assets/samples/sample_large.jpg";
 
 const meta: Meta = {
   component: ImageViewer,
@@ -54,5 +57,57 @@ export const _ImageViewer: Story = {
     fallback: faker.image.urlPicsumPhotos(),
     overlay: faker.image.urlPicsumPhotos(),
     onCrop: fn(),
+  },
+};
+
+export const ImagePlayground: Story = {
+  render: (args) => {
+    const [annotations, setAnnotations] = useState<ImageAnnotation[]>([
+      {
+        box: "878.0821384644843,194.20218353944534,311.53266942786024,238.70685060056823",
+        fill: "#0F5F9051",
+        stroke: 2,
+        labelTop: "Image 1",
+        labelBottom: "80%",
+        colorBottom: "#3D8C6BFF",
+      },
+      {
+        box: "502.5,330,294,195",
+        fill: "#F50F9051",
+        stroke: 2,
+        labelTop: "Image 2",
+        labelBottom: "50%",
+        colorBottom: "#8B8725FF",
+      },
+    ]);
+
+    const [exp, setExp] = useState<string>();
+
+    return (
+      <div className="min-h-[600px]">
+        <Viewport>
+          <ImageViewer
+            {...args}
+            annotations={annotations}
+            onExport={setExp}
+            onCrop={(box, base64) => setExp(base64)}
+          />
+          {exp && (
+            <div
+              onClick={() => setExp("")}
+              className="absolute overflow-hidden inset-0 bg-black/90 z-10 p-8"
+            >
+              <img
+                src={exp}
+                className="size-full object-scale-down border-4 bg-black"
+              />
+            </div>
+          )}
+        </Viewport>
+      </div>
+    );
+  },
+  args: {
+    src,
   },
 };

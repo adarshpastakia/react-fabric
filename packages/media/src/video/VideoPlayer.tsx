@@ -58,31 +58,31 @@ import { type VideoProps } from "./types";
  *
  * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/media-videoplayer--video-player} for more details on the properties.
  */
-export const VideoPlayer = ({
+export const VideoPlayer = <T extends KeyValue = KeyValue>({
   nsfw,
   poster,
   vttText,
   markers,
-  annotations,
-  enableZoom = true,
-  onAnnotationChange,
+  comments,
+  onCommentChange,
   onCut,
   onCrop,
+  onExport,
   ...props
-}: VideoProps) => {
+}: VideoProps<T>) => {
   return (
     <ThemeProvider colorScheme="dark">
       <VideoProvider {...props}>
         <Section dir="ltr">
           <Video poster={poster} vttText={vttText} onCrop={onCrop} />
           <Tools
-            enableZoom={enableZoom}
             hasVtt={!!vttText}
             markers={markers}
-            annotations={annotations}
-            onAnnotationChange={onAnnotationChange}
+            comments={comments}
+            onCommentChange={onCommentChange}
             onCut={onCut}
             onCrop={onCrop}
+            onExport={onExport}
           />
           {nsfw && <NsfwOverlay />}
         </Section>

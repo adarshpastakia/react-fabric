@@ -31,17 +31,19 @@ import {
   Icon,
   Panel,
   PanelStack,
+  Tooltip,
 } from "@react-fabric/core";
 import { Textarea } from "@react-fabric/form";
 import { useCallback, useState } from "react";
+import { TooltipButton } from "../components/TooltipButton";
 
-export const AnnotationTool = ({ onChange, onOpen }: KeyValue) => {
+export const CommentTool = ({ onChange, onOpen }: KeyValue) => {
   const [value, setValue] = useState<string>();
   return (
     <Dropdown showArrow>
-      <Button
-        variant="link"
-        aria-label="annotate"
+      <TooltipButton
+        tooltip="Add comment"
+        aria-label="comment-add"
         icon={CoreIcons.mediaCommentAdd}
         onClick={onOpen}
       />
@@ -70,10 +72,11 @@ export const AnnotationTool = ({ onChange, onOpen }: KeyValue) => {
   );
 };
 
-export const AnnotationTag = ({
+export const CommentTag = ({
   time,
   duration,
   text,
+  currentTime,
   onChange,
   onDelete,
   onPlay,
@@ -90,56 +93,68 @@ export const AnnotationTag = ({
         insetInlineStart: `${(time / duration) * 100}%`,
       }}
     >
-      <Dropdown showArrow>
-        <Icon icon={CoreIcons.mediaComment} className="hover:text-primary" />
-        <PanelStack onPanelChange={resetValue}>
-          <Panel width={360} height={192} className="max-w-screen">
-            <Content>{text}</Content>
-            <Footer flex justify="between" className="p-1">
-              <Button
-                size="sm"
-                variant="outline"
-                icon={CoreIcons.edit}
-                data-panel="edit"
-              >
-                Edit
-              </Button>
-              <DropdownDismiss>
-                <Button size="sm" variant="solid" onClick={onPlay}>
-                  Play
-                </Button>
-              </DropdownDismiss>
-            </Footer>
-          </Panel>
-          <Panel panelId="edit" width={360} className="max-w-screen">
-            <Content className="p-1">
-              <Textarea autoFocus rows={5} value={value} onChange={setValue} />
-            </Content>
-            <Footer flex justify="between" className="p-1">
-              <DropdownDismiss>
+      <Tooltip
+        disabled
+        color="info"
+        content={`${time}: ${text}`}
+        open={currentTime >= time && currentTime <= time + 2}
+      >
+        <Dropdown showArrow>
+          <Icon icon={CoreIcons.mediaComment} className="hover:text-primary" />
+          <PanelStack onPanelChange={resetValue}>
+            <Panel width={360} height={192} className="max-w-screen">
+              <Content>{text}</Content>
+              <Footer flex justify="between" className="p-1">
                 <Button
                   size="sm"
-                  variant="link"
-                  icon={CoreIcons.trash}
-                  color="danger"
-                  onClick={onDelete}
+                  variant="outline"
+                  icon={CoreIcons.edit}
+                  data-panel="edit"
                 >
-                  Delete
+                  Edit
                 </Button>
-              </DropdownDismiss>
-              <DropdownDismiss>
-                <Button
-                  size="sm"
-                  variant="solid"
-                  onClick={() => onChange?.(value)}
-                >
-                  Update
-                </Button>
-              </DropdownDismiss>
-            </Footer>
-          </Panel>
-        </PanelStack>
-      </Dropdown>
+                <DropdownDismiss>
+                  <Button size="sm" variant="solid" onClick={onPlay}>
+                    Play
+                  </Button>
+                </DropdownDismiss>
+              </Footer>
+            </Panel>
+            <Panel panelId="edit" width={360} className="max-w-screen">
+              <Content className="p-1">
+                <Textarea
+                  autoFocus
+                  rows={5}
+                  value={value}
+                  onChange={setValue}
+                />
+              </Content>
+              <Footer flex justify="between" className="p-1">
+                <DropdownDismiss>
+                  <Button
+                    size="sm"
+                    variant="link"
+                    icon={CoreIcons.trash}
+                    color="danger"
+                    onClick={onDelete}
+                  >
+                    Delete
+                  </Button>
+                </DropdownDismiss>
+                <DropdownDismiss>
+                  <Button
+                    size="sm"
+                    variant="solid"
+                    onClick={() => onChange?.(value)}
+                  >
+                    Update
+                  </Button>
+                </DropdownDismiss>
+              </Footer>
+            </Panel>
+          </PanelStack>
+        </Dropdown>
+      </Tooltip>
     </div>
   );
 };

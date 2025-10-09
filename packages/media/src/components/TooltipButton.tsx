@@ -4,7 +4,7 @@
  *
  *
  * The MIT License (MIT)
- * Copyright (c) 2024 Adarsh Pastakia
+ * Copyright (c) 2025 Adarsh Pastakia
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
  * and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -21,33 +21,18 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { createContext, type RefObject, useContext } from "react";
-import { AudioState } from "../types";
-import { type WavesurferInstance } from "./wavesurfer";
+import { Button, Tooltip } from "@react-fabric/core";
+import { ButtonProps } from "@react-fabric/core/dist/types/components/button/Button";
 
-interface ContextType {
-  audioRef: RefObject<HTMLAudioElement | null>;
-  wavesurfer?: WavesurferInstance;
-
-  state: AudioState;
-
-  toggleEqs: () => void;
-  handleLoad: () => void;
-  handleError: () => void;
-}
-
-export type AudioActions =
-  | { type: "loaded" }
-  | { type: "metadata"; duration: number; volume: number; speed: number }
-  | { type: "reset"; audio: string }
-  | { type: "playing"; time: number }
-  | { type: "volume"; volume: number }
-  | { type: "speed"; speed: number }
-  | { type: "toggleEqs" }
-  | { type: "errored" }
-  | { type: "play" }
-  | { type: "pause" };
-
-export const AudioContext = createContext<ContextType>({} as ContextType);
-
-export const useAudioContext = () => useContext(AudioContext);
+export const TooltipButton = ({
+  tooltip,
+  ...props
+}: ButtonProps & {
+  tooltip: string;
+}) => {
+  return (
+    <Tooltip content={tooltip}>
+      <Button variant="link" {...props} />
+    </Tooltip>
+  );
+};

@@ -22,51 +22,11 @@
  */
 
 import { Section, ThemeProvider } from "@react-fabric/core";
-import { type RefProp } from "@react-fabric/core/dist/types/types";
-import { type CanvasRef } from "../canvas/Context";
 import { NsfwOverlay } from "../nsfw/NsfwOverlay";
 import { ImageProvider } from "./Context";
 import { Image } from "./Image";
 import { Tools } from "./Tools";
-
-export interface ImageProps extends RefProp<CanvasRef> {
-  /**
-   * image source
-   */
-  src: string;
-  /**
-   * fallback alternate source
-   */
-  fallback?: string;
-  /**
-   * NSFW overlay
-   */
-  nsfw?: boolean;
-  /**
-   * image overlay
-   */
-  overlay?: string;
-  /**
-   * default splitter toggle (default: true)
-   */
-  defaultSplitter?: boolean;
-  /**
-   * enable zoom tool (default: true)
-   */
-  enableZoom?: boolean;
-  /**
-   * crop selection handler
-   */
-  onCrop?: (box: number[], base64: string) => void;
-  /**
-   * error handler
-   */
-  onLoad?: () => void;
-  /**
-   * error handler
-   */
-  onError?: () => void;
-}
+import { ImageProps } from "./types";
 
 /**
  * ImageViewer component for displaying and interacting with images.
@@ -90,21 +50,26 @@ export interface ImageProps extends RefProp<CanvasRef> {
  *
  * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/media-imageviewer--image-viewer} for more details on the properties.
  */
-export const ImageViewer = ({
+export const ImageViewer = <T extends KeyValue = KeyValue>({
   nsfw,
   enableZoom,
   onCrop,
+  onExport,
   ...props
-}: ImageProps) => {
+}: ImageProps<T>) => {
   return (
     <ThemeProvider colorScheme="dark">
-      <ImageProvider {...props}>
-        <Section dir="ltr">
+      <Section dir="ltr">
+        <ImageProvider {...props}>
           <Image onCrop={onCrop} />
-          <Tools enableCrop={!!onCrop} enableZoom={enableZoom} />
+          <Tools
+            enableCrop={!!onCrop}
+            onExport={onExport}
+            enableZoom={enableZoom}
+          />
           {nsfw && <NsfwOverlay />}
-        </Section>
-      </ImageProvider>
+        </ImageProvider>
+      </Section>
     </ThemeProvider>
   );
 };

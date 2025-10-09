@@ -21,18 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  Button,
-  Card,
-  CoreIcons,
-  Divider,
-  Dropdown,
-  Footer,
-  Header,
-  HotKey,
-  Icon,
-} from "@react-fabric/core";
-import { Slider } from "@react-fabric/form";
+import { Button, CoreIcons, Divider, Footer, HotKey } from "@react-fabric/core";
 import {
   Fragment,
   useCallback,
@@ -41,33 +30,31 @@ import {
   useRef,
   useState,
 } from "react";
+import { Colorscape } from "../components/Colorscape";
 import { MiniSlider } from "../sliders/MiniSlider";
 import { TimeSlider } from "../sliders/TimeSlider";
-import { AnnotationTag, AnnotationTool } from "./Annotations";
+import { CommentTag, CommentTool } from "./Comments";
 import { useVideoContext } from "./Context";
 import { CutStrip } from "./CutStrip";
 import { type VideoProps } from "./types";
+import { TooltipButton } from "../components/TooltipButton";
 
 export const Tools = ({
   hasVtt = false,
   markers,
-  annotations = [],
-  enableZoom = true,
-  onAnnotationChange,
+  comments = [],
+  onCommentChange,
   onCrop,
   onCut,
+  onExport,
 }: { hasVtt?: boolean } & Pick<
-  VideoProps,
-  | "markers"
-  | "annotations"
-  | "onAnnotationChange"
-  | "onCut"
-  | "onCrop"
-  | "enableZoom"
+  VideoProps<KeyValue>,
+  "markers" | "comments" | "onCommentChange" | "onCut" | "onCrop" | "onExport"
 >) => {
   const {
     videoRef,
     state,
+    rotate,
     fitToSize,
     fitToView,
     toggleFit,
@@ -77,6 +64,7 @@ export const Tools = ({
     toggleCropping,
     startCropping,
     cancelCropping,
+    exportToBase64,
   } = useVideoContext();
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -137,6 +125,8 @@ export const Tools = ({
       startCropping: () => startCropping(),
       cancelCropping: () => cancelCropping(),
       pause: () => videoRef.current?.pause(),
+      rotateDown: () => rotate(-90),
+      rotateUp: () => rotate(90),
       togglePlay: async () =>
         videoRef.current?.paused
           ? await videoRef.current?.play()
@@ -176,33 +166,31 @@ export const Tools = ({
     [],
   );
 
-  const updateAnnotation = useCallback(
+  const updateComment = useCallback(
     (text: string, index = -1) => {
       if (text) {
         if (index === -1) {
-          onAnnotationChange?.([
-            ...annotations,
+          onCommentChange?.([
+            ...comments,
             [videoRef.current?.currentTime ?? 0, text],
           ]);
         } else {
-          const newAnnotations = [...annotations];
-          if (text === "[DELETE]") newAnnotations.splice(index, 1);
-          else newAnnotations[index][1] = text;
-          onAnnotationChange?.(newAnnotations);
+          const newComments = [...comments];
+          if (text === "[DELETE]") newComments.splice(index, 1);
+          else newComments[index][1] = text;
+          onCommentChange?.(newComments);
         }
       }
     },
-    [annotations],
+    [comments],
   );
 
   return (
-    <Footer flex className="gap-0 select-none">
+    <Footer className="select-none">
       {state.isLoaded && (
         <Fragment>
           <HotKey global keyCombo="space" handler={handlers.togglePlay} />
-          {enableZoom && (
-            <HotKey global keyCombo="f" handler={handlers.toggleFit} />
-          )}
+          <HotKey global keyCombo="f" handler={handlers.toggleFit} />
           {onCut && <HotKey global keyCombo="x" handler={handlers.cutStart} />}
           {onCut && (
             <HotKey global keyCombo="escape" handler={handlers.cutStop} />
@@ -227,8 +215,9 @@ export const Tools = ({
           <HotKey global keyCombo="shift+>" handler={handlers.seekUp} />
         </Fragment>
       )}
+      {/* video controls */}
       {!cut && (
-        <Fragment>
+        <div className="flex gap-0 items-center">
           <Button
             variant="link"
             aria-label="togglePlay"
@@ -271,150 +260,13 @@ export const Tools = ({
               videoRef.current && (videoRef.current.playbackRate = v)
             }
           />
-          <Dropdown placement="top">
-            <Button
-              variant="link"
-              disabled={!state.isLoaded}
-              aria-label="rotate-ccw"
-              icon={CoreIcons.settings}
-            />
-            <Card bodyClassName="p-1" className="w-64">
-              <Header flex justify="end">
-                <Button size="xs" onClick={resetColor}>
-                  Reset
-                </Button>
-              </Header>
-              <Slider
-                min={0}
-                max={10}
-                step={0.1}
-                showLabels
-                value={state.colorscape.saturate}
-                onSlide={(v) => adjustColor("saturate", v ?? 0)}
-                onChange={(v) => adjustColor("saturate", v ?? 0)}
-                minLabel={(<Icon icon={CoreIcons.mediaSaturate} />) as any}
-                maxLabel={
-                  (
-                    <div className="text-xs w-12">
-                      {state.colorscape.saturate.toFixed(2)}
-                    </div>
-                  ) as any
-                }
-              />
-              <Slider
-                min={0}
-                max={10}
-                step={0.1}
-                showLabels
-                value={state.colorscape.contrast}
-                onSlide={(v) => adjustColor("contrast", v ?? 0)}
-                onChange={(v) => adjustColor("contrast", v ?? 0)}
-                minLabel={(<Icon icon={CoreIcons.mediaContrast} />) as any}
-                maxLabel={
-                  (
-                    <div className="text-xs w-12">
-                      {state.colorscape.contrast.toFixed(2)}
-                    </div>
-                  ) as any
-                }
-              />
-              <Slider
-                min={0}
-                max={10}
-                step={0.1}
-                showLabels
-                value={state.colorscape.brightness}
-                onSlide={(v) => adjustColor("brightness", v ?? 0)}
-                onChange={(v) => adjustColor("brightness", v ?? 0)}
-                minLabel={(<Icon icon={CoreIcons.mediaLightness} />) as any}
-                maxLabel={
-                  (
-                    <div className="text-xs w-12">
-                      {state.colorscape.brightness.toFixed(2)}
-                    </div>
-                  ) as any
-                }
-              />
-              <Slider
-                min={0}
-                max={360}
-                step={1}
-                showLabels
-                value={state.colorscape.hue}
-                onSlide={(v) => adjustColor("hue", v ?? 0)}
-                onChange={(v) => adjustColor("hue", v ?? 0)}
-                minLabel={(<Icon icon={CoreIcons.mediaColor} />) as any}
-                maxLabel={
-                  (
-                    <div className="text-xs w-12">
-                      {state.colorscape.hue.toFixed(2)}
-                    </div>
-                  ) as any
-                }
-              />
-              <Slider
-                min={0}
-                max={1}
-                step={1}
-                showLabels
-                value={state.colorscape.invert}
-                onSlide={(v) => adjustColor("invert", v ?? 0)}
-                onChange={(v) => adjustColor("invert", v ?? 0)}
-                minLabel={(<Icon icon={CoreIcons.mediaInvert} />) as any}
-                maxLabel={
-                  (
-                    <div className="text-xs w-12">
-                      {state.colorscape.invert.toFixed(2)}
-                    </div>
-                  ) as any
-                }
-              />
-            </Card>
-          </Dropdown>
           <Divider vertical />
-          {enableZoom && (
-            <Fragment>
-              <Button
-                variant="link"
-                aria-label="fit-to-view"
-                onClick={fitToView}
-                disabled={!state.isLoaded}
-                icon={CoreIcons.mediaFitToView}
-              />
-              <Button
-                variant="link"
-                aria-label="fit-to-size"
-                onClick={fitToSize}
-                disabled={!state.isLoaded}
-                icon={CoreIcons.mediaAspect}
-              />
-              <Divider vertical />
-            </Fragment>
-          )}
-          {onAnnotationChange && (
-            <AnnotationTool
-              onChange={updateAnnotation}
-              onOpen={handlers.pause}
-            />
-          )}
-          {onCrop && !state.isPlaying && (
-            <Button
-              aria-label="crop"
-              disabled={!state.isLoaded}
-              variant={state.cropping ? "solid" : "link"}
-              icon={CoreIcons.mediaCrop}
-              onClick={toggleCropping}
-            />
-          )}
-          {onCut && (
-            <Button
-              variant="link"
-              aria-label="toggle-cut"
-              onClick={() => setCut(true)}
-              disabled={!state.isLoaded}
-              icon={CoreIcons.cut}
-            />
-          )}
+          <Colorscape
+            disabled={!state.isLoaded}
+            colorscape={state.colorscape}
+            resetColor={resetColor}
+            adjustColor={adjustColor}
+          />
           {hasVtt && (
             <Button
               variant="link"
@@ -428,6 +280,7 @@ export const Tools = ({
               }
             />
           )}
+          <Divider vertical />
           <TimeSlider
             time={state.time}
             duration={state.duration}
@@ -439,25 +292,97 @@ export const Tools = ({
               ref={canvasRef}
               className="pointer-events-none absolute inset-y-0 inset-x-px w-full h-full block mix-blend-color-dodge"
             />
-            {annotations?.map(([time, text], idx) => (
-              <AnnotationTag
+            {comments?.map(([time, text], idx) => (
+              <CommentTag
                 key={idx}
                 time={time}
                 text={text}
+                currentTime={state.time}
                 duration={state.duration}
                 onPlay={() => [
                   videoRef.current && (videoRef.current.currentTime = time),
                   videoRef.current?.play(),
                 ]}
-                onDelete={() => updateAnnotation("[DELETE]", idx)}
-                onChange={(t: string) => updateAnnotation(t, idx)}
+                onDelete={() => updateComment("[DELETE]", idx)}
+                onChange={(t: string) => updateComment(t, idx)}
               />
             ))}
           </TimeSlider>
-        </Fragment>
+        </div>
+      )}
+      {/* extra action controls */}
+      {!cut && (
+        <div className="flex gap-0 items-center justify-center">
+          <TooltipButton
+            tooltip="Fit to View (F)"
+            aria-label="fit-to-view"
+            onClick={fitToView}
+            disabled={!state.isLoaded}
+            icon={CoreIcons.mediaFitToView}
+          />
+          <TooltipButton
+            tooltip="Fit to Size (F)"
+            aria-label="fit-to-size"
+            onClick={fitToSize}
+            disabled={!state.isLoaded}
+            icon={CoreIcons.mediaAspect}
+          />
+          <Divider vertical />
+          {onCommentChange && (
+            <CommentTool onChange={updateComment} onOpen={handlers.pause} />
+          )}
+          {onCrop && !state.isPlaying && (
+            <TooltipButton
+              tooltip={
+                state.cropping ? "Cancel Cropping (Esc)" : "Start Cropping (C)"
+              }
+              aria-label="crop"
+              disabled={!state.isLoaded}
+              variant={state.cropping ? "solid" : "link"}
+              icon={CoreIcons.mediaCrop}
+              onClick={toggleCropping}
+            />
+          )}
+          {onCut && (
+            <TooltipButton
+              tooltip="Cut video part (X)"
+              aria-label="toggle-cut"
+              onClick={() => setCut(true)}
+              disabled={!state.isLoaded}
+              icon={CoreIcons.cut}
+            />
+          )}
+          {onExport && (
+            <TooltipButton
+              tooltip="Export video frame to image"
+              aria-label="export"
+              disabled={!state.isLoaded}
+              icon={CoreIcons.mediaCapture}
+              onClick={() => onExport?.(state.time, exportToBase64() ?? "")}
+            />
+          )}
+          <Divider vertical />
+          <TooltipButton
+            tooltip="Rotate Counter Clockwise ([)"
+            disabled={!state.isLoaded}
+            aria-label="rotate-ccw"
+            icon={CoreIcons.mediaRotateCCW}
+            onClick={handlers.rotateDown}
+          />
+          <TooltipButton
+            tooltip="Rotate Clockwise (])"
+            disabled={!state.isLoaded}
+            aria-label="rotate-cw"
+            icon={CoreIcons.mediaRotateCW}
+            onClick={handlers.rotateUp}
+          />
+          <label className="text-xs basis-16 whitespace-nowrap">
+            Rotate: {state.rotate}°
+          </label>
+        </div>
       )}
       {cut && (
-        <Fragment>
+        <div className="flex gap-1 items-center">
           <CutStrip
             onCut={(start, end) => [onCut?.(start, end), setCut(false)]}
           />
@@ -468,7 +393,7 @@ export const Tools = ({
             disabled={!state.isLoaded}
             icon={CoreIcons.close}
           />
-        </Fragment>
+        </div>
       )}
     </Footer>
   );

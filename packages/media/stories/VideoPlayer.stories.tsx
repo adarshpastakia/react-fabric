@@ -26,7 +26,9 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { fn } from "storybook/test";
 import { VideoPlayer } from "../src";
+import { VideoAnnotation } from "../src/types";
 import src from "/assets/samples/small_video.mp4";
+import bunny from "/assets/samples/bad_bunny.mp4";
 
 const meta: Meta = {
   component: VideoPlayer,
@@ -85,8 +87,8 @@ export const _VideoPlayer: Story = {
             {...args}
             markers={markers}
             vttText={vtt}
-            annotations={annotations}
-            onAnnotationChange={setAnnotations}
+            comments={annotations}
+            onCommentChange={setAnnotations}
           />
         </Viewport>
       </div>
@@ -95,6 +97,67 @@ export const _VideoPlayer: Story = {
   args: {
     src,
     onCut: fn(),
-    onCrop: fn(),
+  },
+};
+
+export const VideoPlayground: Story = {
+  render: (args) => {
+    const [comments, setComments] = useState<AnyObject>([
+      [2.49, "Testing"],
+      [18.24, "Testing"],
+    ]);
+    const [annotations, setAnnotations] = useState<VideoAnnotation[]>([
+      {
+        start: 5,
+        end: 35,
+        box: "878.0821384644843,194.20218353944534,311.53266942786024,238.70685060056823",
+        fill: "#0F5F9051",
+        stroke: 2,
+        labelTop: "Image 1",
+        labelBottom: "80%",
+        colorBottom: "#3D8C6BFF",
+      },
+      {
+        start: 5,
+        end: 35,
+        box: "502.5,330,294,195",
+        fill: "#F50F9051",
+        stroke: 2,
+        labelTop: "Image 2",
+        labelBottom: "50%",
+        colorBottom: "#8B8725FF",
+      },
+    ]);
+
+    const [exp, setExp] = useState<string>();
+
+    return (
+      <div className="min-h-[600px]">
+        <Viewport>
+          <VideoPlayer
+            {...args}
+            comments={comments}
+            onCommentChange={setComments}
+            annotations={annotations}
+            onCrop={(ts, box, base64) => setExp(base64)}
+            onExport={(ts, base64) => setExp(base64)}
+          />
+          {exp && (
+            <div
+              onClick={() => setExp("")}
+              className="absolute overflow-hidden inset-0 bg-black/90 z-10 p-8"
+            >
+              <img
+                src={exp}
+                className="size-full object-scale-down border-4 bg-black"
+              />
+            </div>
+          )}
+        </Viewport>
+      </div>
+    );
+  },
+  args: {
+    src: bunny,
   },
 };

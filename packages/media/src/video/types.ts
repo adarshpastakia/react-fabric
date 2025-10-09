@@ -22,7 +22,8 @@
  */
 
 import { type RefProp } from "@react-fabric/core/dist/types/types";
-import { type CanvasRef } from "../canvas/Context";
+import { type CanvasRef } from "../components/Canvas";
+import { VideoAnnotation } from "../types";
 
 export interface VideoPlayerRef extends CanvasRef {
   play: () => void;
@@ -34,7 +35,7 @@ export interface VideoPlayerRef extends CanvasRef {
   off: HTMLVideoElement["removeEventListener"];
 }
 
-export interface VideoProps extends RefProp<VideoPlayerRef> {
+export interface VideoProps<T> extends RefProp<VideoPlayerRef> {
   /**
    * video source
    */
@@ -52,10 +53,6 @@ export interface VideoProps extends RefProp<VideoPlayerRef> {
    */
   nsfw?: boolean;
   /**
-   * enable zoom tool (default: true)
-   */
-  enableZoom?: boolean;
-  /**
    *
    */
   vttText?: string;
@@ -64,18 +61,24 @@ export interface VideoProps extends RefProp<VideoPlayerRef> {
    */
   markers?: Array<[time: number, score: number]>;
   /**
-   * annotation list
+   * comment list
    */
-  annotations?: Array<[time: number, text: string]>;
-  onAnnotationChange?: (
-    annotations: Array<[time: number, text: string]>,
-  ) => void;
+  comments?: Array<[time: number, text: string]>;
+  onCommentChange?: (comments: Array<[time: number, text: string]>) => void;
+  /**
+   * annotations to be rendered on video
+   */
+  annotations?: VideoAnnotation<T>[];
   /**
    * cut handler
    * @param start - start time
    * @param end - end time
    */
   onCut?: (start: number, end: number) => void;
+  /**
+   * export current view as base64
+   */
+  onExport?: (ts: number, base64: string) => void;
   /**
    * crop selection handler
    * @param ts - timestamp

@@ -23,9 +23,9 @@
 
 import { AnimationBars, ErrorBoundary } from "@react-fabric/core";
 import { useCallback, useEffect, useState } from "react";
-import { useCanvasContext } from "../canvas/Context";
+import { useCanvasContext } from "../components/Canvas";
+import { Cropper } from "../components/Cropper";
 import { useVideoContext } from "./Context";
-import { Cropper } from "./Cropper";
 
 export const Video = ({
   poster,
@@ -49,6 +49,7 @@ export const Video = ({
     handleVolumeChange,
     handleSeeking,
     handleTimeUpdate,
+    toggleCropping,
   } = useVideoContext();
   const { canvasRef } = useCanvasContext();
 
@@ -101,8 +102,8 @@ export const Video = ({
           <div
             className="origin-center relative pointer-events-none"
             style={{
-              width: state.videoWidth,
-              height: state.videoHeight,
+              width: state.mediaWidth,
+              height: state.mediaHeight,
               transform: `rotate(${state.rotate}deg)`,
             }}
           >
@@ -113,13 +114,14 @@ export const Video = ({
                 onLoadedData={handleLoad}
                 onError={handleError}
                 ref={videoRef}
-                className="object-contain size-full"
+                className="size-full"
                 onPlay={handlePlay}
                 onPause={handlePause}
                 onRateChange={handleRateChange}
                 onVolumeChange={handleVolumeChange}
                 onSeeking={handleSeeking}
                 onTimeUpdate={handleTimeUpdate}
+                crossOrigin="anonymous"
               >
                 {state.src && <source src={state.src} />}
                 <track kind="captions" src={vttSrc} default />
@@ -127,14 +129,21 @@ export const Video = ({
             )}
             <canvas
               ref={canvasRef}
-              width={state.videoWidth}
-              height={state.videoHeight}
+              width={state.mediaWidth}
+              height={state.mediaHeight}
               className="absolute inset-0"
             />
           </div>
         </div>
 
-        {state.cropping && <Cropper onCrop={onCrop} />}
+        {onCrop && state.cropping && (
+          <Cropper
+            state={state}
+            mediaRef={videoRef}
+            onCropEnd={() => toggleCropping()}
+            onCrop={(box, base64) => onCrop(state.time, box, base64)}
+          />
+        )}
         {state.isLoading && <AnimationBars />}
       </ErrorBoundary>
     </div>

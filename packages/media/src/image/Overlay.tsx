@@ -22,9 +22,9 @@
  */
 
 import { CoreIcons, Icon, useResize } from "@react-fabric/core";
+import classNames from "classnames";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useImageContext } from "./Context";
-import classNames from "classnames";
 
 export const Overlay = ({ src }: { src: string }) => {
   const { state } = useImageContext();
@@ -80,8 +80,8 @@ export const Overlay = ({ src }: { src: string }) => {
           <div
             className="origin-center relative m-auto pointer-events-none"
             style={{
-              width: state.imageWidth,
-              height: state.imageHeight,
+              width: state.mediaWidth,
+              height: state.mediaHeight,
               transform: `rotate(${state.rotate}deg)`,
             }}
           >

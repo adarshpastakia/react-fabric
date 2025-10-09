@@ -22,7 +22,7 @@
  */
 
 import { type RefProp } from "@react-fabric/core/dist/types/types";
-import { getBox } from "@react-fabric/utilities";
+import { EMPTY_ARRAY, getBox } from "@react-fabric/utilities";
 import {
   createContext,
   type PropsWithChildren,
@@ -32,8 +32,9 @@ import {
   useEffect,
   useImperativeHandle,
   useReducer,
-  useRef,
 } from "react";
+import { ImageAnnotation } from "../types";
+import { an } from "react-router/dist/development/register-DCE0tH5m";
 
 interface ContextType {
   canvasRef: RefObject<HTMLCanvasElement | null>;
@@ -49,60 +50,50 @@ export interface CanvasRef {
    * NOTE: video must be paused before calling this method
    */
   toBase64: () => string | null;
-  drawBox: (
-    boundingBox: BoxObject["box"],
-    options?: Omit<BoxObject, "box" | "polygon">,
-  ) => void;
-  drawPolygon: (
-    boundingBox: BoxObject["polygon"],
-    options?: Omit<BoxObject, "box" | "polygon">,
-  ) => void;
-  hilightBox: (boundingBox: BoxObject["box"]) => void;
-  hilightPolygon: (boundingBox: BoxObject["polygon"]) => void;
-}
-
-interface BoxObject {
-  box?: string | [number, number, number, number];
-  polygon?: string[] | Array<[number, number, number, number]>;
-  colorTop?: string;
-  colorBottom?: string;
-  labelTop?: string;
-  labelBottom?: string;
-  stroke?: string;
-  fill?: string;
+  drawBox: (options?: Omit<ImageAnnotation, "polygon">) => void;
+  drawPolygon: (options?: Omit<ImageAnnotation, "box">) => void;
+  hilightBox: (boundingBox: ImageAnnotation["box"]) => void;
+  hilightPolygon: (boundingBox: ImageAnnotation["polygon"]) => void;
 }
 
 const Context = createContext<ContextType>({} as ContextType);
 
 export const CanvasProvider = ({
-  children,
   ref,
-  mediaEl,
+  children,
+  canvasRef,
+  mediaRef,
   width,
-  exportToBase64,
+  annotations = EMPTY_ARRAY,
 }: PropsWithChildren &
   RefProp<CanvasRef> & {
     width: number;
-    exportToBase64: () => string | null;
-    mediaEl: RefObject<HTMLImageElement | HTMLVideoElement | null>;
+    annotations?: ImageAnnotation[];
+    canvasRef: RefObject<HTMLCanvasElement | null>;
+    mediaRef: RefObject<HTMLImageElement | HTMLVideoElement | null>;
   }) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  const [state, dispatch] = useReducer(
-    (state: BoxObject[], action: KeyValue) => {
+  const [state, dispatch] = useReducer<ImageAnnotation[], any>(
+    (state: ImageAnnotation[], action: KeyValue) => {
       if (action.type === "clear") {
         return [];
+      }
+      if (action.type === "change") {
+        return [...action.payload];
       }
       if (action.type === "unhilight") {
         return [...state];
       }
       if (action.type === "drawBox") {
-        return [...state, action.payload as BoxObject];
+        return [...state, action.payload as ImageAnnotation];
       }
       return state;
     },
-    [] as BoxObject[],
+    annotations as ImageAnnotation[],
   );
+
+  useEffect(() => {
+    dispatch({ type: "change", payload: annotations });
+  }, [annotations]);
 
   useImperativeHandle(
     ref,
@@ -114,14 +105,11 @@ export const CanvasProvider = ({
         unhilight: () => {
           dispatch({ type: "unhilight" });
         },
-        toBase64: () => {
-          return exportToBase64();
+        drawBox: (options = {}) => {
+          dispatch({ type: "drawBox", payload: { ...options } });
         },
-        drawBox: (box, options = {}) => {
-          dispatch({ type: "drawBox", payload: { box, ...options } });
-        },
-        drawPolygon: (polygon, options = {}) => {
-          dispatch({ type: "drawBox", payload: { polygon, ...options } });
+        drawPolygon: (options = {}) => {
+          dispatch({ type: "drawBox", payload: { ...options } });
         },
         hilightBox: (box) => {
           dispatch({ type: "hilight", payload: box });
@@ -129,13 +117,13 @@ export const CanvasProvider = ({
         hilightPolygon: (polygon) => {
           dispatch({ type: "hilightPolygon", payload: polygon });
         },
-      };
+      } as CanvasRef;
     },
-    [canvasRef, exportToBase64, dispatch],
+    [canvasRef, dispatch],
   );
 
   const getRatio = useCallback(() => {
-    const el = mediaEl.current;
+    const el = mediaRef.current;
     let ratio = 1;
     if (el instanceof HTMLImageElement) {
       ratio = Math.min(
@@ -164,9 +152,15 @@ export const CanvasProvider = ({
           y *= ratio;
           w *= ratio;
           h *= ratio;
-          context.lineWidth = 2;
-          context.strokeStyle = options?.stroke ?? "#fc0";
-          context.strokeRect(x, y, w, h);
+          if (options?.fill) {
+            context.fillStyle = options.fill;
+            context.fillRect(x, y, w, h);
+          }
+          if (options?.stroke || options?.strokeColor) {
+            context.lineWidth = options?.stroke ?? 1;
+            context.strokeStyle = options?.strokeColor ?? "#fc0";
+            context.strokeRect(x, y, w, h);
+          }
           if (options.labelTop) {
             const labelX = x - 1;
             let labelY = y - 18;
@@ -203,8 +197,13 @@ export const CanvasProvider = ({
           context.globalCompositeOperation = "source-over";
         }
         if (polygon != null) {
-          context.lineWidth = 2;
-          context.strokeStyle = options?.stroke ?? "#fc0";
+          if (options?.stroke || options?.strokeColor) {
+            context.lineWidth = options?.stroke ?? 1;
+            context.strokeStyle = options?.strokeColor ?? "#fc0";
+          }
+          if (options?.fill) {
+            context.fillStyle = options.fill;
+          }
           context.beginPath();
           polygon.forEach((box, i) => {
             const [x, y] = getBox(box);
@@ -212,7 +211,8 @@ export const CanvasProvider = ({
             i > 0 && context.lineTo(x * ratio, y * ratio);
           });
           context.closePath();
-          context.stroke();
+          (options?.stroke || options?.strokeColor) && context.stroke();
+          options?.fill && context.fill();
         }
       });
     }

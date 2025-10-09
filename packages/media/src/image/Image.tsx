@@ -22,19 +22,22 @@
  */
 
 import { AnimationBars, ErrorBoundary } from "@react-fabric/core";
-import { useCanvasContext } from "../canvas/Context";
-import { useImageContext } from "./Context";
-import { Cropper } from "./Cropper";
-import { Overlay } from "./Overlay";
 import classNames from "classnames";
+import { useCanvasContext } from "../components/Canvas";
+import { Cropper } from "../components/Cropper";
+import { useImageContext } from "./Context";
+import { Overlay } from "./Overlay";
+import { ImageProps } from "./types";
 
-export const Image = ({
-  onCrop,
-}: {
-  onCrop?: (box: number[], base64: string) => void;
-}) => {
-  const { imageRef, scrollerRef, state, handleLoad, handleError } =
-    useImageContext();
+export const Image = ({ onCrop }: Pick<ImageProps<KeyValue>, "onCrop">) => {
+  const {
+    imageRef,
+    scrollerRef,
+    state,
+    toggleCropping,
+    handleLoad,
+    handleError,
+  } = useImageContext();
   const { canvasRef } = useCanvasContext();
 
   const startDrag = (e: React.MouseEvent) => {
@@ -95,8 +98,8 @@ export const Image = ({
               state.colorScheme.startsWith("dark") && "bg-light",
             )}
             style={{
-              width: state.imageWidth,
-              height: state.imageHeight,
+              width: state.mediaWidth,
+              height: state.mediaHeight,
               transform: `rotate(${state.rotate}deg)`,
             }}
           >
@@ -109,13 +112,13 @@ export const Image = ({
                 ref={imageRef}
                 loading="lazy"
                 crossOrigin="anonymous"
-                className="object-contain size-full"
+                className="size-full"
               />
             )}
             <canvas
               ref={canvasRef}
-              width={state.imageWidth}
-              height={state.imageHeight}
+              width={state.mediaWidth}
+              height={state.mediaHeight}
               className="absolute inset-0"
             />
           </div>
@@ -123,8 +126,16 @@ export const Image = ({
 
         {state.isLoading && <AnimationBars />}
       </ErrorBoundary>
-      {state.cropping && <Cropper onCrop={onCrop} />}
       {state.overlay && state.splitter && <Overlay src={state.overlay} />}
+
+      {onCrop && state.cropping && (
+        <Cropper
+          state={state}
+          mediaRef={imageRef}
+          onCrop={onCrop}
+          onCropEnd={() => toggleCropping()}
+        />
+      )}
     </div>
   );
 };
