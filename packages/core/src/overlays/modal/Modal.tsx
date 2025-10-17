@@ -33,7 +33,7 @@ import {
 import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import {
-  type ElementType,
+  type ReactElement,
   isValidElement,
   useCallback,
   useEffect,
@@ -57,7 +57,7 @@ export interface ModalProps
     TestProps,
     Omit<IconProps, "icon">,
     ChildrenProp {
-  icon?: string | ElementType<IconProps>;
+  icon?: string | ReactElement<IconProps>;
   /**
    * header className
    */

@@ -32,12 +32,7 @@ import {
 } from "@floating-ui/react";
 import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
-import {
-  isValidElement,
-  useCallback,
-  useEffect,
-  type ElementType,
-} from "react";
+import { isValidElement, ReactElement, useCallback, useEffect } from "react";
 import { Loading } from "../../components/animations/Animations";
 import { Icon } from "../../components/icon/Icon";
 import { Header } from "../../core/headfoot/HeadFoot";
@@ -57,7 +52,7 @@ export interface FlyoutProps
     TestProps,
     Omit<IconProps, "icon">,
     ChildrenProp {
-  icon?: string | ElementType<IconProps>;
+  icon?: string | ReactElement<IconProps>;
   /**
    * flyout alignment
    */
