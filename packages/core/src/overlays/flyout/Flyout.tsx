@@ -32,9 +32,9 @@ import {
 } from "@floating-ui/react";
 import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { isValidElement, ReactElement, useCallback, useEffect } from "react";
+import { isValidElement, useCallback, useEffect } from "react";
 import { Loading } from "../../components/animations/Animations";
-import { Icon } from "../../components/icon/Icon";
+import { getIconProps, Icon, IconProps } from "../../components/icon/Icon";
 import { Header } from "../../core/headfoot/HeadFoot";
 import { HotKeyWrapper } from "../../hotkeys/HotKeyWrapper";
 import {
@@ -42,17 +42,12 @@ import {
   type CallbackReturn,
   type ChildrenProp,
   type Elements,
-  type IconProps,
   type TestProps,
 } from "../../types";
 import { CoreIcons } from "../../types/icons";
 
-export interface FlyoutProps
-  extends AriaProps,
-    TestProps,
-    Omit<IconProps, "icon">,
-    ChildrenProp {
-  icon?: string | ReactElement<IconProps>;
+export interface FlyoutProps extends AriaProps, TestProps, ChildrenProp {
+  icon?: IconProps;
   /**
    * flyout alignment
    */
@@ -113,10 +108,7 @@ export interface FlyoutProps
 
 export const Flyout = ({
   icon,
-  iconBg,
-  iconColor,
   iconClassName,
-  rtlFlip,
   title,
   actions,
   closeOnClick,
@@ -231,11 +223,8 @@ export const Flyout = ({
             >
               {isString(icon) && (
                 <Icon
-                  icon={icon}
-                  bg={iconBg}
-                  color={iconColor}
                   className={classNames(iconClassName, "p-1")}
-                  rtlFlip={rtlFlip}
+                  {...getIconProps(icon)}
                 />
               )}
               {isValidElement(icon) && icon}

@@ -31,7 +31,7 @@ import {
   type ReactNode,
 } from "react";
 import { Loading } from "../../components/animations/Animations";
-import { Icon } from "../../components/icon/Icon";
+import { getIconProps, Icon, IconProps } from "../../components/icon/Icon";
 import { useLayoutEffectDebugger } from "../../hooks/useEffectDebugger";
 import { usePropToggle } from "../../hooks/usePropToggle";
 import { useResize } from "../../hooks/useResize";
@@ -40,15 +40,13 @@ import {
   type CollapseProps,
   type CssProp,
   type Elements,
-  type IconProps,
   type TestProps,
 } from "../../types";
 import { CoreIcons } from "../../types/icons";
 import { ErrorBoundary } from "../boundary/ErrorBoundary";
 
 export interface AsideProps
-  extends IconProps,
-    ChildrenProp,
+  extends ChildrenProp,
     CollapseProps,
     CssProp,
     TestProps {
@@ -60,6 +58,10 @@ export interface AsideProps
    * align inline-end
    */
   align?: "start" | "end";
+  /**
+   * icon path or props
+   */
+  icon?: IconProps;
   /**
    * header actions
    */
@@ -148,9 +150,6 @@ export const Aside = ({
   children,
   title,
   icon,
-  iconBg,
-  iconColor,
-  rtlFlip,
   className,
   bodyClassName,
   headerClassName,
@@ -272,14 +271,11 @@ export const Aside = ({
         )}
         {icon && (
           <Icon
-            icon={icon}
-            bg={iconBg}
-            color={iconColor}
-            rtlFlip={rtlFlip}
             className={classNames(
               "fabric-asideIcon",
               "p-1 text-lg select-none pointer-events-none",
             )}
+            {...getIconProps(icon)}
           />
         )}
         {actions && <div className={"fabric-asideActions"}>{actions}</div>}

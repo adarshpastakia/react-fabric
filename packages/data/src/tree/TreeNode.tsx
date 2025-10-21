@@ -21,7 +21,13 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Badge, CoreIcons, getBadgeProps, Icon } from "@react-fabric/core";
+import {
+  Badge,
+  CoreIcons,
+  getBadgeProps,
+  getIconProps,
+  Icon,
+} from "@react-fabric/core";
 import { isEmpty, isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { isValidElement, useMemo } from "react";
@@ -79,7 +85,7 @@ export const TreeNode = ({
 
   const nodeIcon = useMemo(() => {
     if (node.icon) return node.icon;
-    return node.leaf ? defaultLeafIcon : defaultNodeIcon;
+    return { icon: node.leaf ? defaultLeafIcon : defaultNodeIcon };
   }, [defaultLeafIcon, defaultNodeIcon, node.icon]);
 
   const canCheck = useMemo(() => {
@@ -167,14 +173,7 @@ export const TreeNode = ({
           {nodeIcon && (
             <div className="flex-content max-w-6 me-1 self-center leading-none">
               {isValidElement(nodeIcon) && nodeIcon}
-              {isString(nodeIcon) && (
-                <Icon
-                  icon={nodeIcon}
-                  bg={node.iconBg}
-                  color={node.iconColor}
-                  rtlFlip={node.rtlFlip}
-                />
-              )}
+              {isString(nodeIcon) && <Icon {...getIconProps(nodeIcon)} />}
             </div>
           )}
           {node.childSelected && !node.open && (

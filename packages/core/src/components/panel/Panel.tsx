@@ -26,25 +26,23 @@ import { useMemo } from "react";
 import { type ContentProps } from "../../core/content/Content";
 import { type HeadFootProps } from "../../core/headfoot/HeadFoot";
 import { usePropToggle } from "../../hooks/usePropToggle";
+import { HotKey } from "../../hotkeys/HotKey";
 import {
   type AriaProps,
   type ChildrenProp,
   type CollapseProps,
   type CssProp,
   type ExpandProps,
-  type IconProps,
   type TestProps,
 } from "../../types";
 import { CoreIcons } from "../../types/icons";
 import { Loading } from "../animations/Animations";
-import { Icon } from "../icon/Icon";
-import { HotKey } from "../../hotkeys/HotKey";
+import { getIconProps, Icon, IconProps } from "../icon/Icon";
 
 export interface PanelProps
   extends CssProp,
     AriaProps,
     TestProps,
-    IconProps,
     ExpandProps,
     CollapseProps,
     ChildrenProp<HeadFootProps | ContentProps> {
@@ -68,6 +66,10 @@ export interface PanelProps
    * title css classname(s)
    */
   titleClassName?: string;
+  /**
+   * icon path or props
+   */
+  icon?: IconProps;
   /**
    * loading state
    */
@@ -147,9 +149,6 @@ export const Panel = ({
   title,
   actions,
   icon,
-  iconBg,
-  iconColor,
-  rtlFlip,
   panelId,
   height,
   width,
@@ -227,11 +226,8 @@ export const Panel = ({
         )}
         {icon && (
           <Icon
-            icon={icon}
-            bg={iconBg}
-            color={iconColor}
-            rtlFlip={rtlFlip}
             className="p-2 text-md select-none pointer-events-none"
+            {...getIconProps(icon)}
           />
         )}
         <div

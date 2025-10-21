@@ -29,7 +29,6 @@ import {
   type ChildProp,
   type ColorType,
   type CssProp,
-  type IconProps,
   type PaletteType,
   type PolymorphicProps,
   type RefProp,
@@ -37,12 +36,11 @@ import {
   type TestProps,
 } from "../../types";
 import { getColor } from "../../utils";
-import { Icon } from "../icon/Icon";
+import { getIconProps, Icon, IconProps } from "../icon/Icon";
 
 export interface ChipProps
   extends CssProp,
     AriaProps,
-    IconProps,
     TestProps,
     ChildProp<string | ReactElement>,
     RefProp<HTMLDivElement> {
@@ -62,6 +60,10 @@ export interface ChipProps
    * full rounded edges
    */
   rounded?: boolean;
+  /**
+   * icon path or props
+   */
+  icon?: IconProps;
   /**
    * disabled state
    */
@@ -124,9 +126,6 @@ export const Chip = <Tag extends React.ElementType = "div">({
   color,
   variant,
   icon,
-  iconBg,
-  iconColor,
-  rtlFlip,
   disabled,
   onClick,
   onIconClick,
@@ -197,11 +196,8 @@ export const Chip = <Tag extends React.ElementType = "div">({
         <Icon
           data-ref="chipIcon"
           className={classNames("fabric-chipIcon", "m-1 flex-content")}
-          icon={icon}
-          bg={iconBg}
           onClick={onIconClick}
-          color={iconColor}
-          rtlFlip={rtlFlip}
+          {...getIconProps(icon)}
         />
       )}
       {children && (

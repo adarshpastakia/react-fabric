@@ -30,8 +30,9 @@ import { HotKeyLabel } from "../../hotkeys/HotKeyLabel";
 import { Tooltip } from "../../overlays";
 import { type PolymorphicProps } from "../../types";
 import { Badge, getBadgeProps } from "../badge/Badge";
-import { Icon } from "../icon/Icon";
+import { getIconProps, Icon } from "../icon/Icon";
 import { type MenuItemProps } from "./types";
+import { get } from "http";
 
 /**
  * A menu item component that can be used in a dropdown or menu.
@@ -60,10 +61,7 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
   color = "primary",
   className,
   icon,
-  iconBg,
-  iconColor,
   appendLabel,
-  rtlFlip,
   altIcon,
   id,
   active,
@@ -98,13 +96,10 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
     return (
       <Icon
         className={classNames("fabric-menuIcon", minimal && "minimal")}
-        icon={path ?? ""}
-        bg={iconBg}
-        color={iconColor}
-        rtlFlip={rtlFlip}
+        {...getIconProps(path ?? "")}
       />
     );
-  }, [icon, iconBg, iconColor, rtlFlip, minimal, label]);
+  }, [icon, minimal, label]);
 
   const Wrapper = useCallback(
     ({ children, ...rest }: AnyObject) => {

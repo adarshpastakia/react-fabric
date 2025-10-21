@@ -21,10 +21,10 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { IconProps } from "@react-fabric/core/dist/types/components/icon/Icon";
 import {
   type CssProp,
   type Elements,
-  type IconProps,
   type RefProp,
   type TestProps,
 } from "@react-fabric/core/dist/types/types";
@@ -62,14 +62,12 @@ export const COL_DEFAULT_WIDTH = "12rem";
  * @property {KeyValue} [valueMap] - Mapping of values for the column.
  * @property {(value: AnyObject, data: T, index: number) => Elements<AnyObject>} [renderer] - Custom renderer function for the column values.
  */
-export interface TableColumn<T = KeyValue>
-  extends CssProp,
-    IconProps,
-    TestProps {
+export interface TableColumn<T = KeyValue> extends CssProp, TestProps {
   id: keyof T | string;
   field?: string;
   label?: string;
   tooltip?: string;
+  icon?: IconProps;
   actions?: ReactElement[];
   align?: "start" | "center" | "end";
   locked?: "start" | "end";

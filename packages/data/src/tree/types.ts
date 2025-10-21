@@ -21,22 +21,26 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { IconProps } from "@react-fabric/core/dist/types/components/icon/Icon";
 import {
   type BadgeType,
   type ChildProp,
   type CssProp,
   type Elements,
-  type IconProps,
   type RefProp,
   type TestProps,
 } from "@react-fabric/core/dist/types/types";
 
-interface TreeBaseNode<T> extends Omit<IconProps, "icon">, CssProp, TestProps {
+interface TreeBaseNode<T> extends CssProp, TestProps {
   id: string;
   /**
    * display label
    */
   label: Elements<JSX.Element>;
+  /**
+   * icon path or props
+   */
+  icon?: IconProps;
   /**
    * full text to be used for querying purposes
    */
@@ -54,8 +58,6 @@ interface TreeBaseNode<T> extends Omit<IconProps, "icon">, CssProp, TestProps {
    */
   disabled?: boolean;
   data?: T;
-
-  icon?: Elements<JSX.Element>;
 }
 
 export type TreeNodeType<T extends KeyValue = KeyValue> = TreeBaseNode<T> &
@@ -69,10 +71,7 @@ export type TreeNodeType<T extends KeyValue = KeyValue> = TreeBaseNode<T> &
       }
   );
 
-export interface InternalNode
-  extends Omit<IconProps, "icon">,
-    CssProp,
-    TestProps {
+export interface InternalNode extends CssProp, TestProps {
   id: string;
   label: Elements<JSX.Element>;
   queryable?: string;
@@ -89,7 +88,7 @@ export interface InternalNode
   loaded: boolean;
   parent?: string;
   empty?: boolean;
-  icon?: Elements<JSX.Element>;
+  icon?: IconProps;
   errored?: string;
   selected?: true;
   childSelected?: true;

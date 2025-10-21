@@ -27,15 +27,27 @@ import { useTranslation } from "react-i18next";
 import { AnimationIndicator } from "../../components/animations/Animations";
 import { Button } from "../../components/button/Button";
 import { Icon } from "../../components/icon/Icon";
-import { type ColorState, type Elements, type IconProps } from "../../types";
+import { type ColorState, type Elements } from "../../types";
 import { CoreIcons } from "../../types/icons";
 import { getColor } from "../../utils";
 
-export interface ToastProps extends Omit<IconProps, "iconBg" | "iconColor"> {
+export interface ToastProps {
   /**
    * toast type
    */
   type?: "alert" | "confirm";
+  /**
+   * svg path / webfont className / 1-4 letter text
+   */
+  icon: string;
+  /**
+   * icon image source URL, if failed to load then shows icon
+   */
+  iconSrc?: string;
+  /**
+   * flip icon in rtl
+   */
+  rtlFlip?: boolean;
   /**
    * toast title
    */
@@ -67,6 +79,7 @@ export const Toast = ({
   message,
   color = "primary",
   icon,
+  iconSrc,
   rtlFlip,
   actions,
   // @ts-expect-error internal prop
@@ -82,7 +95,13 @@ export const Toast = ({
   const iconType = useMemo(() => {
     if (icon)
       return (
-        <Icon icon={icon} size="md" rtlFlip={rtlFlip} color={color + "-600"} />
+        <Icon
+          icon={icon}
+          iconSrc={iconSrc}
+          size="md"
+          rtlFlip={rtlFlip}
+          color={color + "-600"}
+        />
       );
     switch (color) {
       case "danger":
@@ -99,7 +118,7 @@ export const Toast = ({
           />
         );
     }
-  }, [color, type, icon]);
+  }, [color, type, icon, iconSrc, rtlFlip]);
 
   const elRef = useRef<HTMLDivElement>(null);
   const handleClose = useCallback(

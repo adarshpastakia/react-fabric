@@ -23,17 +23,11 @@
 
 import classNames from "classnames";
 import { Loading } from "../../components/animations/Animations";
-import { Icon } from "../../components/icon/Icon";
-import {
-  type ChildrenProp,
-  type IconProps,
-  type RefProp,
-  type TestProps,
-} from "../../types";
+import { getIconProps, Icon, IconProps } from "../../components/icon/Icon";
+import { type ChildrenProp, type RefProp, type TestProps } from "../../types";
 
 export interface PageProps
-  extends IconProps,
-    ChildrenProp,
+  extends ChildrenProp,
     TestProps,
     RefProp<HTMLDivElement> {
   /**
@@ -48,6 +42,10 @@ export interface PageProps
    * paper style drop shadow
    */
   paper?: boolean;
+  /**
+   * icon path or props
+   */
+  icon?: IconProps;
   /**
    * loading indicator
    */
@@ -89,9 +87,6 @@ export const Page = ({
   title,
   titleClassName,
   icon,
-  rtlFlip,
-  iconBg,
-  iconColor,
   loading,
   "data-testid": testId,
   "data-test-value": testValue,
@@ -119,15 +114,7 @@ export const Page = ({
             titleClassName,
           )}
         >
-          {icon && (
-            <Icon
-              icon={icon}
-              size="1.25em"
-              rtlFlip={rtlFlip}
-              bg={iconBg}
-              color={iconColor}
-            />
-          )}
+          {icon && <Icon size="1.25em" {...getIconProps(icon)} />}
           {title}
         </div>
       )}

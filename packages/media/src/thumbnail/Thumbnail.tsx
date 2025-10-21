@@ -211,7 +211,7 @@ export const Thumbnail = ({
         <Icon
           icon={CoreIcons.mediaSaturate}
           className={classNames(
-            "contrastAction",
+            "contrastAction text-sm",
             "absolute bottom-2 end-2 rounded-full opacity-50 hover:opacity-100",
           )}
           onClick={(e) => [

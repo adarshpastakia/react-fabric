@@ -24,10 +24,22 @@
 import classNames from "classnames";
 import { useCallback, useLayoutEffect, useRef } from "react";
 import { Icon } from "../../components/icon/Icon";
-import { type ColorState, type Elements, type IconProps } from "../../types";
+import { type ColorState, type Elements } from "../../types";
 import { getColor } from "../../utils";
 
-export interface MessageProps extends Omit<IconProps, "iconBg" | "iconColor"> {
+export interface MessageProps {
+  /**
+   * svg path / webfont className / 1-4 letter text
+   */
+  icon: string;
+  /**
+   * icon image source URL, if failed to load then shows icon
+   */
+  iconSrc?: string;
+  /**
+   * flip icon in rtl
+   */
+  rtlFlip?: boolean;
   /**
    * message title
    */
@@ -51,6 +63,7 @@ export const Message = ({
   message,
   color,
   icon,
+  iconSrc,
   rtlFlip,
   actions,
   // @ts-expect-error internal prop
@@ -87,7 +100,9 @@ export const Message = ({
       }}
       ref={elRef}
     >
-      {icon && <Icon icon={icon} size="md" rtlFlip={rtlFlip} />}
+      {icon && (
+        <Icon icon={icon} iconSrc={iconSrc} size="md" rtlFlip={rtlFlip} />
+      )}
       {title && <div className="font-medium">{title}</div>}
       <div className="truncate flex-initial">{message}</div>
       {actions && (

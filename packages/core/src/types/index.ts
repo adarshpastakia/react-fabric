@@ -390,25 +390,6 @@ export type PolymorphicProps<AsTag extends ReactTag> = Omit<
   as?: AsTag;
 };
 
-export interface IconProps {
-  /**
-   * svg path / image url
-   */
-  icon?: string;
-  /**
-   * flip icon in rtl
-   */
-  rtlFlip?: boolean;
-  /**
-   * icon background color
-   */
-  iconBg?: ColorType | PaletteType | string;
-  /**
-   * icon color
-   */
-  iconColor?: ColorType | PaletteType | string;
-}
-
 export interface CollapseProps {
   /**
    * Allow collapsing

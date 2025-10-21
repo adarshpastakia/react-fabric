@@ -32,14 +32,9 @@ import {
 } from "@floating-ui/react";
 import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
-import {
-  type ReactElement,
-  isValidElement,
-  useCallback,
-  useEffect,
-} from "react";
+import { isValidElement, useCallback, useEffect } from "react";
 import { Loading } from "../../components/animations/Animations";
-import { Icon } from "../../components/icon/Icon";
+import { getIconProps, Icon, IconProps } from "../../components/icon/Icon";
 import { Header } from "../../core/headfoot/HeadFoot";
 import { HotKeyWrapper } from "../../hotkeys/HotKeyWrapper";
 import {
@@ -47,17 +42,12 @@ import {
   type CallbackReturn,
   type ChildrenProp,
   type Elements,
-  type IconProps,
   type TestProps,
 } from "../../types";
 import { CoreIcons } from "../../types/icons";
 
-export interface ModalProps
-  extends AriaProps,
-    TestProps,
-    Omit<IconProps, "icon">,
-    ChildrenProp {
-  icon?: string | ReactElement<IconProps>;
+export interface ModalProps extends AriaProps, TestProps, ChildrenProp {
+  icon?: IconProps;
   /**
    * header className
    */
@@ -118,10 +108,7 @@ export interface ModalProps
 
 export const Modal = ({
   icon,
-  iconBg,
-  iconColor,
   iconClassName,
-  rtlFlip,
   title,
   actions,
   headerClassName,
@@ -226,11 +213,8 @@ export const Modal = ({
               >
                 {isString(icon) && (
                   <Icon
-                    icon={icon}
-                    bg={iconBg}
-                    color={iconColor}
                     className={classNames(iconClassName, "p-1")}
-                    rtlFlip={rtlFlip}
+                    {...getIconProps(icon)}
                   />
                 )}
                 {isValidElement(icon) && icon}

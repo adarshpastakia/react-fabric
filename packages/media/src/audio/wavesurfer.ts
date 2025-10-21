@@ -68,6 +68,7 @@ export const Wavesurfer = (container: HTMLElement, media: HTMLAudioElement) => {
     barGap: 1,
     barHeight: 0.85,
     minPxPerSec: 16,
+    progressColor: "#8883",
     splitChannels: CHANNEL_COLORS.map(
       (c, i) => ({
         waveColor: c[0],

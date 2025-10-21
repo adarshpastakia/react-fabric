@@ -26,6 +26,7 @@ import {
   CoreIcons,
   Divider,
   DropdownTool,
+  getIconProps,
   Icon,
   Menu,
   MenuItem,
@@ -49,9 +50,6 @@ export const HeaderCell = ({
   dataType,
   label,
   icon,
-  iconBg,
-  iconColor,
-  rtlFlip,
   actions,
   locked,
   filter,
@@ -153,9 +151,7 @@ export const HeaderCell = ({
     >
       <Tooltip content={tooltip ?? label} disabled={!(tooltip ?? label)}>
         <div className="flex-initial px-2 py-1 text-sm truncate sticky start-0">
-          {icon && (
-            <Icon icon={icon} bg={iconBg} color={iconColor} rtlFlip={rtlFlip} />
-          )}
+          {icon && <Icon {...getIconProps(icon)} />}
           <span>{label ?? " "}</span>
         </div>
       </Tooltip>

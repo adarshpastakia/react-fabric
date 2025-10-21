@@ -23,23 +23,27 @@
 
 import { isString, isSvgPath } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { useMemo } from "react";
+import { isValidElement, useEffect, useMemo, useState } from "react";
 import {
-  type PaletteType,
   type AriaProps,
   type ColorType,
   type CssProp,
+  type PaletteType,
   type RefProp,
   type SizeType,
   type TestProps,
 } from "../../types";
 import { getColor } from "../../utils";
 
-export interface IconProps extends CssProp, AriaProps, RefProp, TestProps {
+export interface Props extends CssProp, AriaProps, RefProp, TestProps {
   /**
    * svg path / webfont className / 1-4 letter text
    */
-  icon: string;
+  icon: string | JSX.Element;
+  /**
+   * icon image source URL, if failed to load then shows icon
+   */
+  iconSrc?: string;
   /**
    * background color (CSS color / tailwind color)
    */
@@ -74,6 +78,28 @@ export interface IconProps extends CssProp, AriaProps, RefProp, TestProps {
    */
   onClick?: React.MouseEventHandler;
 }
+
+export type IconProps =
+  | string
+  | Pick<
+      Props,
+      | "icon"
+      | "iconSrc"
+      | "bg"
+      | "color"
+      | "size"
+      | "rtlFlip"
+      | "viewBox"
+      | "rounded"
+      | "animate"
+    >;
+
+export const getIconProps = (props: IconProps): Props => {
+  if (typeof props === "string") {
+    return { icon: props };
+  }
+  return props;
+};
 
 const SvgTextSize = ["", ".875em", ".525em", ".35em", ".25em"];
 const SizeMap: KeyValue<string> = {
@@ -116,6 +142,7 @@ const SizeMap: KeyValue<string> = {
 export const Icon = ({
   ref,
   icon,
+  iconSrc,
   bg,
   color,
   size = "",
@@ -127,7 +154,13 @@ export const Icon = ({
   className,
   onClick,
   ...rest
-}: IconProps) => {
+}: Props) => {
+  const [imageFailed, setImageFailed] = useState(false);
+
+  useEffect(() => {
+    setImageFailed(false);
+  }, [iconSrc]);
+
   /** ***************** style map *******************/
   const styles = useMemo(() => {
     const s: KeyValue = {};
@@ -153,6 +186,7 @@ export const Icon = ({
 
   /** ***************** render icon *******************/
   const iconEl = useMemo(() => {
+    if (isValidElement(icon)) return icon;
     if (!isString(icon)) {
       throw Error("Invalid icon expected string");
     }
@@ -203,7 +237,10 @@ export const Icon = ({
       data-clickable={!!onClick}
       data-inner-clickable={!!onClick}
     >
-      {iconEl}
+      {iconSrc && !imageFailed && (
+        <img src={iconSrc} onError={() => setImageFailed(true)} />
+      )}
+      {(!iconSrc || imageFailed) && iconEl}
     </dfn>
   );
 };

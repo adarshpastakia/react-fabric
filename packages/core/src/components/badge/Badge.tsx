@@ -28,16 +28,11 @@ import {
   type BadgeType,
   type ChildProp,
   type CssProp,
-  type IconProps,
   type RefProp,
 } from "../../types";
-import { Icon } from "../icon/Icon";
+import { getIconProps, Icon, IconProps } from "../icon/Icon";
 
-export interface BadgeProps
-  extends CssProp,
-    RefProp,
-    IconProps,
-    Partial<ChildProp> {
+export interface BadgeProps extends CssProp, RefProp, Partial<ChildProp> {
   /**
    * make wrapper a block element
    */
@@ -50,6 +45,10 @@ export interface BadgeProps
    * badge value
    */
   value?: number | string;
+  /**
+   * icon path or props
+   */
+  icon?: IconProps;
   /**
    * max value for number display
    */
@@ -124,9 +123,6 @@ export const Badge = ({
   // @ts-expect-error ignore
   forButton = false,
   icon,
-  iconBg,
-  iconColor,
-  rtlFlip,
   ...rest
 }: BadgeProps) => {
   const label = useMemo(() => {
@@ -176,9 +172,7 @@ export const Badge = ({
           )}
         >
           {label && <span className="p-1">{label}</span>}
-          {icon && (
-            <Icon icon={icon} bg={iconBg} color={iconColor} rtlFlip={rtlFlip} />
-          )}
+          {icon && <Icon {...getIconProps(icon)} />}
         </div>
       )}
     </div>

@@ -47,7 +47,7 @@ export { Divider } from "./divider/Divider";
 export { Dropdown, DropdownDismiss } from "./dropdown/Dropdown";
 export { DropdownTool } from "./dropdown/DropdownTool";
 export { EmptyContent } from "./empty/EmptyContent";
-export { Icon } from "./icon/Icon";
+export { Icon, getIconProps } from "./icon/Icon";
 export { Image, Video } from "./media/Media";
 export { ContextMenu } from "./menu/ContextMenu";
 export { Menu } from "./menu/Menu";

@@ -32,7 +32,6 @@ import {
   type ChildrenProp,
   type ColorState,
   type CssProp,
-  type IconProps,
   type PolymorphicProps,
   type RefProp,
   type TestProps,
@@ -40,7 +39,7 @@ import {
 } from "../../types";
 import { Badge, getBadgeProps } from "../badge/Badge";
 import { DropdownTool } from "../dropdown/DropdownTool";
-import { Icon } from "../icon/Icon";
+import { getIconProps, Icon, IconProps } from "../icon/Icon";
 
 export interface TabProps
   extends Partial<ChildrenProp>,
@@ -48,7 +47,6 @@ export interface TabProps
     RefProp,
     AriaProps,
     TestProps,
-    IconProps,
     TooltipProp {
   /**
    * tab id
@@ -62,6 +60,10 @@ export interface TabProps
    * tab color
    */
   color?: ColorState;
+  /**
+   * icon path or props
+   */
+  icon?: IconProps;
   /**
    * tab badge
    */
@@ -130,9 +132,6 @@ export const Tab = <Tag extends React.ElementType = "button">({
   className,
   label,
   icon,
-  iconBg,
-  iconColor,
-  rtlFlip,
   badge,
   disabled,
   onClose,
@@ -181,15 +180,7 @@ export const Tab = <Tag extends React.ElementType = "button">({
         ref={ref as AnyObject}
         {...aria}
       >
-        {icon && (
-          <Icon
-            icon={icon}
-            bg={iconBg}
-            color={iconColor}
-            rtlFlip={rtlFlip}
-            className="flex-content p-2"
-          />
-        )}
+        {icon && <Icon className="flex-content p-2" {...getIconProps(icon)} />}
         {!minimal && (
           <label className="flex-initial truncate text-center px-1 py-1">
             {label}

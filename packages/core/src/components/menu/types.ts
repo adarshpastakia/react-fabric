@@ -29,15 +29,11 @@ import {
   type ChildrenProp,
   type ColorState,
   type CssProp,
-  type IconProps,
   type TestProps,
 } from "../../types";
+import { IconProps } from "../icon/Icon";
 
-export interface MenuItemProps
-  extends CssProp,
-    AriaProps,
-    TestProps,
-    IconProps {
+export interface MenuItemProps extends CssProp, AriaProps, TestProps {
   /**
    * menu id passed via menu.onClick
    */
@@ -54,6 +50,10 @@ export interface MenuItemProps
    * menu color
    */
   color?: ColorState;
+  /**
+   * icon path or props
+   */
+  icon?: IconProps;
   /**
    * item active
    */

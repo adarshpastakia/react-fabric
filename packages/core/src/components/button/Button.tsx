@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { isNil, isString, mergeRefs } from "@react-fabric/utilities";
+import { isNil, isObject, isString, mergeRefs } from "@react-fabric/utilities";
 import classNames from "classnames";
 import {
   Fragment,
@@ -39,12 +39,11 @@ import { HotKey } from "../../hotkeys/HotKey";
 import { HotKeyLabel } from "../../hotkeys/HotKeyLabel";
 import { Tooltip } from "../../overlays/tooltip/Tooltip";
 import {
-  type ColorState,
   type AriaProps,
   type BadgeType,
   type CallbackReturn,
+  type ColorState,
   type CssProp,
-  type IconProps,
   type PolymorphicProps,
   type RefProp,
   type SizeType,
@@ -54,14 +53,9 @@ import {
 import { getColor } from "../../utils";
 import { AnimationIndicator } from "../animations/Animations";
 import { Badge, getBadgeProps } from "../badge/Badge";
-import { Icon } from "../icon/Icon";
+import { getIconProps, Icon, IconProps } from "../icon/Icon";
 
-export interface BaseProps
-  extends CssProp,
-    AriaProps,
-    IconProps,
-    RefProp,
-    TestProps {
+export interface BaseProps extends CssProp, AriaProps, RefProp, TestProps {
   /**
    * primary icon alignment
    */
@@ -78,6 +72,10 @@ export interface BaseProps
    * button color
    */
   color?: ColorState;
+  /**
+   * icon path or props
+   */
+  icon?: IconProps;
   /**
    * button type
    */
@@ -191,11 +189,8 @@ export const Button = <Tag extends React.ElementType = "button">({
   active,
   color = "primary",
   icon,
-  iconBg,
-  iconColor,
   iconAlign = "start",
   altIcon,
-  rtlFlip,
   rounded,
   size,
   disabled,
@@ -323,11 +318,8 @@ export const Button = <Tag extends React.ElementType = "button">({
           {icon && (
             <Icon
               className={"fabric-buttonIcon"}
-              icon={icon}
-              bg={iconBg}
-              color={iconColor}
-              rtlFlip={rtlFlip}
               data-align={iconAlign}
+              {...getIconProps(icon)}
             />
           )}
           {isValidElement(children) && (
@@ -336,7 +328,7 @@ export const Button = <Tag extends React.ElementType = "button">({
           {isString(children) && (
             <label
               className={classNames("fabric-buttonLabel", "truncate")}
-              data-colored-icon={!!iconBg}
+              data-colored-icon={isObject(icon) && "bg" in icon}
             >
               {children}
             </label>
