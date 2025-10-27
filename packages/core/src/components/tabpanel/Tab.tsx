@@ -108,8 +108,6 @@ export interface TabProps
  *   id="tab1"
  *   label="Tab 1"
  *   icon="home"
- *   iconBg="bg-blue-500"
- *   iconColor="text-white"
  *   badge="New"
  *   onClick={(id) => console.log(`Tab clicked: ${id}`)}
  *   onClose={() => console.log("Tab closed")}

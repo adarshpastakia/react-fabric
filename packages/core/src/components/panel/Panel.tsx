@@ -120,8 +120,6 @@ export interface PanelProps
  * <Panel
  *   title="Panel Title"
  *   icon={CoreIcons.info}
- *   iconBg="bg-blue-500"
- *   iconColor="text-white"
  *   actions={<button>Action</button>}
  *   expandable
  *   collapsable

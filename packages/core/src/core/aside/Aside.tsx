@@ -119,8 +119,6 @@ export interface AsideProps
  * <Aside
  *   title="Sidebar Title"
  *   icon={CoreIcons.menu}
- *   iconBg="bg-gray-200"
- *   iconColor="text-gray-800"
  *   rtlFlip={true}
  *   className="custom-aside"
  *   bodyClassName="custom-aside-body"

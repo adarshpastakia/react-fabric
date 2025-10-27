@@ -44,7 +44,7 @@ describe("Badge", () => {
 
   it("should render icon badge", () => {
     const fragment = render(
-      <Tester icon="mdi mdi-alien" iconBg="lilac" iconColor="white">
+      <Tester icon={{ icon: "mdi mdi-alien", bg: "lilac", color: "white" }}>
         <Avatar name="Hyacinth Bucket" variant="text" />
       </Tester>,
     );

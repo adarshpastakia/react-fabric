@@ -66,8 +66,6 @@ export interface PageProps
  * <Page
  *   title="My Page"
  *   icon="home"
- *   iconBg="bg-blue-500"
- *   iconColor="text-white"
  *   loading={false}
  *   paper={true}
  *   data-testid="my-page"

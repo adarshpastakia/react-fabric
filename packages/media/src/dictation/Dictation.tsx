@@ -37,10 +37,7 @@ import WaveSurfer from "wavesurfer.js";
 import RecordPlugin from "wavesurfer.js/dist/plugins/record";
 
 export interface DictationProps
-  extends Pick<
-    ButtonProps,
-    "size" | "variant" | "icon" | "iconBg" | "iconColor"
-  > {
+  extends Pick<ButtonProps, "size" | "variant" | "icon"> {
   hotkey?: string;
   onRecord?: (blob: Blob) => void;
   ref?: RefObject<{ start: () => void; stop: () => void }>;
@@ -62,8 +59,6 @@ export interface DictationProps
  *   hotkey="alt+t"
  *   size="md"
  *   icon={CoreIcons.mic}
- *   iconBg="bg-blue-500"
- *   iconColor="text-white"
  *   variant="solid"
  *   onRecord={(blob) => {
  *     // Handle the recorded audio blob
@@ -79,8 +74,6 @@ export const Dictation = ({
   hotkey = "alt+t",
   size,
   icon,
-  iconBg,
-  iconColor,
   variant,
   onRecord,
 }: DictationProps) => {
@@ -185,8 +178,6 @@ export const Dictation = ({
           <Button
             size={size}
             icon={icon ?? CoreIcons.mic}
-            iconBg={iconBg}
-            iconColor={iconColor}
             aria-label="Start dictation"
             rounded
             variant={variant}
