@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "useDefineForClassFields": false
+  },
+  "exclude": ["./dist"],
+  "include": ["./src", "./stories", "./tests"]
+}

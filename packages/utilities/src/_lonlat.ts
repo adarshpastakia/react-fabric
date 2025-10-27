@@ -23,7 +23,7 @@
 
 import { isArray, isObject, isString } from "./_isType";
 
-type LngLatLike =
+export type LngLatLike =
   | {
       lng: number;
       lat: number;
@@ -38,6 +38,13 @@ type LngLatLike =
     }
   | [lon: number | string, lat: number | string]
   | string;
+
+export const getLatitudeLongitude = (
+  lonLat: LngLatLike,
+): { latitude: number; longitude: number } => {
+  const [lon, lat] = convertLatLng(lonLat);
+  return { latitude: lat, longitude: lon };
+};
 
 /**
  * Convert various formats of longitude and latitude to a tuple of [lon, lat].
