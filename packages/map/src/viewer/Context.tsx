@@ -22,7 +22,6 @@
  */
 
 import Basemap from "@arcgis/core/Basemap";
-import esriConfig from "@arcgis/core/config";
 import Point from "@arcgis/core/geometry/Point";
 import SpatialReference from "@arcgis/core/geometry/SpatialReference";
 import VectorTileLayer from "@arcgis/core/layers/VectorTileLayer";
@@ -35,8 +34,6 @@ import { getLatitudeLongitude, LngLatLike } from "@react-fabric/utilities";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { BASEMAPS, DEFAULT_VIEWPOINT } from "../constants";
 import { FabricBaseMap, MapViewerProps } from "../types";
-
-esriConfig.assetsPath = "/assets/@arcgis";
 
 const Context = createContext<{
   map?: __esri.Map | null;

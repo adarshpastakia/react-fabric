@@ -21,6 +21,13 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import esriConfig from "@arcgis/core/config";
+
+esriConfig.assetsPath = "/assets/@arcgis";
+export const setArcgisAssetsPath = (path: string) => {
+  esriConfig.assetsPath = path;
+};
+
 export { MapViewer } from "./viewer/Viewer";
 
 import { BasemapGallery as _BasemapGallery } from "./tools/BasemapGallery";
