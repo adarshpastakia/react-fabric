@@ -24,7 +24,7 @@
 import "./i18n";
 
 export { Controller } from "./form/Controller";
-export { Form, type FormRef } from "./form/Form";
+export { Form, useForm, type FormRef } from "./form/Form";
 
 export { SchemaEditor } from "./builder/SchemaEditor";
 

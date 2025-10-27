@@ -29,13 +29,16 @@ import {
   useEffect,
   useImperativeHandle,
   useRef,
+  useState,
   useTransition,
   type PropsWithChildren,
   type Ref,
 } from "react";
 import {
   FormProvider,
-  useForm,
+  useFormContext,
+  useForm as useFormHook,
+  useWatch,
   type DefaultValues,
   type FormState,
 } from "react-hook-form";
@@ -120,7 +123,7 @@ export const Form = <K extends KeyValue>({
   ...rest
 }: PropsWithChildren<FormProps<K>>) => {
   const ref = useRef<HTMLFormElement>(null);
-  const form = useForm<K>({
+  const form = useFormHook<K>({
     shouldFocusError: true,
     resolver: schema && (yupResolver(schema) as AnyObject),
     defaultValues: defaultValues as DefaultValues<K>,
@@ -201,4 +204,33 @@ export const Form = <K extends KeyValue>({
       </form>
     </FormProvider>
   );
+};
+
+export const useForm = <K extends KeyValue = KeyValue>() => {
+  const {
+    formState,
+    getValues,
+    setValue,
+    watch,
+    reset,
+    resetField,
+    setError,
+    setFocus,
+  } = useFormContext<K>();
+  const values = useWatch<K>();
+
+  return {
+    values: {
+      ...values,
+      ...getValues(),
+    },
+    formState,
+    getValues,
+    setValue,
+    watch,
+    reset,
+    resetField,
+    setError,
+    setFocus,
+  };
 };
