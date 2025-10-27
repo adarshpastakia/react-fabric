@@ -39,6 +39,7 @@ import { Equalizers } from "./Equalizers";
 import { Loading } from "./Loading";
 import { Tools } from "./Tools";
 import { Wavesurfer, type WavesurferInstance } from "./wavesurfer";
+import classNames from "classnames";
 
 export interface AudioProps extends RefProp<AudioPlayerRef> {
   /**
@@ -85,6 +86,8 @@ export interface AudioProps extends RefProp<AudioPlayerRef> {
    * error loading audio
    */
   onError?: () => void;
+
+  forVideo?: boolean;
 
   userDefinedRegions?: boolean;
   onRegionChange?: (
@@ -138,6 +141,7 @@ export const AudioPlayer = ({
   fallback,
   colors,
   regions,
+  forVideo,
   userDefinedRegions,
   onRegionChange,
   onLoad,
@@ -148,7 +152,7 @@ export const AudioPlayer = ({
   onRegionStart,
   onRegionEnd,
 }: AudioProps) => {
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const audioRef = useRef<HTMLMediaElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [wavesurfer, setWavesurfer] = useState<WavesurferInstance>();
 
@@ -331,6 +335,8 @@ export const AudioPlayer = ({
     }
   }, [wavesurfer, regions, userDefinedRegions, onRegionChange]);
 
+  const M = forVideo ? "video" : "audio";
+
   return (
     <AudioContext.Provider
       value={{
@@ -343,50 +349,60 @@ export const AudioPlayer = ({
       }}
     >
       <Header className="bg-base" dir="ltr">
-        <audio
-          onLoadedData={handleLoad}
-          onError={handleError}
-          ref={audioRef}
-          onPlay={() => dispatch({ type: "play" })}
-          onPause={() => dispatch({ type: "pause" })}
-          onRateChange={() =>
-            dispatch({
-              type: "speed",
-              speed: audioRef.current?.playbackRate ?? 0,
-            })
-          }
-          onVolumeChange={() =>
-            dispatch({
-              type: "volume",
-              volume: audioRef.current?.volume ?? 0,
-            })
-          }
-          onLoadedMetadata={() =>
-            dispatch({
-              type: "metadata",
-              speed: audioRef.current?.playbackRate ?? 0,
-              volume: audioRef.current?.volume ?? 0,
-              duration: audioRef.current?.duration ?? 0,
-            })
-          }
-          onSeeking={() =>
-            dispatch({
-              type: "playing",
-              time: audioRef.current?.currentTime ?? 0,
-            })
-          }
-          onTimeUpdate={() =>
-            dispatch({
-              type: "playing",
-              time: audioRef.current?.currentTime ?? 0,
-            })
-          }
-        >
-          <track kind="captions" default />
-        </audio>
-        <div className="overflow-hidden relative">
-          <div ref={containerRef} className="h-[200px]" />
-          {state.isLoading && <Loading />}
+        <div className="flex">
+          <div
+            className={
+              forVideo
+                ? "grid relative aspect-video h-[200px] after:absolute after:inset-0 after:shadow-[0_0_10px_2px_rgba(0,0,0,0.5)_inset]"
+                : "hidden"
+            }
+          >
+            <M
+              onLoadedData={handleLoad}
+              onError={handleError}
+              ref={audioRef as any}
+              onPlay={() => dispatch({ type: "play" })}
+              onPause={() => dispatch({ type: "pause" })}
+              onRateChange={() =>
+                dispatch({
+                  type: "speed",
+                  speed: audioRef.current?.playbackRate ?? 0,
+                })
+              }
+              onVolumeChange={() =>
+                dispatch({
+                  type: "volume",
+                  volume: audioRef.current?.volume ?? 0,
+                })
+              }
+              onLoadedMetadata={() =>
+                dispatch({
+                  type: "metadata",
+                  speed: audioRef.current?.playbackRate ?? 0,
+                  volume: audioRef.current?.volume ?? 0,
+                  duration: audioRef.current?.duration ?? 0,
+                })
+              }
+              onSeeking={() =>
+                dispatch({
+                  type: "playing",
+                  time: audioRef.current?.currentTime ?? 0,
+                })
+              }
+              onTimeUpdate={() =>
+                dispatch({
+                  type: "playing",
+                  time: audioRef.current?.currentTime ?? 0,
+                })
+              }
+            >
+              <track kind="captions" default />
+            </M>
+          </div>
+          <div className="overflow-hidden relative flex-1 px-1">
+            <div ref={containerRef} className="h-[200px]" />
+            {state.isLoading && <Loading />}
+          </div>
         </div>
         <Tools />
         <Equalizers />

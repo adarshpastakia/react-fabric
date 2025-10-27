@@ -27,7 +27,7 @@ import { useState } from "react";
 import { fn } from "storybook/test";
 import { VideoPlayer } from "../src";
 import { VideoAnnotation } from "../src/types";
-import src from "/assets/samples/small_video.mp4";
+import src from "/assets/samples/sample.mp4";
 import bunny from "/assets/samples/bad_bunny.mp4";
 
 const meta: Meta = {

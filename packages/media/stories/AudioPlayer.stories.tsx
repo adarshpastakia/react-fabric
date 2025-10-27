@@ -25,6 +25,7 @@ import { Viewport } from "@react-fabric/core";
 import type { Meta, StoryObj } from "@storybook/react";
 import { AudioPlayer } from "../src";
 import audio from "/assets/samples/sample.mp3";
+import video from "/assets/samples/large_video.mp4";
 
 const meta: Meta = {
   component: AudioPlayer,
@@ -50,6 +51,25 @@ export const _AudioPlayer: Story = {
   },
   args: {
     src: audio,
+    regions: [
+      { start: 0.1, end: 1.3, channel: 0, id: "any" },
+      { start: 5, end: 9.3, channel: 1, id: "2" },
+    ],
+  },
+};
+
+export const WithVideo: Story = {
+  render: (args) => {
+    return (
+      <div className="min-h-[600px]">
+        <Viewport>
+          <AudioPlayer forVideo {...args} />
+        </Viewport>
+      </div>
+    );
+  },
+  args: {
+    src: video,
     regions: [
       { start: 0.1, end: 1.3, channel: 0, id: "any" },
       { start: 5, end: 9.3, channel: 1, id: "2" },
