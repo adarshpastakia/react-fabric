@@ -41,7 +41,8 @@
     "@esri/calcite-components-react": "~3.3.3",
     "@floating-ui/react": "^0.27.12",
     "@react-fabric/core": "^1.0.0-beta.57",
-    "@react-fabric/utilities": "^1.0.0-beta.52"
+    "@react-fabric/utilities": "^1.0.0-beta.52",
+    "color": "^4.2.3"
   },
   "peerDependencies": {
     "i18next": "^25.2.1",

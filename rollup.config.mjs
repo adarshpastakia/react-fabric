@@ -45,6 +45,8 @@ export default [
       "react-dom",
       "style-inject",
       "@babel/runtime",
+      "@arcgis/core",
+      "@arcgis/map-components",
       /.*\.module\.css/,
     ],
     output: [

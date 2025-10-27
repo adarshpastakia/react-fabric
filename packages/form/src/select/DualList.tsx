@@ -240,39 +240,35 @@ export const DualList = <T extends AnyObject = string>({
         <div className="self-center mx-2">
           <ButtonGroup vertical className="outline overflow-hidden bg-base">
             <Button
-              rtlFlip
               size="sm"
               variant="link"
               aria-label="scroll to top"
               onClick={moveAllLeft}
-              icon={CoreIcons.chevronsLeft}
+              icon={{ icon: CoreIcons.chevronsLeft, rtlFlip: true }}
               disabled={!rightOptions.length}
             />
             <Button
-              rtlFlip
               size="sm"
               variant="link"
               aria-label="scroll up"
               onClick={moveRightSelected}
-              icon={CoreIcons.chevronLeft}
+              icon={{ icon: CoreIcons.chevronLeft, rtlFlip: true }}
               disabled={!rightSelected.length}
             />
             <Button
-              rtlFlip
               size="sm"
               variant="link"
               aria-label="scroll down"
               onClick={moveLeftSelected}
-              icon={CoreIcons.chevronRight}
+              icon={{ icon: CoreIcons.chevronRight, rtlFlip: true }}
               disabled={!leftSelected.length}
             />
             <Button
-              rtlFlip
               size="sm"
               variant="link"
               aria-label="scroll to bottom"
               onClick={moveAllRight}
-              icon={CoreIcons.chevronsRight}
+              icon={{ icon: CoreIcons.chevronsRight, rtlFlip: true }}
               disabled={!leftOptions.length}
             />
           </ButtonGroup>

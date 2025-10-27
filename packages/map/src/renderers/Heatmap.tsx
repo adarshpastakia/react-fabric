@@ -25,7 +25,7 @@ import HeatmapRenderer from "@arcgis/core/renderers/HeatmapRenderer";
 import Color from "color";
 import { useMemo } from "react";
 
-interface Props {
+export interface Props {
   /**
    * Field name to be used for heatmap intensity
    */

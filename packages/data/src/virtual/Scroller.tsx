@@ -41,38 +41,46 @@ export const Scroller = ({
   return (
     <ButtonGroup vertical={vertical} variant="link" className="outline">
       <Button
-        rtlFlip
         size="sm"
         variant="link"
         aria-label="scroll to top"
-        icon={vertical ? CoreIcons.chevronsUp : CoreIcons.chevronsLeft}
+        icon={{
+          icon: vertical ? CoreIcons.chevronsUp : CoreIcons.chevronsLeft,
+          rtlFlip: true,
+        }}
         disabled={(scrollActive & 2) === 0}
         onClick={onStart}
       />
       <Button
-        rtlFlip
         size="sm"
         variant="link"
         aria-label="scroll up"
-        icon={vertical ? CoreIcons.chevronUp : CoreIcons.chevronLeft}
+        icon={{
+          icon: vertical ? CoreIcons.chevronUp : CoreIcons.chevronLeft,
+          rtlFlip: true,
+        }}
         disabled={(scrollActive & 2) === 0}
         onClick={onPrevious}
       />
       <Button
-        rtlFlip
         size="sm"
         variant="link"
         aria-label="scroll down"
-        icon={vertical ? CoreIcons.chevronDown : CoreIcons.chevronRight}
+        icon={{
+          icon: vertical ? CoreIcons.chevronDown : CoreIcons.chevronRight,
+          rtlFlip: true,
+        }}
         disabled={scrollActive % 2 === 0}
         onClick={onNext}
       />
       <Button
-        rtlFlip
         size="sm"
         variant="link"
         aria-label="scroll to bottom"
-        icon={vertical ? CoreIcons.chevronsDown : CoreIcons.chevronsRight}
+        icon={{
+          icon: vertical ? CoreIcons.chevronsDown : CoreIcons.chevronsRight,
+          rtlFlip: true,
+        }}
         disabled={scrollActive % 2 === 0}
         onClick={onEnd}
       />

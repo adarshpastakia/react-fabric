@@ -24,7 +24,7 @@
 import SimpleRenderer from "@arcgis/core/renderers/SimpleRenderer";
 import { useMemo } from "react";
 
-interface Props {
+export interface Props {
   /**
    * Color of the marker fill. Default is "blue"
    */

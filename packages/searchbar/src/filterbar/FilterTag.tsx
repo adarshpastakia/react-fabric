@@ -95,8 +95,7 @@ export const FilterTag = ({
           filter.disabled && "opacity-65",
         )}
         variant={filter.pinned ? "solid" : undefined}
-        icon={icon}
-        iconColor={color}
+        icon={icon && { icon, color }}
         onIconClick={(e) => [
           onChange({ ...filter, disabled: !filter.disabled }),
           e.stopPropagation(),

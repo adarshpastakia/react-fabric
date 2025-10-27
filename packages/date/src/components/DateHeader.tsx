@@ -166,8 +166,7 @@ export const DateHeader = (props: Props) => {
     <div className="flex flex-nowrap items-center area-head" data-page={page}>
       {startPage !== undefined && (
         <Button
-          icon={CoreIcons.chevronsLeft}
-          rtlFlip
+          icon={{ icon: CoreIcons.chevronsLeft, rtlFlip: true }}
           size="sm"
           variant="link"
           aria-label="start"
@@ -177,8 +176,7 @@ export const DateHeader = (props: Props) => {
         />
       )}
       <Button
-        icon={CoreIcons.chevronLeft}
-        rtlFlip
+        icon={{ icon: CoreIcons.chevronLeft, rtlFlip: true }}
         size="sm"
         variant="link"
         aria-label="prev"
@@ -197,8 +195,7 @@ export const DateHeader = (props: Props) => {
         {headLabel}
       </div>
       <Button
-        icon={CoreIcons.chevronRight}
-        rtlFlip
+        icon={{ icon: CoreIcons.chevronRight, rtlFlip: true }}
         size="sm"
         variant="link"
         aria-label="next"
@@ -208,8 +205,7 @@ export const DateHeader = (props: Props) => {
       />
       {endPage !== undefined && (
         <Button
-          icon={CoreIcons.chevronsRight}
-          rtlFlip
+          icon={{ icon: CoreIcons.chevronsRight, rtlFlip: true }}
           size="sm"
           variant="link"
           aria-label="end"
