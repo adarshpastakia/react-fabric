@@ -100,7 +100,10 @@ export const CommentTag = ({
         open={currentTime >= time && currentTime <= time + 2}
       >
         <Dropdown showArrow>
-          <Icon icon={CoreIcons.mediaComment} className="hover:text-primary" />
+          <Icon
+            icon={CoreIcons.mediaComment}
+            className="hover:text-primary bg-tint-50/80"
+          />
           <PanelStack onPanelChange={resetValue}>
             <Panel width={360} height={192} className="max-w-screen">
               <Content>{text}</Content>
