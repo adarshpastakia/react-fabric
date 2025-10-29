@@ -29,7 +29,12 @@ import {
   useMemoDebugger,
 } from "@react-fabric/core";
 import { isEmpty } from "@react-fabric/utilities";
-import { type EChartOption, type EChartsType } from "echarts";
+import {
+  ECElementEvent,
+  ECharts,
+  type EChartsOption,
+  type EChartsType,
+} from "echarts";
 import { memo, useCallback, useEffect, useRef, useState, type FC } from "react";
 import { type BaseChart, type TimeSeriesType } from "../types";
 import { timeSeriesRenderer } from "../types/utils";
@@ -58,7 +63,7 @@ const TimeSeriesChart: FC<TimeSeriesProps> = memo(
     onClick,
     onBrush,
   }: TimeSeriesProps) => {
-    const chartRef = useRef<EChartsType>(null);
+    const chartRef = useRef<ECharts>(null);
     const [type, setType] = useState(chartType);
     const [theme, setTheme] = useState(chartTheme);
 
@@ -93,7 +98,7 @@ const TimeSeriesChart: FC<TimeSeriesProps> = memo(
       if (chart && !chart?.isDisposed()) {
         enableBrush();
         let range = [0, 0];
-        chart.on("brushselected", (e: KeyValue) => {
+        chart.on("brushselected", (e: any) => {
           range = e.batch?.[0]?.areas?.[0]?.coordRange;
         });
         chart.on("brushEnd", () => {
@@ -107,7 +112,7 @@ const TimeSeriesChart: FC<TimeSeriesProps> = memo(
       }
     }, [chartRef.current, onBrush]);
 
-    const options = useMemoDebugger<EChartOption>(
+    const options = useMemoDebugger<EChartsOption>(
       () => {
         if (isEmpty(_series)) {
           chartRef.current?.clear();
@@ -140,14 +145,14 @@ const TimeSeriesChart: FC<TimeSeriesProps> = memo(
                 none: "{yyyy}-{MM}-{dd} {hh}:{mm}:{ss} {SSS}",
               } as AnyObject,
             },
-          } as EChartOption.XAxis,
+          } as EChartsOption["xAxis"],
         );
         const valueAxis: AnyObject = Object.assign({}, optionOverride?.yAxis, {
           name: valueAxisName,
           type: "value",
           nameGap: 32,
           nameLocation: "center",
-        } as EChartOption.YAxis);
+        } as EChartsOption["yAxis"]);
 
         const series = _series?.map(
           (item) =>
@@ -174,8 +179,8 @@ const TimeSeriesChart: FC<TimeSeriesProps> = memo(
               trigger: "axis",
               confine: true,
               position: "top",
-              appendToBody: true,
-            } as EChartOption.Tooltip,
+              appendTo: "body",
+            },
             optionOverride?.tooltip,
           ),
           xAxis: categoryAxis,

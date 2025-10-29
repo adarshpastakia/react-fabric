@@ -29,7 +29,11 @@ import {
   useMemoDebugger,
 } from "@react-fabric/core";
 import { isArray, isEmpty } from "@react-fabric/utilities";
-import { type EChartOption, type EChartsType } from "echarts";
+import {
+  type EChartsOption,
+  type EChartsType,
+  type ScatterSeriesOption,
+} from "echarts";
 import { memo, useEffect, useRef, useState, type FC } from "react";
 import { type BaseChart } from "../types";
 import { activityRenderer } from "../types/utils";
@@ -159,11 +163,11 @@ const ActivityMapChart = memo(
       setTheme(chartTheme);
     }, [chartTheme]);
 
-    const options = useMemoDebugger<EChartOption>(
+    const options = useMemoDebugger<EChartsOption>(
       () => {
         const defaultMap = time === "day-hour" ? DAY_HOUR : MONTH_DAY;
 
-        const options: EChartOption = {
+        const options: EChartsOption = {
           series: [],
         };
 
@@ -203,7 +207,7 @@ const ActivityMapChart = memo(
             },
             data: points,
             universalTransition: true,
-          } as EChartOption.SeriesScatter;
+          } as ScatterSeriesOption;
         });
 
         if (type === "heatmap") {

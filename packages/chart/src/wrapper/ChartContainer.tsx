@@ -31,7 +31,7 @@ import {
 } from "@react-fabric/core";
 import { type SizeObject } from "@react-fabric/core/dist/types/types";
 import classNames from "classnames";
-import { type EChartOption, type EChartsType } from "echarts";
+import { type EChartsOption, type EChartsType } from "echarts";
 import "echarts-wordcloud";
 import {
   Fragment,
@@ -96,7 +96,7 @@ export const ChartContainer = memo(
     theme?: Theme;
     isEmpty?: boolean;
     emptyIcon?: string;
-    options: EChartOption;
+    options: EChartsOption;
     children?: AnyObject;
     chartRef?: Ref<EChartsType>;
     onClick?: (event: AnyObject) => void;
@@ -140,6 +140,10 @@ export const ChartContainer = memo(
           chartRef.dispose();
         };
       }
+    }, []);
+
+    useEffect(() => {
+      chartRef?.setTheme(chartTheme);
     }, [chartTheme]);
 
     useEffect(() => {

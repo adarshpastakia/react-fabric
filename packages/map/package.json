@@ -4,7 +4,6 @@
   "description": "RUF: ArcGIS Map Component for React",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
-  "private": true,
   "repository": "https://github.com/adarshpastakia/react-ui-framework/tree/main/packages/map",
   "source": "src/index.ts",
   "main": "dist/cjs/index.js",
@@ -36,25 +35,23 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@arcgis/core": "~4.34.0",
-    "@arcgis/map-components-react": "~4.34.0",
+    "@arcgis/core": "~4.34.5",
+    "@arcgis/map-components-react": "~4.34.5",
     "@esri/calcite-components-react": "~3.3.3",
-    "@floating-ui/react": "^0.27.12",
-    "@react-fabric/core": "^1.0.0-beta.57",
-    "@react-fabric/utilities": "^1.0.0-beta.52",
-    "color": "^4.2.3"
+    "@floating-ui/react": "~0.27.16",
+    "@react-fabric/core": "~1.0.0-beta.57",
+    "@react-fabric/utilities": "~1.0.0-beta.52",
+    "color": "~5.0.2"
   },
   "peerDependencies": {
-    "i18next": "^25.2.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-i18next": "^15.5.2"
+    "i18next": "~25.6.0",
+    "react": "~19.2.0",
+    "react-dom": "~19.2.0",
+    "react-i18next": "~16.2.1"
   },
   "devDependencies": {
-    "@types/dom-to-image": "^2.6.7",
-    "@types/dompurify": "^3.0.4",
-    "@types/highlight.js": "^10.1.0",
-    "@types/react-color": "^3.0.6"
+    "@types/dom-to-image": "~2.6.7",
+    "@types/highlight.js": "~10.1.0"
   },
   "engines": {
     "node": ">=18.12.0",

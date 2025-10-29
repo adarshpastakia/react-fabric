@@ -23,7 +23,7 @@
 
 import { CoreIcons, useIsDark, useMemoDebugger } from "@react-fabric/core";
 import { compareValues, isEmpty } from "@react-fabric/utilities";
-import { type EChartOption } from "echarts";
+import { type EChartsOption } from "echarts";
 import { memo, type FC } from "react";
 import { ChartPalette } from "../theme/palettes";
 import { type BaseChart } from "../types";
@@ -40,7 +40,7 @@ const WordBubbleChart: FC<WordBubbleProps> = memo(
   ({ series, title, onExport, onClick }: WordBubbleProps) => {
     const isDark = useIsDark();
 
-    const options = useMemoDebugger<EChartOption>(
+    const options = useMemoDebugger<EChartsOption>(
       () => {
         if (isEmpty(series)) return {};
 
@@ -55,7 +55,7 @@ const WordBubbleChart: FC<WordBubbleProps> = memo(
             confine: true,
             position: "top",
             appendToBody: true,
-          } as EChartOption.Tooltip,
+          } as EChartsOption["tooltip"],
           series: [
             {
               name: title,

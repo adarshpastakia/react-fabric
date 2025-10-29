@@ -29,7 +29,7 @@ import {
   useMemoDebugger,
 } from "@react-fabric/core";
 import { compareValues, Format, isEmpty } from "@react-fabric/utilities";
-import { type EChartOption, type EChartsType } from "echarts";
+import { type EChartsOption, type EChartsType } from "echarts";
 import { memo, useEffect, useRef, useState, type FC } from "react";
 import { type BaseChart, type CountType } from "../types";
 import { countRenderer } from "../types/utils";
@@ -67,7 +67,7 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
       setTheme(chartTheme);
     }, [chartTheme]);
 
-    const options = useMemoDebugger<EChartOption>(
+    const options = useMemoDebugger<EChartsOption>(
       () => {
         if (isEmpty(_series)) {
           chartRef.current?.clear();
@@ -87,14 +87,14 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
               show: false,
             },
             data: [],
-          } as EChartOption.XAxis,
+          } as EChartsOption["xAxis"],
         );
         const valueAxis: AnyObject = Object.assign({}, optionOverride?.yAxis, {
           type: "value",
           axisLabel: {
             formatter: (val: AnyObject) => Format.number(val),
           },
-        } as EChartOption.YAxis);
+        } as EChartsOption["yAxis"]);
 
         const series =
           type === "pie"

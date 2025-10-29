@@ -175,9 +175,8 @@ export const ToolbarPlugin = () => {
       <ButtonGroup variant="link">
         <ButtonWrapper
           value="start"
-          rtlFlip
           label={t("tool.alignStart")}
-          icon={CoreIcons.alignLeft}
+          icon={{ icon: CoreIcons.alignLeft, rtlFlip: true }}
           onClick={() =>
             watch.activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "start")
           }
@@ -192,18 +191,16 @@ export const ToolbarPlugin = () => {
         />
         <ButtonWrapper
           value="end"
-          rtlFlip
           label={t("tool.alignEnd")}
-          icon={CoreIcons.alignRight}
+          icon={{ icon: CoreIcons.alignRight, rtlFlip: true }}
           onClick={() =>
             watch.activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "end")
           }
         />
         <ButtonWrapper
           value="justify"
-          rtlFlip
           label={t("tool.alignJustify")}
-          icon={CoreIcons.alignJustify}
+          icon={{ icon: CoreIcons.alignJustify, rtlFlip: true }}
           onClick={() =>
             watch.activeEditor.dispatchCommand(
               FORMAT_ELEMENT_COMMAND,
@@ -213,16 +210,14 @@ export const ToolbarPlugin = () => {
         />
         <ButtonWrapper
           value="justify"
-          rtlFlip
           label={t("tool.indentOut")}
-          icon={CoreIcons.formatIndentDecrease}
+          icon={{ icon: CoreIcons.formatIndentDecrease, rtlFlip: true }}
           onClick={() => watch.outdent()}
         />
         <ButtonWrapper
           value="justify"
-          rtlFlip
           label={t("tool.identIn")}
-          icon={CoreIcons.formatIndentIncrease}
+          icon={{ icon: CoreIcons.formatIndentIncrease, rtlFlip: true }}
           onClick={() => watch.indent()}
         />
       </ButtonGroup>

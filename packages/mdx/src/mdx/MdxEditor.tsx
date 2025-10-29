@@ -60,6 +60,7 @@ import {
   Section,
   useIsDark,
 } from "@react-fabric/core";
+import classNames from "classnames";
 import {
   useCallback,
   useDeferredValue,
@@ -68,7 +69,6 @@ import {
   type FC,
 } from "react";
 import { Mdx } from "./Mdx";
-import classNames from "classnames";
 
 export interface MdxEditorProps {
   /**

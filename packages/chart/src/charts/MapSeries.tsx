@@ -28,7 +28,7 @@ import {
   isEmpty,
 } from "@react-fabric/utilities";
 import * as echarts from "echarts";
-import { type EChartOption, type EChartsType } from "echarts";
+import { type EChartsOption, type EChartsType } from "echarts";
 import { memo, useEffect, useRef, useState, type FC } from "react";
 import { ChartPalette } from "../theme/palettes";
 import { type BaseChart, type CountType } from "../types";
@@ -63,7 +63,7 @@ const MapSeriesChart: FC<MapSeriesProps> = memo(
     const [type, setType] = useState("map");
     const [zoom, setZoom] = useState(1.25);
 
-    const options = useMemoDebugger<EChartOption>(
+    const options = useMemoDebugger<EChartsOption>(
       () => {
         if (isEmpty(series)) return {};
 

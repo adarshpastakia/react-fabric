@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import * as DOMPurify from "dompurify";
+import DOMPurify from "dompurify";
 import hljs from "highlight.js";
 import { Marked } from "marked";
 import * as admonition from "marked-admonition-extension";
@@ -63,7 +63,6 @@ const _marked = new Marked(
   admonition.default,
   markedEmoji({
     emojis: emojiMap,
-    unicode: true,
   }),
   markedHighlight({
     langPrefix: "hljs language-",

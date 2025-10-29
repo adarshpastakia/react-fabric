@@ -56,8 +56,6 @@ export class Pointing extends StateNode {
 
       this.markId = `creating:${id}`;
 
-      this.editor.mark(this.markId);
-
       this.editor
         .createShapes<AvatarShape>([
           {
@@ -80,6 +78,7 @@ export class Pointing extends StateNode {
           target: "selection",
           handle: "bottom_right",
           isCreating: true,
+          creatingMarkId: this.markId,
           creationCursorOffset: { x: 1, y: 1 },
           onInteractionEnd: "avatar",
         });

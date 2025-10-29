@@ -32,13 +32,13 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "date-fns": "^4.1.0",
-    "libphonenumber-js": "^1.12.8",
-    "numeral": "^2.0.6",
-    "yup": "^1.4.0"
+    "date-fns": "~4.1.0",
+    "libphonenumber-js": "~1.12.25",
+    "numeral": "~2.0.6",
+    "yup": "~1.7.1"
   },
   "devDependencies": {
-    "@types/numeral": "^2.0.2"
+    "@types/numeral": "~2.0.5"
   },
   "engines": {
     "node": ">=18.12.0",

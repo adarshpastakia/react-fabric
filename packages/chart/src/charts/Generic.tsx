@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { type EChartOption, type EChartsType } from "echarts";
+import { type EChartsOption, type EChartsType } from "echarts";
 import {
   memo,
   useEffect,
@@ -36,7 +36,7 @@ import { ChartContainer } from "../wrapper/ChartContainer";
 import { ChartWrapper } from "../wrapper/ChartWrapper";
 import { PaletteSelect } from "../wrapper/PaletteSelect";
 
-export interface GenericProps extends Omit<EChartOption, "title"> {
+export interface GenericProps extends Omit<EChartsOption, "title"> {
   chartRef?: Ref<EChartsType>;
 
   title?: string;
@@ -67,7 +67,7 @@ export interface GenericProps extends Omit<EChartOption, "title"> {
   /**
    * Data table renderer that returns HTML string
    */
-  dataTableRenderer?: (chartOption: EChartOption) => string;
+  dataTableRenderer?: (chartOption: EChartsOption) => string;
 }
 
 const GenericChartBase = memo(
@@ -84,7 +84,7 @@ const GenericChartBase = memo(
     title,
     theme: chartTheme,
     ...options
-  }: Omit<GenericProps, "showTypeSelector">) => {
+  }: GenericProps) => {
     const chartRef = useRef<EChartsType>(null);
     const [theme, setTheme] = useState(chartTheme);
 
@@ -97,7 +97,7 @@ const GenericChartBase = memo(
     useEffect(() => {
       const chart = chartRef.current;
       if (chart && onRendered) {
-        chart.on("finished", onRendered);
+        chart.on("finished", onRendered as any);
         return () => {
           !chart.isDisposed() && chart.off("finished");
         };
@@ -117,7 +117,7 @@ const GenericChartBase = memo(
     useEffect(() => {
       const chart = chartRef.current;
       if (chart && onBrush) {
-        chart.on("brush", onBrush);
+        chart.on("brush", onBrush as any);
         return () => {
           !chart.isDisposed() && chart.off("brush");
         };
@@ -127,7 +127,7 @@ const GenericChartBase = memo(
     useEffect(() => {
       const chart = chartRef.current;
       if (chart && onBrushEnd) {
-        chart.on("brushend", onBrushEnd);
+        chart.on("brushend", onBrushEnd as any);
         return () => {
           !chart.isDisposed() && chart.off("brushend");
         };
@@ -137,7 +137,7 @@ const GenericChartBase = memo(
     useEffect(() => {
       const chart = chartRef.current;
       if (chart && onBrushSelected) {
-        chart.on("brushselected", onBrushSelected);
+        chart.on("brushselected", onBrushSelected as any);
         return () => {
           !chart.isDisposed() && chart.off("brushselected");
         };

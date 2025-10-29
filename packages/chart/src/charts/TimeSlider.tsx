@@ -28,7 +28,7 @@ import {
 } from "@react-fabric/core";
 import { isEmpty } from "@react-fabric/utilities";
 import { endOfDay, startOfDay } from "date-fns";
-import { type EChartOption, type EChartsType } from "echarts";
+import { type EChartsOption, type EChartsType } from "echarts";
 import { memo, useCallback, useEffect, useRef, useState, type FC } from "react";
 import { type BaseChart } from "../types";
 import { ChartContainer } from "../wrapper/ChartContainer";
@@ -86,7 +86,7 @@ const TimeSliderChart: FC<TimeSliderProps> = memo(
         if (chart && !chart?.isDisposed()) {
           enableBrush();
           chart.on("datazoom", () => {
-            const zoom = chart.getOption().dataZoom?.[0];
+            const zoom = (chart.getOption().dataZoom as any)?.[0];
             if (zoom) {
               const startValue = Math.floor(zoom.startValue as number);
               const endValue = Math.ceil(
@@ -108,7 +108,7 @@ const TimeSliderChart: FC<TimeSliderProps> = memo(
       "TimeSldier onBrush",
     );
 
-    const options = useMemoDebugger<EChartOption>(
+    const options = useMemoDebugger<EChartsOption>(
       () => {
         if (isEmpty(dataSeries)) {
           chartRef.current?.clear();
@@ -129,7 +129,7 @@ const TimeSliderChart: FC<TimeSliderProps> = memo(
             show: false,
           },
           position: "bottom",
-        } as EChartOption.XAxis;
+        } as EChartsOption["xAxis"];
         const valueAxis: AnyObject = {
           type: "value",
           nameGap: 24,
@@ -146,7 +146,7 @@ const TimeSliderChart: FC<TimeSliderProps> = memo(
             show: false,
           },
           nameLocation: "center",
-        } as EChartOption.YAxis;
+        } as EChartsOption["yAxis"];
 
         const series = [
           {

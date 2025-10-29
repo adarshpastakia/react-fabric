@@ -33,22 +33,22 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@react-fabric/core": "^1.0.0-beta.57",
-    "@react-fabric/utilities": "^1.0.0-beta.52",
-    "@tldraw/assets": "^3.13.1",
-    "@tldraw/editor": "^3.13.1",
-    "@tldraw/tldraw": "^3.13.1",
-    "classnames": "^2.5.1",
-    "dom-to-image": "^2.6.0"
+    "@react-fabric/core": "~1.0.0-beta.57",
+    "@react-fabric/utilities": "~1.0.0-beta.52",
+    "@tldraw/assets": "~4.1.2",
+    "@tldraw/editor": "~4.1.2",
+    "@tldraw/tldraw": "~4.1.2",
+    "classnames": "~2.5.1",
+    "dom-to-image": "~2.6.0"
   },
   "peerDependencies": {
-    "i18next": "^25.2.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-i18next": "^15.5.2"
+    "i18next": "~25.6.0",
+    "react": "~19.2.0",
+    "react-dom": "~19.2.0",
+    "react-i18next": "~16.2.1"
   },
   "devDependencies": {
-    "@types/dom-to-image": "^2.6.7"
+    "@types/dom-to-image": "~2.6.7"
   },
   "engines": {
     "node": ">=18.12.0",

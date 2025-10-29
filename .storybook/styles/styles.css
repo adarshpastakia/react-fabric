@@ -6,6 +6,7 @@
  */
 
 @import "tailwindcss";
+@import "@react-fabric/chart/css/styles.css";
 @import "@react-fabric/core/css/styles.css";
 @import "@react-fabric/data/css/styles.css";
 @import "@react-fabric/date/css/styles.css";

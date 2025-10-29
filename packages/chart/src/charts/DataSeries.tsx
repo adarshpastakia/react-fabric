@@ -29,7 +29,7 @@ import {
   useMemoDebugger,
 } from "@react-fabric/core";
 import { isEmpty } from "@react-fabric/utilities";
-import { type EChartOption, type EChartsType } from "echarts";
+import { type EChartsOption, type EChartsType } from "echarts";
 import { memo, useEffect, useRef, useState, type FC } from "react";
 import { type BaseChart, type SeriesType } from "../types";
 import { seriesRenderer } from "../types/utils";
@@ -75,7 +75,7 @@ const DataSeriesChart: FC<DataSeriesProps> = memo(
       setTheme(chartTheme);
     }, [chartTheme]);
 
-    const options = useMemoDebugger<EChartOption>(
+    const options = useMemoDebugger<EChartsOption>(
       () => {
         if (isEmpty(_series)) {
           chartRef.current?.clear();
@@ -99,7 +99,7 @@ const DataSeriesChart: FC<DataSeriesProps> = memo(
                   show: false,
                 },
                 data: categories,
-              } as EChartOption.XAxis),
+              } as EChartsOption["xAxis"]),
         );
         const valueAxis: AnyObject = Object.assign(
           {},
@@ -111,7 +111,7 @@ const DataSeriesChart: FC<DataSeriesProps> = memo(
                 type: "value",
                 nameGap: 32,
                 nameLocation: "center",
-              } as EChartOption.YAxis),
+              } as EChartsOption["yAxis"]),
         );
         const radar =
           _type !== "radar"

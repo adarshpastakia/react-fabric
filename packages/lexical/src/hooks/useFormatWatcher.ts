@@ -167,7 +167,9 @@ export const useFormatWatcher = () => {
       setIsSubscript(selection.hasFormat("subscript"));
       setIsSuperscript(selection.hasFormat("superscript"));
       setIsCode(selection.hasFormat("code"));
-      setIsRTL($isParentElementRTL(selection));
+      editor.read(() => {
+        setIsRTL($isParentElementRTL(selection));
+      });
 
       // Update links
       const node = getSelectedNode(selection);

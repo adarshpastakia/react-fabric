@@ -28,6 +28,10 @@
   .fabric-lexicalToolbar {
     width: 21cm;
     margin: 0 auto;
+
+    .fabric-inputWrapper {
+      outline: none;
+    }
   }
 
   .fabric-lexicalEditor {

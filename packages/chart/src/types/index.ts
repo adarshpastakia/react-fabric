@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { type EChartOption } from "echarts";
+import { BarSeriesOption, PieSeriesOption, type EChartsOption } from "echarts";
 
 export type Theme =
   | "default"
@@ -54,7 +54,7 @@ export interface BaseChart {
    * Additional options for the chart.
    * This can include any ECharts options to customize the chart's appearance and behavior.
    */
-  options?: EChartOption;
+  options?: EChartsOption;
   /**
    * Whether to show the theme selector in the chart.
    * This is useful for allowing users to switch between different themes.
@@ -71,7 +71,7 @@ export interface BaseChart {
 }
 
 export interface CountType {
-  series: Array<EChartOption.SeriesPie & { count: number }>;
+  series: Array<PieSeriesOption & { count: number }>;
 }
 
 export interface SeriesType {
@@ -80,7 +80,7 @@ export interface SeriesType {
   valueFormat?: string;
   categories: string[];
   series: Array<
-    EChartOption.SeriesBar & {
+    BarSeriesOption & {
       data: number[];
     }
   >;
@@ -90,7 +90,7 @@ export interface TimeSeriesType {
   categoryAxisName?: string;
   valueAxisName?: string;
   series: Array<
-    EChartOption.SeriesBar & {
+    BarSeriesOption & {
       data: Array<[Date, number]>;
     }
   >;

@@ -204,7 +204,7 @@ export const DrawCanvas: FC<DrawProps> = ({
       exportPages: async () => {
         const currentPage = editorRef?.getCurrentPageId();
         const pages = Object.keys(
-          editorRef?.store.getSnapshot().store ?? {},
+          editorRef?.store.getStoreSnapshot().store ?? {},
         ).filter((key) => key.startsWith("page:"));
         const pageSnapshots: KeyValue[] = [];
         while (pages.length) {
@@ -219,7 +219,7 @@ export const DrawCanvas: FC<DrawProps> = ({
             editorRef?.setCurrentPage(pg);
           });
           const shapes: AnyObject = editorRef?.getCurrentPageShapeIds();
-          const svg = await editorRef?.getSvg([...shapes], {
+          const svg = await editorRef?.getSvgElement([...shapes], {
             scale: 1,
             background: true,
           });
@@ -227,7 +227,7 @@ export const DrawCanvas: FC<DrawProps> = ({
             pageSnapshots.push({
               id: pg,
               name: editorRef?.getCurrentPage().name,
-              content: { image: await getSvgAsDataUrl(svg) },
+              content: { image: await getSvgAsDataUrl(svg.svg) },
             });
         }
         currentPage && editorRef?.setCurrentPage(currentPage);

@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-.chartContainer {
+.rf-chartContainer {
   & > div:last-child:not(:first-child) > :last-child {
     top: 0;
     right: unset !important;
@@ -38,7 +38,7 @@
   }
 }
 
-.chartToolbar {
+.rf-chartToolbar {
   input[type="range"] {
     position: relative;
 
