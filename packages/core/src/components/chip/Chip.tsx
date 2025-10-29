@@ -203,7 +203,7 @@ export const Chip = <Tag extends React.ElementType = "div">({
       {children && (
         <label
           data-ref="chipLabel"
-          className={classNames("fabric-chipLabel", "truncate")}
+          className={classNames("fabric-chipLabel", "truncate flex-1")}
         >
           {children}
         </label>
