@@ -75,14 +75,15 @@ export const _ArrayInput: ArrayInputStory = {
         schema={schema.current}
         defaultValues={{
           // @ts-expect-error ignore
-          names: [new String("")],
+          names: [new String("Tester")],
         }}
       >
         <div className="mx-auto w-96">
           <ArrayInput
             {...args}
             required
-            minItems={10}
+            canRemove="newonly"
+            // minItems={10}
             name="names"
             label="Names list"
             addLabel="Add Name"

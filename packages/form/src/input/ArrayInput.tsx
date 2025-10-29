@@ -34,9 +34,12 @@ import { isFalse, isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import {
   cloneElement,
+  use,
   useCallback,
+  useEffect,
   useImperativeHandle,
   useMemo,
+  useState,
   type PropsWithChildren,
   type ReactNode,
   type Ref,
@@ -96,16 +99,12 @@ export interface ArrayInputProps<T extends AnyObject = string> {
   enableSorting?: boolean;
   children:
     | React.ReactNode
-    | ((props: { index: number; name: string }) => ReactNode);
+    | ((props: { index: number; name: string; item: T }) => ReactNode);
   /**
    * add item button label
    */
   addLabel?: string;
   buttonPosition?: "top" | "bottom" | "both";
-  /**
-   * fixed length list
-   */
-  fixedList?: boolean;
   arrayRef?: Ref<{
     addItem: (item: T) => void;
     removeItem: (idx: number) => void;
@@ -113,7 +112,7 @@ export interface ArrayInputProps<T extends AnyObject = string> {
   /**
    * add new item
    */
-  onAdd?: () => AnyObject;
+  onAdd?: () => T;
   /**
    * on item remove
    */
@@ -125,7 +124,10 @@ export interface ArrayInputProps<T extends AnyObject = string> {
   /**
    * can remove item
    */
-  canRemove?: (props: { item: T; index: number; lastItem: boolean }) => boolean;
+  canRemove?:
+    | false
+    | "newonly"
+    | ((props: { item: T; index: number; lastItem: boolean }) => boolean);
 
   /**
    * field width
@@ -184,7 +186,6 @@ export const ArrayInput = <T extends AnyObject = string>({
   name,
   children,
   addLabel,
-  fixedList,
   focusName = "",
   buttonPosition = "bottom",
   onAdd,
@@ -211,6 +212,11 @@ export const ArrayInput = <T extends AnyObject = string>({
     control: form.control,
   });
 
+  const [initialList, setInitialList] = useState<string[]>([]);
+  useEffect(() => {
+    setInitialList(fields.map((f) => f.__ID__));
+  }, []);
+
   const error = useMemo<AnyObject>(
     () =>
       form.formState.errors[name]?.message ??
@@ -218,8 +224,27 @@ export const ArrayInput = <T extends AnyObject = string>({
     [form.formState.errors],
   );
 
+  const removeCheck = useCallback(
+    (item: T, index: number) => {
+      if (canRemove === false) return false;
+      if (canRemove === "newonly") {
+        return initialList.includes((item as any).__ID__) ? false : true;
+      }
+      if (typeof canRemove === "function") {
+        return canRemove({
+          item,
+          index,
+          lastItem: index + 1 === fields.length,
+        });
+      }
+      return true;
+    },
+    [canRemove, initialList, fields],
+  );
+
   const handleAdd = useCallback(
-    (item: T) => {
+    (item?: T) => {
+      if (!item) return;
       append(item);
       setTimeout(() => {
         form.setFocus(
@@ -349,14 +374,26 @@ export const ArrayInput = <T extends AnyObject = string>({
             onClick={() => handleAdd(onAdd?.())}
             data-invalid={!!error}
             disabled={!!disabled || readOnly || fields.length > maxItems}
-            className={classNames("fabric-addButton", "me-10")}
+            className={classNames(
+              "fabric-addButton",
+              canRemove !== false && "me-10",
+            )}
           >
-            {addLabel ?? t("addArray")}
+            {addLabel ?? t("form:addArray")}
           </Button>
         </Tooltip>
       </div>
     ),
-    [error, fields, handleAdd, disabled, readOnly, addLabel, maxItems],
+    [
+      error,
+      fields,
+      handleAdd,
+      canRemove,
+      disabled,
+      readOnly,
+      addLabel,
+      maxItems,
+    ],
   );
 
   return (
@@ -365,7 +402,7 @@ export const ArrayInput = <T extends AnyObject = string>({
         {...rest}
         appendLabel={
           <div className="-me-2">
-            {!fixedList && onAdd && buttonPosition !== "bottom" && addButton}
+            {onAdd && buttonPosition !== "bottom" && addButton}
           </div>
         }
       >
@@ -379,6 +416,7 @@ export const ArrayInput = <T extends AnyObject = string>({
               {typeof children === "function"
                 ? children({
                     index,
+                    item: item as any,
                     name: `${name}.${index}`,
                   })
                 : cloneChildren(children, (child: AnyObject) =>
@@ -403,7 +441,7 @@ export const ArrayInput = <T extends AnyObject = string>({
                       ),
                     ),
                   )}
-              {!fixedList && (
+              {canRemove !== false && (
                 <Button
                   aria-label="Remove item"
                   icon={CoreIcons.remove}
@@ -414,20 +452,16 @@ export const ArrayInput = <T extends AnyObject = string>({
                     disabled ||
                     readOnly ||
                     fields.length <= minItems ||
-                    canRemove?.({
-                      item: item as T,
-                      index,
-                      lastItem: index + 1 === fields.length,
-                    }) !== false
+                    removeCheck(item as any, index) === false
                   }
-                  onClick={() => handleRemove(item as T, index)}
+                  onClick={() => handleRemove(item as any, index)}
                 />
               )}
             </SortableItem>
           ))}
         </Wrapper>
       </FieldWrapper>
-      {!fixedList && onAdd && buttonPosition !== "top" && addButton}
+      {onAdd && buttonPosition !== "top" && addButton}
     </div>
   );
 };
