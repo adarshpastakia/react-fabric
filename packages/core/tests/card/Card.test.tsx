@@ -77,7 +77,7 @@ describe("Cards", () => {
     const fragment = render(
       <Tester>
         <CardCover className="p-4">
-          <Image src={faker.image.url()} />
+          <Image src="https://picsum.photos/seed/FmAOt23A0/640/480" />
           <Title as="h3">Card Title</Title>
           <Title>Card description</Title>
         </CardCover>
