@@ -185,7 +185,7 @@ export const Avatar = ({
   const fallbackAvatar = useMemo(() => {
     if (fallbackIcon) {
       return isSvgPath(fallbackIcon) ? (
-        <svg viewBox={viewBox}>
+        <svg viewBox={viewBox} className="p-[0.125em]">
           <path fill="currentColor" d={fallbackIcon.toString()} />
         </svg>
       ) : (

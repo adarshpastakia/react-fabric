@@ -26,6 +26,8 @@ import { type RefProp } from "@react-fabric/core/dist/types/types";
 import { useEffect, useState } from "react";
 import { useFileUploader, type UploadHandler } from "../hooks/useFileUploader";
 import { HiddenInput } from "./Hidden";
+import { AvatarProps } from "@react-fabric/core/dist/types/components/avatar/Avatar";
+import classNames from "classnames";
 
 export interface Props extends RefProp {
   /**
@@ -44,6 +46,10 @@ export interface Props extends RefProp {
    * avatar name
    */
   avatarName?: string;
+  rounded?: boolean;
+  variant?: AvatarProps["variant"];
+  fallbackIcon?: AvatarProps["fallbackIcon"];
+  avatarClassName?: AvatarProps["className"];
   size?: string | number;
   /**
    * upload handler to store file in temp storage
@@ -74,8 +80,12 @@ export interface Props extends RefProp {
 export const AvatarInput = ({
   size = "6rem",
   avatarName,
+  avatarClassName,
   value,
+  rounded,
   defaultValue,
+  fallbackIcon,
+  variant,
   fileUrl,
   uploadHandler,
   ...rest
@@ -117,9 +127,23 @@ export const AvatarInput = ({
 
   return (
     <div className="flex flex-nowrap items-end overflow-hidden">
-      <div className="inline-block leading-none rounded-full relative outline overflow-hidden">
-        <Avatar name={avatarName ?? "temp"} size={size} avatar={base64} />
-        <div className="absolute inset-x-0 bottom-0 cursor-pointer bg-black/20 hover:bg-black/50 text-white text-xs text-center py-1">
+      <div
+        className={classNames(
+          "inline-block leading-none relative outline overflow-hidden",
+          rounded && "rounded-full",
+          !rounded && "rounded",
+        )}
+      >
+        <Avatar
+          name={avatarName ?? "temp"}
+          size={size}
+          avatar={base64}
+          rounded={rounded}
+          variant={variant}
+          fallbackIcon={fallbackIcon}
+          className={avatarClassName}
+        />
+        <div className="absolute inset-x-0 bottom-0 cursor-pointer opacity-50 bg-black/50 hover:opacity-90 text-white text-xs text-center py-1">
           <span>Edit</span>
           <input
             type="file"
