@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.58](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.57...v1.0.0-beta.58) (2025-10-29)
+
+**Note:** Version bump only for package @react-fabric/superdate
+
 # [1.0.0-beta.57](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.56...v1.0.0-beta.57) (2025-09-30)
 
 **Note:** Version bump only for package @react-fabric/superdate

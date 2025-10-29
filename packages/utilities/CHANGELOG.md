@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.58](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.57...v1.0.0-beta.58) (2025-10-29)
+
+**Note:** Version bump only for package @react-fabric/utilities
+
 # [1.0.0-beta.52](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.51...v1.0.0-beta.52) (2025-06-13)
 
 **Note:** Version bump only for package @react-fabric/utilities
