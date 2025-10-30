@@ -8,7 +8,7 @@ import "@mdi/font/css/materialdesignicons.min.css";
 import "./styles/styles.css";
 import "./monaco";
 
-import { Anchor, DocsContainer, Subheading } from "@storybook/addon-docs";
+import { Anchor, DocsContainer } from "@storybook/addon-docs/blocks";
 import type { Preview } from "@storybook/react-vite";
 import { initialize, mswLoader } from "msw-storybook-addon";
 import { Fragment, useEffect, useMemo } from "react";
