@@ -26,6 +26,7 @@ import { Fragment, useMemo } from "react";
 import { MiniSlider } from "../sliders/MiniSlider";
 import { TimeSlider } from "../sliders/TimeSlider";
 import { useAudioContext } from "./Context";
+import classNames from "classnames";
 
 export const Tools = () => {
   const { audioRef, state, toggleEqs } = useAudioContext();
@@ -80,7 +81,14 @@ export const Tools = () => {
   );
 
   return (
-    <Footer flex className="select-none bg-tint-50">
+    <Footer
+      flex
+      className={classNames(
+        "select-none bg-tint-50",
+        state.isErrored &&
+          "after:absolute after:inset-0 after:bg-tint-500/20 after:cursor-not-allowed",
+      )}
+    >
       {state.isLoaded && (
         <Fragment>
           <HotKey global keyCombo="space" handler={handlers.togglePlay} />

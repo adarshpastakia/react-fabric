@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Header } from "@react-fabric/core";
+import { CoreIcons, Header, Icon } from "@react-fabric/core";
 import { type RefProp } from "@react-fabric/core/dist/types/types";
 import { compareValues, debounce } from "@react-fabric/utilities";
 import {
@@ -161,7 +161,7 @@ export const AudioPlayer = ({
       if (action.type === "loaded") {
         state.isLoading = false;
         state.isLoaded = true;
-        onLoad?.();
+        setTimeout(() => onLoad?.(), 10);
       }
       if (action.type === "metadata") {
         state.duration = action.duration;
@@ -172,6 +172,9 @@ export const AudioPlayer = ({
         state.errorLevel++;
         if (state.errorLevel === 1) {
           if (fallback) {
+            state.isLoading = true;
+            state.isLoaded = false;
+            state.isErrored = false;
             state.src = fallback;
           } else {
             state.errorLevel++;
@@ -180,11 +183,19 @@ export const AudioPlayer = ({
         if (state.errorLevel === 2) {
           state.isLoading = false;
           state.isLoaded = true;
-          onError?.();
+          state.isErrored = true;
+          setTimeout(() => onError?.(), 10);
         }
       }
       if (action.type === "reset") {
-        return { ...state, src: action.audio };
+        return {
+          ...state,
+          isLoaded: false,
+          isLoading: true,
+          isErrored: false,
+          errorLevel: 0,
+          src: action.audio,
+        };
       }
       if (action.type === "toggleEqs") {
         return { ...state, showEqs: !state.showEqs };
@@ -268,7 +279,7 @@ export const AudioPlayer = ({
   }, []);
 
   useEffect(() => {
-    void wavesurfer?.loadAudio(state.src);
+    void wavesurfer?.loadAudio(state.src).catch(handleError);
   }, [state.src]);
 
   /** ***************** handle region in/out *******************/
@@ -401,6 +412,12 @@ export const AudioPlayer = ({
           </div>
           <div className="overflow-hidden relative flex-1 px-1">
             <div ref={containerRef} className="h-[200px]" />
+            {state.isErrored && (
+              <div className="absolute z-10 bg-tint-50/50 cursor-not-allowed inset-0 grid place-content-center place-items-center text-muted gap-y-4">
+                <Icon size="3rem" icon={CoreIcons.mediaAudioBroken} />
+                <div>Error loading audio</div>
+              </div>
+            )}
             {state.isLoading && <Loading />}
           </div>
         </div>

@@ -187,7 +187,7 @@ export const Wavesurfer = (container: HTMLElement, media: HTMLAudioElement) => {
       } catch (_) {
         //
       }
-
+      instance.empty();
       return await instance.load(src).then(() => {
         tmr.end();
       });
