@@ -182,14 +182,14 @@ const _VirtualGallery = <T extends AnyObject>({
     count: Math.ceil(count / columnCount),
     getScrollElement: () => scrollerRef.current,
     estimateSize: () => height,
-    overscan: 2,
+    overscan: 0,
   });
 
   const virtualItems = virtualizer.getVirtualItems();
 
   const currentIndex = useRef(0);
   useEffect(() => {
-    currentIndex.current = virtualItems[2]?.index ?? 0;
+    currentIndex.current = virtualItems[0]?.index ?? 0;
     if (
       scrollerRef.current &&
       virtualItems[0] &&
@@ -246,14 +246,18 @@ const _VirtualGallery = <T extends AnyObject>({
     }
   }, [onLoadMore, virtualItems]);
 
+  const isRenderedRef = useRef(false);
   useLayoutEffect(() => {
-    setTimeout(() => {
+    if (!isRenderedRef.current && itemList.length > 0) {
+      isRenderedRef.current = true;
       initialScroll &&
-        virtualizer.scrollToIndex(Math.floor(initialScroll / columnCount), {
-          align: "start",
-        });
-    }, 100);
-  }, [columnCount]);
+        setTimeout(() => {
+          virtualizer.scrollToIndex(Math.floor(initialScroll / columnCount), {
+            align: "start",
+          });
+        }, 200);
+    }
+  }, [columnCount, initialScroll, itemList]);
 
   useImperativeHandle(
     galleryRef,

@@ -149,7 +149,7 @@ const _VirtualList = <T extends AnyObject>({
   const scrollerRef = useRef<HTMLDivElement>(null);
   const virtualizer = useVirtualizer({
     count,
-    overscan: 2,
+    overscan: 0,
     horizontal: orientation === "horizontal",
     getScrollElement: () => scrollerRef.current,
     estimateSize: () => (orientation === "horizontal" ? width : height),
@@ -159,7 +159,7 @@ const _VirtualList = <T extends AnyObject>({
 
   const currentIndex = useRef(0);
   useEffect(() => {
-    currentIndex.current = virtualItems[2]?.index ?? 0;
+    currentIndex.current = virtualItems[0]?.index ?? 0;
     if (
       scrollerRef.current &&
       virtualItems[0] &&
@@ -225,12 +225,18 @@ const _VirtualList = <T extends AnyObject>({
     }
   }, [onLoadMore, virtualItems]);
 
+  const isRenderedRef = useRef(false);
   useLayoutEffect(() => {
-    setTimeout(() => {
+    if (!isRenderedRef.current && itemList.length > 0) {
+      isRenderedRef.current = true;
       initialScroll &&
-        virtualizer.scrollToIndex(initialScroll, { align: "start" });
-    }, 100);
-  }, []);
+        setTimeout(() => {
+          virtualizer.scrollToIndex(Math.floor(initialScroll), {
+            align: "start",
+          });
+        }, 200);
+    }
+  }, [itemList, initialScroll]);
 
   useImperativeHandle(
     listRef,
