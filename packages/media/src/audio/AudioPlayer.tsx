@@ -360,11 +360,11 @@ export const AudioPlayer = ({
       }}
     >
       <Header className="bg-base" dir="ltr">
-        <div className="flex">
+        <div className="flex media-container">
           <div
             className={
               forVideo
-                ? "grid relative aspect-video h-[200px] after:absolute after:inset-0 after:shadow-[0_0_10px_2px_rgba(0,0,0,0.5)_inset]"
+                ? "relative aspect-video h-[200px] after:absolute after:inset-0 after:shadow-[0_0_10px_2px_rgba(0,0,0,0.5)_inset]"
                 : "hidden"
             }
           >
@@ -372,6 +372,7 @@ export const AudioPlayer = ({
               onLoadedData={handleLoad}
               onError={handleError}
               ref={audioRef as any}
+              className="size-full object-contain bg-black/85"
               onPlay={() => dispatch({ type: "play" })}
               onPause={() => dispatch({ type: "pause" })}
               onRateChange={() =>
@@ -411,7 +412,7 @@ export const AudioPlayer = ({
             </M>
           </div>
           <div className="overflow-hidden relative flex-1 px-1">
-            <div ref={containerRef} className="h-[200px]" />
+            <div ref={containerRef} className="rf-wavesurfer h-[200px]" />
             {state.isErrored && (
               <div className="absolute z-10 bg-tint-50/50 cursor-not-allowed inset-0 grid place-content-center place-items-center text-muted gap-y-4">
                 <Icon size="3rem" icon={CoreIcons.mediaAudioBroken} />
