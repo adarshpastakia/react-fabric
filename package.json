@@ -14,7 +14,7 @@
     "bootstrap": "lerna bootstrap",
     "prebuild": "yarn copy:arcgis && jest --ci --runInBand --detectOpenHandles --json --outputFile=./.storybook/jest-test-results.json",
     "storybook": "storybook dev -p 6003",
-    "build": "storybook build -o ./build",
+    "build": "NODE_OPTIONS=--max-old-space-size=8192 storybook build -o ./build",
     "tailwind:build": "@tailwindcss/cli --cwd ./.storybook/styles -i ./styles.css -o ./build.css",
     "tailwind:watch": "yarn tailwind:build --watch",
     "lint:css": "stylelint packages/**/*.css",
