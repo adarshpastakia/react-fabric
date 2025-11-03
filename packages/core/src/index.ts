@@ -36,6 +36,7 @@ export * from "./hooks/useNavigator";
 export * from "./hooks/useOverlayService";
 export * from "./hooks/useResize";
 export * from "./hooks/useResizeObserver";
+export * from "./hooks/useStepper";
 export * from "./hooks/useStorage";
 
 export { HotKey } from "./hotkeys/HotKey";
