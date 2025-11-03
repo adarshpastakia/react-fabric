@@ -29,13 +29,13 @@ import {
   useEffect,
   useImperativeHandle,
   useRef,
-  useState,
   useTransition,
   type PropsWithChildren,
   type Ref,
 } from "react";
 import {
   FormProvider,
+  Path,
   useFormContext,
   useForm as useFormHook,
   useWatch,
@@ -156,7 +156,7 @@ export const Form = <K extends KeyValue>({
       reset: () => handleReset(defaultValues),
       clear: () => handleReset(),
       submit: () => form.handleSubmit(onSubmit),
-      validate: async () => await form.trigger(),
+      validate: async (fields?: Path<K>[]) => await form.trigger(fields),
       getValues: () => form.getValues(),
       setValues: (v) => setTimeout(() => form.reset(v), 50),
       setValue: (k, v) =>
