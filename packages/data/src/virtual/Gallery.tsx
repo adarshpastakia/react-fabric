@@ -332,11 +332,16 @@ const _VirtualGallery = <T extends AnyObject>({
                     key={`${key}:${col}`}
                     data-index={index * columnCount + col}
                     className={classNames("grid rounded-capped")}
+                    style={{
+                      minWidth: width,
+                      minHeight: height,
+                    }}
                   >
-                    {itemList[index * columnCount + col] &&
-                      children(
-                        itemList[index * columnCount + col] as AnyObject,
-                      )}
+                    {itemList[index * columnCount + col]?.item ? (
+                      children(itemList[index * columnCount + col] as AnyObject)
+                    ) : (
+                      <Skeleton className="p-2" />
+                    )}
                   </div>
                 ))}
               </div>

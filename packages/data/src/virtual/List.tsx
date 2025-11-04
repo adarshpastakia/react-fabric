@@ -133,7 +133,7 @@ const _VirtualList = <T extends AnyObject>({
   const extraSize = useMemo(() => (onLoadMore ? 8 : 0), [onLoadMore]);
   const itemList: Array<{
     index: number;
-    data: T;
+    item: T;
     isLast: boolean;
     isSticky: boolean;
   }> = createItemList(
@@ -317,8 +317,16 @@ const _VirtualList = <T extends AnyObject>({
                   "rounded-capped",
                   orientation === "horizontal" ? "inline-grid" : "grid",
                 )}
+                style={{
+                  minWidth: width,
+                  minHeight: height,
+                }}
               >
-                {children(itemList[index] as AnyObject)}
+                {itemList[index]?.item ? (
+                  children(itemList[index] as AnyObject)
+                ) : (
+                  <Skeleton className="p-2" />
+                )}
               </div>
             ))}
           </div>
