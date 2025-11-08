@@ -1,0 +1,1 @@
+import{bB as o}from"./ShadowCastClear.glsl.js";import"./Point2D.js";import{h as u}from"./ProjectionTransformation.js";import"./Envelope2D.js";const t=new u;function m(n,r,e){return t.execute(n,r,e,null)}function f(n,r){return t.executeMany(new o(n),r,null).next()}function l(){return t.supportsCurves()}export{f as o,m as r,l as s};

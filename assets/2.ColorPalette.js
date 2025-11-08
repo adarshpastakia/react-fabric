@@ -1,4 +1,4 @@
-import{j as e,M as t,T as r,aY as d,S as n}from"./iframe-Ctw5u0Cj.js";import{useMDXComponents as l}from"./index.js";function a(i){const s={blockquote:"blockquote",code:"code",p:"p",...l(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(t,{title:"Color Palette"}),`
+import{j as e,M as t,T as r,aV as d,S as n}from"./iframe-DwvN93Ge.js";import{useMDXComponents as l}from"./index3.js";function a(i){const s={blockquote:"blockquote",code:"code",p:"p",...l(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(t,{title:"Color Palette"}),`
 `,e.jsx(r,{children:"Color Palette"}),`
 `,e.jsxs(d,{children:[e.jsx("div",{children:e.jsxs(s.p,{children:["Color palette is curated using the CSS ",e.jsx(s.code,{children:"color-mix"}),` function, unlike other
 palettes this palette uses background and text colors to create shades.`]})}),e.jsx("div",{children:e.jsxs(s.p,{children:[`From experience shades are not constant between light and dark modes, hence

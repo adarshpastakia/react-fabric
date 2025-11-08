@@ -1,0 +1,1 @@
+import{_ as r,E as s,F as o,V as l}from"./ShadowCastClear.glsl.js";let e=class extends r{constructor(t){super(t),this.gpuResult=null}};s([o({constructOnly:!0,clonable:"reference"})],e.prototype,"gpuResult",void 0),e=s([l("esri.views.3d.layers.VoxelGraphic")],e);export{e as t};

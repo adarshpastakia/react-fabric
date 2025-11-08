@@ -1,21 +1,21 @@
-import{j as s,M as m,T as C,A as e,S as r,D as a,af as p,P as f,c as t,C as l,b as c,a as u}from"./iframe-Ctw5u0Cj.js";import{useMDXComponents as h}from"./index.js";import{C as T,_ as b,a as d,H as i,b as x}from"./Card.stories.js";import"./index4.js";import"./small_video.js";function j(n){const o={code:"code",pre:"pre",...h(),...n.components};return s.jsxs(s.Fragment,{children:[s.jsx(m,{of:T}),`
+import{j as s,M as m,T as C,A as e,S as r,D as a,af as p,P as f,c as l,C as t,b as c,a as u}from"./iframe-DwvN93Ge.js";import{useMDXComponents as h}from"./index3.js";import{C as T,_ as b,a as d,H as i,b as x}from"./Card.stories.js";import"./index4.js";function j(n){const o={code:"code",pre:"pre",...h(),...n.components};return s.jsxs(s.Fragment,{children:[s.jsx(m,{of:T}),`
 `,s.jsx(C,{children:"Card"}),`
 `,s.jsx(e,{storyId:"card",children:s.jsx("div",{className:"hidden-anchor",children:s.jsx(r,{children:"Card"})})}),`
 `,s.jsx(a,{of:p}),`
 `,s.jsx(f,{}),`
-`,s.jsxs(t,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(l,{of:b})]}),`
+`,s.jsxs(l,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(t,{of:b})]}),`
 `,s.jsx(e,{storyId:"clickable",children:s.jsx(r,{children:"Clickable"})}),`
 `,s.jsx(a,{of:d}),`
 `,s.jsx(c,{withToolbar:!0,of:d}),`
-`,s.jsxs(t,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(l,{of:d})]}),`
+`,s.jsxs(l,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(t,{of:d})]}),`
 `,s.jsx(e,{storyId:"headFoot",children:s.jsx(r,{children:"Header Footer"})}),`
 `,s.jsx(a,{of:i}),`
 `,s.jsx(c,{withToolbar:!0,of:i}),`
-`,s.jsxs(t,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(l,{of:i})]}),`
+`,s.jsxs(l,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(t,{of:i})]}),`
 `,s.jsx(e,{storyId:"cardCover",children:s.jsx(r,{children:"Card Cover"})}),`
 `,s.jsx(a,{of:x}),`
 `,s.jsx(c,{withToolbar:!0,of:x}),`
-`,s.jsxs(t,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(l,{of:x})]}),`
+`,s.jsxs(l,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(t,{of:x})]}),`
 `,s.jsx("hr",{}),`
 `,s.jsx(e,{storyId:"props",children:s.jsx(r,{children:"Props"})}),`
 `,s.jsx(u,{sort:"requiredFirst"}),`
@@ -35,4 +35,4 @@ export const Example = () => {
     </Button>
   );
 };
-`})})]})}function M(n={}){const{wrapper:o}={...h(),...n.components};return o?s.jsx(o,{...n,children:s.jsx(j,{...n})}):j(n)}export{M as default};
+`})})]})}function I(n={}){const{wrapper:o}={...h(),...n.components};return o?s.jsx(o,{...n,children:s.jsx(j,{...n})}):j(n)}export{I as default};

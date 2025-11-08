@@ -1,4 +1,4 @@
-import{j as e,a9 as n}from"./iframe-Ctw5u0Cj.js";const d={component:n,title:"@core/components/Animations",parameters:{layout:"centered",controls:{exclude:/^(on.*|children|as)/},jest:["core/tests/animations/Animations.test.tsx"]},decorators:[a=>e.jsx("div",{className:"h-48 w-96 relative p-4 overflow-hidden outline rounded",children:e.jsx(a,{})})]},r={render:()=>e.jsxs(e.Fragment,{children:[e.jsx(n,{}),e.jsx(n,{})]}),args:{}};var t,s,o;r.parameters={...r.parameters,docs:{...(t=r.parameters)==null?void 0:t.docs,source:{originalSource:`{
+import{j as e,a9 as n}from"./iframe-DwvN93Ge.js";const d={component:n,title:"@core/components/Animations",parameters:{layout:"centered",controls:{exclude:/^(on.*|children|as)/},jest:["core/tests/animations/Animations.test.tsx"]},decorators:[a=>e.jsx("div",{className:"h-48 w-96 relative p-4 overflow-hidden outline rounded",children:e.jsx(a,{})})]},r={render:()=>e.jsxs(e.Fragment,{children:[e.jsx(n,{}),e.jsx(n,{})]}),args:{}};var t,s,o;r.parameters={...r.parameters,docs:{...(t=r.parameters)==null?void 0:t.docs,source:{originalSource:`{
   render: () => {
     return <Fragment>
         <Skeleton />

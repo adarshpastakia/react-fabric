@@ -1,4 +1,4 @@
-import{j as e,c as o,a2 as u,e as a}from"./iframe-Ctw5u0Cj.js";import{f as r}from"./index4.js";const x={component:o,title:"@core/components/Collapsable",parameters:{layout:"centered",controls:{exclude:/^(on.*|children|as)/},jest:["core/tests/Collapsable.test.tsx"]},decorators:[n=>e.jsx("div",{className:"max-w-2xl w-screen p-4",children:e.jsx(n,{})})]},s={render:n=>e.jsx(e.Fragment,{children:e.jsxs(o,{...n,children:[e.jsx(u,{children:r.commerce.productName()}),e.jsxs(a,{children:[e.jsx("p",{children:r.commerce.productDescription()}),e.jsx("p",{children:r.lorem.sentences(2)})]})]})}),args:{}},c={render:n=>e.jsxs("div",{className:"divide-y outline rounded-capped",children:[e.jsxs(o,{...n,children:[e.jsx("p",{children:r.commerce.productName()}),e.jsxs(a,{className:"p-2",children:[e.jsx("p",{children:r.commerce.productDescription()}),e.jsx("p",{children:r.lorem.sentences(2)})]})]}),e.jsxs(o,{...n,children:[e.jsx("p",{children:r.commerce.productName()}),e.jsxs(a,{className:"p-2",children:[e.jsx("p",{children:r.commerce.productDescription()}),e.jsx("p",{children:r.lorem.sentences(2)})]})]}),e.jsxs(o,{...n,children:[e.jsx("p",{children:r.commerce.productName()}),e.jsxs(a,{className:"p-2",children:[e.jsx("p",{children:r.commerce.productDescription()}),e.jsx("p",{children:r.lorem.sentences(2)})]})]})]}),args:{iconAlign:"end"}};var l,t,p;s.parameters={...s.parameters,docs:{...(l=s.parameters)==null?void 0:l.docs,source:{originalSource:`{
+import{j as e,c as n,a2 as h,e as t}from"./iframe-DwvN93Ge.js";import{f as r}from"./index4.js";const g={component:n,title:"@core/components/Collapsable",parameters:{layout:"centered",controls:{exclude:/^(on.*|children|as)/},jest:["core/tests/Collapsable.test.tsx"]},decorators:[s=>e.jsx("div",{className:"max-w-2xl w-screen p-4",children:e.jsx(s,{})})]},c={render:s=>e.jsx(e.Fragment,{children:e.jsxs(n,{...s,children:[e.jsx(h,{children:r.commerce.productName()}),e.jsxs(t,{children:[e.jsx("p",{children:r.commerce.productDescription()}),e.jsx("p",{children:r.lorem.sentences(2)})]})]})}),args:{}},a={render:s=>e.jsxs("div",{className:"divide-y outline rounded-capped",children:[e.jsxs(n,{...s,children:[e.jsx("p",{children:r.commerce.productName()}),e.jsxs(t,{className:"p-2",children:[e.jsx("p",{children:r.commerce.productDescription()}),e.jsx("p",{children:r.lorem.sentences(2)})]})]}),e.jsxs(n,{...s,children:[e.jsx("p",{children:r.commerce.productName()}),e.jsxs(t,{className:"p-2",children:[e.jsx("p",{children:r.commerce.productDescription()}),e.jsx("p",{children:r.lorem.sentences(2)})]})]}),e.jsxs(n,{...s,children:[e.jsx("p",{children:r.commerce.productName()}),e.jsxs(t,{className:"p-2",children:[e.jsx("p",{children:r.commerce.productDescription()}),e.jsx("p",{children:r.lorem.sentences(2)})]})]})]}),args:{iconAlign:"end"}},o={render:s=>e.jsx(n,{...s}),args:{}};var l,p,m;c.parameters={...c.parameters,docs:{...(l=c.parameters)==null?void 0:l.docs,source:{originalSource:`{
   render: args => {
     return <Fragment>
         <Collapsable {...args}>
@@ -11,7 +11,7 @@ import{j as e,c as o,a2 as u,e as a}from"./iframe-Ctw5u0Cj.js";import{f as r}fro
       </Fragment>;
   },
   args: {}
-}`,...(p=(t=s.parameters)==null?void 0:t.docs)==null?void 0:p.source}}};var m,d,i;c.parameters={...c.parameters,docs:{...(m=c.parameters)==null?void 0:m.docs,source:{originalSource:`{
+}`,...(m=(p=c.parameters)==null?void 0:p.docs)==null?void 0:m.source}}};var d,i,u;a.parameters={...a.parameters,docs:{...(d=a.parameters)==null?void 0:d.docs,source:{originalSource:`{
   render: args => {
     return <div className="divide-y outline rounded-capped">
         <Collapsable {...args}>
@@ -40,4 +40,7 @@ import{j as e,c as o,a2 as u,e as a}from"./iframe-Ctw5u0Cj.js";import{f as r}fro
   args: {
     iconAlign: "end"
   }
-}`,...(i=(d=c.parameters)==null?void 0:d.docs)==null?void 0:i.source}}};const j=["_Collapsable","Multiple"],f=Object.freeze(Object.defineProperty({__proto__:null,Multiple:c,_Collapsable:s,__namedExportsOrder:j,default:x},Symbol.toStringTag,{value:"Module"}));export{f as C,c as M,s as _};
+}`,...(u=(i=a.parameters)==null?void 0:i.docs)==null?void 0:u.source}}};var x,j,C;o.parameters={...o.parameters,docs:{...(x=o.parameters)==null?void 0:x.docs,source:{originalSource:`{
+  render: args => <Collapsable {...args} />,
+  args: {}
+}`,...(C=(j=o.parameters)==null?void 0:j.docs)==null?void 0:C.source}}};const b=["_Collapsable","Multiple","Tester"],k=Object.freeze(Object.defineProperty({__proto__:null,Multiple:a,Tester:o,_Collapsable:c,__namedExportsOrder:b,default:g},Symbol.toStringTag,{value:"Module"}));export{k as C,a as M,c as _};

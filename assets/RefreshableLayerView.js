@@ -1,0 +1,1 @@
+import{E as t,V as h,ew as d,bi as l,l as o}from"./ShadowCastClear.glsl.js";const n=s=>{const r=s;let e=class extends r{initialize(){this.addHandles(d(()=>this.layer,"refresh",i=>{this.doRefresh(i.dataChanged).catch(a=>{l(a)||o.getLogger(this).error(a)})}),"RefreshableLayerView")}};return e=t([h("esri.views.layers.RefreshableLayerView")],e),e};export{n as i};

@@ -1,8 +1,8 @@
-import{j as n,M as p,T as m,A as e,S as o,D as t,ax as f,P as C,c as l,C as a,b as i,a as u}from"./iframe-Ctw5u0Cj.js";import{useMDXComponents as h}from"./index.js";import{P,_ as y,a as c}from"./Panel.stories.js";import{_PanelGroup as x,AsideContent as d}from"./PanelGroup.stories.js";import"./index4.js";function j(s){const r={code:"code",pre:"pre",...h(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(p,{of:P}),`
+import{j as n,M as p,T as m,A as e,S as o,D as t,au as f,P as u,c as l,C as a,b as i,a as C}from"./iframe-DwvN93Ge.js";import{useMDXComponents as h}from"./index3.js";import{P,_ as y,a as c}from"./Panel.stories.js";import{_PanelGroup as x,AsideContent as d}from"./PanelGroup.stories.js";import"./index4.js";function j(s){const r={code:"code",pre:"pre",...h(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(p,{of:P}),`
 `,n.jsx(m,{children:"Panel"}),`
 `,n.jsx(e,{storyId:"panel",children:n.jsx("div",{className:"hidden-anchor",children:n.jsx(o,{children:"Panel"})})}),`
 `,n.jsx(t,{of:f}),`
-`,n.jsx(C,{}),`
+`,n.jsx(u,{}),`
 `,n.jsxs(l,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(a,{of:y})]}),`
 `,n.jsx(e,{storyId:"controls",children:n.jsx(o,{children:"With Controls"})}),`
 `,n.jsx(t,{of:c}),`
@@ -18,7 +18,7 @@ import{j as n,M as p,T as m,A as e,S as o,D as t,ax as f,P as C,c as l,C as a,b 
 `,n.jsxs(l,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(a,{of:d})]}),`
 `,n.jsx("hr",{}),`
 `,n.jsx(e,{storyId:"props",children:n.jsx(o,{children:"Props"})}),`
-`,n.jsx(u,{sort:"requiredFirst"}),`
+`,n.jsx(C,{sort:"requiredFirst"}),`
 `,n.jsx(e,{storyId:"sample",children:n.jsx(o,{children:"Example"})}),`
 `,n.jsx(r.pre,{children:n.jsx(r.code,{className:"language-tsx",children:`import { Panel } from "@react-fabric/core";
 

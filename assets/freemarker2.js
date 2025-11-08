@@ -1,6 +1,6 @@
-import{bh as f}from"./iframe-Ctw5u0Cj.js";/*!-----------------------------------------------------------------------------
+import{b6 as f}from"./iframe-DwvN93Ge.js";/*!-----------------------------------------------------------------------------
 * Copyright (c) Microsoft Corporation. All rights reserved.
-* Version: 0.52.2(404545bded1df6ffa41ea0af4e8ddb219018c6c1)
+* Version: 0.54.0(7c2310116c57517348bbd868a21139f32454be22)
 * Released under the MIT license
 * https://github.com/microsoft/monaco-editor/blob/main/LICENSE.txt
 *-----------------------------------------------------------------------------*/var F=Object.defineProperty,b=Object.getOwnPropertyDescriptor,x=Object.getOwnPropertyNames,$=Object.prototype.hasOwnProperty,v=(t,n,_,e)=>{if(n&&typeof n=="object"||typeof n=="function")for(let o of x(n))!$.call(t,o)&&o!==_&&F(t,o,{get:()=>n[o],enumerable:!(e=b(n,o))||e.enumerable});return t},E=(t,n,_)=>(v(t,n,"default"),_),r={};E(r,f);var d=["assign","flush","ftl","return","global","import","include","break","continue","local","nested","nt","setting","stop","t","lt","rt","fallback"],s=["attempt","autoesc","autoEsc","compress","comment","escape","noescape","function","if","list","items","sep","macro","noparse","noParse","noautoesc","noAutoEsc","outputformat","switch","visit","recurse"],a={close:">",id:"angle",open:"<"},u={close:"\\]",id:"bracket",open:"\\["},D={close:"[>\\]]",id:"auto",open:"[<\\[]"},k={close:"\\}",id:"dollar",open1:"\\$",open2:"\\{"},p={close:"\\]",id:"bracket",open1:"\\[",open2:"="};function l(t){return{brackets:[["<",">"],["[","]"],["(",")"],["{","}"]],comments:{blockComment:[`${t.open}--`,`--${t.close}`]},autoCloseBefore:`

@@ -1,0 +1,1 @@
+import{bu as o,O as n,bx as a}from"./ShadowCastClear.glsl.js";function e(t){if(!t)return[];let r=o(t)?[t]:n.isCollection(t)?t.toArray():Array.isArray(t)?t:[];return r=r==null?void 0:r.filter(a),((r==null?void 0:r.length)??0)===0?[]:r}export{e as i};
