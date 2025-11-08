@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.59](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.58...v1.0.0-beta.59) (2025-11-08)
+
+### Bug Fixes
+
+- **Form:** optional field list for validation triger ([8a21959](https://github.com/adarshpastakia/react-ui-framework/commit/8a2195947b02edc005176186c9e294a4807a28d8))
+
 # [1.0.0-beta.58](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.57...v1.0.0-beta.58) (2025-10-29)
 
 ### Bug Fixes

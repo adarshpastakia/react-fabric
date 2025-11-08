@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.59](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.58...v1.0.0-beta.59) (2025-11-08)
+
+### Bug Fixes
+
+- lat long converter ([d2fc468](https://github.com/adarshpastakia/react-fabric/commit/d2fc468353fa1d207bd61269fd33668f92edcf0a))
+
 # [1.0.0-beta.58](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.57...v1.0.0-beta.58) (2025-10-29)
 
 **Note:** Version bump only for package @react-fabric/utilities

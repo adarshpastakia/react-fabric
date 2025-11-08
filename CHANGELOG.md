@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.59](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.58...v1.0.0-beta.59) (2025-11-08)
+
+### Bug Fixes
+
+- **AudioPlayer:** clear wave on source change ([917281d](https://github.com/adarshpastakia/react-fabric/commit/917281dcd0ba1471c69c14449652d66cb41ebf9a))
+- **Form:** optional field list for validation triger ([8a21959](https://github.com/adarshpastakia/react-fabric/commit/8a2195947b02edc005176186c9e294a4807a28d8))
+- lat long converter ([d2fc468](https://github.com/adarshpastakia/react-fabric/commit/d2fc468353fa1d207bd61269fd33668f92edcf0a))
+- **Virtual:** initial scroll ([79cbd5e](https://github.com/adarshpastakia/react-fabric/commit/79cbd5e673d9d1bab74b61b0995a1a141b521a1b))
+- **Virtual:** show skeleton when scrolling/loading ([2544676](https://github.com/adarshpastakia/react-fabric/commit/2544676f37a8601dee14edeb0bc4ec83f22d1367))
+
+### Features
+
+- add stepper hook for wizard stepper ([4599e68](https://github.com/adarshpastakia/react-fabric/commit/4599e689ce62e54c961dc53408b5346e4554437c))
+
 # [1.0.0-beta.58](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.57...v1.0.0-beta.58) (2025-10-29)
 
 ### Bug Fixes

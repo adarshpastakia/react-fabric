@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.59](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.58...v1.0.0-beta.59) (2025-11-08)
+
+### Features
+
+- add stepper hook for wizard stepper ([4599e68](https://github.com/adarshpastakia/react-ui-framework/commit/4599e689ce62e54c961dc53408b5346e4554437c))
+
 # [1.0.0-beta.58](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.57...v1.0.0-beta.58) (2025-10-29)
 
 ### Bug Fixes

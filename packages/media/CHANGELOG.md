@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.59](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.58...v1.0.0-beta.59) (2025-11-08)
+
+### Bug Fixes
+
+- **AudioPlayer:** clear wave on source change ([917281d](https://github.com/adarshpastakia/react-ui-framework/commit/917281dcd0ba1471c69c14449652d66cb41ebf9a))
+
 # [1.0.0-beta.58](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.57...v1.0.0-beta.58) (2025-10-29)
 
 ### Bug Fixes

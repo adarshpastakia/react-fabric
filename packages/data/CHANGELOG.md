@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.59](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.58...v1.0.0-beta.59) (2025-11-08)
+
+### Bug Fixes
+
+- **Virtual:** initial scroll ([79cbd5e](https://github.com/adarshpastakia/react-ui-framework/commit/79cbd5e673d9d1bab74b61b0995a1a141b521a1b))
+- **Virtual:** show skeleton when scrolling/loading ([2544676](https://github.com/adarshpastakia/react-ui-framework/commit/2544676f37a8601dee14edeb0bc4ec83f22d1367))
+
 # [1.0.0-beta.58](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.57...v1.0.0-beta.58) (2025-10-29)
 
 **Note:** Version bump only for package @react-fabric/data
