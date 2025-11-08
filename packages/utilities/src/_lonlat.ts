@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { isArray, isObject, isString } from "./_isType";
+import { isArray, isEmpty, isObject, isString } from "./_isType";
 
 export type LngLatLike =
   | {
@@ -37,6 +37,7 @@ export type LngLatLike =
       latitude: number;
     }
   | [lon: number | string, lat: number | string]
+  | [lon: number | string, lat: number | string, z: number | string]
   | string;
 
 export const getLatitudeLongitude = (
@@ -61,6 +62,9 @@ export const getLatitudeLongitude = (
 export const convertLatLng = (
   lonLat: LngLatLike,
 ): [lon: number, lat: number] => {
+  if (isEmpty(lonLat)) {
+    throw Error("Invalid geo coordinates");
+  }
   if (
     (isArray(lonLat) && lonLat.length === 2) ||
     (isArray(lonLat) && lonLat.length === 3)
@@ -77,7 +81,7 @@ export const convertLatLng = (
 
   if (isString(lonLat)) {
     const [lat, lon] = lonLat.split(",");
-    return [+lon, +lat];
+    if (!isNaN(+lat) && !isNaN(+lon)) return [+lon, +lat];
   }
 
   throw Error("Invalid geo coordinates");
@@ -96,8 +100,8 @@ export const convertLatLng = (
  * @returns {string} A string representation of the coordinate in DMS format.
  */
 const convertToDMS = (coord: number, isLat = false) => {
-  const degree = Math.floor(coord);
-  const hour = (coord - degree) * 60;
+  const degree = Math.floor(Math.abs(coord));
+  const hour = (Math.abs(coord) - degree) * 60;
   const minute = (hour - Math.floor(hour)) * 60;
 
   return `${degree}˚${Math.floor(hour)}'${minute.toFixed(2)}"${
