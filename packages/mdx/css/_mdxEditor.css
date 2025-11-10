@@ -28,18 +28,18 @@
     grid-template: "head head head" auto "side-s content side-e" 1fr "foot foot foot" auto / auto 1fr auto;
 
     &.mdxeditor.mdxeditor {
-      --blue1: var(--color-primary.50);
-      --blue2: var(--color-primary.100);
-      --blue3: var(--color-primary.200);
-      --blue4: var(--color-primary.300);
-      --blue5: var(--color-primary.400);
+      --blue1: var(--color-primary-50);
+      --blue2: var(--color-primary-100);
+      --blue3: var(--color-primary-200);
+      --blue4: var(--color-primary-300);
+      --blue5: var(--color-primary-400);
       --blue6: var(--color-primary-500);
       --blue7: var(--color-primary-600);
-      --blue8: var(--color-primary.700);
-      --blue9: var(--color-primary.800);
-      --blue10: var(--color-primary.900);
-      --blue11: var(--color-primary.950);
-      --blue12: var(--color-primary.950);
+      --blue8: var(--color-primary-700);
+      --blue9: var(--color-primary-800);
+      --blue10: var(--color-primary-900);
+      --blue11: var(--color-primary-950);
+      --blue12: var(--color-primary-950);
       --admonitionTipBg: var(--bg-success-600);
       --admonitionTipBorder: var(--border-success-600);
       --admonitionInfoBg: var(--bg-info-600);

@@ -46,7 +46,7 @@
         --vscode-editor-foreground: var(--fabric-text) !important;
         --vscode-breadcrumb-background: var(--fabric-bg) !important;
         --vscode-editorGutter-background: color(
-          from var(--color-tint.50) srgb r g g / 50%
+          from var(--color-tint-50) srgb r g g / 50%
         ) !important;
         --vscode-minimapSlider-background: color(
           from var(--color-tint) srgb r g b / 20%
@@ -61,13 +61,13 @@
         --vscode-editorStickyScroll-background: var(--fabric-bg) !important;
         --vscode-editorMarkerNavigation-background: var(--fabric-bg) !important;
         --vscode-editor-wordHighlightTextBackground: color(
-          from var(--color-accent.700) srgb r g b / 20%
+          from var(--color-accent-700) srgb r g b / 20%
         ) !important;
       }
 
       & .minimap-decorations-layer {
         background-color: color(
-          from var(--color-tint.50) srgb r g g / 50%
+          from var(--color-tint-50) srgb r g g / 50%
         ) !important;
       }
 
