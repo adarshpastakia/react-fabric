@@ -135,7 +135,7 @@ export type TreePanelProps<T extends KeyValue = KeyValue> =
           /**
            * callback on selection of tree node
            */
-          onSelect?: (id: string, data: T) => boolean | undefined;
+          onSelect?: (id: string, data: T) => void;
         }
       | {
           /**
@@ -149,7 +149,7 @@ export type TreePanelProps<T extends KeyValue = KeyValue> =
           /**
            * callback on selection of tree node
            */
-          onSelect?: (id: string[], data: T) => boolean | undefined;
+          onSelect?: (id: string[], data: T) => void;
         }
     );
 
