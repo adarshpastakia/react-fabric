@@ -81,6 +81,7 @@ export interface Props extends CssProp, AriaProps, RefProp, TestProps {
 
 export type IconProps =
   | string
+  | JSX.Element
   | Pick<
       Props,
       | "icon"
@@ -98,7 +99,10 @@ export const getIconProps = (props: IconProps): Props => {
   if (typeof props === "string") {
     return { icon: props };
   }
-  return props;
+  if (isValidElement(props)) {
+    return { icon: props };
+  }
+  return props as unknown as Props;
 };
 
 const SvgTextSize = ["", ".875em", ".525em", ".35em", ".25em"];
