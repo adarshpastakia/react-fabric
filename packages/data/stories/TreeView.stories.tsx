@@ -25,6 +25,7 @@ import { DropdownTool, Menu, MenuItem } from "@react-fabric/core";
 import { Countries, groupBy } from "@react-fabric/utilities";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useCallback, useMemo } from "react";
+import { fn } from "storybook/test";
 import { TreePanel } from "../src";
 
 const meta: Meta = {
@@ -98,7 +99,6 @@ export const _TreePanel: Story = {
         {...args}
         items={initialTree as AnyObject}
         onLoad={loadTreeNodes}
-        selected="BH"
         defaultExpanded={["Asia", "Asia-B"]}
         makeLabel={(data) => {
           if (data.type == "group") {
@@ -140,6 +140,7 @@ export const _TreePanel: Story = {
   args: {
     selectable: true,
     searchable: true,
+    onSelect: fn(),
     filterPlaceholder: "Search country...",
   },
 };

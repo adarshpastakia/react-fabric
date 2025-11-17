@@ -109,7 +109,7 @@ export interface TreeNodeProps extends ChildProp {
   leafClassName?: string;
   nodeClassName?: string;
   onToggle: (id: string) => void;
-  onSelect: (id: string) => void;
+  onSelect: (id: string, shiftKey?: boolean) => void;
   onChecked: (id: string) => void;
   onClick?: (id: string, node: any) => void;
 }
@@ -120,7 +120,40 @@ export interface TreeRef {
   openAndLoad: (list: string[]) => void;
 }
 
-export interface TreePanelProps<T extends KeyValue = KeyValue>
+export type TreePanelProps<T extends KeyValue = KeyValue> =
+  BaseTreePanelProps<T> &
+    (
+      | {
+          /**
+           * enable multi select
+           */
+          multiple?: never | false;
+          /**
+           * selected item id
+           */
+          selected?: string;
+          /**
+           * callback on selection of tree node
+           */
+          onSelect?: (id: string, data: T) => boolean | undefined;
+        }
+      | {
+          /**
+           * enable multi select
+           */
+          multiple: true;
+          /**
+           * selected item id
+           */
+          selected?: string[];
+          /**
+           * callback on selection of tree node
+           */
+          onSelect?: (id: string[], data: T) => boolean | undefined;
+        }
+    );
+
+interface BaseTreePanelProps<T extends KeyValue = KeyValue>
   extends TestProps,
     RefProp<TreeRef> {
   items?: Array<TreeNodeType<T>>;
@@ -137,13 +170,13 @@ export interface TreePanelProps<T extends KeyValue = KeyValue>
    */
   selectable?: true | "leafOnly";
   /**
+   * enable multi select
+   */
+  multiple?: boolean;
+  /**
    * enable checkable
    */
   checkable?: true | "leafOnly";
-  /**
-   * selected item id
-   */
-  selected?: string;
   /**
    * checked items
    */
@@ -181,10 +214,6 @@ export interface TreePanelProps<T extends KeyValue = KeyValue>
    * callback on click of tree node
    */
   onClick?: (id: string, data: T) => void;
-  /**
-   * callback on selection of tree node
-   */
-  onSelect?: (id: string, data: T) => boolean | undefined;
   /**
    * callback on change of checked list
    * @param leafs - list of checked leaf nodes

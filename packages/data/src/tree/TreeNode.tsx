@@ -63,7 +63,7 @@ export const TreeNode = ({
           "flex-initial self-stretch flex items-center w-6 relative",
           !noLines &&
             line > 0 &&
-            "before:absolute before:top-0 before:start-[7px] before:bg-tint-200 before:min-h-[50%] before:w-[2px] before:scale-x-[.625]",
+            "before:absolute before:top-0 before:start-[7px] before:bg-tint-200 before:min-h-[50%] before:w-0.5 before:scale-x-[.625]",
           !noLines && line !== 2 && "before:h-full",
         )}
       >
@@ -147,7 +147,7 @@ export const TreeNode = ({
         <div
           role="none"
           className={classNames(
-            "group/tool data-[selected]:bg-primary-100 flex flex-nowrap flex-1 overflow-hidden select-none",
+            "group/tool data-selected:bg-primary-100 flex flex-nowrap flex-1 overflow-hidden select-none",
             node.childSelected && "font-medium",
             node.disabled && "text-muted opacity-65",
             node.className,
@@ -160,10 +160,10 @@ export const TreeNode = ({
           onClick={
             node.disabled
               ? undefined
-              : () => {
+              : (e) => {
                   onClick?.(node.id, node.data);
                   canSelect
-                    ? onSelect(node.id)
+                    ? onSelect(node.id, e.shiftKey)
                     : canCheck
                       ? onChecked(node.id)
                       : onToggle(node.id);

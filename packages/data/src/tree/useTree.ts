@@ -24,7 +24,13 @@
 import { useDebounce } from "@react-fabric/core";
 import { EMPTY_ARRAY, isEmpty } from "@react-fabric/utilities";
 import memoizeOne from "memoize-one";
-import { useCallback, useEffect, useReducer, useRef } from "react";
+import {
+  useCallback,
+  useEffect,
+  useReducer,
+  useRef,
+  useEffectEvent,
+} from "react";
 import {
   type InternalNode,
   type TreeNodeType,
@@ -59,7 +65,7 @@ type TreeActions =
   /**
    * toggle item select, used as action handler
    */
-  | { type: "toggleSelect"; id: string }
+  | { type: "toggleSelect"; id: string; shiftKey?: boolean }
   /**
    * toggle item check, used as action handler
    */
@@ -90,7 +96,7 @@ interface TreeState {
   itemMap: Map<string, InternalNode>;
   tree: InternalNode[];
   query?: string;
-  selected?: string;
+  selected?: AnyObject;
   checked?: string[];
 }
 
@@ -100,6 +106,7 @@ export const useTree = <T extends KeyValue>({
   items = EMPTY_ARRAY,
   checked = EMPTY_ARRAY,
   selected,
+  multiple,
   sorter,
   matcher,
   onLoad,
@@ -108,8 +115,9 @@ export const useTree = <T extends KeyValue>({
   onChecked,
   defaultExpanded,
   onExpandToggle,
-}: Partial<TreePanelProps<T>>) => {
-  const componentEvents = useRef({ onSelect, onChecked });
+}: Partial<TreePanelProps<T>> & { selected?: AnyObject }) => {
+  const eventSelect = useEffectEvent(onSelect ?? (() => undefined));
+  const eventChecked = useEffectEvent(onChecked ?? (() => undefined));
   const intialExpand = useRef([...(defaultExpanded ?? EMPTY_ARRAY)]);
   const itemList = createItemList(items);
 
@@ -159,18 +167,15 @@ export const useTree = <T extends KeyValue>({
     [onLoad],
   );
 
-  const fireSelected = useDebounce(
-    (nodeId: string, data: T) => {
-      componentEvents.current.onSelect?.(nodeId, data);
-    },
-    [onSelect],
-  );
+  const fireSelected = useDebounce((nodeId: any, data: T) => {
+    eventSelect(nodeId, data);
+  }, []);
 
   const fireChecked = useDebounce(
     (leafs: string[], nodes: string[], partials: string[]) => {
-      componentEvents.current.onChecked?.(leafs, nodes, partials);
+      eventChecked(leafs, nodes, partials);
     },
-    [onChecked],
+    [],
   );
 
   const fireQuery = useDebounce(
@@ -203,7 +208,12 @@ export const useTree = <T extends KeyValue>({
         state.itemMap = makeTreeMap(state.items);
         fireExpandToggle(Array.from(state.itemMap.values()));
         state.tree = flattenTree(state.items);
-        state.selected = updateSelection(state.itemMap, selected, true);
+        state.selected = selected;
+        updateSelection({
+          nodes: state.itemMap,
+          multiple,
+          selected,
+        });
         state.checked?.forEach((id) => updateChecked(state.itemMap, id, 1));
         return { ...state };
       }
@@ -256,22 +266,33 @@ export const useTree = <T extends KeyValue>({
         return { ...state, query: action.query };
       }
       if (action.type === "toggleSelect") {
-        if (!onSelect) {
-          if (state.selected) {
-            updateSelection(state.itemMap, state.selected);
-          }
-          state.selected = updateSelection(state.itemMap, action.id, true);
-          state.tree = flattenTree(state.items);
+        if (multiple) {
+          const isSelected = state.selected?.includes(action.id);
+          if (action.shiftKey && isSelected)
+            state.selected =
+              state.selected?.filter((id: string) => id !== action.id) ?? [];
+          else if (action.shiftKey && !isSelected)
+            state.selected = [...(state.selected ?? []), action.id];
+          else state.selected = [action.id];
         } else {
-          fireSelected(action.id, state.itemMap.get(action.id)?.data);
+          state.selected = action.id;
         }
+        updateSelection({
+          nodes: state.itemMap,
+          selected: state.selected,
+          multiple,
+        });
+        state.tree = flattenTree(state.items);
+        fireSelected(state.selected, state.itemMap.get(action.id)?.data);
         return { ...state };
       }
       if (action.type === "select") {
-        if (state.selected) {
-          updateSelection(state.itemMap, state.selected);
-        }
-        state.selected = updateSelection(state.itemMap, action.id, true);
+        state.selected = action.id;
+        updateSelection({
+          nodes: state.itemMap,
+          multiple,
+          selected: action.id,
+        });
         state.tree = flattenTree(state.items);
         return { ...state };
       }
@@ -307,10 +328,6 @@ export const useTree = <T extends KeyValue>({
   );
 
   useEffect(() => {
-    componentEvents.current = { onSelect, onChecked };
-  }, [onSelect, onChecked]);
-
-  useEffect(() => {
     dispatch({ type: "load", items: itemList });
     itemList.length &&
       intialExpand.current?.length > 0 &&
@@ -338,8 +355,8 @@ export const useTree = <T extends KeyValue>({
     dispatch({ type: "toggleCheck", id });
   }, []);
 
-  const select = useCallback((id: string) => {
-    dispatch({ type: "toggleSelect", id });
+  const select = useCallback((id: string, shiftKey = false) => {
+    dispatch({ type: "toggleSelect", id, shiftKey });
   }, []);
 
   const expand = useCallback((id: string) => {

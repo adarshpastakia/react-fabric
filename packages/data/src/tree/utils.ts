@@ -21,7 +21,12 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { compareValues, isString, matchString } from "@react-fabric/utilities";
+import {
+  compareValues,
+  isArray,
+  isString,
+  matchString,
+} from "@react-fabric/utilities";
 import { type InternalNode, type TreeNodeType } from "./types";
 
 const defaultSorter = (a: TreeNodeType, b: TreeNodeType) => {
@@ -125,25 +130,38 @@ export const flattenTree = (
   return list;
 };
 
-export const updateSelection = (
-  nodes: Map<string, InternalNode>,
-  id?: string,
-  selected?: true,
-) => {
+const selectNode = (nodes: Map<string, InternalNode>, id?: string) => {
   const node = nodes.get(id ?? "");
   if (node) {
     // change selection
-    node.selected = selected;
+    node.selected = true;
     // update all parent childSelected flag
     let parent = node.parent;
     while (parent) {
       const parentNode = nodes.get(parent);
-      parentNode && (parentNode.childSelected = selected);
+      parentNode && (parentNode.childSelected = true);
       // selected && parentNode && (parentNode.open = true);
       parent = parentNode?.parent;
     }
-    return id;
   }
+};
+
+export const updateSelection = ({
+  nodes,
+  multiple,
+  selected,
+}: {
+  nodes: Map<string, InternalNode>;
+  multiple?: boolean;
+  selected?: string | string[];
+}) => {
+  nodes.forEach((node) => {
+    node.selected = undefined;
+    node.childSelected = undefined;
+  });
+  multiple && isArray(selected)
+    ? selected?.forEach((id) => selectNode(nodes, id))
+    : selectNode(nodes, selected as string);
 };
 
 export const updateChecked = (
