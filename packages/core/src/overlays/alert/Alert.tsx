@@ -49,7 +49,7 @@ export interface AlertProps {
   /**
    * svg path / webfont className / 1-4 letter text
    */
-  icon: string;
+  icon?: string;
   /**
    * icon image source URL, if failed to load then shows icon
    */

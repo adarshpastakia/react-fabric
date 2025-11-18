@@ -178,7 +178,7 @@ export const Tooltip = ({
             data-ref="tooltip"
             className={classNames(
               "fabric-tooltip z-(--z-tooltip)",
-              "select-none text-sm not-italic flex py-1 px-2 !max-w-lg rounded shadow-md bg-muted",
+              "select-none text-sm not-italic flex py-1 px-2 max-w-lg! rounded shadow-md bg-muted",
             )}
             ref={refs.setFloating}
             style={{
