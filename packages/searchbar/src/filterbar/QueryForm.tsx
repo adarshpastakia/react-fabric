@@ -120,7 +120,7 @@ export const QueryForm = ({
               {t("label.query")}
             </label>
             <div
-              className="h-[24rem] w-[36rem] grid outline place-content-start"
+              className="h-96 w-xl grid outline place-content-start"
               style={{
                 gridTemplate: '"content" 1fr/1fr',
               }}

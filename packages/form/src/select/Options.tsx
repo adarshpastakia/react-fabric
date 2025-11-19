@@ -87,7 +87,7 @@ export const Options = ({
                 data-active={active === index ? true : undefined}
                 className={classNames(
                   "block text-start truncate px-2 py-1 leading-normal cursor-pointer select-none",
-                  "data-[active]:bg-primary-200 data-[selected]:bg-primary-600 data-[selected]:text-white data-[active]:data-[selected]:underline",
+                  "data-active:bg-primary-200 data-selected:bg-primary-600 data-selected:text-white data-active:data-selected:underline",
                 )}
                 {...itemProps(item)}
               >
@@ -108,7 +108,7 @@ export const Options = ({
               data-active={active === index ? true : undefined}
               className={classNames(
                 "block text-start truncate px-2 py-1 leading-normal cursor-pointer",
-                "data-[active]:bg-primary-200 data-[selected]:bg-primary-600 data-[selected]:text-white data-[active]:data-[selected]:underline",
+                "data-active:bg-primary-200 data-selected:bg-primary-600 data-selected:text-white data-active:data-selected:underline",
               )}
               {...itemProps(item)}
             >

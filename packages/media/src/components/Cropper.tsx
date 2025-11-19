@@ -217,7 +217,7 @@ export const Cropper = ({
   return (
     <div
       role="none"
-      className="absolute top-0 left-0 min-w-full min-h-full overflow-hidden cursor-crosshair pointer-events-auto grid place-items-center p-[8px]"
+      className="absolute top-0 left-0 min-w-full min-h-full overflow-hidden cursor-crosshair pointer-events-auto grid place-items-center p-2"
       onMouseDown={startDrag}
       onMouseMove={handleDrag}
     >

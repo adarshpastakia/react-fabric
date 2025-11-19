@@ -138,7 +138,7 @@ export const Switch = ({
         disabled
           ? "opacity-50 cursor-not-allowed"
           : "hover:opacity-100 cursor-pointer",
-        "inline-flex gap-1 py-1 items-center relative cursor-pointer opacity-85 rounded ring-offset-2 has-[:focus-visible]:ring-1",
+        "inline-flex gap-1 py-1 items-center relative cursor-pointer opacity-85 rounded ring-offset-2 has-focus-visible:ring-1",
       )}
       style={{ width }}
     >
@@ -176,7 +176,7 @@ export const Switch = ({
           aria-hidden="true"
           className={classNames(
             !disabled && "shadow-sm",
-            actualValue ? "translate-x-[100%]" : "translate-x-0",
+            actualValue ? "translate-x-full" : "translate-x-0",
             "pointer-events-none inline-block h-[1em] start-[0.25em] absolute rounded-full bg-white ring-0 transition duration-200 ease-in-out",
           )}
           style={{

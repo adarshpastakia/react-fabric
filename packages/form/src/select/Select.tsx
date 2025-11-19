@@ -281,7 +281,7 @@ export const Select = <T extends AnyObject = string>({
       required={required}
       error={error}
       wrapperRef={refs.setReference}
-      className={state.open ? "!z-[99]" : ""}
+      className={state.open ? "z-99!" : ""}
       {...rest}
     >
       <div

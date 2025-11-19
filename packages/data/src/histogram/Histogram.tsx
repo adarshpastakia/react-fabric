@@ -163,7 +163,7 @@ export const Histogram = ({
         >
           <div
             className={classNames(
-              "absolute z-0 inset-0 opacity-50 min-w-2 ltr:bg-gradient-to-r rtl:bg-gradient-to-l",
+              "absolute z-0 inset-0 opacity-50 min-w-2 ltr:bg-linear-to-r rtl:bg-linear-to-l",
               "fabric-histoBar",
             )}
             style={{

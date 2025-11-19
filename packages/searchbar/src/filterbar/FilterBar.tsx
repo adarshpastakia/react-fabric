@@ -223,7 +223,7 @@ export const FilterBar = ({
           <Dropdown showArrow>
             <Chip
               size="sm"
-              className="!outline-dashed !outline-tint-400"
+              className="outline-dashed! outline-tint-400!"
               icon={CoreIcons.insert}
             >
               {t("label.add")}

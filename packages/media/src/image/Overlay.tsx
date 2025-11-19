@@ -71,7 +71,7 @@ export const Overlay = ({ src }: { src: string }) => {
         }
       >
         <div
-          className="grid p-[8px]"
+          className="grid p-2"
           style={{
             width: state.containerWidth,
             height: state.containerHeight,

@@ -118,7 +118,7 @@ export const InputWrapper = ({
         "flex flex-nowrap items-center flex-1",
         textarea ? "rounded-capped group" : "rounded",
         isExpanded
-          ? "fixed inset-4 z-[99]"
+          ? "fixed inset-4 z-99"
           : floatingExpand
             ? "absolute inset-x-0"
             : "relative",

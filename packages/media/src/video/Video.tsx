@@ -80,7 +80,7 @@ export const Video = ({
       role="none"
       ref={scrollerRef}
       onClick={togglePlay}
-      className="media-container area-content overflow-hidden relative scroll-hide grid bg-tint-50 select-none p-[8px]"
+      className="media-container area-content overflow-hidden relative scroll-hide grid bg-tint-50 select-none p-2"
       style={
         {
           "--brightness": state.colorscape.brightness,

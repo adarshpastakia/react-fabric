@@ -76,7 +76,7 @@ export const Meter = ({ value, hideLabel, className, ...aria }: MeterProps) => {
       className={classNames(
         "fabric-meter",
         className,
-        "flex flex-nowrap items-center gap-[2px]",
+        "flex flex-nowrap items-center gap-0.5",
       )}
       {...aria}
     >

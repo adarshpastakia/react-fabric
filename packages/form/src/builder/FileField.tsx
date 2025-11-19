@@ -128,7 +128,7 @@ export const FileField = ({
                   bg="danger"
                   color="white"
                   size="sm"
-                  className="p-[2px]"
+                  className="p-0.5"
                   aria-label="abort"
                   onClick={() => file.abort?.()}
                 />

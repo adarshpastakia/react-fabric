@@ -64,7 +64,7 @@ export const MiniSlider = ({
       placement="top"
       dropdownEvent="hover"
       plainDropdown
-      dropdownClassName="bg-tint-50/50 backdrop-blur h-28 w-8 relative !rounded-none overflow-visible"
+      dropdownClassName="bg-tint-50/50 backdrop-blur h-28 w-8 relative rounded-none! overflow-visible"
     >
       <Button
         variant="link"

@@ -74,7 +74,7 @@ export const BodyRow = ({
         role="none"
         data-row={index}
         className={classNames(
-          "flex flex-nowrap datatable-row data-[hilight]:outline-1 -outline-offset-1 outline-primary-500 group/table-row",
+          "flex flex-nowrap datatable-row data-hilight:outline-1 -outline-offset-1 outline-primary-500 group/table-row",
           onRowClick && "hover:bg-primary-50 active:bg-primary-100",
           index % 2 ? "bg-even" : "bg-odd",
         )}

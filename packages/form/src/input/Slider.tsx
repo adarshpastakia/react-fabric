@@ -223,7 +223,7 @@ export const Slider = ({
             <div
               key={key}
               className={classNames(
-                "absolute inline-block h-1 w-1 rounded-sm bg-invert opacity-30 leading-[0] z-1",
+                "absolute inline-block h-1 w-1 rounded-sm bg-invert opacity-30 leading-0 z-1",
                 vertical && "left-1/2 -ml-0.5",
               )}
               style={styles}
@@ -262,15 +262,15 @@ export const Slider = ({
                 {displayValue && (
                   <div
                     className={classNames(
-                      "bg-invert text-invert py-px px-2 text-xs absolute rounded z-[5] whitespace-nowrap pointer-events-none",
+                      "bg-invert text-invert py-px px-2 text-xs absolute rounded z-5 whitespace-nowrap pointer-events-none",
                       "before:absolute before:h-1.5 before:w-1.5 before:z-[-1] before:bg-invert before:top-1/2 before:-translate-y-1/2 before:rotate-45",
                       vertical
-                        ? "end-0 ltr:translate-x-full rtl:-translate-x-full translate-y-2 ltr:before:-translate-x-[0.125rem] rtl:before:translate-x-[0.125rem] before:start-0"
+                        ? "end-0 ltr:translate-x-full rtl:-translate-x-full translate-y-2 ltr:before:-translate-x-0.5 rtl:before:translate-x-0.5 before:start-0"
                         : "top-1/2 -translate-y-1/2",
                       !vertical &&
                         (percentage > 50
-                          ? "-ms-3 ltr:-translate-x-full rtl:translate-x-full ltr:before:translate-x-[0.125rem] rtl:before:-translate-x-[0.125rem] before:end-0"
-                          : "ms-3 ltr:before:-translate-x-[0.125rem] rtl:before:translate-x-[0.125rem] before:start-0"),
+                          ? "-ms-3 ltr:-translate-x-full rtl:translate-x-full ltr:before:translate-x-0.5 rtl:before:-translate-x-0.5 before:end-0"
+                          : "ms-3 ltr:before:-translate-x-0.5 rtl:before:translate-x-0.5 before:start-0"),
                     )}
                     data-align={percentage > 50 ? "start" : "end"}
                     style={valueStyles}

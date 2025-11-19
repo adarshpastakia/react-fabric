@@ -135,7 +135,7 @@ export const Checkbox = ({
         disabled
           ? "opacity-50 cursor-not-allowed"
           : " opacity-85 hover:opacity-100 cursor-pointer",
-        "inline-flex gap-1 py-1 items-center relative rounded ring-offset-2 has-[:focus-visible]:ring-1",
+        "inline-flex gap-1 py-1 items-center relative rounded ring-offset-2 has-focus-visible:ring-1",
       )}
       style={{ width }}
     >

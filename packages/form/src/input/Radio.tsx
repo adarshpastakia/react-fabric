@@ -113,7 +113,7 @@ export const Radio = ({
         disabled
           ? "opacity-50 cursor-not-allowed"
           : "hover:opacity-100 cursor-pointer",
-        "inline-flex gap-1 py-1 items-center relative cursor-pointer opacity-85 rounded ring-offset-2 has-[:focus-visible]:ring-1",
+        "inline-flex gap-1 py-1 items-center relative cursor-pointer opacity-85 rounded ring-offset-2 has-focus-visible:ring-1",
       )}
       style={{ width }}
     >

@@ -276,7 +276,7 @@ export const AutoComplete = ({
       required={required}
       error={error}
       wrapperRef={refs.setReference}
-      className={!multiple && expandOnEdit && state.open ? "!z-[99]" : ""}
+      className={!multiple && expandOnEdit && state.open ? "z-99!" : ""}
       floatingExpand={!multiple && expandOnEdit && state.open}
       {...rest}
     >

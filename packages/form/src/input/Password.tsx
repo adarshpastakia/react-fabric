@@ -146,7 +146,7 @@ export const Password = ({
         <div
           className={classNames(
             "absolute bottom-px h-[3px] inset-x-0 after:block after:h-full after:bg-dimmed",
-            "ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-danger-500 via-marigold-500 to-jade-500",
+            "ltr:bg-linear-to-r rtl:bg-linear-to-l from-danger-500 via-marigold-500 to-jade-500",
           )}
           style={{
             paddingInlineStart: `${strength > 1 ? 100 : strength * 100}%`,

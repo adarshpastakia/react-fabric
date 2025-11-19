@@ -218,7 +218,7 @@ export const RangeSlider = ({
             <div
               key={key}
               className={classNames(
-                "absolute inline-block h-1 w-1 rounded-sm bg-invert opacity-30 leading-[0] z-1",
+                "absolute inline-block h-1 w-1 rounded-sm bg-invert opacity-30 leading-0 z-1",
                 vertical && "left-1/2 -ml-0.5",
               )}
               style={styles}
@@ -264,8 +264,8 @@ export const RangeSlider = ({
                         : "top-1/2 -translate-y-1/2",
                       !vertical &&
                         (key === 0
-                          ? "-ms-3 ltr:-translate-x-full rtl:translate-x-full ltr:before:translate-x-[0.125rem] rtl:before:-translate-x-[0.125rem] before:end-0"
-                          : "ms-3 ltr:before:-translate-x-[0.125rem] rtl:before:translate-x-[0.125rem] before:start-0"),
+                          ? "-ms-3 ltr:-translate-x-full rtl:translate-x-full ltr:before:translate-x-0.5 rtl:before:-translate-x-0.5 before:end-0"
+                          : "ms-3 ltr:before:-translate-x-0.5 rtl:before:translate-x-0.5 before:start-0"),
                     )}
                     data-align={key === 0 ? "start" : "end"}
                     style={valueStyles}

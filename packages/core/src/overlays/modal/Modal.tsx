@@ -190,7 +190,7 @@ export const Modal = ({
               "rounded-capped relative overflow-hidden flex flex-col flex-nowrap",
               "ring-2 ring-offset-2 ring-tint-100 focus-within:ring-primary-300 shadow-xl",
               size === "sm" && "w-[20rem]",
-              size === "md" && "w-[40rem]",
+              size === "md" && "w-160",
               size === "lg" && "w-[60vw]",
               size === "xl" && "w-[80vw]",
               size === "screen" && "w-screen h-screen",

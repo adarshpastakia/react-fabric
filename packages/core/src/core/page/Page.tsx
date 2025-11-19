@@ -98,7 +98,7 @@ export const Page = ({
       className={classNames(
         "fabric-page relative",
         "overflow-hidden grid area-content",
-        paper && "shadow-paper m-[6px] rounded-capped",
+        paper && "shadow-paper m-1.5 rounded-capped",
       )}
       ref={ref}
       {...rest}

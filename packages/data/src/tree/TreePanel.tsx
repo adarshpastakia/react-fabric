@@ -133,7 +133,7 @@ export const TreePanel = <T extends KeyValue>({
     onChecked,
     defaultExpanded,
     onExpandToggle,
-  });
+  } as any);
 
   const scrollerRef = useRef<HTMLDivElement>(null);
   const virtualizer = useVirtualizer({

@@ -157,7 +157,7 @@ export const Tools = ({
             <Dropdown
               placement="top"
               dropdownEvent="hover"
-              dropdownClassName="overflow-hidden bg-black/80 backdrop-blur-md w-[12rem] h-[6rem] rounded-t-full"
+              dropdownClassName="overflow-hidden bg-black/80 backdrop-blur-md w-48 h-24 rounded-t-full"
             >
               <TooltipButton
                 aria-label="zoom"

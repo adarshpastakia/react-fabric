@@ -312,7 +312,7 @@ export const FilterForm = ({
       onChange={setValues}
       onSubmit={handleSubmit}
     >
-      <div className="w-[32rem]">
+      <div className="w-lg">
         <Row>
           <Col flex="fill">
             <Controller name="field">

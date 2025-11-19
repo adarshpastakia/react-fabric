@@ -172,7 +172,7 @@ export const AvatarInput = ({
                 bg="danger"
                 color="white"
                 size="sm"
-                className="p-[2px] flex-content"
+                className="p-0.5 flex-content"
                 aria-label="abort"
                 onClick={() => file.abort?.()}
               />

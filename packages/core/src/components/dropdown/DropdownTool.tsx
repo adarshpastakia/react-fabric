@@ -75,7 +75,7 @@ export const DropdownTool = ({
           "outline bg-tint-50/50 flex-content pointer-events-auto cursor-pointer",
           className,
           groupHover &&
-            "hidden group-hover/tool:inline-block data-[dropdown-open]:inline-block",
+            "hidden group-hover/tool:inline-block data-dropdown-open:inline-block",
         )}
       />
       {children}

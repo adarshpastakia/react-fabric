@@ -115,7 +115,10 @@ export const useTree = <T extends KeyValue>({
   onChecked,
   defaultExpanded,
   onExpandToggle,
-}: Partial<TreePanelProps<T>> & { selected?: AnyObject }) => {
+}: Partial<TreePanelProps<T>> & {
+  selected?: AnyObject;
+  multiple?: boolean;
+}) => {
   const eventSelect = useEffectEvent(onSelect ?? (() => undefined));
   const eventChecked = useEffectEvent(onChecked ?? (() => undefined));
   const intialExpand = useRef([...(defaultExpanded ?? EMPTY_ARRAY)]);
