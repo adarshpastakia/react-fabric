@@ -337,11 +337,13 @@ const _VirtualGallery = <T extends AnyObject>({
                       minHeight: height,
                     }}
                   >
-                    {itemList[index * columnCount + col]?.item ? (
-                      children(itemList[index * columnCount + col] as AnyObject)
-                    ) : (
-                      <Skeleton className="p-2" />
-                    )}
+                    {itemList[index * columnCount + col]?.item
+                      ? children(
+                          itemList[index * columnCount + col] as AnyObject,
+                        )
+                      : itemList[index * columnCount + col]?.item === null && (
+                          <Skeleton className="p-2" />
+                        )}
                   </div>
                 ))}
               </div>

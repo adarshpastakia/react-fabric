@@ -322,11 +322,11 @@ const _VirtualList = <T extends AnyObject>({
                   minHeight: height,
                 }}
               >
-                {itemList[index]?.item ? (
-                  children(itemList[index] as AnyObject)
-                ) : (
-                  <Skeleton className="p-2" />
-                )}
+                {itemList[index]?.item
+                  ? children(itemList[index] as AnyObject)
+                  : itemList[index]?.item === null && (
+                      <Skeleton className="p-2" />
+                    )}
               </div>
             ))}
           </div>
