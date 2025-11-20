@@ -83,8 +83,10 @@ export const Toast = ({
   rtlFlip,
   actions,
   // @ts-expect-error internal prop
+  // eslint-disable-next-line react/prop-types --- IGNORE ---
   onClose,
   // @ts-expect-error internal prop
+  // eslint-disable-next-line react/prop-types --- IGNORE ---
   onCloseAll,
   type,
   okLabel,

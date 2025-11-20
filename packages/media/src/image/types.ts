@@ -21,9 +21,9 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { RefProp } from "@react-fabric/core/dist/types/types";
-import { CanvasRef } from "../components/Canvas";
-import { ImageAnnotation } from "../types";
+import { type RefProp } from "@react-fabric/core/dist/types/types";
+import { type CanvasRef } from "../components/Canvas";
+import { type ImageAnnotation } from "../types";
 
 export interface ImageProps<T> extends RefProp<CanvasRef> {
   /**
@@ -53,7 +53,7 @@ export interface ImageProps<T> extends RefProp<CanvasRef> {
   /**
    * annotations to be rendered on image
    */
-  annotations?: ImageAnnotation<T>[];
+  annotations?: Array<ImageAnnotation<T>>;
   /**
    * export current view as base64
    */

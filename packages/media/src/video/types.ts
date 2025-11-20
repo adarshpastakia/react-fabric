@@ -23,7 +23,7 @@
 
 import { type RefProp } from "@react-fabric/core/dist/types/types";
 import { type CanvasRef } from "../components/Canvas";
-import { VideoAnnotation } from "../types";
+import { type VideoAnnotation } from "../types";
 
 export interface VideoPlayerRef extends CanvasRef {
   play: () => void;
@@ -68,7 +68,7 @@ export interface VideoProps<T> extends RefProp<VideoPlayerRef> {
   /**
    * annotations to be rendered on video
    */
-  annotations?: VideoAnnotation<T>[];
+  annotations?: Array<VideoAnnotation<T>>;
   /**
    * cut handler
    * @param start - start time

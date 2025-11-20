@@ -1,16 +1,16 @@
 import { useIsDark } from "@react-fabric/core";
 import { useEffect, useState } from "react";
 import Sigma from "sigma";
-import { Graph } from "../graph";
+import { type Graph } from "../graph";
 import { EdgeCurveProgram } from "../programs/edge-curve";
 import { EdgeLineProgram } from "../programs/edge-line";
 import { NodeCircleProgram } from "../programs/node-circle";
 import { NodeRectProgram } from "../programs/node-rect";
 import {
-  EdgeAttributes,
-  InternalEdgeAttributes,
-  InternalNodeAttributes,
-  NodeAttributes,
+  type EdgeAttributes,
+  type InternalEdgeAttributes,
+  type InternalNodeAttributes,
+  type NodeAttributes,
 } from "../types";
 import { attachHighlighter } from "./sigmaHilighter";
 import { attachMouseActions } from "./sigmaMouseActions";
@@ -55,7 +55,7 @@ export const useSigma = <N, E>(
         },
         nodeReducer(key, data) {
           const nodeData: InternalNodeAttributes<N> =
-            nodeReducer?.(data) || data;
+            nodeReducer?.(data) ?? data;
           // Ensure node size is at least 16 for visibility
           if (!nodeData.size && nodeData.weight) {
             nodeData.size = Math.max(16, nodeData.weight * 3);
@@ -65,13 +65,13 @@ export const useSigma = <N, E>(
           }
 
           // ensure node label renderer is called in order to render selected border
-          nodeData.label = nodeData.label || "";
+          nodeData.label = nodeData.label ?? "";
           nodeData.id = key;
           return nodeData;
         },
         edgeReducer(key, data) {
           const edgeData: InternalEdgeAttributes<E> =
-            edgeReducer?.(data) || data;
+            edgeReducer?.(data) ?? data;
           // Ensure edge size is at least 0.5 for visibility
           if (!edgeData.size && edgeData.weight) {
             edgeData.size = Math.max(0.5, edgeData.weight * 6);

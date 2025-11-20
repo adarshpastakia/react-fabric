@@ -30,7 +30,7 @@ import {
   type CssProp,
   type RefProp,
 } from "../../types";
-import { getIconProps, Icon, IconProps } from "../icon/Icon";
+import { getIconProps, Icon, type IconProps } from "../icon/Icon";
 
 export interface BadgeProps extends CssProp, RefProp, Partial<ChildProp> {
   /**

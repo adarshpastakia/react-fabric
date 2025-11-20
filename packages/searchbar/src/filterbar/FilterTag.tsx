@@ -26,7 +26,7 @@ import { isNil } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { Fragment, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { OPERATOR, type FilterBarProps, type FilterObject } from "../types";
+import { type FilterBarProps, type FilterObject } from "../types";
 import { FilterMenu } from "./FilterMenu";
 
 export const FilterTag = ({

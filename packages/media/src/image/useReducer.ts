@@ -23,14 +23,14 @@
 
 import { getImageColorset } from "@react-fabric/utilities";
 import {
-  SyntheticEvent,
+  type SyntheticEvent,
   useCallback,
   useEffect,
   useReducer,
   useRef,
 } from "react";
-import { ImageState } from "../types";
-import { ImageProps } from "./types";
+import { type ImageState } from "../types";
+import { type ImageProps } from "./types";
 
 type ImageActions =
   | { type: "loaded"; colorScheme: ImageState["colorScheme"] }

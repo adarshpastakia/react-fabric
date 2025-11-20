@@ -2,18 +2,22 @@ import { CoreIcons, Icon } from "@react-fabric/core";
 import { fitViewportToNodes } from "@sigma/utils";
 import {
   createContext,
-  PropsWithChildren,
+  type PropsWithChildren,
   useContext,
   useEffect,
   useImperativeHandle,
   useState,
 } from "react";
-import { SigmaNodeEventPayload } from "sigma/types";
-import { Graph } from "../graph";
+import { type SigmaNodeEventPayload } from "sigma/types";
+import { type Graph } from "../graph";
 import { useDragSelection } from "../hooks/sigmaDragSelect";
 import { useGraphology } from "../hooks/useGraphology";
 import { useSigma } from "../hooks/useSigma";
-import { EdgeAttributes, GraphProps, NodeAttributes } from "../types";
+import {
+  type EdgeAttributes,
+  type GraphProps,
+  type NodeAttributes,
+} from "../types";
 
 interface Context<N = KeyValue, E = KeyValue> {
   sigma: ReturnType<typeof useSigma>;
@@ -50,28 +54,32 @@ export const GraphProvider = <N = KeyValue, E = KeyValue>({
 
   const resetViewport = () => {
     if (graph.size === 0) return;
-    sigma.instance &&
+    void (
+      sigma.instance &&
       fitViewportToNodes(sigma.instance, graph.nodes(), {
         animate: true,
-      });
+      })
+    );
   };
 
   const zoomIn = () => {
     if (graph.size === 0) return;
-    sigma.instance?.getCamera().animatedZoom();
+    void sigma.instance?.getCamera().animatedZoom();
   };
 
   const zoomOut = () => {
     if (graph.size === 0) return;
-    sigma.instance?.getCamera().animatedUnzoom();
+    void sigma.instance?.getCamera().animatedUnzoom();
   };
 
   useEffect(() => {
     const resetHandler = () => {
-      sigma.instance &&
+      void (
+        sigma.instance &&
         fitViewportToNodes(sigma.instance, graph.nodes(), {
           animate: true,
-        });
+        })
+      );
     };
     graph.on("layoutRunning", setLayoutRunning);
     graph.on("layoutDone", resetHandler);

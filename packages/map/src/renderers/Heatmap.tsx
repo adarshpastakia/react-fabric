@@ -71,7 +71,7 @@ export const useHeatmapRenderer = (props?: Props) => {
       props?.colors && props.colors.length > 3
         ? props.colors.map((color, index, arr) => ({
             ratio: (index + 1) / arr.length,
-            color: color,
+            color,
           }))
         : [
             ...Array.from({ length: 6 }, (_, i) => ({

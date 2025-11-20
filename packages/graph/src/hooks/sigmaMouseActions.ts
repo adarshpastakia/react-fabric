@@ -1,7 +1,7 @@
 import type Graph from "graphology";
 import type Sigma from "sigma";
 import { type MouseCoords } from "sigma/types";
-import { EdgeAttributes, NodeAttributes } from "../types";
+import { type EdgeAttributes, type NodeAttributes } from "../types";
 
 export const attachMouseActions = (
   renderer: Sigma<NodeAttributes<any>, EdgeAttributes<any>>,

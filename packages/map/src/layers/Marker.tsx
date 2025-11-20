@@ -25,16 +25,18 @@ import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
 import "@arcgis/map-components/components/arcgis-features";
 import {
   createContext,
-  ReactElement,
+  type ReactElement,
   useContext,
   useEffect,
   useMemo,
 } from "react";
-import { Fill } from "../markers/Fill";
-import { Pin } from "../markers/Pin";
+import { type Fill } from "../markers/Fill";
+import { type Pin } from "../markers/Pin";
 import { useMap } from "../viewer/Context";
 
-const MarkerContext = createContext<__esri.GraphicsLayer>(null!);
+const MarkerContext = createContext<__esri.GraphicsLayer>(
+  null as unknown as __esri.GraphicsLayer,
+);
 
 type MarkerChildren = ReactElement<typeof Fill | typeof Pin>;
 
@@ -65,7 +67,7 @@ export const MarkerLayer = ({
 
   useEffect(() => {
     if (map && view) {
-      view?.when(() => {
+      void view?.when(() => {
         map?.layers.add(layer);
       });
 

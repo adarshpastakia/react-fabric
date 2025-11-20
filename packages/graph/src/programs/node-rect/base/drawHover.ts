@@ -1,5 +1,5 @@
 import { type Settings } from "sigma/settings";
-import { EdgeAttributes, NodeAttributes } from "../../../types";
+import { type EdgeAttributes, type NodeAttributes } from "../../../types";
 import { drawNodeLabel } from "./drawLabel";
 
 /* istanbul ignore file */
@@ -21,7 +21,7 @@ export function drawNodeHover(
   // use node color or default node color
   const bg = settings.defaultNodeColor || "#fff";
   // use label color or default label color
-  const color = data.labelColor || settings.labelColor.color || "#000";
+  const color = data.labelColor ?? settings.labelColor.color ?? "#000";
 
   context.font = `${weight} ${size}px ${font}`;
 

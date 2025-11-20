@@ -171,8 +171,7 @@ export const updateChecked = (
 ) => {
   const node = list.get(id);
   if (node) {
-    node.checked =
-      checked === undefined ? (node.checked === 0 ? 1 : 0) : checked;
+    node.checked = checked ?? node.checked === 0 ? 1 : 0;
     // check all children
     node.children &&
       getChildren(node.children).forEach(

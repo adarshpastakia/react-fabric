@@ -23,7 +23,7 @@
 
 import classNames from "classnames";
 import {
-  TestProps,
+  type TestProps,
   type ChildrenProp,
   type CssProp,
   type RefProp,

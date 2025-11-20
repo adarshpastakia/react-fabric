@@ -1,9 +1,18 @@
-import { Attributes } from "graphology-types";
+/* eslint-disable @typescript-eslint/naming-convention */
+import { type Attributes } from "graphology-types";
 
-import { EdgeProgram, EdgeProgramType, ProgramInfo } from "sigma/rendering";
-import { EdgeDisplayData, NodeDisplayData, RenderParams } from "sigma/types";
+import {
+  EdgeProgram,
+  type EdgeProgramType,
+  type ProgramInfo,
+} from "sigma/rendering";
+import {
+  type EdgeDisplayData,
+  type NodeDisplayData,
+  type RenderParams,
+} from "sigma/types";
 import { floatColor } from "sigma/utils";
-import { InternalEdgeAttributes } from "../../types";
+import { type InternalEdgeAttributes } from "../../types";
 import FRAGMENT_SHADER_SOURCE from "./frag.glsl";
 import VERTEX_SHADER_SOURCE from "./vert.glsl";
 
@@ -18,11 +27,11 @@ const UNIFORMS = [
   "u_widenessToThicknessRatio",
 ] as const;
 
-export type CreateEdgeArrowHeadProgramOptions = {
+export interface CreateEdgeArrowHeadProgramOptions {
   extremity: "source" | "target";
   lengthToThicknessRatio: number;
   widenessToThicknessRatio: number;
-};
+}
 
 export const DEFAULT_EDGE_ARROW_HEAD_PROGRAM_OPTIONS: CreateEdgeArrowHeadProgramOptions =
   {
@@ -40,7 +49,7 @@ export function createEdgeArrowHeadProgram<
 ): EdgeProgramType<N, E, G> {
   const options = {
     ...DEFAULT_EDGE_ARROW_HEAD_PROGRAM_OPTIONS,
-    ...(inputOptions || {}),
+    ...(inputOptions ?? {}),
   };
 
   return class EdgeArrowHeadProgram<

@@ -60,7 +60,7 @@ export interface Props {
 export const useSimpleRenderer = (props?: Props) => {
   const renderer = useMemo(() => {
     const vizVars = [];
-    let styleProps: any = { style: props?.style ?? "circle" };
+    const styleProps: any = { style: props?.style ?? "circle" };
     if (props?.path) {
       styleProps.style = "path";
       styleProps.path = props.path;

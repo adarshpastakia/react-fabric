@@ -31,7 +31,7 @@ import {
   type ReactNode,
 } from "react";
 import { Loading } from "../../components/animations/Animations";
-import { getIconProps, Icon, IconProps } from "../../components/icon/Icon";
+import { getIconProps, Icon, type IconProps } from "../../components/icon/Icon";
 import { useLayoutEffectDebugger } from "../../hooks/useEffectDebugger";
 import { usePropToggle } from "../../hooks/usePropToggle";
 import { useResize } from "../../hooks/useResize";

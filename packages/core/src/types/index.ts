@@ -367,7 +367,7 @@ export interface RefProp<T = HTMLElement> {
 
 /* *********** */
 
-// eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+ 
 export type CallbackReturn<T = unknown> =
   | undefined
   | T

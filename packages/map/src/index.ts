@@ -23,18 +23,27 @@
 
 import esriConfig from "@arcgis/core/config";
 
+import { BasemapGallery as _BasemapGallery } from "./tools/BasemapGallery";
+import { Home as _Home } from "./tools/Home";
+import { LayerList as _LayerList } from "./tools/LayerList";
+import { ScaleBar as _ScaleBar } from "./tools/ScaleBar";
+import { Zoom as _Zoom } from "./tools/Zoom";
+
+import { JsonLayer } from "./layers/Json";
+import { MarkerLayer } from "./layers/Marker";
+
+import { Fill as _Fill } from "./markers/Fill";
+import { Pin as _Pin } from "./markers/Pin";
+
+import { useHeatmapRenderer } from "./renderers/Heatmap";
+import { useSimpleRenderer } from "./renderers/Simple";
+
 esriConfig.assetsPath = "/assets/@arcgis";
 export const setArcgisAssetsPath = (path: string) => {
   esriConfig.assetsPath = path;
 };
 
 export { MapViewer } from "./viewer/Viewer";
-
-import { BasemapGallery as _BasemapGallery } from "./tools/BasemapGallery";
-import { Home as _Home } from "./tools/Home";
-import { LayerList as _LayerList } from "./tools/LayerList";
-import { ScaleBar as _ScaleBar } from "./tools/ScaleBar";
-import { Zoom as _Zoom } from "./tools/Zoom";
 export namespace MapTools {
   export const BasemapGallery = _BasemapGallery;
   export const LayerList = _LayerList;
@@ -42,23 +51,14 @@ export namespace MapTools {
   export const ScaleBar = _ScaleBar;
   export const Home = _Home;
 }
-
-import { JsonLayer } from "./layers/Json";
-import { MarkerLayer } from "./layers/Marker";
 export namespace MapLayers {
   export const Markers = MarkerLayer;
   export const Json = JsonLayer;
 }
-
-import { Fill as _Fill } from "./markers/Fill";
-import { Pin as _Pin } from "./markers/Pin";
 export namespace MapMarkers {
   export const Fill = _Fill;
   export const Pin = _Pin;
 }
-
-import { useHeatmapRenderer } from "./renderers/Heatmap";
-import { useSimpleRenderer } from "./renderers/Simple";
 export namespace MapRenderers {
   export const useSimple = useSimpleRenderer;
   export const useHeatmap = useHeatmapRenderer;

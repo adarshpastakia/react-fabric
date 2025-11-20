@@ -242,7 +242,11 @@ export const Icon = ({
       data-inner-clickable={!!onClick}
     >
       {iconSrc && !imageFailed && (
-        <img src={iconSrc} onError={() => setImageFailed(true)} />
+        <img
+          src={iconSrc}
+          alt="fallback icon"
+          onError={() => setImageFailed(true)}
+        />
       )}
       {(!iconSrc || imageFailed) && iconEl}
     </dfn>

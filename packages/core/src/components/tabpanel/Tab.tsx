@@ -39,7 +39,7 @@ import {
 } from "../../types";
 import { Badge, getBadgeProps } from "../badge/Badge";
 import { DropdownTool } from "../dropdown/DropdownTool";
-import { getIconProps, Icon, IconProps } from "../icon/Icon";
+import { getIconProps, Icon, type IconProps } from "../icon/Icon";
 
 export interface TabProps
   extends Partial<ChildrenProp>,

@@ -13,7 +13,7 @@ import {
   type RenderParams,
 } from "sigma/types";
 import { floatColor } from "sigma/utils";
-import { InternalEdgeAttributes } from "../../types";
+import { type InternalEdgeAttributes } from "../../types";
 import { createDrawCurvedEdgeLabel } from "./drawLabel";
 import FRAGMENT_SHADER_SOURCE from "./frag.glsl";
 import VERTEX_SHADER_SOURCE from "./vert.glsl";
@@ -84,7 +84,7 @@ export class EdgeCurveProgramBase<
 
     const thickness =
       Math.min(data.size || 1, 0.5) *
-      (data.selected || data.highlight ? 16 : 8);
+      (data.selected ?? data.highlight ? 16 : 8);
     const x1 = sourceData.x;
     const y1 = sourceData.y;
     const x2 = targetData.x;

@@ -31,7 +31,7 @@ import * as echarts from "echarts";
 import { type EChartsOption, type EChartsType } from "echarts";
 import { memo, useEffect, useRef, useState, type FC } from "react";
 import { ChartPalette } from "../theme/palettes";
-import { type BaseChart, type CountType } from "../types";
+import { type BaseChart } from "../types";
 import { countRenderer } from "../types/utils";
 import { ChartContainer } from "../wrapper/ChartContainer";
 import { ChartWrapper } from "../wrapper/ChartWrapper";

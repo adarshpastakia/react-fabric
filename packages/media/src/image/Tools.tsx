@@ -22,22 +22,17 @@
  */
 
 import {
-  Button,
-  Card,
   CoreIcons,
   Divider,
   Dropdown,
   Footer,
-  Header,
   HotKey,
-  Icon,
 } from "@react-fabric/core";
-import { Slider } from "@react-fabric/form";
 import { Fragment, useMemo } from "react";
-import { useImageContext } from "./Context";
-import { ZoomMeter } from "./ZoomMeter";
 import { Colorscape } from "../components/Colorscape";
 import { TooltipButton } from "../components/TooltipButton";
+import { useImageContext } from "./Context";
+import { ZoomMeter } from "./ZoomMeter";
 
 export const Tools = ({
   enableZoom = true,

@@ -12,7 +12,7 @@ import {
   type RenderParams,
 } from "sigma/types";
 import { floatColor } from "sigma/utils";
-import { InternalEdgeAttributes } from "../../types";
+import { type InternalEdgeAttributes } from "../../types";
 import { createEdgeArrowHeadProgram } from "../arrow-head";
 import { drawLineLabel } from "./drawLabel";
 import FRAGMENT_SHADER_SOURCE from "./frag.glsl";
@@ -86,7 +86,7 @@ class EdgeLineProgramBase<
     if (data.highlight) color = "#F54A4A";
 
     const thickness =
-      Math.min(data.size || 1, 0.5) * (data.selected || data.highlight ? 8 : 4);
+      Math.min(data.size || 1, 0.5) * (data.selected ?? data.highlight ? 8 : 4);
     const x1 = sourceData.x;
     const y1 = sourceData.y;
     const x2 = targetData.x;

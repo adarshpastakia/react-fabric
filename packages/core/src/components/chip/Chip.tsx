@@ -36,7 +36,7 @@ import {
   type TestProps,
 } from "../../types";
 import { getColor } from "../../utils";
-import { getIconProps, Icon, IconProps } from "../icon/Icon";
+import { getIconProps, Icon, type IconProps } from "../icon/Icon";
 
 export interface ChipProps
   extends CssProp,

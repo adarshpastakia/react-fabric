@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 
 // language=GLSL
-const SHADER_SOURCE = /*glsl*/ `
+const SHADER_SOURCE = /* glsl */ `
 precision mediump float;
 
 varying vec4 v_color;

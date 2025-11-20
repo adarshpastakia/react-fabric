@@ -33,8 +33,7 @@ import {
   useImperativeHandle,
   useReducer,
 } from "react";
-import { ImageAnnotation } from "../types";
-import { an } from "react-router/dist/development/register-DCE0tH5m";
+import { type ImageAnnotation } from "../types";
 
 interface ContextType {
   canvasRef: RefObject<HTMLCanvasElement | null>;
@@ -88,7 +87,7 @@ export const CanvasProvider = ({
       }
       return state;
     },
-    annotations as ImageAnnotation[],
+    annotations,
   );
 
   useEffect(() => {
@@ -156,7 +155,7 @@ export const CanvasProvider = ({
             context.fillStyle = options.fill;
             context.fillRect(x, y, w, h);
           }
-          if (options?.stroke || options?.strokeColor) {
+          if (options?.stroke ?? options?.strokeColor) {
             context.lineWidth = options?.stroke ?? 1;
             context.strokeStyle = options?.strokeColor ?? "#fc0";
             context.strokeRect(x, y, w, h);
@@ -197,7 +196,7 @@ export const CanvasProvider = ({
           context.globalCompositeOperation = "source-over";
         }
         if (polygon != null) {
-          if (options?.stroke || options?.strokeColor) {
+          if (options?.stroke ?? options?.strokeColor) {
             context.lineWidth = options?.stroke ?? 1;
             context.strokeStyle = options?.strokeColor ?? "#fc0";
           }
@@ -211,7 +210,7 @@ export const CanvasProvider = ({
             i > 0 && context.lineTo(x * ratio, y * ratio);
           });
           context.closePath();
-          (options?.stroke || options?.strokeColor) && context.stroke();
+          (options?.stroke ?? options?.strokeColor) && context.stroke();
           options?.fill && context.fill();
         }
       });

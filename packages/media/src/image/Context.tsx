@@ -31,7 +31,7 @@ import {
   useRef,
 } from "react";
 import { CanvasProvider, type CanvasRef } from "../components/Canvas";
-import { ImageProps } from "./types";
+import { type ImageProps } from "./types";
 import { useImageReducer } from "./useReducer";
 
 interface ContextType extends ReturnType<typeof useImageReducer> {

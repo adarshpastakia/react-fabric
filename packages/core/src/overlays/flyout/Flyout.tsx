@@ -34,7 +34,7 @@ import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { isValidElement, useCallback, useEffect } from "react";
 import { Loading } from "../../components/animations/Animations";
-import { getIconProps, Icon, IconProps } from "../../components/icon/Icon";
+import { getIconProps, Icon, type IconProps } from "../../components/icon/Icon";
 import { Header } from "../../core/headfoot/HeadFoot";
 import { HotKeyWrapper } from "../../hotkeys/HotKeyWrapper";
 import {

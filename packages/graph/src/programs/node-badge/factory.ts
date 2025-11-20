@@ -259,14 +259,14 @@ export default function getNodeImageProgram(
 
       const badge = data.badge?.find((b) => b.position === badgePosition);
 
-      let fill = floatColor(badge?.color ?? "#00000000");
-      let color = floatColor(
+      const fill = floatColor(badge?.color ?? "#00000000");
+      const color = floatColor(
         badge?.iconColor ??
           this.renderer.getSetting("labelColor").color ??
           "#000",
       );
 
-      let imageSource = badge
+      const imageSource = badge
         ? ICON_MAP[badge.type as any] ?? badge.path
         : undefined;
 

@@ -32,7 +32,6 @@ import { type PolymorphicProps } from "../../types";
 import { Badge, getBadgeProps } from "../badge/Badge";
 import { getIconProps, Icon } from "../icon/Icon";
 import { type MenuItemProps } from "./types";
-import { get } from "http";
 
 /**
  * A menu item component that can be used in a dropdown or menu.

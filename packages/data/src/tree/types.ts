@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { IconProps } from "@react-fabric/core/dist/types/components/icon/Icon";
+import { type IconProps } from "@react-fabric/core/dist/types/components/icon/Icon";
 import {
   type BadgeType,
   type ChildProp,

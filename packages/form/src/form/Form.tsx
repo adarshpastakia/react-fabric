@@ -35,7 +35,7 @@ import {
 } from "react";
 import {
   FormProvider,
-  Path,
+  type Path,
   useFormContext,
   useForm as useFormHook,
   useWatch,
@@ -156,7 +156,7 @@ export const Form = <K extends KeyValue>({
       reset: () => handleReset(defaultValues),
       clear: () => handleReset(),
       submit: () => form.handleSubmit(onSubmit),
-      validate: async (fields?: Path<K>[]) => await form.trigger(fields),
+      validate: async (fields?: Array<Path<K>>) => await form.trigger(fields),
       getValues: () => form.getValues(),
       setValues: (v) => setTimeout(() => form.reset(v), 50),
       setValue: (k, v) =>

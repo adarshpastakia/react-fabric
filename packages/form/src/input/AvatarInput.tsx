@@ -26,7 +26,7 @@ import { type RefProp } from "@react-fabric/core/dist/types/types";
 import { useEffect, useState } from "react";
 import { useFileUploader, type UploadHandler } from "../hooks/useFileUploader";
 import { HiddenInput } from "./Hidden";
-import { AvatarProps } from "@react-fabric/core/dist/types/components/avatar/Avatar";
+import { type AvatarProps } from "@react-fabric/core/dist/types/components/avatar/Avatar";
 import classNames from "classnames";
 
 export interface Props extends RefProp {

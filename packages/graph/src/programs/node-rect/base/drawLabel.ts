@@ -1,8 +1,8 @@
 import { type Settings } from "sigma/settings";
 import {
-  EdgeAttributes,
-  InternalNodeAttributes,
-  NodeAttributes,
+  type EdgeAttributes,
+  type InternalNodeAttributes,
+  type NodeAttributes,
 } from "../../../types";
 
 /* istanbul ignore file */
@@ -24,7 +24,7 @@ export function drawNodeLabel(
   // use node color or default node color
   const bg = settings.defaultNodeColor || "#fff";
   // use label color or default label color
-  const color = data.labelColor || settings.labelColor.color || "#000";
+  const color = data.labelColor ?? settings.labelColor.color ?? "#000";
 
   if (data.highlight) {
     // Then we draw the label background
@@ -112,10 +112,10 @@ export function drawNodeLabel(
     const container =
       context.canvas.parentElement?.parentElement?.querySelector(
         ".sigma-groupHandles",
-      ) as HTMLDivElement;
+      ) as unknown as HTMLElement;
     let handle = container.querySelector(
       `[data-id="${data.id}"]`,
-    ) as HTMLDivElement;
+    ) as unknown as HTMLElement;
     if (!handle) {
       handle = document.createElement("div");
       handle.className = "sigma-groupHandle";

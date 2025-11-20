@@ -30,10 +30,10 @@ import "@arcgis/map-components/components/arcgis-map";
 import "@arcgis/map-components/components/arcgis-popup";
 import "@arcgis/map-components/components/arcgis-scene";
 import { CalciteButton } from "@esri/calcite-components-react";
-import { getLatitudeLongitude, LngLatLike } from "@react-fabric/utilities";
+import { getLatitudeLongitude, type LngLatLike } from "@react-fabric/utilities";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { BASEMAPS, DEFAULT_VIEWPOINT } from "../constants";
-import { FabricBaseMap, MapViewerProps } from "../types";
+import { type FabricBaseMap, type MapViewerProps } from "../types";
 
 const Context = createContext<{
   map?: __esri.Map | null;

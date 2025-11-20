@@ -120,7 +120,7 @@ interface BaseAnnotationItem<T = KeyValue> {
 export type ImageAnnotation<T = KeyValue> = BaseAnnotationItem<T> &
   AnnotationObject;
 
-export type VideoAnnotation<T = KeyValue> = ImageAnnotation & {
+export type VideoAnnotation<T = KeyValue> = ImageAnnotation<T> & {
   start: number;
   end: number;
 };

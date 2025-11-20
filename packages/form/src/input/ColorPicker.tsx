@@ -138,6 +138,7 @@ export const ColorPicker: FC<ColorProps> = memo(
 
     return (
       <div
+        role="none"
         // prevent default on mouse down to avoid selection issues
         onMouseDown={(e) => e.preventDefault()}
       >

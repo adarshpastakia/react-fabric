@@ -117,7 +117,6 @@ export const timeSeriesRenderer = (opt: KeyValue) => {
   series[0].data.forEach((ax: AnyObject, i: number) => {
     table.push(`<tr><th>${Format.date(ax[0])}</th>`);
     series.forEach((s: MultiSeries) =>
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       table.push(
         `<td class="text-end">${Format.number(s.data?.[i]?.[1] ?? 0)}</td>`,
       ),

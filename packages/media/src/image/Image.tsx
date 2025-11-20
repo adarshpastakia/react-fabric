@@ -27,7 +27,7 @@ import { useCanvasContext } from "../components/Canvas";
 import { Cropper } from "../components/Cropper";
 import { useImageContext } from "./Context";
 import { Overlay } from "./Overlay";
-import { ImageProps } from "./types";
+import { type ImageProps } from "./types";
 
 export const Image = ({ onCrop }: Pick<ImageProps<KeyValue>, "onCrop">) => {
   const {

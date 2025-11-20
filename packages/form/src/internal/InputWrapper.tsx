@@ -76,9 +76,9 @@ export const InputWrapper = ({
     (e: MouseEvent<HTMLDivElement>) => {
       const parent = e.currentTarget.parentElement?.querySelector(
         "& > :not(.fabric-decorate)",
-      ) as HTMLElement;
-      const el =
-        parent?.querySelector<HTMLElement>("input,textarea,button") ?? parent;
+      );
+      const el = (parent?.querySelector<HTMLElement>("input,textarea,button") ??
+        parent) as HTMLElement;
       el?.focus();
       onClear?.();
     },
@@ -89,9 +89,9 @@ export const InputWrapper = ({
     (e: MouseEvent<HTMLDivElement>) => {
       const parent = e.currentTarget.parentElement?.querySelector(
         "& > :not(.fabric-decorate)",
-      ) as HTMLElement;
-      const el =
-        parent?.querySelector<HTMLElement>("input,textarea,button") ?? parent;
+      );
+      const el = (parent?.querySelector<HTMLElement>("input,textarea,button") ??
+        parent) as HTMLElement;
       el?.focus();
     },
     [onClear],

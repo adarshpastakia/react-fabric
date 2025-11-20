@@ -1,5 +1,5 @@
 import ElkConstructor from "elkjs/lib/elk-api";
-// @ts-ignore
+// @ts-expect-error ignore
 import ElkWorker from "elkjs/lib/elk-worker?worker";
 
 function layoutRunner({ type, nodes, edges }: KeyValue) {

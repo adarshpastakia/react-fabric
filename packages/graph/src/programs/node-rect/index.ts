@@ -1,5 +1,5 @@
 import { createNodeCompoundProgram } from "sigma/rendering";
-import { NodeAttributes } from "../../types";
+import { type NodeAttributes } from "../../types";
 import { NodeBadgeProgram } from "../node-badge";
 import { NodeImageProgram } from "../node-image";
 import { NodeRectBase } from "./base";

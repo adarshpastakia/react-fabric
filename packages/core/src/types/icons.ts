@@ -22,7 +22,7 @@
  */
 
 /* istanbul ignore file */
-/* eslint-disable @typescript-eslint/no-namespace */
+ 
 
 /**
  * Core icons used in the application.

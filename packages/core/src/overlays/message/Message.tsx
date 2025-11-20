@@ -67,6 +67,7 @@ export const Message = ({
   rtlFlip,
   actions,
   // @ts-expect-error internal prop
+  // eslint-disable-next-line react/prop-types --- IGNORE ---
   onClose,
 }: MessageProps) => {
   const elRef = useRef<HTMLDivElement>(null);

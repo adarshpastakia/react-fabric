@@ -29,12 +29,7 @@ import {
   useMemoDebugger,
 } from "@react-fabric/core";
 import { isEmpty } from "@react-fabric/utilities";
-import {
-  ECElementEvent,
-  ECharts,
-  type EChartsOption,
-  type EChartsType,
-} from "echarts";
+import { type ECharts, type EChartsOption } from "echarts";
 import { memo, useCallback, useEffect, useRef, useState, type FC } from "react";
 import { type BaseChart, type TimeSeriesType } from "../types";
 import { timeSeriesRenderer } from "../types/utils";

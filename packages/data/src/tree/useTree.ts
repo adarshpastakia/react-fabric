@@ -369,7 +369,10 @@ export const useTree = <T extends KeyValue>({
   const expandAndLoad = useCallback((expandList: string[]) => {
     if (expandList.length > 0) {
       intialExpand.current = [...expandList];
-      dispatch({ type: "expand", id: intialExpand.current.shift() as string });
+      dispatch({
+        type: "expand",
+        id: intialExpand.current.shift() as unknown as string,
+      });
     }
   }, []);
 

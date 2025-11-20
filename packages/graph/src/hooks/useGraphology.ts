@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Graph } from "../graph";
-import { GraphProps } from "../types";
+import { type GraphProps } from "../types";
 
 export const useGraphology = <N, E>(data: GraphProps<N, E>["data"]) => {
   const [graph, setGraph] = useState(new Graph<N, E>({ multi: true }));

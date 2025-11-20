@@ -360,7 +360,7 @@ export const Select = <T extends AnyObject = string>({
               empty={emptyDisplay}
               info={state.activeItem?.[infoProperty ?? "info"]}
             >
-              {(item, label) => renderer?.(item) ?? label}
+              {async (item, label) => await (renderer?.(item) ?? label)}
             </Options>
           </FloatingFocusManager>
         </FloatingPortal>

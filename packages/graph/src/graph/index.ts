@@ -3,18 +3,18 @@ import {
   DEFAULT_EDGE_CURVATURE,
   indexParallelEdgesIndex,
 } from "@sigma/edge-curve";
-import ElkConstructor, { ELK } from "elkjs/lib/elk.bundled";
+import ElkConstructor, { type ELK } from "elkjs/lib/elk.bundled";
 // @ts-expect-error ignore
 import ElkWorker from "../../../../node_modules/elkjs/lib/elk-worker?worker";
 import Graphology from "graphology";
 import { random } from "graphology-layout";
-import { GraphEvents, GraphOptions } from "graphology-types";
+import { type GraphEvents, type GraphOptions } from "graphology-types";
 import { animateNodes } from "sigma/utils";
 import {
-  EdgeAttributes,
-  InternalNodeAttributes,
-  NodeAttributes,
-  RawGraph,
+  type EdgeAttributes,
+  type InternalNodeAttributes,
+  type NodeAttributes,
+  type RawGraph,
 } from "../types";
 
 interface ExtendedEvents extends GraphEvents {
@@ -78,13 +78,13 @@ export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
     nodes: string[],
     attributesOrNodeReducer?:
       | NodeAttributes<N>
-      | ((attributes: NodeAttributes<N>[]) => NodeAttributes<N>),
+      | ((attributes: Array<NodeAttributes<N>>) => NodeAttributes<N>),
     edgeReducer?: (edges: RawGraph<N, E>["edges"]) => RawGraph<N, E>["edges"],
   ) {
     if (!nodes.length) return;
     let newNodeAttributes: NodeAttributes<N> = {};
     let edgeList: RawGraph<N, E>["edges"] = [];
-    const attributeList: NodeAttributes<N>[] = [];
+    const attributeList: Array<NodeAttributes<N>> = [];
     nodes.forEach((n) => {
       const atts = this.getNodeAttributes(n);
       if (atts) {
@@ -133,7 +133,7 @@ export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
     nodes: string[],
     attributesOrNodeReducer?:
       | NodeAttributes<N>
-      | ((attributes: NodeAttributes<N>[]) => NodeAttributes<N>),
+      | ((attributes: Array<NodeAttributes<N>>) => NodeAttributes<N>),
     edgeReducer?: (edges: RawGraph<N, E>["edges"]) => RawGraph<N, E>["edges"],
   ) {
     if (!nodes.length) return;
@@ -144,7 +144,7 @@ export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
     } as any;
     let edgeList: RawGraph<N, E>["edges"] = [];
     const movedEdges: RawGraph<N, E>["edges"] = [];
-    const attributeList: NodeAttributes<N>[] = [];
+    const attributeList: Array<NodeAttributes<N>> = [];
     nodes.forEach((n) => {
       const atts = this.getNodeAttributes(n);
       if (atts) {
@@ -213,7 +213,7 @@ export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
   ungroupNode(node: string) {
     const atts = this.getNodeAttributes(node);
     if (!atts || !atts.isGroup) return;
-    const nodes = atts.nodeList || [];
+    const nodes = atts.nodeList ?? [];
     nodes.forEach((n: string) => {
       const originalEdges = this.getNodeAttribute(n, "originalEdges");
       if (originalEdges && Array.isArray(originalEdges)) {

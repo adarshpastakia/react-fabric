@@ -131,7 +131,7 @@ export class ErrorBoundary extends Component<
     this.setState({ hasError: true, error: error.message, stack: error.stack });
   }
 
-  render() {
+  async render() {
     const env = process.env.NODE_ENV;
     if (this.state.hasError) {
       const { errorElement: E } = this.props;
@@ -158,6 +158,6 @@ export class ErrorBoundary extends Component<
       );
     }
 
-    return this.props.children;
+    return await this.props.children;
   }
 }

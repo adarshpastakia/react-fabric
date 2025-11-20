@@ -21,8 +21,8 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { RefObject, useCallback, useRef, useState } from "react";
-import { MediaBaseState } from "../types";
+import { type RefObject, useCallback, useRef, useState } from "react";
+import { type MediaBaseState } from "../types";
 
 export const Cropper = ({
   state,

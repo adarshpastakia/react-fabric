@@ -223,7 +223,7 @@ export const LexicalEditor = ({
               <RichTextPlugin
                 contentEditable={
                   <ContentEditable
-                    readOnly={readOnly || publishMode}
+                    readOnly={!!readOnly || publishMode}
                     className="lexical-editor px-[2cm] py-[1cm] min-h-screen"
                   />
                 }

@@ -9,15 +9,8 @@ import { ICONS } from "../constants";
 import { useGraph } from "./Context";
 
 export const Tools = () => {
-  const {
-    dragSelector,
-    graph,
-    selected,
-    layoutRunning,
-    resetViewport,
-    zoomIn,
-    zoomOut,
-  } = useGraph();
+  const { dragSelector, graph, selected, resetViewport, zoomIn, zoomOut } =
+    useGraph();
 
   return (
     <div className="flex flex-nowrap outline absolute top-0 start-0 p-0 z-1 bg-base">
@@ -62,27 +55,33 @@ export const Tools = () => {
             }
           />
           <Menu className="text-sm">
-            <MenuItem label="box" onClick={() => graph.elkLayout("box")} />
-            <MenuItem label="force" onClick={() => graph.elkLayout("force")} />
+            <MenuItem
+              label="box"
+              onClick={async () => await graph.elkLayout("box")}
+            />
+            <MenuItem
+              label="force"
+              onClick={async () => await graph.elkLayout("force")}
+            />
             <MenuItem
               label="layered"
-              onClick={() => graph.elkLayout("layered")}
+              onClick={async () => await graph.elkLayout("layered")}
             />
             <MenuItem
               label="stress"
-              onClick={() => graph.elkLayout("stress")}
+              onClick={async () => await graph.elkLayout("stress")}
             />
             <MenuItem
               label="radial"
-              onClick={() => graph.elkLayout("radial")}
+              onClick={async () => await graph.elkLayout("radial")}
             />
             <MenuItem
               label="sporeOverlap"
-              onClick={() => graph.elkLayout("sporeOverlap")}
+              onClick={async () => await graph.elkLayout("sporeOverlap")}
             />
             <MenuItem
               label="sporeCompaction"
-              onClick={() => graph.elkLayout("sporeCompaction")}
+              onClick={async () => await graph.elkLayout("sporeCompaction")}
             />
           </Menu>
         </Dropdown>

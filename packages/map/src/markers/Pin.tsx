@@ -24,7 +24,7 @@
 import Point from "@arcgis/core/geometry/Point";
 import Graphic from "@arcgis/core/Graphic";
 import SimpleMarkerSymbol from "@arcgis/core/symbols/SimpleMarkerSymbol";
-import { LngLatLike, getLatitudeLongitude } from "@react-fabric/utilities";
+import { type LngLatLike, getLatitudeLongitude } from "@react-fabric/utilities";
 import { useEffect, useMemo } from "react";
 import { useMarkerLayer } from "../layers/Marker";
 import { useMap } from "../viewer/Context";
@@ -105,11 +105,10 @@ export const Pin = ({
   useEffect(() => {
     if (layer && coords) {
       let tmr: any = null;
-      layer.when(() => {
+      void layer.when(() => {
         layer.add(graphic);
         const symbol = graphic.symbol as SimpleMarkerSymbol;
-        if (symbol.style === "path")
-          symbol.yoffset = (symbol.size as number) / 2;
+        if (symbol.style === "path") symbol.yoffset = symbol.size / 2;
         if (animate && !is3D) {
           const baseSize = symbol.size;
           let up = 2;

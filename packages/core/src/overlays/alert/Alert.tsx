@@ -35,7 +35,7 @@ import { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AnimationIndicator } from "../../components/animations/Animations";
 import { Button } from "../../components/button/Button";
-import { Icon, IconProps } from "../../components/icon/Icon";
+import { Icon } from "../../components/icon/Icon";
 import { type ColorState, type Elements } from "../../types";
 import { CoreIcons } from "../../types/icons";
 import { Title } from "../../typography/Title";
@@ -101,6 +101,7 @@ export const Alert = ({
   rtlFlip,
   actions,
   // @ts-expect-error internal prop
+  // eslint-disable-next-line react/prop-types --- IGNORE ---
   onClose,
   type,
   okLabel,

@@ -24,7 +24,7 @@
 import Polygon from "@arcgis/core/geometry/Polygon";
 import Graphic from "@arcgis/core/Graphic";
 import SimpleFillSymbol from "@arcgis/core/symbols/SimpleFillSymbol";
-import { LngLatLike, convertLatLng } from "@react-fabric/utilities";
+import { type LngLatLike, convertLatLng } from "@react-fabric/utilities";
 import { useEffect, useMemo } from "react";
 import { useMarkerLayer } from "../layers/Marker";
 import Color from "color";
@@ -84,7 +84,7 @@ export const Fill = ({
   useEffect(() => {
     if (layer && coords) {
       let tmr: any = null;
-      layer.when(() => {
+      void layer.when(() => {
         layer.add(graphic);
         if (animate && !is3D) {
           let up = 0.1;

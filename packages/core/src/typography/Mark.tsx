@@ -96,7 +96,7 @@ export const Mark = ({ children, mark, renderer }: MarkProps) => {
 
   /** ***************** tokenize text with abbr list *******************/
   const inner = useMemoDebugger(
-    () => {
+    async () => {
       if (isString(children)) {
         if (!isEmpty(mark)) {
           const tokens = tokenize(
@@ -125,7 +125,7 @@ export const Mark = ({ children, mark, renderer }: MarkProps) => {
           );
         }
       }
-      return children;
+      return await children;
     },
     [children, mark, abbrRender],
     "TextMark inner",

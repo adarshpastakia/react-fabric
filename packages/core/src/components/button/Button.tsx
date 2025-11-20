@@ -53,7 +53,7 @@ import {
 import { getColor } from "../../utils";
 import { AnimationIndicator } from "../animations/Animations";
 import { Badge, getBadgeProps } from "../badge/Badge";
-import { getIconProps, Icon, IconProps } from "../icon/Icon";
+import { getIconProps, Icon, type IconProps } from "../icon/Icon";
 
 export interface BaseProps extends CssProp, AriaProps, RefProp, TestProps {
   /**

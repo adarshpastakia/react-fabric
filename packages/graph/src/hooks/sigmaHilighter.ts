@@ -1,8 +1,8 @@
 import { debounce } from "@react-fabric/utilities";
 import type Graph from "graphology";
 import type Sigma from "sigma";
-import { SigmaEdgeEventPayload, SigmaNodeEventPayload } from "sigma/types";
-import { EdgeAttributes, NodeAttributes } from "../types";
+import { type SigmaEdgeEventPayload, type SigmaNodeEventPayload } from "sigma/types";
+import { type EdgeAttributes, type NodeAttributes } from "../types";
 
 export const attachHighlighter = (
   renderer: Sigma<NodeAttributes<any>, EdgeAttributes<any>>,

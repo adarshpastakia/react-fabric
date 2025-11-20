@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 
 // language=GLSL
-const SHADER_SOURCE = /*glsl*/ `
+const SHADER_SOURCE = /* glsl */ `
 attribute vec2 a_position;
 attribute vec2 a_normal;
 attribute float a_radius;

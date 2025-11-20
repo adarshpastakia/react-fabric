@@ -20,11 +20,12 @@ const compat = new FlatCompat({
 
 export default defineConfig([
   globalIgnores([
-    "**/dist/",
-    "**/jest/",
-    "**/tests/",
-    "**/assets/",
-    "**/stories/",
+    "**/dist/**/*",
+    "**/jest/**/*",
+    "**/tests/**/*",
+    "**/assets/**/*",
+    "**/stories/**/*",
+    "**/.storybook/**/*",
     "**/*.mjs",
     "**/*.js",
   ]),
@@ -42,6 +43,8 @@ export default defineConfig([
       "jsx-a11y": jsxA11Y,
     },
 
+    files: ["packages/**/*.ts", "packages/**/*.tsx"],
+
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -56,7 +59,7 @@ export default defineConfig([
           jsx: true,
         },
 
-        project: "./packages/**/tsconfig.json",
+        project: "./tsconfig.json",
         warnOnUnsupportedTypeScriptVersion: false,
         EXPERIMENTAL_useProjectService: true,
       },
@@ -65,6 +68,7 @@ export default defineConfig([
     rules: {
       "react/react-in-jsx-scope": "off",
       "jsx-a11y/no-autofocus": "off",
+      "@typescript-eslint/no-namespace": "off",
       "jsx-a11y/click-events-have-key-events": "off",
       "@typescript-eslint/no-unsafe-argument": "off",
       "@typescript-eslint/no-misused-promises": "off",

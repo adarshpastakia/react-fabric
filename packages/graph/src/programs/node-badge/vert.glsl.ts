@@ -61,16 +61,16 @@ void main() {
     position.x += originalSize / divisor;
     position.y -= originalSize / divisor;
   }
-  if(a_placement == ${POSITION["top"]}) {
+  if(a_placement == ${POSITION.top}) {
     position.y += originalSize / 2.0;
   }
-  if(a_placement == ${POSITION["bottom"]}) {
+  if(a_placement == ${POSITION.bottom}) {
     position.y -= originalSize / 2.0;
   }
-  if(a_placement == ${POSITION["left"]}) {
+  if(a_placement == ${POSITION.left}) {
     position.x -= originalSize / 2.0;
   }
-  if(a_placement == ${POSITION["right"]}) {
+  if(a_placement == ${POSITION.right}) {
     position.x += originalSize / 2.0;
   }
   gl_Position = vec4(

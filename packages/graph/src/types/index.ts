@@ -1,6 +1,6 @@
-import { GraphOptions } from "graphology-types";
-import { RefObject } from "react";
-import { Graph } from "../graph";
+import { type GraphOptions } from "graphology-types";
+import { type RefObject } from "react";
+import { type Graph } from "../graph";
 
 interface NodeBadge {
   position:
@@ -179,13 +179,13 @@ export interface InternalEdgeAttributes<E = KeyValue>
 }
 
 export interface RawGraph<N = KeyValue, E = KeyValue> {
-  nodes: { key: string; attributes?: NodeAttributes<N> }[];
-  edges: {
+  nodes: Array<{ key: string; attributes?: NodeAttributes<N> }>;
+  edges: Array<{
     key: string;
     source: string;
     target: string;
     attributes?: EdgeAttributes<E>;
-  }[];
+  }>;
   attributes?: KeyValue;
   options?: GraphOptions;
 }

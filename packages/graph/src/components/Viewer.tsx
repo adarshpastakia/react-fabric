@@ -22,7 +22,7 @@
  */
 
 import { Section } from "@react-fabric/core";
-import { GraphProps } from "../types";
+import { type GraphProps } from "../types";
 import { GraphProvider, useGraph } from "./Context";
 import { Tools } from "./Tools";
 import { useEffect, useRef } from "react";
@@ -48,6 +48,7 @@ const Graph = () => {
     <div className="area-content relative bg-base graph-viewer">
       <div dir="ltr" ref={sigma.containerRef} className="absolute inset-0" />
       <div
+        role="none"
         ref={handlesRef}
         dir="ltr"
         onClick={(e) => {

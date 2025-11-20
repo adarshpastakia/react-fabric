@@ -79,7 +79,7 @@ export const SchemaArrayForm = ({
   }, []);
 
   const Wrapper = useCallback(
-    ({ children }: PropsWithChildren) => {
+    async ({ children }: PropsWithChildren) => {
       if (dynamic) {
         // pass id list to dnd context
         const idMap = fields.map((item) => item.id);
@@ -101,7 +101,7 @@ export const SchemaArrayForm = ({
         );
       }
 
-      return children;
+      return await children;
     },
     [dynamic, fields],
   );

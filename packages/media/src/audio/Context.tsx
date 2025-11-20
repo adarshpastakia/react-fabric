@@ -22,7 +22,7 @@
  */
 
 import { createContext, type RefObject, useContext } from "react";
-import { AudioState } from "../types";
+import { type AudioState } from "../types";
 import { type WavesurferInstance } from "./wavesurfer";
 
 interface ContextType {

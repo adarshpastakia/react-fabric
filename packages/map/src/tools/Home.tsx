@@ -69,7 +69,7 @@ export const Home = ({ enableHistory }: { enableHistory?: boolean }) => {
     (idx: number) => {
       if (history.length > 0 && history[idx] && view) {
         isNavigatingHistory.current = true;
-        view.goTo(history[idx]);
+        void view.goTo(history[idx]);
         setActiveIndex(idx);
       }
     },
@@ -88,7 +88,7 @@ export const Home = ({ enableHistory }: { enableHistory?: boolean }) => {
           }
         }
       });
-      view.goTo(
+      void view.goTo(
         extent ??
           new Viewpoint({
             scale: view.tileInfo?.zoomToScale(zoom),

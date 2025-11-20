@@ -33,13 +33,12 @@ import {
   useRef,
   useState,
 } from "react";
-import { AudioState } from "../types";
+import { type AudioState } from "../types";
 import { type AudioActions, AudioContext } from "./Context";
 import { Equalizers } from "./Equalizers";
 import { Loading } from "./Loading";
 import { Tools } from "./Tools";
 import { Wavesurfer, type WavesurferInstance } from "./wavesurfer";
-import classNames from "classnames";
 
 export interface AudioProps extends RefProp<AudioPlayerRef> {
   /**
@@ -254,7 +253,7 @@ export const AudioPlayer = ({
   useEffect(() => {
     const surfer = Wavesurfer(
       containerRef.current as HTMLElement,
-      audioRef.current as HTMLMediaElement,
+      audioRef.current as unknown as HTMLMediaElement,
     );
     setWavesurfer(surfer);
     return () => {

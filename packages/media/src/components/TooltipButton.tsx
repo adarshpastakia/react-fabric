@@ -22,7 +22,7 @@
  */
 
 import { Button, Tooltip } from "@react-fabric/core";
-import { ButtonProps } from "@react-fabric/core/dist/types/components/button/Button";
+import { type ButtonProps } from "@react-fabric/core/dist/types/components/button/Button";
 
 export const TooltipButton = ({
   tooltip,

@@ -142,7 +142,7 @@ export const Abbr = ({
 
   /** ***************** tokenize text with abbr list *******************/
   const inner = useMemoDebugger(
-    () => {
+    async () => {
       if (isString(children)) {
         if (!isEmpty(abbr)) {
           const tokens = tokenize(
@@ -175,7 +175,7 @@ export const Abbr = ({
           );
         }
       }
-      return children;
+      return await children;
     },
     [children, abbr, abbrRender],
     "TextAbbr inner",

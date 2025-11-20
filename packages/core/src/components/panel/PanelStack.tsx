@@ -113,7 +113,7 @@ export const PanelStack = ({
   }, [onPanelChange, history]);
 
   const goBack = useCallback(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-boolean-literal-compare
+     
     if (onBack?.(history[0], history[1] ?? "root") !== false) {
       setHistory(history.slice(1));
     }
@@ -131,7 +131,7 @@ export const PanelStack = ({
         if (panelKey === "back") {
           goBack();
         } else if (panelKey === "root") {
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-boolean-literal-compare
+           
           if (onBack?.(history[0], "root") !== false) {
             setHistory([]);
           }

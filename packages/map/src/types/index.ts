@@ -21,8 +21,8 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { LngLatLike } from "@react-fabric/utilities";
-import { ReactNode } from "react";
+import { type LngLatLike } from "@react-fabric/utilities";
+import { type ReactNode } from "react";
 
 export interface FabricBaseMap {
   title?: string;

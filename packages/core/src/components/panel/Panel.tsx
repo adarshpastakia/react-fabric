@@ -37,7 +37,7 @@ import {
 } from "../../types";
 import { CoreIcons } from "../../types/icons";
 import { Loading } from "../animations/Animations";
-import { getIconProps, Icon, IconProps } from "../icon/Icon";
+import { getIconProps, Icon, type IconProps } from "../icon/Icon";
 
 export interface PanelProps
   extends CssProp,

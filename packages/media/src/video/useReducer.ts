@@ -22,14 +22,14 @@
  */
 
 import {
-  SyntheticEvent,
+  type SyntheticEvent,
   useCallback,
   useEffect,
   useReducer,
   useRef,
 } from "react";
-import { VideoState } from "../types";
-import { VideoProps } from "./types";
+import { type VideoState } from "../types";
+import { type VideoProps } from "./types";
 
 type VideoActions =
   | { type: "loaded" }

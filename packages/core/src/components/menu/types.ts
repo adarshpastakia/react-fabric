@@ -31,7 +31,7 @@ import {
   type CssProp,
   type TestProps,
 } from "../../types";
-import { IconProps } from "../icon/Icon";
+import { type IconProps } from "../icon/Icon";
 
 export interface MenuItemProps extends CssProp, AriaProps, TestProps {
   /**

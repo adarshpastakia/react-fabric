@@ -22,7 +22,6 @@
  */
 
 import GeoJSONLayer from "@arcgis/core/layers/GeoJSONLayer";
-import SizeVariable from "@arcgis/core/renderers/visualVariables/SizeVariable";
 import { useEffect, useMemo } from "react";
 import { useMap } from "../viewer/Context";
 
@@ -37,8 +36,8 @@ export const JsonLayer = (props: __esri.GeoJSONLayerProperties) => {
 
   useEffect(() => {
     if (map && view) {
-      layer.when(() => {
-        view.goTo(layer.fullExtent);
+      void layer.when(() => {
+        void view.goTo(layer.fullExtent);
       });
       map.add(layer);
 

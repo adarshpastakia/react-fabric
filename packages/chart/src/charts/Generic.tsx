@@ -31,7 +31,7 @@ import {
   type FC,
   type Ref,
 } from "react";
-import { Theme } from "../types";
+import { type Theme } from "../types";
 import { ChartContainer } from "../wrapper/ChartContainer";
 import { ChartWrapper } from "../wrapper/ChartWrapper";
 import { PaletteSelect } from "../wrapper/PaletteSelect";

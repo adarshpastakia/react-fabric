@@ -32,21 +32,23 @@ import {
   useFloatingNodeId,
   useInteractions,
 } from "@floating-ui/react";
+import { Divider, Menu, MenuItem } from "@react-fabric/core";
 import { cloneElement, useEffect, useRef, useState } from "react";
 import {
-  SigmaEdgeEventPayload,
-  SigmaNodeEventPayload,
-  SigmaStageEventPayload,
+  type SigmaEdgeEventPayload,
+  type SigmaNodeEventPayload,
+  type SigmaStageEventPayload,
 } from "sigma/types";
-import { useGraph } from "./Context";
-import { Divider, Menu, MenuItem } from "@react-fabric/core";
 import { ICONS } from "../constants";
+import { useGraph } from "./Context";
 
 export const GraphContextMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const nodeId = useFloatingNodeId();
-  const { sigma, graph } = useGraph();
-  const [menu, setMenu] = useState<React.ReactElement<typeof MenuItem>[]>([]);
+  const { sigma } = useGraph();
+  const [menu, setMenu] = useState<Array<React.ReactElement<typeof MenuItem>>>(
+    [],
+  );
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -80,24 +82,40 @@ export const GraphContextMenu = () => {
     ) => {
       if ("node" in e) {
         setMenu([
-          <MenuItem label="Select neighbors" />,
-          <Divider />,
+          <MenuItem key="0.0" label="Select neighbors" />,
+          <Divider key="0.1" />,
           <MenuItem
+            key="0.2"
             label="Delete node(s)"
             color="danger"
             icon={ICONS.delete}
           />,
-          <MenuItem label="Clear graph" color="danger" icon={ICONS.clear} />,
+          <MenuItem
+            key="0.3"
+            label="Clear graph"
+            color="danger"
+            icon={ICONS.clear}
+          />,
         ]);
       } else if ("edge" in e) {
         setMenu([
-          <MenuItem label="Select neighbors" />,
-          <Divider />,
-          <MenuItem label="Clear graph" color="danger" icon={ICONS.clear} />,
+          <MenuItem key="1.0" label="Select neighbors" />,
+          <Divider key="1.1" />,
+          <MenuItem
+            key="1.2"
+            label="Clear graph"
+            color="danger"
+            icon={ICONS.clear}
+          />,
         ]);
       } else {
         setMenu([
-          <MenuItem label="Clear graph" color="danger" icon={ICONS.clear} />,
+          <MenuItem
+            key="2.0"
+            label="Clear graph"
+            color="danger"
+            icon={ICONS.clear}
+          />,
         ]);
       }
       const virtual = {

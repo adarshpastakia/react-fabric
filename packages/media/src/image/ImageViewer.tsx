@@ -26,7 +26,7 @@ import { NsfwOverlay } from "../nsfw/NsfwOverlay";
 import { ImageProvider } from "./Context";
 import { Image } from "./Image";
 import { Tools } from "./Tools";
-import { ImageProps } from "./types";
+import { type ImageProps } from "./types";
 
 /**
  * ImageViewer component for displaying and interacting with images.

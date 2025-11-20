@@ -34,7 +34,6 @@ import { isFalse, isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import {
   cloneElement,
-  use,
   useCallback,
   useEffect,
   useImperativeHandle,
@@ -228,7 +227,7 @@ export const ArrayInput = <T extends AnyObject = string>({
     (item: T, index: number) => {
       if (canRemove === false) return false;
       if (canRemove === "newonly") {
-        return initialList.includes((item as any).__ID__) ? false : true;
+        return !initialList.includes((item as any).__ID__);
       }
       if (typeof canRemove === "function") {
         return canRemove({
@@ -274,7 +273,7 @@ export const ArrayInput = <T extends AnyObject = string>({
   }));
 
   const Wrapper = useCallback(
-    ({ children }: PropsWithChildren) => {
+    async ({ children }: PropsWithChildren) => {
       if (enableSorting) {
         // pass id list to dnd context
         const idMap = fields.map((item) => item.__ID__);
@@ -296,7 +295,7 @@ export const ArrayInput = <T extends AnyObject = string>({
         );
       }
 
-      return children;
+      return await children;
     },
     [enableSorting, fields],
   );
@@ -452,7 +451,7 @@ export const ArrayInput = <T extends AnyObject = string>({
                     disabled ||
                     readOnly ||
                     fields.length <= minItems ||
-                    removeCheck(item as any, index) === false
+                    !removeCheck(item as any, index)
                   }
                   onClick={() => handleRemove(item as any, index)}
                 />

@@ -23,7 +23,7 @@
 
 import classNames from "classnames";
 import { Loading } from "../../components/animations/Animations";
-import { getIconProps, Icon, IconProps } from "../../components/icon/Icon";
+import { getIconProps, Icon, type IconProps } from "../../components/icon/Icon";
 import { type ChildrenProp, type RefProp, type TestProps } from "../../types";
 
 export interface PageProps

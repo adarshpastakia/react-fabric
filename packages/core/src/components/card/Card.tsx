@@ -37,7 +37,7 @@ import {
   type HeadFootProps,
 } from "../../core/headfoot/HeadFoot";
 import {
-  PolymorphicProps,
+  type PolymorphicProps,
   type AriaProps,
   type ChildrenProp,
   type CssProp,

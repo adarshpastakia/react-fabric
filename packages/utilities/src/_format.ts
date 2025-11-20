@@ -34,7 +34,7 @@ import { isEmpty, isNil } from "./_isType";
  * Format utility functions for various data types.
  * This namespace provides methods to format phone numbers, numbers, bytes, percentages, dates, and durations.
  */
-// eslint-disable-next-line @typescript-eslint/no-namespace
+ 
 export namespace Format {
   const getPhone = (value: string, country: string) => {
     const phone =
