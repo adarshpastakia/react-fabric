@@ -96,7 +96,8 @@ export const Mark = ({ children, mark, renderer }: MarkProps) => {
 
   /** ***************** tokenize text with abbr list *******************/
   const inner = useMemoDebugger(
-    async () => {
+    // eslint-disable-next-line @typescript-eslint/promise-function-async
+    () => {
       if (isString(children)) {
         if (!isEmpty(mark)) {
           const tokens = tokenize(
@@ -125,7 +126,7 @@ export const Mark = ({ children, mark, renderer }: MarkProps) => {
           );
         }
       }
-      return await children;
+      return children;
     },
     [children, mark, abbrRender],
     "TextMark inner",

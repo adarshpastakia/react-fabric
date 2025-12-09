@@ -21,14 +21,14 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { type ReactNode, Children, isValidElement } from "react";
+import { Children, isValidElement } from "react";
 import { Fragment } from "react/jsx-runtime";
 
 export const cloneChildren = (
-  children: ReactNode,
-  callback: (child: ReactNode, index: number) => ReactNode,
-): ReactNode => {
-  return Children.map(children, (c: ReactNode) => {
+  children: React.ReactNode,
+  callback: (child: React.ReactNode, index: number) => React.ReactNode,
+): React.ReactNode => {
+  return Children.map(children, (c: React.ReactNode) => {
     if (isValidElement(c)) {
       if (c.type === Fragment) {
         // just compare to `Fragment`

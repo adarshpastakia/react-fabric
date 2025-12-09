@@ -367,7 +367,6 @@ export interface RefProp<T = HTMLElement> {
 
 /* *********** */
 
- 
 export type CallbackReturn<T = unknown> =
   | undefined
   | T

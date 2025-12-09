@@ -40,7 +40,6 @@ import {
   useMemo,
   useState,
   type PropsWithChildren,
-  type ReactNode,
   type Ref,
 } from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
@@ -98,7 +97,7 @@ export interface ArrayInputProps<T extends AnyObject = string> {
   enableSorting?: boolean;
   children:
     | React.ReactNode
-    | ((props: { index: number; name: string; item: T }) => ReactNode);
+    | ((props: { index: number; name: string; item: T }) => React.ReactNode);
   /**
    * add item button label
    */
@@ -273,7 +272,8 @@ export const ArrayInput = <T extends AnyObject = string>({
   }));
 
   const Wrapper = useCallback(
-    async ({ children }: PropsWithChildren) => {
+    // eslint-disable-next-line @typescript-eslint/promise-function-async
+    ({ children }: { children: React.ReactNode }) => {
       if (enableSorting) {
         // pass id list to dnd context
         const idMap = fields.map((item) => item.__ID__);
@@ -295,7 +295,7 @@ export const ArrayInput = <T extends AnyObject = string>({
         );
       }
 
-      return await children;
+      return children;
     },
     [enableSorting, fields],
   );

@@ -23,7 +23,7 @@
 
 import { EmptyContent } from "@react-fabric/core";
 import classNames from "classnames";
-import { type ReactElement, type ReactNode } from "react";
+import { type ReactElement } from "react";
 import { Trans } from "react-i18next";
 
 export const Options = ({
@@ -52,7 +52,7 @@ export const Options = ({
   valueProperty?: AnyObject;
   labelProperty?: AnyObject;
   itemProps: (item: AnyObject) => AnyObject;
-  children: (item: AnyObject, label: string) => ReactNode;
+  children: (item: AnyObject, label: string) => React.ReactNode;
 } & KeyValue) => {
   return (
     <div

@@ -22,7 +22,6 @@
  */
 
 import { type LngLatLike } from "@react-fabric/utilities";
-import { type ReactNode } from "react";
 
 export interface FabricBaseMap {
   title?: string;
@@ -32,7 +31,7 @@ export interface FabricBaseMap {
 }
 
 export interface MapViewerProps {
-  children?: ReactNode;
+  children?: React.ReactNode;
   /**
    * Initial center position of the map viewer.
    */

@@ -21,14 +21,14 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { type ReactNode, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Icon } from "../components";
 
 export const useStepper = ({
   steps,
   activeStep: _initialActiveStep = 0,
 }: {
-  steps: Array<{ label?: ReactNode; icon?: ReactNode }>;
+  steps: Array<{ label?: React.ReactNode; icon?: React.ReactNode }>;
   activeStep?: number;
 }) => {
   const [activeStep, setActiveStep] = useState(_initialActiveStep);

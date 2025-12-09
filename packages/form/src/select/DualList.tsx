@@ -21,8 +21,16 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import {
+  DndContext,
+  DragOverlay,
+  useDraggable,
+  useDroppable,
+} from "@dnd-kit/core";
+import { restrictToHorizontalAxis } from "@dnd-kit/modifiers";
 import { Button, ButtonGroup, CoreIcons } from "@react-fabric/core";
 import { type RefProp } from "@react-fabric/core/dist/types/types";
+import { mergeRefs } from "@react-fabric/utilities";
 import {
   type ReactElement,
   useCallback,
@@ -33,14 +41,6 @@ import {
 } from "react";
 import { Field, type FieldProps } from "../input/Field";
 import { List } from "./List";
-import { restrictToHorizontalAxis } from "@dnd-kit/modifiers";
-import {
-  DndContext,
-  DragOverlay,
-  useDraggable,
-  useDroppable,
-} from "@dnd-kit/core";
-import { mergeRefs } from "@react-fabric/utilities";
 
 export interface DualListProps<T>
   extends Omit<FieldProps, "children">,

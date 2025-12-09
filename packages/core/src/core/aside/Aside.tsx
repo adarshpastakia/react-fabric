@@ -22,14 +22,7 @@
  */
 
 import classNames from "classnames";
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Loading } from "../../components/animations/Animations";
 import { getIconProps, Icon, type IconProps } from "../../components/icon/Icon";
 import { useLayoutEffectDebugger } from "../../hooks/useEffectDebugger";
@@ -53,7 +46,7 @@ export interface AsideProps
   /**
    * page title
    */
-  title?: ReactNode;
+  title?: React.ReactNode;
   /**
    * align inline-end
    */

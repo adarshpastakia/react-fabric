@@ -32,12 +32,14 @@ import {
   useOverlayService,
 } from "@react-fabric/core";
 import { isArray } from "@react-fabric/utilities";
-import { type PropsWithChildren, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { DATA_TYPES, type SchemaEditorProps } from "../../types/schema";
 import { AddSchemaFields } from "./AddSchemaFields";
 import { SchemaField } from "./SchemaField";
 
+// Need to disable prop-types lint due to uknown lint error
+/* eslint-disable react/prop-types */
 export const SchemaArrayForm = ({
   dynamic,
   acceptableTypes,
@@ -79,7 +81,8 @@ export const SchemaArrayForm = ({
   }, []);
 
   const Wrapper = useCallback(
-    async ({ children }: PropsWithChildren) => {
+    // eslint-disable-next-line @typescript-eslint/promise-function-async
+    ({ children }: { children: React.ReactNode }) => {
       if (dynamic) {
         // pass id list to dnd context
         const idMap = fields.map((item) => item.id);
@@ -101,7 +104,7 @@ export const SchemaArrayForm = ({
         );
       }
 
-      return await children;
+      return children;
     },
     [dynamic, fields],
   );
