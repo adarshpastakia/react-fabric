@@ -4,12 +4,16 @@ import {
   indexParallelEdgesIndex,
 } from "@sigma/edge-curve";
 import ElkConstructor, { type ELK } from "elkjs/lib/elk.bundled";
-// @ts-expect-error ignore
-import ElkWorker from "../../../../node_modules/elkjs/lib/elk-worker?worker";
 import Graphology from "graphology";
-import { random } from "graphology-layout";
+import { circular } from "graphology-layout";
+import forceAtlas2, {
+  type ForceAtlas2Settings,
+} from "graphology-layout-forceatlas2";
+import ForceAtlas2Worker from "graphology-layout-forceatlas2/worker";
 import { type GraphEvents, type GraphOptions } from "graphology-types";
 import { animateNodes } from "sigma/utils";
+// @ts-expect-error ignore
+import ElkWorker from "../../../../node_modules/elkjs/lib/elk-worker?worker";
 import {
   type EdgeAttributes,
   type InternalNodeAttributes,
@@ -250,7 +254,25 @@ export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
     // fire events for nodes added
     this.emit("nodesLoaded", newNodes);
     // apply random positions for nodes
-    const positions = random(this as any);
+    // const positions = random(this as any);
+    // animateNodes(
+    //   this as any,
+    //   positions,
+    //   {
+    //     duration: 200,
+    //   },
+    //   () => {
+    //     // fire layout done event
+    //     this.emit("layoutDone");
+    //   },
+    // );
+    void this.elkLayout("force");
+    return this;
+  }
+
+  circularLayout() {
+    if (this.size === 0) return this;
+    const positions = circular(this as any);
     animateNodes(
       this as any,
       positions,
@@ -258,58 +280,41 @@ export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
         duration: 200,
       },
       () => {
-        // fire layout done event
         this.emit("layoutDone");
       },
     );
     return this;
   }
 
-  // circularLayout() {
-  //   if (this.size === 0) return this;
-  //   const positions = circular(this as any);
-  //   animateNodes(
-  //     this as any,
-  //     positions,
-  //     {
-  //       duration: 200,
-  //     },
-  //     () => {
-  //       this.emit("layoutDone");
-  //     },
-  //   );
-  //   return this;
-  // }
-
-  // private _timer: any;
-  // private _worker?: forceAtlas2Worker;
-  // forceLayout(settings: ForceAtlas2Settings = {}) {
-  //   if (this.size === 0) return this;
-  //   const sensibleSettings = forceAtlas2.inferSettings(this as any);
-  //   if (this._worker?.isRunning()) {
-  //     clearTimeout(this._timer);
-  //   }
-  //   this._worker?.kill();
-  //   this._worker = new forceAtlas2Worker(this as any, {
-  //     settings: {
-  //       ...sensibleSettings,
-  //       ...settings,
-  //     },
-  //   });
-  //   this.emit("layoutRunning", true);
-  //   this._worker.start();
-  //   this._timer = setTimeout(
-  //     () => {
-  //       this._worker?.stop();
-  //       this._worker?.kill();
-  //       this.emit("layoutRunning", false);
-  //       this.emit("layoutDone");
-  //     },
-  //     // @ts-expect-error ignore
-  //     this.nodes().length * window.__GRAPH_LAYOUT_DURATION_MULTIPLIER__,
-  //   );
-  //   return this;
-  // }
+  private _timer: any;
+  private _worker?: ForceAtlas2Worker;
+  forceLayout(settings: ForceAtlas2Settings = {}) {
+    if (this.size === 0) return this;
+    const sensibleSettings = forceAtlas2.inferSettings(this as any);
+    if (this._worker?.isRunning()) {
+      clearTimeout(this._timer);
+    }
+    this._worker?.kill();
+    this._worker = new ForceAtlas2Worker(this as any, {
+      settings: {
+        ...sensibleSettings,
+        ...settings,
+      },
+    });
+    this.emit("layoutRunning", true);
+    this._worker.start();
+    this._timer = setTimeout(
+      () => {
+        this._worker?.stop();
+        this._worker?.kill();
+        this.emit("layoutRunning", false);
+        this.emit("layoutDone");
+      },
+      // @ts-expect-error ignore
+      this.nodes().length * window.__GRAPH_LAYOUT_DURATION_MULTIPLIER__,
+    );
+    return this;
+  }
 
   // @ts-expect-error ignore
   private elk: ELK;
@@ -325,8 +330,8 @@ export class Graph<N = KeyValue, E = KeyValue> extends Graphology<
       .layout(
         {
           id: "root",
-          width: 1600,
-          height: 900,
+          // width: 1600,
+          // height: 900,
           children: this.mapNodes((node, atts) => ({
             id: node,
             width: atts.size ?? Math.max(16, (atts.weight ?? 0) * 3),
