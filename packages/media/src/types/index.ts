@@ -78,7 +78,7 @@ type AnnotationObject =
       polygon?: never;
     }
   | {
-      polygon: string[] | Array<[number, number, number, number]>;
+      polygon: string[] | Array<[number, number]>;
       box?: never;
     };
 
@@ -111,6 +111,10 @@ interface BaseAnnotationItem<T = KeyValue> {
    * fill color (with alpha for transparency)
    */
   fill?: string;
+  /**
+   * rotation in degrees
+   */
+  rotate?: number;
   /**
    * custom data payload
    */

@@ -205,7 +205,10 @@ export const CanvasProvider = ({
           }
           context.beginPath();
           polygon.forEach((box, i) => {
-            const [x, y] = getBox(box);
+            const [x, y] = box
+              .toString()
+              .split(",")
+              .map((n) => parseInt(n, 10));
             i === 0 && context.moveTo(x * ratio, y * ratio);
             i > 0 && context.lineTo(x * ratio, y * ratio);
           });

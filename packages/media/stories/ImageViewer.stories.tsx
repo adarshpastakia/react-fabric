@@ -22,13 +22,14 @@
  */
 
 import { faker } from "@faker-js/faker";
-import { Viewport } from "@react-fabric/core";
+import { Button, Viewport } from "@react-fabric/core";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { fn } from "storybook/test";
 import { ImageViewer } from "../src";
 import { ImageAnnotation } from "../src/types";
 import src from "/assets/samples/sample_large.jpg";
+import { Checkbox } from "@react-fabric/form";
 
 const meta: Meta = {
   component: ImageViewer,
@@ -57,6 +58,34 @@ export const _ImageViewer: Story = {
     fallback: faker.image.urlPicsumPhotos(),
     overlay: faker.image.urlPicsumPhotos(),
     onCrop: fn(),
+    nsfwMessage({ hide, remove }) {
+      const [checked, setChecked] = useState(false);
+      return (
+        <div className="p-4 bg-base rounded-capped shadow-xs">
+          <h3 className="text-lg mb-2">NSFW Content</h3>
+          <p className="mb-4">
+            This image has been marked as not safe for work.
+          </p>
+          <p>
+            <Checkbox label="I understand the risks" onChange={setChecked} />
+          </p>
+          <Button
+            className="btn btn-primary"
+            onClick={() => hide()}
+            disabled={!checked}
+          >
+            Glimpse Image
+          </Button>
+          <Button
+            className="btn btn-primary"
+            onClick={() => remove()}
+            disabled={!checked}
+          >
+            View Image
+          </Button>
+        </div>
+      );
+    },
   },
 };
 

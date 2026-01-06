@@ -68,6 +68,9 @@ export const VideoPlayer = <T extends KeyValue = KeyValue>({
   onCut,
   onCrop,
   onExport,
+  nsfwMessage,
+  nsfwTimeout,
+  nsfwTrigger,
   ...props
 }: VideoProps<T>) => {
   return (
@@ -84,7 +87,13 @@ export const VideoPlayer = <T extends KeyValue = KeyValue>({
             onCrop={onCrop}
             onExport={onExport}
           />
-          {nsfw && <NsfwOverlay />}
+          {nsfw && (
+            <NsfwOverlay
+              timeout={nsfwTimeout}
+              trigger={nsfwTrigger}
+              message={nsfwMessage}
+            />
+          )}
         </Section>
       </VideoProvider>
     </ThemeProvider>

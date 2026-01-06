@@ -55,6 +55,9 @@ export const ImageViewer = <T extends KeyValue = KeyValue>({
   enableZoom,
   onCrop,
   onExport,
+  nsfwMessage,
+  nsfwTimeout,
+  nsfwTrigger,
   ...props
 }: ImageProps<T>) => {
   return (
@@ -67,7 +70,13 @@ export const ImageViewer = <T extends KeyValue = KeyValue>({
             onExport={onExport}
             enableZoom={enableZoom}
           />
-          {nsfw && <NsfwOverlay />}
+          {nsfw && (
+            <NsfwOverlay
+              timeout={nsfwTimeout}
+              trigger={nsfwTrigger}
+              message={nsfwMessage}
+            />
+          )}
         </ImageProvider>
       </Section>
     </ThemeProvider>

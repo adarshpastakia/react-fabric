@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Viewport } from "@react-fabric/core";
+import { Button, Viewport } from "@react-fabric/core";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { fn } from "storybook/test";
@@ -29,6 +29,7 @@ import { VideoPlayer } from "../src";
 import { VideoAnnotation } from "../src/types";
 import src from "/assets/samples/sample.mp4";
 import bunny from "/assets/samples/large_video.mp4";
+import { Checkbox } from "@react-fabric/form";
 
 const meta: Meta = {
   component: VideoPlayer,
@@ -97,6 +98,27 @@ export const _VideoPlayer: Story = {
   args: {
     src,
     onCut: fn(),
+    nsfwMessage({ remove }) {
+      const [checked, setChecked] = useState(false);
+      return (
+        <div className="p-4 bg-base rounded-capped shadow-xs">
+          <h3 className="text-lg mb-2">NSFW Content</h3>
+          <p className="mb-4">
+            This image has been marked as not safe for work.
+          </p>
+          <p>
+            <Checkbox label="I understand the risks" onChange={setChecked} />
+          </p>
+          <Button
+            className="btn btn-primary"
+            onClick={() => remove()}
+            disabled={!checked}
+          >
+            View Video
+          </Button>
+        </div>
+      );
+    },
   },
 };
 

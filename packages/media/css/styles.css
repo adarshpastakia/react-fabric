@@ -40,3 +40,8 @@
     height: 200px;
   }
 }
+
+.media-nsfw-icon {
+  width: min(70%, 8rem);
+  height: min(70%, 8rem);
+}

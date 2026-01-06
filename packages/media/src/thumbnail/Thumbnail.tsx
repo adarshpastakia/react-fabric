@@ -46,6 +46,14 @@ export interface ThumbnailProps extends CssProp {
    */
   nsfw?: boolean;
   /**
+   * NSFW trigger type (default: click)
+   */
+  nsfwTrigger?: "click" | "hover" | "none";
+  /**
+   * NSFW timeout in milliseconds only for click trigger (default: 2000)
+   */
+  nsfwTimeout?: number;
+  /**
    * decorate like video reel
    */
   videoReel?: boolean;
@@ -106,6 +114,8 @@ export const Thumbnail = ({
   height,
   className,
   missingIcon,
+  nsfwTrigger,
+  nsfwTimeout,
   width = "8rem",
 }: ThumbnailProps) => {
   const [state, dispatch] = useReducer(
@@ -220,7 +230,7 @@ export const Thumbnail = ({
           ]}
         />
       )}
-      {nsfw && <NsfwOverlay size="sm" />}
+      {nsfw && <NsfwOverlay trigger={nsfwTrigger} timeout={nsfwTimeout} />}
       {state.loading && <AnimationSpinner size="1.5rem" />}
     </div>
   );

@@ -39,6 +39,25 @@ export interface ImageProps<T> extends RefProp<CanvasRef> {
    */
   nsfw?: boolean;
   /**
+   * NSFW trigger type (default: click)
+   */
+  nsfwTrigger?: "click" | "hover" | "none";
+  /**
+   * NSFW timeout in milliseconds only for click trigger (default: 2000)
+   */
+  nsfwTimeout?: number;
+  /**
+   * NSFW overlay message
+   */
+  nsfwMessage?:
+    | string
+    | ((
+        props: {
+          hide: () => void;
+          remove: () => void;
+        } & KeyValue,
+      ) => JSX.Element);
+  /**
    * image overlay
    */
   overlay?: string;
