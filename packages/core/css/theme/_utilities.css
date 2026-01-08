@@ -363,6 +363,17 @@
   flex: 0 1 calc((--value(integer) / 12) * 100% - var(--gutter, 0px));
 }
 
+@utility grid-cols-repeat-* {
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(--value([ *]), 100%), 1fr)
+  );
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(calc(var(--spacing) * --value(integer)), 100%), 1fr)
+  );
+}
+
 @media (min-width: theme(screens.xs)) {
   .hide-xs {
     @apply hidden;
