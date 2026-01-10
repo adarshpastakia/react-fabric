@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.60](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.59...v1.0.0-beta.60) (2026-01-10)
+
+### Bug Fixes
+
+- **Graph:** apply initial force layout ([5a6defa](https://github.com/adarshpastakia/react-fabric/commit/5a6defa62352eaaa6e59588fc499edd7b8ed1de1))
+- **InputWrapper:** focus on decorator click ([07c802f](https://github.com/adarshpastakia/react-fabric/commit/07c802f6b6fb716878e064c8e73622ebeadb46aa))
+- **MediaViewer:** implement custom NSFW message with triggers ([dd1f97a](https://github.com/adarshpastakia/react-fabric/commit/dd1f97a94d19b8fa6f85ff9a3e4e7763648cbe14))
+- **TreePanel:** implement multi select using shift key ([e0ed920](https://github.com/adarshpastakia/react-fabric/commit/e0ed9207425bbce854f41cffbad3dedf081616eb))
+- **Virtual:** show skeleton for null items only ([8e3efa5](https://github.com/adarshpastakia/react-fabric/commit/8e3efa50e9a871b65c4435f79f3746990da1cf73))
+
 # [1.0.0-beta.59](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.58...v1.0.0-beta.59) (2025-11-08)
 
 ### Bug Fixes

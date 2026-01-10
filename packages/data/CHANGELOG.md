@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.60](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.59...v1.0.0-beta.60) (2026-01-10)
+
+### Bug Fixes
+
+- **TreePanel:** implement multi select using shift key ([e0ed920](https://github.com/adarshpastakia/react-ui-framework/commit/e0ed9207425bbce854f41cffbad3dedf081616eb))
+- **Virtual:** show skeleton for null items only ([8e3efa5](https://github.com/adarshpastakia/react-ui-framework/commit/8e3efa50e9a871b65c4435f79f3746990da1cf73))
+
 # [1.0.0-beta.59](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.58...v1.0.0-beta.59) (2025-11-08)
 
 ### Bug Fixes

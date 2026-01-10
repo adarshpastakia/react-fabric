@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.60](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.59...v1.0.0-beta.60) (2026-01-10)
+
+### Bug Fixes
+
+- **Graph:** apply initial force layout ([5a6defa](https://github.com/adarshpastakia/react-ui-framework/commit/5a6defa62352eaaa6e59588fc499edd7b8ed1de1))
+
 # [1.0.0-beta.59](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.58...v1.0.0-beta.59) (2025-11-08)
 
 **Note:** Version bump only for package @react-fabric/graph

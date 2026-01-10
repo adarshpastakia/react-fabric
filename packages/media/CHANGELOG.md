@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.60](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.59...v1.0.0-beta.60) (2026-01-10)
+
+### Bug Fixes
+
+- **MediaViewer:** implement custom NSFW message with triggers ([dd1f97a](https://github.com/adarshpastakia/react-ui-framework/commit/dd1f97a94d19b8fa6f85ff9a3e4e7763648cbe14))
+
 # [1.0.0-beta.59](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.58...v1.0.0-beta.59) (2025-11-08)
 
 ### Bug Fixes
