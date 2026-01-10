@@ -1,4 +1,4 @@
-import{j as n,M as p,T as h,A as t,S as e,D as r,a7 as m,P as f,c as l,C as i,b as x,a as u}from"./iframe-DwvN93Ge.js";import{useMDXComponents as j}from"./index3.js";import{T as C,_ as T,C as a,S as c}from"./Tooltip.stories.js";function d(o){const s={code:"code",pre:"pre",...j(),...o.components};return n.jsxs(n.Fragment,{children:[n.jsx(p,{of:C}),`
+import{j as n,M as p,T as h,A as t,S as e,D as r,a7 as m,P as f,c as l,C as i,b as x,a as u}from"./iframe-qDaPDssc.js";import{useMDXComponents as j}from"./index3.js";import{T as C,_ as T,C as a,S as c}from"./Tooltip.stories.js";function d(o){const s={code:"code",pre:"pre",...j(),...o.components};return n.jsxs(n.Fragment,{children:[n.jsx(p,{of:C}),`
 `,n.jsx(h,{children:"Tooltip"}),`
 `,n.jsx(t,{storyId:"emptycontent",children:n.jsx("div",{className:"hidden-anchor",children:n.jsx(e,{children:"Tooltip"})})}),`
 `,n.jsx(r,{of:m}),`

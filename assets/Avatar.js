@@ -1,4 +1,4 @@
-import{j as r,M as d,T as j,A as s,S as e,D as t,ac as p,P as m,c,C as i,b as h,a as v}from"./iframe-DwvN93Ge.js";import{useMDXComponents as x}from"./index3.js";import{A as u,_ as A}from"./Avatar.stories.js";import{_AvatarGroup as o}from"./AvatarGroup.stories.js";import"./index4.js";function l(a){const n={code:"code",pre:"pre",...x(),...a.components};return r.jsxs(r.Fragment,{children:[r.jsx(d,{of:u}),`
+import{j as r,M as d,T as j,A as s,S as e,D as t,ac as p,P as m,c,C as i,b as h,a as v}from"./iframe-qDaPDssc.js";import{useMDXComponents as x}from"./index3.js";import{A as u,_ as A}from"./Avatar.stories.js";import{_AvatarGroup as o}from"./AvatarGroup.stories.js";import"./index4.js";function l(a){const n={code:"code",pre:"pre",...x(),...a.components};return r.jsxs(r.Fragment,{children:[r.jsx(d,{of:u}),`
 `,r.jsx(j,{children:"Avatar"}),`
 `,r.jsx(s,{storyId:"avatar",children:r.jsx("div",{className:"hidden-anchor",children:r.jsx(e,{children:"Avatar"})})}),`
 `,r.jsx(t,{of:p}),`

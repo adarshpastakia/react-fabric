@@ -1,4 +1,4 @@
-import{j as s,M as d,T as p,A as l,S as o,D as t,c as r,P as j,C as i,b as h,a as m}from"./iframe-DwvN93Ge.js";import{useMDXComponents as x}from"./index3.js";import{C,_ as u,M as a}from"./Collapsable.stories.js";import"./index4.js";function c(e){const n={code:"code",pre:"pre",...x(),...e.components};return s.jsxs(s.Fragment,{children:[s.jsx(d,{of:C}),`
+import{j as s,M as d,T as p,A as l,S as o,D as t,c as r,P as j,C as i,b as h,a as m}from"./iframe-qDaPDssc.js";import{useMDXComponents as x}from"./index3.js";import{C,_ as u,M as a}from"./Collapsable.stories.js";import"./index4.js";function c(e){const n={code:"code",pre:"pre",...x(),...e.components};return s.jsxs(s.Fragment,{children:[s.jsx(d,{of:C}),`
 `,s.jsx(p,{children:"Collapsable"}),`
 `,s.jsx(l,{storyId:"Collapsable",children:s.jsx("div",{className:"hidden-anchor",children:s.jsx(o,{children:"Collapsable"})})}),`
 `,s.jsx(t,{of:r}),`
