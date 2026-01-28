@@ -22,6 +22,7 @@
  */
 
 import { faker } from "@faker-js/faker";
+import { yupResolver } from "@hookform/resolvers/yup";
 import {
   addTranslationBundle,
   Button,
@@ -126,13 +127,14 @@ export const _Form: FormStory = {
     return (
       <div className="min-h-[600px]">
         <Form
-          {...args}
-          schema={schema.current}
-          defaultValues={{
-            firstName: "",
-            lastName: "",
-            age: undefined,
-          }}
+          resolver={yupResolver(schema.current)}
+          defaultValues={
+            {
+              firstName: "",
+              lastName: "",
+              age: undefined,
+            } as AnyObject
+          }
         >
           <div className="mx-auto w-96">
             <Controller name="files">
@@ -263,7 +265,7 @@ const ModalForm = (props: any) => {
   return (
     <Modal title="Modal Form" width="24rem" onClose={props.onClose}>
       <Form
-        schema={schema.current}
+        resolver={yupResolver(schema.current)}
         defaultValues={
           {
             firstName: "",

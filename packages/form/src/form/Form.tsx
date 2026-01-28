@@ -21,9 +21,8 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useDebounce } from "@react-fabric/core";
-import { EMPTY_OBJECT, type yup } from "@react-fabric/utilities";
+import { EMPTY_OBJECT } from "@react-fabric/utilities";
 import {
   useCallback,
   useEffect,
@@ -35,12 +34,13 @@ import {
 } from "react";
 import {
   FormProvider,
-  type Path,
   useFormContext,
   useForm as useFormHook,
   useWatch,
   type DefaultValues,
   type FormState,
+  type Path,
+  type Resolver,
 } from "react-hook-form";
 
 type NestedKeyOf<T extends object> = {
@@ -63,9 +63,10 @@ export interface FormRef<K extends KeyValue> {
 export interface FormProps<K extends KeyValue = KeyValue> {
   formRef?: Ref<FormRef<K>>;
   /**
-   * form data schema
+   * react-hook-form resolver for validation
+   * @see {@link https://react-hook-form.com/ts#Resolver}
    */
-  schema?: yup.ObjectSchema<K>;
+  resolver?: Resolver<K>;
   /**
    * default data values
    */
@@ -94,10 +95,7 @@ const DEFAULT_SUBMIT = () => undefined;
  * ```jsx
  * <Form
  *   formRef={formRef}
- *   schema={yup.object().shape({
- *     name: yup.string().required("Name is required"),
- *     email: yup.string().email("Invalid email").required("Email is required"),
- *   })}
+ *   resolver={hookformResolver(schema)}
  *   defaultValues={{ name: "", email: "" }}
  *   onSubmit={(values) => {
  *     console.log("Form submitted with values:", values);
@@ -115,7 +113,7 @@ const DEFAULT_SUBMIT = () => undefined;
  */
 export const Form = <K extends KeyValue>({
   formRef,
-  schema,
+  resolver,
   children,
   defaultValues = EMPTY_OBJECT as K,
   onSubmit = DEFAULT_SUBMIT,
@@ -125,7 +123,7 @@ export const Form = <K extends KeyValue>({
   const ref = useRef<HTMLFormElement>(null);
   const form = useFormHook<K>({
     shouldFocusError: true,
-    resolver: schema && (yupResolver(schema) as AnyObject),
+    resolver,
     defaultValues: defaultValues as DefaultValues<K>,
   });
 
@@ -174,6 +172,7 @@ export const Form = <K extends KeyValue>({
 
   const onInvalid = useCallback((_: AnyObject, e: AnyObject) => {
     const el = e.target;
+    console.log("Invalid:", _, e);
     setTimeout(
       () =>
         el

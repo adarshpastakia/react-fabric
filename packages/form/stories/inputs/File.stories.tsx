@@ -110,7 +110,7 @@ export const FileUploader = {
             <div key={idx} className="w-96 mb-4">
               <div className="flex flex-nowrap gap-1 items-center">
                 <div className="flex-1 truncate">
-                  {file.name}
+                  {file.file?.name ?? file.filename}
                   <br />
                   <span className="text-xs">{FileUtil.mime(file.mime)}</span>
                 </div>

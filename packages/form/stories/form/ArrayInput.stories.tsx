@@ -21,6 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@react-fabric/core";
 import { yup } from "@react-fabric/utilities";
 import type { Meta, StoryObj } from "@storybook/react";
@@ -72,9 +73,8 @@ export const _ArrayInput: ArrayInputStory = {
     return (
       <Form
         onSubmit={fn()}
-        schema={schema.current}
+        resolver={yupResolver(schema.current)}
         defaultValues={{
-          // @ts-expect-error ignore
           names: [new String("Tester")],
         }}
       >
