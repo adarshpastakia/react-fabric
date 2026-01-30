@@ -1,17 +1,17 @@
-import{j as n,M as p,T as h,A as s,S as r,D as t,ak as m,P as u,c as a,C as l,b as i,a as C}from"./iframe-qDaPDssc.js";import{useMDXComponents as j}from"./index3.js";import{D as f,_ as D,C as c,P as d}from"./Dropdown.stories.js";function x(e){const o={code:"code",pre:"pre",...j(),...e.components};return n.jsxs(n.Fragment,{children:[n.jsx(p,{of:f}),`
+import{j as n,M as p,T as h,A as s,S as r,D as t,ak as m,P as u,c as a,C as l,b as i,a as C}from"./iframe-DpfJK_wQ.js";import{useMDXComponents as j}from"./index3.js";import{D as f,_ as D,C as d,P as c}from"./Dropdown.stories.js";function x(e){const o={code:"code",pre:"pre",...j(),...e.components};return n.jsxs(n.Fragment,{children:[n.jsx(p,{of:f}),`
 `,n.jsx(h,{children:"Dropdown"}),`
 `,n.jsx(s,{storyId:"Dropdown",children:n.jsx("div",{className:"hidden-anchor",children:n.jsx(r,{children:"Dropdown"})})}),`
 `,n.jsx(t,{of:m}),`
 `,n.jsx(u,{}),`
 `,n.jsxs(a,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(l,{of:D})]}),`
 `,n.jsx(s,{storyId:"card",children:n.jsx(r,{children:"Card Content"})}),`
-`,n.jsx(t,{of:c}),`
-`,n.jsx(i,{withToolbar:!0,of:c}),`
-`,n.jsxs(a,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(l,{of:c})]}),`
-`,n.jsx(s,{storyId:"panel",children:n.jsx(r,{children:"Panel Content"})}),`
 `,n.jsx(t,{of:d}),`
 `,n.jsx(i,{withToolbar:!0,of:d}),`
 `,n.jsxs(a,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(l,{of:d})]}),`
+`,n.jsx(s,{storyId:"panel",children:n.jsx(r,{children:"Panel Content"})}),`
+`,n.jsx(t,{of:c}),`
+`,n.jsx(i,{withToolbar:!0,of:c}),`
+`,n.jsxs(a,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(l,{of:c})]}),`
 `,n.jsx("hr",{}),`
 `,n.jsx(s,{storyId:"props",children:n.jsx(r,{children:"Props"})}),`
 `,n.jsx(C,{sort:"requiredFirst"}),`
@@ -21,7 +21,7 @@ import{j as n,M as p,T as h,A as s,S as r,D as t,ak as m,P as u,c as a,C as l,b 
 export const Example = () => {
   return (
     <Dropdown>
-      <Button altIcon={CoreIcons.chevronDown}>Dropdown Menu</Button>
+      <Button altIcon="icon-[mdi--chevron-down]">Dropdown Menu</Button>
       <Menu>
         <MenuItem label="Item One" />
         <MenuItem label="Item Two" />

@@ -1,4 +1,4 @@
-import{j as n,M as x,T as m,A as r,S as e,D as a,ah as j,P as h,c as i,C as c,b as f,a as u}from"./iframe-qDaPDssc.js";import{useMDXComponents as d}from"./index3.js";import{C as p,_ as C,a as t}from"./ConfirmButton.stories.js";function l(o){const s={code:"code",pre:"pre",...d(),...o.components};return n.jsxs(n.Fragment,{children:[n.jsx(x,{of:p}),`
+import{j as n,M as x,T as m,A as r,S as e,D as a,ah as j,P as h,c as i,C as c,b as f,a as u}from"./iframe-DpfJK_wQ.js";import{useMDXComponents as d}from"./index3.js";import{C as p,_ as C,a as t}from"./ConfirmButton.stories.js";function l(o){const s={code:"code",pre:"pre",...d(),...o.components};return n.jsxs(n.Fragment,{children:[n.jsx(x,{of:p}),`
 `,n.jsx(m,{children:"Confirm Button"}),`
 `,n.jsx(r,{storyId:"confirmButton",children:n.jsx("div",{className:"hidden-anchor",children:n.jsx(e,{children:"Confirm Button"})})}),`
 `,n.jsx(a,{of:j}),`

@@ -1,17 +1,17 @@
-import{aO as a,j as e}from"./iframe-qDaPDssc.js";import{I as p}from"./Tooltip.js";import"./index.js";import{C as u}from"./Card2.js";import{T as h}from"./Title.js";import{H as x}from"./HeadFoot.js";import{S as f}from"./Section.js";import{V as g}from"./Viewport.js";import"./ColorPicker.js";import"./Google.js";import{u as S,S as j,a as v}from"./List.js";import{m as N}from"./isEqual.js";const L={title:"@data/useFilteredList",parameters:{layout:"fullscreen",controls:{exclude:"data"}}},r={render:F=>{const{filteredList:t,isSearching:l,onSearch:o,query:m}=S(a.list,(s,d)=>N(s.name,d));return e.jsx("div",{className:"min-h-[600px]",children:e.jsx(g,{children:e.jsxs(f,{children:[e.jsx(x,{className:"gap-2 p-2",children:e.jsxs("div",{className:"container",children:[e.jsx(j,{autoFocus:!0,value:m,onSearch:o,searching:l}),e.jsxs("div",{className:"py-2",children:["Showing ",t.length,"/",a.list.length," records"]})]})}),e.jsx(v,{items:t,hideScroller:!0,fullWidth:!0,children:({item:s})=>e.jsx("div",{className:"p-2 container max-w-96",children:e.jsxs(u,{children:[e.jsxs(h,{className:"flex items-center gap-2",children:[e.jsx(p,{className:"flex-content",size:"2rem",icon:`flag ${s.iso2}`}),e.jsx("span",{className:"flex-1 truncate",children:s.name}),e.jsxs("span",{className:"text-sm text-muted flex-content",children:[s.iso2,"/",s.iso3]})]}),e.jsx("div",{children:s.capital})]})})})]})})})},args:{}};var n,i,c;r.parameters={...r.parameters,docs:{...(n=r.parameters)==null?void 0:n.docs,source:{originalSource:`{
+import{aO as a,j as e}from"./iframe-DpfJK_wQ.js";import{I as u}from"./Tooltip.js";import"./index.js";import{C as p}from"./Card2.js";import{T as h}from"./Title.js";import{H as x}from"./HeadFoot.js";import{S as f}from"./Section.js";import{V as g}from"./Viewport.js";import"./ColorPicker.js";import"./Google.js";import{u as S,S as j,a as v}from"./List.js";import{m as N}from"./isEqual.js";const y={title:"@data/useFilteredList",parameters:{layout:"fullscreen",controls:{exclude:"data"}}},n={render:C=>{const{filteredList:r,isSearching:o,onSearch:l,query:m}=S(a.list,(s,d)=>N(s.name.common,d));return e.jsx("div",{className:"min-h-[600px]",children:e.jsx(g,{children:e.jsxs(f,{children:[e.jsx(x,{className:"gap-2 p-2",children:e.jsxs("div",{className:"container",children:[e.jsx(j,{autoFocus:!0,searchOnChange:!0,value:m,onSearch:l,searching:o}),e.jsxs("div",{className:"py-2",children:["Showing ",r.length,"/",a.list.length," records"]})]})}),e.jsx(v,{items:r,hideScroller:!0,fullWidth:!0,children:({item:s})=>e.jsx("div",{className:"p-2 container max-w-96",children:e.jsxs(p,{children:[e.jsxs(h,{className:"flex items-center gap-2",children:[e.jsx(u,{className:"flex-content",size:"2rem",icon:`iconify-color circle-flags--${s.iconCode}`}),e.jsx("span",{className:"flex-1 truncate",children:s.name.common}),e.jsxs("span",{className:"text-sm text-muted flex-content",children:[s.cca2,"/",s.cca3]})]}),e.jsx("div",{children:s.capital})]})})})]})})})},args:{}};var t,i,c;n.parameters={...n.parameters,docs:{...(t=n.parameters)==null?void 0:t.docs,source:{originalSource:`{
   render: args => {
     const {
       filteredList,
       isSearching,
       onSearch,
       query
-    } = useFilteredList(Countries.list, (country, query) => matchString(country.name, query));
+    } = useFilteredList(Countries.list, (country, query) => matchString(country.name.common, query));
     return <div className="min-h-[600px]">
         <Viewport>
           <Section>
             <Header className="gap-2 p-2">
               <div className="container">
-                <Search autoFocus value={query} onSearch={onSearch} searching={isSearching} />
+                <Search autoFocus searchOnChange value={query} onSearch={onSearch} searching={isSearching} />
                 <div className="py-2">
                   Showing {filteredList.length}/{Countries.list.length} records
                 </div>
@@ -23,10 +23,12 @@ import{aO as a,j as e}from"./iframe-qDaPDssc.js";import{I as p}from"./Tooltip.js
             }) => <div className="p-2 container max-w-96">
                   <Card>
                     <Title className="flex items-center gap-2">
-                      <Icon className="flex-content" size="2rem" icon={\`flag \${item.iso2}\`} />
-                      <span className="flex-1 truncate">{item.name}</span>
+                      <Icon className="flex-content" size="2rem" icon={\`iconify-color circle-flags--\${item.iconCode}\`} />
+                      <span className="flex-1 truncate">
+                        {item.name.common}
+                      </span>
                       <span className="text-sm text-muted flex-content">
-                        {item.iso2}/{item.iso3}
+                        {item.cca2}/{item.cca3}
                       </span>
                     </Title>
                     <div>{item.capital}</div>
@@ -38,4 +40,4 @@ import{aO as a,j as e}from"./iframe-qDaPDssc.js";import{I as p}from"./Tooltip.js
       </div>;
   },
   args: {}
-}`,...(c=(i=r.parameters)==null?void 0:i.docs)==null?void 0:c.source}}};const y=["FilteredList"],W=Object.freeze(Object.defineProperty({__proto__:null,FilteredList:r,__namedExportsOrder:y,default:L},Symbol.toStringTag,{value:"Module"}));export{W as F,r as a};
+}`,...(c=(i=n.parameters)==null?void 0:i.docs)==null?void 0:c.source}}};const L=["FilteredList"],W=Object.freeze(Object.defineProperty({__proto__:null,FilteredList:n,__namedExportsOrder:L,default:y},Symbol.toStringTag,{value:"Module"}));export{W as F,n as a};

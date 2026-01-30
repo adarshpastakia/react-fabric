@@ -1,4 +1,4 @@
-import{j as n,M as h,T as m,A as o,S as r,D as l,an as p,P as u,c as t,C as a,b as d,a as C}from"./iframe-qDaPDssc.js";import{useMDXComponents as j}from"./index3.js";import{C as f,_ as g,W as i,a as c}from"./Callout.stories.js";import"./index4.js";function x(s){const e={code:"code",pre:"pre",...j(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(h,{of:f}),`
+import{j as n,M as h,T as m,A as o,S as r,D as l,an as p,P as u,c as t,C as a,b as d,a as C}from"./iframe-DpfJK_wQ.js";import{useMDXComponents as j}from"./index3.js";import{C as f,_ as g,W as i,a as c}from"./Callout.stories.js";import"./index4.js";function x(s){const e={code:"code",pre:"pre",...j(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(h,{of:f}),`
 `,n.jsx(m,{children:"Callout"}),`
 `,n.jsx(o,{storyId:"callout",children:n.jsx("div",{className:"hidden-anchor",children:n.jsx(r,{children:"Callout"})})}),`
 `,n.jsx(l,{of:p}),`
