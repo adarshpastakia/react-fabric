@@ -23,7 +23,7 @@
 
 @layer components {
   .fabric-buttonWrapper {
-    --color: var(--color-primary-500);
+    --color: var(--color-tint-700);
 
     font-size: 1rem;
     border-radius: var(--rounding);
@@ -131,6 +131,10 @@
     --bg-hover: color-mix(in lab, var(--color) 18%, var(--fabric-bg));
     --bg-click: color-mix(in lab, var(--color) 25%, var(--fabric-bg));
     --bg-active: color-mix(in lab, var(--color) 24%, var(--fabric-bg));
+
+    &[data-color="primary"] {
+      --color: var(--color-primary-500);
+    }
 
     &[data-color="accent"] {
       --color: var(--color-accent-500);

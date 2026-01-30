@@ -189,8 +189,12 @@ export const Tools = ({
           tooltip="Toggle Splitter"
           aria-label="splitter"
           disabled={!state.isLoaded}
-          variant={state.splitter ? "solid" : "link"}
-          icon="icon-[mdi--compare]"
+          color={state.splitter ? "primary" : "default"}
+          icon={
+            state.splitter
+              ? "icon-[mdi--compare-remove]"
+              : "icon-[mdi--compare]"
+          }
           onClick={toggleSplitter}
         />
       )}

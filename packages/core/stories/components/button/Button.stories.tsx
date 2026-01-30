@@ -76,8 +76,9 @@ export const Colors: ButtonStory = {
     return (
       <Fragment>
         <Button {...args} />
-        <Button {...args} color="accent" />
         <Button {...args} color="muted" />
+        <Button {...args} color="primary" />
+        <Button {...args} color="accent" />
         <Button {...args} color="info" />
         <Button {...args} color="danger" />
         <Button {...args} color="success" />

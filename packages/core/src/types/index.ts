@@ -34,6 +34,7 @@ export type SizeType = "xs" | "sm" | "md" | "lg" | "xl";
 export type SizeTypeWithZero = "xs" | "sm" | "md" | "lg" | "xl" | 0;
 
 export type ColorState =
+  | "default"
   | "primary"
   | "accent"
   | "muted"

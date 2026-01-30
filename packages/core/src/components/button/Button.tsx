@@ -187,7 +187,7 @@ export const Button = <Tag extends React.ElementType = "button">({
   children,
   className,
   active,
-  color = "primary",
+  color = "default",
   icon,
   iconAlign = "start",
   altIcon,
