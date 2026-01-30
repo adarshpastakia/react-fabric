@@ -175,6 +175,8 @@ export const ToolbarPlugin = () => {
         <ButtonWrapper
           value="start"
           label={t("tool.alignStart")}
+          variant={watch.align === "start" ? "soft" : "link"}
+          color={watch.align === "start" ? "primary" : "default"}
           icon={{ icon: "icon-[mdi--format-align-left]", rtlFlip: true }}
           onClick={() =>
             watch.activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "start")
@@ -183,6 +185,8 @@ export const ToolbarPlugin = () => {
         <ButtonWrapper
           value="center"
           label={t("tool.alignCenter")}
+          variant={watch.align === "center" ? "soft" : "link"}
+          color={watch.align === "center" ? "primary" : "default"}
           icon="icon-[mdi--format-align-center]"
           onClick={() =>
             watch.activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "center")
@@ -191,6 +195,8 @@ export const ToolbarPlugin = () => {
         <ButtonWrapper
           value="end"
           label={t("tool.alignEnd")}
+          variant={watch.align === "end" ? "soft" : "link"}
+          color={watch.align === "end" ? "primary" : "default"}
           icon={{ icon: "icon-[mdi--format-align-right]", rtlFlip: true }}
           onClick={() =>
             watch.activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "end")
@@ -199,6 +205,8 @@ export const ToolbarPlugin = () => {
         <ButtonWrapper
           value="justify"
           label={t("tool.alignJustify")}
+          variant={watch.align === "justify" ? "soft" : "link"}
+          color={watch.align === "justify" ? "primary" : "default"}
           icon={{ icon: "icon-[mdi--format-align-justify]", rtlFlip: true }}
           onClick={() =>
             watch.activeEditor.dispatchCommand(
@@ -226,6 +234,7 @@ export const ToolbarPlugin = () => {
           value="bold"
           label={t("tool.bold")}
           icon="icon-[mdi--format-bold]"
+          color={textFormat.includes("bold") ? "primary" : "default"}
           onClick={() =>
             watch.activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold")
           }
@@ -234,6 +243,7 @@ export const ToolbarPlugin = () => {
           value="italic"
           label={t("tool.italic")}
           icon="icon-[mdi--format-italic]"
+          color={textFormat.includes("italic") ? "primary" : "default"}
           onClick={() =>
             watch.activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic")
           }
@@ -242,6 +252,7 @@ export const ToolbarPlugin = () => {
           value="underline"
           label={t("tool.underline")}
           icon="icon-[mdi--format-underline]"
+          color={textFormat.includes("underline") ? "primary" : "default"}
           onClick={() =>
             watch.activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline")
           }
@@ -250,6 +261,7 @@ export const ToolbarPlugin = () => {
           value="strikethrough"
           label={t("tool.strikethrough")}
           icon="icon-[mdi--format-strikethrough-variant]"
+          color={textFormat.includes("strikethrough") ? "primary" : "default"}
           onClick={() =>
             watch.activeEditor.dispatchCommand(
               FORMAT_TEXT_COMMAND,

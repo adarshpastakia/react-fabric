@@ -126,6 +126,7 @@ export const useFormatWatcher = () => {
   const [fontColor, setFontColor] = useState<string>("#000");
   const [bgColor, setBgColor] = useState<string>("#fff");
   const [fontFamily, setFontFamily] = useState<string>("Arial");
+  const [align, setAlign] = useState("");
   const [isLink, setIsLink] = useState(false);
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
@@ -189,6 +190,7 @@ export const useFormatWatcher = () => {
 
       if (elementDOM !== null) {
         setSelectedElementKey(elementKey);
+        elementDOM && setAlign(getComputedStyle(elementDOM).textAlign);
         if ($isListNode(element)) {
           const parentList = $getNearestNodeOfType<ListNode>(
             anchorNode,
@@ -488,6 +490,7 @@ export const useFormatWatcher = () => {
     canUndo,
     canRedo,
     isRTL,
+    align,
     isEditable,
     codeLanguage,
     activeEditor,
