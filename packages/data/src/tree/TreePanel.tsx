@@ -175,7 +175,9 @@ export const TreePanel = <T extends KeyValue>({
             allowClear
             placeholder={filterPlaceholder}
             {...{ noBorder: true }}
-            decorateStart={<Icon icon="icon-[mdi--filter]" className="p-1" />}
+            decorateStart={
+              <Icon icon="icon-[mdi--filter-variant]" className="p-1" />
+            }
           />
         )}
         <ButtonGroup variant="link" className="m-0">
