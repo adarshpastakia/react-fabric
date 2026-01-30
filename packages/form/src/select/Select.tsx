@@ -249,7 +249,7 @@ export const Select = <T extends AnyObject = string>({
       ));
     } else if (!isEmpty(state.value) && !state.query) {
       return (
-        <span className="self-center pointer-events-none select-none">
+        <span className="self-center pointer-events-none select-none truncate leading-tight">
           {renderer?.(state.value) ?? state.value[labelProperty] ?? state.value}
         </span>
       );
@@ -310,7 +310,7 @@ export const Select = <T extends AnyObject = string>({
           className={classNames(
             "appearance-none bg-transparent outline-none border-none ring-0 flex-1 peer",
             disabled && "cursor-not-allowed pointer-events-none",
-            multiple && "min-w-24",
+            multiple ? "min-w-24" : "min-w-2",
           )}
           placeholder={isEmpty(state.value) ? placeholder : ""}
           onChange={(evt) => handleQuery(evt.target.value)}

@@ -21,6 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Content } from "@react-fabric/core";
 import { DatePart } from "@react-fabric/date";
 import { Form } from "@react-fabric/form";
@@ -85,14 +86,20 @@ export const RelativePanel = ({ value = "", onChange }: KeyValue) => {
     <Content>
       <div className="scale-90">
         <Form
-          schema={schema}
+          resolver={yupResolver(schema)}
           defaultValues={defaultValue}
           onSubmit={handleChange}
         >
           <RelativeInput label={t("label.from")} prefix="from" />
           <RelativeInput label={t("label.to")} prefix="to" />
           <div className="flex justify-end">
-            <Button variant="solid" type="submit" data-dropdown-dismiss="true">
+            <Button
+              variant="solid"
+              color="primary"
+              size="sm"
+              type="submit"
+              data-dropdown-dismiss="true"
+            >
               {t("label.apply")}
             </Button>
           </div>

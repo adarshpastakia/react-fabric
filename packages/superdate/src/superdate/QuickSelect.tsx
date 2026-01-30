@@ -21,6 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Content, Divider } from "@react-fabric/core";
 import { DatePart } from "@react-fabric/date";
 import { Form } from "@react-fabric/form";
@@ -93,7 +94,7 @@ export const QuickSelect = ({
         style={{ zoom: 0.85 }}
       >
         <Form
-          schema={schema}
+          resolver={yupResolver(schema)}
           onSubmit={handleChange}
           defaultValues={defaultValue}
         >

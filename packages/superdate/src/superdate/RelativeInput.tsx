@@ -36,7 +36,6 @@ export const RelativeInput = ({ label, prefix, showApply }: KeyValue) => {
       </Controller>
       <Controller name={`${prefix}.part`}>
         <Select
-          width="6rem"
           options={Object.values<string>(DatePart)
             .slice(1)
             .map((dt) => ({
@@ -55,7 +54,13 @@ export const RelativeInput = ({ label, prefix, showApply }: KeyValue) => {
         />
       </Controller>
       {showApply && (
-        <Button variant="solid" type="submit" data-dropdown-dismiss="true">
+        <Button
+          variant="solid"
+          color="primary"
+          size="sm"
+          type="submit"
+          data-dropdown-dismiss="true"
+        >
           {t("label.apply")}
         </Button>
       )}
