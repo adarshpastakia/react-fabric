@@ -233,7 +233,7 @@
     h5,
     h6,
     .mixed-lang {
-      text-align: right;
+      text-align: start;
     }
   }
 }

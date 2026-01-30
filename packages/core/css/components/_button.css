@@ -269,7 +269,7 @@
 
       .fabric-buttonIcon,
       .fabric-buttonLabel {
-        transform: translateY(1px);
+        translate: 0 1px;
       }
     }
 
