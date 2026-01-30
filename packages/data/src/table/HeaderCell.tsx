@@ -23,7 +23,6 @@
 
 import {
   Button,
-  CoreIcons,
   Divider,
   DropdownTool,
   getIconProps,
@@ -91,7 +90,7 @@ export const HeaderCell = ({
         <Menu
           key="filters"
           label="Filter"
-          icon={filter ? CoreIcons.tick : ""}
+          icon={filter ? "icon-[mdi--check]" : ""}
           trigger="click"
         >
           <ColumnFilters
@@ -108,13 +107,13 @@ export const HeaderCell = ({
         <MenuItem
           key="sort-asc"
           label="Sort ascending"
-          icon={CoreIcons.sortAsc}
+          icon="icon-[mdi--sort-ascending]"
           onClick={() => handleSort("asc")}
         />,
         <MenuItem
           key="sort-desc"
           label="Sort descending"
-          icon={CoreIcons.sortDesc}
+          icon="icon-[mdi--sort-descending]"
           onClick={() => handleSort("desc")}
         />,
       );
@@ -173,7 +172,7 @@ export const HeaderCell = ({
           variant="link"
           aria-label="clear filter"
           stopPropagation
-          icon={CoreIcons.funnelRemove}
+          icon="icon-[mdi--filter-remove]"
           onClick={() => onFilter?.(id)}
         />
       )}

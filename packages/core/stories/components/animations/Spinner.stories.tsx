@@ -23,10 +23,10 @@
 
 import { faker } from "@faker-js/faker";
 import type { Meta, StoryObj } from "@storybook/react";
-import { AnimationSpinner } from "../../../src";
+import { LoadingSpinner } from "../../../src";
 
 const meta: Meta = {
-  component: AnimationSpinner,
+  component: LoadingSpinner,
   title: "@core/components/Animations",
   parameters: {
     layout: "centered",
@@ -44,11 +44,11 @@ const meta: Meta = {
 };
 
 export default meta;
-type SpinnerStory = StoryObj<typeof AnimationSpinner>;
+type SpinnerStory = StoryObj<typeof LoadingSpinner>;
 
 export const _Spinner: SpinnerStory = {
   render: (args) => {
-    return <AnimationSpinner {...args} />;
+    return <LoadingSpinner {...args} />;
   },
   args: {},
 };

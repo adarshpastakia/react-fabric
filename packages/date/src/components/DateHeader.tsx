@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Button, CoreIcons } from "@react-fabric/core";
+import { Button } from "@react-fabric/core";
 import classNames from "classnames";
 import { addDays, isAfter, isBefore } from "date-fns";
 import i18next from "i18next";
@@ -166,7 +166,7 @@ export const DateHeader = (props: Props) => {
     <div className="flex flex-nowrap items-center area-head" data-page={page}>
       {startPage !== undefined && (
         <Button
-          icon={{ icon: CoreIcons.chevronsLeft, rtlFlip: true }}
+          icon={{ icon: "icon-[mdi--chevron-double-left]", rtlFlip: true }}
           size="sm"
           variant="link"
           aria-label="start"
@@ -176,7 +176,7 @@ export const DateHeader = (props: Props) => {
         />
       )}
       <Button
-        icon={{ icon: CoreIcons.chevronLeft, rtlFlip: true }}
+        icon={{ icon: "icon-[mdi--chevron-left]", rtlFlip: true }}
         size="sm"
         variant="link"
         aria-label="prev"
@@ -195,7 +195,7 @@ export const DateHeader = (props: Props) => {
         {headLabel}
       </div>
       <Button
-        icon={{ icon: CoreIcons.chevronRight, rtlFlip: true }}
+        icon={{ icon: "icon-[mdi--chevron-right]", rtlFlip: true }}
         size="sm"
         variant="link"
         aria-label="next"
@@ -205,7 +205,7 @@ export const DateHeader = (props: Props) => {
       />
       {endPage !== undefined && (
         <Button
-          icon={{ icon: CoreIcons.chevronsRight, rtlFlip: true }}
+          icon={{ icon: "icon-[mdi--chevron-double-right]", rtlFlip: true }}
           size="sm"
           variant="link"
           aria-label="end"

@@ -18,8 +18,14 @@
 @import "@react-fabric/media/css/styles.css";
 @import "@react-fabric/monaco/css/styles.css";
 @import "@react-fabric/superdate/css/styles.css";
-@import "@react-fabric/core/css/flags.rect.css";
 @import "./_overrides.css";
 @import "./_prism.css";
 @import "./_prism-dark.css";
 @import "./_prism-light.css";
+
+@source inline("circle-flags--{af,ad,ae}");
+
+@plugin "@iconify/tailwind4" {
+  prefix: "iconify";
+  prefixes: circle-flags;
+}

@@ -152,6 +152,10 @@
       --color: var(--color-warning-500);
     }
 
+    &[data-color="muted"] {
+      --color: var(--color-tint-300);
+    }
+
     &[data-variant="outline"] {
       --outline: var(--color);
     }

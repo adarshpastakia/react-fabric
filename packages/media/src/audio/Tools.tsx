@@ -21,23 +21,23 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Button, CoreIcons, Footer, HotKey } from "@react-fabric/core";
+import { Button, Footer, HotKey } from "@react-fabric/core";
+import classNames from "classnames";
 import { Fragment, useMemo } from "react";
 import { MiniSlider } from "../sliders/MiniSlider";
 import { TimeSlider } from "../sliders/TimeSlider";
 import { useAudioContext } from "./Context";
-import classNames from "classnames";
 
 export const Tools = () => {
   const { audioRef, state, toggleEqs } = useAudioContext();
 
   const volumeIcon = useMemo(() => {
-    if (state.volume === 0) return CoreIcons.mediaVolume0;
+    if (state.volume === 0) return "icon-[mdi--volume-mute]";
 
-    if (state.volume <= 0.4) return CoreIcons.mediaVolume1;
-    if (state.volume <= 0.7) return CoreIcons.mediaVolume2;
+    if (state.volume <= 0.4) return "icon-[mdi--volume-low]";
+    if (state.volume <= 0.7) return "icon-[mdi--volume-medium]";
 
-    return CoreIcons.mediaVolume3;
+    return "icon-[mdi--volume-high]";
   }, [state.volume]);
 
   const handlers = useMemo(
@@ -108,7 +108,7 @@ export const Tools = () => {
         variant="link"
         aria-label="togglePlay"
         onClick={handlers.togglePlay}
-        icon={state.isPlaying ? CoreIcons.mediaPause : CoreIcons.mediaPlay}
+        icon={state.isPlaying ? "icon-[mdi--pause]" : "icon-[mdi--play]"}
       />
       <MiniSlider
         icon={volumeIcon}
@@ -157,7 +157,7 @@ export const Tools = () => {
         variant={state.showEqs ? "solid" : "link"}
         onClick={toggleEqs}
         disabled={!state.isLoaded}
-        icon={CoreIcons.mediaEqs}
+        icon="icon-[mdi--tune-vertical]"
       />
     </Footer>
   );

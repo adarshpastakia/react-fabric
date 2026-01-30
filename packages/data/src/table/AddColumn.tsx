@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { CoreIcons, Dropdown, Icon, Menu, MenuItem } from "@react-fabric/core";
+import { Dropdown, Icon, Menu, MenuItem } from "@react-fabric/core";
 import { type TableColumn } from "./types";
 
 export const AddColumn = ({
@@ -35,7 +35,7 @@ export const AddColumn = ({
     <div className="group font-medium w-6 flex flex-nowrap text-start items-center">
       <Dropdown placement="bottom-end">
         <Icon
-          icon={CoreIcons.insert}
+          icon="icon-[mdi--plus-circle-outline]"
           className="p-1 rounded-t rounded-b-none hover:outline"
         />
         <Menu className="text-sm" onClick={onClick}>
@@ -45,7 +45,7 @@ export const AddColumn = ({
               id={String(col.id)}
               data-dropdown-dismiss="false"
               label={`${col.label ?? String(col.id)}`}
-              icon={!col.hidden ? CoreIcons.tick : ""}
+              icon={!col.hidden ? "icon-[mdi--check]" : ""}
             />
           ))}
         </Menu>

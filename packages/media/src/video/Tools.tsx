@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Button, CoreIcons, Divider, Footer, HotKey } from "@react-fabric/core";
+import { Button, Divider, Footer, HotKey } from "@react-fabric/core";
 import {
   Fragment,
   useCallback,
@@ -31,13 +31,13 @@ import {
   useState,
 } from "react";
 import { Colorscape } from "../components/Colorscape";
+import { TooltipButton } from "../components/TooltipButton";
 import { MiniSlider } from "../sliders/MiniSlider";
 import { TimeSlider } from "../sliders/TimeSlider";
 import { CommentTag, CommentTool } from "./Comments";
 import { useVideoContext } from "./Context";
 import { CutStrip } from "./CutStrip";
 import { type VideoProps } from "./types";
-import { TooltipButton } from "../components/TooltipButton";
 
 export const Tools = ({
   hasVtt = false,
@@ -110,12 +110,12 @@ export const Tools = ({
   }, [drawMarkers]);
 
   const volumeIcon = useMemo(() => {
-    if (state.volume === 0) return CoreIcons.mediaVolume0;
+    if (state.volume === 0) return "icon-[mdi--volume-mute]";
 
-    if (state.volume <= 0.4) return CoreIcons.mediaVolume1;
-    if (state.volume <= 0.7) return CoreIcons.mediaVolume2;
+    if (state.volume <= 0.4) return "icon-[mdi--volume-low]";
+    if (state.volume <= 0.7) return "icon-[mdi--volume-medium]";
 
-    return CoreIcons.mediaVolume3;
+    return "icon-[mdi--volume-high]";
   }, [state.volume]);
 
   const handlers = useMemo(
@@ -223,7 +223,7 @@ export const Tools = ({
             aria-label="togglePlay"
             onClick={handlers.togglePlay}
             disabled={!state.isLoaded}
-            icon={state.isPlaying ? CoreIcons.mediaPause : CoreIcons.mediaPlay}
+            icon={state.isPlaying ? "icon-[mdi--pause]" : "icon-[mdi--play]"}
           />
           <MiniSlider
             icon={volumeIcon}
@@ -275,8 +275,8 @@ export const Tools = ({
               disabled={!state.isLoaded}
               icon={
                 state.showVtt
-                  ? CoreIcons.mediaCaptionOn
-                  : CoreIcons.mediaCaptionOff
+                  ? "icon-[mdi--closed-caption]"
+                  : "icon-[mdi--closed-caption-outline]"
               }
             />
           )}
@@ -318,14 +318,14 @@ export const Tools = ({
             aria-label="fit-to-view"
             onClick={fitToView}
             disabled={!state.isLoaded}
-            icon={CoreIcons.mediaFitToView}
+            icon="icon-[mdi--fit-to-screen]"
           />
           <TooltipButton
             tooltip="Fit to Size (F)"
             aria-label="fit-to-size"
             onClick={fitToSize}
             disabled={!state.isLoaded}
-            icon={CoreIcons.mediaAspect}
+            icon="icon-[mdi--aspect-ratio]"
           />
           <Divider vertical />
           {onCommentChange && (
@@ -339,7 +339,7 @@ export const Tools = ({
               aria-label="crop"
               disabled={!state.isLoaded}
               variant={state.cropping ? "solid" : "link"}
-              icon={CoreIcons.mediaCrop}
+              icon="icon-[mdi--crop]"
               onClick={toggleCropping}
             />
           )}
@@ -349,7 +349,7 @@ export const Tools = ({
               aria-label="toggle-cut"
               onClick={() => setCut(true)}
               disabled={!state.isLoaded}
-              icon={CoreIcons.cut}
+              icon="icon-[mdi--scissors-cutting]"
             />
           )}
           {onExport && (
@@ -357,7 +357,7 @@ export const Tools = ({
               tooltip="Export video frame to image"
               aria-label="export"
               disabled={!state.isLoaded}
-              icon={CoreIcons.mediaCapture}
+              icon="icon-[mdi--camera-enhance-outline]"
               onClick={() => onExport?.(state.time, exportToBase64() ?? "")}
             />
           )}
@@ -366,14 +366,14 @@ export const Tools = ({
             tooltip="Rotate Counter Clockwise ([)"
             disabled={!state.isLoaded}
             aria-label="rotate-ccw"
-            icon={CoreIcons.mediaRotateCCW}
+            icon="icon-[mdi--rotate-left]"
             onClick={handlers.rotateDown}
           />
           <TooltipButton
             tooltip="Rotate Clockwise (])"
             disabled={!state.isLoaded}
             aria-label="rotate-cw"
-            icon={CoreIcons.mediaRotateCW}
+            icon="icon-[mdi--rotate-right]"
             onClick={handlers.rotateUp}
           />
           <label className="text-xs basis-16 whitespace-nowrap">
@@ -391,7 +391,7 @@ export const Tools = ({
             aria-label="toggle-cut"
             onClick={() => setCut(false)}
             disabled={!state.isLoaded}
-            icon={CoreIcons.close}
+            icon="icon-[mdi--close]"
           />
         </div>
       )}

@@ -23,7 +23,7 @@
 
 import classNames from "classnames";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Loading } from "../../components/animations/Animations";
+import { LoadingLine } from "../../components/animations/Animations";
 import { getIconProps, Icon, type IconProps } from "../../components/icon/Icon";
 import { useLayoutEffectDebugger } from "../../hooks/useEffectDebugger";
 import { usePropToggle } from "../../hooks/usePropToggle";
@@ -35,7 +35,6 @@ import {
   type Elements,
   type TestProps,
 } from "../../types";
-import { CoreIcons } from "../../types/icons";
 import { ErrorBoundary } from "../boundary/ErrorBoundary";
 
 export interface AsideProps
@@ -111,7 +110,7 @@ export interface AsideProps
  * ```jsx
  * <Aside
  *   title="Sidebar Title"
- *   icon={CoreIcons.menu}
+ *   icon=icon-[mdi--menu]
  *   rtlFlip={true}
  *   className="custom-aside"
  *   bodyClassName="custom-aside-body"
@@ -254,7 +253,7 @@ export const Aside = ({
           <Icon
             aria-label={isCollapsed ? "expand" : "collapse"}
             className={classNames("fabric-asideCollapse", "p-2 select-none")}
-            icon={CoreIcons.chevronLeft}
+            icon="icon-[mdi--chevron-left]"
             rtlFlip
             onClick={toggleCollapse}
             data-ref="asideToggle"
@@ -271,7 +270,7 @@ export const Aside = ({
         )}
         {actions && <div className={"fabric-asideActions"}>{actions}</div>}
       </header>
-      {loading && <Loading />}
+      {loading && <LoadingLine />}
       {isCollapsed && (
         <div
           role="none"

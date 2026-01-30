@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { CoreIcons, Icon, Tooltip } from "@react-fabric/core";
+import { Icon, Tooltip } from "@react-fabric/core";
 import { isString } from "@react-fabric/utilities";
 import { useTranslation } from "react-i18next";
 
@@ -53,7 +53,7 @@ export const ErrorIcon = ({ error = "", invalid }: KeyValue) => {
         <Icon
           className="flex-content first:ms-2 self-center"
           color="danger"
-          icon={CoreIcons.alert}
+          icon="icon-[mdi--alert-circle-outline]"
         />
       </Tooltip>
     )

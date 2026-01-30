@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Button, CoreIcons, Icon, useDebounce } from "@react-fabric/core";
+import { Button, Icon, useDebounce } from "@react-fabric/core";
 import { type RefProp } from "@react-fabric/core/dist/types/types";
 import {
   Fragment,
@@ -129,7 +129,7 @@ export const Search = ({
       actionButton={
         <Fragment>
           {searching && (
-            <Icon className="p-2" icon={CoreIcons.spinner} animate="spin" />
+            <Icon className="p-2" icon="icon-[svg-spinners--eclipse]" />
           )}
           {!searching && !hideHandle && (
             <Button
@@ -137,7 +137,7 @@ export const Search = ({
               variant="link"
               aria-label="search"
               disabled={!actualValue}
-              icon={CoreIcons.search}
+              icon="icon-[mdi--magnify]"
               onClick={handleSearch}
             />
           )}

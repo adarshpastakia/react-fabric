@@ -36,6 +36,10 @@
   },
   "dependencies": {
     "@floating-ui/react": "~0.27.16",
+    "@iconify/tailwind4": "~1.2.1",
+    "@iconify-json/mdi": "~1.2.3",
+    "@iconify-json/solar": "~1.2.5",
+    "@iconify-json/svg-spinners": "~1.2.4",
     "@react-fabric/utilities": "^1.0.0-beta.60",
     "@tailwindcss/postcss": "~4.1.16",
     "boring-avatars": "~1.11.2",

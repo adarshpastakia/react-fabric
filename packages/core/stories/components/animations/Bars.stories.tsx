@@ -23,10 +23,10 @@
 
 import { faker } from "@faker-js/faker";
 import type { Meta, StoryObj } from "@storybook/react";
-import { AnimationBars } from "../../../src";
+import { LoadingBars } from "../../../src";
 
 const meta: Meta = {
-  component: AnimationBars,
+  component: LoadingBars,
   title: "@core/components/Animations",
   parameters: {
     layout: "centered",
@@ -44,11 +44,11 @@ const meta: Meta = {
 };
 
 export default meta;
-type BarStory = StoryObj<typeof AnimationBars>;
+type BarStory = StoryObj<typeof LoadingBars>;
 
 export const _Bars: BarStory = {
   render: (args) => {
-    return <AnimationBars {...args} />;
+    return <LoadingBars {...args} />;
   },
   args: {},
 };

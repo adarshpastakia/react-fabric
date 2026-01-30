@@ -35,7 +35,7 @@ import {
   useListNavigation,
   useTypeahead,
 } from "@floating-ui/react";
-import { Chip, CoreIcons, Icon } from "@react-fabric/core";
+import { Chip, Icon } from "@react-fabric/core";
 import { isArray, isEmpty } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useCallback, useId, useLayoutEffect, useMemo } from "react";
@@ -324,16 +324,15 @@ export const Select = <T extends AnyObject = string>({
             disabled && "pointer-events-none",
           )}
           onClick={() => !disabled && openDropdown()}
-          icon={CoreIcons.chevronDown}
+          icon="icon-[mdi--chevron-down]"
         />
       )}
       {state.loading && (
         <Icon
-          animate="spin"
           className={classNames(
             "flex-content p-2 z-0 order-9 text-muted pointer-events-none",
           )}
-          icon={CoreIcons.spinner}
+          icon="icon-[svg-spinners--eclipse]"
         />
       )}
       {state.open && !state.loading && (
@@ -360,7 +359,7 @@ export const Select = <T extends AnyObject = string>({
               empty={emptyDisplay}
               info={state.activeItem?.[infoProperty ?? "info"]}
             >
-              {async (item, label) => await (renderer?.(item) ?? label)}
+              {(item, label) => renderer?.(item) ?? label}
             </Options>
           </FloatingFocusManager>
         </FloatingPortal>

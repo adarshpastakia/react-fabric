@@ -28,12 +28,25 @@
           "define-mixin",
           "value",
           "source",
+          "plugin",
           "theme",
           "utility",
           "variant",
           "reference",
           "custom-variant"
         ]
+      }
+    ],
+    "function-no-unknown": [
+      true,
+      {
+        "ignoreFunctions": ["from-json", "inline"]
+      }
+    ],
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": ["prefixes", "icon-sets"]
       }
     ],
     "selector-class-pattern": "^[a-z][a-zA-Z0-9-]*(?:\\-[a-zA-Z0-9]+)*(?:__[a-z][a-zA-Z0-9]+)?(?:--[a-z][a-zA-Z0-9]+)?(?:\\:.*)?$",

@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Button, CoreIcons, Tooltip } from "@react-fabric/core";
+import { Button, Tooltip } from "@react-fabric/core";
 import { type RefProp } from "@react-fabric/core/dist/types/types";
 import classNames from "classnames";
 import {
@@ -114,7 +114,9 @@ export const Password = ({
               color="warning"
               variant="link"
               aria-label={t(show ? "password.hide" : "password.show")}
-              icon={show ? CoreIcons.eyeOff : CoreIcons.eye}
+              icon={
+                show ? "icon-[mdi--eye-off-outline]" : "icon-[mdi--eye-outline]"
+              }
               onClick={() => setShow(!show)}
             />
           </Tooltip>

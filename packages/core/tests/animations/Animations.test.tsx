@@ -23,7 +23,7 @@
 
 import { composeStories } from "@storybook/react";
 import { render } from "@testing-library/react";
-import { AnimationBars, AnimationSpinner, Loading, Skeleton } from "../../src";
+import { LoadingBars, LoadingSpinner, LoadingLine, Skeleton } from "../../src";
 import * as stories from "../../stories/components/animations/Animations.stories";
 
 const { Tester } = composeStories(stories);
@@ -47,7 +47,7 @@ describe("Animations", () => {
   it("should render bars", () => {
     const fragment = render(
       <div className="relative">
-        <AnimationBars />
+        <LoadingBars />
       </div>,
     );
     expect(document.body.innerHTML).toMatchSnapshot();
@@ -67,7 +67,7 @@ describe("Animations", () => {
   it("should render spinner", () => {
     const fragment = render(
       <div className="relative">
-        <AnimationSpinner />
+        <LoadingSpinner />
       </div>,
     );
     expect(document.body.innerHTML).toMatchSnapshot();
@@ -77,7 +77,7 @@ describe("Animations", () => {
   it("should render loader", () => {
     const fragment = render(
       <div className="relative">
-        <Loading />
+        <LoadingLine />
       </div>,
     );
     expect(document.body.innerHTML).toMatchSnapshot();

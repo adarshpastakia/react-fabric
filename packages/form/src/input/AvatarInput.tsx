@@ -21,13 +21,13 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Avatar, CoreIcons, Icon, ProgressBar } from "@react-fabric/core";
+import { Avatar, Icon, ProgressBar } from "@react-fabric/core";
+import { type AvatarProps } from "@react-fabric/core/dist/types/components/avatar/Avatar";
 import { type RefProp } from "@react-fabric/core/dist/types/types";
+import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { useFileUploader, type UploadHandler } from "../hooks/useFileUploader";
 import { HiddenInput } from "./Hidden";
-import { type AvatarProps } from "@react-fabric/core/dist/types/components/avatar/Avatar";
-import classNames from "classnames";
 
 export interface Props extends RefProp {
   /**
@@ -168,7 +168,7 @@ export const AvatarInput = ({
             )}
             {file.progress && (
               <Icon
-                icon={CoreIcons.stop}
+                icon="icon-[mdi--stop]"
                 bg="danger"
                 color="white"
                 size="sm"
@@ -179,7 +179,7 @@ export const AvatarInput = ({
             )}
             {!file.progress && (
               <Icon
-                icon={CoreIcons.trash}
+                icon="icon-[mdi--trash-can-outline]"
                 color="danger"
                 size="sm"
                 className="flex-content"

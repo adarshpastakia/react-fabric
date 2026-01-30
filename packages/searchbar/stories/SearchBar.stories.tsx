@@ -21,14 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  Button,
-  CoreIcons,
-  Divider,
-  Dropdown,
-  Menu,
-  MenuItem,
-} from "@react-fabric/core";
+import { Button, Divider, Dropdown, Menu, MenuItem } from "@react-fabric/core";
 import { SuperDate } from "@react-fabric/superdate";
 import { Countries, matchString, shortHash } from "@react-fabric/utilities";
 import type { Meta, StoryObj } from "@storybook/react";
@@ -155,7 +148,7 @@ export const _SearchBar: SearchBarStory = {
         append={<SuperDate variant="link" value="$year-5|$now" />}
       >
         <Dropdown placement="bottom-end">
-          <Button icon={CoreIcons.menu} aria-label="menu" variant="link" />
+          <Button icon="icon-[mdi--menu]" aria-label="menu" variant="link" />
           <Menu className="text-sm">
             <MenuItem label="Open" />
             <MenuItem label="Save" />
@@ -173,6 +166,7 @@ export const _SearchBar: SearchBarStory = {
     querySchema: schema,
     queryLanguage: "json",
     defaultQuery: "{\n\t\n}",
+    editable: true,
     onSearch: fn(),
     fields: [
       {

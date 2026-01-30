@@ -34,7 +34,7 @@ import { isEmpty, isNil } from "./_isType";
  * Format utility functions for various data types.
  * This namespace provides methods to format phone numbers, numbers, bytes, percentages, dates, and durations.
  */
- 
+
 export namespace Format {
   const getPhone = (value: string, country: string) => {
     const phone =
@@ -90,7 +90,7 @@ export namespace Format {
     /* istanbul ignore next */
     return `${
       useCss
-        ? `<span class="flag ${phone.country}"></span>`
+        ? `<span class="icon-[circle-flags--${phone.country}"></span>`
         : Countries.emoji(phone.country ?? "")
     } ${phone.formatInternational()}`;
   };

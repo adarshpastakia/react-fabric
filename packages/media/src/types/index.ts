@@ -51,6 +51,7 @@ export interface ImageState extends MediaBaseState {
   original: string;
   overlay?: string;
   showSplitter: boolean;
+  splitterOrient: "vertical" | "horizontal";
   colorScheme: "light" | "dark" | "light_transparent" | "dark_transparent";
 }
 

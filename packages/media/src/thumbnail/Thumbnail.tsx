@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { AnimationSpinner, CoreIcons, Icon } from "@react-fabric/core";
+import { Icon, LoadingSpinner } from "@react-fabric/core";
 import { type CssProp } from "@react-fabric/core/dist/types/types";
 import { getImageColorset, isNumber } from "@react-fabric/utilities";
 import classNames from "classnames";
@@ -100,7 +100,7 @@ type ThumbnailActions =
  *   width="8rem"
  *   height="10rem"
  *   className="custom-thumbnail"
- *   missingIcon={CoreIcons.mediaImageBroken}
+ *   missingIcon="icon-[mdi--image-off-outline]"
  * />
  * ```
  *
@@ -212,14 +212,14 @@ export const Thumbnail = ({
       )}
       {state.errorLevel === 2 && (
         <Icon
-          icon={missingIcon ?? CoreIcons.mediaImageBroken}
+          icon={missingIcon ?? "icon-[mdi--image-off-outline]"}
           className="text-muted"
           size="3rem"
         />
       )}
       {state.transparent && (
         <Icon
-          icon={CoreIcons.mediaSaturate}
+          icon="icon-[mdi--circle-half-full]"
           className={classNames(
             "contrastAction text-sm",
             "absolute bottom-2 end-2 rounded-full opacity-50 hover:opacity-100",
@@ -231,7 +231,7 @@ export const Thumbnail = ({
         />
       )}
       {nsfw && <NsfwOverlay trigger={nsfwTrigger} timeout={nsfwTimeout} />}
-      {state.loading && <AnimationSpinner size="1.5rem" />}
+      {state.loading && <LoadingSpinner size="1.5rem" />}
     </div>
   );
 };

@@ -21,13 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  Button,
-  CoreIcons,
-  Icon,
-  ProgressBar,
-  Tooltip,
-} from "@react-fabric/core";
+import { Button, Icon, ProgressBar, Tooltip } from "@react-fabric/core";
 import { FileUtil, Format, isString } from "@react-fabric/utilities";
 import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
@@ -124,7 +118,7 @@ export const FileField = ({
               </div>
               {file.progress && (
                 <Icon
-                  icon={CoreIcons.stop}
+                  icon="icon-[mdi--stop]"
                   bg="danger"
                   color="white"
                   size="sm"
@@ -135,7 +129,7 @@ export const FileField = ({
               )}
               {!file.progress && (
                 <Icon
-                  icon={CoreIcons.trash}
+                  icon="icon-[mdi--trash-can-outline]"
                   color="danger"
                   size="sm"
                   aria-label="remove"

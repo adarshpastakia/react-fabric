@@ -21,14 +21,8 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  Badge,
-  CoreIcons,
-  getBadgeProps,
-  getIconProps,
-  Icon,
-} from "@react-fabric/core";
-import { isEmpty, isString } from "@react-fabric/utilities";
+import { Badge, getBadgeProps, getIconProps, Icon } from "@react-fabric/core";
+import { isEmpty, isString, isTrue } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { isValidElement, useMemo } from "react";
 import { useTranslation } from "react-i18next";
@@ -89,7 +83,7 @@ export const TreeNode = ({
   }, [defaultLeafIcon, defaultNodeIcon, node.icon]);
 
   const canCheck = useMemo(() => {
-    return checkable === true || (checkable === "leafOnly" && node.leaf);
+    return isTrue(checkable) || (checkable === "leafOnly" && node.leaf);
   }, [node.leaf, checkable]);
 
   const canSelect = useMemo(() => {
@@ -111,7 +105,7 @@ export const TreeNode = ({
       {filler}
       {node.loading && (
         <div className="flex-initial w-6">
-          <Icon icon={CoreIcons.spinner} className="animate-spin text-muted" />
+          <Icon icon="icon-[svg-spinners--eclipse]" className="text-muted" />
         </div>
       )}
       {!node.leaf && !node.childFiltered && !node.loading && (
@@ -130,10 +124,10 @@ export const TreeNode = ({
             onClick={() => !node.disabled && onChecked(node.id)}
             icon={
               node.checked === 2
-                ? CoreIcons.checkboxInt
+                ? "icon-[mdi--checkbox-intermediate]"
                 : node.checked === 1
-                  ? CoreIcons.checkboxOn
-                  : CoreIcons.checkboxOff
+                  ? "icon-[mdi--checkbox-marked]"
+                  : "icon-[mdi--checkbox-blank-outline]"
             }
             className={classNames(
               node.disabled

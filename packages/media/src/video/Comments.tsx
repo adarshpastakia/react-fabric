@@ -24,7 +24,6 @@
 import {
   Button,
   Content,
-  CoreIcons,
   Dropdown,
   DropdownDismiss,
   Footer,
@@ -44,7 +43,7 @@ export const CommentTool = ({ onChange, onOpen }: KeyValue) => {
       <TooltipButton
         tooltip="Add comment"
         aria-label="comment-add"
-        icon={CoreIcons.mediaCommentAdd}
+        icon="icon-[mdi--comment-plus-outline]"
         onClick={onOpen}
       />
       <div>
@@ -101,7 +100,7 @@ export const CommentTag = ({
       >
         <Dropdown showArrow>
           <Icon
-            icon={CoreIcons.mediaComment}
+            icon="icon-[mdi--comment-text]"
             className="hover:text-primary bg-tint-50/80"
           />
           <PanelStack onPanelChange={resetValue}>
@@ -111,7 +110,7 @@ export const CommentTag = ({
                 <Button
                   size="sm"
                   variant="outline"
-                  icon={CoreIcons.edit}
+                  icon="icon-[mdi--lead-pencil]"
                   data-panel="edit"
                 >
                   Edit
@@ -137,7 +136,7 @@ export const CommentTag = ({
                   <Button
                     size="sm"
                     variant="link"
-                    icon={CoreIcons.trash}
+                    icon="icon-[mdi--trash-can-outline]"
                     color="danger"
                     onClick={onDelete}
                   >

@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { CoreIcons, Icon } from "@react-fabric/core";
+import { Icon } from "@react-fabric/core";
 import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import {
@@ -147,7 +147,7 @@ export const InputWrapper = ({
       {children}
       {allowClear && showClear && (
         <Icon
-          icon={CoreIcons.close}
+          icon="icon-[mdi--close]"
           onClick={handleClear}
           className={classNames(
             "text-tint-500 hover:text-tint-700 p-1 z-1 flex-content",
@@ -185,7 +185,11 @@ export const InputWrapper = ({
       {textareaExpandable && (
         <Icon
           onClick={() => setExpanded(!isExpanded)}
-          icon={isExpanded ? CoreIcons.arrowCollapse : CoreIcons.arrowExpand}
+          icon={
+            isExpanded
+              ? "icon-[mdi--arrow-collapse]"
+              : "icon-[mdi--arrow-expand]"
+          }
           className="hidden group-hover:block absolute top-0 end-0 bg-base hover:bg-tint-200 p-1 opacity-65 rounded-capped"
         />
       )}

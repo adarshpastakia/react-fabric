@@ -23,7 +23,6 @@
 
 import classNames from "classnames";
 import { type ChildProp, type CssProp } from "../../types";
-import { CoreIcons } from "../../types/icons";
 import { Icon } from "../icon/Icon";
 import { Dropdown, type DropdownProps } from "./Dropdown";
 
@@ -70,7 +69,7 @@ export const DropdownTool = ({
   return (
     <Dropdown {...props}>
       <Icon
-        icon={icon ?? CoreIcons.caretDown}
+        icon={icon ?? "icon-[mdi--menu-down]"}
         className={classNames(
           "outline bg-tint-50/50 flex-content pointer-events-auto cursor-pointer",
           className,

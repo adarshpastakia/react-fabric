@@ -34,7 +34,7 @@ import {
   useListNavigation,
   useTypeahead,
 } from "@floating-ui/react";
-import { Chip, CoreIcons, Icon } from "@react-fabric/core";
+import { Chip, Icon } from "@react-fabric/core";
 import { isArray, isEmpty } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useCallback, useId, useLayoutEffect, useMemo, useRef } from "react";
@@ -323,11 +323,10 @@ export const AutoComplete = ({
       </div>
       {state.loading && (
         <Icon
-          animate="spin"
           className={classNames(
             "flex-content p-2 z-0 order-9 text-muted pointer-events-none",
           )}
-          icon={CoreIcons.spinner}
+          icon="icon-[svg-spinners--eclipse]"
         />
       )}
       {state.open && !state.loading && (

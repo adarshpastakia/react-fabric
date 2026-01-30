@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { CoreIcons, Icon } from "@react-fabric/core";
+import { Icon } from "@react-fabric/core";
 import classNames from "classnames";
 import { useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 
@@ -110,7 +110,7 @@ export const NsfwOverlay = ({
     return (
       <>
         <Icon
-          icon={CoreIcons.eyeOff}
+          icon="icon-[mdi--shield-lock-outline]"
           className="media-nsfw-icon text-tint-700/50"
         />
         <div className="text-tint-700/50 text-sm font-medium">{message}</div>

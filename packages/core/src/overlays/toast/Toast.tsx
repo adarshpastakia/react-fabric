@@ -28,7 +28,6 @@ import { AnimationIndicator } from "../../components/animations/Animations";
 import { Button } from "../../components/button/Button";
 import { Icon } from "../../components/icon/Icon";
 import { type ColorState, type Elements } from "../../types";
-import { CoreIcons } from "../../types/icons";
 import { getColor } from "../../utils";
 
 export interface ToastProps {
@@ -175,7 +174,7 @@ export const Toast = ({
               variant="link"
               className="m-0"
               color={color}
-              icon={CoreIcons.closeAll}
+              icon="icon-[mdi--close-box-multiple-outline]"
               aria-label="close-all"
               onClick={onCloseAll}
             />
@@ -184,7 +183,7 @@ export const Toast = ({
               variant="link"
               className="m-0"
               color={color}
-              icon={CoreIcons.close}
+              icon="icon-[mdi--close]"
               aria-label="close"
               onClick={() => handleClose(false)}
             />

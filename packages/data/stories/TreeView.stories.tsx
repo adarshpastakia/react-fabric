@@ -67,7 +67,7 @@ const treeItems = Object.entries(groupBy(Countries.list, "continent")).map(
       },
       children: (list as AnyObject).map((ctr: KeyValue) => ({
         id: ctr.iso2,
-        icon: `flag ${ctr.iso2}`,
+        icon: `icon-[circle-flags--${ctr.iso2}]`,
         label: `${ctr.name}`,
         badge: ctr.iso3,
         leaf: true,
@@ -140,6 +140,7 @@ export const _TreePanel: Story = {
   args: {
     selectable: true,
     searchable: true,
+    checkable: true,
     onSelect: fn(),
     filterPlaceholder: "Search country...",
   },

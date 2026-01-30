@@ -23,7 +23,6 @@
 
 import {
   Button,
-  CoreIcons,
   EmptyContent,
   Title,
   useIsDark,
@@ -195,7 +194,7 @@ export const ChartContainer = memo(
             <Button
               size="sm"
               variant="link"
-              icon={CoreIcons.exporter}
+              icon="icon-[mdi--export-variant]"
               onClick={handleExport}
               aria-label="export"
             />
@@ -211,7 +210,7 @@ export const ChartContainer = memo(
         {isEmpty && (
           <div className="absolute inset-0 bg-base grid place-content-center">
             <EmptyContent
-              icon={emptyIcon ?? CoreIcons.chartLine}
+              icon={emptyIcon ?? "icon-[mdi--chart-line]"}
               message="Empty chart"
             />
           </div>

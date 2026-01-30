@@ -94,7 +94,7 @@ export const List: Story = {
                     <Avatar
                       rounded
                       name={item.iso3}
-                      fallbackIcon={`flag ${item.iso3}`}
+                      fallbackIcon={`icon-[circle-flags--${item.iso3}`}
                       size="3rem"
                     />
                   </div>

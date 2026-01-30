@@ -55,6 +55,7 @@ type ImageActions =
   | { type: "rotate"; rotate: number }
   | { type: "reset" }
   | { type: "resetColor" }
+  | { type: "toggleSplitterOrientation" }
   | {
       type: "adjustColor";
       property: "contrast" | "brightness" | "invert" | "hue" | "saturate";
@@ -110,6 +111,10 @@ export const useImageReducer = ({
       }
       if (action.type === "fitToSize") {
         state.zoom = 1;
+      }
+      if (action.type === "toggleSplitterOrientation") {
+        state.splitterOrient =
+          state.splitterOrient === "vertical" ? "horizontal" : "vertical";
       }
       if (action.type === "image") {
         state.overlay = undefined;
@@ -232,6 +237,7 @@ export const useImageReducer = ({
       isLoaded: false,
       isErrored: false,
       showSplitter: true,
+      splitterOrient: "vertical",
       colorscape: {
         brightness: 1,
         invert: 0,
@@ -341,6 +347,10 @@ export const useImageReducer = ({
     dispatch({ type: "resetColor" });
   }, []);
 
+  const toggleSplitterOrientation = useCallback(() => {
+    dispatch({ type: "toggleSplitterOrientation" });
+  }, []);
+
   const adjustColor = useCallback(
     (
       property: "contrast" | "brightness" | "invert" | "saturate" | "hue",
@@ -359,6 +369,7 @@ export const useImageReducer = ({
     handleLoad,
     handleError,
     calculateSize,
+    toggleSplitterOrientation,
     changeZoom,
     zoomScale,
     rotate,

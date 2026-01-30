@@ -56,7 +56,7 @@ export const _DualList: DualListStory = {
         valueProperty="iso3"
         renderer={(opt) => (
           <div className="flex gap-2 items-center">
-            <Icon icon={`flag ${opt.iso2}`} />
+            <Icon icon={`icon-[circle-flags--${opt.iso2}]`} />
             <span className="flex-1 truncate">{opt.name}</span>
             <span className="rounded-full text-xs bg-tint-500/10 px-1 py-px">
               {opt.phone}

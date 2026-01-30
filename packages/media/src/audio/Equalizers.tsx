@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Button, CoreIcons, Divider, Icon, Text } from "@react-fabric/core";
+import { Button, Divider, Icon, Text } from "@react-fabric/core";
 import { Slider } from "@react-fabric/form";
 import {
   Fragment,
@@ -314,7 +314,7 @@ export const Equalizers = memo(() => {
                   onClick={() =>
                     toggleChannel(idx, gainNode.gain.value > 0 ? 0 : 100)
                   }
-                  icon={CoreIcons.mediaChannel}
+                  icon="icon-[mdi--speaker]"
                   color={wavesurfer?.instance.options.splitChannels?.[
                     idx
                   ]?.waveColor?.toString()}

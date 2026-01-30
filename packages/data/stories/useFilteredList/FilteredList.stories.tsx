@@ -77,7 +77,7 @@ export const FilteredList: Story = {
                       <Icon
                         className="flex-content"
                         size="2rem"
-                        icon={`flag ${item.iso2}`}
+                        icon={`iconify-color circle-flags--${item.iso2.toLowerCase()}`}
                       />
                       <span className="flex-1 truncate">{item.name}</span>
                       <span className="text-sm text-muted flex-content">

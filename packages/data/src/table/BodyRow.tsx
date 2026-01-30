@@ -21,11 +21,11 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { Icon } from "@react-fabric/core";
 import classNames from "classnames";
 import { BodyCell } from "./BodyCell";
 import { CheckboxCell } from "./CheckboxCell";
 import { type TableColumn } from "./types";
-import { CoreIcons, Icon } from "@react-fabric/core";
 
 export const BodyRow = ({
   rowKey,
@@ -94,7 +94,9 @@ export const BodyRow = ({
             >
               <Icon
                 className="p-1 text-tint-700 hover:text-primary-600"
-                icon={expanded ? CoreIcons.collapse : CoreIcons.expand}
+                icon={
+                  expanded ? "icon-[mdi--minus-box]" : "icon-[mdi--plus-box]"
+                }
                 onClick={(e) => [
                   keyProperty && toggleExpand(data[keyProperty]),
                   e.stopPropagation(),

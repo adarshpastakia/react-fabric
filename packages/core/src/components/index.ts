@@ -23,10 +23,10 @@
 
 export { ActionLabel } from "./actionLabel/ActionLabel";
 export {
-  AnimationBars,
+  LoadingBars,
   AnimationIndicator,
-  AnimationSpinner,
-  Loading,
+  LoadingSpinner,
+  LoadingLine,
   Skeleton,
 } from "./animations/Animations";
 export { Avatar } from "./avatar/Avatar";

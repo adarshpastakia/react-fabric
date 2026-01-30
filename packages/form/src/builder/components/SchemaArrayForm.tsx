@@ -24,13 +24,7 @@
 import { DndContext, type DragEndEvent } from "@dnd-kit/core";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { SortableContext } from "@dnd-kit/sortable";
-import {
-  Button,
-  Content,
-  CoreIcons,
-  Header,
-  useOverlayService,
-} from "@react-fabric/core";
+import { Button, Content, Header, useOverlayService } from "@react-fabric/core";
 import { isArray } from "@react-fabric/utilities";
 import { useCallback, useState } from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
@@ -118,7 +112,7 @@ export const SchemaArrayForm = ({
           <Button
             size="sm"
             variant="link"
-            icon={CoreIcons.insert}
+            icon="icon-[mdi--plus-circle-outline]"
             aria-label="add field"
             onClick={handleAdd}
           />
@@ -126,14 +120,14 @@ export const SchemaArrayForm = ({
         <Button
           size="sm"
           variant="link"
-          icon={CoreIcons.colapseAllVar}
+          icon="icon-[mdi--arrow-collapse-vertical]"
           aria-label="collapse all"
           onClick={() => setDefaultOpen(false)}
         />
         <Button
           size="sm"
           variant="link"
-          icon={CoreIcons.expandAllVar}
+          icon="icon-[mdi--arrow-expand-vertical]"
           aria-label="expand all"
           onClick={() => setDefaultOpen(true)}
         />

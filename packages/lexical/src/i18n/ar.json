@@ -1,0 +1,16 @@
+{
+  "tool": {
+    "alignCenter": "محاذاة المركز",
+    "alignJustify": "محاذاة وضبط",
+    "alignEnd": "محاذاة النهاية",
+    "alignStart": "محاذاة البداية",
+    "bold": "عريض",
+    "clear": "مسح التنسيق",
+    "hilight": "تسليط الضوء",
+    "indentIn": "المسافة البادئة في",
+    "underline": "تسطير",
+    "strikethrough": "يتوسطه خط",
+    "italic": "مائل",
+    "indentOut": "مسافة بادئة للخارج"
+  }
+}

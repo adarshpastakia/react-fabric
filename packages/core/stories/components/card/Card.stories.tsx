@@ -202,7 +202,7 @@ export const _CardCover: CardCoverStory = {
             <Image src={faker.image.url()} />
             <Title as="h3">Card Title</Title>
             <Title>Card description</Title>
-            <div className="absolute top-2 rounded-full leading-[0] end-2 bg-tint-50/70">
+            <div className="absolute top-2 rounded-full leading-0 end-2 bg-tint-50/70">
               <Button
                 rounded
                 size="sm"

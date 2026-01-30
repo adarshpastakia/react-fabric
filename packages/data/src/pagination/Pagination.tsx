@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { CoreIcons, Icon } from "@react-fabric/core";
+import { Icon } from "@react-fabric/core";
 import classNames from "classnames";
 import { Fragment, memo, useMemo } from "react";
 
@@ -125,7 +125,7 @@ export const Pagination = memo(
             page === 0 && "pointer-events-none text-tint-300",
           )}
         >
-          <Icon icon={CoreIcons.chevronsLeft} rtlFlip />
+          <Icon icon="icon-[mdi--chevron-double-left]" rtlFlip />
         </button>
         <button
           onClick={() => onPageChange(page - 1)}
@@ -134,7 +134,7 @@ export const Pagination = memo(
             page === 0 && "pointer-events-none text-tint-300",
           )}
         >
-          <Icon icon={CoreIcons.chevronLeft} rtlFlip />
+          <Icon icon="icon-[mdi--chevron-left]" rtlFlip />
         </button>
         {!minimal && pageBody}
         {minimal && (
@@ -149,7 +149,7 @@ export const Pagination = memo(
             page + 1 >= totalPages && "pointer-events-none text-tint-300",
           )}
         >
-          <Icon icon={CoreIcons.chevronRight} rtlFlip />
+          <Icon icon="icon-[mdi--chevron-right]" rtlFlip />
         </button>
         <button
           onClick={() => onPageChange(totalPages - 1)}
@@ -158,7 +158,7 @@ export const Pagination = memo(
             page + 1 >= totalPages && "pointer-events-none text-tint-300",
           )}
         >
-          <Icon icon={CoreIcons.chevronsRight} rtlFlip />
+          <Icon icon="icon-[mdi--chevron-double-right]" rtlFlip />
         </button>
       </div>
     );

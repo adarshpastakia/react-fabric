@@ -25,15 +25,19 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useEffect, useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 import {
-  AnimationBars,
+  LoadingBars,
   AnimationIndicator,
-  AnimationSpinner,
+  LoadingSpinner,
   Skeleton,
 } from "../../../src";
 
 const meta: Meta = {
   component: AnimationIndicator,
-  subcomponents: { AnimationBars, AnimationSpinner, Skeleton } as AnyObject,
+  subcomponents: {
+    AnimationBars: LoadingBars,
+    AnimationSpinner: LoadingSpinner,
+    Skeleton,
+  } as AnyObject,
   title: "@core/components/Animations",
   parameters: {
     layout: "centered",

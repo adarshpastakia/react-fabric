@@ -29,7 +29,6 @@ import {
   type CssProp,
   type TestProps,
 } from "../../types";
-import { CoreIcons } from "../../types/icons";
 import { Icon } from "../icon/Icon";
 
 export interface CalloutProps
@@ -145,7 +144,7 @@ export const Callout = ({
           size="md"
           data-ref="calloutClose"
           className={classNames("absolute end-2", legend ? "top-0" : "top-2")}
-          icon={CoreIcons.close}
+          icon="icon-[mdi--close]"
           onClick={onClose}
         />
       )}

@@ -23,7 +23,6 @@
 
 import {
   Button,
-  CoreIcons,
   Divider,
   ToggleButtonGroup,
   useMemoDebugger,
@@ -273,7 +272,7 @@ const ActivityMapChart = memo(
         options={options}
         chartRef={chartRef}
         isEmpty={isEmpty(series)}
-        emptyIcon={CoreIcons.chartActivityScatter}
+        emptyIcon="icon-[mdi--chart-scatter-plot]"
         dataTableRenderer={activityRenderer}
         onClick={(e) => onClick?.(e.seriesIndex, e.dataIndex)}
       >
@@ -284,14 +283,14 @@ const ActivityMapChart = memo(
               variant="link"
               value="scatter"
               aria-label="scatter"
-              icon={CoreIcons.chartActivityScatter}
+              icon="icon-[mdi--chart-scatter-plot]"
             />
             <Button
               size="sm"
               variant="link"
               value="heatmap"
               aria-label="heatmap"
-              icon={CoreIcons.chartActivityCalendar}
+              icon="icon-[mdi--checkerboard]"
             />
           </ToggleButtonGroup>
         )}

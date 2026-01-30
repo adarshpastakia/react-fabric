@@ -21,17 +21,20 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { CoreIcons, Icon, useResize } from "@react-fabric/core";
+import { Icon, useResize } from "@react-fabric/core";
 import classNames from "classnames";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { useImageContext } from "./Context";
 
 export const Overlay = ({ src }: { src: string }) => {
-  const { state } = useImageContext();
+  const { state, toggleSplitterOrientation } = useImageContext();
   const overlayRef = useRef<HTMLDivElement>(null);
   const [overlaySize, setOverlaySize] = useState<number>(0);
 
-  const [orientVertical, setOrientVertical] = useState(false);
+  const orientVertical = useMemo(
+    () => state.splitterOrient === "vertical",
+    [state.splitterOrient],
+  );
   const { ref, onMouseDown } = useResize(
     ({ x, y }) => {
       if (overlayRef.current != null) {
@@ -125,9 +128,9 @@ export const Overlay = ({ src }: { src: string }) => {
         }
       >
         <Icon
-          icon={CoreIcons.mediaOrient}
+          icon="icon-[mdi--format-rotate-90]"
           data-orient={orientVertical ? "vertical" : "horizontal"}
-          onClick={() => setOrientVertical(!orientVertical)}
+          onClick={() => toggleSplitterOrientation()}
         />
       </div>
     </Fragment>

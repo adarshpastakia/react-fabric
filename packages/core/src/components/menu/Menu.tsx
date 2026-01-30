@@ -56,7 +56,6 @@ import {
   useState,
 } from "react";
 import { HotKeyWrapper } from "../../hotkeys/HotKeyWrapper";
-import { CoreIcons } from "../../types/icons";
 import { cloneChildren, nodeCheck } from "../../utils";
 import { MenuItem } from "./MenuItem";
 import { type MenuProps } from "./types";
@@ -218,7 +217,7 @@ const MenuComponent = ({
           } as AnyObject) as AnyObject)}
           data-open={isOpen}
           minimal={minimal}
-          altIcon={CoreIcons.chevronRight}
+          altIcon="icon-[mdi--menu-right]"
           ref={mergeRefs(refs.setReference, ref)}
         />
       )}

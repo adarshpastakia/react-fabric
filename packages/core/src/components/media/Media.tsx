@@ -25,7 +25,6 @@ import { getImageColorset } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { type AriaProps, type CssProp, type TestProps } from "../../types";
-import { CoreIcons } from "../../types/icons";
 import { Button } from "../button/Button";
 import { Icon } from "../icon/Icon";
 
@@ -75,10 +74,10 @@ const loadIndicator = (
   <div
     className={classNames(
       "fabric-mediaPlaceholder",
-      "absolute z-1 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl text-gray animate-pulse",
+      "absolute z-1 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-gray",
     )}
   >
-    ●●●
+    <i className="icon-[svg-spinners--pulse-rings-2]" />
   </div>
 );
 
@@ -156,7 +155,7 @@ export const Image = ({
         <Icon
           size="2rem"
           className="absolute text-tint-300 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          icon={CoreIcons.mediaImageBroken}
+          icon="icon-[mdi--image-off-outline]"
         />
       )}
     </div>
@@ -272,7 +271,7 @@ export const Video = ({
               rounded
               variant="link"
               className={"fabric-mediaControlPlaceholder"}
-              icon={CoreIcons.ellipsis}
+              icon="icon-[mdi--dots-vertical]"
               aria-label="controls"
             />
             <Button
@@ -284,7 +283,7 @@ export const Video = ({
                 videoRef.current &&
                   (videoRef.current.volume = videoRef.current.volume ? 0 : 1);
               }}
-              icon={volume ? CoreIcons.volumeOn : CoreIcons.volumeOff}
+              icon={volume ? "icon-[mdi--volume]" : "icon-[mdi--volume-mute]"}
             />
             <Button
               rounded
@@ -296,7 +295,7 @@ export const Video = ({
                   ? videoRef.current?.play()
                   : videoRef.current?.pause();
               }}
-              icon={state ? CoreIcons.pause : CoreIcons.play}
+              icon={state ? "icon-[mdi--pause]" : "icon-[mdi--play]"}
             />
           </div>
         </Fragment>
@@ -305,7 +304,7 @@ export const Video = ({
         <Icon
           size="2rem"
           className="absolute text-tint-300 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          icon={CoreIcons.mediaVideoBroken}
+          icon="icon-[mdi--video-off-outline]"
         />
       )}
     </div>

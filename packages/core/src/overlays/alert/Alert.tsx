@@ -37,7 +37,6 @@ import { AnimationIndicator } from "../../components/animations/Animations";
 import { Button } from "../../components/button/Button";
 import { Icon } from "../../components/icon/Icon";
 import { type ColorState, type Elements } from "../../types";
-import { CoreIcons } from "../../types/icons";
 import { Title } from "../../typography/Title";
 import { getColor } from "../../utils";
 
@@ -256,7 +255,7 @@ export const Alert = ({
                 className="m-0"
                 color={color}
                 onClick={() => handleClose(false)}
-                icon={CoreIcons.close}
+                icon="icon-[mdi--close]"
                 aria-label="close"
               />
             </div>

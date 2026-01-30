@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Button, ButtonGroup, CoreIcons } from "@react-fabric/core";
+import { Button, ButtonGroup } from "@react-fabric/core";
 
 export const Scroller = ({
   vertical = true,
@@ -45,7 +45,9 @@ export const Scroller = ({
         variant="link"
         aria-label="scroll to top"
         icon={{
-          icon: vertical ? CoreIcons.chevronsUp : CoreIcons.chevronsLeft,
+          icon: vertical
+            ? "icon-[mdi--chevron-double-up]"
+            : "icon-[mdi--chevron-double-left]",
           rtlFlip: true,
         }}
         disabled={(scrollActive & 2) === 0}
@@ -56,7 +58,9 @@ export const Scroller = ({
         variant="link"
         aria-label="scroll up"
         icon={{
-          icon: vertical ? CoreIcons.chevronUp : CoreIcons.chevronLeft,
+          icon: vertical
+            ? "icon-[mdi--chevron-up]"
+            : "icon-[mdi--chevron-left]",
           rtlFlip: true,
         }}
         disabled={(scrollActive & 2) === 0}
@@ -67,7 +71,9 @@ export const Scroller = ({
         variant="link"
         aria-label="scroll down"
         icon={{
-          icon: vertical ? CoreIcons.chevronDown : CoreIcons.chevronRight,
+          icon: vertical
+            ? "icon-[mdi--chevron-down]"
+            : "icon-[mdi--chevron-right]",
           rtlFlip: true,
         }}
         disabled={scrollActive % 2 === 0}
@@ -78,7 +84,9 @@ export const Scroller = ({
         variant="link"
         aria-label="scroll to bottom"
         icon={{
-          icon: vertical ? CoreIcons.chevronsDown : CoreIcons.chevronsRight,
+          icon: vertical
+            ? "icon-[mdi--chevron-double-down]"
+            : "icon-[mdi--chevron-double-right]",
           rtlFlip: true,
         }}
         disabled={scrollActive % 2 === 0}

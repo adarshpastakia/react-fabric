@@ -22,10 +22,9 @@
  */
 
 import {
-  CoreIcons,
   EmptyContent,
   Icon,
-  Loading,
+  LoadingLine,
   useDebounce,
 } from "@react-fabric/core";
 import { debounce } from "@react-fabric/utilities";
@@ -232,7 +231,7 @@ export const Table = <T extends KeyValue = KeyValue>({
             )}
           </div>
         </div>
-        {loading && <Loading />}
+        {loading && <LoadingLine />}
         {data.length > 0 && (
           <div
             className="area-content flex flex-col flex-nowrap min-h-full"
@@ -261,7 +260,9 @@ export const Table = <T extends KeyValue = KeyValue>({
                   <Icon
                     rtlFlip
                     icon={
-                      data.open ? CoreIcons.chevronDown : CoreIcons.chevronRight
+                      data.open
+                        ? "icon-[mdi--chevron-down]"
+                        : "icon-[mdi--chevron-right]"
                     }
                   />
                   {groupRenderer?.(data) ?? (

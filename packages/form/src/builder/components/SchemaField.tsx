@@ -27,7 +27,6 @@ import {
   Button,
   Collapsable,
   Content,
-  CoreIcons,
   Footer,
   Modal,
   type ModalProps,
@@ -222,7 +221,7 @@ export const SchemaField = ({
               variant="link"
               aria-label="Delete"
               stopPropagation
-              icon={CoreIcons.trash}
+              icon="icon-[mdi--trash-can-outline]"
               onClick={onRemove}
               className="invisible group-hover/field:visible"
             />
@@ -277,7 +276,7 @@ export const SchemaField = ({
                 </Controller>
                 {customOptions && (
                   <Button
-                    icon={CoreIcons.list}
+                    icon="icon-[mdi--list-box-outline]"
                     aria-label="Custom options"
                     onClick={() => {
                       void openOptionModal({ title: `${id} Options` });

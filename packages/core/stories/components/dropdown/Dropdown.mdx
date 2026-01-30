@@ -1,17 +1,15 @@
 import {
-  Canvas,
-  Description,
-  Primary,
-  Story,
-  Title,
-} from "@storybook/addon-docs/blocks";
-import {
   Anchor,
   ArgTypes,
+  Canvas,
   Controls,
+  Description,
   Heading,
   Meta,
+  Primary,
+  Story,
   Subheading,
+  Title,
 } from "@storybook/addon-docs/blocks";
 import { Fragment } from "react";
 import { Collapsable, Dropdown } from "../../../src";
@@ -74,7 +72,7 @@ import { Dropdown, Button, Menu, MenuItem } from "@react-fabric/core";
 export const Example = () => {
   return (
     <Dropdown>
-      <Button altIcon={CoreIcons.chevronDown}>Dropdown Menu</Button>
+      <Button altIcon="icon-[mdi--chevron-down]">Dropdown Menu</Button>
       <Menu>
         <MenuItem label="Item One" />
         <MenuItem label="Item Two" />

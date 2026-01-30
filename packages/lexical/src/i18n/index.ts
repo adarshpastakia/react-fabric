@@ -21,28 +21,8 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Icon } from "@react-fabric/core";
+import { addTranslationBundle } from "@react-fabric/core";
+import ar from "./ar.json";
+import en from "./en.json";
 
-export const CheckboxCell = ({
-  state,
-  onClick,
-}: {
-  state: 0 | 1 | 2;
-  onClick?: () => void;
-}) => {
-  return (
-    <div className="group font-medium border-e w-6 flex flex-nowrap text-start py-1">
-      <Icon
-        icon={
-          state === 2
-            ? "icon-[mdi--checkbox-intermediate]"
-            : state === 1
-              ? "icon-[mdi--checkbox-marked]"
-              : "icon-[mdi--checkbox-blank-outline]"
-        }
-        className="p-1 text-tint-700 hover:text-primary-600"
-        onClick={(e) => [onClick?.(), e.stopPropagation()]}
-      />
-    </div>
-  );
-};
+addTranslationBundle("lexical", { en, ar });

@@ -185,7 +185,7 @@ export interface BaseSelectProps<T extends AnyObject = string> {
   /**
    * item renderer
    */
-  renderer?: (option: T) => React.ReactNode;
+  renderer?: (option: T) => JSX.Element;
   /**
    * item matcher
    */

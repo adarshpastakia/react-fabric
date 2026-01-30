@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Badge, CoreIcons, EmptyContent, Icon } from "@react-fabric/core";
+import { Badge, EmptyContent, Icon } from "@react-fabric/core";
 import {
   type BadgeType,
   type TestProps,
@@ -106,7 +106,11 @@ const CheckItem: FC<
           data-type="checkbox"
           className="ax-checkList__checkbox"
           data-selected={selected === 1}
-          icon={selected ? CoreIcons.checkboxInt : CoreIcons.checkboxOff}
+          icon={
+            selected
+              ? "icon-[mdi--checkbox-marked]"
+              : "icon-[mdi--checkbox-blank-outline]"
+          }
         />
       )}
       {allowNegative && (
@@ -116,10 +120,10 @@ const CheckItem: FC<
             className="ax-checkList__checkbox"
             icon={
               selected === 1
-                ? CoreIcons.expand
+                ? "icon-[mdi--plus-box-outline]"
                 : selected === -1
-                  ? CoreIcons.collapse
-                  : CoreIcons.checkboxOff
+                  ? "icon-[mdi--minus-box-outline]"
+                  : "icon-[mdi--checkbox-blank-outline]"
             }
             data-selected={selected}
           />
@@ -127,14 +131,20 @@ const CheckItem: FC<
             <Icon
               data-type="positive"
               onClick={(e) => [(onClick(id, false), e.stopPropagation())]}
-              icon={selected === 1 ? CoreIcons.expandActive : CoreIcons.expand}
+              icon={
+                selected === 1
+                  ? "icon-[mdi--plus-box]"
+                  : "icon-[mdi--plus-box-outline]"
+              }
               data-selected={selected === 1}
             />
             <Icon
               data-type="negative"
               onClick={(e) => [(onClick(id, true), e.stopPropagation())]}
               icon={
-                selected === -1 ? CoreIcons.collapseActive : CoreIcons.collapse
+                selected === -1
+                  ? "icon-[mdi--minus-box]"
+                  : "icon-[mdi--minus-box-outline]"
               }
               data-selected={selected === -1}
             />

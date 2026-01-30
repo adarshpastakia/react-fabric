@@ -22,7 +22,7 @@
  */
 
 import classNames from "classnames";
-import { Loading } from "../../components/animations/Animations";
+import { LoadingLine } from "../../components/animations/Animations";
 import { getIconProps, Icon, type IconProps } from "../../components/icon/Icon";
 import { type ChildrenProp, type RefProp, type TestProps } from "../../types";
 
@@ -116,7 +116,7 @@ export const Page = ({
           {title}
         </div>
       )}
-      {loading && <Loading />}
+      {loading && <LoadingLine />}
       {children}
     </div>
   );

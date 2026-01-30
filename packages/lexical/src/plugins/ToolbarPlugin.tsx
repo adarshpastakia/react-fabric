@@ -24,7 +24,6 @@
 import {
   Button,
   ButtonGroup,
-  CoreIcons,
   Divider,
   Dropdown,
   Icon,
@@ -51,14 +50,14 @@ const blockTypeToBlockName: KeyValue = {
   quote: "Quote",
 };
 const blockTypeToBlockIcon: KeyValue = {
-  bullet: CoreIcons.formatListBullet,
-  code: CoreIcons.formatCodeBlock,
+  bullet: "icon-[mdi--format-list-bulleted]",
+  code: "icon-[mdi--code-block-tags]",
   h1: " ",
   h2: " ",
   paragraph: "",
-  h6: CoreIcons.formatCommentBlock,
-  number: CoreIcons.formatListNumber,
-  quote: CoreIcons.formatQuoteBlock,
+  h6: "icon-[mdi--comment-text-outline]",
+  number: "icon-[mdi--format-list-numbered]",
+  quote: "icon-[mdi--format-quote-open]",
 };
 
 const SIZES = Object.freeze([
@@ -105,7 +104,7 @@ export const ToolbarPlugin = () => {
         <Button
           variant="link"
           tabIndex={-1}
-          altIcon={CoreIcons.caretDown}
+          altIcon="icon-[mdi--menu-down]"
           icon={blockTypeToBlockIcon[watch.blockType]}
         >
           {blockTypeToBlockName[watch.blockType]}
@@ -156,7 +155,7 @@ export const ToolbarPlugin = () => {
       <Divider vertical />
       <div>
         <Dropdown>
-          <Button variant="link" altIcon={CoreIcons.caretDown}>
+          <Button variant="link" altIcon="icon-[mdi--menu-down]" tabIndex={-1}>
             {getValue(watch.fontSize + "", "16")}
           </Button>
           <Menu className="hide-icons">
@@ -176,7 +175,7 @@ export const ToolbarPlugin = () => {
         <ButtonWrapper
           value="start"
           label={t("tool.alignStart")}
-          icon={{ icon: CoreIcons.alignLeft, rtlFlip: true }}
+          icon={{ icon: "icon-[mdi--format-align-left]", rtlFlip: true }}
           onClick={() =>
             watch.activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "start")
           }
@@ -184,7 +183,7 @@ export const ToolbarPlugin = () => {
         <ButtonWrapper
           value="center"
           label={t("tool.alignCenter")}
-          icon={CoreIcons.alignCenter}
+          icon="icon-[mdi--format-align-center]"
           onClick={() =>
             watch.activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "center")
           }
@@ -192,7 +191,7 @@ export const ToolbarPlugin = () => {
         <ButtonWrapper
           value="end"
           label={t("tool.alignEnd")}
-          icon={{ icon: CoreIcons.alignRight, rtlFlip: true }}
+          icon={{ icon: "icon-[mdi--format-align-right]", rtlFlip: true }}
           onClick={() =>
             watch.activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "end")
           }
@@ -200,7 +199,7 @@ export const ToolbarPlugin = () => {
         <ButtonWrapper
           value="justify"
           label={t("tool.alignJustify")}
-          icon={{ icon: CoreIcons.alignJustify, rtlFlip: true }}
+          icon={{ icon: "icon-[mdi--format-align-justify]", rtlFlip: true }}
           onClick={() =>
             watch.activeEditor.dispatchCommand(
               FORMAT_ELEMENT_COMMAND,
@@ -211,13 +210,13 @@ export const ToolbarPlugin = () => {
         <ButtonWrapper
           value="justify"
           label={t("tool.indentOut")}
-          icon={{ icon: CoreIcons.formatIndentDecrease, rtlFlip: true }}
+          icon={{ icon: "icon-[mdi--format-indent-decrease]", rtlFlip: true }}
           onClick={() => watch.outdent()}
         />
         <ButtonWrapper
           value="justify"
-          label={t("tool.identIn")}
-          icon={{ icon: CoreIcons.formatIndentIncrease, rtlFlip: true }}
+          label={t("tool.indentIn")}
+          icon={{ icon: "icon-[mdi--format-indent-increase]", rtlFlip: true }}
           onClick={() => watch.indent()}
         />
       </ButtonGroup>
@@ -226,7 +225,7 @@ export const ToolbarPlugin = () => {
         <ButtonWrapper
           value="bold"
           label={t("tool.bold")}
-          icon={CoreIcons.formatBold}
+          icon="icon-[mdi--format-bold]"
           onClick={() =>
             watch.activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold")
           }
@@ -234,7 +233,7 @@ export const ToolbarPlugin = () => {
         <ButtonWrapper
           value="italic"
           label={t("tool.italic")}
-          icon={CoreIcons.formatItalic}
+          icon="icon-[mdi--format-italic]"
           onClick={() =>
             watch.activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic")
           }
@@ -242,7 +241,7 @@ export const ToolbarPlugin = () => {
         <ButtonWrapper
           value="underline"
           label={t("tool.underline")}
-          icon={CoreIcons.formatUnderline}
+          icon="icon-[mdi--format-underline]"
           onClick={() =>
             watch.activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline")
           }
@@ -250,7 +249,7 @@ export const ToolbarPlugin = () => {
         <ButtonWrapper
           value="strikethrough"
           label={t("tool.strikethrough")}
-          icon={CoreIcons.formatStrikethrough}
+          icon="icon-[mdi--format-strikethrough-variant]"
           onClick={() =>
             watch.activeEditor.dispatchCommand(
               FORMAT_TEXT_COMMAND,
@@ -264,24 +263,24 @@ export const ToolbarPlugin = () => {
         {...{ noOutline: true }}
         value={watch.fontColor}
         onChange={(v) => watch.onFontColorSelect(v ?? undefined)}
-        decorateStart={<Icon icon={CoreIcons.formatText} />}
+        decorateStart={<Icon icon="icon-[mdi--format-text]" />}
       />
       <ColorInput
         {...{ noOutline: true }}
         value={watch.bgColor}
         onChange={(v) => watch.onBgColorSelect(v ?? undefined)}
-        decorateStart={<Icon icon={CoreIcons.formatFill} />}
+        decorateStart={<Icon icon="icon-[mdi--format-color-fill]" />}
       />
       <ButtonWrapper
         value="hilight"
         label={t("tool.hilight")}
-        icon={CoreIcons.formatHilight}
+        icon="icon-[mdi--format-color-highlight]"
         onClick={() => watch.onBgColorSelect("#fde68a")}
       />
       <ButtonWrapper
         value="hilight"
         label={t("tool.clear")}
-        icon={CoreIcons.formatClear}
+        icon="icon-[mdi--format-clear]"
         onClick={() => watch.clearFormatting()}
       />
     </div>

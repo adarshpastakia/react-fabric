@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Chip, CoreIcons, Dropdown, Icon } from "@react-fabric/core";
+import { Chip, Dropdown, Icon } from "@react-fabric/core";
 import { isNil } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { Fragment, useMemo } from "react";
@@ -82,7 +82,9 @@ export const FilterTag = ({
 
   const icon = useMemo(() => {
     if (filter.canDisable === false) return undefined;
-    return filter.disabled ? CoreIcons.checkboxOff : CoreIcons.checkboxOn;
+    return filter.disabled
+      ? "icon-[mdi--checkbox-blank-outline]"
+      : "icon-[mdi--checkbox-marked]";
   }, [filter]);
 
   return (
@@ -114,7 +116,7 @@ export const FilterTag = ({
           {filter.pinned && (
             <Icon
               className="flex-content"
-              icon={filter.icon ?? CoreIcons.pin}
+              icon={filter.icon ?? "icon-[mdi--pin]"}
             />
           )}
           <div className="truncate flex gap-x-0.5 flex-nowrap">{label}</div>

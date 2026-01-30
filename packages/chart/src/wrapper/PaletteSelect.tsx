@@ -21,13 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  Button,
-  CoreIcons,
-  Dropdown,
-  Menu,
-  MenuItem,
-} from "@react-fabric/core";
+import { Button, Dropdown, Menu, MenuItem } from "@react-fabric/core";
 import { ChartPalette } from "../theme/palettes";
 
 const PaletteMap = ({ colors = [], label = "" }: KeyValue): AnyObject => (
@@ -51,7 +45,7 @@ export const PaletteSelect = ({
   return (
     <Dropdown>
       <Button
-        icon={CoreIcons.palette}
+        icon="icon-[mdi--palette-outline]"
         aria-label="palette"
         size="sm"
         variant="link"

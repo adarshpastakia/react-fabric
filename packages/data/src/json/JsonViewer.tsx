@@ -24,7 +24,6 @@
 import {
   Button,
   Copy,
-  CoreIcons,
   EmptyContent,
   Icon,
   Meter,
@@ -230,7 +229,7 @@ const JsonEntry = ({
               color="danger"
               size="xs"
               variant="link"
-              icon={CoreIcons.funnelMinus}
+              icon="icon-[mdi--filter-minus]"
               aria-label="Filter Negative"
               onClick={() => onFilter?.(pathWithoutOrdinal, actualValue, true)}
             />
@@ -239,7 +238,7 @@ const JsonEntry = ({
               color="primary"
               size="xs"
               variant="link"
-              icon={CoreIcons.funnelPlus}
+              icon="icon-[mdi--filter-plus]"
               aria-label="Filter"
               onClick={() => onFilter?.(pathWithoutOrdinal, actualValue)}
             />
@@ -277,7 +276,11 @@ const JsonEntry = ({
             {canExpand && (
               <Icon
                 rtlFlip
-                icon={expanded ? CoreIcons.chevronDown : CoreIcons.chevronRight}
+                icon={
+                  expanded
+                    ? "icon-[mdi--chevron-down]"
+                    : "icon-[mdi--chevron-right]"
+                }
               />
             )}
             {labelDisplay}

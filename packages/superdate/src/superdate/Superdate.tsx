@@ -26,7 +26,6 @@ import {
   Button,
   Chip,
   Content,
-  CoreIcons,
   Dropdown,
   Tab,
   TabPanel,
@@ -213,7 +212,7 @@ export const SuperDate = ({
     <Dropdown showArrow>
       <Tooltip content={DateUtil.relativeTooltip(relValue, isHijri)}>
         <E
-          icon={CoreIcons.clock}
+          icon="icon-[mdi--clock-outline]"
           size={size}
           color={color}
           disabled={disabled}

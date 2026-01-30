@@ -33,7 +33,7 @@ import {
   useFloating,
   useInteractions,
 } from "@floating-ui/react";
-import { CoreIcons, Icon } from "@react-fabric/core";
+import { Icon } from "@react-fabric/core";
 import { type RefProp } from "@react-fabric/core/dist/types/types";
 import {
   startTransition,
@@ -168,11 +168,7 @@ export const ColorInput = ({
           }}
         >
           {!actualValue && (
-            <Icon
-              size="md"
-              className="text-muted"
-              icon={CoreIcons.colorSwatch}
-            />
+            <Icon size="md" className="text-muted" icon="icon-[mdi--palette]" />
           )}
         </div>
       </button>
@@ -203,7 +199,7 @@ export const ColorInput = ({
       {!disabled && showPicker && (
         <Icon
           className="flex-content p-1"
-          icon={CoreIcons.colorPicker}
+          icon="icon-[mdi--eyedropper]"
           onClick={() =>
             (window as AnyObject).EyeDropper &&
             new (window as AnyObject).EyeDropper()

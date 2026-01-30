@@ -21,14 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  Button,
-  Card,
-  CoreIcons,
-  Dropdown,
-  Header,
-  Icon,
-} from "@react-fabric/core";
+import { Button, Card, Dropdown, Header, Icon } from "@react-fabric/core";
 import { Slider } from "@react-fabric/form";
 import { TooltipButton } from "./TooltipButton";
 
@@ -59,7 +52,7 @@ export const Colorscape = ({
         variant="link"
         disabled={disabled}
         aria-label="rotate-ccw"
-        icon={CoreIcons.settings}
+        icon="icon-[mdi--tune-variant]"
       />
       <Card bodyClassName="p-1" className="w-64">
         <Header flex justify="end">
@@ -75,7 +68,14 @@ export const Colorscape = ({
           value={colorscape.saturate}
           onSlide={(v) => adjustColor("saturate", v ?? 0)}
           onChange={(v) => adjustColor("saturate", v ?? 0)}
-          minLabel={(<Icon icon={CoreIcons.mediaSaturate} />) as any}
+          minLabel={
+            (
+              <Icon
+                icon="icon-[mdi--circle-half-full]"
+                {...{ title: "Saturate" }}
+              />
+            ) as any
+          }
           maxLabel={
             (
               <div className="text-xs w-12">
@@ -92,7 +92,14 @@ export const Colorscape = ({
           value={colorscape.contrast}
           onSlide={(v) => adjustColor("contrast", v ?? 0)}
           onChange={(v) => adjustColor("contrast", v ?? 0)}
-          minLabel={(<Icon icon={CoreIcons.mediaContrast} />) as any}
+          minLabel={
+            (
+              <Icon
+                icon="icon-[mdi--contrast-circle]"
+                {...{ title: "Contrast" }}
+              />
+            ) as any
+          }
           maxLabel={
             (
               <div className="text-xs w-12">
@@ -109,7 +116,14 @@ export const Colorscape = ({
           value={colorscape.brightness}
           onSlide={(v) => adjustColor("brightness", v ?? 0)}
           onChange={(v) => adjustColor("brightness", v ?? 0)}
-          minLabel={(<Icon icon={CoreIcons.mediaLightness} />) as any}
+          minLabel={
+            (
+              <Icon
+                icon="icon-[mdi--brightness]"
+                {...{ title: "Brightness" }}
+              />
+            ) as any
+          }
           maxLabel={
             (
               <div className="text-xs w-12">
@@ -126,7 +140,14 @@ export const Colorscape = ({
           value={colorscape.hue}
           onSlide={(v) => adjustColor("hue", v ?? 0)}
           onChange={(v) => adjustColor("hue", v ?? 0)}
-          minLabel={(<Icon icon={CoreIcons.mediaColor} />) as any}
+          minLabel={
+            (
+              <Icon
+                icon="icon-[mdi--format-color-fill]"
+                {...{ title: "Hue" }}
+              />
+            ) as any
+          }
           maxLabel={
             (
               <div className="text-xs w-12">{colorscape.hue.toFixed(2)}</div>
@@ -141,7 +162,11 @@ export const Colorscape = ({
           value={colorscape.invert}
           onSlide={(v) => adjustColor("invert", v ?? 0)}
           onChange={(v) => adjustColor("invert", v ?? 0)}
-          minLabel={(<Icon icon={CoreIcons.mediaInvert} />) as any}
+          minLabel={
+            (
+              <Icon icon="icon-[mdi--invert-colors]" {...{ title: "Invert" }} />
+            ) as any
+          }
           maxLabel={
             (
               <div className="text-xs w-12">{colorscape.invert.toFixed(2)}</div>

@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Button, CoreIcons } from "@react-fabric/core";
+import { Button } from "@react-fabric/core";
 import { Format } from "@react-fabric/utilities";
 import {
   type DragEvent,
@@ -170,7 +170,7 @@ export const CutStrip = ({
         variant="link"
         aria-label="toggle-cut"
         onClick={() => onCut(start, end)}
-        icon={CoreIcons.tick}
+        icon="icon-[mdi--check]"
       />
     </Fragment>
   );

@@ -59,7 +59,7 @@ export const _List: ListStory = {
         infoProperty="fullname"
         renderer={(opt) => (
           <div className="flex gap-2 items-center">
-            <Icon icon={`flag ${opt.iso2}`} />
+            <Icon icon={`icon-[circle-flags--${opt.iso2}]`} />
             <span className="flex-1">{opt.name}</span>
             <span className="rounded-full text-xs bg-tint-500/10 px-1 py-px">
               {opt.phone}
@@ -91,7 +91,7 @@ export const Multiple: ListStory = {
         valueProperty="iso3"
         renderer={(opt) => (
           <div className="flex gap-2 items-center">
-            <Icon icon={`flag ${opt.iso2}`} />
+            <Icon icon={`icon-[circle-flags--${opt.iso2}]`} />
             <span className="flex-1">{opt.name}</span>
             <span className="rounded-full text-xs bg-tint-500/10 px-1 py-px">
               {opt.phone}
@@ -120,7 +120,7 @@ export const Remote: ListStory = {
         valueProperty="iso3"
         renderer={(opt: Country) => (
           <div className="flex gap-2 items-center">
-            <Icon icon={`flag ${opt.iso2}`} />
+            <Icon icon={`icon-[circle-flags--${opt.iso2}]`} />
             <span className="flex-1">
               <div>{opt.name}</div>
               <div className=" group-data-[List-display]:hidden text-xs text-muted">

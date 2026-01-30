@@ -27,7 +27,6 @@ import { useTranslation } from "react-i18next";
 import { Button } from "../components/button/Button";
 import { Tooltip } from "../overlays/tooltip/Tooltip";
 import { type CssProp, type SizeType } from "../types";
-import { CoreIcons } from "../types/icons";
 
 /**
  * A component that provides a button to copy text to the clipboard.
@@ -63,7 +62,7 @@ export const Copy = ({ text, size, className }: CopyProps) => {
   return (
     <Tooltip content={t("action.copy")}>
       <Button
-        icon={CoreIcons.copy}
+        icon="icon-[mdi--content-copy]"
         aria-label="Copy text"
         actionMessage={t("action.copied")}
         variant="link"

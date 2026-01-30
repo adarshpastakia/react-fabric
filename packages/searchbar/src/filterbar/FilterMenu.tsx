@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { CoreIcons, Divider, Menu, MenuItem } from "@react-fabric/core";
+import { Divider, Menu, MenuItem } from "@react-fabric/core";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { OPERATOR, type FilterField, type FilterObject } from "../types";
@@ -57,7 +57,7 @@ export const FilterMenu = ({
     <Menu className="text-sm">
       {editable && filter.canEdit !== false ? (
         <MenuItem
-          icon={CoreIcons.edit}
+          icon="icon-[mdi--lead-pencil]"
           label={t("label.edit")}
           data-dropdown-dismiss="false"
           onClick={() => {
@@ -66,7 +66,7 @@ export const FilterMenu = ({
         />
       ) : (
         <MenuItem
-          icon={CoreIcons.eye}
+          icon="icon-[mdi--eye]"
           label={t("label.view")}
           data-dropdown-dismiss="false"
           onClick={() => {
@@ -117,7 +117,7 @@ export const FilterMenu = ({
       {!filter.required && (
         <MenuItem
           color="danger"
-          icon={CoreIcons.remove}
+          icon="icon-[mdi--minus-circle-outline]"
           label={t("label.remove")}
           onClick={() => onRemove()}
         />

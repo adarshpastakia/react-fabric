@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { CoreIcons, Icon } from "@react-fabric/core";
+import { Icon } from "@react-fabric/core";
 import { type RefProp } from "@react-fabric/core/dist/types/types";
 import classNames from "classnames";
 import { useCallback, useMemo, type ChangeEvent } from "react";
@@ -93,10 +93,10 @@ export const Radio = ({
   ...rest
 }: RadioProps) => {
   const iconOn = useMemo(
-    () => iconChecked ?? icon ?? CoreIcons.radioOn,
+    () => iconChecked ?? icon ?? "icon-[mdi--radiobox-marked]",
     [icon, iconChecked],
   );
-  const iconOff = useMemo(() => icon ?? CoreIcons.radioOff, [icon]);
+  const iconOff = useMemo(() => icon ?? "icon-[mdi--radiobox-blank]", [icon]);
 
   const handleChange = useCallback(
     (e?: ChangeEvent<HTMLInputElement>) => {

@@ -23,7 +23,6 @@
 
 import {
   Button,
-  CoreIcons,
   Divider,
   ToggleButtonGroup,
   useMemoDebugger,
@@ -176,7 +175,7 @@ const DataSeriesChart: FC<DataSeriesProps> = memo(
         options={options}
         chartRef={chartRef}
         isEmpty={isEmpty(_series)}
-        emptyIcon={CoreIcons.chartColumn}
+        emptyIcon="icon-[mdi--chart-bar]"
         dataTableRenderer={seriesRenderer}
         onClick={(e) => onClick?.({ category: e.name, series: e.seriesId })}
       >
@@ -185,49 +184,49 @@ const DataSeriesChart: FC<DataSeriesProps> = memo(
             <Button
               size="sm"
               variant="link"
-              icon={CoreIcons.chartLine}
+              icon="icon-[mdi--chart-line]"
               aria-label="line"
               value="line"
             />
             <Button
               size="sm"
               variant="link"
-              icon={CoreIcons.chartColumn}
+              icon="icon-[mdi--chart-bar]"
               aria-label="column"
               value="column"
             />
             <Button
               size="sm"
               variant="link"
-              icon={CoreIcons.chartBar}
+              icon="icon-[mdi--chart-bar] rotate-90 -scale-x-100"
               aria-label="bar"
               value="bar"
             />
             <Button
               size="sm"
               variant="link"
-              icon={CoreIcons.chartRadar}
+              icon="icon-[mdi--radar]"
               aria-label="radar"
               value="radar"
             />
             <Button
               size="sm"
               variant="link"
-              icon={CoreIcons.chartLineStacked}
+              icon="icon-[mdi--chart-line-stacked]"
               aria-label="line-stacked"
               value="line-stacked"
             />
             <Button
               size="sm"
               variant="link"
-              icon={CoreIcons.chartColumnStacked}
+              icon="icon-[mdi--chart-bar-stacked]"
               aria-label="column-stacked"
               value="column-stacked"
             />
             <Button
               size="sm"
               variant="link"
-              icon={CoreIcons.chartBarStacked}
+              icon="icon-[mdi--chart-bar-stacked] rotate-90 -scale-x-100"
               aria-label="bar-stacked"
               value="bar-stacked"
             />

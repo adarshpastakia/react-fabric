@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { AnimationBars, ErrorBoundary } from "@react-fabric/core";
+import { ErrorBoundary, LoadingBars } from "@react-fabric/core";
 import { useCallback, useEffect, useState } from "react";
 import { useCanvasContext } from "../components/Canvas";
 import { Cropper } from "../components/Cropper";
@@ -144,7 +144,7 @@ export const Video = ({
             onCrop={(box, base64) => onCrop(state.time, box, base64)}
           />
         )}
-        {state.isLoading && <AnimationBars />}
+        {state.isLoading && <LoadingBars />}
       </ErrorBoundary>
     </div>
   );

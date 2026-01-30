@@ -27,7 +27,6 @@ import {
   Button,
   Card,
   Content,
-  CoreIcons,
   Dropdown,
   DropdownDismiss,
   Footer,
@@ -62,7 +61,7 @@ export const _Dropdown: DropdownStory = {
   render: (args) => {
     return (
       <Dropdown {...args}>
-        <Button altIcon={CoreIcons.chevronDown}>Dropdown Menu</Button>
+        <Button altIcon="icon-[mdi--chevron-down]">Dropdown Menu</Button>
         <Menu onClick={fn()}>
           <MenuItem id="1" label="Item One" />
           <MenuItem id="2" label="Item Two" />
@@ -106,7 +105,7 @@ export const CardContent: DropdownStory = {
   render: (args) => {
     return (
       <Dropdown {...args}>
-        <Button altIcon={CoreIcons.chevronDown}>Dropdown Card</Button>
+        <Button altIcon="icon-[mdi--chevron-down]">Dropdown Card</Button>
         <Card>
           <Text>Some content</Text>
           <Footer className="p-2" flex justify="end">
@@ -128,7 +127,7 @@ export const PanelContent: DropdownStory = {
   render: (args) => {
     return (
       <Dropdown {...args}>
-        <Button altIcon={CoreIcons.chevronDown}>Dropdown Panel</Button>
+        <Button altIcon="icon-[mdi--chevron-down]">Dropdown Panel</Button>
         <PanelGroup>
           <Panel title="Some panel">
             <Content>
@@ -164,7 +163,7 @@ export const NestedDropdown: DropdownStory = {
   render: (args) => {
     return (
       <Dropdown {...args}>
-        <Button altIcon={CoreIcons.chevronDown}>Dropdown Panel</Button>
+        <Button altIcon="icon-[mdi--chevron-down]">Dropdown Panel</Button>
         <Card>
           <Content>Nested dropdowns</Content>
           <Footer flex justify="end">

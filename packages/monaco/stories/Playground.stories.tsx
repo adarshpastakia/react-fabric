@@ -53,6 +53,8 @@ const values: KeyValue = {
   html: "<html></html>",
   css: "body { background-color: #fff; }",
   md: "# Markdown Example\n\nThis is an example of a markdown file.",
+  yaml: "key: value\nlist:\n  - item1\n  - item2",
+  xml: "<!DOCTYPE note>\n<note>\n  <to>Tove</to>\n  <from>Jani</from>\n  <heading>Reminder</heading>\n  <body>Don't forget me this weekend!</body>\n</note>",
 };
 
 export const Playground: Story = {
@@ -71,6 +73,8 @@ export const Playground: Story = {
               <Button value="json">JSON</Button>
               <Button value="html">HTML</Button>
               <Button value="css">CSS</Button>
+              <Button value="xml">XML</Button>
+              <Button value="yaml">YAML</Button>
               <Button value="md">Markdown</Button>
             </ToggleButtonGroup>
           </Header>

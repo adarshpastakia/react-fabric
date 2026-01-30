@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { CoreIcons, useIsDark, useMemoDebugger } from "@react-fabric/core";
+import { useIsDark, useMemoDebugger } from "@react-fabric/core";
 import { compareValues, isEmpty } from "@react-fabric/utilities";
 import { type EChartsOption } from "echarts";
 import { memo, type FC } from "react";
@@ -93,7 +93,7 @@ const WordBubbleChart: FC<WordBubbleProps> = memo(
         onExport={onExport}
         options={options}
         isEmpty={isEmpty(series)}
-        emptyIcon={CoreIcons.chartActivityScatter}
+        emptyIcon="icon-[mdi--chart-bubble]"
         dataTableRenderer={countRenderer}
         onClick={(e) => onClick?.(e?.name ?? "")}
       />

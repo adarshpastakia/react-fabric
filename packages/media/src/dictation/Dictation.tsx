@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Button, CoreIcons, HotKey } from "@react-fabric/core";
+import { Button, HotKey } from "@react-fabric/core";
 import { type ButtonProps } from "@react-fabric/core/dist/types/components/button/Button";
 import { Format } from "@react-fabric/utilities";
 import classNames from "classnames";
@@ -58,7 +58,7 @@ export interface DictationProps
  * <Dictation
  *   hotkey="alt+t"
  *   size="md"
- *   icon={CoreIcons.mic}
+ *   icon="icon-[mdi--microphone-outline]"
  *   variant="solid"
  *   onRecord={(blob) => {
  *     // Handle the recorded audio blob
@@ -177,7 +177,7 @@ export const Dictation = ({
           )}
           <Button
             size={size}
-            icon={icon ?? CoreIcons.mic}
+            icon={icon ?? "icon-[mdi--microphone-outline"}
             aria-label="Start dictation"
             rounded
             variant={variant}
@@ -193,7 +193,7 @@ export const Dictation = ({
           <span className="text-xs px-2">{Format.duration(progress)}</span>
           <Button
             size={size}
-            icon={CoreIcons.stop}
+            icon="icon-[mdi--stop]"
             aria-label="Stop dictation"
             rounded
             iconAlign="end"

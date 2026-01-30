@@ -21,19 +21,12 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  Button,
-  ButtonGroup,
-  CoreIcons,
-  Header,
-  Icon,
-  Section,
-} from "@react-fabric/core";
+import { Button, ButtonGroup, Header, Icon, Section } from "@react-fabric/core";
 import { Search } from "@react-fabric/form";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useEffect, useImperativeHandle, useMemo, useRef } from "react";
 import { TreeNode } from "./TreeNode";
-import { iconCollapseAll, iconExpandAll, type TreePanelProps } from "./types";
+import { type TreePanelProps } from "./types";
 import { useTree } from "./useTree";
 
 // TODO: implement keyboard handler for navigating tree
@@ -59,8 +52,8 @@ import { useTree } from "./useTree";
  *   selectable={true}
  *   matcher={(item, query) => item.name.toLowerCase().includes(query.toLowerCase())}
  *   filterPlaceholder="Search..."
- *   defaultLeafIcon={<Icon icon={CoreIcons.file} />}
- *   defaultNodeIcon={<Icon icon={CoreIcons.folder} />}
+ *   defaultLeafIcon={<Icon icon="icon-[mdi--file]" />}
+ *   defaultNodeIcon={<Icon icon="icon-[mdi--folder]" />}
  *   expander="caret"
  *   onChecked={(checkedItems) => console.log(checkedItems)}
  *   onLoad={(id) => console.log(`Load children for ${id}`)}
@@ -146,12 +139,12 @@ export const TreePanel = <T extends KeyValue>({
 
   const expanders = useMemo<[string, string]>(() => {
     if (expander === "caret")
-      return [CoreIcons.caretRight, CoreIcons.caretDown];
+      return ["icon-[mdi--menu-right]", "icon-[mdi--menu-down]"];
     if (expander === "chevron")
-      return [CoreIcons.chevronRight, CoreIcons.chevronDown];
+      return ["icon-[mdi--chevron-right]", "icon-[mdi--chevron-down]"];
     if (expander === "folder")
-      return [CoreIcons.folderClosed, CoreIcons.folderOpen];
-    return [CoreIcons.expand, CoreIcons.collapse];
+      return ["icon-[mdi--folder-outline]", "icon-[mdi--folder-open-outline]"];
+    return ["icon-[mdi--plus-box-outline]", "icon-[mdi--minus-box-outline]"];
   }, [expander]);
 
   useImperativeHandle(
@@ -182,20 +175,20 @@ export const TreePanel = <T extends KeyValue>({
             allowClear
             placeholder={filterPlaceholder}
             {...{ noBorder: true }}
-            decorateStart={<Icon icon={CoreIcons.filter} className="p-1" />}
+            decorateStart={<Icon icon="icon-[mdi--filter]" className="p-1" />}
           />
         )}
         <ButtonGroup variant="link" className="m-0">
           <Button
             size="sm"
             aria-label="expand all"
-            icon={iconExpandAll}
+            icon="icon-[mdi--arrow-expand-vertical]"
             onClick={expandAll}
           />
           <Button
             size="sm"
             aria-label="collapse all"
-            icon={iconCollapseAll}
+            icon="icon-[mdi--arrow-collapse-vertical]"
             onClick={collapseAll}
           />
         </ButtonGroup>

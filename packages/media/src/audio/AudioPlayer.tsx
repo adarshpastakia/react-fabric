@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { CoreIcons, Header, Icon } from "@react-fabric/core";
+import { Header, Icon, LoadingLine } from "@react-fabric/core";
 import { type RefProp } from "@react-fabric/core/dist/types/types";
 import { compareValues, debounce } from "@react-fabric/utilities";
 import {
@@ -36,7 +36,6 @@ import {
 import { type AudioState } from "../types";
 import { type AudioActions, AudioContext } from "./Context";
 import { Equalizers } from "./Equalizers";
-import { Loading } from "./Loading";
 import { Tools } from "./Tools";
 import { Wavesurfer, type WavesurferInstance } from "./wavesurfer";
 
@@ -414,11 +413,11 @@ export const AudioPlayer = ({
             <div ref={containerRef} className="rf-wavesurfer h-[200px]" />
             {state.isErrored && (
               <div className="absolute z-10 bg-tint-50/50 cursor-not-allowed inset-0 grid place-content-center place-items-center text-muted gap-y-4">
-                <Icon size="3rem" icon={CoreIcons.mediaAudioBroken} />
+                <Icon size="3rem" icon="icon-[mdi--microphone-off]" />
                 <div>Error loading audio</div>
               </div>
             )}
-            {state.isLoading && <Loading />}
+            {state.isLoading && <LoadingLine />}
           </div>
         </div>
         <Tools />

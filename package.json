@@ -54,6 +54,8 @@
     "@eslint/eslintrc": "~3.3.1",
     "@eslint/js": "~9.28.0",
     "@faker-js/faker": "~8.4.1",
+    "@iconify-json/circle-flags": "~1.2.10",
+    "@iconify-json/flag": "~1.2.10",
     "@mdi/font": "~7.4.47",
     "@mdi/js": "~7.4.47",
     "@mdi/light-js": "~0.2.63",

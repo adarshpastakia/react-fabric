@@ -126,26 +126,24 @@ export const AnimationIndicator = ({
 };
 
 /**
- * A component that displays an animated bars loader.
- * It can be customized with color and size properties.
- * This component is typically used to indicate loading states in the UI.
+ * A component that displays a loading animation with a customizable icon, color, size, and mask blur.
+ * It is typically used to indicate loading states in the UI.
  *
- * @param {Object} props - The properties for the AnimationBars component.
- * @param {ColorType | PaletteType | string} [props.color="tint-500"] - The color of the bars.
- * @param {number | string} [props.size="2rem"] - The size of the bars.
- * @returns {JSX.Element} The rendered AnimationBars component.
- *
- * @example
- * ```jsx
- * <AnimationBars color="primary-500" size="3rem" />
- * ```
- *
- * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-components-animations--docs} for more details.
+ * @param {Object} props - The properties for the AnimationLoader component.
+ * @param {ColorType | PaletteType | string} [props.color="tint-500"] - The color of the loader icon.
+ * @param {number | string} [props.size="2rem"] - The size of the loader icon.
+ * @param {string} props.icon - The icon to be displayed as the loader.
+ * @param {"sm" | "md" | "lg"} [props.maskBlur] - The blur effect for the background mask.
+ * @returns {JSX.Element} The rendered AnimationLoader component.
  */
-export const AnimationBars = ({
+export const AnimationLoader = ({
   color = "tint-500",
   size = "2rem",
+  icon,
+  maskBlur,
 }: {
+  icon: string;
+  maskBlur?: "sm" | "md" | "lg";
   color?: ColorType | PaletteType | string;
   size?: number | string;
 }) => {
@@ -153,19 +151,49 @@ export const AnimationBars = ({
     <div
       className={classNames(
         "absolute inset-0 z-10 flex justify-center items-center cursor-wait",
+        maskBlur === "sm" && "backdrop-blur-sm",
+        maskBlur === "md" && "backdrop-blur-md",
+        maskBlur === "lg" && "backdrop-blur-lg",
       )}
     >
       <div
         className={classNames(
-          "outline outline-tint-500/20 p-4 bg-tint-50/50 backdrop-blur-sm rounded",
+          "outline outline-tint-500/20 p-4 bg-tint-50/50 backdrop-blur-sm leading-0 rounded",
         )}
       >
         <div
-          className={classNames("fabric-bars")}
-          style={{ width: size, color: getColor(color) }}
+          className={classNames("aspect-square", icon)}
+          style={{ fontSize: size, color: getColor(color) }}
         />
       </div>
     </div>
+  );
+};
+
+/**
+ * A component that displays an animated bars loader.
+ * It can be customized with color and size properties.
+ * This component is typically used to indicate loading states in the UI.
+ *
+ * @param {Object} props - The properties for the LoadingBars component.
+ * @param {ColorType | PaletteType | string} [props.color="tint-500"] - The color of the bars.
+ * @param {number | string} [props.size="2rem"] - The size of the bars.
+ * @returns {JSX.Element} The rendered LoadingBars component.
+ *
+ * @example
+ * ```jsx
+ * <LoadingBars color="primary-500" size="3rem" />
+ * ```
+ *
+ * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-components-animations--docs} for more details.
+ */
+export const LoadingBars = (props: {
+  color?: ColorType | PaletteType | string;
+  size?: number | string;
+  maskBlur?: "sm" | "md" | "lg";
+}) => {
+  return (
+    <AnimationLoader icon="icon-[svg-spinners--bars-scale-fade]" {...props} />
   );
 };
 
@@ -174,44 +202,24 @@ export const AnimationBars = ({
  * It can be customized with color and size properties.
  * This component is typically used to indicate loading states in the UI.
  *
- * @param {Object} props - The properties for the AnimationSpinner component.
+ * @param {Object} props - The properties for the LoadingSpinner component.
  * @param {ColorType | PaletteType | string} [props.color="tint-700"] - The color of the spinner.
  * @param {number | string} [props.size="2rem"] - The size of the spinner.
- * @returns {JSX.Element} The rendered AnimationSpinner component.
+ * @returns {JSX.Element} The rendered LoadingSpinner component.
  *
  * @example
  * ```jsx
- * <AnimationSpinner color="primary-500" size="3rem" />
+ * <LoadingSpinner color="primary-500" size="3rem" />
  * ```
  *
  * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-components-animations--docs} for more details.
  */
-export const AnimationSpinner = ({
-  color = "tint-700",
-  size = "2rem",
-}: {
+export const LoadingSpinner = (props: {
   color?: ColorType | PaletteType | string;
   size?: number | string;
+  maskBlur?: "sm" | "md" | "lg";
 }) => {
-  return (
-    <div
-      className={classNames(
-        "absolute inset-0 z-10 flex justify-center items-center cursor-wait",
-      )}
-      data-ref="spinner"
-    >
-      <div
-        className={classNames(
-          "outline outline-tint-500/20 p-4 bg-tint-50/50 backdrop-blur-sm rounded",
-        )}
-      >
-        <div
-          className={classNames("fabric-spinner")}
-          style={{ width: size, color: getColor(color) }}
-        />
-      </div>
-    </div>
-  );
+  return <AnimationLoader icon="icon-[svg-spinners--eclipse]" {...props} />;
 };
 
 /**
@@ -260,7 +268,7 @@ export const Skeleton = ({ className, ...rest }: CssProp) => {
  *
  * @returns {JSX.Element} The rendered Loading component.
  */
-export const Loading = () => {
+export const LoadingLine = () => {
   return (
     <div
       className={classNames(

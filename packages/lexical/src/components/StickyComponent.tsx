@@ -29,7 +29,6 @@ import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
 import { LexicalNestedComposer } from "@lexical/react/LexicalNestedComposer";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
-import { mdiClose, mdiFormatColorFill } from "@mdi/js";
 import { Icon } from "@react-fabric/core";
 import { $getNodeByKey, createEditor, type NodeKey } from "lexical";
 import { useEffect, useMemo, useRef } from "react";
@@ -228,7 +227,7 @@ export const StickyComponent = ({
             aria-label="Change sticky note color"
             title="Color"
           >
-            <Icon icon={mdiFormatColorFill} />
+            <Icon icon="icon-[mdi--format-color-fill]" />
           </button>
           <button
             onClick={handleDelete}
@@ -236,7 +235,7 @@ export const StickyComponent = ({
             aria-label="Delete sticky note"
             title="Delete"
           >
-            <Icon icon={mdiClose} />
+            <Icon icon="icon-[mdi--close]" />
           </button>
         </div>
         <div className="text-sm font-semibold">{user}</div>

@@ -47,6 +47,8 @@ export default [
       "@babel/runtime",
       "@arcgis/core",
       "@arcgis/map-components",
+      "@lexical/*",
+      "prismjs",
       "elkjs",
       /.*\.module\.css/,
     ],

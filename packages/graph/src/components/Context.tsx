@@ -1,4 +1,4 @@
-import { CoreIcons, Icon } from "@react-fabric/core";
+import { Icon } from "@react-fabric/core";
 import { fitViewportToNodes } from "@sigma/utils";
 import {
   createContext,
@@ -135,7 +135,7 @@ export const GraphProvider = <N = KeyValue, E = KeyValue>({
 
       {layoutRunning && (
         <div className="absolute top-0 end-0 p-1">
-          <Icon icon={CoreIcons.spinner} animate="spin" />
+          <Icon icon="icon-[svg-spinners--eclipse]" />
         </div>
       )}
     </GraphContext.Provider>

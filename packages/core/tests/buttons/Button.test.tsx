@@ -23,7 +23,6 @@
 
 import { composeStories } from "@storybook/react";
 import { fireEvent, render, waitFor } from "@testing-library/react";
-import { CoreIcons } from "../../src";
 import { HotKeyWrapper } from "../../src/hotkeys/HotKeyWrapper";
 import * as stories from "../../stories/components/button/Button.stories";
 
@@ -66,7 +65,7 @@ describe("Button", () => {
       <Tester
         icon="mdi mdi-bell"
         spinOnHover
-        altIcon={CoreIcons.chevronDown}
+        altIcon="icon-[mdi--chevron-down]"
       />,
     );
     expect(

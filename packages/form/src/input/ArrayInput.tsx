@@ -23,13 +23,7 @@
 
 import { DndContext, type DragEndEvent } from "@dnd-kit/core";
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
-import {
-  Button,
-  cloneChildren,
-  CoreIcons,
-  Icon,
-  Tooltip,
-} from "@react-fabric/core";
+import { Button, cloneChildren, Icon, Tooltip } from "@react-fabric/core";
 import { isFalse, isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import {
@@ -328,7 +322,7 @@ export const ArrayInput = <T extends AnyObject = string>({
           >
             <Icon
               className={isDragging ? "cursor-grabbing" : "cursor-grab"}
-              icon={CoreIcons.dragHandle}
+              icon="icon-[mdi--drag-vertical]"
               {...attributes}
               {...listeners}
             />
@@ -369,7 +363,7 @@ export const ArrayInput = <T extends AnyObject = string>({
           <Button
             size="sm"
             aria-label="Add item"
-            icon={CoreIcons.insert}
+            icon="icon-[mdi--plus-circle-outline]"
             onClick={() => handleAdd(onAdd?.())}
             data-invalid={!!error}
             disabled={!!disabled || readOnly || fields.length > maxItems}
@@ -443,7 +437,7 @@ export const ArrayInput = <T extends AnyObject = string>({
               {canRemove !== false && (
                 <Button
                   aria-label="Remove item"
-                  icon={CoreIcons.remove}
+                  icon="icon-[mdi--minus-circle-outline]"
                   color="danger"
                   variant="link"
                   className="self-end"

@@ -63,7 +63,7 @@
   [data-color-scheme="light"] {
     --fabric-bg: var(--color-white);
     --fabric-text: var(--color-black);
-    --fabric-input: color-mix(in lab, var(--fabric-bg) 90%, #fff);
+    --fabric-input: #fdfdfd;
     --fabric-input-focus: #fff;
     --fabric-shadow: #8ba0b0;
 
@@ -73,8 +73,8 @@
   [data-color-scheme="dark"] {
     --fabric-bg: var(--color-black);
     --fabric-text: var(--color-white);
-    --fabric-input: color-mix(in lab, var(--fabric-bg) 80%, #0a1218);
-    --fabric-input-focus: color-mix(in lab, var(--fabric-bg) 60%, #0a1218);
+    --fabric-input: #141A1F;
+    --fabric-input-focus: #0a1218;
     --fabric-shadow: #010101;
 
     color-scheme: dark;

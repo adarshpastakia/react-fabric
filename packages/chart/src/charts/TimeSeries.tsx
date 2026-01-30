@@ -23,7 +23,6 @@
 
 import {
   Button,
-  CoreIcons,
   Divider,
   ToggleButtonGroup,
   useMemoDebugger,
@@ -195,7 +194,7 @@ const TimeSeriesChart: FC<TimeSeriesProps> = memo(
         options={options}
         chartRef={chartRef}
         isEmpty={isEmpty(_series)}
-        emptyIcon={CoreIcons.chartColumn}
+        emptyIcon="icon-[mdi--chart-bar] rotate-90 -scale-x-100"
         dataTableRenderer={timeSeriesRenderer}
         onClick={(e) => onClick?.({ category: e.data[0], series: e.seriesId })}
       >
@@ -204,28 +203,28 @@ const TimeSeriesChart: FC<TimeSeriesProps> = memo(
             <Button
               size="sm"
               variant="link"
-              icon={CoreIcons.chartLine}
+              icon="icon-[mdi--chart-line]"
               value="line"
               aria-label="line"
             />
             <Button
               size="sm"
               variant="link"
-              icon={CoreIcons.chartColumn}
+              icon="icon-[mdi--chart-bar]"
               value="column"
               aria-label="column"
             />
             <Button
               size="sm"
               variant="link"
-              icon={CoreIcons.chartLineStacked}
+              icon="icon-[mdi--chart-line-stacked]"
               value="line-stacked"
               aria-label="line-stacked"
             />
             <Button
               size="sm"
               variant="link"
-              icon={CoreIcons.chartColumnStacked}
+              icon="icon-[mdi--chart-bar-stacked]"
               value="column-stacked"
               aria-label="column-stacked"
             />

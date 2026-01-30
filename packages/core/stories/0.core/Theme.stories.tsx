@@ -34,8 +34,8 @@ import {
 import type { Meta, StoryObj } from "@storybook/react";
 import { memo, useDeferredValue, useMemo } from "react";
 import {
-  AnimationBars,
-  AnimationSpinner,
+  LoadingBars,
+  LoadingSpinner,
   Avatar,
   Button,
   Callout,
@@ -356,13 +356,13 @@ const Sample = memo(() => (
       <Col className="span-6" stretchContent>
         <Card>
           <Content>{faker.lorem.paragraph()}</Content>
-          <AnimationBars />
+          <LoadingBars />
         </Card>
       </Col>
       <Col className="span-6" stretchContent>
         <Card>
           <Content>{faker.lorem.paragraph()}</Content>
-          <AnimationSpinner />
+          <LoadingSpinner />
         </Card>
       </Col>
       <Col className="span-12" stretchContent>

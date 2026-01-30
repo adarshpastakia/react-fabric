@@ -28,7 +28,7 @@ import {
   useDroppable,
 } from "@dnd-kit/core";
 import { restrictToHorizontalAxis } from "@dnd-kit/modifiers";
-import { Button, ButtonGroup, CoreIcons } from "@react-fabric/core";
+import { Button, ButtonGroup } from "@react-fabric/core";
 import { type RefProp } from "@react-fabric/core/dist/types/types";
 import { mergeRefs } from "@react-fabric/utilities";
 import {
@@ -244,7 +244,7 @@ export const DualList = <T extends AnyObject = string>({
               variant="link"
               aria-label="scroll to top"
               onClick={moveAllLeft}
-              icon={{ icon: CoreIcons.chevronsLeft, rtlFlip: true }}
+              icon={{ icon: "icon-[mdi--chevron-double-left]", rtlFlip: true }}
               disabled={!rightOptions.length}
             />
             <Button
@@ -252,7 +252,7 @@ export const DualList = <T extends AnyObject = string>({
               variant="link"
               aria-label="scroll up"
               onClick={moveRightSelected}
-              icon={{ icon: CoreIcons.chevronLeft, rtlFlip: true }}
+              icon={{ icon: "icon-[mdi--chevron-left]", rtlFlip: true }}
               disabled={!rightSelected.length}
             />
             <Button
@@ -260,7 +260,7 @@ export const DualList = <T extends AnyObject = string>({
               variant="link"
               aria-label="scroll down"
               onClick={moveLeftSelected}
-              icon={{ icon: CoreIcons.chevronRight, rtlFlip: true }}
+              icon={{ icon: "icon-[mdi--chevron-right]", rtlFlip: true }}
               disabled={!leftSelected.length}
             />
             <Button
@@ -268,7 +268,7 @@ export const DualList = <T extends AnyObject = string>({
               variant="link"
               aria-label="scroll to bottom"
               onClick={moveAllRight}
-              icon={{ icon: CoreIcons.chevronsRight, rtlFlip: true }}
+              icon={{ icon: "icon-[mdi--chevron-double-right]", rtlFlip: true }}
               disabled={!leftOptions.length}
             />
           </ButtonGroup>

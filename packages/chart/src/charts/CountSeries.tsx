@@ -23,7 +23,6 @@
 
 import {
   Button,
-  CoreIcons,
   Divider,
   ToggleButtonGroup,
   useMemoDebugger,
@@ -151,7 +150,7 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
         options={options}
         chartRef={chartRef}
         isEmpty={isEmpty(_series)}
-        emptyIcon={CoreIcons.chartPie}
+        emptyIcon="icon-[mdi--chart-pie]"
         dataTableRenderer={countRenderer}
         onClick={(e) => onClick?.(e.data.id ?? e.seriesId)}
       >
@@ -162,21 +161,21 @@ const CountSeriesChart: FC<CountSeriesProps> = memo(
               variant="link"
               value="pie"
               aria-label="pie"
-              icon={CoreIcons.chartPie}
+              icon="icon-[mdi--chart-pie]"
             />
             <Button
               size="sm"
               variant="link"
               value="column"
               aria-label="column"
-              icon={CoreIcons.chartColumn}
+              icon="icon-[mdi--chart-bar]"
             />
             <Button
               size="sm"
               variant="link"
               value="bar"
               aria-label="bar"
-              icon={CoreIcons.chartBar}
+              icon="icon-[mdi--chart-bar] rotate-90 -scale-x-100"
             />
           </ToggleButtonGroup>
         )}

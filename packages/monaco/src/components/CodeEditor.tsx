@@ -71,7 +71,7 @@ type EditorProps = BaseEditorProps &
         handlebarSuggestions?: Array<{ text: string; description?: string }>;
       }
     | {
-        language?: "css" | "text" | "markdown";
+        language?: "css" | "text" | "markdown" | "yaml" | "xml";
         schema?: any;
         handlebarSuggestions?: never;
       }

@@ -74,7 +74,7 @@ const columns: TableColumn<Country>[] = [
     locked: "start",
     hideable: false,
     renderer(_: string, data: Country) {
-      return <Icon icon={`flag ${data.iso2}`} />;
+      return <Icon icon={`icon-[circle-flags--${data.iso2}]`} />;
     },
   },
   {
@@ -189,7 +189,11 @@ export const _Table: Story = {
     children: (data) => {
       return (
         <div className="flex flex-nowrap p-4 gap-2">
-          <Avatar size="2rem" name="" fallbackIcon={`flag ${data.iso2}`} />
+          <Avatar
+            size="2rem"
+            name=""
+            fallbackIcon={`icon-[circle-flags--${data.iso2}]`}
+          />
           <div className="flex-1">
             <Title>{data.fullname}</Title>
           </div>

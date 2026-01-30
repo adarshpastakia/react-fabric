@@ -324,7 +324,7 @@ export const List = <T extends AnyObject = string>({
           empty={emptyDisplay}
           info={state.activeItem?.[infoProperty ?? "info"]}
         >
-          {async (item, label) => await (renderer?.(item) ?? label)}
+          {(item, label) => renderer?.(item) ?? label}
         </Options>
       </FloatingFocusManager>
     </Wrapper>

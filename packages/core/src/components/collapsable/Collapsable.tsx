@@ -38,7 +38,6 @@ import {
   type RefProp,
   type TestProps,
 } from "../../types";
-import { CoreIcons } from "../../types/icons";
 import { Icon } from "../icon/Icon";
 
 interface CollapsableRef {
@@ -108,8 +107,8 @@ export interface CollapsableProps
  * ```jsx
  * <Collapsable
  *   iconAlign="start"
- *   iconOpen={CoreIcons.chevronDown}
- *   iconClosed={CoreIcons.chevronRight}
+ *   iconOpen="icon-[mdi--chevron-down]"
+ *   iconClosed="icon-[mdi--chevron-right]"
  *   open={true}
  *   onOpen={() => console.log("Opened")}
  *   onClose={() => console.log("Closed")}
@@ -130,8 +129,8 @@ export const Collapsable = ({
   children,
   iconAlign,
   stickyHeader,
-  iconClosed = CoreIcons.chevronRight,
-  iconOpen = CoreIcons.chevronDown,
+  iconClosed = "icon-[mdi--chevron-right]",
+  iconOpen = "icon-[mdi--chevron-down]",
   open,
   onClose,
   onOpen,

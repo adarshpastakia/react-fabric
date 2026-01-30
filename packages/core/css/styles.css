@@ -29,4 +29,6 @@
 @import "./core/index.css";
 @import "./components/index.css";
 
+@plugin "@iconify/tailwind4";
+
 @source "../../";

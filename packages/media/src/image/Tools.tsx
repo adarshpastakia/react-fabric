@@ -21,13 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  CoreIcons,
-  Divider,
-  Dropdown,
-  Footer,
-  HotKey,
-} from "@react-fabric/core";
+import { Divider, Dropdown, Footer, HotKey } from "@react-fabric/core";
 import { Fragment, useMemo } from "react";
 import { Colorscape } from "../components/Colorscape";
 import { TooltipButton } from "../components/TooltipButton";
@@ -137,7 +131,7 @@ export const Tools = ({
             tooltip="Fit to View (F)"
             onClick={fitToView}
             disabled={!state.isLoaded}
-            icon={CoreIcons.mediaFitToView}
+            icon="icon-[mdi--fit-to-screen]"
           />
           {!state.splitter && (
             <TooltipButton
@@ -145,7 +139,7 @@ export const Tools = ({
               tooltip="Fit to Size (F)"
               onClick={fitToSize}
               disabled={!state.isLoaded}
-              icon={CoreIcons.mediaAspect}
+              icon="icon-[mdi--aspect-ratio]"
             />
           )}
           {!state.splitter && (
@@ -157,7 +151,7 @@ export const Tools = ({
               <TooltipButton
                 aria-label="zoom"
                 tooltip="Zoom (. / ,)"
-                icon={CoreIcons.mediaZoomer}
+                icon="icon-[mdi--magnify-plus-outline]"
                 disabled={!state.isLoaded}
                 onWheel={(e) => {
                   changeZoom(e.deltaY * 0.05);
@@ -196,7 +190,7 @@ export const Tools = ({
           aria-label="splitter"
           disabled={!state.isLoaded}
           variant={state.splitter ? "solid" : "link"}
-          icon={CoreIcons.mediaSplitter}
+          icon="icon-[mdi--compare]"
           onClick={toggleSplitter}
         />
       )}
@@ -208,7 +202,7 @@ export const Tools = ({
           aria-label="crop"
           disabled={!state.isLoaded}
           variant={state.cropping ? "solid" : "link"}
-          icon={CoreIcons.mediaCrop}
+          icon="icon-[mdi--crop]"
           onClick={toggleCropping}
         />
       )}
@@ -217,7 +211,7 @@ export const Tools = ({
           tooltip="Export Image"
           aria-label="export"
           disabled={!state.isLoaded}
-          icon={CoreIcons.mediaCapture}
+          icon="icon-[mdi--camera-enhance-outline]"
           onClick={() => onExport?.(exportToBase64() ?? "")}
         />
       )}
@@ -226,14 +220,14 @@ export const Tools = ({
         tooltip="Rotate Counter Clockwise ([)"
         disabled={!state.isLoaded}
         aria-label="rotate-ccw"
-        icon={CoreIcons.mediaRotateCCW}
+        icon="icon-[mdi--rotate-left]"
         onClick={handlers.rotateDown}
       />
       <TooltipButton
         tooltip="Rotate Clockwise (])"
         disabled={!state.isLoaded}
         aria-label="rotate-cw"
-        icon={CoreIcons.mediaRotateCW}
+        icon="icon-[mdi--rotate-right]"
         onClick={handlers.rotateUp}
       />
       <label className="text-xs basis-16 whitespace-nowrap">

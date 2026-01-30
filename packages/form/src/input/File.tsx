@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { CoreIcons, Icon } from "@react-fabric/core";
+import { Icon } from "@react-fabric/core";
 import { type RefProp } from "@react-fabric/core/dist/types/types";
 import {
   FileUtil,
@@ -181,7 +181,7 @@ export const FileInput = ({
                   </span>
                   <Icon
                     className="cursor-pointer opacity-30 hover:opacity-80"
-                    icon={CoreIcons.close}
+                    icon="icon-[mdi--close]"
                     onClick={() => {
                       removeFile(idx);
                     }}

@@ -35,8 +35,7 @@ import {
   type ExpandProps,
   type TestProps,
 } from "../../types";
-import { CoreIcons } from "../../types/icons";
-import { Loading } from "../animations/Animations";
+import { LoadingLine } from "../animations/Animations";
 import { getIconProps, Icon, type IconProps } from "../icon/Icon";
 
 export interface PanelProps
@@ -119,7 +118,7 @@ export interface PanelProps
  * ```jsx
  * <Panel
  *   title="Panel Title"
- *   icon={CoreIcons.info}
+ *   icon="icon-[mdi--info]"
  *   actions={<button>Action</button>}
  *   expandable
  *   collapsable
@@ -216,9 +215,10 @@ export const Panel = ({
       >
         {onBack && (
           <Icon
+            rtlFlip
             data-ref="panelBack"
             className={classNames("fabric-panelAction", "cursor-pointer")}
-            icon={CoreIcons.chevronLeft}
+            icon="icon-[mdi--chevron-left]"
             onClick={onBack}
           />
         )}
@@ -248,7 +248,11 @@ export const Panel = ({
               <Icon
                 data-ref="panelExpand"
                 className={classNames("fabric-panelAction", "cursor-pointer")}
-                icon={expanded ? CoreIcons.minimize : CoreIcons.maximize}
+                icon={
+                  expanded
+                    ? "icon-[mdi--fullscreen-exit]"
+                    : "icon-[mdi--fullscreen]"
+                }
                 onClick={toggleExpand}
               />
             )}
@@ -256,7 +260,9 @@ export const Panel = ({
               <Icon
                 data-ref="panelCollapse"
                 className={classNames("fabric-panelAction", "cursor-pointer")}
-                icon={collapsed ? CoreIcons.expand : CoreIcons.collapse}
+                icon={
+                  collapsed ? "icon-[mdi--plus-box]" : "icon-[mdi--minus-box]"
+                }
                 onClick={toggleCollapse}
               />
             )}
@@ -264,7 +270,7 @@ export const Panel = ({
               <Icon
                 data-ref="panelClose"
                 className={classNames("fabric-panelAction", "cursor-pointer")}
-                icon={CoreIcons.close}
+                icon="icon-[mdi--close]"
                 onClick={onClose}
               />
             )}
@@ -279,7 +285,7 @@ export const Panel = ({
             "area-content grid overflow-hidden",
           )}
         >
-          {loading && <Loading />}
+          {loading && <LoadingLine />}
           {children}
         </div>
       )}

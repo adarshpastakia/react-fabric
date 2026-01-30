@@ -23,7 +23,6 @@
 
 import {
   Chip,
-  CoreIcons,
   Divider,
   Dropdown,
   Icon,
@@ -31,13 +30,13 @@ import {
   MenuItem,
 } from "@react-fabric/core";
 import { isEmpty, isNil } from "@react-fabric/utilities";
+import classNames from "classnames";
 import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { type FilterBarProps, type FilterObject } from "../types";
+import { FilterContext } from "./Context";
 import { FilterEdit } from "./FilterEdit";
 import { FilterTag } from "./FilterTag";
-import classNames from "classnames";
-import { FilterContext } from "./Context";
 
 /**
  * FilterBar component allows users to manage a list of filters.
@@ -168,7 +167,7 @@ export const FilterBar = ({
       <div className="flex flex-wrap gap-1 items-center">
         <Dropdown showArrow disabled={isEmpty(filters)}>
           <Icon
-            icon={CoreIcons.config}
+            icon="icon-[mdi--cog-outline]"
             className={classNames(
               isEmpty(filters) && "pointer-events-none opacity-30",
             )}
@@ -182,7 +181,7 @@ export const FilterBar = ({
               <MenuItem id="disableAll" label={t("label.disableAll")} />
             )}
             <MenuItem
-              icon={CoreIcons.invertDisable}
+              icon="icon-[mdi--checkbox-intermediate-variant]"
               id="toggleDisable"
               label={t("label.toggleDisable")}
             />
@@ -195,14 +194,14 @@ export const FilterBar = ({
             )}
             <MenuItem
               id="invertAll"
-              icon={CoreIcons.invertExclude}
+              icon="icon-[mdi--set-left]"
               label={t("label.invertAll")}
             />
             <Divider />
             <MenuItem
               id="removeAll"
               color="danger"
-              icon={CoreIcons.remove}
+              icon="icon-[mdi--minus-circle-outline]"
               label={t("label.removeAll")}
               disabled={!menuItems.canRemoveAll}
             />
@@ -224,7 +223,7 @@ export const FilterBar = ({
             <Chip
               size="sm"
               className="outline-dashed! outline-tint-400!"
-              icon={CoreIcons.insert}
+              icon="icon-[mdi--plus-circle-outline]"
             >
               {t("label.add")}
             </Chip>

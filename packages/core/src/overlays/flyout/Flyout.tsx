@@ -33,7 +33,7 @@ import {
 import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { isValidElement, useCallback, useEffect } from "react";
-import { Loading } from "../../components/animations/Animations";
+import { LoadingLine } from "../../components/animations/Animations";
 import { getIconProps, Icon, type IconProps } from "../../components/icon/Icon";
 import { Header } from "../../core/headfoot/HeadFoot";
 import { HotKeyWrapper } from "../../hotkeys/HotKeyWrapper";
@@ -44,7 +44,6 @@ import {
   type Elements,
   type TestProps,
 } from "../../types";
-import { CoreIcons } from "../../types/icons";
 
 export interface FlyoutProps extends AriaProps, TestProps, ChildrenProp {
   icon?: IconProps;
@@ -236,11 +235,11 @@ export const Flyout = ({
                   "fabric-panelAction",
                   "cursor-pointer p-1 text-xl self-center",
                 )}
-                icon={CoreIcons.close}
+                icon="icon-[mdi--close]"
                 onClick={() => handleClose(false)}
               />
             </Header>
-            {loading && <Loading />}
+            {loading && <LoadingLine />}
             <div
               role="dialog"
               className={classNames(

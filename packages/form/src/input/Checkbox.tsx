@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { CoreIcons, Icon } from "@react-fabric/core";
+import { Icon } from "@react-fabric/core";
 import { type RefProp } from "@react-fabric/core/dist/types/types";
 import classNames from "classnames";
 import {
@@ -111,10 +111,13 @@ export const Checkbox = ({
   const deferred = useDeferredValue(!!checked);
 
   const iconOn = useMemo(
-    () => iconChecked ?? icon ?? CoreIcons.checkboxOn,
+    () => iconChecked ?? icon ?? "icon-[mdi--checkbox-marked]",
     [icon, iconChecked],
   );
-  const iconOff = useMemo(() => icon ?? CoreIcons.checkboxOff, [icon]);
+  const iconOff = useMemo(
+    () => icon ?? "icon-[mdi--checkbox-blank-outline]",
+    [icon],
+  );
 
   useEffect(() => {
     setActualValue(deferred);

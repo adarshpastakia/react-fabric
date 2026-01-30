@@ -32,7 +32,6 @@ import {
   type PaletteType,
   type TestProps,
 } from "../../types";
-import { CoreIcons } from "../../types/icons";
 import { Icon } from "../icon/Icon";
 import { isEmpty } from "@react-fabric/utilities";
 
@@ -108,7 +107,7 @@ export const Navigator = ({
         className="text-[1em] p-1"
         aria-label="previous"
         data-ref="previous"
-        icon={CoreIcons.chevronLeft}
+        icon="icon-[mdi--chevron-left]"
         disabled={!isEmpty(current) && current === 0}
         onClick={(e) => [e.stopPropagation(), navPrev()]}
       />
@@ -119,7 +118,7 @@ export const Navigator = ({
         color={color}
         aria-label="next"
         data-ref="next"
-        icon={CoreIcons.chevronRight}
+        icon="icon-[mdi--chevron-right]"
         disabled={!isEmpty(current) && current + 1 === length}
         onClick={(e) => [e.stopPropagation(), navNext()]}
       />

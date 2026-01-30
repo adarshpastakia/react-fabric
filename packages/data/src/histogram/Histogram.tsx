@@ -21,13 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  ActionLabel,
-  Button,
-  CoreIcons,
-  EmptyContent,
-  Icon,
-} from "@react-fabric/core";
+import { ActionLabel, Button, EmptyContent, Icon } from "@react-fabric/core";
 import {
   type ColorType,
   type PaletteType,
@@ -178,7 +172,7 @@ export const Histogram = ({
                 color="danger"
                 size="sm"
                 stopPropagation
-                icon={CoreIcons.funnelMinus}
+                icon="icon-[mdi--filter-minus]"
                 aria-label="Filter Negative"
                 onClick={() => onClick?.(item.id, true)}
               />,
@@ -187,7 +181,7 @@ export const Histogram = ({
                 color="primary"
                 size="sm"
                 stopPropagation
-                icon={CoreIcons.funnelPlus}
+                icon="icon-[mdi--filter-plus]"
                 aria-label="Filter"
                 onClick={() => onClick?.(item.id)}
               />,

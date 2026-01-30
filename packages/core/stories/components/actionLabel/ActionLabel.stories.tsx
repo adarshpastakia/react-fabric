@@ -22,7 +22,7 @@
  */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { ActionLabel, Button, CoreIcons, Icon, Tooltip } from "../../../src";
+import { ActionLabel, Button, Icon, Tooltip } from "../../../src";
 
 const meta: Meta = {
   component: ActionLabel,
@@ -87,7 +87,7 @@ export const _ActionLabel: ActionLabelStory = {
           >
             Item on the left
           </ActionLabel>
-          <Icon className="flex-content" icon={CoreIcons.arrowRight} />
+          <Icon className="flex-content" icon="icon-[mdi--arrow-right]" />
           <ActionLabel
             {...args}
             className="flex-initial"
@@ -125,7 +125,7 @@ export const _ActionLabel: ActionLabelStory = {
               <span>Longer labeled item on the left</span>
             </ActionLabel>
           </Tooltip>
-          <Icon className="flex-content" icon={CoreIcons.arrowRight} />
+          <Icon className="flex-content" icon="icon-[mdi--arrow-right]" />
           <Tooltip content="Longer labeled item on the right" copyContent>
             <ActionLabel
               {...args}

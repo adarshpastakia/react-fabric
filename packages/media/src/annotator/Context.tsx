@@ -21,12 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  AnimationBars,
-  CoreIcons,
-  Icon,
-  useResizeObserver,
-} from "@react-fabric/core";
+import { Icon, LoadingBars, useResizeObserver } from "@react-fabric/core";
 import {
   createContext,
   useCallback,
@@ -286,8 +281,8 @@ export const AnnotatorProvider = ({
           {addPlaceholder}
         </div>
       </div>
-      {state.isErrored && <Icon icon={CoreIcons.mediaImageBroken} />}
-      {state.isLoading && <AnimationBars />}
+      {state.isErrored && <Icon icon="icon-[mdi--image-off-outline]" />}
+      {state.isLoading && <LoadingBars />}
     </AnnotatorContext.Provider>
   );
 };

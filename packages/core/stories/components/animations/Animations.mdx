@@ -1,23 +1,21 @@
 import {
-  Canvas,
-  Description,
-  Primary,
-  Story,
-  Title,
-} from "@storybook/addon-docs/blocks";
-import {
   Anchor,
   ArgTypes,
+  Canvas,
   Controls,
+  Description,
   Meta,
+  Primary,
+  Story,
   Subheading,
+  Title,
 } from "@storybook/addon-docs/blocks";
 import { Fragment } from "react";
 import { AnimationIndicator, Collapsable } from "../../../src";
 import * as AnimationsStories from "./Animations.stories";
 import * as BarsStories from "./Bars.stories";
-import * as SpinnerStories from "./Spinner.stories";
 import * as SkeletonStories from "./Skeleton.stories";
+import * as SpinnerStories from "./Spinner.stories";
 
 <Meta of={AnimationsStories} />
 
@@ -77,12 +75,12 @@ import * as SkeletonStories from "./Skeleton.stories";
 </Anchor>
 
 ```tsx
-import { AnimationCheck, AnimationBars } from "@react-fabric/core";
+import { AnimationCheck, LoadingBars } from "@react-fabric/core";
 
 export const Example = () => {
   return (
     <AnimationCheck/>
-    <AnimationBars/>
+    <LoadingBars/>
   );
 };
 ```

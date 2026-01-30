@@ -1,0 +1,16 @@
+{
+  "tool": {
+    "alignStart": "Align Start",
+    "alignCenter": "Align Center",
+    "alignEnd": "Align End",
+    "alignJustify": "Align Justify",
+    "bold": "Bold",
+    "italic": "Italic",
+    "underline": "Underline",
+    "strikethrough": "Strikethrough",
+    "indentOut": "Indent Out",
+    "indentIn": "Indent In",
+    "hilight": "Highlight",
+    "clear": "Clear Formatting"
+  }
+}

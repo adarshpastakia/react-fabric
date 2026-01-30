@@ -36,12 +36,7 @@ import { countRenderer } from "../types/utils";
 import { ChartContainer } from "../wrapper/ChartContainer";
 import { ChartWrapper } from "../wrapper/ChartWrapper";
 
-import {
-  Button,
-  CoreIcons,
-  ToggleButtonGroup,
-  useMemoDebugger,
-} from "@react-fabric/core";
+import { Button, ToggleButtonGroup, useMemoDebugger } from "@react-fabric/core";
 import WorldMap from "../types/world.svg";
 echarts.registerMap("world", { svg: WorldMap });
 
@@ -198,14 +193,14 @@ const MapSeriesChart: FC<MapSeriesProps> = memo(
             <Button
               size="sm"
               variant="link"
-              icon={CoreIcons.map}
+              icon="icon-[mdi--map]"
               aria-label="map"
               value="map"
             />
             <Button
               size="sm"
               variant="link"
-              icon={CoreIcons.chartColumn}
+              icon="icon-[mdi--chart-bar] rotate-90 -scale-x-100"
               aria-label="column"
               value="column"
             />

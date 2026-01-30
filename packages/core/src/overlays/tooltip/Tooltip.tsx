@@ -51,7 +51,6 @@ import {
 import { Icon } from "../../components/icon/Icon";
 import { useIsRtl } from "../../hooks/useIsRtl";
 import { type RefProp, type TooltipType } from "../../types";
-import { CoreIcons } from "../../types/icons";
 import { getColor } from "../../utils";
 
 export interface TooltipProps extends TooltipType, RefProp {
@@ -159,7 +158,7 @@ export const Tooltip = ({
           className="ms-2 cursor-pointer text-dimmed flex-content opacity-75 hover:opacity-90 active:opacity-60"
           onClick={handler}
         >
-          <Icon icon={CoreIcons.copy} />
+          <Icon icon="icon-[mdi--content-copy]" />
         </span>
       );
     }

@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { CoreIcons, Icon } from "@react-fabric/core";
+import { Icon } from "@react-fabric/core";
 import { getBox } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useCallback, useEffect, useMemo, useReducer } from "react";
@@ -189,7 +189,7 @@ export const Annotation = ({
         className="bg-danger text-white cursor-pointer leading-none p-0.5 text-sm opacity-0 group-hover:opacity-60 hover:opacity-90 absolute top-0 right-0"
         onMouseDown={(e) => [e.stopPropagation(), onRemove()]}
       >
-        <Icon icon={CoreIcons.trash} />
+        <Icon icon="icon-[mdi--trash-can-outline]" />
       </button>
       <div
         className="absolute left-0 bottom-full max-w-full truncate select-none pointer-events-none text-xs bg-current font-medium leading-tight px-0.5"
