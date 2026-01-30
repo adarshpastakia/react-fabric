@@ -21,6 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { yupResolver } from "@hookform/resolvers/yup";
 import { EmptyContent } from "@react-fabric/core";
 import { isEmpty, isNil, yup } from "@react-fabric/utilities";
 import { Fragment, useMemo } from "react";
@@ -135,11 +136,17 @@ export const useFormBuilder = <T extends AnyObject = string>(
     () => schema.filter?.((schm) => !!schm.id) ?? [],
     [schema],
   );
-  const schemaDef = yup.object(
-    Object.fromEntries(
-      filteredSchema.map((field) => [field.id, makeYupField(field)]),
-    ),
+  const schemaDef = useMemo(
+    () =>
+      yup.object(
+        Object.fromEntries(
+          filteredSchema.map((field) => [field.id, makeYupField(field)]),
+        ),
+      ),
+    [filteredSchema],
   );
+
+  const resolver = useMemo(() => yupResolver(schemaDef), [schemaDef]);
 
   const formDef = (
     <Fragment>
@@ -166,6 +173,7 @@ export const useFormBuilder = <T extends AnyObject = string>(
 
   return {
     formDef,
+    resolver,
     schemaDef,
   };
 };

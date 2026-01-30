@@ -202,7 +202,7 @@ export const InputWrapper = ({
         ref={elRef}
         className={classNames(
           "relative min-h-8 flex flex-col flex-nowrap",
-          width || rest.inline ? "flex-content" : "flex-1",
+          width ? "flex-content" : "flex-1",
         )}
         style={{ width, flexBasis: width }}
       >

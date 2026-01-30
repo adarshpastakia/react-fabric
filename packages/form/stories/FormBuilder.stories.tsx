@@ -154,7 +154,7 @@ export const FormBuilder: Story = {
       ],
     });
 
-    const { formDef, schemaDef } = useFormBuilder(schema, {
+    const { formDef, resolver } = useFormBuilder(schema, {
       uploadHandler,
       optionLists: {
         countries: {
@@ -198,7 +198,7 @@ export const FormBuilder: Story = {
             </div>
             <div className="overflow-auto bg-base outline rounded-capped">
               <Form
-                schema={schemaDef}
+                resolver={resolver}
                 defaultValues={formValues}
                 onSubmit={setFormValues}
               >
