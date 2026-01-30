@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.61](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.60...v1.0.0-beta.61) (2026-01-30)
+
+### Bug Fixes
+
+- form builder to return resolver ([9f45c3e](https://github.com/adarshpastakia/react-fabric/commit/9f45c3e8652a41d34347afd11224b34f6b619d90))
+- **Form:** replace schema with resolver ([eb7acd0](https://github.com/adarshpastakia/react-fabric/commit/eb7acd09610233ec425346f6fc38e2ac803238f9))
+
 # [1.0.0-beta.60](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.59...v1.0.0-beta.60) (2026-01-10)
 
 ### Bug Fixes

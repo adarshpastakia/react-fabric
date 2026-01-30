@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/data",
-  "version": "1.0.0-beta.60",
+  "version": "1.0.0-beta.61",
   "description": "RUF: Data package",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -35,10 +35,10 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@react-fabric/core": "^1.0.0-beta.60",
-    "@react-fabric/date": "^1.0.0-beta.60",
-    "@react-fabric/form": "^1.0.0-beta.60",
-    "@react-fabric/utilities": "^1.0.0-beta.60",
+    "@react-fabric/core": "^1.0.0-beta.61",
+    "@react-fabric/date": "^1.0.0-beta.61",
+    "@react-fabric/form": "^1.0.0-beta.61",
+    "@react-fabric/utilities": "^1.0.0-beta.61",
     "@tanstack/react-virtual": "~3.13.12",
     "classnames": "~2.5.1",
     "color": "~5.0.2",

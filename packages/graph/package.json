@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/graph",
-  "version": "1.0.0-beta.60",
+  "version": "1.0.0-beta.61",
   "description": "RUF: SigmaJS link analysis graph",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -36,8 +36,8 @@
   },
   "dependencies": {
     "@floating-ui/react": "~0.27.16",
-    "@react-fabric/core": "^1.0.0-beta.60",
-    "@react-fabric/utilities": "^1.0.0-beta.60",
+    "@react-fabric/core": "^1.0.0-beta.61",
+    "@react-fabric/utilities": "^1.0.0-beta.61",
     "@sigma/edge-curve": "~3.1.0",
     "@sigma/utils": "~3.0.0",
     "classnames": "~2.5.1",
