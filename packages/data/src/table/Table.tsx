@@ -64,7 +64,7 @@ export const Table = <T extends KeyValue = KeyValue>({
   ref,
   data,
   columns,
-  keyProperty = "id",
+  keyProperty = "id" as any,
   groupProperty,
   checkableRows,
   initialScroll,
@@ -251,26 +251,32 @@ export const Table = <T extends KeyValue = KeyValue>({
                   ref={measureElement}
                   data-index={index}
                   className={classNames(
-                    "px-2 py-1 text-md bg-base border-y border-tint-100 cursor-pointer flex items-center gap-1 z-2",
+                    "text-md bg-base border-y border-tint-100 border-t-0 cursor-pointer flex items-center justify-start gap-1 z-2",
                     isActiveSticky(index) && "sticky top-8",
                   )}
                   role="none"
                   onClick={() => toggleGroupExpand(data.key)}
                 >
-                  <Icon
-                    rtlFlip
-                    icon={
-                      data.open
-                        ? "icon-[mdi--chevron-down]"
-                        : "icon-[mdi--chevron-right]"
-                    }
-                  />
-                  {groupRenderer?.(data) ?? (
-                    <div className="flex gap-1 items-center">
-                      <span>{data.key}</span>
-                      <span className="text-sm">({data.itemCount})</span>
-                    </div>
-                  )}
+                  <div
+                    className={classNames(
+                      "px-2 py-1 flex items-center gap-1 z-2 sticky start-0",
+                    )}
+                  >
+                    <Icon
+                      rtlFlip
+                      icon={
+                        data.open
+                          ? "icon-[mdi--chevron-down]"
+                          : "icon-[mdi--chevron-right]"
+                      }
+                    />
+                    {groupRenderer?.(data) ?? (
+                      <div className="flex gap-1 items-center">
+                        <span>{data.key}</span>
+                        <span className="text-sm">({data.itemCount})</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               ) : (
                 <BodyRow

@@ -22,6 +22,7 @@
  */
 
 import {
+  type NestedKeys,
   type RefProp,
   type TestProps,
 } from "@react-fabric/core/dist/types/types";
@@ -145,23 +146,23 @@ export interface BaseSelectProps<T extends AnyObject = string> {
   /**
    * group by property name
    */
-  groupProperty?: keyof T;
+  groupProperty?: NestedKeys<T>;
   /**
    * label property name
    */
-  labelProperty?: keyof T;
+  labelProperty?: NestedKeys<T>;
   /**
    * value property name
    */
-  valueProperty?: keyof T;
+  valueProperty?: NestedKeys<T>;
   /**
    * value property name
    */
-  infoProperty?: keyof T;
+  infoProperty?: NestedKeys<T>;
   /**
    * value property name
    */
-  sortProperty?: keyof T | true;
+  sortProperty?: NestedKeys<T> | true;
   /**
    * searchable list
    */

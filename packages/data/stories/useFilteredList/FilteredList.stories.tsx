@@ -49,7 +49,7 @@ export const FilteredList: Story = {
   render: (args) => {
     const { filteredList, isSearching, onSearch, query } = useFilteredList(
       Countries.list,
-      (country, query) => matchString(country.name, query),
+      (country, query) => matchString(country.name.common, query),
     );
 
     return (
@@ -60,6 +60,7 @@ export const FilteredList: Story = {
               <div className="container">
                 <Search
                   autoFocus
+                  searchOnChange
                   value={query}
                   onSearch={onSearch}
                   searching={isSearching}
@@ -77,11 +78,13 @@ export const FilteredList: Story = {
                       <Icon
                         className="flex-content"
                         size="2rem"
-                        icon={`iconify-color circle-flags--${item.iso2.toLowerCase()}`}
+                        icon={`iconify-color circle-flags--${item.iconCode}`}
                       />
-                      <span className="flex-1 truncate">{item.name}</span>
+                      <span className="flex-1 truncate">
+                        {item.name.common}
+                      </span>
                       <span className="text-sm text-muted flex-content">
-                        {item.iso2}/{item.iso3}
+                        {item.cca2}/{item.cca3}
                       </span>
                     </Title>
                     <div>{item.capital}</div>

@@ -25,6 +25,7 @@ import { type IconProps } from "@react-fabric/core/dist/types/components/icon/Ic
 import {
   type CssProp,
   type Elements,
+  type NestedKeys,
   type RefProp,
   type TestProps,
 } from "@react-fabric/core/dist/types/types";
@@ -63,7 +64,7 @@ export const COL_DEFAULT_WIDTH = "12rem";
  * @property {(value: AnyObject, data: T, index: number) => Elements<AnyObject>} [renderer] - Custom renderer function for the column values.
  */
 export interface TableColumn<T = KeyValue> extends CssProp, TestProps {
-  id: keyof T | string;
+  id: NestedKeys<T>;
   field?: string;
   label?: string;
   tooltip?: string;
@@ -104,8 +105,8 @@ export interface TableRef {
 export interface TableProps<T = KeyValue> extends RefProp<TableRef> {
   columns: Array<TableColumn<T>>;
   data: T[];
-  keyProperty?: keyof T;
-  groupProperty?: keyof T;
+  keyProperty?: NestedKeys<T>;
+  groupProperty?: NestedKeys<T>;
   groupRenderer?: (key: AnyObject) => ReactElement;
   emptyDisplay?: ReactElement;
 
@@ -132,7 +133,7 @@ export interface TableProps<T = KeyValue> extends RefProp<TableRef> {
   canExpand?: (record: T) => boolean;
   children?: (record: T) => Elements<AnyObject>;
 
-  onFilter?: (id: keyof T | string, value?: AnyObject) => void;
+  onFilter?: (id: NestedKeys<T> | string, value?: AnyObject) => void;
 
   total?: number;
   onLoadMore?: (lastIndex?: number) => void;

@@ -47,6 +47,7 @@ export default [
       "@babel/runtime",
       "@arcgis/core",
       "@arcgis/map-components",
+      "world-countries",
       "@lexical/*",
       "prismjs",
       "elkjs",

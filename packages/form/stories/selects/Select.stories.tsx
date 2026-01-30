@@ -53,13 +53,13 @@ export const _Select: SelectStory = {
       <Select
         {...args}
         options={Countries.list}
-        labelProperty="name"
-        valueProperty="iso3"
-        infoProperty="fullname"
+        labelProperty="name.common"
+        valueProperty="cca2"
+        infoProperty="name.official"
         renderer={(opt) => (
           <div className="flex gap-2 items-center">
-            <Icon icon={`icon-[circle-flags--${opt.iso2}]`} />
-            <span className="flex-1">{opt.name}</span>
+            <Icon icon={`icon-[circle-flags--${opt.iconCode}]`} />
+            <span className="flex-1">{opt.name.common}</span>
             <span className="rounded-full text-xs bg-tint-500/10 px-1 py-px">
               {opt.phone}
             </span>
@@ -85,12 +85,12 @@ export const Multiple: SelectStory = {
         {...args}
         multiple
         options={Countries.list}
-        labelProperty="name"
-        valueProperty="iso3"
+        labelProperty="name.common"
+        valueProperty="cca2"
         renderer={(opt) => (
           <div className="flex gap-2 items-center">
-            <Icon icon={`icon-[circle-flags--${opt.iso2}]`} />
-            <span className="flex-1">{opt.name}</span>
+            <Icon icon={`iconify-color circle-flags--${opt.iconCode}`} />
+            <span className="flex-1">{opt.name.common}</span>
             <span className="rounded-full text-xs bg-tint-500/10 px-1 py-px">
               {opt.phone}
             </span>
@@ -115,19 +115,19 @@ export const Searchable: SelectStory = {
       <Select
         {...args}
         options={Countries.list}
-        labelProperty="name"
-        valueProperty="iso3"
+        labelProperty="name.common"
+        valueProperty="cca2"
         renderer={(opt: Country) => (
           <div className="flex gap-2 items-center">
-            <Icon icon={`icon-[circle-flags--${opt.iso2}]`} />
-            <span className="flex-1">{opt.name}</span>
+            <Icon icon={`iconify-color circle-flags--${opt.iconCode}`} />
+            <span className="flex-1">{opt.name.common}</span>
             <span className="rounded-full text-xs bg-tint-500/10 px-1 py-px">
               {opt.phone}
             </span>
           </div>
         )}
         matcher={(opt: Country, query) =>
-          matchString(opt.name, query) || matchString(opt.phone, query)
+          matchString(opt.name.common, query) || matchString(opt.phone, query)
         }
       />
     );
@@ -148,15 +148,15 @@ export const Remote: SelectStory = {
     return (
       <Select
         {...args}
-        labelProperty="name"
-        valueProperty="iso3"
+        labelProperty="name.common"
+        valueProperty="cca2"
         renderer={(opt: Country) => (
           <div className="flex gap-2 items-center">
-            <Icon icon={`icon-[circle-flags--${opt.iso2}]`} />
+            <Icon icon={`iconify-color circle-flags--${opt.iconCode}`} />
             <span className="flex-1">
-              <div>{opt.name}</div>
-              <div className=" group-data-[select-display]:hidden text-xs text-muted">
-                {opt.fullname}
+              <div>{opt.name.common}</div>
+              <div className=" group-data-select-display:hidden text-xs text-muted">
+                {opt.name.official}
               </div>
             </span>
             <span className="rounded-full text-xs bg-tint-500/10 px-1 py-px">
@@ -165,7 +165,7 @@ export const Remote: SelectStory = {
           </div>
         )}
         matcher={(opt: Country, query) =>
-          matchString(opt.name, query) || matchString(opt.phone, query)
+          matchString(opt.name.common, query) || matchString(opt.phone, query)
         }
         onQuery={(query) => {
           return new Promise((resolve) => {
@@ -173,8 +173,8 @@ export const Remote: SelectStory = {
               resolve(
                 Countries.list.filter(
                   (ctr) =>
-                    matchString(ctr.name, query) ||
-                    matchString(ctr.fullname, query),
+                    matchString(ctr.name.common, query) ||
+                    matchString(ctr.name.official, query),
                 ),
               );
             }, 1000);

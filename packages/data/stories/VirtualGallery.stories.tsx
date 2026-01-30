@@ -102,7 +102,7 @@ export const Gallery: Story = {
                         <Title>List item {index + 1}</Title>
                       </Header>
                       <Row>
-                        <Col flex="auto">
+                        <Col>
                           <img
                             loading="lazy"
                             className="border-4 bg-bw-500/50 border-bw-500 object-contain h-24 w-32"
@@ -216,7 +216,7 @@ export const LoadableList: Story = {
                           <Title>List item {index + 1}</Title>
                         </Header>
                         <Row>
-                          <Col flex="auto">
+                          <Col>
                             <img
                               loading="lazy"
                               className="border-4 bg-bw-500/50 border-bw-500 object-contain h-24 w-32"

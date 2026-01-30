@@ -68,23 +68,24 @@ type Story = StoryObj<typeof Table>;
 
 const columns: TableColumn<Country>[] = [
   {
-    id: "emoji",
+    id: "flag",
     width: "3rem",
     align: "center",
     locked: "start",
     hideable: false,
     renderer(_: string, data: Country) {
-      return <Icon icon={`icon-[circle-flags--${data.iso2}]`} />;
+      console.log(data);
+      return <Icon icon={`iconify-color circle-flags--${data?.iconCode}`} />;
     },
   },
   {
-    id: "iso2",
+    id: "cca2",
     width: "3rem",
     locked: "start",
     hideable: false,
   },
   {
-    id: "name",
+    id: "name.common",
     label: "Name",
     locked: "start",
     width: "32rem",
@@ -96,7 +97,7 @@ const columns: TableColumn<Country>[] = [
     actions: [<MenuItem label="Sort down" />, <MenuItem label="Sort up" />],
   },
   {
-    id: "continent",
+    id: "region",
     label: "Continent",
     width: "12rem",
     hidden: false,
@@ -113,7 +114,7 @@ const columns: TableColumn<Country>[] = [
     ],
   },
   {
-    id: "fullname",
+    id: "name.official",
     label: "Fullname",
     width: "48rem",
     hidden: true,
@@ -134,7 +135,7 @@ const columns: TableColumn<Country>[] = [
     hidden: true,
   },
   {
-    id: "currency",
+    id: "currency.code",
     label: "Currency",
     width: "8rem",
     hidden: true,
@@ -157,11 +158,11 @@ export const _Table: Story = {
   render: (args) => {
     const [sort, setSort] = useState<AnyObject>();
     return (
-      <Table
+      <Table<Country>
         {...(args as any)}
         data={Countries.list}
-        keyProperty="iso2"
-        groupProperty="continent"
+        keyProperty="cca2"
+        groupProperty="region"
         groupRenderer={(grp) => (
           <Fragment>
             {grp.key === "Asia" && <img src={asia} />}
@@ -180,25 +181,25 @@ export const _Table: Story = {
         onFilter={fn()}
         sort={sort}
         columns={columns}
+        children={(data: Country) => {
+          return (
+            <div className="flex flex-nowrap p-4 gap-2">
+              <Avatar
+                size="2rem"
+                name=""
+                fallbackIcon={`iconify-color circle-flags--${data.cca2.toLowerCase()}`}
+              />
+              <div className="flex-1">
+                <Title>{data.name.official}</Title>
+              </div>
+            </div>
+          );
+        }}
       />
     );
   },
   args: {
     initialScroll: 18,
     canExpand: () => true,
-    children: (data) => {
-      return (
-        <div className="flex flex-nowrap p-4 gap-2">
-          <Avatar
-            size="2rem"
-            name=""
-            fallbackIcon={`icon-[circle-flags--${data.iso2}]`}
-          />
-          <div className="flex-1">
-            <Title>{data.fullname}</Title>
-          </div>
-        </div>
-      );
-    },
   },
 };

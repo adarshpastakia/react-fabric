@@ -22,7 +22,13 @@
  */
 
 import { DateDisplay } from "@react-fabric/date";
-import { Format, getByPath, isTrue } from "@react-fabric/utilities";
+import {
+  Format,
+  getByPath,
+  isArray,
+  isObject,
+  isTrue,
+} from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useMemo } from "react";
 import { useTableContext } from "./Context";
@@ -55,11 +61,14 @@ export const BodyCell = ({
       return column.renderer(value, item, index);
     }
     if (column.dataType === "boolean") {
-      const map = column.valueMap ?? { true: "Yes", false: "no" };
+      const map = column.valueMap ?? { true: "Yes", false: "No" };
       return map[`${isTrue(value) ? "true" : "false"}`];
     }
     if (column.valueMap != null) {
-      if (column.dataType === "string" && value in column.valueMap) {
+      if (
+        ["number", "string"].includes(column.dataType ?? "string") &&
+        value in column.valueMap
+      ) {
         return column.valueMap[value];
       }
     }
@@ -68,6 +77,12 @@ export const BodyCell = ({
     }
     if (column.dataType === "number") {
       return Format.number(value, column.format);
+    }
+    if (isObject(value)) {
+      return JSON.stringify(value);
+    }
+    if (isArray(value)) {
+      return value.join(", ");
     }
     return value ?? "";
   }, [item, column]);

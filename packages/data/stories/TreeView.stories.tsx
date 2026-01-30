@@ -52,12 +52,12 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj<typeof TreePanel>;
 
-const treeItems = Object.entries(groupBy(Countries.list, "continent")).map(
+const treeItems = Object.entries(groupBy(Countries.list, "region")).map(
   ([key, children]) => ({
     id: key,
     label: key,
     leaf: false,
-    children: Object.entries(groupBy(children, "alpha")).map(([alp, list]) => ({
+    children: Object.entries(groupBy(children, "cca2")).map(([alp, list]) => ({
       id: `${key}-${alp}`,
       label: alp,
       leaf: false,
@@ -65,11 +65,11 @@ const treeItems = Object.entries(groupBy(Countries.list, "continent")).map(
         label: alp,
         type: "group",
       },
-      children: (list as AnyObject).map((ctr: KeyValue) => ({
-        id: ctr.iso2,
-        icon: `icon-[circle-flags--${ctr.iso2}]`,
+      children: list.map((ctr) => ({
+        id: ctr.cca2,
+        icon: `iconify-color circle-flags--${ctr.iconCode}`,
         label: `${ctr.name}`,
-        badge: ctr.iso3,
+        badge: ctr.cca3,
         leaf: true,
         data: ctr,
       })),

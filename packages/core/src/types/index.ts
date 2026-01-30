@@ -462,3 +462,20 @@ export type Complete<T> = {
     ? T[P]
     : T[P] | undefined;
 };
+
+export type NestedKeys<T> = T extends object
+  ? {
+      [K in keyof T]: K extends string | number
+        ? T[K] extends object
+          ? // Check for array type explicitly and handle it
+            T[K] extends readonly any[]
+            ? T[K][number] extends object
+              ? // Array of objects/items: return key with array index notation and recurse
+                `${K}.${NestedKeys<T[K][number]>}` | `${K}`
+              : `${K}`
+            : // Standard object: return key with dot notation and recurse
+              `${K}.${NestedKeys<T[K]>}` | `${K}`
+          : `${K}`
+        : never;
+    }[keyof T]
+  : "";
