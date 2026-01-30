@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@floating-ui/react": "~0.27.16",
+    "@hookform/resolvers": "~5.2.2",
     "@react-fabric/core": "^1.0.0-beta.60",
     "@react-fabric/date": "^1.0.0-beta.60",
     "@react-fabric/form": "^1.0.0-beta.60",

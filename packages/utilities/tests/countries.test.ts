@@ -28,8 +28,8 @@ describe("countries test", () => {
     expect(Countries.find("xx")).toBeUndefined();
     const model = Countries.find("ae");
     if (model) {
-      expect(model.iso3).toBe("ARE");
-      expect(model.alt).toBe("UAE");
+      expect(model.cca3).toBe("ARE");
+      expect(model.cioc).toBe("UAE");
     }
     done();
   });

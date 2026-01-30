@@ -22,8 +22,8 @@
  */
 
 import { EmptyContent } from "@react-fabric/core";
+import { type ReactElement } from "@react-fabric/core/dist/types/types";
 import classNames from "classnames";
-import { type ReactElement } from "react";
 import { Trans } from "react-i18next";
 
 export const Options = ({

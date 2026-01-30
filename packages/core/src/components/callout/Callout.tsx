@@ -65,7 +65,8 @@ export interface CalloutProps
 // colors for different callout types
 const colors = {
   none: "bg-base text-tint-900 border-tint-100",
-  tint: "bg-tint-50/50 text-tint-800 border-tint-300",
+  default: "bg-tint-50/50 text-tint-800 border-tint-300",
+  muted: "bg-tint-50/50 text-muted border-muted",
   primary: "bg-primary-50/50 text-primary-800 border-primary-300",
   accent: "bg-accent-50/50 text-accent-800 border-accent-300",
   info: "bg-info-50/50 text-info-800 border-info-300",
@@ -102,8 +103,7 @@ const colors = {
  */
 export const Callout = ({
   children,
-  // @ts-expect-error ignore
-  color = "tint",
+  color = "default",
   legend,
   title,
   icon,

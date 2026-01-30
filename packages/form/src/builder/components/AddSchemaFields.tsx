@@ -21,6 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Button,
   Content,
@@ -51,7 +52,7 @@ export const AddSchemaFields = (props: ModalProps) => {
   return (
     <Modal {...props}>
       <Form
-        schema={fieldSchema}
+        resolver={yupResolver(fieldSchema)}
         defaultValues={{ fields: [" "] }}
         onSubmit={handleSubmit}
       >

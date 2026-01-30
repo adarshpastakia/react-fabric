@@ -29,10 +29,13 @@ import {
 } from "@dnd-kit/core";
 import { restrictToHorizontalAxis } from "@dnd-kit/modifiers";
 import { Button, ButtonGroup } from "@react-fabric/core";
-import { type RefProp } from "@react-fabric/core/dist/types/types";
+import {
+  type NestedKeys,
+  type ReactElement,
+  type RefProp,
+} from "@react-fabric/core/dist/types/types";
 import { mergeRefs } from "@react-fabric/utilities";
 import {
-  type ReactElement,
   useCallback,
   useDeferredValue,
   useEffect,
@@ -60,15 +63,15 @@ export interface DualListProps<T>
   /**
    * group by property name
    */
-  groupProperty?: keyof T;
+  groupProperty?: NestedKeys<T>;
   /**
    * label property name
    */
-  labelProperty?: keyof T;
+  labelProperty?: NestedKeys<T>;
   /**
    * value property name
    */
-  valueProperty?: keyof T;
+  valueProperty?: NestedKeys<T>;
   /**
    * empty list display
    */
@@ -76,7 +79,7 @@ export interface DualListProps<T>
   /**
    * item renderer
    */
-  renderer?: (option: T) => React.ReactNode;
+  renderer?: (option: T) => ReactElement;
   /**
    * change handler
    */

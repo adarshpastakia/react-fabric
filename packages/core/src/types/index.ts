@@ -427,11 +427,22 @@ export interface TooltipProp {
   tooltip?: string | TooltipType;
 }
 
-export interface ChildProp<T = JSX.Element> {
+export type ReactElement =
+  | React.ReactElement
+  | string
+  | number
+  | bigint
+  | Iterable<React.ReactNode>
+  | React.ReactPortal
+  | boolean
+  | null
+  | undefined;
+
+export interface ChildProp<T = ReactElement> {
   children: Elements<T>;
 }
 
-export interface ChildrenProp<T = JSX.Element> {
+export interface ChildrenProp<T = ReactElement> {
   children: Elements<T> | Array<Elements<T>>;
 }
 

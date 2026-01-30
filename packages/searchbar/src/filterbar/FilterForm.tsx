@@ -22,6 +22,7 @@
  */
 
 import { useFloatingTree } from "@floating-ui/react";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Col, Row } from "@react-fabric/core";
 import {
   Controller,
@@ -52,7 +53,7 @@ const FilterSchema = new yup.ObjectSchema({
   field: yup.string().required(),
   // type: yup.string().oneOf(Object.values(FIELD_TYPE)),
   operator: yup.string().required().oneOf(Object.values(OPERATOR)),
-  negate: yup.boolean(),
+  negate: yup.boolean().optional(),
   label: yup.string(),
   value: yup
     .mixed()
@@ -307,7 +308,7 @@ export const FilterForm = ({
   return (
     <Form<FilterSchemaType>
       formRef={formRef}
-      schema={FilterSchema}
+      resolver={yupResolver(FilterSchema) as any}
       defaultValues={values}
       onChange={setValues}
       onSubmit={handleSubmit}

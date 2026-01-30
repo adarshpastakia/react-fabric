@@ -8,4 +8,4 @@ exports[`format test should format phone 3`] = `"🇦🇪 +971 50 249 1824"`;
 
 exports[`format test should format phone 4`] = `"🇦🇪 +971 50 249 1824"`;
 
-exports[`format test should format phone 5`] = `"<span class="flag AE"></span> +971 50 249 1824"`;
+exports[`format test should format phone 5`] = `"<span class="icon-[circle-flags--AE"></span> +971 50 249 1824"`;

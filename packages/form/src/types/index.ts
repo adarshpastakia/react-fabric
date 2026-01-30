@@ -23,10 +23,10 @@
 
 import {
   type NestedKeys,
+  type ReactElement,
   type RefProp,
   type TestProps,
 } from "@react-fabric/core/dist/types/types";
-import { type ReactElement } from "react";
 
 export interface InputProps<V = string> extends TestProps {
   /**
@@ -186,7 +186,7 @@ export interface BaseSelectProps<T extends AnyObject = string> {
   /**
    * item renderer
    */
-  renderer?: (option: T) => JSX.Element;
+  renderer?: (option: T) => ReactElement;
   /**
    * item matcher
    */

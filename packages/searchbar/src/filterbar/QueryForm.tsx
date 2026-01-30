@@ -22,6 +22,7 @@
  */
 
 import { useFloatingTree } from "@floating-ui/react";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Callout } from "@react-fabric/core";
 import { Controller, Form, Input } from "@react-fabric/form";
 import { CodeEditor } from "@react-fabric/monaco";
@@ -98,7 +99,7 @@ export const QueryForm = ({
 
   return (
     <Form<QuerySchemaType>
-      schema={QuerySchema}
+      resolver={yupResolver(QuerySchema)}
       defaultValues={filterValue}
       onSubmit={handleSubmit}
     >
