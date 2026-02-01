@@ -78,6 +78,10 @@
     border-color: color-mix(in oklab, var(--fabric-bg) 65%, var(--color-tint));
   }
 
+  [class*="shadow"] {
+    --tw-shadow-color: var(--fabric-shadow);
+  }
+
   [class*="ring"] {
     --tw-ring-color: color-mix(
       in oklab,
@@ -233,7 +237,7 @@
     h5,
     h6,
     .mixed-lang {
-      text-align: start;
+      text-align: right;
     }
   }
 }

@@ -24,6 +24,10 @@
 /* stylelint-disable custom-property-pattern */
 
 @layer utilities {
+  [dir="rtl"] .fabric-lexicalEditor * {
+    text-align: start;
+  }
+
   .fabric-lexicalEditor,
   .fabric-lexicalToolbar {
     width: 21cm;
