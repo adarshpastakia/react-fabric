@@ -23,7 +23,8 @@
 
 @layer components {
   .fabric-buttonWrapper {
-    --color: var(--color-tint-700);
+    --color: var(--color-tint-600);
+    --color-muted: var(--color-tint-300);
 
     font-size: 1rem;
     border-radius: var(--rounding);
@@ -99,6 +100,11 @@
       flex: 0 1 1em;
     }
   }
+
+  [data-color-scheme="dark"] .fabric-buttonWrapper {
+    --color: var(--color-tint-500);
+    --color-muted: var(--color-tint-200);
+  }
 }
 
 @layer utilities {
@@ -157,7 +163,7 @@
     }
 
     &[data-color="muted"] {
-      --color: var(--color-tint-300);
+      --color: var(--color-muted);
     }
 
     &[data-variant="outline"] {
