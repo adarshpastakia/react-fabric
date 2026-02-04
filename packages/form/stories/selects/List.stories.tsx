@@ -38,7 +38,7 @@ const meta: Meta = {
   },
   decorators: [
     (Story) => (
-      <div className="max-w-[32rem] w-screen">
+      <div className="max-w-lg w-screen">
         <Story />
       </div>
     ),
@@ -123,7 +123,7 @@ export const Remote: ListStory = {
             <Icon icon={`iconify-color circle-flags--${opt.iconCode}`} />
             <span className="flex-1">
               <div>{opt.name.common}</div>
-              <div className=" group-data-[List-display]:hidden text-xs text-muted">
+              <div className=" group-data-List-display:hidden text-xs text-muted">
                 {opt.name.official}
               </div>
             </span>

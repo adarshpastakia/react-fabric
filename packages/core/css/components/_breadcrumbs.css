@@ -54,6 +54,8 @@
 
   .fabric-breadcrumbs[data-variant="classic"] {
     & > .fabric-breadcrumbLink {
+      display: flex;
+      align-items: center;
       list-style: none;
 
       &::after {
