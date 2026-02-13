@@ -227,7 +227,7 @@
     unicode-bidi: plaintext;
   }
 
-  [dir="rtl"] {
+  [dir="rtl"] :not:where(:dir(ltr), [dir="ltr"]) {
     p,
     pre,
     h1,
