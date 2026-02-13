@@ -21,6 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { isEmpty } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useCallback } from "react";
 import { HotKey } from "../../hotkeys/HotKey";
@@ -33,7 +34,6 @@ import {
   type TestProps,
 } from "../../types";
 import { Icon } from "../icon/Icon";
-import { isEmpty } from "@react-fabric/utilities";
 
 export interface NavigatorProps
   extends CssProp,
@@ -42,6 +42,10 @@ export interface NavigatorProps
     Partial<ChildProp> {
   length?: number;
   current?: number;
+  /**
+   * cycle past last or first item
+   */
+  enableCycle?: boolean;
   disableKeyHandlers?: boolean;
   /**
    * navigator button color
@@ -50,7 +54,7 @@ export interface NavigatorProps
   /**
    * navigation handler
    */
-  onNavigate: (dir: -1 | 1) => void;
+  onNavigate: (newIndex: number) => void;
 }
 
 /**
@@ -82,15 +86,22 @@ export const Navigator = ({
   children,
   length,
   current,
+  enableCycle,
   disableKeyHandlers,
   ...aria
 }: NavigatorProps) => {
   const navPrev = useCallback(
-    () => (isEmpty(current) || current !== 0) && onNavigate(-1),
-    [onNavigate, current],
+    () =>
+      isEmpty(current) || current !== 0
+        ? onNavigate((current ?? 0) - 1)
+        : onNavigate((length ?? 0) - 1),
+    [onNavigate, current, length],
   );
   const navNext = useCallback(
-    () => (isEmpty(current) || current + 1 < (length ?? 0)) && onNavigate(+1),
+    () =>
+      isEmpty(current) || current + 1 < (length ?? 0)
+        ? onNavigate((current ?? 0) + 1)
+        : onNavigate(0),
     [onNavigate, current, length],
   );
   return (
@@ -108,7 +119,7 @@ export const Navigator = ({
         aria-label="previous"
         data-ref="previous"
         icon="icon-[mdi--chevron-left]"
-        disabled={!isEmpty(current) && current === 0}
+        disabled={!enableCycle && !isEmpty(current) && current === 0}
         onClick={(e) => [e.stopPropagation(), navPrev()]}
       />
       {children}
@@ -119,7 +130,7 @@ export const Navigator = ({
         aria-label="next"
         data-ref="next"
         icon="icon-[mdi--chevron-right]"
-        disabled={!isEmpty(current) && current + 1 === length}
+        disabled={!enableCycle && !isEmpty(current) && current + 1 === length}
         onClick={(e) => [e.stopPropagation(), navNext()]}
       />
     </div>
