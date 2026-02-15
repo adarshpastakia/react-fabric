@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { useState, type ComponentProps, type ElementType } from "react";
+import { useRef, useState, type ComponentProps, type ElementType } from "react";
 import { type ModalProps } from "../types";
 
 type OverlayComponent = ElementType<ModalProps<AnyObject>>;
@@ -36,7 +36,8 @@ type OverlayComponent = ElementType<ModalProps<AnyObject>>;
  * of the overlay when it is closed, allowing you to handle the result in a controlled manner.
  *
  * @param ModalOrFlyout - The component to be used as an overlay.
- * @returns An array containing the current overlay and a function to open it.
+ * @param toggleOpen - If true, calling `openOverlay` while an overlay is already open will close the existing one instead of opening a new one.
+ * @returns An array containing the current overlay, a function to open it, and a boolean indicating if the overlay is open.
  *
  * @example
  * ```jsx
@@ -52,25 +53,36 @@ type OverlayComponent = ElementType<ModalProps<AnyObject>>;
  */
 export const useOverlayService = (
   ModalOrFlyout: OverlayComponent,
+  toggleOpen = false,
 ): [
   Overlay: React.ReactNode | null,
   openOverlay: (props?: KeyValue) => Promise<AnyObject>,
+  isOpen: boolean,
 ] => {
   const [Overlay, setOverlay] = useState<React.ReactNode | null>(null);
 
+  const existingOpenPromise = useRef<AnyObject | null>(null);
   const openOverlay = async ({
     onClose,
     ...props
   }: ComponentProps<typeof ModalOrFlyout> = {}) => {
+    if (toggleOpen && existingOpenPromise.current) {
+      existingOpenPromise.current();
+      existingOpenPromise.current = null;
+      return;
+    }
     return await new Promise((resolve) => {
-      const handleClose = (args: AnyObject) => {
+      existingOpenPromise.current = (args: AnyObject) => {
         setOverlay(null);
         resolve(args);
         onClose?.(args);
+        existingOpenPromise.current = null;
       };
-      setOverlay(<ModalOrFlyout {...props} onClose={handleClose} />);
+      setOverlay(
+        <ModalOrFlyout {...props} onClose={existingOpenPromise.current} />,
+      );
     });
   };
 
-  return [Overlay, openOverlay];
+  return [Overlay, openOverlay, !!existingOpenPromise.current];
 };
