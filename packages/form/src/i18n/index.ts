@@ -22,7 +22,7 @@
  */
 
 import { addTranslationBundle } from "@react-fabric/core";
-import ar from "./ar.json";
-import en from "./en.json";
+import ar from "./ar/form.json";
+import en from "./en/form.json";
 
 addTranslationBundle("form", { en, ar });

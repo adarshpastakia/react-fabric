@@ -22,7 +22,7 @@
  */
 
 import { addTranslationBundle } from "@react-fabric/core";
-import ar from "./ar.json";
-import en from "./en.json";
+import ar from "./ar/date.json";
+import en from "./en/date.json";
 
 addTranslationBundle("date", { en, ar });

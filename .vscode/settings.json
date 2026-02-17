@@ -15,7 +15,7 @@
     "ngClass",
     ".*ClassName"
   ],
-  "i18n-ally.pathMatcher": "{locale}.{ext}",
+  "i18n-ally.pathMatcher": "{locale}/{namespace}.{ext}",
   "i18n-ally.enabledParsers": ["json"],
   "i18n-ally.displayLanguage": "en",
   "i18n-ally.sourceLanguage": "en",
@@ -26,5 +26,13 @@
     "en": "GB",
     "ar": "AE"
   },
-  "i18n-ally.localesPaths": ["packages/**/src/i18n"]
+  "i18n-ally.localesPaths": [
+    "packages/core/src/i18n",
+    "packages/data/src/i18n",
+    "packages/date/src/i18n",
+    "packages/lexical/src/i18n",
+    "packages/form/src/i18n",
+    "packages/searchbar/src/i18n",
+    "packages/superdate/src/i18n"
+  ]
 }

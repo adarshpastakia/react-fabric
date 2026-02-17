@@ -23,8 +23,8 @@
 /* istanbul ignore file */
 
 import i18n from "i18next";
-import ar from "./ar.json";
-import en from "./en.json";
+import ar from "./ar/core.json";
+import en from "./en/core.json";
 
 /**
  * add language bundles using bundle keys as namespaces
