@@ -147,15 +147,12 @@ function setMenuPosition(
     return;
   }
 
-  const scrollTop = targetElem.closest(".lexical-scroller")?.scrollTop ?? 0;
-
   const targetRect = targetElem.getBoundingClientRect();
   const targetStyle = window.getComputedStyle(targetElem);
   const floatingElemRect = floatingElem.getBoundingClientRect();
   const anchorElementRect = anchorElem.getBoundingClientRect();
 
   const top =
-    scrollTop +
     targetRect.top +
     (parseInt(targetStyle.lineHeight, 10) - floatingElemRect.height) / 2 -
     anchorElementRect.top;
@@ -224,7 +221,6 @@ function hideTargetLine(targetLineElem: HTMLElement | null) {
 function useDraggableBlockMenu(
   editor: LexicalEditor,
   anchorElem: HTMLElement,
-  isEditable: boolean,
 ): JSX.Element {
   const scrollerElem = anchorElem.parentElement;
 
@@ -377,10 +373,6 @@ function useDraggableBlockMenu(
     hideTargetLine(targetLineRef.current);
   }
 
-  if (draggableBlockElem?.classList?.contains("editor-cover-page")) {
-    return <div />;
-  }
-
   return createPortal(
     <>
       <div
@@ -400,7 +392,7 @@ function useDraggableBlockMenu(
         </svg>
       </div>
       <div
-        className="pointer-events-none bg-primary h-1 absolute top-0 left-0 opacity-0 will-change-transform"
+        className="pointer-events-none bg-primary-200 h-1 absolute top-0 left-0 opacity-0 will-change-transform"
         ref={targetLineRef}
       />
     </>,
@@ -410,9 +402,12 @@ function useDraggableBlockMenu(
 
 export const DraggableBlockPlugin = ({
   anchorElem = document.body,
+  isEditable = true,
 }: {
   anchorElem?: HTMLElement;
+  isEditable: boolean;
 }): JSX.Element => {
   const [editor] = useLexicalComposerContext();
-  return useDraggableBlockMenu(editor, anchorElem, editor._editable);
+  if (!isEditable) return <></>;
+  return useDraggableBlockMenu(editor, anchorElem);
 };

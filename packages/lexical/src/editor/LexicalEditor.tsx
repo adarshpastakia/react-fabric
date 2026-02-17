@@ -38,13 +38,18 @@ import { TablePlugin } from "@lexical/react/LexicalTablePlugin";
 import { HeadingNode, QuoteNode } from "@lexical/rich-text";
 import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
 import { ErrorBoundary, Header, ThemeProvider } from "@react-fabric/core";
-import { debounce } from "@react-fabric/utilities";
+import { type ReactElement } from "@react-fabric/core/dist/types/types";
+import { debounce, EMPTY_ARRAY } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { type LexicalEditor as LXE } from "lexical";
+import {
+  type Klass,
+  type LexicalNode,
+  type LexicalNodeReplacement,
+  type LexicalEditor as LXE,
+} from "lexical";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { StickyNode } from "../nodes/StickyNode";
+import { CommentPlugin } from "../plugins/CommentPlugin";
 import { DraggableBlockPlugin } from "../plugins/DraggableBlockPlugin";
-import { StickyPlugin } from "../plugins/StickyPlugin";
 import { ToolbarPlugin } from "../plugins/ToolbarPlugin";
 import { LexicalTheme } from "./theme";
 
@@ -57,8 +62,16 @@ export interface EditorProps {
    */
   publishMode?: boolean;
 
-  header?: string;
-  footer?: string;
+  header?: ReactElement;
+  footer?: ReactElement;
+  coverPage?: ReactElement;
+
+  /**
+   * Username is used for comment plugin to identify the comment author. It can be used to conditionally render delete option for comments.
+   */
+  username?: string;
+
+  nodes?: ReadonlyArray<Klass<LexicalNode> | LexicalNodeReplacement>;
 
   onChange?: (value: KeyValue) => void;
   onDirty?: (isDirty: boolean) => void;
@@ -93,6 +106,11 @@ export const LexicalEditor = ({
   value,
   readOnly,
   publishMode,
+  header,
+  footer,
+  coverPage,
+  username = "Guest",
+  nodes = EMPTY_ARRAY,
   onChange,
   onDirty,
 }: EditorProps) => {
@@ -178,7 +196,7 @@ export const LexicalEditor = ({
           TableCellNode,
           TableNode,
           TableRowNode,
-          StickyNode,
+          ...nodes,
         ],
         onError,
       }) as InitialConfigType,
@@ -189,20 +207,25 @@ export const LexicalEditor = ({
     ({ children }: KeyValue) => {
       return !publishMode ? (
         <div className="lexical-scroller area-content overflow-auto">
-          <div
-            className={classNames("fabric-lexicalToolbar", "sticky top-0 z-1")}
-          >
-            <Header className="bg-base">
-              <ToolbarPlugin />
-            </Header>
-          </div>
+          {!readOnly && (
+            <div
+              className={classNames(
+                "fabric-lexicalToolbar",
+                "sticky top-0 z-1",
+              )}
+            >
+              <Header className="bg-base">
+                <ToolbarPlugin />
+              </Header>
+            </div>
+          )}
           {children}
         </div>
       ) : (
         children
       );
     },
-    [publishMode],
+    [publishMode, readOnly],
   );
 
   return (
@@ -220,11 +243,19 @@ export const LexicalEditor = ({
               onKeyDown={(e) => e.stopPropagation()}
               ref={setEditorContainer}
             >
+              {!publishMode && header && (
+                <div className="editor-header">{header}</div>
+              )}
+              {coverPage && (
+                <div className="editor-cover px-[2cm] py-[1cm]">
+                  {coverPage}
+                </div>
+              )}
               <RichTextPlugin
                 contentEditable={
                   <ContentEditable
                     readOnly={!!readOnly || publishMode}
-                    className="lexical-editor px-[2cm] py-[1cm] min-h-screen"
+                    className="lexical-editor min-h-screen px-[2cm] py-[1cm]"
                   />
                 }
                 placeholder={
@@ -238,11 +269,23 @@ export const LexicalEditor = ({
               <CheckListPlugin />
               <TablePlugin />
               <HistoryPlugin />
-              <StickyPlugin />
               <AutoFocusPlugin defaultSelection="rootStart" />
               {/** Custom plugins **/}
               {editorContainer && (
-                <DraggableBlockPlugin anchorElem={editorContainer} />
+                <DraggableBlockPlugin
+                  anchorElem={editorContainer}
+                  isEditable={!readOnly && !publishMode}
+                />
+              )}
+              {editorContainer && (
+                <CommentPlugin
+                  username={username}
+                  anchorElem={editorContainer}
+                  isPublishMode={!!publishMode}
+                />
+              )}
+              {!publishMode && footer && (
+                <div className="editor-footer">{footer}</div>
               )}
             </div>
           </ThemeProvider>

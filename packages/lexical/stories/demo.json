@@ -18,7 +18,15 @@
         "indent": 0,
         "type": "heading",
         "version": 1,
-        "tag": "h1"
+        "tag": "h1",
+        "$": {
+          "comment": {
+            "username": "Guest",
+            "timestamp": "2026-01-01T00:00:00.000Z",
+            "comment": "Heading node with tag h1",
+            "replies": []
+          }
+        }
       },
       {
         "children": [

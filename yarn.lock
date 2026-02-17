@@ -3285,10 +3285,10 @@
   dependencies:
     "@types/mdx" "^2.0.0"
 
-"@mdxeditor/editor@~3.48.0":
-  version "3.48.0"
-  resolved "https://registry.yarnpkg.com/@mdxeditor/editor/-/editor-3.48.0.tgz#128aa43e63183ae5241bfe5026e4faf513d96c5b"
-  integrity sha512-2JqEraWnjZWfBQvq+0VVWYTNJpjjxucbLWgj7Kgyc5piTU3SLalG5FjNpBz71esZADZPybMj2aSIx7cYZkwV8w==
+"@mdxeditor/editor@~3.52.3":
+  version "3.52.3"
+  resolved "https://registry.yarnpkg.com/@mdxeditor/editor/-/editor-3.52.3.tgz#4634f4b71c0d6baf5bebdd7cfe1145c7a8ab3947"
+  integrity sha512-hKPsNPx7cjxXPeiir0LjU2ZN5bWn7dWVxV8CaCddLztGc36e921ETNpu1AXo0+K7pxc7eBt/ExSw0WDOOk2Ibw==
   dependencies:
     "@codemirror/commands" "^6.2.4"
     "@codemirror/lang-markdown" "^6.2.3"
@@ -3320,7 +3320,7 @@
     cm6-theme-basic-light "^0.2.0"
     codemirror "^6.0.1"
     downshift "^7.6.0"
-    js-yaml "4.1.0"
+    js-yaml "4.1.1"
     lexical "^0.35.0"
     mdast-util-directive "^3.0.0"
     mdast-util-from-markdown "^2.0.0"
@@ -12405,6 +12405,13 @@ js-yaml@4.1.0, js-yaml@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.1.0.tgz#c1fb65f8f5017901cdd2c951864ba18458a10602"
   integrity sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==
+  dependencies:
+    argparse "^2.0.1"
+
+js-yaml@4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.1.1.tgz#854c292467705b699476e1a2decc0c8a3458806b"
+  integrity sha512-qQKT4zQxXl8lLwBtHMWwaTcGfFOZviOJet3Oy/xmGk2gZH677CJM9EvtfdSkgWcATZhj/55JZ0rmy3myCT5lsA==
   dependencies:
     argparse "^2.0.1"
 

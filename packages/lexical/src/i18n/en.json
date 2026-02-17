@@ -12,5 +12,7 @@
     "indentIn": "Indent In",
     "hilight": "Highlight",
     "clear": "Clear Formatting"
-  }
+  },
+  "addComment": "Add comment",
+  "reply": "Reply"
 }

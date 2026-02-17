@@ -49,12 +49,43 @@ export const Playground: Story = {
           <LexicalEditor
             {...args}
             value={json}
-            onChange={fn()}
-            onDirty={fn()}
+            header={
+              <div className="border-b-2 border-danger-500 px-8 py-2">
+                Header Content
+              </div>
+            }
+            footer={
+              <div className="border-t-2 border-tint-500 px-8 py-1 text-xs">
+                Footer Content
+              </div>
+            }
+            coverPage={
+              <table
+                border={2}
+                cellSpacing={4}
+                cellPadding={4}
+                style={{
+                  tableLayout: "fixed",
+                  width: "100%",
+                  border: "1px solid #ccc",
+                }}
+              >
+                <tbody>
+                  <tr>
+                    <td>Test</td>
+                    <td>Test</td>
+                    <td>Test</td>
+                  </tr>
+                </tbody>
+              </table>
+            }
           />
         </Viewport>
       </div>
     );
   },
-  args: {},
+  args: {
+    onChange: fn(),
+    onDirty: fn(),
+  },
 };
