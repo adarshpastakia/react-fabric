@@ -32,7 +32,7 @@ import {
 import { Format } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { intervalToDuration, isBefore } from "date-fns";
-import { useMemo, type ElementType } from "react";
+import { useEffect, useMemo, useState, type ElementType } from "react";
 import { useTranslation } from "react-i18next";
 import { type DateLike } from "../types";
 import { DateUtil } from "../utils/dateUtil";
@@ -76,9 +76,21 @@ export const DateDuration = ({
   ...props
 }: Props) => {
   const { t } = useTranslation("date");
+  const [interval, setDateInterval] = useState<
+    ReturnType<typeof intervalToDuration>
+  >({});
 
-  const interval = useMemo(() => {
-    return intervalToDuration({ start: new Date(date), end: new Date() });
+  useEffect(() => {
+    setDateInterval(
+      intervalToDuration({ start: new Date(date), end: new Date() }),
+    );
+    // update interval every minute
+    const tmr = setInterval(() => {
+      setDateInterval(
+        intervalToDuration({ start: new Date(date), end: new Date() }),
+      );
+    }, 60 * 1000);
+    return () => clearInterval(tmr);
   }, [date]);
 
   const label = useMemo(() => {
