@@ -70,7 +70,7 @@ export const _Modal: ModalStory = {
         <Button onClick={() => showModal({ ...args }).then(fn())}>
           Open Modal
         </Button>
-        {ModalNode}
+        <ModalNode />
       </Fragment>
     );
   },

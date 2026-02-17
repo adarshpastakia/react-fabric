@@ -207,7 +207,7 @@ export const _Form: FormStory = {
             </div>
           </div>
         </Form>
-        {ModalEl}
+        <ModalEl />
       </div>
     );
   },

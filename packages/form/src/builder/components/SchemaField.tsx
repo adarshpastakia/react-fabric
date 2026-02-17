@@ -284,7 +284,7 @@ export const SchemaField = ({
                   />
                 )}
               </Field>
-              {OptionModal}
+              <OptionModal />
             </Fragment>
           )}
           {type === DATA_TYPES.FILE && (
