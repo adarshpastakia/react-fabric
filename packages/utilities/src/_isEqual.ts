@@ -22,6 +22,7 @@
  */
 
 import { ascii } from "./_ascii";
+import { getByPath } from "./_getByPath";
 import { isBoolean, isNil, isNumber, isObject, isString } from "./_isType";
 
 /**
@@ -115,8 +116,8 @@ export const matchString = (
 export const compareValues =
   (order: "asc" | "desc" = "asc", key?: string) =>
   (a: unknown, b: unknown) => {
-    const aValue: string = key && isObject(a) ? a[key] : a;
-    const bValue: string = key && isObject(b) ? b[key] : b;
+    const aValue: any = key && isObject(a) ? getByPath(a, key, "") : a;
+    const bValue: any = key && isObject(b) ? getByPath(b, key, "") : b;
 
     const bigger = order === "asc" ? 1 : -1;
     const smaller = order === "desc" ? 1 : -1;
