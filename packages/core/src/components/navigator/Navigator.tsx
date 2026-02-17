@@ -40,12 +40,15 @@ export interface NavigatorProps
     AriaProps,
     TestProps,
     Partial<ChildProp> {
-  length?: number;
-  current?: number;
   /**
-   * cycle past last or first item
+   * item list length (ignore to enable infinite navigation)
    */
-  enableCycle?: boolean;
+  length?: number;
+  /**
+   * current item index (ignore to enable infinite navigation)
+   */
+  current?: number;
+
   disableKeyHandlers?: boolean;
   /**
    * navigator button color
@@ -54,7 +57,7 @@ export interface NavigatorProps
   /**
    * navigation handler
    */
-  onNavigate: (newIndex: number) => void;
+  onNavigate: (dir: -1 | 1) => void;
 }
 
 /**
@@ -86,22 +89,15 @@ export const Navigator = ({
   children,
   length,
   current,
-  enableCycle,
   disableKeyHandlers,
   ...aria
 }: NavigatorProps) => {
   const navPrev = useCallback(
-    () =>
-      isEmpty(current) || current !== 0
-        ? onNavigate((current ?? 0) - 1)
-        : onNavigate((length ?? 0) - 1),
+    () => (isEmpty(current) || current !== 0) && onNavigate(-1),
     [onNavigate, current, length],
   );
   const navNext = useCallback(
-    () =>
-      isEmpty(current) || current + 1 < (length ?? 0)
-        ? onNavigate((current ?? 0) + 1)
-        : onNavigate(0),
+    () => (isEmpty(current) || current + 1 < (length ?? 0)) && onNavigate(+1),
     [onNavigate, current, length],
   );
   return (
@@ -119,7 +115,7 @@ export const Navigator = ({
         aria-label="previous"
         data-ref="previous"
         icon="icon-[mdi--chevron-left]"
-        disabled={!enableCycle && !isEmpty(current) && current === 0}
+        disabled={!isEmpty(current) && current === 0}
         onClick={(e) => [e.stopPropagation(), navPrev()]}
       />
       {children}
@@ -130,7 +126,7 @@ export const Navigator = ({
         aria-label="next"
         data-ref="next"
         icon="icon-[mdi--chevron-right]"
-        disabled={!enableCycle && !isEmpty(current) && current + 1 === length}
+        disabled={!isEmpty(current) && current + 1 === length}
         onClick={(e) => [e.stopPropagation(), navNext()]}
       />
     </div>

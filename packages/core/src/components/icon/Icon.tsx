@@ -191,29 +191,29 @@ export const Icon = ({
   /** ***************** render icon *******************/
   const iconEl = useMemo(() => {
     if (isValidElement(icon)) return icon;
-    if (!isString(icon)) {
-      throw Error("Invalid icon expected string");
+    if (isString(icon)) {
+      return isSvg ? (
+        <svg viewBox={viewBox}>
+          <path fill="currentColor" d={icon.toString()} />
+        </svg>
+      ) : icon?.toString().length <= 4 ? (
+        <svg role="img">
+          <text
+            x="50%"
+            y="50%"
+            dy=".1em"
+            dominantBaseline="middle"
+            textAnchor="middle"
+            style={{ fontSize: SvgTextSize[icon.length] }}
+          >
+            {icon}
+          </text>
+        </svg>
+      ) : (
+        <i className={`${icon}`} />
+      );
     }
-    return isSvg ? (
-      <svg viewBox={viewBox}>
-        <path fill="currentColor" d={icon.toString()} />
-      </svg>
-    ) : icon?.toString().length <= 4 ? (
-      <svg role="img">
-        <text
-          x="50%"
-          y="50%"
-          dy=".1em"
-          dominantBaseline="middle"
-          textAnchor="middle"
-          style={{ fontSize: SvgTextSize[icon.length] }}
-        >
-          {icon}
-        </text>
-      </svg>
-    ) : (
-      <i className={`${icon}`} />
-    );
+    throw Error("Invalid icon expected string");
   }, [icon, isSvg, viewBox]);
 
   return (

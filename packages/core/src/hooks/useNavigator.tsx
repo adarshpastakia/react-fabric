@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 /**
  * Custom hook to manage navigation through a list of items.
@@ -43,19 +43,18 @@ import { useCallback, useMemo, useRef, useState } from "react";
  */
 export const useNavigator = (totalCount = 0, defaultIndex = 0) => {
   const [currentIndex, setCurrentIndex] = useState(defaultIndex);
-  const refCurrent = useRef(defaultIndex);
 
   const onNavigate = useCallback(
     (dir: 1 | -1) => {
-      if (dir === -1) {
-        refCurrent.current =
-          refCurrent.current > 0 ? refCurrent.current - 1 : totalCount - 1;
-      }
-      if (dir === 1) {
-        refCurrent.current =
-          refCurrent.current + 1 < totalCount ? refCurrent.current + 1 : 0;
-      }
-      setCurrentIndex(refCurrent.current);
+      setCurrentIndex((prevValue) => {
+        if (dir === -1) {
+          return prevValue > 0 ? prevValue - 1 : totalCount - 1;
+        }
+        if (dir === 1) {
+          return prevValue + 1 < totalCount ? prevValue + 1 : 0;
+        }
+        return prevValue;
+      });
     },
     [totalCount],
   );

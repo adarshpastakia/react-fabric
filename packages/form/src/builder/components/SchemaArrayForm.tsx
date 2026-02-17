@@ -149,7 +149,7 @@ export const SchemaArrayForm = ({
           />
         ))}
       </Content>
-      {AddModal}
+      <AddModal />
     </Wrapper>
   );
 };
