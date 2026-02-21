@@ -148,6 +148,7 @@ const DropdownElement = ({
     enabled: !disabled,
     handleClose: safePolygon({ blockPointerEvents: true }),
   });
+
   const dismiss = useDismiss(context, {
     referencePress: true,
   });
@@ -167,6 +168,11 @@ const DropdownElement = ({
     }
     return undefined;
   }, [refs, isOpen, fitToParent]);
+
+  const dismissDropdown = useCallback(() => {
+    setIsOpen(false);
+    onClose?.();
+  }, []);
 
   const tryClosing = useCallback(
     (e: React.MouseEvent) => {
@@ -259,7 +265,9 @@ const DropdownElement = ({
                 )}
                 onMouseUpCapture={tryClosing}
               >
-                {panel}
+                {cloneElement(panel, {
+                  dismiss: dismissDropdown,
+                })}
               </div>
               {showArrow && (
                 <FloatingArrow
