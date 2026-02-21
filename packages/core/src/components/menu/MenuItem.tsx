@@ -177,7 +177,7 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
         }}
         {...(minimal ? {} : aria)}
       >
-        {hotKey && (
+        {!disabled && hotKey && (
           <HotKey keyCombo={hotKey} handler={() => elRef.current?.click?.()} />
         )}
         {menuLabel}

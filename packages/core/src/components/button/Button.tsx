@@ -292,7 +292,9 @@ export const Button = <Tag extends React.ElementType = "button">({
       data-loading={busy || loading}
       data-disabled={disabled}
     >
-      {hotKey && <HotKey keyCombo={hotKey} handler={hotKeyHandler.current} />}
+      {!disabled && hotKey && (
+        <HotKey keyCombo={hotKey} handler={hotKeyHandler.current} />
+      )}
       <TooltipWrapper {...tooltipProps}>
         <E
           ref={mergeRefs(ref, refEl)}
