@@ -126,7 +126,7 @@ export const AvatarInput = ({
   }, [value, defaultValue]);
 
   return (
-    <div className="flex flex-nowrap items-end overflow-hidden">
+    <div className="flex flex-nowrap items-end overflow-hidden p-px">
       <div
         className={classNames(
           "inline-block leading-none relative outline overflow-hidden",
