@@ -244,7 +244,7 @@ export const CodeEditor = ({
   );
 
   const resetSchema = useCallback((_: unknown, monaco: typeof monacoEditor) => {
-    monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+    monaco.languages?.json?.jsonDefaults.setDiagnosticsOptions({
       validate: true,
       allowComments: false,
       schemas: [],
