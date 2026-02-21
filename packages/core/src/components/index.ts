@@ -23,10 +23,11 @@
 
 export { ActionLabel } from "./actionLabel/ActionLabel";
 export {
-  LoadingBars,
   AnimationIndicator,
-  LoadingSpinner,
+  AnimationLoader,
+  LoadingBars,
   LoadingLine,
+  LoadingSpinner,
   Skeleton,
 } from "./animations/Animations";
 export { Avatar } from "./avatar/Avatar";
@@ -47,7 +48,7 @@ export { Divider } from "./divider/Divider";
 export { Dropdown, DropdownDismiss } from "./dropdown/Dropdown";
 export { DropdownTool } from "./dropdown/DropdownTool";
 export { EmptyContent } from "./empty/EmptyContent";
-export { Icon, getIconProps } from "./icon/Icon";
+export { getIconProps, Icon } from "./icon/Icon";
 export { Image, Video } from "./media/Media";
 export { ContextMenu } from "./menu/ContextMenu";
 export { Menu } from "./menu/Menu";
