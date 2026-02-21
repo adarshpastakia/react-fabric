@@ -37,7 +37,6 @@ import {
   useFormContext,
   useForm as useFormHook,
   useWatch,
-  type DefaultValues,
   type FormState,
   type Path,
   type Resolver,
@@ -70,7 +69,11 @@ export interface FormProps<K extends KeyValue = KeyValue> {
   /**
    * default data values
    */
-  defaultValues?: K;
+  defaultValues?: K | Promise<K>;
+  /**
+   * reset values on defaultValues change (workaround for using fetch result)
+   */
+  resetOnChange?: boolean;
   /**
    * change callback
    */
@@ -115,6 +118,7 @@ export const Form = <K extends KeyValue>({
   formRef,
   resolver,
   children,
+  resetOnChange,
   defaultValues = EMPTY_OBJECT as K,
   onSubmit = DEFAULT_SUBMIT,
   onChange,
@@ -124,7 +128,7 @@ export const Form = <K extends KeyValue>({
   const form = useFormHook<K>({
     shouldFocusError: true,
     resolver,
-    defaultValues: defaultValues as DefaultValues<K>,
+    defaultValues: async () => await Promise.resolve(defaultValues),
   });
 
   const [, startTransition] = useTransition();
@@ -136,16 +140,19 @@ export const Form = <K extends KeyValue>({
     return () => subscription.unsubscribe();
   }, [form.watch, changeHandler]);
 
-  const handleReset = useCallback(
-    (reset: AnyObject = {}) => {
-      form.reset(reset);
-      form.clearErrors();
-      ref.current
-        ?.querySelector<HTMLElement>("[auto-focus], input, textarea")
-        ?.focus();
-    },
-    [defaultValues],
-  );
+  const handleReset = useCallback((reset: AnyObject = {}) => {
+    form.reset(reset);
+    form.clearErrors();
+    ref.current
+      ?.querySelector<HTMLElement>("[auto-focus], input, textarea")
+      ?.focus();
+  }, []);
+
+  useEffect(() => {
+    if (resetOnChange) {
+      handleReset(defaultValues);
+    }
+  }, [defaultValues, resetOnChange]);
 
   useImperativeHandle(
     formRef,
