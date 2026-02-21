@@ -142,6 +142,7 @@ export const useFileUploader = (
     } as UploaderState,
     (state: UploaderState) => {
       if (initialList) {
+        state.files = new Map();
         if (isString(initialList)) {
           const key = uuid();
           state.files.set(key, {
