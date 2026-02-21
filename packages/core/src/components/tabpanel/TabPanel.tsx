@@ -21,6 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { getValue } from "@react-fabric/utilities";
 import classNames from "classnames";
 import {
   Children,
@@ -153,7 +154,7 @@ export const TabPanel = ({
   }, [children]);
 
   useEffect(() => {
-    setActive(activeTab);
+    setActive(getValue(activeTab ?? tabs[0]?.props.id));
   }, [activeTab]);
 
   const activeTabPanel = useMemo(() => {
