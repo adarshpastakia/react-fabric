@@ -23,6 +23,8 @@
 
 import { faker } from "@faker-js/faker";
 import type { Meta, StoryObj } from "@storybook/react";
+import { Navigate, Route, Routes } from "react-router";
+import { HashRouter, NavLink } from "react-router-dom";
 import { fn } from "storybook/test";
 import {
   Content,
@@ -35,8 +37,6 @@ import {
   Title,
   Viewport,
 } from "../../../src";
-import { MemoryRouter, Navigate, Route, Routes } from "react-router";
-import { HashRouter, NavLink } from "react-router-dom";
 
 const meta: Meta = {
   component: TabPanel,

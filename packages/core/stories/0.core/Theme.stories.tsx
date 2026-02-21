@@ -34,8 +34,6 @@ import {
 import type { Meta, StoryObj } from "@storybook/react";
 import { memo, useDeferredValue, useMemo } from "react";
 import {
-  LoadingBars,
-  LoadingSpinner,
   Avatar,
   Button,
   Callout,
@@ -47,6 +45,8 @@ import {
   Divider,
   EmptyContent,
   Icon,
+  LoadingBars,
+  LoadingSpinner,
   Page,
   ProgressBar,
   ProgressCircle,
@@ -311,10 +311,20 @@ const Sample = memo(() => (
     </Divider>
     <Row>
       <Col className="span-6">
-        <Message color="primary" title="Title" message="Floating message...." />
+        <Message
+          icon="icon-[mdi--react]"
+          color="primary"
+          title="Title"
+          message="Floating message...."
+        />
       </Col>
       <Col className="span-6">
-        <Message color="accent" title="Title" message="Floating message...." />
+        <Message
+          icon="icon-[mdi--react]"
+          color="accent"
+          title="Title"
+          message="Floating message...."
+        />
       </Col>
       <Col className="span-6">
         <Toast

@@ -23,11 +23,10 @@
 
 import { faker } from "@faker-js/faker";
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "storybook/test";
 import { Fragment } from "react/jsx-runtime";
+import { fn } from "storybook/test";
 import {
   Button,
-  Card,
   Content,
   Footer,
   Navigator,

@@ -23,7 +23,6 @@
 
 import { Viewport } from "@react-fabric/core";
 import type { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
 import { fn } from "storybook/test";
 import { LexicalEditor } from "../src";
 import json from "./demo.json";
@@ -42,7 +41,6 @@ type Story = StoryObj<typeof LexicalEditor>;
 
 export const Playground: Story = {
   render: (args) => {
-    const [lang, setLang] = useState<AnyObject>("json");
     return (
       <div className="min-h-[600px]">
         <Viewport>

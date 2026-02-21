@@ -23,7 +23,7 @@
 
 import { faker, fakerAR } from "@faker-js/faker";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Abbr, Mark, Text, Title } from "../../src";
+import { Abbr, Text } from "../../src";
 
 const meta: Meta = {
   component: Abbr,

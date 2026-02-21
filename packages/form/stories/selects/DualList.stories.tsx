@@ -36,7 +36,7 @@ const meta: Meta = {
   },
   decorators: [
     (Story) => (
-      <div className="max-w-[36rem] w-screen">
+      <div className="max-w-xl w-screen">
         <Story />
       </div>
     ),
@@ -52,12 +52,12 @@ export const _DualList: DualListStory = {
       <DualList
         {...args}
         options={Countries.list}
-        labelProperty="name"
-        valueProperty="iso3"
+        labelProperty="name.common"
+        valueProperty="cca3"
         renderer={(opt) => (
           <div className="flex gap-2 items-center">
-            <Icon icon={`icon-[circle-flags--${opt.iso2}]`} />
-            <span className="flex-1 truncate">{opt.name}</span>
+            <Icon icon={`iconify-color circle-flags--${opt.iconCode}`} />
+            <span className="flex-1 truncate">{opt.name.common}</span>
             <span className="rounded-full text-xs bg-tint-500/10 px-1 py-px">
               {opt.phone}
             </span>

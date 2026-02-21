@@ -23,15 +23,14 @@
 
 import { faker, fakerAR } from "@faker-js/faker";
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "storybook/test";
 import {
-  Section,
-  Page,
-  Text,
-  Viewport,
   Aside,
   Content,
   Header,
+  Page,
+  Section,
+  Text,
+  Viewport,
 } from "../../src";
 
 const meta: Meta = {

@@ -210,9 +210,10 @@ export const _SearchBar: SearchBarStory = {
                 Countries.list
                   .filter(
                     (ctr) =>
-                      matchString(ctr.name, q) || matchString(ctr.fullname, q),
+                      matchString(ctr.name.common, q) ||
+                      matchString(ctr.name.official, q),
                   )
-                  .map((c) => c.name),
+                  .map((c) => c.name.common),
               );
             }, 1000);
           });

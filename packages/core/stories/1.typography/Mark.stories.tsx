@@ -23,14 +23,14 @@
 
 import { faker, fakerAR } from "@faker-js/faker";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Abbr, Mark, Text, Title } from "../../src";
+import { Mark, Text } from "../../src";
 
 const meta: Meta = {
   component: Mark,
   title: "@core/Typography",
   parameters: {
     controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/Typpography.test.tsx"],
+    jest: ["core/tests/Mark.test.tsx"],
   },
   decorators: [
     (Story) => (

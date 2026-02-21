@@ -31,7 +31,7 @@ const meta: Meta = {
   title: "@core/Typography",
   parameters: {
     controls: { exclude: /^(on.*|children|as)/ },
-    jest: ["core/tests/Typpography.test.tsx"],
+    jest: ["core/tests/Text.test.tsx"],
   },
   decorators: [
     (Story) => (
