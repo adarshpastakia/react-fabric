@@ -105,7 +105,7 @@ export const DualList = <T extends AnyObject = string>({
   groupProperty,
   height = "18rem",
   labelProperty = "label" as AnyObject,
-  valueProperty = "id" as AnyObject,
+  valueProperty = "value" as AnyObject,
   renderer,
   onChange,
   // @ts-expect-error ignore

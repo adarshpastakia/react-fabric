@@ -68,7 +68,7 @@ export const Select = <T extends AnyObject = string>({
   hideHandle,
   groupProperty,
   labelProperty = "label" as AnyObject,
-  valueProperty = "id" as AnyObject,
+  valueProperty = "value" as AnyObject,
   sortProperty,
   infoProperty,
   multiple,
