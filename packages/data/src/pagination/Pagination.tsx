@@ -70,7 +70,7 @@ export const Pagination = memo(
               key={pg}
               onClick={() => onPageChange(pg)}
               className={classNames(
-                "leading-none text-sm hover:bg-primary-200 w-8 h-6 rounded-full",
+                "leading-none text-sm hover:bg-primary-200 w-8 h-6 rounded-full cursor-pointer",
                 page === pg && "bg-primary-500 text-white pointer-events-none",
               )}
             >
@@ -87,7 +87,7 @@ export const Pagination = memo(
               key={pg}
               onClick={() => onPageChange(pg)}
               className={classNames(
-                "leading-none text-sm hover:bg-primary-200 w-8 h-6 rounded-full",
+                "leading-none text-sm hover:bg-primary-200 w-8 h-6 rounded-full cursor-pointer",
                 page === pg && "bg-primary-500 text-white pointer-events-none",
               )}
             >
@@ -104,7 +104,7 @@ export const Pagination = memo(
               key={pg}
               onClick={() => onPageChange(pg)}
               className={classNames(
-                "leading-none text-sm hover:bg-primary-200 w-8 h-6 rounded-full",
+                "leading-none text-sm hover:bg-primary-200 w-8 h-6 rounded-full cursor-pointer",
                 page === pg && "bg-primary-500 text-white pointer-events-none",
               )}
             >
@@ -121,7 +121,7 @@ export const Pagination = memo(
         <button
           onClick={() => onPageChange(0)}
           className={classNames(
-            "leading-none text-sm hover:bg-primary-200 w-8 h-6 rounded-full",
+            "leading-none text-sm hover:bg-primary-200 w-8 h-6 rounded-full cursor-pointer",
             page === 0 && "pointer-events-none text-tint-300",
           )}
         >
@@ -130,7 +130,7 @@ export const Pagination = memo(
         <button
           onClick={() => onPageChange(page - 1)}
           className={classNames(
-            "leading-none text-sm hover:bg-primary-200 w-8 h-6 rounded-full",
+            "leading-none text-sm hover:bg-primary-200 w-8 h-6 rounded-full cursor-pointer",
             page === 0 && "pointer-events-none text-tint-300",
           )}
         >
@@ -145,7 +145,7 @@ export const Pagination = memo(
         <button
           onClick={() => onPageChange(page + 1)}
           className={classNames(
-            "leading-none text-sm hover:bg-primary-200 w-8 h-6 rounded-full",
+            "leading-none text-sm hover:bg-primary-200 w-8 h-6 rounded-full cursor-pointer",
             page + 1 >= totalPages && "pointer-events-none text-tint-300",
           )}
         >
@@ -154,7 +154,7 @@ export const Pagination = memo(
         <button
           onClick={() => onPageChange(totalPages - 1)}
           className={classNames(
-            "leading-none text-sm hover:bg-primary-200 w-8 h-6 rounded-full",
+            "leading-none text-sm hover:bg-primary-200 w-8 h-6 rounded-full cursor-pointer",
             page + 1 >= totalPages && "pointer-events-none text-tint-300",
           )}
         >
