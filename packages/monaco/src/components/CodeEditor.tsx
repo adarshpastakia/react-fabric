@@ -43,8 +43,14 @@ import {
 import MonacoEditor from "react-monaco-editor";
 
 export interface MonacoEditorRef {
+  focus: () => void;
   validate: () => boolean;
   getValue: () => string | undefined;
+
+  addAction?: monacoEditor.editor.IStandaloneCodeEditor["addAction"];
+  addCommand?: monacoEditor.editor.IStandaloneCodeEditor["addCommand"];
+  executeCommand?: monacoEditor.editor.IStandaloneCodeEditor["executeCommand"];
+  setModel?: monacoEditor.editor.IStandaloneCodeEditor["setModel"];
 }
 
 export interface BaseEditorProps {
@@ -115,7 +121,8 @@ export const CodeEditor = ({
   onChange,
   language = "json",
 }: EditorProps & RefProp<MonacoEditorRef>) => {
-  const [editorRef, setEditorRef] = useState<AnyObject>();
+  const [editorRef, setEditorRef] =
+    useState<monacoEditor.editor.IStandaloneCodeEditor>();
   const [monacoRef, setMonacoRef] = useState<typeof monacoEditor>();
   const isDark = useIsDark();
 
@@ -160,6 +167,13 @@ export const CodeEditor = ({
   useImperativeHandle(
     ref,
     () => ({
+      addAction: editorRef?.addAction.bind(editorRef),
+      addCommand: editorRef?.addCommand.bind(editorRef),
+      executeCommand: editorRef?.executeCommand.bind(editorRef),
+      setModel: editorRef?.setModel.bind(editorRef),
+      focus() {
+        editorRef?.focus();
+      },
       getValue() {
         return editorRef?.getValue();
       },
@@ -173,14 +187,14 @@ export const CodeEditor = ({
         }
         try {
           let val = editorRef?.getValue();
-          if (language === "json") val = JSON.parse(val);
+          if (language === "json") val = JSON.parse(val ?? "{}");
           return required ? !isEmpty(val) : true;
         } catch {
           return false;
         }
       },
     }),
-    [required, language],
+    [required, language, editorRef],
   );
 
   const disposeRef = useRef<AnyObject>(null);
