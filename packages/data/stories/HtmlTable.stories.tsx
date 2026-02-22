@@ -21,19 +21,55 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import "./i18n";
+import { Icon } from "@react-fabric/core";
+import { Countries } from "@react-fabric/utilities";
+import type { Meta, StoryObj } from "@storybook/react";
+import { HtmlTable } from "../src";
 
-export { CheckList } from "./checklist/CheckList";
-export { Histogram } from "./histogram/Histogram";
-export { JsonViewer } from "./json/JsonViewer";
-export { Pagination } from "./pagination/Pagination";
-export { HtmlTable } from "./table/HtmlTable";
-export { Table } from "./table/Table";
-export { type TableColumn, type TableRef } from "./table/types";
-export { TreePanel } from "./tree/TreePanel";
-export { type TreeNodeType as TreeNode } from "./tree/types";
-export { VirtualGallery, type VirtualGalleryRef } from "./virtual/Gallery";
-export { VirtualList, type VirtualListRef } from "./virtual/List";
+const meta: Meta = {
+  component: HtmlTable,
+  title: "@data/HtmlTable",
+  parameters: {
+    controls: { exclude: /^(on.*|children|as)/ },
+    jest: ["data/tests/Table.test.tsx"],
+  },
+  decorators: [
+    (Story) => (
+      <div className="max-w-2xl p-4">
+        <Story />
+      </div>
+    ),
+  ],
+};
 
-export * from "./hooks/useFilteredList";
-export * from "./hooks/usePagination";
+export default meta;
+type TableStory = StoryObj<typeof HtmlTable>;
+
+export const _HtmlTable: TableStory = {
+  render: (args) => {
+    return <HtmlTable {...args} />;
+  },
+  args: {
+    data: Countries.list,
+    columns: [
+      {
+        id: "iconCode",
+        align: "center",
+        width: "2.5rem",
+        renderer(value) {
+          return (
+            <Icon size="md" icon={`iconify-color circle-flags--${value}`} />
+          );
+        },
+      },
+      {
+        id: "name.common",
+        label: "Name",
+      },
+      {
+        id: "capital",
+        label: "Capital",
+      },
+    ],
+  },
+};
