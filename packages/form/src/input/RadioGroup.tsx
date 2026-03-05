@@ -69,6 +69,10 @@ export interface RadioGroupProps extends ChildrenProp<typeof Radio>, CssProp {
    */
   vertical?: boolean;
   /**
+   * value
+   */
+  value?: string | number;
+  /**
    * change handler
    */
   onChange?: (value: AnyObject) => void;
@@ -87,6 +91,7 @@ export const RadioGroup = ({
   name,
   className,
   optionWidth,
+  value,
   onChange,
   ...rest
 }: RadioGroupProps) => {
@@ -96,6 +101,7 @@ export const RadioGroup = ({
         {cloneChildren(children, (child: AnyObject) =>
           cloneElement(child, {
             name,
+            checked: child.props.value === value,
             onChange,
             width: optionWidth,
           }),

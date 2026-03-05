@@ -35,7 +35,7 @@ const meta: Meta = {
   },
   decorators: [
     (Story) => (
-      <div className="max-w-[32rem] w-screen">
+      <div className="max-w-lg w-screen">
         <Story />
       </div>
     ),
