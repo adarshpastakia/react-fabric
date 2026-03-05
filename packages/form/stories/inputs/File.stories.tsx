@@ -24,11 +24,10 @@
 import { Button, Icon, ProgressBar } from "@react-fabric/core";
 import { FileUtil, Format } from "@react-fabric/utilities";
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "storybook/test";
 import axios from "axios";
 import { http, HttpResponse } from "msw";
-import { useEffect } from "react";
 import { Fragment } from "react/jsx-runtime";
+import { fn } from "storybook/test";
 import { FileInput, useFileUploader } from "../../src";
 
 const meta: Meta = {
@@ -49,7 +48,7 @@ const meta: Meta = {
   },
   decorators: [
     (Story) => (
-      <div className="max-w-[32rem] w-screen">
+      <div className="max-w-lg w-screen">
         <Story />
       </div>
     ),
@@ -75,16 +74,14 @@ export const _FileInput: FileStory = {
 export const FileUploader = {
   render: () => {
     const http = axios.create({});
-    const { pending, files, list, upload, remove } = useFileUploader(
+    const { pending, files, upload, remove } = useFileUploader(
       (data, config) =>
         http
           .postForm("/api/upload", data, config)
           .then((resp) => resp.data?.path ?? "pathfor file"),
+      undefined,
+      { multiple: true, onChange: (v) => (fn()(v), console.log(v)) },
     );
-
-    useEffect(() => {
-      list && fn()(list);
-    }, [list]);
 
     return (
       <div>
@@ -121,7 +118,7 @@ export const FileUploader = {
                     bg="danger"
                     color="white"
                     size="sm"
-                    className="p-[2px]"
+                    className="p-0.5"
                     aria-label="abort"
                     onClick={() => file.abort?.()}
                   />

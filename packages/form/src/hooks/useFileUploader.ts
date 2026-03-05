@@ -23,7 +23,7 @@
 
 import { isArray, isObject, isString, uuid } from "@react-fabric/utilities";
 import { type AxiosRequestConfig } from "axios";
-import { useCallback, useReducer } from "react";
+import { useCallback, useEffect, useReducer } from "react";
 
 export type UploadHandler = (
   data: FormData,
@@ -54,6 +54,7 @@ type UploaderActions =
   | { type: "stop"; key: string; path: string }
   | { type: "error"; key: string; error: string }
   | { type: "progress"; key: string; progress: number }
+  | { type: "init"; initialList?: string | FileInfo | FileInfo[] }
   | { type: "remove"; key: string }
   | { type: "abort"; key: string };
 
@@ -76,7 +77,13 @@ type UploaderActions =
 export const useFileUploader = (
   uploader: UploadHandler,
   initialList?: string | FileInfo | FileInfo[],
-  multiple = true,
+  {
+    multiple = true,
+    onChange,
+  }: {
+    multiple?: boolean;
+    onChange?: (files: FileInfo[] | FileInfo | null) => void;
+  } = {},
 ) => {
   const [state, dispatch] = useReducer(
     (state: UploaderState, action: UploaderActions) => {
@@ -119,6 +126,29 @@ export const useFileUploader = (
       if (action.type === "remove") {
         state.files.delete(action.key);
       }
+      if (action.type === "init") {
+        state.files = new Map();
+        if (isString(action.initialList)) {
+          const key = uuid();
+          state.files.set(key, {
+            key,
+            path: action.initialList,
+            filename: "",
+            size: 0,
+            mime: "",
+          });
+        }
+        if (isObject(action.initialList)) {
+          const key = uuid();
+          state.files.set(key, { ...(action.initialList as AnyObject), key });
+        }
+        if (isArray(action.initialList)) {
+          action.initialList.forEach((file) => {
+            const key = uuid();
+            state.files.set(key, { ...file, key });
+          });
+        }
+      }
       state.list = Array.from(state.files.values())
         .map((file) => {
           return (
@@ -134,40 +164,22 @@ export const useFileUploader = (
           );
         })
         .filter(Boolean) as FileInfo[];
+      if (action.type === "remove" || action.type === "stop") {
+        setTimeout(() => {
+          onChange?.(multiple ? state.list : state.list[0] ?? null);
+        }, 100);
+      }
       return { ...state };
     },
     {
       files: new Map(),
       count: 0,
     } as UploaderState,
-    (state: UploaderState) => {
-      if (initialList) {
-        state.files = new Map();
-        if (isString(initialList)) {
-          const key = uuid();
-          state.files.set(key, {
-            key,
-            path: initialList,
-            filename: "",
-            size: 0,
-            mime: "",
-          });
-        }
-        if (isObject(initialList)) {
-          const key = uuid();
-          state.files.set(key, { ...(initialList as AnyObject), key });
-        }
-        if (isArray(initialList)) {
-          initialList.forEach((file) => {
-            const key = uuid();
-            state.files.set(key, { ...file, key });
-          });
-        }
-      }
-      state.list = Array.from(state.files.values());
-      return state;
-    },
   );
+
+  useEffect(() => {
+    dispatch({ type: "init", initialList });
+  }, [initialList]);
 
   const doUpload = useCallback(async (key: string, file: File) => {
     const data = new FormData();
@@ -245,7 +257,6 @@ export const useFileUploader = (
     remove,
     retry,
     pending: state.count,
-    list: state.list,
     files: Array.from(state.files.values()),
   };
 };

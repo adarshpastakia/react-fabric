@@ -159,9 +159,9 @@ export const FormBuilder: Story = {
       optionLists: {
         countries: {
           options: Countries.list,
-          valueProperty: "iso2",
-          labelProperty: "name",
-          groupProperty: "continent",
+          valueProperty: "cca3",
+          labelProperty: "name.common",
+          groupProperty: "region",
         },
       },
     });

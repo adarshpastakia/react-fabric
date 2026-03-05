@@ -37,6 +37,7 @@ export const FileField = ({
   accept,
   value,
   fileUrl,
+  onChange,
   multiple,
   invalid,
   error,
@@ -46,20 +47,21 @@ export const FileField = ({
   inline?: boolean;
   invalid?: boolean;
   error?: AnyObject;
+  onChange?: (value: any) => void;
   fileUrl?: (path: string) => string;
   uploadHandler: UploadHandler;
 }) => {
   const { t } = useTranslation();
-  const { pending, files, list, upload, remove } = useFileUploader(
+  const { pending, files, upload, remove } = useFileUploader(
     async (data, config) => await uploadHandler?.(data, config),
     value,
-    multiple,
+    { multiple, onChange },
   );
 
   return (
     <Fragment>
       <Field plain inline={inline} label={label}>
-        <HiddenInput hiddenValue={multiple ? list : list?.[0]} {...rest} />
+        <HiddenInput value={multiple ? files : files?.[0]} {...rest} />
       </Field>
       <Tooltip
         color="danger-200"
