@@ -45,7 +45,7 @@ export interface MenuItemProps extends CssProp, AriaProps, TestProps {
   /**
    * append label badge text
    */
-  appendLabel?: string | false;
+  appendLabel?: JSX.Element | string | number | false;
   /**
    * menu color
    */
@@ -83,6 +83,10 @@ export interface MenuItemProps extends CssProp, AriaProps, TestProps {
 export interface MenuRootProps extends CssProp {
   label?: never;
   minimal?: boolean;
+  /**
+   * use this create a dropdown button within menu-item
+   */
+  forDropdown?: boolean;
   menuClassName?: never;
   onClick?: (id: string) => CallbackReturn;
 }
@@ -91,6 +95,7 @@ export interface MenuInnerProps extends MenuItemProps {
   label: string;
   minimal?: never;
   trigger?: "hover" | "click";
+  forDropdown?: boolean;
   /**
    * floating menu className
    */

@@ -23,15 +23,16 @@
 
 import { Switch } from "@react-fabric/form";
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "storybook/test";
 import { useMemo } from "react";
 import { Fragment } from "react/jsx-runtime";
+import { fn } from "storybook/test";
 import {
   Button,
   Card,
   Content,
   ContextMenu,
   Divider,
+  Dropdown,
   DropdownDismiss,
   Footer,
   Menu,
@@ -76,7 +77,29 @@ export const _Menu: MenuStory = {
           <MenuItem id="collapsable1" label="Collapsable Item" disabled />
           <MenuItem id="collapsable2" label="Collapsable Item" active />
           <Divider />
-          <MenuItem id="sectionItem" label="Section Item" />
+          <MenuItem
+            id="sectionItem"
+            label="Section Item"
+            appendLabel={
+              <Dropdown>
+                <Button variant="link" icon="..." aria-label="options" />
+                <Menu forDropdown>
+                  <MenuItem label="Clone..." />
+                  <Menu label="Delete">
+                    <Card>
+                      <Content>Are you sure?</Content>
+                      <Footer flex justify="end">
+                        <DropdownDismiss>
+                          <Button variant="link">No</Button>
+                          <Button>Yes</Button>
+                        </DropdownDismiss>
+                      </Footer>
+                    </Card>
+                  </Menu>
+                </Menu>
+              </Dropdown>
+            }
+          />
           <Menu label="Floating Item">
             <Menu id="inner1" label="Dropdown">
               <Card>
@@ -90,7 +113,16 @@ export const _Menu: MenuStory = {
                 </Footer>
               </Card>
             </Menu>
-            <MenuItem id="inner2" label="Inner Item" />
+            <MenuItem
+              id="inner2"
+              label="Inner Item"
+              appendLabel={
+                <Dropdown>
+                  <Button icon="..." aria-label="dropdown" />
+                  <Card>Tester</Card>
+                </Dropdown>
+              }
+            />
             <Menu label="Floating Item" disabled>
               <MenuItem id="inner1" label="Inner Item" />
               <MenuItem id="inner2" label="Inner Item" />

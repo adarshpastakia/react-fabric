@@ -71,6 +71,7 @@ const MenuComponent = ({
   trigger = "hover",
   // @ts-expect-error ignore
   ref,
+  forDropdown,
   ...rest
 }: Partial<MenuProps>) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,10 +84,10 @@ const MenuComponent = ({
   const nodeId = useFloatingNodeId();
   const parentId = useFloatingParentNodeId();
 
-  const isNested = parentId !== null;
+  const isNested = parentId !== null && !forDropdown;
 
   const { floatingStyles, refs, context } = useFloating<HTMLButtonElement>({
-    nodeId,
+    nodeId: `menu-${nodeId}`,
     open: !isNested || isOpen,
     onOpenChange(open, event, reason) {
       isNested && setIsOpen(open);
