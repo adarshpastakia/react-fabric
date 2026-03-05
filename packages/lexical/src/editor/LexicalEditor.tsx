@@ -56,6 +56,8 @@ import { LexicalTheme } from "./theme";
 export interface EditorProps {
   value?: string | AnyObject;
 
+  isRtl?: boolean;
+
   readOnly?: boolean;
   /**
    * publish mode removes all wrapping and renders plain lexical view for exporting to pdf using puppeteer
@@ -109,6 +111,7 @@ export const LexicalEditor = ({
   header,
   footer,
   coverPage,
+  isRtl,
   username = "Guest",
   nodes = EMPTY_ARRAY,
   onChange,
@@ -239,6 +242,7 @@ export const LexicalEditor = ({
                 "fabric-lexicalEditor",
                 "lexical-container relative bg-white min-h-full mx-auto shadow-md print:shadow-none",
               )}
+              dir={isRtl ? "rtl" : "ltr"}
               onDragOver={(e) => e.stopPropagation()}
               onKeyDown={(e) => e.stopPropagation()}
               ref={setEditorContainer}
