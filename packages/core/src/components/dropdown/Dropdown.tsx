@@ -36,6 +36,7 @@ import {
   useClick,
   useDismiss,
   useFloating,
+  useFloatingNodeId,
   useFloatingTree,
   useHover,
   useInteractions,
@@ -116,6 +117,7 @@ const DropdownElement = ({
   const arrowRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const tree = useFloatingTree();
+  const nodeId = useFloatingNodeId();
 
   const [anchor, panel] = useMemo<AnyObject[]>(
     () => Children.toArray(children as AnyObject),
@@ -123,6 +125,7 @@ const DropdownElement = ({
   );
 
   const { refs, floatingStyles, context } = useFloating({
+    nodeId: `dropdown-${nodeId}`,
     open: isOpen,
     onOpenChange: (open, _, reason) => {
       if (reason === "reference-press") return;
@@ -316,11 +319,17 @@ const DropdownElement = ({
  * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-dropdown--docs} for more details.
  * @see {@link https://floating-ui.com/docs/react} for more details on Floating UI.
  */
-export const Dropdown = (props: DropdownProps) => (
-  <FloatingTree>
-    <DropdownElement {...props} />
-  </FloatingTree>
-);
+export const Dropdown = (props: DropdownProps) => {
+  const tree = useFloatingTree();
+  if (tree) {
+    return <DropdownElement {...props} />;
+  }
+  return (
+    <FloatingTree>
+      <DropdownElement {...props} />
+    </FloatingTree>
+  );
+};
 
 /**
  * A component that allows dismissing the dropdown when clicked.
