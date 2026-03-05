@@ -24,7 +24,7 @@
 @layer components {
   .fabric-themeProvider {
     & > * {
-      background-color: var(--bg-color-base);
+      background-color: var(--bg-color-content);
     }
   }
 }

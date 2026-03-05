@@ -24,8 +24,8 @@
 import { isColor } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useMemo } from "react";
-import { type ChildrenProp } from "../../types";
 import { useApplicationContext } from "../../context/Global";
+import { type ChildrenProp, type CssProp } from "../../types";
 
 export interface ThemeProps {
   /**
@@ -91,7 +91,8 @@ export const ThemeProvider = ({
   tintColor,
   colorScheme,
   rounding,
-}: ThemeProps & ChildrenProp) => {
+  className,
+}: ThemeProps & ChildrenProp & CssProp) => {
   const { currentColorScheme } = useApplicationContext();
   const styles = useMemo(() => {
     const ret: KeyValue = {};
@@ -125,6 +126,7 @@ export const ThemeProvider = ({
         "fabric-themeProvider",
         "contents theme-base",
         branding,
+        className,
       )}
     >
       {children}
