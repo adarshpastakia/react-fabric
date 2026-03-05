@@ -85,6 +85,7 @@ export const _Form: FormStory = {
         lastName: yup.string().required().label("form:lastName"),
         age: yup.number().min(18).max(65).required().label("form:age"),
         username: yup.string().required().min(6).label("form:username"),
+        files: yup.array().required().min(1),
         password: yup
           .string()
           .required()
@@ -137,9 +138,6 @@ export const _Form: FormStory = {
           }
         >
           <div className="mx-auto w-96">
-            <Controller name="files">
-              <HiddenInput hiddenValue={files} />
-            </Controller>
             <Controller name="firstName">
               <Input autoFocus required label={t("firstName")} />
             </Controller>
@@ -171,6 +169,9 @@ export const _Form: FormStory = {
             </Controller>
 
             <div className="p-1 mt-4">
+              <Controller name="files">
+                <HiddenInput value={files} />
+              </Controller>
               {files.map((file, idx) => (
                 <div key={idx} className="flex gap-2 flex-nowrap text-sm">
                   <div className="flex-1 truncate">{file.name}</div>
@@ -276,7 +277,7 @@ const ModalForm = (props: any) => {
       >
         <Content>
           <Controller name="files">
-            <HiddenInput hiddenValue={files} />
+            <HiddenInput value={files} />
           </Controller>
           <Controller name="firstName">
             <Input autoFocus required label={t("firstName")} />

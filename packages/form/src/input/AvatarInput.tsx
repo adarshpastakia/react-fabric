@@ -88,17 +88,21 @@ export const AvatarInput = ({
   variant,
   fileUrl,
   uploadHandler,
+  onChange,
   ...rest
 }: Props) => {
-  const { files, list, upload, remove } = useFileUploader(
+  const { files, upload, remove } = useFileUploader(
     async (data, config) => await uploadHandler?.(data, config),
-    value,
-    false,
+    value ?? defaultValue,
+    {
+      multiple: false,
+      onChange: (files: AnyObject) => onChange?.(files?.path ?? null),
+    },
   );
 
   const [base64, setBase64] = useState("");
   useEffect(() => {
-    if (list?.length) {
+    if (files?.length) {
       const file = files?.[0]?.file;
       void (
         file &&
@@ -116,7 +120,7 @@ export const AvatarInput = ({
     } else {
       setBase64(fileUrl?.(defaultValue ?? "") ?? defaultValue ?? "");
     }
-  }, [files, list, defaultValue]);
+  }, [files, defaultValue]);
 
   useEffect(() => {
     !value &&
@@ -153,11 +157,7 @@ export const AvatarInput = ({
           />
         </div>
       </div>
-      <HiddenInput
-        hiddenValue={list?.[0]?.path}
-        defaultValue={defaultValue}
-        {...rest}
-      />
+      <HiddenInput value={files?.[0]?.path} {...rest} />
       {files.map((file, idx) => (
         <div key={idx} className="px-2 py-1 flex-1 overflow-hidden">
           <div className="flex flex-nowrap gap-1 items-center">

@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import { ErrorIcon } from "../internal/ErrorIcon";
 
 interface Props {
@@ -30,17 +30,9 @@ interface Props {
    */
   name?: string;
   /**
-   * hidden value will fire change for form update
+   * hidden input value
    */
-  hiddenValue?: AnyObject;
-  /**
-   * default avatar image
-   */
-  defaultValue?: string;
-  /**
-   * form onChange handler
-   */
-  onChange?: (value: AnyObject) => void;
+  value?: AnyObject;
 }
 
 /**
@@ -52,28 +44,18 @@ interface Props {
  * @returns {JSX.Element} The rendered hidden input field and error icon.
  */
 export const HiddenInput = ({
-  hiddenValue,
-  defaultValue,
-  onChange,
   // @ts-expect-error ignore
   // eslint-disable-next-line react/prop-types
   invalid,
   // @ts-expect-error ignore
   // eslint-disable-next-line react/prop-types
   error,
-  // @ts-expect-error ignore
-  // eslint-disable-next-line react/prop-types
   value = "",
   name,
 }: Props) => {
-  useEffect(() => {
-    setTimeout(() => {
-      onChange?.(hiddenValue ?? defaultValue);
-    }, 50);
-  }, [hiddenValue, defaultValue]);
   return (
     <Fragment>
-      <input type="hidden" onChange={onChange} value={value} name={name} />
+      <input type="hidden" value={value} name={name} />
       <ErrorIcon invalid={invalid} error={error} />
     </Fragment>
   );
