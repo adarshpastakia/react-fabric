@@ -41,7 +41,10 @@
   }
 }
 
+.media-nsfw-container {
+  container-type: size;
+}
+
 .media-nsfw-icon {
-  width: min(70%, 8rem);
-  height: min(70%, 8rem);
+  font-size: clamp(2rem, min(12cqw, 12cqh), 6rem);
 }

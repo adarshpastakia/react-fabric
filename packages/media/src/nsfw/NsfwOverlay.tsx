@@ -122,7 +122,7 @@ export const NsfwOverlay = ({
     <div
       role="none"
       className={classNames(
-        "absolute inset-0 bg-transparent z-5",
+        "absolute inset-0 bg-transparent z-5 media-nsfw-container",
         hide && "pointer-events-none",
       )}
       ref={nsfwRef}
