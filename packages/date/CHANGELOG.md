@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.62](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.61...v1.0.0-beta.62) (2026-03-07)
+
+### Bug Fixes
+
+- **DateDuration:** run timer to update relative duration ([df6ee4d](https://github.com/adarshpastakia/react-ui-framework/commit/df6ee4de362b253918bb9dc4d925bd6d2e9abd95))
+
 # [1.0.0-beta.61](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.60...v1.0.0-beta.61) (2026-01-30)
 
 **Note:** Version bump only for package @react-fabric/date

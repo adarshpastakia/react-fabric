@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.62](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.61...v1.0.0-beta.62) (2026-03-07)
+
+### Bug Fixes
+
+- **Button,MenuItem:** check disable prop before adding hotkey handler ([0e597d1](https://github.com/adarshpastakia/react-ui-framework/commit/0e597d12e790e124435afb6fb7c2a85aad35ec0a))
+- **Dropdown:** pass dismiss callback as prop ([046071f](https://github.com/adarshpastakia/react-ui-framework/commit/046071fc761eccb8148b5271beb3341feb5e10da))
+- **Dropdown:** wrap with FloatingTree only if not part of existing tree ([71749c4](https://github.com/adarshpastakia/react-ui-framework/commit/71749c45c0f8d4c6736f49674d84152eab8479f1))
+- export generic AnimationLoader ([db47161](https://github.com/adarshpastakia/react-ui-framework/commit/db471612e889d54efbca2ba024441bc8c7dbe834))
+- **Menu:** add forDropdown prop to avoid nested menu ([5de4a43](https://github.com/adarshpastakia/react-ui-framework/commit/5de4a43d3799f598906c3e82780c11795a20b921))
+- **Navigator:** increment/decrement currentIndex ([b4bc6ac](https://github.com/adarshpastakia/react-ui-framework/commit/b4bc6ac43efb96cd7e177527486b7bb8eeac1dc2))
+- **OverlayService:** return overlay as FunctionComponent instead of ReactNode ([866558a](https://github.com/adarshpastakia/react-ui-framework/commit/866558ac56819ea6b8d23417cacca577ae0b300e))
+- **TabPanel:** set first tab as active when activeTab not available ([cf427a9](https://github.com/adarshpastakia/react-ui-framework/commit/cf427a9efa6959cb50b559c4c3451dc791915b12))
+- **useOverlayService:** implement toggle open with isOpen state ([96beccf](https://github.com/adarshpastakia/react-ui-framework/commit/96beccfe9aa448fe291c0952db9832a0a373de9f))
+
 # [1.0.0-beta.61](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.60...v1.0.0-beta.61) (2026-01-30)
 
 **Note:** Version bump only for package @react-fabric/core

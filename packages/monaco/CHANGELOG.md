@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.62](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.61...v1.0.0-beta.62) (2026-03-07)
+
+### Bug Fixes
+
+- **CodeEditor:** null check ([f5fba5f](https://github.com/adarshpastakia/react-ui-framework/commit/f5fba5f1b561f76014f48dba70faabfd680e2893))
+- **CodeEditor:** pass monaco-editor methods via ref ([eb4b0e1](https://github.com/adarshpastakia/react-ui-framework/commit/eb4b0e1210390f8b7be3e5b4ec27a06ff670fb53))
+
 # [1.0.0-beta.61](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.60...v1.0.0-beta.61) (2026-01-30)
 
 **Note:** Version bump only for package @react-fabric/monaco

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.62](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.61...v1.0.0-beta.62) (2026-03-07)
+
+### Bug Fixes
+
+- **compareValues:** when key provided use getByPath ([e1dfc83](https://github.com/adarshpastakia/react-fabric/commit/e1dfc83e75fffe8029a3d611d4f8bf02000c317f))
+
 # [1.0.0-beta.61](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.60...v1.0.0-beta.61) (2026-01-30)
 
 **Note:** Version bump only for package @react-fabric/utilities

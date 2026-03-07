@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.62](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.61...v1.0.0-beta.62) (2026-03-07)
+
+### Bug Fixes
+
+- **Button,MenuItem:** check disable prop before adding hotkey handler ([0e597d1](https://github.com/adarshpastakia/react-fabric/commit/0e597d12e790e124435afb6fb7c2a85aad35ec0a))
+- **CodeEditor:** null check ([f5fba5f](https://github.com/adarshpastakia/react-fabric/commit/f5fba5f1b561f76014f48dba70faabfd680e2893))
+- **CodeEditor:** pass monaco-editor methods via ref ([eb4b0e1](https://github.com/adarshpastakia/react-fabric/commit/eb4b0e1210390f8b7be3e5b4ec27a06ff670fb53))
+- **compareValues:** when key provided use getByPath ([e1dfc83](https://github.com/adarshpastakia/react-fabric/commit/e1dfc83e75fffe8029a3d611d4f8bf02000c317f))
+- **DateDuration:** run timer to update relative duration ([df6ee4d](https://github.com/adarshpastakia/react-fabric/commit/df6ee4de362b253918bb9dc4d925bd6d2e9abd95))
+- **Dropdown:** pass dismiss callback as prop ([046071f](https://github.com/adarshpastakia/react-fabric/commit/046071fc761eccb8148b5271beb3341feb5e10da))
+- **Dropdown:** wrap with FloatingTree only if not part of existing tree ([71749c4](https://github.com/adarshpastakia/react-fabric/commit/71749c45c0f8d4c6736f49674d84152eab8479f1))
+- export generic AnimationLoader ([db47161](https://github.com/adarshpastakia/react-fabric/commit/db471612e889d54efbca2ba024441bc8c7dbe834))
+- **Form:** use promise to assign defaultValue ([9507b09](https://github.com/adarshpastakia/react-fabric/commit/9507b09195ba23a943ffad77130008cd3db0a3e8))
+- **HiddenInput:** remove unecessary props ([693f789](https://github.com/adarshpastakia/react-fabric/commit/693f789d4798d8d07ac889e5cff961d1de4b5d55))
+- **LexicalEditor:** add comment plugin ([3caba69](https://github.com/adarshpastakia/react-fabric/commit/3caba693bbed1346e0fe05c14054c3467ac78db8))
+- **LexicalEditor:** add isRtl prop to force layout direction ([905847b](https://github.com/adarshpastakia/react-fabric/commit/905847bedb2619ccee9fc2ab1f5cec7dbf3a6d71))
+- **Menu:** add forDropdown prop to avoid nested menu ([5de4a43](https://github.com/adarshpastakia/react-fabric/commit/5de4a43d3799f598906c3e82780c11795a20b921))
+- **Navigator:** increment/decrement currentIndex ([b4bc6ac](https://github.com/adarshpastakia/react-fabric/commit/b4bc6ac43efb96cd7e177527486b7bb8eeac1dc2))
+- **OverlayService:** return overlay as FunctionComponent instead of ReactNode ([866558a](https://github.com/adarshpastakia/react-fabric/commit/866558ac56819ea6b8d23417cacca577ae0b300e))
+- **RadioGroup:** add value prop to make active option checked ([8205411](https://github.com/adarshpastakia/react-fabric/commit/82054118a965a7e073757fc9cedb88bf04262d58))
+- **Select:** default valueProperty as `value` ([db15dd5](https://github.com/adarshpastakia/react-fabric/commit/db15dd5ff3b844e7150a63afec9a68bd5413b5b2))
+- **TabPanel:** set first tab as active when activeTab not available ([cf427a9](https://github.com/adarshpastakia/react-fabric/commit/cf427a9efa6959cb50b559c4c3451dc791915b12))
+- **useFileUploader:** add onChange to options, move init to effect ([c9d86a8](https://github.com/adarshpastakia/react-fabric/commit/c9d86a8bdf52fbb4f5f9cb38e773c0f85b650b83))
+- **useFileUploader:** reset file map ([32a1ef1](https://github.com/adarshpastakia/react-fabric/commit/32a1ef14dfb0451ea6411875ca538e6f66269a27))
+- **useOverlayService:** implement toggle open with isOpen state ([96beccf](https://github.com/adarshpastakia/react-fabric/commit/96beccfe9aa448fe291c0952db9832a0a373de9f))
+
+### Features
+
+- **HtmlTable:** custom html table component with pagination option ([017d298](https://github.com/adarshpastakia/react-fabric/commit/017d298f88b9c7c638c7f22a3ba0089bec2e147c))
+
 # [1.0.0-beta.61](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.60...v1.0.0-beta.61) (2026-01-30)
 
 ### Bug Fixes

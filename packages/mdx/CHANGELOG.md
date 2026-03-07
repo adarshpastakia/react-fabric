@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.62](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.61...v1.0.0-beta.62) (2026-03-07)
+
+### Bug Fixes
+
+- **LexicalEditor:** add comment plugin ([3caba69](https://github.com/adarshpastakia/react-ui-framework/commit/3caba693bbed1346e0fe05c14054c3467ac78db8))
+
 # [1.0.0-beta.61](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.60...v1.0.0-beta.61) (2026-01-30)
 
 **Note:** Version bump only for package @react-fabric/mdx

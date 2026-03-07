@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.62](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.61...v1.0.0-beta.62) (2026-03-07)
+
+### Bug Fixes
+
+- **Form:** use promise to assign defaultValue ([9507b09](https://github.com/adarshpastakia/react-ui-framework/commit/9507b09195ba23a943ffad77130008cd3db0a3e8))
+- **HiddenInput:** remove unecessary props ([693f789](https://github.com/adarshpastakia/react-ui-framework/commit/693f789d4798d8d07ac889e5cff961d1de4b5d55))
+- **RadioGroup:** add value prop to make active option checked ([8205411](https://github.com/adarshpastakia/react-ui-framework/commit/82054118a965a7e073757fc9cedb88bf04262d58))
+- **Select:** default valueProperty as `value` ([db15dd5](https://github.com/adarshpastakia/react-ui-framework/commit/db15dd5ff3b844e7150a63afec9a68bd5413b5b2))
+- **useFileUploader:** add onChange to options, move init to effect ([c9d86a8](https://github.com/adarshpastakia/react-ui-framework/commit/c9d86a8bdf52fbb4f5f9cb38e773c0f85b650b83))
+- **useFileUploader:** reset file map ([32a1ef1](https://github.com/adarshpastakia/react-ui-framework/commit/32a1ef14dfb0451ea6411875ca538e6f66269a27))
+
 # [1.0.0-beta.61](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.60...v1.0.0-beta.61) (2026-01-30)
 
 ### Bug Fixes
