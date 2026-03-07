@@ -1,4 +1,4 @@
-import{j as e,r as N,aP as y}from"./iframe-DpfJK_wQ.js";import{I as d}from"./Tooltip.js";import{B as _}from"./Button.js";import"./index.js";import{e as v,f as w,_ as z,g as C}from"./DualList.js";import{h as k,H as E,a as I}from"./index6.js";import"./HeadFoot.js";import"./useDebounce.js";import"./BasePanel.js";import"./Google.js";import"./createClass.js";import"./zh-CN.js";import"./endOfDay.js";import"./index5.js";import"./getDay.js";import"./Content.js";import"./useResizeObserver.js";import"./ErrorBoundary.js";import"./Global.js";import"./ToggleButtonGroup.js";import"./cloneElement.js";import"./Collapsable.js";import"./toArray.js";import"./Avatar2.js";import"./index2.js";import"./DatePanel.js";import"./ButtonGroup2.js";import"./EmptyContent.js";import"./isEqual.js";import"./dedupe.js";const{fn:p}=__STORYBOOK_MODULE_TEST__,oe={component:v,title:"@form/Inputs",parameters:{layout:"centered",jest:["form/tests/File.test.tsx"],msw:{handlers:[k.post("/api/upload",()=>E.json({path:"xyz"}))]}},decorators:[s=>e.jsx("div",{className:"max-w-[32rem] w-screen",children:e.jsx(s,{})})]},t={render:s=>e.jsx(v,{...s}),args:{label:"File input",placeholder:"File input...",allowClear:!0,onChange:p(),onEnterPressed:p()}},i={render:()=>{const s=I.create({}),{pending:m,files:b,list:o,upload:j,remove:F}=w((r,l)=>s.postForm("/api/upload",r,l).then(n=>{var a;return((a=n.data)==null?void 0:a.path)??"pathfor file"}));return N.useEffect(()=>{o&&p()(o)},[o]),e.jsxs("div",{children:[e.jsx("div",{className:"inline-block",children:e.jsx(_,{badge:m>0?`${m}`:void 0,children:e.jsxs(e.Fragment,{children:[e.jsx("span",{children:"Add file"}),e.jsx("input",{type:"file",multiple:!0,className:"absolute inset-0 opacity-0 z-5",onChange:r=>[j(r.target.files),r.target.value=""]})]})})}),e.jsx("br",{}),e.jsx("div",{children:b.map((r,l)=>{var n;return e.jsxs("div",{className:"w-96 mb-4",children:[e.jsxs("div",{className:"flex flex-nowrap gap-1 items-center",children:[e.jsxs("div",{className:"flex-1 truncate",children:[((n=r.file)==null?void 0:n.name)??r.filename,e.jsx("br",{}),e.jsx("span",{className:"text-xs",children:z.mime(r.mime)})]}),e.jsx("div",{children:y.bytes(r.size)}),r.progress&&e.jsx(d,{icon:"mdi mdi-stop-circle",bg:"danger",color:"white",size:"sm",className:"p-[2px]","aria-label":"abort",onClick:()=>{var a;return(a=r.abort)==null?void 0:a.call(r)}}),!r.progress&&e.jsx(d,{icon:"mdi mdi-trash-can",color:"danger",size:"sm","aria-label":"remove",onClick:()=>F(r.key)})]}),r.progress&&e.jsx(C,{animate:!0,value:r.progress*100,size:"xxs"})]},l)})})]})},args:{}};var c,u,x;t.parameters={...t.parameters,docs:{...(c=t.parameters)==null?void 0:c.docs,source:{originalSource:`{
+import{j as e,aO as F}from"./iframe-BmpICDQJ.js";import{I as m}from"./Tooltip.js";import{B as N}from"./useDebounce.js";import"./index.js";import{e as h,u as y,_ as C,f as _}from"./DualList.js";import{h as w,H as z,a as k}from"./index6.js";import"./HeadFoot.js";import"./BasePanel.js";import"./Google.js";import"./createClass.js";import"./zh-CN.js";import"./endOfDay.js";import"./index5.js";import"./getDay.js";import"./Content.js";import"./useResizeObserver.js";import"./ErrorBoundary.js";import"./Global.js";import"./useOverlayService2.js";import"./asyncToGenerator.js";import"./ToggleButtonGroup.js";import"./cloneElement.js";import"./Collapsable.js";import"./toArray.js";import"./Avatar2.js";import"./index2.js";import"./DatePanel.js";import"./ButtonGroup2.js";import"./EmptyContent.js";import"./isEqual.js";import"./dedupe.js";const{fn:l}=__STORYBOOK_MODULE_TEST__,te={component:h,title:"@form/Inputs",parameters:{layout:"centered",jest:["form/tests/File.test.tsx"],msw:{handlers:[w.post("/api/upload",()=>z.json({path:"xyz"}))]}},decorators:[s=>e.jsx("div",{className:"max-w-lg w-screen",children:e.jsx(s,{})})]},i={render:s=>e.jsx(h,{...s}),args:{label:"File input",placeholder:"File input...",allowClear:!0,onChange:l(),onEnterPressed:l()}},t={render:()=>{const s=k.create({}),{pending:p,files:v,upload:b,remove:j}=y((r,o)=>s.postForm("/api/upload",r,o).then(n=>{var a;return((a=n.data)==null?void 0:a.path)??"pathfor file"}),void 0,{multiple:!0,onChange:r=>(l()(r),console.log(r))});return e.jsxs("div",{children:[e.jsx("div",{className:"inline-block",children:e.jsx(N,{badge:p>0?`${p}`:void 0,children:e.jsxs(e.Fragment,{children:[e.jsx("span",{children:"Add file"}),e.jsx("input",{type:"file",multiple:!0,className:"absolute inset-0 opacity-0 z-5",onChange:r=>[b(r.target.files),r.target.value=""]})]})})}),e.jsx("br",{}),e.jsx("div",{children:v.map((r,o)=>{var n;return e.jsxs("div",{className:"w-96 mb-4",children:[e.jsxs("div",{className:"flex flex-nowrap gap-1 items-center",children:[e.jsxs("div",{className:"flex-1 truncate",children:[((n=r.file)==null?void 0:n.name)??r.filename,e.jsx("br",{}),e.jsx("span",{className:"text-xs",children:C.mime(r.mime)})]}),e.jsx("div",{children:F.bytes(r.size)}),r.progress&&e.jsx(m,{icon:"mdi mdi-stop-circle",bg:"danger",color:"white",size:"sm",className:"p-0.5","aria-label":"abort",onClick:()=>{var a;return(a=r.abort)==null?void 0:a.call(r)}}),!r.progress&&e.jsx(m,{icon:"mdi mdi-trash-can",color:"danger",size:"sm","aria-label":"remove",onClick:()=>j(r.key)})]}),r.progress&&e.jsx(_,{animate:!0,value:r.progress*100,size:"xxs"})]},o)})})]})},args:{}};var d,c,u;i.parameters={...i.parameters,docs:{...(d=i.parameters)==null?void 0:d.docs,source:{originalSource:`{
   render: args => {
     return <FileInput {...args} />;
   },
@@ -9,19 +9,18 @@ import{j as e,r as N,aP as y}from"./iframe-DpfJK_wQ.js";import{I as d}from"./Too
     onChange: fn(),
     onEnterPressed: fn()
   }
-}`,...(x=(u=t.parameters)==null?void 0:u.docs)==null?void 0:x.source}}};var g,f,h;i.parameters={...i.parameters,docs:{...(g=i.parameters)==null?void 0:g.docs,source:{originalSource:`{
+}`,...(u=(c=i.parameters)==null?void 0:c.docs)==null?void 0:u.source}}};var g,x,f;t.parameters={...t.parameters,docs:{...(g=t.parameters)==null?void 0:g.docs,source:{originalSource:`{
   render: () => {
     const http = axios.create({});
     const {
       pending,
       files,
-      list,
       upload,
       remove
-    } = useFileUploader((data, config) => http.postForm("/api/upload", data, config).then(resp => resp.data?.path ?? "pathfor file"));
-    useEffect(() => {
-      list && fn()(list);
-    }, [list]);
+    } = useFileUploader((data, config) => http.postForm("/api/upload", data, config).then(resp => resp.data?.path ?? "pathfor file"), undefined, {
+      multiple: true,
+      onChange: v => (fn()(v), console.log(v))
+    });
     return <div>
         <div className="inline-block">
           <Button badge={pending > 0 ? \`\${pending}\` : undefined}>
@@ -41,7 +40,7 @@ import{j as e,r as N,aP as y}from"./iframe-DpfJK_wQ.js";import{I as d}from"./Too
                   <span className="text-xs">{FileUtil.mime(file.mime)}</span>
                 </div>
                 <div>{Format.bytes(file.size)}</div>
-                {file.progress && <Icon icon="mdi mdi-stop-circle" bg="danger" color="white" size="sm" className="p-[2px]" aria-label="abort" onClick={() => file.abort?.()} />}
+                {file.progress && <Icon icon="mdi mdi-stop-circle" bg="danger" color="white" size="sm" className="p-0.5" aria-label="abort" onClick={() => file.abort?.()} />}
                 {!file.progress && <Icon icon="mdi mdi-trash-can" color="danger" size="sm" aria-label="remove" onClick={() => remove(file.key)} />}
               </div>
               {file.progress && <ProgressBar animate value={file.progress * 100} size="xxs" />}
@@ -50,4 +49,4 @@ import{j as e,r as N,aP as y}from"./iframe-DpfJK_wQ.js";import{I as d}from"./Too
       </div>;
   },
   args: {}
-}`,...(h=(f=i.parameters)==null?void 0:f.docs)==null?void 0:h.source}}};const le=["_FileInput","FileUploader"];export{i as FileUploader,t as _FileInput,le as __namedExportsOrder,oe as default};
+}`,...(f=(x=t.parameters)==null?void 0:x.docs)==null?void 0:f.source}}};const oe=["_FileInput","FileUploader"];export{t as FileUploader,i as _FileInput,oe as __namedExportsOrder,te as default};
