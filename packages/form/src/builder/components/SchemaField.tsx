@@ -229,7 +229,7 @@ export const SchemaField = ({
         </div>
         <div className="flex flex-col gap-1 pb-4">
           <Controller name={`${field}.id`}>
-            <HiddenInput hiddenValue={id} />
+            <HiddenInput value={id} />
           </Controller>
           <Controller name={`${field}.datatype`}>
             <Select

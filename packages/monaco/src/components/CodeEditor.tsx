@@ -203,7 +203,7 @@ export const CodeEditor = ({
       if (language === "json" && schema) {
         const [main, ...rest] = schema;
         // configure the JSON language support with schemas and schema associations
-        monaco.languages?.json?.jsonDefaults.setDiagnosticsOptions({
+        monaco?.json?.jsonDefaults.setDiagnosticsOptions({
           validate: true,
           allowComments: false,
           schemas: [
@@ -258,7 +258,7 @@ export const CodeEditor = ({
   );
 
   const resetSchema = useCallback((_: unknown, monaco: typeof monacoEditor) => {
-    monaco.languages?.json?.jsonDefaults.setDiagnosticsOptions({
+    monaco?.json?.jsonDefaults.setDiagnosticsOptions({
       validate: true,
       allowComments: false,
       schemas: [],
@@ -275,10 +275,10 @@ export const CodeEditor = ({
         <MonacoEditor
           editorDidMount={(e, m) => [
             !!e && setEditorRef(e),
-            !!m && setMonacoRef(m),
+            !!m && setMonacoRef(m as any),
           ]}
-          editorWillMount={schemaUri}
-          editorWillUnmount={resetSchema}
+          editorWillMount={schemaUri as any}
+          editorWillUnmount={resetSchema as any}
           value={codeValue}
           language={language}
           onChange={handleChange}
