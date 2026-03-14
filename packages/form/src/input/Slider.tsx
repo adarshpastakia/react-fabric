@@ -105,7 +105,7 @@ export interface SliderProps
  * It also supports deferred value updates for smoother interactions.
  *
  * @param {SliderProps} props - The properties for the Slider component.
- * @returns {JSX.Element} The rendered Slider component.
+ * @returns {React.ReactElement} The rendered Slider component.
  */
 export const Slider = ({
   error,

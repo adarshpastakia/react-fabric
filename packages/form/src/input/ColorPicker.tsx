@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import Color from "color";
+import chroma from "chroma-js";
 import {
   memo,
   startTransition,
@@ -57,16 +57,16 @@ export interface ColorProps {
 }
 
 const DEFAULT_SWATCHES = [
-  Color("#d7323a").mix(Color("#171a1c"), 0.5).hex(),
-  Color("#ff781c").mix(Color("#171a1c"), 0.5).hex(),
-  Color("#f7b731").mix(Color("#171a1c"), 0.5).hex(),
-  Color("#88ab1b").mix(Color("#171a1c"), 0.5).hex(),
-  Color("#22aa85").mix(Color("#171a1c"), 0.5).hex(),
-  Color("#399bec").mix(Color("#171a1c"), 0.5).hex(),
-  Color("#4862c8").mix(Color("#171a1c"), 0.5).hex(),
-  Color("#aa66cf").mix(Color("#171a1c"), 0.5).hex(),
-  Color("#f43f7b").mix(Color("#171a1c"), 0.5).hex(),
-  Color("#a37f4f").mix(Color("#171a1c"), 0.5).hex(),
+  chroma.mix("#d7323a", "#171a1c", 0.5, "lab").hex(),
+  chroma.mix("#ff781c", "#171a1c", 0.5, "lab").hex(),
+  chroma.mix("#f7b731", "#171a1c", 0.5, "lab").hex(),
+  chroma.mix("#88ab1b", "#171a1c", 0.5, "lab").hex(),
+  chroma.mix("#22aa85", "#171a1c", 0.5, "lab").hex(),
+  chroma.mix("#399bec", "#171a1c", 0.5, "lab").hex(),
+  chroma.mix("#4862c8", "#171a1c", 0.5, "lab").hex(),
+  chroma.mix("#aa66cf", "#171a1c", 0.5, "lab").hex(),
+  chroma.mix("#f43f7b", "#171a1c", 0.5, "lab").hex(),
+  chroma.mix("#a37f4f", "#171a1c", 0.5, "lab").hex(),
 
   "#d7323a",
   "#ff781c",
@@ -79,16 +79,16 @@ const DEFAULT_SWATCHES = [
   "#f43f7b",
   "#a37f4f",
 
-  Color("#d7323a").mix(Color("#f1f3f4"), 0.5).hex(),
-  Color("#ff781c").mix(Color("#f1f3f4"), 0.5).hex(),
-  Color("#f7b731").mix(Color("#f1f3f4"), 0.5).hex(),
-  Color("#88ab1b").mix(Color("#f1f3f4"), 0.5).hex(),
-  Color("#22aa85").mix(Color("#f1f3f4"), 0.5).hex(),
-  Color("#399bec").mix(Color("#f1f3f4"), 0.5).hex(),
-  Color("#4862c8").mix(Color("#f1f3f4"), 0.5).hex(),
-  Color("#aa66cf").mix(Color("#f1f3f4"), 0.5).hex(),
-  Color("#f43f7b").mix(Color("#f1f3f4"), 0.5).hex(),
-  Color("#a37f4f").mix(Color("#f1f3f4"), 0.5).hex(),
+  chroma.mix("#d7323a", "#f1f3f4", 0.5, "lab").hex(),
+  chroma.mix("#ff781c", "#f1f3f4", 0.5, "lab").hex(),
+  chroma.mix("#f7b731", "#f1f3f4", 0.5, "lab").hex(),
+  chroma.mix("#88ab1b", "#f1f3f4", 0.5, "lab").hex(),
+  chroma.mix("#22aa85", "#f1f3f4", 0.5, "lab").hex(),
+  chroma.mix("#399bec", "#f1f3f4", 0.5, "lab").hex(),
+  chroma.mix("#4862c8", "#f1f3f4", 0.5, "lab").hex(),
+  chroma.mix("#aa66cf", "#f1f3f4", 0.5, "lab").hex(),
+  chroma.mix("#f43f7b", "#f1f3f4", 0.5, "lab").hex(),
+  chroma.mix("#a37f4f", "#f1f3f4", 0.5, "lab").hex(),
 
   "#171a1c",
   "#2d3439",
@@ -108,11 +108,10 @@ const DEFAULT_SWATCHES = [
  * The component uses the `react-color` library for the color picker functionality.
  *
  * @param {ColorProps} props - The properties for the ColorPicker component.
- * @returns {JSX.Element} The rendered ColorPicker component.
+ * @returns {React.ReactElement} The rendered ColorPicker component.
  *
  * @see {@link https://react-color.github.io/react-color/} for more details on the color picker library.
  */
-// eslint-disable-next-line react/display-name
 export const ColorPicker: FC<ColorProps> = memo(
   ({
     value,
@@ -180,10 +179,10 @@ export const ColorPicker: FC<ColorProps> = memo(
           presetColors={swatches}
           disableAlpha={hideAlpha}
           onChange={({ rgb: { a = 1, ...rgb } }) =>
-            setActualValue(Color(rgb).alpha(a)[a < 1 ? "hexa" : "hex"]())
+            setActualValue(chroma(rgb).alpha(a).hex())
           }
           onChangeComplete={({ rgb: { a = 1, ...rgb } }) =>
-            handleChange(Color(rgb).alpha(a)[a < 1 ? "hexa" : "hex"]())
+            handleChange(chroma(rgb).alpha(a).hex())
           }
         />
       </div>

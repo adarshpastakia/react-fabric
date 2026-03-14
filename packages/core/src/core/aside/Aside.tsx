@@ -57,7 +57,7 @@ export interface AsideProps
   /**
    * header actions
    */
-  actions?: Elements<JSX.Element>;
+  actions?: Elements<React.ReactElement>;
   /**
    * header class
    */
@@ -104,7 +104,7 @@ export interface AsideProps
  * It can be aligned to the start or end of the page.
  *
  * @param {AsideProps} props - The properties for the Aside component.
- * @returns {JSX.Element} The rendered Aside component.
+ * @returns {React.ReactElement} The rendered Aside component.
  *
  * @example
  * ```jsx

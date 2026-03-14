@@ -44,6 +44,12 @@
   }
 }
 
+.docblock-colorpalette {
+  div > span {
+    display: none;
+  }
+}
+
 .hidden-anchor {
   height: 0;
   visibility: hidden;

@@ -248,7 +248,7 @@ DataSeriesChart.displayName = "DataSeriesChart";
  * It allows users to click on data points to trigger custom actions.
  *
  * @param {DataSeriesProps} props - The properties for the DataSeries component.
- * @returns {JSX.Element} The rendered DataSeries component.
+ * @returns {React.ReactElement} The rendered DataSeries component.
  *
  * @example
  * ```jsx

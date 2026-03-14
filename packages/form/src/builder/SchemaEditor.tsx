@@ -37,7 +37,7 @@ import { SchemaArrayForm } from "./components/SchemaArrayForm";
  * It provides a form interface to modify schema properties dynamically.
  *
  * @param {SchemaEditorProps} props - The properties for the SchemaEditor component.
- * @returns {JSX.Element} The rendered SchemaEditor component.
+ * @returns {React.ReactElement} The rendered SchemaEditor component.
  */
 export const SchemaEditor = ({
   schemaDef,

@@ -42,8 +42,8 @@
     }
 
     & .fabric-modalHeader {
-      background-color: var(--bg-color-base);
       border-bottom: 0.5px solid var(--border-color-dimmed);
+      background-color: var(--bg-color-base);
     }
 
     & .fabric-modalBody {

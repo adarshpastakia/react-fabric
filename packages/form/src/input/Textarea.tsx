@@ -63,7 +63,7 @@ export interface TextareaProps
  * providing a clear interface for text input with optional validation and accessibility features.
  *
  * @param {TextareaProps} props - The properties for the Textarea component.
- * @returns {JSX.Element} The rendered Textarea component.
+ * @returns {React.ReactElement} The rendered Textarea component.
  */
 export const Textarea = ({
   ref,

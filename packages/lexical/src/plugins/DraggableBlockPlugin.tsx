@@ -221,7 +221,7 @@ function hideTargetLine(targetLineElem: HTMLElement | null) {
 function useDraggableBlockMenu(
   editor: LexicalEditor,
   anchorElem: HTMLElement,
-): JSX.Element {
+): React.ReactElement {
   const scrollerElem = anchorElem.parentElement;
 
   const menuRef = useRef<HTMLDivElement>(null);
@@ -406,7 +406,7 @@ export const DraggableBlockPlugin = ({
 }: {
   anchorElem?: HTMLElement;
   isEditable: boolean;
-}): JSX.Element => {
+}): React.ReactElement => {
   const [editor] = useLexicalComposerContext();
   if (!isEditable) return <></>;
   return useDraggableBlockMenu(editor, anchorElem);

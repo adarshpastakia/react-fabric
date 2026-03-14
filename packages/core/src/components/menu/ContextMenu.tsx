@@ -48,7 +48,7 @@ export interface ContextMenuProps extends ChildrenProp {
  * This component is useful for creating custom context menus that can be triggered by right-clicking on elements.
  *
  * @param {ContextMenuProps} props - The properties for the ContextMenu component.
- * @returns {JSX.Element} The rendered ContextMenu component.
+ * @returns {React.ReactElement} The rendered ContextMenu component.
  *
  * @example
  * ```jsx

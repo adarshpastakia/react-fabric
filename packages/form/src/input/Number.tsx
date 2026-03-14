@@ -56,7 +56,7 @@ export interface NumberProps
  * It also includes a clear button to reset the input value.
  *
  * @param {NumberProps} props - The properties for the Number input component.
- * @returns {JSX.Element} The rendered Number input component.
+ * @returns {React.ReactElement} The rendered Number input component.
  */
 export const Number = ({
   ref,

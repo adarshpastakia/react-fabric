@@ -76,7 +76,7 @@ export interface ControllerProps {
  * to the child component, allowing for proper focus management and DOM access.
  *
  * @param {ControllerProps} props - The properties for the Controller component.
- * @returns {JSX.Element} The rendered Controller component.
+ * @returns {React.ReactElement} The rendered Controller component.
  *
  * @example
  * ```jsx

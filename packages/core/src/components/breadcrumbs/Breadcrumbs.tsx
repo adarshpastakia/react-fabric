@@ -52,7 +52,7 @@ export interface BreadcrumbProps
  * It automatically manages the display of overflow items when there are too many links to fit in the available space, providing a dropdown for additional links.
  *
  * @param {BreadcrumbProps} props - The properties for the Breadcrumbs component.
- * @returns {JSX.Element} The rendered Breadcrumbs component.
+ * @returns {React.ReactElement} The rendered Breadcrumbs component.
  *
  * @example
  * ```jsx

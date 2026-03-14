@@ -38,7 +38,7 @@ export interface FieldProps extends ChildrenProp, CssProp {
   /**
    * append to label end
    */
-  appendLabel?: JSX.Element | string | number | boolean;
+  appendLabel?: React.ReactElement | string | number | boolean;
   /**
    * info label at bottom
    */

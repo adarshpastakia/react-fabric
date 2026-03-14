@@ -25,6 +25,9 @@ import Basemap from "@arcgis/core/Basemap";
 import Point from "@arcgis/core/geometry/Point";
 import SpatialReference from "@arcgis/core/geometry/SpatialReference";
 import VectorTileLayer from "@arcgis/core/layers/VectorTileLayer";
+import type Map from "@arcgis/core/Map";
+import type MapView from "@arcgis/core/views/MapView";
+import type SceneView from "@arcgis/core/views/SceneView";
 import { ArcgisMap, ArcgisScene } from "@arcgis/map-components-react";
 import "@arcgis/map-components/components/arcgis-map";
 import "@arcgis/map-components/components/arcgis-popup";
@@ -36,8 +39,8 @@ import { BASEMAPS, DEFAULT_VIEWPOINT } from "../constants";
 import { type FabricBaseMap, type MapViewerProps } from "../types";
 
 const Context = createContext<{
-  map?: __esri.Map | null;
-  view?: __esri.MapView | __esri.SceneView;
+  map?: Map | null;
+  view?: MapView | SceneView;
   disableDrag?: boolean;
   disableZoom?: boolean;
   basemaps: FabricBaseMap[];
@@ -56,8 +59,8 @@ export const MapProvider = ({
   disableDrag = false,
   disableZoom = false,
 }: MapViewerProps) => {
-  const [map, setMap] = useState<__esri.Map | null>(null);
-  const [view, setView] = useState<__esri.MapView | __esri.SceneView>();
+  const [map, setMap] = useState<Map | null>(null);
+  const [view, setView] = useState<MapView | SceneView>();
   const [is3D, setIs3D] = useState(false);
 
   const defaultBaseMap = useMemo(
@@ -76,7 +79,7 @@ export const MapProvider = ({
 
   useEffect(() => {
     if (view && onClick) {
-      const handleClick = view.on("click", (event: __esri.ViewClickEvent) => {
+      const handleClick = view.on("click", (event) => {
         event.button === 0 &&
           onClick({
             latitude: event.mapPoint.latitude ?? 0,

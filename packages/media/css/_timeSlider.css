@@ -28,10 +28,11 @@
     overflow: hidden;
     flex: 1 1 1em;
 
+    border-radius: 999px;
+
     color: var(--color-primary-500);
 
     appearance: none;
-    border-radius: 999px;
 
     &::-webkit-slider-thumb {
       cursor: pointer;
@@ -40,6 +41,8 @@
 
       width: 1rem;
       height: 1rem;
+      border: 1px solid var(--color-tint-50);
+      border-radius: 0.5rem;
 
       appearance: none;
       opacity: 0.7;
@@ -55,8 +58,6 @@
         calc(100% + 1px) calc(100% + 1px)
       );
       filter: brightness(100%);
-      border: 1px solid var(--color-tint-50);
-      border-radius: 0.5rem;
       box-shadow: calc(-100vmax - 1rem) 0 0 100vmax currentColor;
 
       &:hover {
@@ -66,27 +67,27 @@
 
     &::-webkit-slider-runnable-track {
       height: 1rem;
+      border-radius: 99px;
       background: linear-gradient(var(--color-tint-100) 0 0) scroll no-repeat
         center / 100% 0.25rem;
-      border-radius: 99px;
     }
   }
 
   .fabric-media-timeSlider {
     height: 1.5rem;
-    color: --alpha(var(--color-primary-300) / 70%);
     border-radius: 2px;
+    color: --alpha(var(--color-primary-300) / 70%);
 
     &::-webkit-slider-thumb {
       cursor: ew-resize;
 
       width: 0.375rem;
       height: 2rem;
+      border-radius: 0;
 
       opacity: 1;
       background: var(--color-tint-800);
       clip-path: unset;
-      border-radius: 0;
       box-shadow: calc(-100vmax - 0.25rem) 0 0 100vmax currentColor;
 
       &:hover {
@@ -96,9 +97,9 @@
 
     &::-webkit-slider-runnable-track {
       height: 2rem;
+      border-radius: 2px;
       background: linear-gradient(var(--color-tint-100) 0 0) scroll no-repeat
         center / 100% 2rem;
-      border-radius: 2px;
     }
   }
 }

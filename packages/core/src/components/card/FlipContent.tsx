@@ -48,7 +48,7 @@ export interface Props extends ChildrenProp, RefProp<FlipContentRef> {
  * The `flipCard` method can be called to toggle the visibility of the back content.
  *
  * @param {Props} props - The properties for the FlipContent component.
- * @returns {JSX.Element} The rendered FlipContent component.
+ * @returns {React.ReactElement} The rendered FlipContent component.
  *
  * @example
  * ```jsx

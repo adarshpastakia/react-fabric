@@ -22,7 +22,6 @@
  */
 
 import { composeStories } from "@storybook/react";
-import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
 import * as stories from "../../stories/components/icon/Icon.stories";
 

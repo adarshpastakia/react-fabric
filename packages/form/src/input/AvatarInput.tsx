@@ -75,7 +75,7 @@ export interface Props extends RefProp {
  * It also provides a way to remove the uploaded file and shows upload progress.
  *
  * @param {Props} props - The properties for the AvatarInput component.
- * @returns {JSX.Element} - The rendered AvatarInput component.
+ * @returns {React.ReactElement} - The rendered AvatarInput component.
  */
 export const AvatarInput = ({
   size = "6rem",

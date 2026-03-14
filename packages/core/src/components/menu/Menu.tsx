@@ -283,7 +283,7 @@ const MenuComponent = ({
  * It can be nested within other menus to create complex menu structures.
  *
  * @param {MenuProps} props - The properties for the Menu component.
- * @returns {JSX.Element} The rendered Menu component.
+ * @returns {React.ReactElement} The rendered Menu component.
  *
  * @example
  * ```jsx

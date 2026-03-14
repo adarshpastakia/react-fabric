@@ -13,6 +13,7 @@
     "\\.(js|jsx|ts|tsx)$": [
       "ts-jest",
       {
+        "useESM": true,
         "tsconfig": "tsconfig.test.json"
       }
     ],
@@ -20,7 +21,9 @@
     "\\.css$": "jest-transform-css",
     "\\.svg$": "jest-transform-stub"
   },
-  "transformIgnorePatterns": ["/node_modules/(?!chalk)"],
+  "transformIgnorePatterns": [
+    "/node_modules/(?!(@storybook/react|@storybook/react\\-vite|storybook|@faker\\-js/faker|boring\\-avatars)/)"
+  ],
   "modulePaths": ["<rootDir>/packages", "<rootDir>/node_modules"],
   "modulePathIgnorePatterns": ["<rootDir>/packages/*/dist"],
   "moduleNameMapper": {

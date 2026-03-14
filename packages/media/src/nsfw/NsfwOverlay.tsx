@@ -34,7 +34,7 @@ export const NsfwOverlay = ({
   timeout?: number;
   message?:
     | string
-    | ((props: { hide: () => void; remove: () => void }) => JSX.Element);
+    | ((props: { hide: () => void; remove: () => void }) => React.ReactElement);
 }) => {
   const [hide, setHide] = useState(false);
 

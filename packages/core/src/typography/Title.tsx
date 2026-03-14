@@ -71,7 +71,7 @@ export interface TitleProps extends ChildrenProp, CssProp, AriaProps {
  * This component is useful for creating headings or titles in a consistent style across an application.
  *
  * @param {TitleProps} props - The properties for the Title component.
- * @returns {JSX.Element} The rendered Title component.
+ * @returns {React.ReactElement} The rendered Title component.
  *
  * @example
  * ```jsx

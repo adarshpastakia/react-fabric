@@ -12,8 +12,8 @@
     "jsx": "react-jsx",
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "ES2020",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": false,
     "noEmit": true,
@@ -25,6 +25,6 @@
     ".storybook/manager.ts",
     ".storybook/preview.tsx"
   ],
-  "exclude": ["skeleton-project"],
+  "exclude": ["skeleton-project", "dist"],
   "files": ["./packages/core/src/types/global.d.ts"]
 }

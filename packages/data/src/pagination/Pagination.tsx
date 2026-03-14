@@ -56,7 +56,7 @@ export interface PaginationProps {
  * It uses memoization to optimize rendering performance.
  *
  * @param {PaginationProps} props - The properties for the Pagination component.
- * @returns {JSX.Element} The rendered Pagination component.
+ * @returns {React.ReactElement} The rendered Pagination component.
  */
 export const Pagination = memo(
   ({ page, ranges, totalPages, minimal, onPageChange }: PaginationProps) => {

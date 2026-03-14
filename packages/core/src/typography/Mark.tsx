@@ -56,7 +56,7 @@ export interface MarkProps extends ChildProp<string> {
   /**
    * renderer callback
    */
-  renderer?: (part: string[]) => JSX.Element;
+  renderer?: (part: string[]) => React.ReactElement;
 }
 
 /**
@@ -67,7 +67,7 @@ export interface MarkProps extends ChildProp<string> {
  * allowing for greater flexibility in how the text is presented.
  *
  * @param {MarkProps} props - The properties for the Mark component.
- * @returns {JSX.Element} The rendered Mark component.
+ * @returns {React.ReactElement} The rendered Mark component.
  *
  * @example
  * <Mark
@@ -96,7 +96,6 @@ export const Mark = ({ children, mark, renderer }: MarkProps) => {
 
   /** ***************** tokenize text with abbr list *******************/
   const inner = useMemoDebugger(
-    // eslint-disable-next-line @typescript-eslint/promise-function-async
     () => {
       if (isString(children)) {
         if (!isEmpty(mark)) {

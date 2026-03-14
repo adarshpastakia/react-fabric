@@ -66,7 +66,7 @@ export interface AnchorProps extends ChildrenProp, CssProp, RefProp, AriaProps {
  *
  * @param {AnchorProps} props - The properties for the Anchor component.
  * @param {Tag} as - The HTML element type to render as (default is "a").
- * @returns {JSX.Element} - A styled anchor element with the specified properties.
+ * @returns {React.ReactElement} - A styled anchor element with the specified properties.
  *
  * @example
  * ```jsx

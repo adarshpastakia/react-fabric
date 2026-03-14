@@ -22,7 +22,7 @@
  */
 
 import Point from "@arcgis/core/geometry/Point";
-import Graphic from "@arcgis/core/Graphic";
+import Graphic, { type GraphicProperties } from "@arcgis/core/Graphic";
 import SimpleMarkerSymbol from "@arcgis/core/symbols/SimpleMarkerSymbol";
 import { type LngLatLike, getLatitudeLongitude } from "@react-fabric/utilities";
 import { useEffect, useMemo } from "react";
@@ -69,7 +69,7 @@ export const Pin = ({
   borderWidth?: string | number;
   borderColor?: string;
   animate?: boolean;
-} & Omit<__esri.GraphicProperties, "geometry" | "symbol">) => {
+} & Omit<GraphicProperties, "geometry" | "symbol">) => {
   const layer = useMarkerLayer();
   const { is3D } = useMap();
 

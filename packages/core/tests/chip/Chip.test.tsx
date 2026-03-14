@@ -22,10 +22,8 @@
  */
 
 import { composeStories } from "@storybook/react";
-import "@testing-library/jest-dom";
 import { fireEvent, render } from "@testing-library/react";
 import * as stories from "../../stories/components/chip/Chip.stories";
-import { HotKeyWrapper } from "../../src";
 
 const { Tester } = composeStories(stories);
 

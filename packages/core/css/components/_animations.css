@@ -124,8 +124,9 @@
     --r2: radial-gradient(farthest-side at top, currentcolor 93%, #0000);
 
     aspect-ratio: 1;
-    background: var(--c), var(--r1), var(--r2), var(--c), var(--r1), var(--r2),
-      var(--c), var(--r1), var(--r2);
+    background:
+      var(--c), var(--r1), var(--r2), var(--c), var(--r1), var(--r2), var(--c),
+      var(--r1), var(--r2);
     background-repeat: no-repeat;
     animation: l2 1s infinite alternate;
   }
@@ -140,25 +141,20 @@
     --b: 8px;
 
     aspect-ratio: 1;
-
-    background: conic-gradient(#0000 10%, currentcolor) content-box;
     border-radius: 50%;
 
-    mask: repeating-conic-gradient(
-        #0000 0deg,
-        #000 1deg 20deg,
-        #0000 21deg 36deg
-      ),
+    background: conic-gradient(#0000 10%, currentcolor) content-box;
+
+    mask:
+      repeating-conic-gradient(#0000 0deg, #000 1deg 20deg, #0000 21deg 36deg),
       radial-gradient(
         farthest-side,
         #0000 calc(100% - var(--b) - 1px),
         #000 calc(100% - var(--b))
       );
+    mask-composite: intersect;
 
     animation: l4 2s infinite steps(10);
-
-    mask-composite: destination-in;
-    mask-composite: intersect;
   }
 
   @keyframes loader {

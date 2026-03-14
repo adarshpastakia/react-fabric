@@ -62,7 +62,7 @@ export interface SearchProps extends InputProps, RefProp<HTMLInputElement> {
  * and handling search actions with a debounce mechanism.
  *
  * @param {SearchProps} props - The properties for the Search component.
- * @returns {JSX.Element} The rendered Search input component.
+ * @returns {React.ReactElement} The rendered Search input component.
  */
 export const Search = ({
   ref,

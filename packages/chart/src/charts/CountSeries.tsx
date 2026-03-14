@@ -196,7 +196,7 @@ CountSeriesChart.displayName = "CountSeriesChart";
  * It allows users to switch between different types of visualizations and customize the color palette used in the chart.
  *
  * @param {CountSeriesProps} props - The properties for the CountSeries component.
- * @returns {JSX.Element} The rendered CountSeries component.
+ * @returns {React.ReactElement} The rendered CountSeries component.
  *
  * @example
  * ```jsx

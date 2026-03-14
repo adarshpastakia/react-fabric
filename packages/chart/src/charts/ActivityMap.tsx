@@ -315,7 +315,7 @@ ActivityMapChart.displayName = "ActivityMapChart";
  * and customize the color palette used in the chart.
  *
  * @param {ActivityMapProps} props - The properties for the ActivityMap component.
- * @returns {JSX.Element} The rendered ActivityMap component.
+ * @returns {React.ReactElement} The rendered ActivityMap component.
  *
  * @example
  * ```jsx

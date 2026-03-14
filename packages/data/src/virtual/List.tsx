@@ -383,7 +383,7 @@ const GenericMemo: <T>(c: T) => T = memo;
  * It can be used with a ref to control scrolling and hilighting of items.
  *
  * @param {VirtualListProps<T>} props - The properties for the VirtualList component.
- * @returns {JSX.Element} The rendered VirtualList component.
+ * @returns {React.ReactElement} The rendered VirtualList component.
  * @template T - The type of items in the list, extending AnyObject.
  *
  * @example

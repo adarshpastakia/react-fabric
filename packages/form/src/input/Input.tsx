@@ -47,7 +47,7 @@ export interface TextInputProps extends InputProps, RefProp<HTMLInputElement> {
  * The component uses a wrapper to handle the clear button and styling, and it supports deferred value updates to optimize performance.
  *
  * @param {TextInputProps} props - The properties for the text input component.
- * @returns {JSX.Element} - A JSX element representing the text input field.
+ * @returns {React.ReactElement} - A JSX element representing the text input field.
  */
 export const Input = ({
   ref,

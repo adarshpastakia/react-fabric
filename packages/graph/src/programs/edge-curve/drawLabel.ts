@@ -1,4 +1,4 @@
-import { type CreateEdgeCurveProgramOptions } from "@sigma/edge-curve/dist/declarations/src/utils";
+import { type CreateEdgeCurveProgramOptions } from "@sigma/edge-curve";
 import { type Attributes } from "graphology-types";
 import { type EdgeLabelDrawingFunction } from "sigma/rendering";
 import { type Settings } from "sigma/settings";

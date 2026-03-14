@@ -31,7 +31,7 @@ import { type AnnotatorProps, AnnotatorProvider } from "./Context";
  * providing a grid layout for the content area.
  *
  * @param {AnnotatorProps<T>} props - The properties for the Annotator component.
- * @returns {JSX.Element} The rendered Annotator component.
+ * @returns {React.ReactElement} The rendered Annotator component.
  *
  * @example
  * ```jsx

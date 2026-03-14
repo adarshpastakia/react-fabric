@@ -37,7 +37,7 @@ import { useTree } from "./useTree";
  * nodes and supports checkable nodes.
  *
  * @param {TreePanelProps<T>} props - The properties for the TreePanel component.
- * @returns {JSX.Element} The rendered TreePanel component.
+ * @returns {React.ReactElement} The rendered TreePanel component.
  * @template T - The type of items in the tree, extending KeyValue.
  *
  * @example

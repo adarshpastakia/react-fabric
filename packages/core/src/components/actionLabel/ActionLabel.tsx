@@ -59,7 +59,7 @@ export interface ActionLabelProps
  * It supports custom alignment, disabled states, and can be easily styled with additional CSS classes.
  *
  * @param {ActionLabelProps} props - The properties for the ActionLabel component.
- * @returns {JSX.Element} The rendered ActionLabel component.
+ * @returns {React.ReactElement} The rendered ActionLabel component.
  *
  * @example
  * ```jsx

@@ -45,7 +45,7 @@ export interface MeterProps extends CssProp, AriaProps, TestProps {
  * The component can also display a label showing the percentage value.
  *
  * @param {MeterProps} props - The properties for the Meter component.
- * @returns {JSX.Element} The rendered Meter component.
+ * @returns {React.ReactElement} The rendered Meter component.
  *
  * @example
  * ```jsx

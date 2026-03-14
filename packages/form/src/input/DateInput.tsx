@@ -77,7 +77,7 @@ export interface DateProps
  * The component supports both date and datetime types, with appropriate formatting.
  *
  * @param {DateProps} props - The properties for the DateInput component.
- * @returns {JSX.Element} - The rendered DateInput component.
+ * @returns {React.ReactElement} - The rendered DateInput component.
  */
 export const DateInput = ({
   ref,

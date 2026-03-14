@@ -90,7 +90,7 @@ export const useSimpleRenderer = (props?: Props) => {
           width: props?.borderWidth ?? 1,
         },
       },
-      visualVariables: vizVars,
+      visualVariables: vizVars as any,
     });
   }, [props]);
   return renderer;

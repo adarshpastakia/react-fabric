@@ -84,7 +84,7 @@ export interface AbbrProps extends ChildProp<string>, CssProp {
   /**
    * renderer callback
    */
-  renderer?: (part: string[]) => JSX.Element;
+  renderer?: (part: string[]) => React.ReactElement;
 }
 
 /**
@@ -96,7 +96,7 @@ export interface AbbrProps extends ChildProp<string>, CssProp {
  * while providing additional context through tooltips.
  *
  * @param {AbbrProps} props - The properties for the Abbr component.
- * @returns {JSX.Element} The rendered Abbr component.
+ * @returns {React.ReactElement} The rendered Abbr component.
  *
  * @example
  * ```jsx
@@ -142,7 +142,6 @@ export const Abbr = ({
 
   /** ***************** tokenize text with abbr list *******************/
   const inner = useMemoDebugger(
-    // eslint-disable-next-line @typescript-eslint/promise-function-async
     () => {
       if (isString(children)) {
         if (!isEmpty(abbr)) {

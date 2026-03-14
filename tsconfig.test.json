@@ -2,6 +2,7 @@
   "extends": "./tsconfig",
   "include": ["./packages/**/*.ts", "./packages/**/*.tsx"],
   "compilerOptions": {
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "moduleResolution": "nodenext"
   }
 }

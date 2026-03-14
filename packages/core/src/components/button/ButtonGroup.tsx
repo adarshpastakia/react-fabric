@@ -78,7 +78,7 @@ export interface ButtonGroupProps
  * such as toolbars, action groups, or navigation buttons.
  *
  * @param {ButtonGroupProps} props - The properties for the ButtonGroup component.
- * @returns {JSX.Element} The rendered ButtonGroup component.
+ * @returns {React.ReactElement} The rendered ButtonGroup component.
  *
  * @example
  * ```jsx

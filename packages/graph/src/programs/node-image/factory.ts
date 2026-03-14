@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import { isSvgPath } from "@react-fabric/utilities";
 import { type Attributes } from "graphology-types";
 import type Sigma from "sigma";

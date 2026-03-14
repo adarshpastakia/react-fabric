@@ -1,14 +1,12 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import react from "eslint-plugin-react";
-import reactHooks from "eslint-plugin-react-hooks";
+import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
+import stylistic from "@stylistic/eslint-plugin";
 import jsxA11Y from "eslint-plugin-jsx-a11y";
-import { fixupPluginRules } from "@eslint/compat";
+import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import tsParser from "@typescript-eslint/parser";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import js from "@eslint/js";
-import { FlatCompat } from "@eslint/eslintrc";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -30,16 +28,10 @@ export default defineConfig([
     "**/*.js",
   ]),
   {
-    extends: compat.extends(
-      "standard-with-typescript",
-      "plugin:react/recommended",
-      "plugin:jsx-a11y/recommended",
-      "prettier",
-    ),
+    extends: compat.extends("plugin:jsx-a11y/recommended", "prettier"),
 
     plugins: {
-      react,
-      "react-hooks": fixupPluginRules(reactHooks),
+      "@stylistic": stylistic,
       "jsx-a11y": jsxA11Y,
     },
 
@@ -52,7 +44,7 @@ export default defineConfig([
 
       parser: tsParser,
       ecmaVersion: "latest",
-      sourceType: "script",
+      sourceType: "module",
 
       parserOptions: {
         ecmaFeatures: {
@@ -68,8 +60,8 @@ export default defineConfig([
     rules: {
       "react/react-in-jsx-scope": "off",
       "jsx-a11y/no-autofocus": "off",
-      "@typescript-eslint/no-namespace": "off",
       "jsx-a11y/click-events-have-key-events": "off",
+      "@typescript-eslint/no-namespace": "off",
       "@typescript-eslint/no-unsafe-argument": "off",
       "@typescript-eslint/no-misused-promises": "off",
       "@typescript-eslint/explicit-function-return-type": "off",

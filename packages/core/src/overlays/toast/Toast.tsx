@@ -54,7 +54,7 @@ export interface ToastProps {
   /**
    * toast text
    */
-  message: string | JSX.Element;
+  message: string | React.ReactElement;
   /**
    * theme color
    */
@@ -62,7 +62,7 @@ export interface ToastProps {
   /**
    * extra action button
    */
-  actions?: Elements<JSX.Element>;
+  actions?: Elements<React.ReactElement>;
   /**
    * ok label
    */
@@ -82,10 +82,8 @@ export const Toast = ({
   rtlFlip,
   actions,
   // @ts-expect-error internal prop
-  // eslint-disable-next-line react/prop-types --- IGNORE ---
   onClose,
   // @ts-expect-error internal prop
-  // eslint-disable-next-line react/prop-types --- IGNORE ---
   onCloseAll,
   type,
   okLabel,

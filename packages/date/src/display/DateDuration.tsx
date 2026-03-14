@@ -59,7 +59,7 @@ export interface Props
  * It uses the current locale for translations.
  *
  * @param {Props} props - The properties for the component.
- * @returns {JSX.Element} The rendered component.
+ * @returns {React.ReactElement} The rendered component.
  *
  * @example
  * ```jsx

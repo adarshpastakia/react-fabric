@@ -22,7 +22,6 @@
  */
 
 import { composeStories } from "@storybook/react";
-import "@testing-library/jest-dom";
 import { getByTestId, render } from "@testing-library/react";
 import { Button } from "../../src";
 import * as stories from "../../stories/components/button/ButtonGroup.stories";

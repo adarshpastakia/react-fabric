@@ -28,13 +28,13 @@
 
       padding-block: 0;
       padding-inline: 4px;
+      border: 0;
+      border-radius: var(--rounded);
 
       color: var(--color-white);
 
       opacity: 0.8;
       background-color: var(--color-primary-500);
-      border: 0;
-      border-radius: var(--rounded);
 
       &:hover {
         opacity: 0.9;

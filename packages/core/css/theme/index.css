@@ -25,12 +25,10 @@
 @import "./_utilities.css";
 
 @theme static {
-  --font-sans: "Avenir Next", Avenir, "Noto Sans", Roboto, "Helvetica Neue",
-    "Segoe UI", Arial, sans-serif, BlinkMacSystemFont, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-serif: "Noto Serif", Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: "Noto Sans Mono", Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
+  --font-sans:
+    "Noto Sans Kufi Arabic", "Noto Sans", "Noto Color Emoji", Arial, sans-serif;
+  --font-serif: "Noto Serif", Times, serif;
+  --font-mono: "Noto Sans Mono", Menlo, Monaco, Consolas, monospace;
 }
 
 @theme static {

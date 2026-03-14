@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Dropdown, Tooltip, useGlobals } from "@react-fabric/core";
+import { Dropdown, Tooltip, useApplicationContext } from "@react-fabric/core";
 import { type MenuProps } from "@react-fabric/core/dist/types/components/menu/types";
 import {
   type AriaProps,
@@ -59,7 +59,7 @@ export interface Props
  * If `children` are provided, it wraps the date in a dropdown.
  *
  * @param {Object} props - The component props.
- * @returns {JSX.Element} - The rendered component.
+ * @returns {React.ReactElement} - The rendered component.
  *
  * @example
  * ```jsx
@@ -76,7 +76,7 @@ export const DateDisplay = ({
   showAlternateDate,
   ...aria
 }: Props) => {
-  const { currentCalendar, currentLocale } = useGlobals();
+  const { currentCalendar, currentLocale } = useApplicationContext();
 
   const dtLabel = (
     <Tooltip

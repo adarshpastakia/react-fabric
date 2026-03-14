@@ -90,7 +90,7 @@ export interface MdxEditorProps {
  * The component is responsive and adapts to dark mode based on the user's preference.
  *
  * @param {MdxEditorProps} props - The properties for the MdxEditor component.
- * @returns {JSX.Element} The rendered MdxEditor component.
+ * @returns {React.ReactElement} The rendered MdxEditor component.
  *
  * @example
  * ```jsx

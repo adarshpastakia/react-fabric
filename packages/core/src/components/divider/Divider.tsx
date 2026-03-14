@@ -61,7 +61,7 @@ export interface DividerProps extends CssProp, Partial<ChildProp> {
  * styles, and alignment options.
  *
  * @param {DividerProps} props - The properties for the Divider component.
- * @returns {JSX.Element} The rendered Divider component.
+ * @returns {React.ReactElement} The rendered Divider component.
  *
  * @example
  * ```jsx

@@ -39,6 +39,9 @@ yarn add @react-fabric/chart
 # lexical editor
 yarn add @react-fabric/lexical
 
+# whietboard drawing canvas
+yarn add @react-fabric/draw
+
 # mdx editor for markdown input
 yarn add @react-fabric/mdx
 
@@ -68,16 +71,13 @@ module.exports = {
 @import url("@react-fabric/core/css/styles.css");
 @import url("@react-fabric/data/css/styles.css");
 @import url("@react-fabric/date/css/styles.css");
+@import url("@react-fabric/draw/css/styles.css");
 @import url("@react-fabric/form/css/styles.css");
 @import url("@react-fabric/lexical/css/styles.css");
 @import url("@react-fabric/mdx/css/styles.css");
 @import url("@react-fabric/media/css/styles.css");
 @import url("@react-fabric/monaco/css/styles.css");
 @import url("@react-fabric/superdate/css/styles.css");
-
-/* helper css with base64 flag images for windows */
-@import "@react-fabric/core/css/flags.rect.css";
-@import "@react-fabric/core/css/flags.wavy.css";
 ```
 
 - Include `main.css` in react root file

@@ -38,7 +38,7 @@ interface CheckboxProps extends RefProp<HTMLInputElement> {
   /**
    * checkbox label
    */
-  label?: JSX.Element | string;
+  label?: React.ReactElement | string;
   /**
    * checked
    */
@@ -88,7 +88,7 @@ interface CheckboxProps extends RefProp<HTMLInputElement> {
  * It also provides an error icon to indicate validation errors.
  *
  * @param {CheckboxProps} props - The properties for the Checkbox component.
- * @returns {JSX.Element} The rendered Checkbox component.
+ * @returns {React.ReactElement} The rendered Checkbox component.
  */
 export const Checkbox = ({
   ref,

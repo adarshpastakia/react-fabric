@@ -119,9 +119,9 @@
       &:hover::before,
       &:active::before {
         height: 100%;
-        background-color: var(--color-primary-300);
         border-color: var(--bg-color-base);
         border-width: 0 1.25px;
+        background-color: var(--color-primary-300);
       }
     }
   }

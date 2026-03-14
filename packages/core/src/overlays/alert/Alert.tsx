@@ -64,7 +64,7 @@ export interface AlertProps {
   /**
    * toast text
    */
-  message: string | JSX.Element;
+  message: string | React.ReactElement;
   /**
    * theme color
    */
@@ -72,7 +72,7 @@ export interface AlertProps {
   /**
    * extra action button
    */
-  actions?: Elements<JSX.Element>;
+  actions?: Elements<React.ReactElement>;
   /**
    * ok label
    */
@@ -100,7 +100,6 @@ export const Alert = ({
   rtlFlip,
   actions,
   // @ts-expect-error internal prop
-  // eslint-disable-next-line react/prop-types --- IGNORE ---
   onClose,
   type,
   okLabel,

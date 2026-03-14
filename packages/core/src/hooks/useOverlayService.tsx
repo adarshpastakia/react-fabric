@@ -74,7 +74,6 @@ export const useOverlayService = <T extends AnyObject = AnyObject>(
         onClose?.(args);
         existingOpenPromise.current = null;
       };
-      // eslint-disable-next-line react/display-name
       setOverlay(() => (overrideProps: Partial<T>) => (
         <ModalOrFlyout
           {...outerProps}

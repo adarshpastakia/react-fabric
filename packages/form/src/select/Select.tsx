@@ -50,7 +50,7 @@ import { useSelect } from "./useSelect";
  * and custom rendering of options.
  *
  * @param {SelectProps<T>} props - The properties for the Select component.
- * @returns {JSX.Element} The rendered Select component.
+ * @returns {React.ReactElement} The rendered Select component.
  */
 export const Select = <T extends AnyObject = string>({
   ref,

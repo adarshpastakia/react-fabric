@@ -148,7 +148,7 @@ export interface SchemaEditorProps {
   /**
    * footer actions
    */
-  children?: Elements<JSX.Element> | Array<Elements<JSX.Element>>;
+  children?: Elements<React.ReactElement> | Array<Elements<React.ReactElement>>;
 
   onChange?: (schema: FormSchema) => void;
   onSubmit?: (schema: FormSchema) => void;

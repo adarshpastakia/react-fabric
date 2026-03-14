@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "date-fns": "~4.1.0",
-    "libphonenumber-js": "~1.12.25",
+    "libphonenumber-js": "~1.12.40",
     "numeral": "~2.0.6",
     "world-countries": "~5.1.0",
     "yup": "~1.7.1"
@@ -42,7 +42,7 @@
     "@types/numeral": "~2.0.5"
   },
   "engines": {
-    "node": ">=18.12.0",
-    "npm": ">=8.19.0"
+    "node": ">=20.18.0",
+    "npm": ">=10.8.0"
   }
 }

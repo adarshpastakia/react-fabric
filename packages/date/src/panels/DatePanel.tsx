@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Button, useDebounce, useGlobals } from "@react-fabric/core";
+import { Button, useDebounce, useApplicationContext } from "@react-fabric/core";
 import { isArray, isEmpty } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { isAfter, isBefore, isSameDay } from "date-fns";
@@ -54,7 +54,7 @@ type PanelActions =
  * It also supports disabling specific dates and setting minimum and maximum date limits.
  *
  * @param {DateProps} props - The properties for the DatePanel component.
- * @return {JSX.Element} The rendered DatePanel component.
+ * @return {React.ReactElement} The rendered DatePanel component.
  *
  * @example
  * ```jsx
@@ -84,7 +84,7 @@ export const DatePanel = ({
   ...rest
 }: DateProps) => {
   const { t } = useTranslation("date");
-  const { currentCalendar } = useGlobals();
+  const { currentCalendar } = useApplicationContext();
   const [isHijri, setHijri] = useState(currentCalendar === "hijri");
   const [canSelectToday, setCanSelectToday] = useState(true);
 

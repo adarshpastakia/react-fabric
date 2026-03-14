@@ -21,9 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { faker } from "@faker-js/faker";
 import { composeStories } from "@storybook/react";
-import "@testing-library/jest-dom";
 import { fireEvent, render } from "@testing-library/react";
 import { CardCover, Content, Footer, Header, Image, Title } from "../../src";
 import * as stories from "../../stories/components/card/Card.stories";

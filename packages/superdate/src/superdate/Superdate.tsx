@@ -30,7 +30,7 @@ import {
   Tab,
   TabPanel,
   Tooltip,
-  useGlobals,
+  useApplicationContext,
 } from "@react-fabric/core";
 import { DateUtil, EventPanel, RangePanel } from "@react-fabric/date";
 import classNames from "classnames";
@@ -49,7 +49,7 @@ export const SuperDateTabs = ({
 }: SuperDateProps) => {
   const { t } = useTranslation("superdate");
   const tree = useFloatingTree();
-  const { currentCalendar, currentLocale } = useGlobals();
+  const { currentCalendar, currentLocale } = useApplicationContext();
 
   const isHijri = useMemo(() => currentCalendar === "hijri", [currentCalendar]);
 
@@ -152,7 +152,7 @@ export const SuperDateTabs = ({
  * - `$month|$week`: Represents the current month starting from the beginning of the month to the end of current week.
  *
  * @param {SuperDateProps} props - The properties for the SuperDate component.
- * @returns {JSX.Element} The rendered SuperDate component.
+ * @returns {React.ReactElement} The rendered SuperDate component.
  *
  * @example
  * ```jsx
@@ -185,7 +185,7 @@ export const SuperDate = ({
   "data-testid": testId,
   ...props
 }: SuperDateProps) => {
-  const { currentCalendar, currentLocale } = useGlobals();
+  const { currentCalendar, currentLocale } = useApplicationContext();
 
   const isHijri = useMemo(() => currentCalendar === "hijri", [currentCalendar]);
 

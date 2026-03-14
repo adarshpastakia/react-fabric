@@ -100,7 +100,7 @@ export interface JsonViewProps<T> extends CssProp {
   formatter?: (
     path?: string,
     value?: AnyObject,
-  ) => string | JSX.Element | undefined;
+  ) => string | React.ReactElement | undefined;
 }
 
 const reduceObject = (json: AnyObject, keys: string[] = [], prefix = "") => {
@@ -356,7 +356,7 @@ const JsonEntry = ({
  * It also provides options for copying values and filtering properties.
  *
  * @param {JsonViewProps<T>} props - The properties for the JsonViewer component.
- * @returns {JSX.Element} The rendered JsonViewer component.
+ * @returns {React.ReactElement} The rendered JsonViewer component.
  *
  * @example
  * ```jsx

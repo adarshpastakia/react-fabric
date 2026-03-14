@@ -21,11 +21,13 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import GeoJSONLayer from "@arcgis/core/layers/GeoJSONLayer";
+import GeoJSONLayer, {
+  type GeoJSONLayerProperties,
+} from "@arcgis/core/layers/GeoJSONLayer";
 import { useEffect, useMemo } from "react";
 import { useMap } from "../viewer/Context";
 
-export const JsonLayer = (props: __esri.GeoJSONLayerProperties) => {
+export const JsonLayer = (props: GeoJSONLayerProperties) => {
   const { map, view } = useMap();
 
   const layer = useMemo(() => {
@@ -37,7 +39,7 @@ export const JsonLayer = (props: __esri.GeoJSONLayerProperties) => {
   useEffect(() => {
     if (map && view) {
       void layer.when(() => {
-        void view.goTo(layer.fullExtent);
+        void (layer.fullExtent && view.goTo(layer.fullExtent));
       });
       map.add(layer);
 

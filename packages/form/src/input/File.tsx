@@ -82,7 +82,7 @@ const FileExists = (prop: AnyObject) => {
  * It handles file changes, invalid states, and read-only or disabled states.
  *
  * @param {FileInputProps} props - The properties for the FileInput component.
- * @returns {JSX.Element} - The rendered FileInput component.
+ * @returns {React.ReactElement} - The rendered FileInput component.
  */
 export const FileInput = ({
   ref,

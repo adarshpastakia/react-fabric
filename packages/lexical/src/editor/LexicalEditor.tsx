@@ -88,7 +88,7 @@ export interface EditorProps {
  * It uses a custom theme and provides error handling for Lexical updates.
  *
  * @param {EditorProps} props - The properties for the LexicalEditor component.
- * @returns {JSX.Element} The rendered LexicalEditor component.
+ * @returns {React.ReactElement} The rendered LexicalEditor component.
  *
  * @example
  * ```jsx

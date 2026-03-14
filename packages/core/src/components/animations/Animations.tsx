@@ -51,7 +51,7 @@ export interface AnimationProps extends CssProp, AriaProps {
  * It also allows customization of the icon color and stroke color.
  *
  * @param {AnimationProps} props - The properties for the AnimationIndicator component.
- * @returns {JSX.Element} The rendered AnimationIndicator component.
+ * @returns {React.ReactElement} The rendered AnimationIndicator component.
  *
  * @example
  * ```jsx
@@ -134,7 +134,7 @@ export const AnimationIndicator = ({
  * @param {number | string} [props.size="2rem"] - The size of the loader icon.
  * @param {string} props.icon - The icon to be displayed as the loader.
  * @param {"sm" | "md" | "lg"} [props.maskBlur] - The blur effect for the background mask.
- * @returns {JSX.Element} The rendered AnimationLoader component.
+ * @returns {React.ReactElement} The rendered AnimationLoader component.
  */
 export const AnimationLoader = ({
   color = "tint-500",
@@ -178,7 +178,7 @@ export const AnimationLoader = ({
  * @param {Object} props - The properties for the LoadingBars component.
  * @param {ColorType | PaletteType | string} [props.color="tint-500"] - The color of the bars.
  * @param {number | string} [props.size="2rem"] - The size of the bars.
- * @returns {JSX.Element} The rendered LoadingBars component.
+ * @returns {React.ReactElement} The rendered LoadingBars component.
  *
  * @example
  * ```jsx
@@ -205,7 +205,7 @@ export const LoadingBars = (props: {
  * @param {Object} props - The properties for the LoadingSpinner component.
  * @param {ColorType | PaletteType | string} [props.color="tint-700"] - The color of the spinner.
  * @param {number | string} [props.size="2rem"] - The size of the spinner.
- * @returns {JSX.Element} The rendered LoadingSpinner component.
+ * @returns {React.ReactElement} The rendered LoadingSpinner component.
  *
  * @example
  * ```jsx
@@ -229,7 +229,7 @@ export const LoadingSpinner = (props: {
  * providing a visual placeholder for content that is being loaded.
  *
  * @param {CssProp} props - The properties for the Skeleton component.
- * @returns {JSX.Element} The rendered Skeleton component.
+ * @returns {React.ReactElement} The rendered Skeleton component.
  *
  * @example
  * ```jsx
@@ -266,7 +266,7 @@ export const Skeleton = ({ className, ...rest }: CssProp) => {
  * A component that displays a loading animation with a top border.
  * It is typically used to indicate that content is being loaded in pages and page sections.
  *
- * @returns {JSX.Element} The rendered Loading component.
+ * @returns {React.ReactElement} The rendered Loading component.
  */
 export const LoadingLine = () => {
   return (

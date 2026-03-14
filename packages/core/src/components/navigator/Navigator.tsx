@@ -65,7 +65,7 @@ export interface NavigatorProps
  * It includes previous and next buttons, and supports keyboard navigation.
  *
  * @param {NavigatorProps} props - The properties for the Navigator component.
- * @returns {JSX.Element} The rendered Navigator component.
+ * @returns {React.ReactElement} The rendered Navigator component.
  *
  * @example
  * ```jsx

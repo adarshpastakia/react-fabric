@@ -164,7 +164,7 @@ export type ButtonProps<Tag extends React.ElementType = "button"> = BaseProps &
  * It also includes features like after action tooltips, badges, and keyboard shortcuts.
  *
  * @param {ButtonProps} props - The properties for the Button component.
- * @returns {JSX.Element} The rendered Button component.
+ * @returns {React.ReactElement} The rendered Button component.
  *
  * @example
  * ```jsx

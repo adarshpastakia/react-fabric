@@ -236,7 +236,7 @@ TimeSliderChart.displayName = "TimeSliderChart";
  * and it emits an event when the range is changed.
  *
  * @param {TimeSliderProps} props - The properties for the TimeSlider component.
- * @returns {JSX.Element} The rendered TimeSlider component.
+ * @returns {React.ReactElement} The rendered TimeSlider component.
  *
  * @example
  * ```jsx

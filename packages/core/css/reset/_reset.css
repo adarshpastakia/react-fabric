@@ -29,9 +29,10 @@
     margin: 0;
     padding: 0;
 
+    vertical-align: baseline;
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    vertical-align: baseline;
   }
 
   :root {
@@ -175,13 +176,13 @@
 
       height: auto;
       margin: 0.25rem 0;
-
-      background: none;
       border: 0;
       border-top: 3px solid
         color-mix(in lab, var(--fabric-bg) 95%, var(--color-tint)) !important;
       border-bottom: 2px solid
         color-mix(in lab, var(--fabric-bg) 50%, var(--color-tint));
+
+      background: none;
 
       &.vertical {
         transform: scaleX(0.5);
@@ -189,7 +190,6 @@
         display: inline-block;
 
         margin: 0 0.25rem;
-
         border: 0;
         border-inline-start: 3px solid
           color-mix(in lab, var(--fabric-bg) 95%, var(--color-tint)) !important;

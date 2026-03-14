@@ -35,7 +35,7 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@floating-ui/react": "~0.27.16",
+    "@floating-ui/react": "~0.27.19",
     "@react-fabric/core": "^1.0.0-beta.62",
     "@react-fabric/utilities": "^1.0.0-beta.62",
     "@sigma/edge-curve": "~3.1.0",
@@ -43,7 +43,7 @@
     "classnames": "~2.5.1",
     "dom-to-image": "~2.6.0",
     "graphology": "~0.26.0",
-    "graphology-canvas": "~0.4.2",
+    "graphology-canvas": "~0.4.3",
     "graphology-layout": "~0.6.1",
     "graphology-layout-forceatlas2": "~0.10.1",
     "graphology-shortest-path": "~2.1.0",
@@ -51,10 +51,10 @@
     "sigma": "~3.0.2"
   },
   "peerDependencies": {
-    "i18next": "~25.6.0",
-    "react": "~19.2.0",
-    "react-dom": "~19.2.0",
-    "react-i18next": "~16.2.1"
+    "i18next": "~25.8.18",
+    "react": "~19.2.4",
+    "react-dom": "~19.2.4",
+    "react-i18next": "~16.5.8"
   },
   "devDependencies": {
     "@types/dom-to-image": "~2.6.7",
@@ -62,7 +62,7 @@
     "elkjs": "~0.11.0"
   },
   "engines": {
-    "node": ">=18.12.0",
-    "npm": ">=8.19.0"
+    "node": ">=20.18.0",
+    "npm": ">=10.8.0"
   }
 }

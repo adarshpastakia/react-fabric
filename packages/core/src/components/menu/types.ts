@@ -45,7 +45,7 @@ export interface MenuItemProps extends CssProp, AriaProps, TestProps {
   /**
    * append label badge text
    */
-  appendLabel?: JSX.Element | string | number | false;
+  appendLabel?: React.ReactElement | string | number | false;
   /**
    * menu color
    */

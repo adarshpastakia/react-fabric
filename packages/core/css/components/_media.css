@@ -32,6 +32,7 @@
         inset-inline: 0;
 
         height: 0.5rem;
+        border: 0.125rem solid #222c;
 
         background-image: linear-gradient(
           to right,
@@ -45,7 +46,6 @@
         background-repeat: repeat-x;
         background-position: center center;
         background-size: 1rem;
-        border: 0.125rem solid #222c;
       }
 
       &::before {
@@ -55,10 +55,6 @@
       &::after {
         bottom: 0;
       }
-    }
-
-    & .fabric-mediaPlaceholder {
-      /* might add styles later */
     }
 
     & .fabric-mediaControls {
@@ -80,23 +76,15 @@
         background-color: --alpha(var(--color-black) / 70%);
       }
 
-      & .fabric-mediaControlPlaceholder {
-        /* might add styles later */
-      }
-
       & .fabric-mediaControlAction + .fabric-mediaControlAction {
         margin-top: 8px;
       }
     }
   }
-
-  .fabric-media {
-    /* might add styles later */
-  }
 }
 
 @layer utilities {
-  & .fabric-mediaControls {
+  .fabric-mediaContainer .fabric-mediaControls {
     &:hover {
       & .fabric-mediaControlPlaceholder {
         display: none;

@@ -32,8 +32,8 @@
     background-color: var(--color-danger-500);
     background-image: repeating-linear-gradient(
       135deg,
-      rgba(255 255 255 / 50%) 0 4px,
-      rgba(255 255 255 / 20%) 4px 8px
+      rgb(255 255 255 / 50%) 0 4px,
+      rgb(255 255 255 / 20%) 4px 8px
     );
 
     & .fabric-boundaryContent {
@@ -52,14 +52,6 @@
     & .fabric-boundaryDetail {
       grid-area: detail;
       grid-template-rows: auto 1fr;
-
-      & .fabric-boundaryLink {
-        /* might add styles later */
-      }
-    }
-
-    & .fabric-boundaryStack {
-      /* might add styles later */
     }
   }
 }

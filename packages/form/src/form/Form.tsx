@@ -92,7 +92,7 @@ const DEFAULT_SUBMIT = () => undefined;
  * It supports nested form structures and allows for custom validation schemas using Yup.
  *
  * @param {FormProps<K>} props - The properties for the Form component.
- * @returns {JSX.Element} The rendered Form component.
+ * @returns {React.ReactElement} The rendered Form component.
  *
  * @example
  * ```jsx

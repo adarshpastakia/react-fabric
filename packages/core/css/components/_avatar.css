@@ -25,10 +25,10 @@
   .fabric-avatar {
     width: 1em;
     height: 1em;
+    border-radius: var(--rounding);
 
     vertical-align: -0.125em;
 
-    border-radius: var(--rounding);
     box-shadow: 0 0 1px var(--border-color-base);
 
     & > i,
@@ -41,12 +41,12 @@
 
       width: 1em;
       height: 1em;
+      border-radius: inherit;
 
       line-height: 1;
 
       object-fit: cover;
       background-color: var(--bg-color-dimmed);
-      border-radius: inherit;
 
       fill: currentcolor;
     }
@@ -74,8 +74,8 @@
     & .fabric-avatarGroup--extra {
       width: 1em;
       height: 1em;
-      font-size: inherit;
       border-radius: inherit;
+      font-size: inherit;
     }
   }
 }
@@ -83,8 +83,8 @@
 @layer utilities {
   .fabric-avatarGroup {
     & > .fabric-avatar {
-      font-size: inherit;
       border-radius: inherit;
+      font-size: inherit;
     }
   }
 }

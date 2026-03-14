@@ -51,7 +51,7 @@ export interface ArrayInputProps<T extends AnyObject = string> {
   /**
    * append to label end
    */
-  appendLabel?: JSX.Element | string | number | boolean;
+  appendLabel?: React.ReactElement | string | number | boolean;
   /**
    * info label at bottom
    */
@@ -147,7 +147,7 @@ export interface ArrayInputProps<T extends AnyObject = string> {
  * It also supports drag-and-drop sorting using `@dnd-kit/core` and `@dnd-kit/sortable` for a better user experience when reordering items.
  *
  * @param {ArrayInputProps<T>} props - The properties for the ArrayInput component.
- * @returns {JSX.Element} The rendered ArrayInput component.
+ * @returns {React.ReactElement} The rendered ArrayInput component.
  *
  * @example
  * ```jsx
@@ -266,7 +266,6 @@ export const ArrayInput = <T extends AnyObject = string>({
   }));
 
   const Wrapper = useCallback(
-    // eslint-disable-next-line @typescript-eslint/promise-function-async
     ({ children }: { children: React.ReactNode }) => {
       if (enableSorting) {
         // pass id list to dnd context

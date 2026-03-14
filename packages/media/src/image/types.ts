@@ -56,7 +56,7 @@ export interface ImageProps<T> extends RefProp<CanvasRef> {
           hide: () => void;
           remove: () => void;
         } & KeyValue,
-      ) => JSX.Element);
+      ) => React.ReactElement);
   /**
    * image overlay
    */

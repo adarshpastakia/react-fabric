@@ -23,6 +23,7 @@
 
 import { useCallback, useState } from "react";
 import { useLayoutEffectDebugger } from "./useEffectDebugger";
+import { debounce } from "@react-fabric/utilities";
 
 /**
  * Custom hook to determine if the current theme is dark.
@@ -43,9 +44,10 @@ export const useIsDark = () => {
   useLayoutEffectDebugger(
     () => {
       if (MutationObserver) {
-        const ob = new MutationObserver(checkTheme);
+        const cb = debounce(checkTheme, 100);
+        const ob = new MutationObserver(cb);
         ob.observe(document.documentElement, { attributes: true });
-        checkTheme();
+        cb();
         return () => {
           ob.disconnect();
         };

@@ -101,7 +101,7 @@ export interface CollapsableProps
  * This component is ideal for creating accordions, expandable panels, or sections that can be toggled by the user.
  *
  * @param {CollapsableProps} props - The properties for the Collapsable component.
- * @returns {JSX.Element} The rendered Collapsable component.
+ * @returns {React.ReactElement} The rendered Collapsable component.
  *
  * @example
  * ```jsx

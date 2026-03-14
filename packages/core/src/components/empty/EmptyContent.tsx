@@ -41,11 +41,11 @@ export interface EmptyContentProps
   /**
    * empty title
    */
-  title?: string | JSX.Element;
+  title?: string | React.ReactElement;
   /**
    * empty message
    */
-  message: string | JSX.Element;
+  message: string | React.ReactElement;
   /**
    * content size
    */
@@ -113,7 +113,7 @@ const DefaultIcon = () => (
  * such as in empty states of lists, tables, or other content areas.
  *
  * @param {EmptyContentProps} props - The properties for the EmptyContent component.
- * @returns {JSX.Element} The rendered EmptyContent component.
+ * @returns {React.ReactElement} The rendered EmptyContent component.
  *
  * @example
  * ```jsx

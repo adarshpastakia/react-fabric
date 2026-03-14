@@ -52,7 +52,7 @@ type SearchActions =
  * It can be collapsed to hide filters and has options for customization.
  *
  * @param {SearchBarProps} props - The properties for the SearchBar component.
- * @returns {JSX.Element} The rendered SearchBar component.
+ * @returns {React.ReactElement} The rendered SearchBar component.
  *
  * @example
  * ```jsx

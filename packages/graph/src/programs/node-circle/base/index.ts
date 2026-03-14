@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import { NodeProgram, type ProgramInfo } from "sigma/rendering";
 import { type NodeDisplayData, type RenderParams } from "sigma/types";
 import { floatColor } from "sigma/utils";

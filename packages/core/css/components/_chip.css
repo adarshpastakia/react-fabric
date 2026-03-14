@@ -43,10 +43,6 @@
       }
     }
 
-    & > .fabric-chipRemove {
-      /* mayble add styles later */
-    }
-
     &.clickable {
       cursor: pointer;
       background-image: var(--click-gradient);

@@ -40,7 +40,7 @@ export interface MdxProps extends CssProp, AriaProps {
  * displaying a success message for 1 second.
  *
  * @param {MdxProps} props - The properties for the Mdx component.
- * @return {JSX.Element} The rendered Mdx component.
+ * @return {React.ReactElement} The rendered Mdx component.
  *
  * @example
  * ```jsx

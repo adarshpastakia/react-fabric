@@ -27,13 +27,13 @@
 
     & input {
       padding: 0 4px !important;
+      border: 1px solid var(--border-color-base);
+      border-radius: var(--rounded-sm);
 
       line-height: 2;
       color: var(--text-color-base);
 
       background-color: var(--bg-color-base);
-      border: 1px solid var(--border-color-base);
-      border-radius: var(--rounded-sm);
       box-shadow: none;
 
       &:focus {

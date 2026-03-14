@@ -55,7 +55,7 @@ import { useVirtualTable } from "./useVirtualTable";
  * Uses TanStack's `useVirtual` for virtualization and React's `useMemo` for performance optimization.
  *
  * @param {TableProps<T>} props - The properties for the Table component.
- * @returns {JSX.Element} The rendered Table component.
+ * @returns {React.ReactElement} The rendered Table component.
  *
  * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/data-table--table}
  * @see {@link https://tanstack.com/table/v8/docs/api/virtual}

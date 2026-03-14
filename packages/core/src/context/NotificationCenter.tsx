@@ -110,7 +110,6 @@ export const NotificationManager = ({ onLoad }: KeyValue) => {
         const handleClose = (b: boolean | string = false) => {
           clearTimeout(timerRef);
           setTimeout(() => {
-            // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
             delete map[key];
             update();
             resolve(b);

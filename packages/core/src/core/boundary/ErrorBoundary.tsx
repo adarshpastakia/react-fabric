@@ -131,7 +131,6 @@ export class ErrorBoundary extends Component<
     this.setState({ hasError: true, error: error.message, stack: error.stack });
   }
 
-  // eslint-disable-next-line @typescript-eslint/promise-function-async
   render() {
     const env = process.env.NODE_ENV;
     if (this.state.hasError) {

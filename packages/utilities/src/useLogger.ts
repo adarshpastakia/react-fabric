@@ -212,7 +212,6 @@ export const useLogger = (mod?: string) => ({
   timer(process: string) {
     const startTime = new Date().getTime();
     let nextTime = new Date().getTime();
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
     const getTime = () => {
       const ret = (new Date().getTime() - nextTime) / 1000;

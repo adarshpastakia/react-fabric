@@ -34,7 +34,11 @@ const Error: FC<{ error?: string }> = ({ error = "" }) => {
   );
 };
 
-export const ChartWrapper = ({ children }: { children?: JSX.Element }) => {
+export const ChartWrapper = ({
+  children,
+}: {
+  children?: React.ReactElement;
+}) => {
   return (
     <div
       className="grid overflow-hidden area-content relative"

@@ -69,15 +69,15 @@ export interface InputProps<V = string> extends TestProps {
   /**
    * append to label end
    */
-  appendLabel?: JSX.Element | string | number | boolean;
+  appendLabel?: React.ReactElement | string | number | boolean;
   /**
    *
    */
-  decorateStart?: JSX.Element | string | number | boolean;
+  decorateStart?: React.ReactElement | string | number | boolean;
   /**
    *
    */
-  decorateEnd?: JSX.Element | string | number | boolean;
+  decorateEnd?: React.ReactElement | string | number | boolean;
   decorateEndShowWhenEmpty?: boolean;
   decorateEndHideWhenEmpty?: boolean;
   /**

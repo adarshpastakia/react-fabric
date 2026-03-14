@@ -51,7 +51,7 @@ export interface DictationProps
  * It also supports a hotkey to start/stop recording.
  *
  * @param {DictationProps} props - The properties for the Dictation component.
- * @returns {JSX.Element} The rendered Dictation component.
+ * @returns {React.ReactElement} The rendered Dictation component.
  *
  * @example
  * ```jsx

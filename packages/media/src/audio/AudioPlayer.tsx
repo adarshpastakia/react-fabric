@@ -110,7 +110,7 @@ export interface AudioPlayerRef {
  * It allows customization of colors for the waveform and progress indicators.
  *
  * @param {AudioProps} props - The properties for the AudioPlayer component.
- * @returns {JSX.Element} The rendered AudioPlayer component.
+ * @returns {React.ReactElement} The rendered AudioPlayer component.
  *
  * @example
  * ```jsx

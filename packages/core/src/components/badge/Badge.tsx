@@ -99,7 +99,7 @@ export const getBadgeProps = (
  * It can also wrap children elements, allowing for flexible usage in buttons or other components.
  *
  * @param {BadgeProps} props - The properties for the Badge component.
- * @returns {JSX.Element} The rendered Badge component.
+ * @returns {React.ReactElement} The rendered Badge component.
  *
  * @example
  * ```jsx

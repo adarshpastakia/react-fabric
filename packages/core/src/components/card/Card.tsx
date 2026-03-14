@@ -106,7 +106,7 @@ export type CardProps<Tag extends React.ElementType = "div"> = BaseProps &
  * It can be styled with custom CSS classes and supports features like selection indication and drag-and-drop functionality.
  *
  * @param {CardProps} props - The properties for the Card component.
- * @returns {JSX.Element} The rendered Card component.
+ * @returns {React.ReactElement} The rendered Card component.
  *
  * @example
  * ```jsx

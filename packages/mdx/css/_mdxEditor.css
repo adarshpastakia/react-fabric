@@ -27,6 +27,10 @@
   .fabric-mdxEditor {
     grid-template: "head head head" auto "side-s content side-e" 1fr "foot foot foot" auto / auto 1fr auto;
 
+    &.mdxeditor-popup-container.mdxeditor-popup-container {
+      position: absolute !important;
+    }
+
     &.mdxeditor.mdxeditor {
       --blue1: var(--color-primary-50);
       --blue2: var(--color-primary-100);
@@ -57,8 +61,8 @@
     & > div[role="toolbar"] {
       grid-area: head;
       padding: 0.25rem 0.5rem;
-      background-color: var(--bg-color-base);
       border-radius: 0;
+      background-color: var(--bg-color-base);
 
       & > div:first-child {
         flex: 1 1 0%;

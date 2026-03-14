@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import { DEFAULT_EDGE_CURVATURE } from "@sigma/edge-curve";
 import { type Attributes } from "graphology-types";
 import {

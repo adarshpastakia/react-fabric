@@ -31,7 +31,7 @@ export interface RadioProps extends RefProp<HTMLInputElement> {
   /**
    * radio label
    */
-  label?: JSX.Element | string;
+  label?: React.ReactElement | string;
   /**
    * value
    */
@@ -76,7 +76,7 @@ export interface RadioProps extends RefProp<HTMLInputElement> {
  * It supports disabled and invalid states, and allows for custom width.
  *
  * @param {RadioProps} props - The properties for the Radio component.
- * @returns {JSX.Element} The rendered Radio input component.
+ * @returns {React.ReactElement} The rendered Radio input component.
  */
 export const Radio = ({
   ref,

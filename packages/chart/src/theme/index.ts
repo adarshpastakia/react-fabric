@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import Color from "color";
+import chroma from "chroma-js";
 import { DarkThemeBase } from "./darkBase";
 import { LightThemeBase } from "./lightBase";
 import { ChartPalette } from "./palettes";
@@ -37,8 +37,8 @@ export const registerTheme = (
   heatmap: string[],
 ) => {
   const base = colors[0];
-  const handles = Color(base).mix(Color("#f1f5f9"), 0.15).hex();
-  const window = Color(base).alpha(0.1).hexa();
+  const handles = chroma.mix(base, "#f1f5f9", 0.15, "lab").hex();
+  const window = chroma(base).alpha(0.1).hex();
   echarts.registerTheme(`${key}`, {
     ...LightThemeBase,
     dataZoom: {
@@ -49,7 +49,7 @@ export const registerTheme = (
           color: base,
         },
         lineStyle: {
-          color: Color(base).mix(Color("#0f172a"), 0.35).hex(),
+          color: chroma.mix(base, "#0f172a", 0.35, "lab").hex(),
         },
       },
       handleColor: base,
@@ -83,7 +83,7 @@ export const registerTheme = (
       fillerColor: window,
       selectedDataBackground: {
         areaStyle: {
-          color: Color(base).mix(Color("#f1f5f9"), 0.35).hex(),
+          color: chroma.mix(base, "#f1f5f9", 0.35, "lab").hex(),
         },
         lineStyle: { color: base },
       },

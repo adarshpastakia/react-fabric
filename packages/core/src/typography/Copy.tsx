@@ -34,7 +34,7 @@ import { type CssProp, type SizeType } from "../types";
  * The button displays a tooltip feedback when the text is successfully copied.
  *
  * @param {CopyProps} props - The properties for the Copy component.
- * @returns {JSX.Element} The rendered Copy component.
+ * @returns {React.ReactElement} The rendered Copy component.
  *
  * @example
  * ```jsx

@@ -26,15 +26,16 @@
     --color: var(--color-tint-600);
     --color-muted: var(--color-tint-300);
 
-    font-size: 1rem;
     border-radius: var(--rounding);
+    font-size: 1rem;
 
     & .fabric-button {
+      border-radius: inherit;
+
       color: var(--text);
 
       background-color: var(--bg);
       background-image: var(--click-gradient);
-      border-radius: inherit;
       outline: 1px solid var(--outline);
 
       &.spinOnHover:hover .fabric-buttonIcon {

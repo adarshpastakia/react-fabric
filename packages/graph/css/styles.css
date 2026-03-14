@@ -37,6 +37,7 @@
 
         width: 0.75em;
         height: 0.75em;
+        border-radius: 999px;
 
         font-size: 1.5rem;
         line-height: 0.75em;
@@ -44,7 +45,6 @@
         text-align: center;
 
         background-color: var(--color-tint-100);
-        border-radius: 999px;
 
         &:hover {
           color: var(--color-tint-900);

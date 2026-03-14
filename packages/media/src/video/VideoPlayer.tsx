@@ -40,7 +40,7 @@ import { type VideoProps } from "./types";
  * - Zoom functionality to enhance video viewing experience
  *
  * @param {VideoProps} props - The properties for the video player.
- * @returns {JSX.Element} The rendered video player component.
+ * @returns {React.ReactElement} The rendered video player component.
  *
  * @example
  * ```jsx

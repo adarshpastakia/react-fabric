@@ -62,11 +62,11 @@ export interface ModalProps extends AriaProps, TestProps, ChildrenProp {
   /**
    * modal title
    */
-  title?: JSX.Element | string | false;
+  title?: React.ReactElement | string | false;
   /**
    * header actions
    */
-  actions?: Elements<JSX.Element>;
+  actions?: Elements<React.ReactElement>;
   /**
    * modal size
    */

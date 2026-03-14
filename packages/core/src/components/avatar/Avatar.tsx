@@ -99,7 +99,7 @@ const SizeMap: KeyValue<string> = {
  * It uses the Boring Avatars library for generating fallback avatars based on the user's name.
  *
  * @param {AvatarProps} props - The properties for the Avatar component.
- * @returns {JSX.Element} The rendered Avatar component.
+ * @returns {React.ReactElement} The rendered Avatar component.
  *
  * @example
  * ```jsx

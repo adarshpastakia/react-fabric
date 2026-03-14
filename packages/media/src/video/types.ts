@@ -70,7 +70,7 @@ export interface VideoProps<T> extends RefProp<VideoPlayerRef> {
           hide: () => void;
           remove: () => void;
         } & KeyValue,
-      ) => JSX.Element);
+      ) => React.ReactElement);
   /**
    *
    */

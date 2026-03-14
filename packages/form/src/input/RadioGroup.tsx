@@ -38,7 +38,7 @@ export interface RadioGroupProps extends ChildrenProp<typeof Radio>, CssProp {
   /**
    * append to label end
    */
-  appendLabel?: JSX.Element | string | number | boolean;
+  appendLabel?: React.ReactElement | string | number | boolean;
   /**
    * field info
    */
@@ -84,7 +84,7 @@ export interface RadioGroupProps extends ChildrenProp<typeof Radio>, CssProp {
  * The component supports inline and vertical orientations, and can handle change events.
  *
  * @param {RadioGroupProps} props - The properties for the RadioGroup component.
- * @returns {JSX.Element} The rendered RadioGroup component.
+ * @returns {React.ReactElement} The rendered RadioGroup component.
  */
 export const RadioGroup = ({
   children,

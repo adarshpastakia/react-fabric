@@ -63,11 +63,11 @@ export interface HistogramProps extends TestProps {
   /**
    * title when histo list is empty
    */
-  emptyTitle?: string | JSX.Element;
+  emptyTitle?: string | React.ReactElement;
   /**
    * message when histo list is empty
    */
-  emptyMessage?: string | JSX.Element;
+  emptyMessage?: string | React.ReactElement;
   /**
    * handle histo click
    */
@@ -81,7 +81,7 @@ export interface HistogramProps extends TestProps {
  * It also provides an empty state when there are no items to display.
  *
  * @param {HistogramProps} props - The properties for the Histogram component.
- * @returns {JSX.Element} - The rendered Histogram component.
+ * @returns {React.ReactElement} - The rendered Histogram component.
  *
  * @example
  * ```jsx

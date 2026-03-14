@@ -48,7 +48,7 @@ export interface PanelGroupProps extends ChildrenProp {
  * It uses the `Panel` component to render each individual panel within the group.
  *
  * @param {PanelGroupProps} props - The properties for the PanelGroup component.
- * @returns {JSX.Element} The rendered PanelGroup component.
+ * @returns {React.ReactElement} The rendered PanelGroup component.
  *
  * @example
  * ```jsx

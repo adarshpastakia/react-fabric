@@ -56,7 +56,7 @@ export interface PanelProps
   /**
    * header actions
    */
-  actions?: JSX.Element;
+  actions?: React.ReactElement;
   /**
    * header css classname(s)
    */
@@ -112,7 +112,7 @@ export interface PanelProps
  * It can be used in various applications where panels are needed, such as dashboards, settings pages, or content management systems.
  *
  * @param {PanelProps} props - The properties for the Panel component.
- * @returns {JSX.Element} The rendered Panel component.
+ * @returns {React.ReactElement} The rendered Panel component.
  *
  * @example
  * ```jsx

@@ -95,7 +95,7 @@ export interface DualListProps<T>
  * This component is useful for scenarios where users need to manage selections from a larger set of options, such as in forms or settings.
  *
  * @param {DualListProps<T>} props - The properties for the DualList component.
- * @returns {JSX.Element} The rendered DualList component.
+ * @returns {React.ReactElement} The rendered DualList component.
  */
 export const DualList = <T extends AnyObject = string>({
   ref,

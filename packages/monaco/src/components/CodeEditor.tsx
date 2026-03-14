@@ -30,7 +30,7 @@ import {
 import { type RefProp } from "@react-fabric/core/dist/types/types";
 import { isEmpty, isString } from "@react-fabric/utilities";
 import classNames from "classnames";
-import type monacoEditor from "monaco-editor";
+import * as monacoEditor from "monaco-editor";
 import {
   useCallback,
   useDeferredValue,
@@ -83,6 +83,23 @@ type EditorProps = BaseEditorProps &
       }
   );
 
+monacoEditor.editor.defineTheme("my-light", {
+  base: "vs", // can also be 'vs' or 'hc-black'
+  inherit: true, // set to false to completely replace the builtin rules
+  rules: [],
+  colors: {
+    "minimap.background": "#8881",
+  },
+});
+monacoEditor.editor.defineTheme("my-dark", {
+  base: "vs-dark", // can also be 'vs' or 'hc-black'
+  inherit: true, // set to false to completely replace the builtin rules
+  rules: [],
+  colors: {
+    "minimap.background": "#8881",
+  },
+});
+
 /**
  * CodeEditor component to render a code editor using Monaco Editor.
  * It supports JSON and HTML languages with optional schema validation and handlebar suggestions.
@@ -91,7 +108,7 @@ type EditorProps = BaseEditorProps &
  *
  * @param {EditorProps} props - The properties for the CodeEditor component.
  * @param {RefProp<MonacoEditorRef>} ref - The ref to access the editor methods.
- * @return {JSX.Element} The rendered CodeEditor component.
+ * @return {React.ReactElement} The rendered CodeEditor component.
  *
  * @example
  * ```jsx
@@ -129,7 +146,7 @@ export const CodeEditor = ({
   /** ***************** watch theme change *******************/
   const [theme, setTheme] = useState("");
   useLayoutEffect(() => {
-    editorRef && setTheme(isDark ? "vs-dark" : "light");
+    editorRef && setTheme(isDark ? "my-dark" : "my-light");
   }, [isDark, editorRef]);
 
   /** ***************** watch editor container resize *******************/

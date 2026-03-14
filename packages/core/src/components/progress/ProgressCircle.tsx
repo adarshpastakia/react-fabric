@@ -56,7 +56,7 @@ const SizeMap: KeyValue = {
  * The component is customizable with size and color props.
  *
  * @param {ProgressProps} props - The properties for the ProgressCircle component.
- * @returns {JSX.Element} - A circular progress indicator.
+ * @returns {React.ReactElement} - A circular progress indicator.
  *
  * @example
  * ```jsx

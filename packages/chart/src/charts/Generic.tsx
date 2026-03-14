@@ -41,7 +41,7 @@ export interface GenericProps extends Omit<EChartsOption, "title"> {
 
   title?: string;
 
-  actions?: JSX.Element;
+  actions?: React.ReactElement;
 
   /**
    * The theme to be applied to the chart.

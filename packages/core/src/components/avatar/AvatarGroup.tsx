@@ -68,7 +68,7 @@ const SizeMap: KeyValue<string> = {
  * It automatically calculates the number of additional avatars based on the `totalCount` prop and the number of children provided.
  *
  * @param {AvatarGroupProps} props - The properties for the AvatarGroup component.
- * @returns {JSX.Element} The rendered AvatarGroup component.
+ * @returns {React.ReactElement} The rendered AvatarGroup component.
  *
  * @example
  * ```jsx

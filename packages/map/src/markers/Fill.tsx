@@ -22,12 +22,12 @@
  */
 
 import Polygon from "@arcgis/core/geometry/Polygon";
-import Graphic from "@arcgis/core/Graphic";
+import Graphic, { type GraphicProperties } from "@arcgis/core/Graphic";
 import SimpleFillSymbol from "@arcgis/core/symbols/SimpleFillSymbol";
 import { type LngLatLike, convertLatLng } from "@react-fabric/utilities";
+import chroma from "chroma-js";
 import { useEffect, useMemo } from "react";
 import { useMarkerLayer } from "../layers/Marker";
-import Color from "color";
 import { useMap } from "../viewer/Context";
 
 /**
@@ -56,7 +56,7 @@ export const Fill = ({
   borderWidth?: string | number;
   borderColor?: string;
   animate?: boolean;
-} & Omit<__esri.GraphicProperties, "geometry" | "symbol">) => {
+} & Omit<GraphicProperties, "geometry" | "symbol">) => {
   const layer = useMarkerLayer();
   const { is3D } = useMap();
 
@@ -95,10 +95,9 @@ export const Fill = ({
             if (sat >= 0.9) up = -0.1;
             if (sat <= 0.1) up = 0.1;
             sat += up;
-            symbol.color = Color.rgb([...color])
+            symbol.color = chroma(color as any)
               .darken(sat)
-              .rgb()
-              .array();
+              .rgba();
             requestAnimationFrame(() => {
               graphic.symbol = symbol.clone();
             });

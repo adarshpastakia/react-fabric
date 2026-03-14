@@ -34,41 +34,42 @@
       border-color: var(--color-primary-500);
     }
 
-    .fabric-editor {
-      & > .monaco-editor {
-        --vscode-menu-background: var(--color-tint-50) !important;
-        --vscode-menu-border: var(--border-color-base) !important;
-        --vscode-focusBorder: transparent !important;
-        --vscode-menu-selectionBackground: color(
-          from var(--color-primary) srgb r g b / 80%
-        ) !important;
-        --vscode-editor-background: var(--fabric-bg) !important;
-        --vscode-editor-foreground: var(--fabric-text) !important;
-        --vscode-breadcrumb-background: var(--fabric-bg) !important;
-        --vscode-editorGutter-background: color(
-          from var(--color-tint-50) srgb r g g / 50%
-        ) !important;
-        --vscode-minimapSlider-background: color(
-          from var(--color-tint) srgb r g b / 20%
-        ) !important;
-        --vscode-minimapSlider-hoverBackground: color(
-          from var(--color-tint) srgb r g b / 25%
-        ) !important;
-        --vscode-minimapSlider-activeBackground: color(
-          from var(--color-tint) srgb r g b / 30%
-        ) !important;
-        --vscode-input-border: var(--color-primary) !important;
-        --vscode-editorStickyScroll-background: var(--fabric-bg) !important;
-        --vscode-editorMarkerNavigation-background: var(--fabric-bg) !important;
-        --vscode-editor-wordHighlightTextBackground: color(
-          from var(--color-accent-700) srgb r g b / 20%
-        ) !important;
+    .fabric-editor.monaco-editor {
+      --vscode-menu-background: var(--color-tint-50) !important;
+      --vscode-menu-border: var(--border-color-base) !important;
+      --vscode-focusBorder: transparent !important;
+      --vscode-menu-selectionBackground: color(
+        from var(--color-primary) srgb r g b / 80%
+      ) !important;
+      --vscode-editor-background: var(--fabric-bg) !important;
+      --vscode-editor-foreground: var(--fabric-text) !important;
+      --vscode-breadcrumb-background: var(--fabric-bg) !important;
+      --vscode-editorGutter-background: color(
+        from var(--color-tint-50) srgb r g b / 50%
+      ) !important;
+      --vscode-minimap-background: var(--bg-color-dimmed) !important;
+      --vscode-minimapSlider-background: color(
+        from var(--color-tint) srgb r g b / 20%
+      ) !important;
+      --vscode-minimapSlider-hoverBackground: color(
+        from var(--color-tint) srgb r g b / 25%
+      ) !important;
+      --vscode-minimapSlider-activeBackground: color(
+        from var(--color-tint) srgb r g b / 30%
+      ) !important;
+      --vscode-input-border: var(--color-primary) !important;
+      --vscode-editorStickyScroll-background: var(--fabric-bg) !important;
+      --vscode-editorMarkerNavigation-background: var(--fabric-bg) !important;
+      --vscode-editor-wordHighlightTextBackground: color(
+        from var(--color-accent-700) srgb r g b / 20%
+      ) !important;
+
+      & .minimap {
+        z-index: 1 !important;
       }
 
-      & .minimap-decorations-layer {
-        background-color: color(
-          from var(--color-tint-50) srgb r g g / 50%
-        ) !important;
+      & .sticky-widget {
+        z-index: 0 !important;
       }
 
       & .folded-background {

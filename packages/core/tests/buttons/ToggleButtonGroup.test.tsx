@@ -22,14 +22,9 @@
  */
 
 import { composeStories } from "@storybook/react";
-import {
-  fireEvent,
-  getByTestId,
-  render,
-  waitFor,
-} from "@testing-library/react";
-import * as stories from "../../stories/components/button/ToggleButtonGroup.stories";
+import { fireEvent, getByTestId, render } from "@testing-library/react";
 import { Button } from "../../src";
+import * as stories from "../../stories/components/button/ToggleButtonGroup.stories";
 
 const { Tester } = composeStories(stories);
 

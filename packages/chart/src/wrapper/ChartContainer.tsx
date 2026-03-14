@@ -121,10 +121,9 @@ export const ChartContainer = memo(
       [chartRef],
     );
 
-    const chartTheme = useMemo(
-      () => (isDark ? `${theme}_dark` : theme),
-      [theme, isDark],
-    );
+    const chartTheme = useMemo(() => {
+      return isDark ? `${theme}_dark` : theme;
+    }, [theme, isDark]);
 
     useEffect(() => {
       if (containerRef.current) {

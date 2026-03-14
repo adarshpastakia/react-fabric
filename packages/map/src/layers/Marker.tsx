@@ -21,7 +21,9 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
+import GraphicsLayer, {
+  type GraphicsLayerProperties,
+} from "@arcgis/core/layers/GraphicsLayer";
 import "@arcgis/map-components/components/arcgis-features";
 import {
   createContext,
@@ -34,8 +36,8 @@ import { type Fill } from "../markers/Fill";
 import { type Pin } from "../markers/Pin";
 import { useMap } from "../viewer/Context";
 
-const MarkerContext = createContext<__esri.GraphicsLayer>(
-  null as unknown as __esri.GraphicsLayer,
+const MarkerContext = createContext<GraphicsLayer>(
+  null as unknown as GraphicsLayer,
 );
 
 type MarkerChildren = ReactElement<typeof Fill | typeof Pin>;
@@ -46,7 +48,7 @@ type MarkerChildren = ReactElement<typeof Fill | typeof Pin>;
 export const MarkerLayer = ({
   children,
   ...props
-}: Omit<__esri.GraphicsLayerProperties, "graphics"> & {
+}: Omit<GraphicsLayerProperties, "graphics"> & {
   children?: MarkerChildren | MarkerChildren[];
 }) => {
   const { map, view } = useMap();

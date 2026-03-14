@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Button, useDebounce, useGlobals } from "@react-fabric/core";
+import { Button, useDebounce, useApplicationContext } from "@react-fabric/core";
 import { isArray, isEmpty } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { addMonths, isAfter, isBefore, isSameDay } from "date-fns";
@@ -66,7 +66,7 @@ type PanelActions =
  * It also supports disabling specific dates and setting minimum and maximum date limits.
  *
  * @param {RangeProps} props - The properties for the RangePanel component.
- * @return {JSX.Element} The rendered RangePanel component.
+ * @return {React.ReactElement} The rendered RangePanel component.
  *
  * @example
  * ```jsx
@@ -94,7 +94,7 @@ export const RangePanel = ({
   ...rest
 }: RangeProps) => {
   const { t } = useTranslation("date");
-  const { currentCalendar } = useGlobals();
+  const { currentCalendar } = useApplicationContext();
   const [isHijri, setHijri] = useState(currentCalendar === "hijri");
 
   const fireChange = useDebounce(onChange, [onChange]);

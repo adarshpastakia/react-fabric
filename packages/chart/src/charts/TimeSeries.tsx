@@ -246,7 +246,7 @@ TimeSeriesChart.displayName = "TimeSeriesChart";
  * It also allows for interaction through click and brush events.
  *
  * @param {TimeSeriesProps} props - The properties for the TimeSeries component.
- * @returns {JSX.Element} The rendered TimeSeries component.
+ * @returns {React.ReactElement} The rendered TimeSeries component.
  *
  * @example
  * ```jsx

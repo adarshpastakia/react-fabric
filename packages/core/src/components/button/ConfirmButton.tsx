@@ -87,7 +87,7 @@ export type ConfirmButtonProps = ExtendedProps & ButtonProps;
  * It also supports custom placement of the dialog, and can display an action message when the action is completed.
  *
  * @param {ConfirmButtonProps} props - The properties for the ConfirmButton component.
- * @returns {JSX.Element} The rendered ConfirmButton component.
+ * @returns {React.ReactElement} The rendered ConfirmButton component.
  *
  * @example
  * ```jsx

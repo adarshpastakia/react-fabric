@@ -41,14 +41,12 @@ interface Props {
  * This is useful for cases where you need to update the form state without user interaction.
  *
  * @param {Object} props - Component properties.
- * @returns {JSX.Element} The rendered hidden input field and error icon.
+ * @returns {React.ReactElement} The rendered hidden input field and error icon.
  */
 export const HiddenInput = ({
   // @ts-expect-error ignore
-  // eslint-disable-next-line react/prop-types
   invalid,
   // @ts-expect-error ignore
-  // eslint-disable-next-line react/prop-types
   error,
   value = "",
   name,

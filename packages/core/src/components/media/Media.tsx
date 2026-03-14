@@ -89,7 +89,7 @@ const loadIndicator = (
  * It automatically adjusts the display based on the provided fit property, allowing for different styles such as cover, contain, or fill.
  *
  * @param {ImageProps | VideoProps} props - The properties for the Media component.
- * @returns {JSX.Element} The rendered Media component.
+ * @returns {React.ReactElement} The rendered Media component.
  *
  * @example
  * ```jsx
@@ -174,7 +174,7 @@ export const Image = ({
  * It also includes a reel decoration for a more engaging visual presentation.
  *
  * @param {VideoProps} props - The properties for the Video component.
- * @returns {JSX.Element} The rendered Video component.
+ * @returns {React.ReactElement} The rendered Video component.
  *
  * @example
  * ```jsx

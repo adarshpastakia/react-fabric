@@ -39,7 +39,7 @@ export interface Props extends CssProp, AriaProps, RefProp, TestProps {
   /**
    * svg path / webfont className / 1-4 letter text
    */
-  icon: string | JSX.Element;
+  icon: string | React.ReactElement;
   /**
    * icon image source URL, if failed to load then shows icon
    */
@@ -81,7 +81,7 @@ export interface Props extends CssProp, AriaProps, RefProp, TestProps {
 
 export type IconProps =
   | string
-  | JSX.Element
+  | React.ReactElement
   | Pick<
       Props,
       | "icon"
@@ -123,7 +123,7 @@ const SizeMap: KeyValue<string> = {
  * These include `bg`, `color`, `size`, `rtlFlip`, `animate`, and `rounded`.
  *
  * @param {IconProps} props - The properties for the Icon component.
- * @returns {JSX.Element} The rendered Icon component.
+ * @returns {React.ReactElement} The rendered Icon component.
  *
  * @example
  * ```jsx

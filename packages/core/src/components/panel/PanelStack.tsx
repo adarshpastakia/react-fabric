@@ -60,7 +60,7 @@ export interface PanelStackProps extends CssProp, ChildrenProp {
  * and it updates the active panel based on user interactions.
  *
  * @param {PanelStackProps} props - The properties for the PanelStack component.
- * @returns {JSX.Element} The rendered PanelStack component.
+ * @returns {React.ReactElement} The rendered PanelStack component.
  *
  * @example
  * ```jsx
@@ -113,7 +113,6 @@ export const PanelStack = ({
   }, [onPanelChange, history]);
 
   const goBack = useCallback(() => {
-     
     if (onBack?.(history[0], history[1] ?? "root") !== false) {
       setHistory(history.slice(1));
     }
@@ -131,7 +130,6 @@ export const PanelStack = ({
         if (panelKey === "back") {
           goBack();
         } else if (panelKey === "root") {
-           
           if (onBack?.(history[0], "root") !== false) {
             setHistory([]);
           }

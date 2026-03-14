@@ -35,26 +35,26 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@arcgis/core": "~4.34.5",
+    "@arcgis/core": "~5.0.10",
     "@arcgis/map-components-react": "~4.34.5",
     "@esri/calcite-components-react": "~3.3.3",
-    "@floating-ui/react": "~0.27.16",
     "@react-fabric/core": "^1.0.0-beta.62",
     "@react-fabric/utilities": "^1.0.0-beta.62",
-    "color": "~5.0.2"
+    "chroma-js": "~3.2.0",
+    "dom-to-image": "~2.6.0"
   },
   "peerDependencies": {
-    "i18next": "~25.6.0",
-    "react": "~19.2.0",
-    "react-dom": "~19.2.0",
-    "react-i18next": "~16.2.1"
+    "i18next": "~25.8.18",
+    "react": "~19.2.4",
+    "react-dom": "~19.2.4",
+    "react-i18next": "~16.5.8"
   },
   "devDependencies": {
     "@types/dom-to-image": "~2.6.7",
     "@types/highlight.js": "~10.1.0"
   },
   "engines": {
-    "node": ">=18.12.0",
-    "npm": ">=8.19.0"
+    "node": ">=20.18.0",
+    "npm": ">=10.8.0"
   }
 }

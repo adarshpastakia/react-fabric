@@ -255,11 +255,11 @@ interface BaseSearchBarProps
   /**
    *
    */
-  decorateStart?: JSX.Element | string | number | boolean;
+  decorateStart?: React.ReactElement | string | number | boolean;
   /**
    *
    */
-  decorateEnd?: JSX.Element | string | number | boolean;
+  decorateEnd?: React.ReactElement | string | number | boolean;
   /**
    * On filter collapsed
    * @param collapsed

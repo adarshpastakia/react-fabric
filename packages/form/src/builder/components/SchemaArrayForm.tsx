@@ -33,7 +33,6 @@ import { AddSchemaFields } from "./AddSchemaFields";
 import { SchemaField } from "./SchemaField";
 
 // Need to disable prop-types lint due to uknown lint error
-/* eslint-disable react/prop-types */
 export const SchemaArrayForm = ({
   dynamic,
   acceptableTypes,
@@ -75,7 +74,6 @@ export const SchemaArrayForm = ({
   }, []);
 
   const Wrapper = useCallback(
-    // eslint-disable-next-line @typescript-eslint/promise-function-async
     ({ children }: { children: React.ReactNode }) => {
       if (dynamic) {
         // pass id list to dnd context

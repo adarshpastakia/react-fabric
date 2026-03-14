@@ -388,7 +388,7 @@ const GenericMemo: <T>(c: T) => T = memo;
  * It also provides a scroller for easy navigation through the items.
  *
  * @param {VirtualGalleryProps<T>} props - The properties for the VirtualGallery component.
- * @returns {JSX.Element} The rendered VirtualGallery component.
+ * @returns {React.ReactElement} The rendered VirtualGallery component.
  *
  * @example
  * ```jsx

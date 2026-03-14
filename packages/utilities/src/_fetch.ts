@@ -86,7 +86,6 @@ export const _fetch = async (
       if (resp.status >= 200 && resp.status < 300) {
         return await resp.json();
       }
-      // eslint-disable-next-line @typescript-eslint/no-throw-literal
       throw { status: resp.status, code: -1, message: resp.statusText };
     })
     .then((resp) => {
@@ -94,7 +93,6 @@ export const _fetch = async (
       const code = resp.error_code ?? resp.errorCode ?? resp.error;
       const message = resp.error_message ?? resp.errorMessage ?? resp.message;
       if (resp.status === "error" || code) {
-        // eslint-disable-next-line @typescript-eslint/no-throw-literal
         throw { status: 500, code, message };
       }
       return resp;

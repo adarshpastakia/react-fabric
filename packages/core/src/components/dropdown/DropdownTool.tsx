@@ -37,7 +37,7 @@ import { Dropdown, type DropdownProps } from "./Dropdown";
  * @param {string} icon - The icon to be displayed in the dropdown.
  * @param {boolean} groupHover - If true, the dropdown will only be visible when the parent group is hovered.
  * @param {DropdownProps} props - Additional properties for the dropdown.
- * @returns {JSX.Element} The rendered DropdownTool component.
+ * @returns {React.ReactElement} The rendered DropdownTool component.
  *
  * @example
  * ```jsx

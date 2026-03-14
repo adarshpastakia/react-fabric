@@ -1,36 +1,119 @@
-import { Meta } from "@storybook/addon-docs/blocks";
+import { faker, fakerAR } from "@faker-js/faker";
 import {
   Anchor,
-  Story,
   IconGallery,
   IconItem,
+  Meta,
+  Story,
   Subheading,
   Subtitle,
   Title,
+  Typeset,
   Unstyled,
 } from "@storybook/addon-docs/blocks";
 import { Translation } from "react-i18next";
-import { faker, fakerAR } from "@faker-js/faker";
+
+export const typography = {
+  type: {
+    primary:
+      '"Noto Sans Kufi Arabic", "Noto Sans", "Noto Color Emoji", Arial, sans-serif',
+    serif: '"Noto Serif", Georgia, Cambria, "Times New Roman", Times, serif',
+    mono: '"Noto Sans Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+  },
+  weight: {
+    regular: "400",
+    bold: "700",
+    extrabold: "800",
+    black: "900",
+  },
+  size: {
+    s1: 12,
+    s2: 14,
+    s3: 16,
+    m1: 20,
+    m2: 24,
+  },
+};
+
+export const SampleText =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+
+export const SampleTextAR =
+  "لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار";
 
 <Meta title="Typography" />
 
 <Title>Typography</Title>
 
 <Subheading>Font Family</Subheading>
-<Unstyled>
-  <h6>Sans-Serif</h6>
-  <p className="whitespace-pre-wrap font-sans">
-    THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG'S BACK 1234567890
-  </p>
-  <h6 className="mt-4">Serif</h6>
-  <p className="whitespace-pre-wrap font-serif">
-    THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG'S BACK 1234567890
-  </p>
-  <h6 className="mt-4">Mono</h6>
-  <p className="whitespace-pre-wrap font-mono">
-    THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG'S BACK 1234567890
-  </p>
-</Unstyled>
+
+**Font:** Noto Sans
+
+**Weights:** 400(regular), 700(bold), 800(extrabold), 900(black)
+
+<Typeset
+  fontSizes={[
+    Number(typography.size.s1),
+    Number(typography.size.s2),
+    Number(typography.size.s3),
+    Number(typography.size.m1),
+    Number(typography.size.m2),
+  ]}
+  fontWeight={typography.weight.regular}
+  sampleText={SampleText}
+  fontFamily={typography.type.primary}
+/>
+
+**Font:** Noto Sans Kufi Arabic
+
+**Weights:** 400(regular), 700(bold), 800(extrabold), 900(black)
+
+<Typeset
+  fontSizes={[
+    Number(typography.size.s1),
+    Number(typography.size.s2),
+    Number(typography.size.s3),
+    Number(typography.size.m1),
+    Number(typography.size.m2),
+  ]}
+  fontWeight={typography.weight.regular}
+  sampleText={SampleTextAR}
+  fontFamily={typography.type.primary}
+/>
+
+**Font:** Noto Serif
+
+**Weights:** 400(regular), 700(bold), 800(extrabold), 900(black)
+
+<Typeset
+  fontSizes={[
+    Number(typography.size.s1),
+    Number(typography.size.s2),
+    Number(typography.size.s3),
+    Number(typography.size.m1),
+    Number(typography.size.m2),
+  ]}
+  fontWeight={typography.weight.regular}
+  sampleText={SampleText}
+  fontFamily={typography.type.serif}
+/>
+
+**Font:** Noto Sans Mono
+
+**Weights:** 400(regular), 700(bold), 800(extrabold), 900(black)
+
+<Typeset
+  fontSizes={[
+    Number(typography.size.s1),
+    Number(typography.size.s2),
+    Number(typography.size.s3),
+    Number(typography.size.m1),
+    Number(typography.size.m2),
+  ]}
+  fontWeight={typography.weight.regular}
+  sampleText={SampleText}
+  fontFamily={typography.type.mono}
+/>
 
 <Subheading>Headings</Subheading>
 <Unstyled>

@@ -33,7 +33,7 @@ import { type ImageProps } from "./types";
  * It provides features like zooming, cropping, and NSFW overlay.
  *
  * @param {ImageProps} props - The properties for the ImageViewer component.
- * @returns {JSX.Element} The rendered ImageViewer component.
+ * @returns {React.ReactElement} The rendered ImageViewer component.
  *
  * @example
  * ```jsx

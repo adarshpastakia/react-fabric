@@ -218,7 +218,7 @@ MapSeriesChart.displayName = "MapSeriesChart";
  * It supports zooming and switching between map and column views.
  *
  * @param {MapSeriesProps} props - The properties for the MapSeries component.
- * @returns {JSX.Element} The rendered MapSeries component.
+ * @returns {React.ReactElement} The rendered MapSeries component.
  *
  * @example
  * ```jsx

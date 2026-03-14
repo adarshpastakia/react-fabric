@@ -83,7 +83,7 @@ const colors = {
  * such as alerts, notifications, or important messages.
  *
  * @param {CalloutProps} props - The properties for the Callout component.
- * @returns {JSX.Element} The rendered Callout component.
+ * @returns {React.ReactElement} The rendered Callout component.
  *
  * @example
  * ```jsx

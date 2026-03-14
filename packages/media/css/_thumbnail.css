@@ -49,6 +49,7 @@
         inset-inline: 0;
 
         height: 0.5rem;
+        border: 0.125rem solid #53473ccc;
 
         background-image: linear-gradient(
           to right,
@@ -60,7 +61,6 @@
         background-repeat: repeat-x;
         background-position: center center;
         background-size: 0.75rem;
-        border: 0.125rem solid #53473ccc;
       }
 
       &::before {

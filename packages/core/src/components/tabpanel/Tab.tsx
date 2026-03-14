@@ -100,7 +100,7 @@ export interface TabProps
  * It also supports tooltips, active states, and click handling.
  *
  * @param {TabProps} props - The properties for the Tab component.
- * @returns {JSX.Element} The rendered Tab component.
+ * @returns {React.ReactElement} The rendered Tab component.
  *
  * @example
  * ```jsx

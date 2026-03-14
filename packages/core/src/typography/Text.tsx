@@ -80,7 +80,7 @@ export interface TextProps extends ChildrenProp, CssProp, AriaProps, TestProps {
  * It leverages the ResizeObserver API to detect changes in the text container's size and adjust the line clamping accordingly.
  *
  * @param {TextProps} props - The properties for the Text component.
- * @returns {JSX.Element} The rendered Text component.
+ * @returns {React.ReactElement} The rendered Text component.
  *
  * @example
  * ```jsx

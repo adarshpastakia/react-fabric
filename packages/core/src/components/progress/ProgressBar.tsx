@@ -67,7 +67,7 @@ const SizeMap: KeyValue = {
  * The label can be customized or hidden based on the props provided.
  *
  * @param {ProgressProps} props - The properties for the ProgressBar component.
- * @returns {JSX.Element} The rendered ProgressBar component.
+ * @returns {React.ReactElement} The rendered ProgressBar component.
  *
  * @example
  * ```jsx

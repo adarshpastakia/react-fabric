@@ -40,7 +40,7 @@
 @variant dark (&:where([data-color-scheme="dark"], [data-color-scheme="dark"] *));
 
 @utility area-* {
-  grid-area: --value([ *]);
+  grid-area: --value([*]);
 }
 
 @utility area-content {
@@ -94,14 +94,14 @@
 }
 
 @utility scroll-hide {
-  &::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     width: 0;
     height: 0;
   }
 }
 
 @utility scroll-thin {
-  &::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     width: 3px;
     height: 3px;
   }
@@ -115,7 +115,7 @@
 @utility scroll-snap-start {
   scroll-snap-type: both proximity;
 
-  & > * {
+  > * {
     scroll-snap-align: start;
   }
 }
@@ -123,7 +123,7 @@
 @utility scroll-snap-center {
   scroll-snap-type: both proximity;
 
-  & > * {
+  > * {
     scroll-snap-align: center;
   }
 }
@@ -131,13 +131,13 @@
 @utility scroll-snap-end {
   scroll-snap-type: both proximity;
 
-  & > * {
+  > * {
     scroll-snap-align: end;
   }
 }
 
 @utility break-words {
-  word-break: break-word;
+  word-break: word-break;
 }
 
 @utility outline-thin {
@@ -152,7 +152,7 @@
   color: var(--color-accent-600);
   text-decoration: underline dotted;
 
-  &:hover {
+  :hover {
     text-decoration: underline solid;
   }
 }
@@ -174,7 +174,7 @@
 }
 
 @utility bg-alternate {
-  & > :nth-child(even) {
+  > :nth-child(even) {
     background-color: color-mix(
       in oklab,
       var(--fabric-bg) 92%,
@@ -182,7 +182,7 @@
     );
   }
 
-  & > :nth-child(odd) {
+  > :nth-child(odd) {
     background-color: color-mix(
       in oklab,
       var(--fabric-bg) 99%,
@@ -352,7 +352,7 @@
 }
 
 @utility gap-* {
-  &:where(.fabric-row) {
+  :where(.fabric-row) {
     --gutter: calc(var(--spacing) * --value(integer));
 
     gap: 0 !important;
@@ -366,7 +366,7 @@
 @utility grid-cols-repeat-* {
   grid-template-columns: repeat(
     auto-fill,
-    minmax(min(--value([ *]), 100%), 1fr)
+    minmax(min(--value([*]), 100%), 1fr)
   );
   grid-template-columns: repeat(
     auto-fill,

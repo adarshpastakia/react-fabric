@@ -5,12 +5,11 @@
  * @author    : Adarsh Pastakia
  */
 
-import { addons, types } from "storybook/manager-api";
-import { ThemeToggle } from "./addon-theme/register";
-import { lightTheme } from "./theme";
+import { addons } from "storybook/manager-api";
+import { darkTheme } from "./theme";
 
 addons.setConfig({
-  theme: lightTheme,
+  theme: darkTheme,
   sidebar: {
     showRoots: true,
     filters: {
@@ -23,16 +22,4 @@ addons.setConfig({
       return name;
     },
   },
-});
-
-// Register the addon
-addons.register("themeChanger", () => {
-  // Register the tool
-  addons.add("themeChanger", {
-    id: "themeChanger",
-    type: types.TOOL,
-    title: "Theme toggle",
-    match: ({ viewMode }) => viewMode === "story" || viewMode === "docs",
-    render: ThemeToggle,
-  });
 });

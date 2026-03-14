@@ -54,7 +54,7 @@ const scheme = {
  * It can be used to create visually appealing card layouts with media content.
  *
  * @param {CardCoverProps} props - The properties for the CardCover component.
- * @returns {JSX.Element} The rendered CardCover component.
+ * @returns {React.ReactElement} The rendered CardCover component.
  *
  * @example
  * ```jsx

@@ -68,7 +68,7 @@ export interface ColorInputProps
  * and handling the color selection state.
  *
  * @param {ColorInputProps} props - The properties for the ColorInput component.
- * @returns {JSX.Element} - The rendered ColorInput component.
+ * @returns {React.ReactElement} - The rendered ColorInput component.
  */
 export const ColorInput = ({
   ref,

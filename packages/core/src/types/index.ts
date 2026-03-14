@@ -23,7 +23,7 @@
 /* istanbul ignore file */
 
 import { type Placement } from "@floating-ui/react";
-import { type JSXElementConstructor, type Ref } from "react";
+import { type JSX, type JSXElementConstructor, type Ref } from "react";
 
 export type ModalProps<P = unknown> = P & {
   onClose: (...args: AnyObject) => void;
@@ -299,7 +299,7 @@ export interface TooltipType {
   /**
    * tooltip content
    */
-  content?: string | JSX.Element;
+  content?: string | React.ReactElement;
   /**
    * tooltip color
    */

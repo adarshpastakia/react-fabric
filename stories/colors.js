@@ -1,15 +1,15 @@
-import Color from "color";
+import chroma from "chroma-js";
 
 const sorter = (a, b) => {
-  const cola = Color(a.color);
-  const colb = Color(b.color);
-  if (Math.round(cola.hue() / 30) === Math.round(colb.hue() / 30)) {
-    if (Math.round(cola.l() / 10) === Math.round(colb.l() / 10)) {
-      return cola.b() > colb.b() ? -1 : 1;
+  const cola = chroma(a.color).lch();
+  const colb = chroma(b.color).lch();
+  if (Math.round(cola[2] / 90) === Math.round(colb[2] / 90)) {
+    if (Math.round(cola[1] / 10) === Math.round(colb[1] / 10)) {
+      return Math.round(cola[0] / 10) < Math.round(cola[0] / 10) ? -1 : 1;
     }
-    return cola.l() < colb.l() ? -1 : 1;
+    return Math.round(cola[1] / 10) < Math.round(cola[1] / 10) ? -1 : 1;
   }
-  return cola.hue() < colb.hue() ? -1 : 1;
+  return Math.round(cola[2] / 90) < Math.round(cola[2] / 90) ? -1 : 1;
 };
 
 export const CopToner = [

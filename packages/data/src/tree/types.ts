@@ -36,7 +36,7 @@ interface TreeBaseNode<T> extends CssProp, TestProps {
   /**
    * display label
    */
-  label: Elements<JSX.Element>;
+  label: Elements<React.ReactElement>;
   /**
    * icon path or props
    */
@@ -73,7 +73,7 @@ export type TreeNodeType<T extends KeyValue = KeyValue> = TreeBaseNode<T> &
 
 export interface InternalNode extends CssProp, TestProps {
   id: string;
-  label: Elements<JSX.Element>;
+  label: Elements<React.ReactElement>;
   queryable?: string;
   badge?: string | number | BadgeType;
   disabled?: boolean;
@@ -101,8 +101,8 @@ export interface InternalNode extends CssProp, TestProps {
 export interface TreeNodeProps extends ChildProp {
   node: InternalNode;
   expanders: [string, string];
-  defaultNodeIcon?: Elements<JSX.Element>;
-  defaultLeafIcon?: Elements<JSX.Element>;
+  defaultNodeIcon?: Elements<React.ReactElement>;
+  defaultLeafIcon?: Elements<React.ReactElement>;
   noLines?: boolean;
   selectable?: true | "leafOnly";
   checkable?: true | "leafOnly";
@@ -227,8 +227,8 @@ interface BaseTreePanelProps<T extends KeyValue = KeyValue>
   matcher?: (data: T, query: string) => boolean;
 
   sorter?: false | ((a: T, b: T) => number);
-  makeLabel?: (node: T) => Elements<JSX.Element>;
-  makeIcon?: (node: T) => Elements<JSX.Element>;
+  makeLabel?: (node: T) => Elements<React.ReactElement>;
+  makeIcon?: (node: T) => Elements<React.ReactElement>;
 
   defaultExpanded?: string[];
   onExpandToggle?: (id: string[]) => void;

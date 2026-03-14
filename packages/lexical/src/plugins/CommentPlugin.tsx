@@ -184,7 +184,7 @@ function useCommentMenu(
   anchorElem: HTMLElement,
   username: string,
   openForm: (props: { sample: string }) => Promise<string>,
-): JSX.Element {
+): React.ReactElement {
   const scrollerElem = anchorElem.parentElement;
 
   const menuRef = useRef<HTMLDivElement>(null);
@@ -547,7 +547,7 @@ export const CommentPlugin = ({
   anchorElem?: HTMLElement;
   isPublishMode: boolean;
   username: string;
-}): JSX.Element => {
+}): React.ReactElement => {
   const [editor] = useLexicalComposerContext();
   if (isPublishMode) return <></>;
   return commentHandler(editor, anchorElem, username);

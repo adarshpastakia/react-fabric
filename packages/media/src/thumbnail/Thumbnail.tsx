@@ -88,7 +88,7 @@ type ThumbnailActions =
  * The component is designed to be flexible with width and height, and can display a fallback image if the original fails to load.
  *
  * @param {ThumbnailProps} props - The properties for the Thumbnail component.
- * @returns {JSX.Element} The rendered Thumbnail component.
+ * @returns {React.ReactElement} The rendered Thumbnail component.
  *
  * @example
  * ```jsx

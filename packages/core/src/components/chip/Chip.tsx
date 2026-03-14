@@ -107,7 +107,7 @@ const SizeMap: KeyValue<string> = {
  * It can also include an icon and a remove button, making it versatile for different use cases.
  *
  * @param {ChipProps} props - The properties for the Chip component.
- * @returns {JSX.Element} The rendered Chip component.
+ * @returns {React.ReactElement} The rendered Chip component.
  *
  * @example
  * ```jsx

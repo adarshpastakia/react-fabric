@@ -45,7 +45,7 @@ import { FilterTag } from "./FilterTag";
  * It also supports toggling between included and excluded filters.
  *
  * @param {FilterBarProps} props - The properties for the FilterBar component.
- * @returns {JSX.Element} The rendered FilterBar component.
+ * @returns {React.ReactElement} The rendered FilterBar component.
  *
  * @example
  * ```jsx

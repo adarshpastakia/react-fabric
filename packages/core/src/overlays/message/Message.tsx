@@ -47,7 +47,7 @@ export interface MessageProps {
   /**
    * message text
    */
-  message: string | JSX.Element;
+  message: string | React.ReactElement;
   /**
    * theme color
    */
@@ -55,7 +55,7 @@ export interface MessageProps {
   /**
    * extra action button
    */
-  actions?: Elements<JSX.Element>;
+  actions?: Elements<React.ReactElement>;
 }
 
 export const Message = ({
@@ -67,7 +67,6 @@ export const Message = ({
   rtlFlip,
   actions,
   // @ts-expect-error internal prop
-  // eslint-disable-next-line react/prop-types --- IGNORE ---
   onClose,
 }: MessageProps) => {
   const elRef = useRef<HTMLDivElement>(null);

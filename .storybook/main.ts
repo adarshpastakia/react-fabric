@@ -1,5 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
-import { build, InlineConfig, mergeConfig } from "vite";
+import { InlineConfig, mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: [
@@ -10,9 +10,8 @@ const config: StorybookConfig = {
   addons: [
     "@chromatic-com/storybook",
     "@storybook/addon-docs",
-    // "@storybook/addon-a11y",
+    "@storybook/addon-a11y",
     "@storybook/addon-vitest",
-    "./addon-theme/register.tsx",
   ],
   staticDirs: ["../assets", "../static"],
   framework: {
@@ -25,7 +24,7 @@ const config: StorybookConfig = {
         rollupOptions: {
           output: {
             compact: true,
-            chunkFileNames: (chunkInfo) => {
+            chunkFileNames: (chunkInfo: any) => {
               // Example: Remove underscores from chunk file names
               return "assets/" + chunkInfo.name.replace(/^_/, "") + ".js";
             },

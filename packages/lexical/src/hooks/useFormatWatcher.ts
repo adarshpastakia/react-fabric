@@ -227,7 +227,6 @@ export const useFormatWatcher = () => {
           selection,
           "color",
           // @ts-expect-error ignore
-          // eslint-disable-next-line no-new-wrappers
           new String("#000"),
         ),
       );
@@ -236,7 +235,6 @@ export const useFormatWatcher = () => {
           selection,
           "background-color",
           // @ts-expect-error ignore
-          // eslint-disable-next-line no-new-wrappers
           new String("#fff"),
         ),
       );

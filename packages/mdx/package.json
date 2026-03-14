@@ -35,31 +35,29 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@mdxeditor/editor": "~3.52.3",
+    "@mdxeditor/editor": "~3.52.4",
     "@react-fabric/core": "^1.0.0-beta.62",
     "@react-fabric/utilities": "^1.0.0-beta.62",
     "classnames": "~2.5.1",
-    "dom-to-image": "~2.6.0",
-    "dompurify": "~3.3.0",
+    "dompurify": "~3.3.3",
     "emojilib": "~4.0.2",
     "highlight.js": "~11.11.1",
-    "marked": "~16.4.1",
+    "marked": "~17.0.4",
     "marked-admonition-extension": "~0.0.4",
-    "marked-emoji": "~2.0.1",
-    "marked-highlight": "~2.2.2"
+    "marked-emoji": "~2.0.2",
+    "marked-highlight": "~2.2.3"
   },
   "peerDependencies": {
-    "i18next": "~25.6.0",
-    "react": "~19.2.0",
-    "react-dom": "~19.2.0",
-    "react-i18next": "~16.2.1"
+    "i18next": "~25.8.18",
+    "react": "~19.2.4",
+    "react-dom": "~19.2.4",
+    "react-i18next": "~16.5.8"
   },
   "devDependencies": {
-    "@types/dom-to-image": "~2.6.7",
     "@types/highlight.js": "~10.1.0"
   },
   "engines": {
-    "node": ">=18.12.0",
-    "npm": ">=8.19.0"
+    "node": ">=20.18.0",
+    "npm": ">=10.8.0"
   }
 }

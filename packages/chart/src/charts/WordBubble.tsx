@@ -109,7 +109,7 @@ WordBubbleChart.displayName = "WordBubbleChart";
  * It also supports exporting the chart and displays an empty state when no data is available.
  *
  * @param {WordBubbleProps} props - The properties for the WordBubble component.
- * @returns {JSX.Element} The rendered WordBubble component.
+ * @returns {React.ReactElement} The rendered WordBubble component.
  *
  * @example
  * ```jsx

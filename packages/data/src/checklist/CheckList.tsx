@@ -164,7 +164,7 @@ const CheckItem: FC<
  * It supports selection, deselection, and allows for negative selections.
  *
  * @param {CheckListProps} props - The properties for the CheckList component.
- * @returns {JSX.Element} The rendered CheckList component.
+ * @returns {React.ReactElement} The rendered CheckList component.
  *
  * @example
  * ```jsx

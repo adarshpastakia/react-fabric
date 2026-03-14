@@ -119,7 +119,7 @@ const TypeMap: KeyValue = {
  * It also provides a method to export the current pages as snapshots.
  *
  * @param {DrawProps} props - The properties for the component.
- * @returns {JSX.Element} The rendered DrawCanvas component.
+ * @returns {React.ReactElement} The rendered DrawCanvas component.
  *
  * @example
  * ```jsx

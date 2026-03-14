@@ -22,9 +22,7 @@
  */
 
 import { composeStories } from "@storybook/react";
-import "@testing-library/jest-dom";
 import { fireEvent, render } from "@testing-library/react";
-import { Title } from "../../src";
 import * as stories from "../../stories/components/callout/Callout.stories";
 
 const { Tester } = composeStories(stories);

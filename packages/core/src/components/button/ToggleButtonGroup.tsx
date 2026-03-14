@@ -99,7 +99,7 @@ export type ToggleButtonGroupProps<T> = BaseProps &
  * such as toggle switches, selection groups, or multi-select options.
  *
  * @param {ToggleButtonGroupProps} props - The properties for the ToggleButtonGroup component.
- * @returns {JSX.Element} The rendered ToggleButtonGroup component.
+ * @returns {React.ReactElement} The rendered ToggleButtonGroup component.
  *
  * @example
  * ```jsx

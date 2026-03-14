@@ -100,8 +100,8 @@
       --linkcolor: color-mix(in lab, var(--color) 35%, var(--fabric-bg));
 
       position: relative;
-      list-style: none;
       border-radius: var(--rounding);
+      list-style: none;
 
       &:last-child {
         --color: var(--color-tint-500);
@@ -127,11 +127,11 @@
 
           display: inline-block;
 
-          vertical-align: middle;
-
           border: 0.625em solid transparent;
           border-block-color: var(--linkcolor);
           border-inline-end-color: var(--linkcolor);
+
+          vertical-align: middle;
         }
 
         & > .link {
@@ -145,10 +145,10 @@
 
           display: inline-block;
 
-          vertical-align: middle;
-
           border: 0.625em solid transparent;
           border-inline-start-color: var(--linkcolor);
+
+          vertical-align: middle;
         }
       }
 

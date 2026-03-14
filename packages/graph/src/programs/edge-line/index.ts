@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import { type Attributes } from "graphology-types";
 import {
   createEdgeCompoundProgram,

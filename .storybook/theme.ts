@@ -20,7 +20,7 @@ export const lightTheme = create({
 export const darkTheme = create({
   base: "dark",
   appBg: "#151B20",
-  barBg: "#2f3640",
+  barBg: "#1A1A1B",
   textColor: "#fefefe",
   inputTextColor: "#fefefe",
   appContentBg: "#1e272e",

@@ -50,6 +50,5 @@ export { cloneChildren } from "./utils";
 export {
   ApplicationProvider,
   useApplicationContext,
-  useGlobals,
   useNotificationService,
 } from "./context/Global";

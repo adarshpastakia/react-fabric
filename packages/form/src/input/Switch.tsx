@@ -41,7 +41,7 @@ export interface SwitchProps extends RefProp<HTMLInputElement> {
   /**
    * Switch label
    */
-  label?: JSX.Element | string;
+  label?: React.ReactElement | string;
   /**
    * checked
    */
@@ -94,7 +94,7 @@ export interface SwitchProps extends RefProp<HTMLInputElement> {
  * It supports disabled and invalid states, and handles change events.
  *
  * @param {SwitchProps} props - The properties for the Switch component.
- * @returns {JSX.Element} The rendered Switch input component.
+ * @returns {React.ReactElement} The rendered Switch input component.
  */
 export const Switch = ({
   ref,

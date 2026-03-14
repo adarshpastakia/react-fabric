@@ -101,7 +101,7 @@ export interface TabPanelProps extends ChildrenProp<typeof Tab> {
  * It can be customized with different styles and behaviors to fit the needs of the application.
  *
  * @param {TabPanelProps} props - The properties for the TabPanel component.
- * @returns {JSX.Element} The rendered TabPanel component.
+ * @returns {React.ReactElement} The rendered TabPanel component.
  *
  * @example
  * ```jsx

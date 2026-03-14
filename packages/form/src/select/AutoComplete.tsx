@@ -66,7 +66,7 @@ type AutoCompleteProps = Omit<
  * It supports multiple selections, history suggestions, and custom styling.
  *
  * @param {AutoCompleteProps} props - The properties for the AutoComplete component.
- * @returns {JSX.Element} The rendered AutoComplete component.
+ * @returns {React.ReactElement} The rendered AutoComplete component.
  */
 export const AutoComplete = ({
   ref,

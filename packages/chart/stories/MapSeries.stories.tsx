@@ -45,7 +45,7 @@ export const Example: Story = {
     const loadData = useCallback(() => {
       setData(
         Array.from(Array(Math.ceil(24)), (_, i) => ({
-          id: faker.address.countryCode("alpha-2"),
+          id: faker.location.countryCode("alpha-2"),
           count: faker.number.int({ min: 99, max: 499 }),
         })),
       );

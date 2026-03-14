@@ -103,7 +103,7 @@ export interface RangeProps
  * The component is designed to be flexible and customizable, allowing for various configurations.
  *
  * @param {RangeProps} props - The properties for the RangeSlider component.
- * @returns {JSX.Element} The rendered RangeSlider component.
+ * @returns {React.ReactElement} The rendered RangeSlider component.
  */
 export const RangeSlider = ({
   error,

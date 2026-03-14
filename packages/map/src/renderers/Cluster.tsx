@@ -21,7 +21,9 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import HeatmapRenderer from "@arcgis/core/renderers/HeatmapRenderer";
+import HeatmapRenderer, {
+  type HeatmapRendererProperties,
+} from "@arcgis/core/renderers/HeatmapRenderer";
 import Color from "color";
 import { useMemo } from "react";
 
@@ -39,8 +41,8 @@ interface Props {
    */
   colors?: string[];
 
-  minDensity?: __esri.HeatmapRendererProperties["minDensity"];
-  maxDensity?: __esri.HeatmapRendererProperties["maxDensity"];
+  minDensity?: HeatmapRendererProperties["minDensity"];
+  maxDensity?: HeatmapRendererProperties["maxDensity"];
 }
 
 export const useHeatmapRenderer = (props?: Props) => {
