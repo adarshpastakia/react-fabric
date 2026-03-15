@@ -202,7 +202,7 @@ export const ChartContainer = memo(
         <div
           ref={containerRef}
           className={classNames(
-            "rf-chartContainer",
+            "fabric-chartContainer",
             "overflow-hidden area-content",
           )}
         />
