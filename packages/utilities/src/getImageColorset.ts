@@ -23,6 +23,8 @@
 
 /* istanbul ignore file */
 
+import chroma from "chroma-js";
+
 /**
  * Get the color set of an image element.
  * This function analyzes the pixel data of an image to determine if it is predominantly light or dark.
@@ -38,7 +40,10 @@
  * @param {HTMLImageElement} el - The HTMLImageElement to analyze.
  * @returns {string} A string indicating the color set of the image.
  */
-export const getImageColorset = (el: HTMLImageElement) => {
+export const getImageColorset = (
+  el: HTMLImageElement,
+  transparentOnly = false,
+) => {
   // create canvas
   const canvas = document.createElement("canvas");
   canvas.width = Math.min(500, el.naturalWidth);
@@ -67,23 +72,32 @@ export const getImageColorset = (el: HTMLImageElement) => {
     let transparent = data?.[3] === 0;
 
     for (let x = 0, len = data.length; x < len; x += 4) {
+      if (transparentOnly && data[x + 3] / 255 > 0.9) {
+        continue;
+      }
       if (data[x + 3] === 0) {
         transparent = true;
         continue;
       }
-      if (data[x + 3] < 1) {
+      if (data[x + 3] < 255) {
         transparent = true;
       }
       r = data[x];
       g = data[x + 1];
       b = data[x + 2];
-      totalPixels++;
-      0.2126 * r + 0.7152 * g + 0.0722 * b < 128 ? dark++ : light++;
+      const l = chroma([r, g, b]).lab()[0];
+      if (transparentOnly) {
+        l < 35 && (dark++, totalPixels++);
+        l > 65 && (light++, totalPixels++);
+      } else {
+        l < 50 && (dark++, totalPixels++);
+        l >= 50 && (light++, totalPixels++);
+      }
     }
-
+    if (totalPixels === 0) return "auto";
     const diff = light / totalPixels - dark / totalPixels;
     let ret = diff > 0 ? "light" : "dark";
-    if (transparent) {
+    if (!transparentOnly && transparent) {
       ret += "_transparent";
     }
     return ret;

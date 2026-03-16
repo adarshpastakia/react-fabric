@@ -32,6 +32,7 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
+    "chroma-js": "~3.2.0",
     "date-fns": "~4.1.0",
     "libphonenumber-js": "~1.12.40",
     "numeral": "~2.0.6",
