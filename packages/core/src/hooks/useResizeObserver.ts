@@ -21,10 +21,10 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { useEffect, useRef, useTransition, type RefObject } from "react";
+import { useEffectEvent, useRef, useTransition, type RefObject } from "react";
 import ResizeObserver from "resize-observer-polyfill";
 import { type SizeObject } from "../types";
-import { useDebounce } from "./useDebounce";
+import { useEffectDebugger } from "./useEffectDebugger";
 
 /**
  * Custom hook to observe size changes of an element using ResizeObserver.
@@ -51,28 +51,28 @@ export const useResizeObserver = <T extends HTMLElement = HTMLDivElement>(
   const ref = useRef<T>(null);
   const [, startTransition] = useTransition();
 
-  const callbackResize = useDebounce(
-    () => {
-      startTransition(() => {
-        if (onResize && ref.current != null) {
-          const { offsetWidth: width, offsetHeight: height } = ref.current;
-          onResize?.({ width, height });
-        }
-      });
-    },
-    [onResize],
-    0,
-  );
+  const callbackResize = useEffectEvent(() => {
+    startTransition(() => {
+      if (onResize && ref.current != null) {
+        const { offsetWidth: width, offsetHeight: height } = ref.current;
+        onResize?.({ width, height });
+      }
+    });
+  });
 
-  useEffect(() => {
-    if (ref.current != null) {
-      const ob = new ResizeObserver(callbackResize);
-      ob.observe(ref.current);
-      return () => {
-        ob.disconnect();
-      };
-    }
-  }, [callbackResize, ref]);
+  useEffectDebugger(
+    () => {
+      if (ref.current != null) {
+        const ob = new ResizeObserver(callbackResize);
+        ob.observe(ref.current);
+        return () => {
+          ob.disconnect();
+        };
+      }
+    },
+    [],
+    "useResizeObserver",
+  );
 
   return ref;
 };

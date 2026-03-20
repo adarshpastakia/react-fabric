@@ -32,7 +32,7 @@ import {
 } from "@floating-ui/react";
 import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { isValidElement, useCallback, useEffect } from "react";
+import { isValidElement, useEffect, useEffectEvent } from "react";
 import { LoadingLine } from "../../components/animations/Animations";
 import { getIconProps, Icon, type IconProps } from "../../components/icon/Icon";
 import { Header } from "../../core/headfoot/HeadFoot";
@@ -139,28 +139,24 @@ export const Modal = ({
   // Merge all the interactions into prop getters
   const { getFloatingProps } = useInteractions([dismiss, role]);
 
-  const handleClose = useCallback(
-    (...args: AnyObject) => {
-      void Promise.resolve(onBeforeClose?.(...args)).then((ret) => {
-        if (ret !== false) {
-          refs.floating.current &&
-            (refs.floating.current.dataset.show = "false");
-          setTimeout(() => {
-            onClose?.(...args);
-          }, 250);
-        }
-        ret === false &&
-          setTimeout(
-            () =>
-              refs.floating.current
-                ?.querySelector<HTMLElement>("[role='dialog']")
-                ?.focus(),
-            50,
-          );
-      });
-    },
-    [onBeforeClose, onClose],
-  );
+  const handleClose = useEffectEvent((...args: AnyObject) => {
+    void Promise.resolve(onBeforeClose?.(...args)).then((ret) => {
+      if (ret !== false) {
+        refs.floating.current && (refs.floating.current.dataset.show = "false");
+        setTimeout(() => {
+          onClose?.(...args);
+        }, 250);
+      }
+      ret === false &&
+        setTimeout(
+          () =>
+            refs.floating.current
+              ?.querySelector<HTMLElement>("[role='dialog']")
+              ?.focus(),
+          50,
+        );
+    });
+  });
 
   useEffect(() => {
     setTimeout(() => {

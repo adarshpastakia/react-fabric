@@ -61,7 +61,7 @@ export const Playground: Story = {
   render: (args) => {
     const [lang, setLang] = useState<AnyObject>("json");
     return (
-      <div className="min-h-[600px]">
+      <div className="min-h-150">
         <Viewport>
           <Header className="py-1 px-2 bg-base">
             <ToggleButtonGroup

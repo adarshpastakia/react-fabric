@@ -103,7 +103,7 @@ export const Tooltip = ({
       return (
         _placement?.includes("left")
           ? _placement.replace("left", "right")
-          : _placement?.replace("right", "left") ?? "top"
+          : (_placement?.replace("right", "left") ?? "top")
       ) as Placement;
 
     return _placement ?? "top";
@@ -172,7 +172,12 @@ export const Tooltip = ({
         ...(open ? {} : getReferenceProps(rest)),
       })}
       {isOpen && content && (
-        <FloatingPortal>
+        <FloatingPortal
+          root={
+            refs.domReference.current?.closest<HTMLElement>(".theme-base") ??
+            undefined
+          }
+        >
           <dfn
             data-ref="tooltip"
             className={classNames(

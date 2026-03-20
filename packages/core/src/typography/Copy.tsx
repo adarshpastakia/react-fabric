@@ -22,7 +22,7 @@
  */
 
 import classNames from "classnames";
-import { useCallback } from "react";
+import { useEffectEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "../components/button/Button";
 import { Tooltip } from "../overlays/tooltip/Tooltip";
@@ -55,9 +55,9 @@ export const Copy = ({ text, size, className }: CopyProps) => {
   const { t } = useTranslation("core");
 
   /** ***************** handle copy *******************/
-  const doCopy = useCallback(() => {
+  const doCopy = useEffectEvent(() => {
     void navigator.clipboard.writeText(text);
-  }, [text]);
+  });
 
   return (
     <Tooltip content={t("action.copy")}>

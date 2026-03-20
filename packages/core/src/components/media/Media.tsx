@@ -264,7 +264,7 @@ export const Video = ({
             data-inner-clickable
             className={classNames(
               "fabric-mediaControls",
-              "absolute bottom-6 end-6 rounded-full flex flex-col",
+              "absolute bottom-6 inset-e-6 rounded-full flex flex-col",
             )}
           >
             <Button

@@ -26,8 +26,8 @@ import classNames from "classnames";
 import {
   Children,
   cloneElement,
-  useCallback,
   useEffect,
+  useEffectEvent,
   useMemo,
   useState,
 } from "react";
@@ -162,17 +162,14 @@ export const TabPanel = ({
       .children;
   }, [tabs, active]);
 
-  const handleClick = useCallback(
-    (id: string) => {
-      void Promise.resolve(onBeforeChange?.(id, active)).then((ret) => {
-        if (ret !== false) {
-          setActive(id);
-          onChange?.(id);
-        }
-      });
-    },
-    [onBeforeChange, onChange, active],
-  );
+  const handleClick = useEffectEvent((id: string) => {
+    void Promise.resolve(onBeforeChange?.(id, active)).then((ret) => {
+      if (ret !== false) {
+        setActive(id);
+        onChange?.(id);
+      }
+    });
+  });
 
   return (
     <div

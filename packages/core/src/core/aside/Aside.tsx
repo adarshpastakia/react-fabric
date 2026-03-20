@@ -22,7 +22,7 @@
  */
 
 import classNames from "classnames";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 import { LoadingLine } from "../../components/animations/Animations";
 import { getIconProps, Icon, type IconProps } from "../../components/icon/Icon";
 import { useLayoutEffectDebugger } from "../../hooks/useEffectDebugger";
@@ -38,10 +38,7 @@ import {
 import { ErrorBoundary } from "../boundary/ErrorBoundary";
 
 export interface AsideProps
-  extends ChildrenProp,
-    CollapseProps,
-    CssProp,
-    TestProps {
+  extends ChildrenProp, CollapseProps, CssProp, TestProps {
   /**
    * page title
    */
@@ -177,7 +174,7 @@ export const Aside = ({
     isReverse: align === "end",
   });
 
-  const tryPeek = useCallback(() => {
+  const tryPeek = useEffectEvent(() => {
     if (isCollapsed) {
       if (flyout) {
         setPeek(!peek);
@@ -186,7 +183,7 @@ export const Aside = ({
         void toggleCollapse();
       }
     }
-  }, [peek, flyout, isCollapsed, onFlyout, toggleCollapse]);
+  });
 
   useLayoutEffectDebugger(
     () => {

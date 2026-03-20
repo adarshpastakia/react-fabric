@@ -25,7 +25,11 @@ import { faker } from "@faker-js/faker";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Fragment } from "react/jsx-runtime";
 import { fn } from "storybook/test";
-import { Button, useNotificationService } from "../../../src";
+import {
+  ApplicationProvider,
+  Button,
+  useNotificationService,
+} from "../../../src";
 import { Alert, Message, Toast } from "../../../src/overlays";
 
 const meta: Meta = {
@@ -39,9 +43,11 @@ const meta: Meta = {
   },
   decorators: [
     (Story) => (
-      <div className="max-w-2xl p-4 flex gap-2 flex-wrap">
-        <Story />
-      </div>
+      <ApplicationProvider>
+        <div className="max-w-2xl p-4 flex gap-2 flex-wrap">
+          <Story />
+        </div>
+      </ApplicationProvider>
     ),
   ],
 };

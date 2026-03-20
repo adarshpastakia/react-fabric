@@ -22,7 +22,7 @@
  */
 
 import classNames from "classnames";
-import { useCallback, useLayoutEffect, useRef } from "react";
+import { useEffectEvent, useLayoutEffect, useRef } from "react";
 import { Icon } from "../../components/icon/Icon";
 import { type ColorState, type Elements } from "../../types";
 import { getColor } from "../../utils";
@@ -70,15 +70,12 @@ export const Message = ({
   onClose,
 }: MessageProps) => {
   const elRef = useRef<HTMLDivElement>(null);
-  const handleClose = useCallback(
-    (ret?: AnyObject) => {
-      elRef.current && (elRef.current.dataset.show = "false");
-      setTimeout(() => {
-        onClose(ret);
-      }, 250);
-    },
-    [onClose],
-  );
+  const handleClose = useEffectEvent((ret?: AnyObject) => {
+    elRef.current && (elRef.current.dataset.show = "false");
+    setTimeout(() => {
+      onClose(ret);
+    }, 250);
+  });
   useLayoutEffect(() => {
     setTimeout(
       () => elRef.current && (elRef.current.dataset.show = "true"),
@@ -115,7 +112,7 @@ export const Message = ({
       )}
       <div
         role="none"
-        className="cursor-pointer opacity-65 absolute end-1 hover:opacity-90"
+        className="cursor-pointer opacity-65 absolute inset-e-1 hover:opacity-90"
         onClick={() => handleClose()}
       >
         &times;

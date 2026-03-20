@@ -330,7 +330,12 @@ export const AutoComplete = ({
         />
       )}
       {state.open && !state.loading && (
-        <FloatingPortal>
+        <FloatingPortal
+          root={
+            refs.domReference.current?.closest<HTMLElement>(".theme-base") ??
+            undefined
+          }
+        >
           <FloatingFocusManager
             context={context}
             initialFocus={-1}

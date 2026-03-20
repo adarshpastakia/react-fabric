@@ -42,6 +42,7 @@ import {
   Fragment,
   useCallback,
   useEffect,
+  useEffectEvent,
   useMemo,
   useRef,
   useState,
@@ -123,21 +124,18 @@ export const ConfirmButton = <Tag extends React.ElementType = "button">({
   const [busy, setBusy] = useState(false);
   const [actionDone, setActionDone] = useState(false);
 
-  const clickHandler = useCallback(
-    (e: boolean) => {
-      setBusy(e);
-      const ret = onClick?.(e);
-      if (e) {
-        void Promise.resolve(ret).then((b) => {
-          setBusy(false);
-          if (b !== false && actionMessage && showActionDoneEvent === "click") {
-            setActionDone(true);
-          }
-        });
-      }
-    },
-    [onClick, actionMessage, showActionDoneEvent],
-  );
+  const clickHandler = useEffectEvent((e: boolean) => {
+    setBusy(e);
+    const ret = onClick?.(e);
+    if (e) {
+      void Promise.resolve(ret).then((b) => {
+        setBusy(false);
+        if (b !== false && actionMessage && showActionDoneEvent === "click") {
+          setActionDone(true);
+        }
+      });
+    }
+  });
   useEffect(() => {
     if (actionDone) {
       const timer = setTimeout(() => setActionDone(false), 2000);
@@ -200,7 +198,12 @@ export const ConfirmButton = <Tag extends React.ElementType = "button">({
         data-dropdown-open={isOpen}
       />
       {isOpen && (
-        <FloatingPortal>
+        <FloatingPortal
+          root={
+            refs.domReference.current?.closest<HTMLElement>(".theme-base") ??
+            undefined
+          }
+        >
           <FloatingFocusManager modal context={context}>
             <div
               data-color={color}

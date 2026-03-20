@@ -59,7 +59,7 @@ export const List: Story = {
     const listRef = useRef<VirtualListRef>(null);
 
     return (
-      <div className="min-h-[600px]">
+      <div className="min-h-150">
         <Viewport>
           <Section>
             <Header flex className="gap-2 p-2 bg-base">
@@ -98,7 +98,7 @@ export const List: Story = {
                       size="3rem"
                     />
                   </div>
-                  <Card bodyClassName="p-2 grid w-[480px] flex-1">
+                  <Card bodyClassName="p-2 grid w-120 flex-1">
                     <Row className="text-lg font-semibold" align="center">
                       <Col flex="fill">
                         <Text className="flex-1 px-2">
@@ -208,7 +208,7 @@ export const LoadableList: Story = {
     }, []);
 
     return (
-      <div className="min-h-[600px]">
+      <div className="min-h-150">
         <Viewport>
           <Section>
             <Header flex className="gap-2 p-2 bg-base">
@@ -236,7 +236,7 @@ export const LoadableList: Story = {
               onLoadMore={loadMore}
             >
               {({ item, index }) => (
-                <div className="w-[620px] flex flex-nowrap gap-1 py-2 px-4">
+                <div className="w-155 flex flex-nowrap gap-1 py-2 px-4">
                   {item && (
                     <Fragment>
                       <Card bodyClassName="p-2 flex-1">

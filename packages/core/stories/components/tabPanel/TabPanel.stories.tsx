@@ -49,7 +49,7 @@ const meta: Meta = {
   },
   decorators: [
     (Story) => (
-      <div className="min-h-[600px]">
+      <div className="min-h-150">
         <Viewport>
           <Story />
         </Viewport>

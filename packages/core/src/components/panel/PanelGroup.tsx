@@ -22,7 +22,7 @@
  */
 
 import classNames from "classnames";
-import { Children, cloneElement, useCallback, useState } from "react";
+import { Children, cloneElement, useEffectEvent, useState } from "react";
 import {
   useEffectDebugger,
   useMemoDebugger,
@@ -88,7 +88,7 @@ export const PanelGroup = ({
     "PanelGroup setActive",
   );
 
-  const changeExpanded = useCallback(
+  const changeExpanded = useEffectEvent(
     (collapsed: boolean, id: string, handler?: AnyObject) => {
       if (!collapsed) {
         setExpandedPanel(id);
@@ -97,7 +97,6 @@ export const PanelGroup = ({
       handler?.(collapsed);
       return id !== expandedPanel;
     },
-    [onActiveChange, expandedPanel],
   );
 
   return (

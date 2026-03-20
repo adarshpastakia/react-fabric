@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { useCallback, useRef, type RefObject } from "react";
+import { useEffectEvent, useRef, type RefObject } from "react";
 import { useIsRtl } from "./useIsRtl";
 
 interface Options {
@@ -68,41 +68,34 @@ export const useResize = <T extends HTMLElement = HTMLDivElement>(
   const refEl = useRef<T>(null);
   const isRtl = useIsRtl();
 
-  const onResizing = useCallback(
-    (evt: MouseEvent) => {
-      if (refEl.current != null) {
-        /** ***************** check if reverse enabled of RTL *******************/
-        const reversed = ((isRtl ? 1 : 0) ^ (isReverse ? 1 : 0)) === 1;
-        const box = refEl.current?.getBoundingClientRect();
-        const x =
-          (evt.clientX - (reversed ? box.left : box.right)) *
-          (reversed ? -1 : 1);
-        const y = evt.clientY - box.bottom;
-        onResize({ x, y });
-      }
-    },
-    [onResize, isRtl, isReverse],
-  );
+  const onResizing = useEffectEvent((evt: MouseEvent) => {
+    if (refEl.current != null) {
+      /** ***************** check if reverse enabled of RTL *******************/
+      const reversed = ((isRtl ? 1 : 0) ^ (isReverse ? 1 : 0)) === 1;
+      const box = refEl.current?.getBoundingClientRect();
+      const x =
+        (evt.clientX - (reversed ? box.left : box.right)) * (reversed ? -1 : 1);
+      const y = evt.clientY - box.bottom;
+      onResize({ x, y });
+    }
+  });
 
   /** ***************** dettach handlers on mouseup *******************/
-  const onResizeEnd = useCallback(() => {
+  const onResizeEnd = useEffectEvent(() => {
     document.body.style.cursor = "unset";
     document.removeEventListener("mousemove", onResizing);
     document.removeEventListener("mouseup", onResizeEnd);
     onEnd?.();
-  }, [onEnd, onResizing]);
+  });
 
   /** ***************** attach handlers on mousedown *******************/
-  const onResizeStart = useCallback(
-    (e: React.MouseEvent) => {
-      e.preventDefault();
-      document.body.style.cursor = isVertical ? "row-resize" : "col-resize";
-      document.addEventListener("mousemove", onResizing);
-      document.addEventListener("mouseup", onResizeEnd);
-      onStart?.();
-    },
-    [onResizing, onResizeEnd, onStart],
-  );
+  const onResizeStart = useEffectEvent((e: React.MouseEvent) => {
+    e.preventDefault();
+    document.body.style.cursor = isVertical ? "row-resize" : "col-resize";
+    document.addEventListener("mousemove", onResizing);
+    document.addEventListener("mouseup", onResizeEnd);
+    onStart?.();
+  });
 
   return { ref: refEl, onMouseDown: onResizeStart };
 };

@@ -340,7 +340,7 @@ const _VirtualList = <T extends AnyObject>({
           <div
             className={classNames(
               orientation === "vertical" && "self-end sticky bottom-2",
-              orientation === "horizontal" && "self-end sticky end-2",
+              orientation === "horizontal" && "self-end sticky inset-e-2",
             )}
           >
             <Scroller

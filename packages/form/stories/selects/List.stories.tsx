@@ -56,7 +56,7 @@ export const _List: ListStory = {
         options={Countries.list}
         labelProperty="name.common"
         valueProperty="cca3"
-        infoProperty="name"
+        infoProperty="name.official"
         renderer={(opt) => (
           <div className="flex gap-2 items-center">
             <Icon icon={`iconify-color circle-flags--${opt.iconCode}`} />

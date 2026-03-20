@@ -31,7 +31,7 @@ import {
   useRole,
 } from "@floating-ui/react";
 import classNames from "classnames";
-import { useCallback, useLayoutEffect, useMemo, useState } from "react";
+import { useEffectEvent, useLayoutEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AnimationIndicator } from "../../components/animations/Animations";
 import { Button } from "../../components/button/Button";
@@ -152,15 +152,12 @@ export const Alert = ({
     }
   }, [color, type, icon, iconSrc, rtlFlip]);
 
-  const handleClose = useCallback(
-    (ret: AnyObject) => {
-      refs.floating.current && (refs.floating.current.dataset.show = "false");
-      setTimeout(() => {
-        onClose(ret);
-      }, 250);
-    },
-    [onClose],
-  );
+  const handleClose = useEffectEvent((ret: AnyObject) => {
+    refs.floating.current && (refs.floating.current.dataset.show = "false");
+    setTimeout(() => {
+      onClose(ret);
+    }, 250);
+  });
   useLayoutEffect(() => {
     setTimeout(
       () =>
@@ -247,7 +244,7 @@ export const Alert = ({
                 {okLabel ?? t("action.ok", "OK")}
               </Button>
             </div>
-            <div className="absolute top-2 end-2">
+            <div className="absolute top-2 inset-e-2">
               <Button
                 size="sm"
                 variant="link"

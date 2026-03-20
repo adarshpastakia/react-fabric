@@ -24,7 +24,7 @@
 import classNames from "classnames";
 import {
   Children,
-  useCallback,
+  useEffectEvent,
   useMemo,
   type DragEvent,
   type MouseEventHandler,
@@ -37,17 +37,18 @@ import {
   type HeadFootProps,
 } from "../../core/headfoot/HeadFoot";
 import {
-  type PolymorphicProps,
   type AriaProps,
   type ChildrenProp,
   type CssProp,
+  type PolymorphicProps,
   type RefProp,
   type TestProps,
 } from "../../types";
 import { nodeCheck } from "../../utils";
 
 interface BaseProps
-  extends CssProp,
+  extends
+    CssProp,
     AriaProps,
     TestProps,
     RefProp<HTMLDivElement>,
@@ -161,13 +162,10 @@ export const Card = <Tag extends React.ElementType = "div">({
     );
   }, [children]);
 
-  const handleDragStart = useCallback(
-    (event: DragEvent) => {
-      dragKey && event.dataTransfer?.setData(dragKey, JSON.stringify(dragData));
-      dragKey && onDragStart?.(event, dragKey, dragData);
-    },
-    [onDragStart, dragKey, dragData],
-  );
+  const handleDragStart = useEffectEvent((event: DragEvent) => {
+    dragKey && event.dataTransfer?.setData(dragKey, JSON.stringify(dragData));
+    dragKey && onDragStart?.(event, dragKey, dragData);
+  });
 
   const E = as ?? "div";
   return (

@@ -21,9 +21,9 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { useCallback, useState } from "react";
-import { useLayoutEffectDebugger } from "./useEffectDebugger";
 import { debounce } from "@react-fabric/utilities";
+import { useEffectEvent, useState } from "react";
+import { useLayoutEffectDebugger } from "./useEffectDebugger";
 
 /**
  * Custom hook to determine if the current theme is dark.
@@ -35,12 +35,12 @@ import { debounce } from "@react-fabric/utilities";
  */
 export const useIsDark = () => {
   const [isDark, setDark] = useState(false);
-  const checkTheme = useCallback(() => {
+  const checkTheme = useEffectEvent(() => {
     const [r] = getComputedStyle(
       document.documentElement,
     ).backgroundColor.match(/\d?\d?\d/g) as AnyObject;
     setDark(+r < 50);
-  }, []);
+  });
   useLayoutEffectDebugger(
     () => {
       if (MutationObserver) {

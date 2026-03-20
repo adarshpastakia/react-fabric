@@ -149,7 +149,7 @@ export const HeaderCell = ({
       }}
     >
       <Tooltip content={tooltip ?? label} disabled={!(tooltip ?? label)}>
-        <div className="flex-initial px-2 py-1 text-sm truncate sticky start-0">
+        <div className="flex-initial px-2 py-1 text-sm truncate sticky inset-s-0">
           {icon && <Icon {...getIconProps(icon)} />}
           <span>{label ?? " "}</span>
         </div>

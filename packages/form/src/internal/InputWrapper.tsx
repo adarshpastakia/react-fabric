@@ -190,7 +190,7 @@ export const InputWrapper = ({
               ? "icon-[mdi--arrow-collapse]"
               : "icon-[mdi--arrow-expand]"
           }
-          className="hidden group-hover:block absolute top-0 end-0 bg-base hover:bg-tint-200 p-1 opacity-65 rounded-capped"
+          className="hidden group-hover:block absolute top-0 inset-e-0 bg-base hover:bg-tint-200 p-1 opacity-65 rounded-capped"
         />
       )}
     </div>

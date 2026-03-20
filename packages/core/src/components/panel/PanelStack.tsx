@@ -25,8 +25,8 @@ import {
   Children,
   cloneElement,
   type MouseEvent,
-  useCallback,
   useEffect,
+  useEffectEvent,
   useMemo,
   useRef,
   useState,
@@ -112,38 +112,35 @@ export const PanelStack = ({
     });
   }, [onPanelChange, history]);
 
-  const goBack = useCallback(() => {
+  const goBack = useEffectEvent(() => {
     if (onBack?.(history[0], history[1] ?? "root") !== false) {
       setHistory(history.slice(1));
     }
-  }, [history, onBack]);
+  });
 
   const currentPanel = useMemo<AnyObject>(
     () => panels.get(history[0]) ?? panels.values().next().value,
     [history, panels],
   );
 
-  const checkMenuClick = useCallback(
-    (e: MouseEvent) => {
-      const panelKey = (e.target as HTMLElement)?.dataset?.panel;
-      if (panelKey) {
-        if (panelKey === "back") {
-          goBack();
-        } else if (panelKey === "root") {
-          if (onBack?.(history[0], "root") !== false) {
-            setHistory([]);
-          }
-        } else if (panels.has(panelKey)) {
-          setHistory([panelKey, ...history]);
+  const checkMenuClick = useEffectEvent((e: MouseEvent) => {
+    const panelKey = (e.target as HTMLElement)?.dataset?.panel;
+    if (panelKey) {
+      if (panelKey === "back") {
+        goBack();
+      } else if (panelKey === "root") {
+        if (onBack?.(history[0], "root") !== false) {
+          setHistory([]);
         }
-        e.stopPropagation();
-        e.preventDefault();
-        return false;
+      } else if (panels.has(panelKey)) {
+        setHistory([panelKey, ...history]);
       }
-      return true;
-    },
-    [goBack, history, panels, onBack],
-  );
+      e.stopPropagation();
+      e.preventDefault();
+      return false;
+    }
+    return true;
+  });
 
   return (
     <div

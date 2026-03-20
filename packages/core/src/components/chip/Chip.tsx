@@ -22,7 +22,7 @@
  */
 
 import classNames from "classnames";
-import { useCallback, type ReactElement } from "react";
+import { useEffectEvent, type ReactElement } from "react";
 import { useMemoDebugger } from "../../hooks/useEffectDebugger";
 import {
   type AriaProps,
@@ -39,7 +39,8 @@ import { getColor } from "../../utils";
 import { getIconProps, Icon, type IconProps } from "../icon/Icon";
 
 export interface ChipProps
-  extends CssProp,
+  extends
+    CssProp,
     AriaProps,
     TestProps,
     ChildProp<string | ReactElement>,
@@ -155,22 +156,16 @@ export const Chip = <Tag extends React.ElementType = "div">({
     "Chip styles",
   );
 
-  const clickHandler = useCallback(
-    (e: React.MouseEvent) => {
-      preventDefault && e.preventDefault();
-      stopPropagation && e.stopPropagation();
-      onClick?.(e);
-    },
-    [onClick, preventDefault, stopPropagation],
-  );
+  const clickHandler = useEffectEvent((e: React.MouseEvent) => {
+    preventDefault && e.preventDefault();
+    stopPropagation && e.stopPropagation();
+    onClick?.(e);
+  });
 
-  const removeHandler = useCallback(
-    (e: React.MouseEvent) => {
-      if (stopPropagation) e.stopPropagation();
-      onRemove?.(e);
-    },
-    [onRemove, stopPropagation],
-  );
+  const removeHandler = useEffectEvent((e: React.MouseEvent) => {
+    if (stopPropagation) e.stopPropagation();
+    onRemove?.(e);
+  });
 
   const E = as ?? "div";
   return (

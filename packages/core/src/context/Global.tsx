@@ -106,10 +106,10 @@ const systemCalendar = () => {
 const systemColorScheme = () => {
   const theme: AnyObject =
     typeof window !== "undefined"
-      ? localStorage.getItem(KEY_COLOR_SCHEME) ??
+      ? (localStorage.getItem(KEY_COLOR_SCHEME) ??
         (window.matchMedia("(prefers-color-scheme: dark)").matches
           ? "dark"
-          : "light")
+          : "light"))
       : "light";
   return theme;
 };
@@ -179,7 +179,6 @@ export const ApplicationProvider: FC<GlobalProps> = ({
       document.documentElement.dataset.colorScheme = newTheme;
       return newTheme;
     },
-
     [colorScheme],
   );
 

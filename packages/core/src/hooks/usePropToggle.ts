@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { useCallback, useRef, useState, type RefObject } from "react";
+import { useEffectEvent, useRef, useState, type RefObject } from "react";
 import { useLayoutEffectDebugger } from "./useEffectDebugger";
 
 /**
@@ -61,12 +61,12 @@ export const usePropToggle = (
   );
 
   /** ***************** toggle handler *******************/
-  const doToggle = useCallback(() => {
+  const doToggle = useEffectEvent(() => {
     if (onToggle?.(!toggleOn, key) !== false) {
       toggleRef.current = !toggleOn;
       setToggleOn(!toggleOn);
     }
-  }, [toggleOn, onToggle, key]);
+  });
 
   return [toggleOn, doToggle, toggleRef];
 };

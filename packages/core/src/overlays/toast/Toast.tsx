@@ -22,7 +22,13 @@
  */
 
 import classNames from "classnames";
-import { Fragment, useCallback, useLayoutEffect, useMemo, useRef } from "react";
+import {
+  Fragment,
+  useEffectEvent,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+} from "react";
 import { useTranslation } from "react-i18next";
 import { AnimationIndicator } from "../../components/animations/Animations";
 import { Button } from "../../components/button/Button";
@@ -120,15 +126,12 @@ export const Toast = ({
   }, [color, type, icon, iconSrc, rtlFlip]);
 
   const elRef = useRef<HTMLDivElement>(null);
-  const handleClose = useCallback(
-    (ret?: AnyObject) => {
-      elRef.current && (elRef.current.dataset.show = "false");
-      setTimeout(() => {
-        onClose(ret);
-      }, 250);
-    },
-    [onClose],
-  );
+  const handleClose = useEffectEvent((ret?: AnyObject) => {
+    elRef.current && (elRef.current.dataset.show = "false");
+    setTimeout(() => {
+      onClose(ret);
+    }, 250);
+  });
   useLayoutEffect(() => {
     setTimeout(
       () => elRef.current && (elRef.current.dataset.show = "true"),

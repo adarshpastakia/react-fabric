@@ -50,8 +50,8 @@ import classNames from "classnames";
 import {
   cloneElement,
   Fragment,
-  useCallback,
   useEffect,
+  useEffectEvent,
   useRef,
   useState,
 } from "react";
@@ -164,15 +164,12 @@ const MenuComponent = ({
     }
   }, [tree, isOpen, nodeId, parentId]);
 
-  const handleClick = useCallback(
-    (e: React.MouseEvent) => {
-      const el = e.target as HTMLElement;
-      if (el.dataset.id) {
-        onClick?.(el.dataset.id as AnyObject);
-      }
-    },
-    [onClick],
-  );
+  const handleClick = useEffectEvent((e: React.MouseEvent) => {
+    const el = e.target as HTMLElement;
+    if (el.dataset.id) {
+      onClick?.(el.dataset.id as AnyObject);
+    }
+  });
 
   const Wrapper = isNested ? FloatingPortal : Fragment;
   const wrapperProps = isNested

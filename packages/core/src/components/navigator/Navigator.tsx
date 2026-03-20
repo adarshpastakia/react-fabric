@@ -23,7 +23,7 @@
 
 import { isEmpty } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { useCallback } from "react";
+import { useEffectEvent } from "react";
 import { HotKey } from "../../hotkeys/HotKey";
 import {
   type AriaProps,
@@ -36,10 +36,7 @@ import {
 import { Icon } from "../icon/Icon";
 
 export interface NavigatorProps
-  extends CssProp,
-    AriaProps,
-    TestProps,
-    Partial<ChildProp> {
+  extends CssProp, AriaProps, TestProps, Partial<ChildProp> {
   /**
    * item list length (ignore to enable infinite navigation)
    */
@@ -92,13 +89,11 @@ export const Navigator = ({
   disableKeyHandlers,
   ...aria
 }: NavigatorProps) => {
-  const navPrev = useCallback(
+  const navPrev = useEffectEvent(
     () => (isEmpty(current) || current !== 0) && onNavigate(-1),
-    [onNavigate, current, length],
   );
-  const navNext = useCallback(
+  const navNext = useEffectEvent(
     () => (isEmpty(current) || current + 1 < (length ?? 0)) && onNavigate(+1),
-    [onNavigate, current, length],
   );
   return (
     <div

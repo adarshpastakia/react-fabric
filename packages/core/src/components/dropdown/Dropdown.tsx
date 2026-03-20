@@ -48,8 +48,8 @@ import {
   Children,
   Fragment,
   cloneElement,
-  useCallback,
   useEffect,
+  useEffectEvent,
   useMemo,
   useRef,
   useState,
@@ -91,6 +91,10 @@ export interface DropdownProps extends RefProp {
    */
   dropdownEvent?: "click" | "hover";
   /**
+   * portal root element
+   */
+  root?: HTMLElement;
+  /**
    * open handler
    */
   onOpen?: () => void;
@@ -109,6 +113,7 @@ const DropdownElement = ({
   placement = "bottom",
   onClose,
   onOpen,
+  root,
   disabled,
   plainDropdown,
   dropdownEvent,
@@ -172,30 +177,27 @@ const DropdownElement = ({
     return undefined;
   }, [refs, isOpen, fitToParent]);
 
-  const dismissDropdown = useCallback(() => {
+  const dismissDropdown = useEffectEvent(() => {
     setIsOpen(false);
     onClose?.();
-  }, []);
+  });
 
-  const tryClosing = useCallback(
-    (e: React.MouseEvent) => {
-      if (
-        !refs.floating.current?.contains(
-          (e.target as HTMLElement).closest("[data-dropdown-dismiss='false']"),
-        ) &&
-        (!!closeOnClick ||
-          refs.floating.current?.contains(
-            (e.target as HTMLElement).closest("[data-dropdown-dismiss='true']"),
-          ))
-      ) {
-        setTimeout(() => {
-          setIsOpen(false);
-          onClose?.();
-        }, 100);
-      }
-    },
-    [closeOnClick, onClose],
-  );
+  const tryClosing = useEffectEvent((e: React.MouseEvent) => {
+    if (
+      !refs.floating.current?.contains(
+        (e.target as HTMLElement).closest("[data-dropdown-dismiss='false']"),
+      ) &&
+      (!!closeOnClick ||
+        refs.floating.current?.contains(
+          (e.target as HTMLElement).closest("[data-dropdown-dismiss='true']"),
+        ))
+    ) {
+      setTimeout(() => {
+        setIsOpen(false);
+        onClose?.();
+      }, 100);
+    }
+  });
 
   const innerRef = useMemo(
     () => mergeRefs(ref, anchor.props.ref, refs.setReference),
@@ -240,6 +242,7 @@ const DropdownElement = ({
       {isOpen && (
         <FloatingPortal
           root={
+            root ??
             refs.domReference.current?.closest<HTMLElement>(".theme-base") ??
             undefined
           }

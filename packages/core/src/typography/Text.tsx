@@ -23,7 +23,7 @@
 
 import { isNumber } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { useCallback, useRef, useState } from "react";
+import { useEffectEvent, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   useLayoutEffectDebugger,
@@ -119,7 +119,7 @@ export const Text = ({
   const [showMore, toggleShowMore, refShowMore] = usePropToggle(false);
 
   /** ***************** check text height if clip enabled *******************/
-  const checkHeight = useCallback(() => {
+  const checkHeight = useEffectEvent(() => {
     const el = refContainer.current as HTMLElement;
     if (el && isNumber(clamp) && clamp > 0 && !refShowMore.current) {
       setClipped(
@@ -127,7 +127,7 @@ export const Text = ({
           el.offsetHeight,
       );
     }
-  }, [clamp]);
+  });
 
   /** ***************** observe element resize to recalculate height *******************/
   useLayoutEffectDebugger(
@@ -179,13 +179,15 @@ export const Text = ({
       <div
         ref={refContainer}
         style={
-          { "--text-clamp": showMore ? "unset" : clamp ?? "unset" } as AnyObject
+          {
+            "--text-clamp": showMore ? "unset" : (clamp ?? "unset"),
+          } as AnyObject
         }
       >
         <div
           className={classNames(
             "fabric-text",
-            "mixed-lang px-[2px] whitespace-pre-wrap",
+            "mixed-lang px-0.5 whitespace-pre-wrap",
             family && `font-${family}`,
             clamp && "line-clamp-1",
           )}

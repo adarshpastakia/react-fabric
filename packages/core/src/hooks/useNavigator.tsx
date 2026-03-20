@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { useCallback, useMemo, useState } from "react";
+import { useEffectEvent, useMemo, useState } from "react";
 
 /**
  * Custom hook to manage navigation through a list of items.
@@ -44,20 +44,17 @@ import { useCallback, useMemo, useState } from "react";
 export const useNavigator = (totalCount = 0, defaultIndex = 0) => {
   const [currentIndex, setCurrentIndex] = useState(defaultIndex);
 
-  const onNavigate = useCallback(
-    (dir: 1 | -1) => {
-      setCurrentIndex((prevValue) => {
-        if (dir === -1) {
-          return prevValue > 0 ? prevValue - 1 : totalCount - 1;
-        }
-        if (dir === 1) {
-          return prevValue + 1 < totalCount ? prevValue + 1 : 0;
-        }
-        return prevValue;
-      });
-    },
-    [totalCount],
-  );
+  const onNavigate = useEffectEvent((dir: 1 | -1) => {
+    setCurrentIndex((prevValue) => {
+      if (dir === -1) {
+        return prevValue > 0 ? prevValue - 1 : totalCount - 1;
+      }
+      if (dir === 1) {
+        return prevValue + 1 < totalCount ? prevValue + 1 : 0;
+      }
+      return prevValue;
+    });
+  });
   const headLabel = useMemo(
     () => (
       <span className="text-muted leading-none select-none">

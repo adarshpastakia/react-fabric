@@ -24,8 +24,8 @@
 import {
   createContext,
   memo,
-  useCallback,
   useContext,
+  useEffectEvent,
   useRef,
   type FC,
   type PropsWithChildren,
@@ -46,69 +46,70 @@ export const HotKeyWrapper: FC<PropsWithChildren> = memo(
     const refEl = useRef<HTMLDivElement>(null);
     const keyList = useRef<KeyValue[]>([]);
 
-    const addHotKey = useCallback(
+    const addHotKey = useEffectEvent(
       (keyCombo: string, handler: () => void, global = false) =>
         (keyList.current = [
           ...keyList.current.filter(({ _key }) => _key !== keyCombo),
           reduceHotKey({ keyCombo, handler, global }),
         ]),
-      [],
     );
-    const removeHotKey = useCallback(
+    const removeHotKey = useEffectEvent(
       (key: string) =>
         (keyList.current = [
           ...keyList.current.filter(({ _key }) => _key !== key),
         ]),
-      [],
     );
 
-    const handler = useCallback((items: KeyValue[], event: KeyboardEvent) => {
-      if (items.length === 0) return;
-      const { key: keyCode, code, altKey, ctrlKey, metaKey, shiftKey } = event;
-      if (
-        keyCode !== "Enter" &&
-        keyCode !== "Esc" &&
-        ["INPUT", "TEXTAREA", "SELECT"].includes(
-          (event.target as HTMLElement).tagName,
+    const handler = useEffectEvent(
+      (items: KeyValue[], event: KeyboardEvent) => {
+        if (items.length === 0) return;
+        const {
+          key: keyCode,
+          code,
+          altKey,
+          ctrlKey,
+          metaKey,
+          shiftKey,
+        } = event;
+        if (
+          keyCode !== "Enter" &&
+          keyCode !== "Esc" &&
+          ["INPUT", "TEXTAREA", "SELECT"].includes(
+            (event.target as HTMLElement).tagName,
+          )
         )
-      )
-        return;
-      const find = items.find(
-        ({ key, alt, ctrl, meta, shift }: KeyValue) =>
-          (key.toLowerCase() === keyCode.toLowerCase() ||
-            key.toLowerCase() === code.toLowerCase() ||
-            // work around for macos alt+key issue
-            `key${key.toLowerCase()}` === code.toLowerCase()) &&
-          alt === altKey &&
-          ctrl === ctrlKey &&
-          meta === metaKey &&
-          shift === shiftKey,
-      );
-      if (find?.handler) {
-        find.handler();
-        event.preventDefault();
-        event.stopImmediatePropagation();
-      }
-    }, []);
+          return;
+        const find = items.find(
+          ({ key, alt, ctrl, meta, shift }: KeyValue) =>
+            (key.toLowerCase() === keyCode.toLowerCase() ||
+              key.toLowerCase() === code.toLowerCase() ||
+              // work around for macos alt+key issue
+              `key${key.toLowerCase()}` === code.toLowerCase()) &&
+            alt === altKey &&
+            ctrl === ctrlKey &&
+            meta === metaKey &&
+            shift === shiftKey,
+        );
+        if (find?.handler) {
+          find.handler();
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      },
+    );
 
-    const handleGlobal = useCallback(
-      (event: KeyboardEvent) => {
-        handler(
-          keyList.current.filter((i) => i.global),
-          event,
-        );
-      },
-      [handler],
-    );
-    const handleHotKey = useCallback(
-      (event: KeyboardEvent) => {
-        handler(
-          keyList.current.filter((i) => !i.global),
-          event,
-        );
-      },
-      [handler],
-    );
+    const handleGlobal = useEffectEvent((event: KeyboardEvent) => {
+      handler(
+        keyList.current.filter((i) => i.global),
+        event,
+      );
+    });
+    const handleHotKey = useEffectEvent((event: KeyboardEvent) => {
+      handler(
+        keyList.current.filter((i) => !i.global),
+        event,
+      );
+    });
 
     useEffectDebugger(
       () => {

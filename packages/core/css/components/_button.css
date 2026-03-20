@@ -23,8 +23,8 @@
 
 @layer components {
   .fabric-buttonWrapper {
-    --color: var(--color-tint-600);
-    --color-muted: var(--color-tint-300);
+    --color: var(--color-tint-800);
+    --color-muted: var(--color-tint-500);
 
     border-radius: var(--rounding);
     font-size: 1rem;
@@ -101,11 +101,6 @@
       flex: 0 1 1em;
     }
   }
-
-  [data-color-scheme="dark"] .fabric-buttonWrapper {
-    --color: var(--color-tint-500);
-    --color-muted: var(--color-tint-200);
-  }
 }
 
 @layer utilities {
@@ -134,10 +129,19 @@
   .fabric-button {
     --bg: color-mix(in lab, var(--fabric-bg) 99%, var(--color-tint));
     --outline: color-mix(in lab, var(--bg) 90%, var(--fabric-text));
-    --text: color-mix(in lab, var(--color) 80%, var(--fabric-text));
+    --text: color-mix(in lab, var(--color) 90%, var(--fabric-text));
     --bg-hover: color-mix(in lab, var(--color) 18%, var(--fabric-bg));
     --bg-click: color-mix(in lab, var(--color) 25%, var(--fabric-bg));
     --bg-active: color-mix(in lab, var(--color) 24%, var(--fabric-bg));
+    --text-hover: var(--text);
+
+    &[data-color="default"],
+    &[data-color="muted"] {
+      --text-hover: color-mix(in lab, var(--color-primary-500) 80%, var(--fabric-text));
+      --bg-hover: color-mix(in lab, var(--color-primary-500) 18%, var(--fabric-bg));
+      --bg-click: color-mix(in lab, var(--color-primary-500) 25%, var(--fabric-bg));
+      --bg-active: color-mix(in lab, var(--color-primary-500) 24%, var(--fabric-bg));
+    }
 
     &[data-color="primary"] {
       --color: var(--color-primary-500);
@@ -176,6 +180,18 @@
       --bg-hover: color-mix(in lab, var(--color) 35%, var(--fabric-bg));
       --bg-click: color-mix(in lab, var(--color) 50%, var(--color-tint-50));
       --bg-active: color-mix(in lab, var(--color) 50%, var(--color-tint-50));
+
+       &[data-color="default"] {
+        --bg-hover: color-mix(in lab, var(--color-primary-500) 35%, var(--fabric-bg));
+        --bg-click: color-mix(in lab, var(--color-primary-500) 42%, var(--color-tint-50));
+        --bg-active: color-mix(in lab, var(--color-primary-500) 45%, var(--color-tint-50));
+       }
+
+       &[data-color="muted"] {
+        --bg-hover: color-mix(in lab, var(--color-primary-500) 18%, var(--fabric-bg));
+        --bg-click: color-mix(in lab, var(--color-primary-500) 25%, var(--color-tint-50));
+        --bg-active: color-mix(in lab, var(--color-primary-500) 24%, var(--color-tint-50));
+       }
     }
 
     &[data-variant="solid"] {
@@ -190,6 +206,22 @@
         color: --alpha(var(--color-white) / 70%);
         background-color: --alpha(var(--bg-color-dark) / 30%);
       }
+
+       &[data-color="default"] {
+        --outline: color-mix(in lab, var(--color-black) 85%, var(--fabric-bg));
+        --bg: color-mix(in lab, var(--color-black) 75%, var(--fabric-bg));
+        --bg-hover: color-mix(in lab, var(--color-primary-500) 90%, var(--fabric-bg));
+        --bg-click: color-mix(in lab, var(--color-primary-500) 80%, var(--color-black));
+        --bg-active: color-mix(in lab, var(--color-primary-500) 70%, var(--color-black));
+        --text-hover: var(--color-white);
+       }
+
+       &[data-color="muted"] {
+        --bg-hover: color-mix(in lab, var(--color-primary-500) 65%, var(--fabric-bg));
+        --bg-click: color-mix(in lab, var(--color-primary-500) 80%, var(--color-black));
+        --bg-active: color-mix(in lab, var(--color-primary-500) 70%, var(--color-black));
+        --text-hover: var(--color-white);
+       }
     }
 
     &[data-variant="link"] {
@@ -271,6 +303,7 @@
     --tw-ring-color: var(--color);
 
     &:hover {
+      color: var(--text-hover);
       background-color: var(--bg-hover);
     }
 

@@ -26,8 +26,8 @@ import classNames from "classnames";
 import {
   Fragment,
   isValidElement,
-  useCallback,
   useEffect,
+  useEffectEvent,
   useMemo,
   useRef,
   useState,
@@ -217,28 +217,18 @@ export const Button = <Tag extends React.ElementType = "button">({
   const [actionDone, setActionDone] = useState(false);
 
   // Handle click events
-  const clickHandler = useCallback(
-    (e: React.MouseEvent) => {
-      setBusy(true);
-      preventDefault && e.preventDefault();
-      stopPropagation && e.stopPropagation();
-      const ret = onClick?.(e);
-      void Promise.resolve(ret).then((b) => {
-        setBusy(false);
-        if (b !== false && actionMessage && showActionDoneEvent === "click") {
-          setActionDone(true);
-        }
-      });
-    },
-    [
-      onClick,
-      disabled,
-      preventDefault,
-      actionMessage,
-      showActionDoneEvent,
-      stopPropagation,
-    ],
-  );
+  const clickHandler = useEffectEvent((e: React.MouseEvent) => {
+    setBusy(true);
+    preventDefault && e.preventDefault();
+    stopPropagation && e.stopPropagation();
+    const ret = onClick?.(e);
+    void Promise.resolve(ret).then((b) => {
+      setBusy(false);
+      if (b !== false && actionMessage && showActionDoneEvent === "click") {
+        setActionDone(true);
+      }
+    });
+  });
 
   /** ***************** reset done state on timeout *******************/
   useEffect(() => {
