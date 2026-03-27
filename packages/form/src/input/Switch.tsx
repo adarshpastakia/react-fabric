@@ -137,8 +137,8 @@ export const Switch = ({
         invalid ? "ring-danger-500" : "ring-primary-500",
         disabled
           ? "opacity-50 cursor-not-allowed"
-          : "hover:opacity-100 cursor-pointer",
-        "inline-flex gap-1 py-1 items-center relative cursor-pointer opacity-85 rounded ring-offset-2 has-focus-visible:ring-1",
+          : "opacity-85 hover:opacity-100 cursor-pointer",
+        "inline-flex gap-1 py-1 items-center relative rounded ring-offset-2 has-focus-visible:ring-1",
       )}
       style={{ width }}
     >
@@ -147,7 +147,7 @@ export const Switch = ({
           actualValue && getBgClass(color ? `${color}-500` : "primary-500"),
           !actualValue &&
             (defaultColor ? getBgClass(`${defaultColor}-500`) : "bg-tint-200"),
-          "relative grid grid-cols-2 items-center h-[1.5em] min-w-[2.5em] cursor-pointer rounded-full p-[0.25em] transition-colors duration-200 ease-in-out",
+          "relative grid grid-cols-2 items-center h-[1.5em] min-w-[2.5em] rounded-full p-[0.25em] transition-colors duration-200 ease-in-out",
         )}
         style={{
           backgroundColor: actualValue
@@ -157,7 +157,7 @@ export const Switch = ({
       >
         <input
           className={classNames(
-            "appearance-none absolute opacity-0 inset-0 bg-transparent border-none outline-none ring-0",
+            "appearance-none absolute opacity-0 inset-0 bg-transparent border-none cursor-[inherit] outline-none ring-0",
           )}
           aria-invalid={invalid}
           aria-disabled={disabled}
