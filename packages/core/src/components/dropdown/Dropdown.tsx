@@ -87,9 +87,9 @@ export interface DropdownProps extends RefProp {
    */
   dropdownClassName?: string;
   /**
-   * dropdown event
+   * dropdown trigger event, default is click
    */
-  dropdownEvent?: "click" | "hover";
+  trigger?: "click" | "hover";
   /**
    * portal root element
    */
@@ -116,7 +116,7 @@ const DropdownElement = ({
   root,
   disabled,
   plainDropdown,
-  dropdownEvent,
+  trigger = "click",
   dropdownClassName,
 }: DropdownProps) => {
   const arrowRef = useRef(null);
@@ -151,7 +151,7 @@ const DropdownElement = ({
     ],
   });
 
-  const handler = dropdownEvent === "hover" ? useHover : useClick;
+  const handler = trigger === "hover" ? useHover : useClick;
   const click = handler(context, {
     enabled: !disabled,
     handleClose: safePolygon({ blockPointerEvents: true }),
@@ -267,7 +267,7 @@ const DropdownElement = ({
                   "fabric-dropdownBody",
                   dropdownClassName,
                   !plainDropdown && "shadow-lg bg-base ring-1 ring-tint-100",
-                  "rounded-capped overflow-auto scroll-thin grid max-h-[70vh]",
+                  "rounded-capped grid max-h-[70vh]",
                 )}
                 onMouseUpCapture={tryClosing}
               >
