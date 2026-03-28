@@ -91,20 +91,27 @@ export interface ArrayInputProps<T extends AnyObject = string> {
   enableSorting?: boolean;
   children:
     | React.ReactNode
-    | ((props: { index: number; name: string; item: T }) => React.ReactNode);
+    | ((props: {
+        index: number;
+        name: string;
+        item: T;
+        onChange: (val: false | undefined | T) => void;
+      }) => React.ReactNode);
   /**
    * add item button label
    */
   addLabel?: string;
   buttonPosition?: "top" | "bottom" | "both";
   arrayRef?: Ref<{
-    addItem: (item: T) => void;
+    addItem: (
+      item: false | undefined | T | Promise<false | undefined | T>,
+    ) => void;
     removeItem: (idx: number) => void;
   }>;
   /**
    * add new item
    */
-  onAdd?: () => T;
+  onAdd?: () => false | undefined | T | Promise<false | undefined | T>;
   /**
    * on item remove
    */
@@ -235,9 +242,9 @@ export const ArrayInput = <T extends AnyObject = string>({
   );
 
   const handleAdd = useCallback(
-    (item?: T) => {
+    async (item?: Promise<false | undefined | T>) => {
       if (!item) return;
-      append(item);
+      append((await item) as T);
       setTimeout(() => {
         form.setFocus(
           `${name}.${fields.length}${focusName ? "." + focusName : ""}`,
@@ -261,7 +268,7 @@ export const ArrayInput = <T extends AnyObject = string>({
   );
 
   useImperativeHandle(arrayRef, () => ({
-    addItem: handleAdd,
+    addItem: (t) => handleAdd(Promise.resolve(t)),
     removeItem: remove,
   }));
 
@@ -363,7 +370,7 @@ export const ArrayInput = <T extends AnyObject = string>({
             size="sm"
             aria-label="Add item"
             icon="icon-[mdi--plus-circle-outline]"
-            onClick={() => handleAdd(onAdd?.())}
+            onClick={() => handleAdd(Promise.resolve(onAdd?.()))}
             data-invalid={!!error}
             disabled={!!disabled || readOnly || fields.length > maxItems}
             className={classNames(
@@ -410,6 +417,10 @@ export const ArrayInput = <T extends AnyObject = string>({
                     index,
                     item: item as any,
                     name: `${name}.${index}`,
+                    onChange: async (val) => {
+                      const result = await Promise.resolve(val);
+                      result && form.setValue(`${name}.${index}`, result);
+                    },
                   })
                 : cloneChildren(children, (child: AnyObject) =>
                     cloneElement(
