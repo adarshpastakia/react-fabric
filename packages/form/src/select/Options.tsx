@@ -23,6 +23,7 @@
 
 import { EmptyContent } from "@react-fabric/core";
 import { type ReactElement } from "@react-fabric/core/dist/types/types";
+import { getByPath } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { Trans } from "react-i18next";
 
@@ -112,7 +113,7 @@ export const Options = ({
               )}
               {...itemProps(item)}
             >
-              {children(item, item[labelProperty] ?? item)}
+              {children(item, getByPath(item, labelProperty) ?? `${item}`)}
             </div>
           );
         })}

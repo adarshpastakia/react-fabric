@@ -36,7 +36,7 @@ import {
   useTypeahead,
 } from "@floating-ui/react";
 import { Chip, Icon } from "@react-fabric/core";
-import { isArray, isEmpty } from "@react-fabric/utilities";
+import { getByPath, isArray, isEmpty } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useCallback, useId, useLayoutEffect, useMemo } from "react";
 import { InputWrapper } from "../internal/InputWrapper";
@@ -362,7 +362,7 @@ export const Select = <T extends AnyObject = string>({
               itemRef={setItemRef}
               itemProps={makeItemProps}
               empty={emptyDisplay}
-              info={state.activeItem?.[infoProperty ?? "info"]}
+              info={getByPath(state.activeItem, infoProperty ?? "info")}
             >
               {(item, label) => renderer?.(item) ?? label}
             </Options>

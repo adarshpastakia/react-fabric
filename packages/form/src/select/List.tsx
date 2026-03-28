@@ -30,7 +30,7 @@ import {
   useTypeahead,
 } from "@floating-ui/react";
 import { Chip } from "@react-fabric/core";
-import { isArray, isEmpty } from "@react-fabric/utilities";
+import { getByPath, isArray, isEmpty } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { Fragment, useCallback, useId, useLayoutEffect, useMemo } from "react";
 import { FieldWrapper } from "../internal/FieldWrapper";
@@ -322,7 +322,7 @@ export const List = <T extends AnyObject = string>({
           itemRef={setItemRef}
           itemProps={makeItemProps}
           empty={emptyDisplay}
-          info={state.activeItem?.[infoProperty ?? "info"]}
+          info={getByPath(state.activeItem, infoProperty ?? "info")}
         >
           {(item, label) => renderer?.(item) ?? label}
         </Options>
