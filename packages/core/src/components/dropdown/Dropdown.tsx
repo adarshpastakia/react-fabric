@@ -266,14 +266,19 @@ const DropdownElement = ({
                 className={classNames(
                   "fabric-dropdownBody",
                   dropdownClassName,
-                  !plainDropdown && "shadow-lg bg-base ring-1 ring-tint-100",
+                  !plainDropdown && "shadow-lg bg-default ring-1 ring-tint-100",
                   "rounded-capped grid max-h-[70vh]",
                 )}
                 onMouseUpCapture={tryClosing}
               >
-                {cloneElement(panel, {
-                  dismiss: dismissDropdown,
-                })}
+                {cloneElement(
+                  panel,
+                  typeof panel.type === "string"
+                    ? {}
+                    : {
+                        dismiss: dismissDropdown,
+                      },
+                )}
               </div>
               {showArrow && (
                 <FloatingArrow

@@ -261,7 +261,7 @@ export const Panel = ({
                 data-ref="panelCollapse"
                 className={classNames("fabric-panelAction", "cursor-pointer")}
                 icon={
-                  collapsed ? "icon-[mdi--plus-box]" : "icon-[mdi--minus-box]"
+                  collapsed ? "icon-[mdi--plus-box-outline]" : "icon-[mdi--minus-box-outline]"
                 }
                 onClick={toggleCollapse}
               />

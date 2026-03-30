@@ -86,7 +86,7 @@ export const EditorToolbar: ToggleButtonGroupStory = {
   render: (args) => {
     return (
       <Fragment>
-        <div className="border border-muted p-1 flex gap-2 rounded">
+        <div className="border border-soft p-1 flex gap-2 rounded">
           <ToggleButtonGroup
             value="left"
             variant="link"

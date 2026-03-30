@@ -29,7 +29,7 @@ export const ChartToolbar: FC<ChildrenProp> = ({ children }) => {
   return (
     <div
       className={classNames(
-        "flex flex-nowrap items-center justify-end bg-base area-head",
+        "flex flex-nowrap items-center justify-end bg-default area-head",
         "fabric-chartToolbar empty:hidden",
       )}
     >

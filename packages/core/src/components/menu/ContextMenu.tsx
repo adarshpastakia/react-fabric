@@ -149,7 +149,7 @@ export const ContextMenu = ({ children, menu, disabled }: ContextMenuProps) => {
               zIndex: "var(--z-popover)",
               fontSize: "0.875rem",
             },
-            className: "bg-base outline rounded-capped shadow-lg",
+            className: "bg-default outline rounded-capped shadow-lg",
             ref: refs.setFloating,
             onMouseUp: tryClosing.current,
           })}

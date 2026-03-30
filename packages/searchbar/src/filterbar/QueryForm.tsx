@@ -137,7 +137,7 @@ export const QueryForm = ({
           </div>
         )}
       </Controller>
-      <div className="flex mt-4 justify-end gap-1 sticky bottom-1 bg-base">
+      <div className="flex mt-4 justify-end gap-1 sticky bottom-1 bg-default">
         {onRemove && (
           <div className="flex-1">
             <Button

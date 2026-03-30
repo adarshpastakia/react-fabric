@@ -91,6 +91,36 @@ export const Colors: CalloutStory = {
         <Col className="span-12" stretchContent>
           <Callout
             {...args}
+            color="default"
+            title="Default"
+            icon="mdi mdi-react"
+          >
+            <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
+          </Callout>
+        </Col>
+        <Col className="span-12" stretchContent>
+          <Callout
+            {...args}
+            color="dimmed"
+            title="Dimmed"
+            icon="mdi mdi-react"
+          >
+            <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
+          </Callout>
+        </Col>
+        <Col className="span-12" stretchContent>
+          <Callout
+            {...args}
+            color="muted"
+            title="Muted"
+            icon="mdi mdi-react"
+          >
+            <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
+          </Callout>
+        </Col>
+        <Col className="span-12" stretchContent>
+          <Callout
+            {...args}
             color="primary"
             title="Primary"
             icon="mdi mdi-react"

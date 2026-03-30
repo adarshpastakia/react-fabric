@@ -70,7 +70,7 @@ export const SchemaEditor = ({
         acceptableTypes={acceptableTypes ?? Object.values(DATA_TYPES)}
       />
       {children && (
-        <Footer flex className="border-t bg-base px-6 py-2">
+        <Footer flex className="border-t bg-default px-6 py-2">
           {children}
         </Footer>
       )}

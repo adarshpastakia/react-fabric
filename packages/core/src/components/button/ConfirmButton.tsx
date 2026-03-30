@@ -208,7 +208,7 @@ export const ConfirmButton = <Tag extends React.ElementType = "button">({
             <div
               data-color={color}
               className={classNames(
-                "select-none not-italic rounded-capped shadow-lg outline outline-muted bg-base",
+                "select-none not-italic rounded-capped shadow-lg outline outline-muted bg-default",
               )}
               ref={refs.setFloating}
               style={{

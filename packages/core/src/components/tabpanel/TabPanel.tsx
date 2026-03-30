@@ -175,7 +175,7 @@ export const TabPanel = ({
     <div
       className={classNames(
         "fabric-tabPanel",
-        "area-content grid bg-base overflow-hidden",
+        "area-content grid bg-default overflow-hidden",
       )}
       data-orientation={orientation}
       data-variant={variant ?? "default"}

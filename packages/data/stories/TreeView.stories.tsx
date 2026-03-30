@@ -37,7 +37,7 @@ const meta: Meta = {
   decorators: [
     (Story) => (
       <div
-        className="w-96 h-96 outline bg-base overflow-hidden"
+        className="w-96 h-96 outline bg-default overflow-hidden"
         style={{
           display: "grid",
           gridTemplate: `"head" auto "content" 1fr / 1fr`,

@@ -45,7 +45,7 @@ const Graph = () => {
   }, [graph]);
 
   return (
-    <div className="area-content relative bg-base graph-viewer">
+    <div className="area-content relative bg-default graph-viewer">
       <div dir="ltr" ref={sigma.containerRef} className="absolute inset-0" />
       <div
         role="none"

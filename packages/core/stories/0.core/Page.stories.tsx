@@ -45,13 +45,13 @@ export const _Page: PageStory = {
           <Page {...args}>
             <h1 className="area-head border-b text-center p-4">Page Header</h1>
             <h6 className="area-foot border-t text-center p-4">Page Footer</h6>
-            <h4 className="area-side-s border-e bg-dimmed p-4">
+            <h4 className="area-side-s border-e bg-dimmed border-soft p-4">
               Page Aside start
             </h4>
-            <h4 className="area-side-e border-s bg-dimmed p-4">
+            <h4 className="area-side-e border-s bg-dimmed border-soft p-4">
               Page Aside end
             </h4>
-            <h4 className="area-content bg-base text-center p-4">
+            <h4 className="area-content bg-default text-center p-4">
               Page Content
             </h4>
           </Page>

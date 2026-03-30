@@ -39,7 +39,7 @@ export interface CalloutProps
   /**
    * callout color
    */
-  color?: ColorState | "none";
+  color?: ColorState | "dimmed";
   /**
    * legend title
    */
@@ -64,9 +64,9 @@ export interface CalloutProps
 
 // colors for different callout types
 const colors = {
-  none: "bg-base text-tint-900 border-tint-100",
-  default: "bg-tint-50/50 text-tint-800 border-tint-300",
-  muted: "bg-tint-50/50 text-muted border-muted",
+  default: "bg-default text-tint-900 border-tint-100",
+  dimmed: "bg-dimmed text-dimmed border-tint-200",
+  muted: "bg-muted text-muted border-tint-200",
   primary: "bg-primary-50/50 text-primary-800 border-primary-300",
   accent: "bg-accent-50/50 text-accent-800 border-accent-300",
   info: "bg-info-50/50 text-info-800 border-info-300",

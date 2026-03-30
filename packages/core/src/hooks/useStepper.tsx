@@ -36,7 +36,7 @@ export const useStepper = ({
 
   const stepper = useMemo(() => {
     return (
-      <div className="fabric-stepper bg-base flex-1 flex justify-center py-1 px-2 overflow-x-auto">
+      <div className="fabric-stepper bg-default flex-1 flex justify-center py-1 px-2 overflow-x-auto">
         {steps.map((child: any, index) => (
           <div
             className="fabric-stepper--pill"

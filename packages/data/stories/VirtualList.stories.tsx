@@ -62,7 +62,7 @@ export const List: Story = {
       <div className="min-h-150">
         <Viewport>
           <Section>
-            <Header flex className="gap-2 p-2 bg-base">
+            <Header flex className="gap-2 p-2 bg-default">
               <Button onClick={() => listRef.current?.scrollToItem(8)}>
                 ScrollTo #9
               </Button>
@@ -211,7 +211,7 @@ export const LoadableList: Story = {
       <div className="min-h-150">
         <Viewport>
           <Section>
-            <Header flex className="gap-2 p-2 bg-base">
+            <Header flex className="gap-2 p-2 bg-default">
               <Button onClick={() => listRef.current?.scrollToItem(8)}>
                 ScrollTo #9
               </Button>

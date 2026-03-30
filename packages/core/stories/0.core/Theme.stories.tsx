@@ -138,7 +138,7 @@ const Sample = memo(() => (
       <div className="flex-1 rounded outline bg-danger-400" />
       <div className="flex-1 rounded outline bg-success-400" />
       <div className="flex-1 rounded outline bg-warning-400" />
-      <div className="flex-1 rounded outline bg-base" />
+      <div className="flex-1 rounded outline bg-default" />
       <div className="flex-1 rounded outline bg-dimmed" />
       <div className="flex-1 rounded outline bg-muted" />
     </div>
@@ -161,7 +161,7 @@ const Sample = memo(() => (
       <div className="flex-1 capitalize text-center font-medium text-warning-600">
         warning
       </div>
-      <div className="flex-1 capitalize text-center font-medium text-reset">
+      <div className="flex-1 capitalize text-center font-medium text-default">
         reset
       </div>
       <div className="flex-1 capitalize text-center font-medium text-dimmed">

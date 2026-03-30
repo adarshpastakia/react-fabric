@@ -106,16 +106,16 @@ table {
 
       background-color: color-mix(in lab, var(--ax-accent) 20%, var(--ax-bg));
       color: color-mix(in lab, var(--ax-accent) 20%, var(--ax-text));
-      box-shadow: 0 0 1px 0 var(--ax-border-muted) inset;
+      box-shadow: 0 0 1px 0 var(--ax-border-soft) inset;
     }
 
     tbody > tr {
       & > td {
-        box-shadow: 0 0 1px 0 var(--ax-border-muted) inset;
+        box-shadow: 0 0 1px 0 var(--ax-border-soft) inset;
       }
 
       &:nth-of-type(odd) > td {
-        @apply bg-base;
+        @apply bg-default;
       }
 
       &:nth-of-type(even) > td {
@@ -126,7 +126,7 @@ table {
     tfoot td {
       @apply bg-muted font-semibold;
 
-      box-shadow: 0 0 1px 0 var(--ax-border-muted) inset;
+      box-shadow: 0 0 1px 0 var(--ax-border-soft) inset;
     }
 
     tfoot + caption {

@@ -23,7 +23,7 @@
 
 @layer components {
   .fabric-page {
-    --fabric-page: color-mix(in lab, var(--fabric-bg) 94%, var(--color-tint));
+    --fabric-page: var(--bg-color-base);
     --fabric-page-title: color-mix(
       in lab,
       var(--fabric-bg) 90%,

@@ -167,7 +167,7 @@ export const Collapsable = ({
           "fabric-collapsableHead",
           "flex gap-1 flex-nowrap py-2 font-medium cursor-pointer items-center select-none hover:opacity-70",
           headerClassName,
-          stickyHeader && "bg-base sticky top-0 py-1 z-10",
+          stickyHeader && "bg-default sticky top-0 py-1 z-10",
           iconAlign === "end" ? "flex-row-reverse" : "flex-row",
         )}
         onClick={() => !disabled && setOpenState(!openState)}

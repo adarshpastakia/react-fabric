@@ -48,13 +48,13 @@ export const _Viewport: ViewportStory = {
           <h6 className="area-foot border-t text-center p-4">
             Viewport Footer
           </h6>
-          <h4 className="area-side-s border-e bg-dimmed p-4">
+          <h4 className="area-side-s border-e bg-dimmed border-soft p-4">
             Viewport Aside start
           </h4>
-          <h4 className="area-side-e border-s bg-dimmed p-4">
+          <h4 className="area-side-e border-s bg-dimmed border-soft p-4">
             Viewport Aside end
           </h4>
-          <h4 className="area-content bg-base text-center p-4">
+          <h4 className="area-content bg-default text-center p-4">
             Viewport Content
           </h4>
         </Viewport>

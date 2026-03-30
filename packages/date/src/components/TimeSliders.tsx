@@ -73,7 +73,7 @@ export const TimeSlider = ({ hour = 0, minute = 0, onTimeChange }: Props) => {
   return (
     <div
       className={classNames(
-        "area-[time] flex flex-col flex-nowrap border-s border-s-tint-50 overflow-hidden bg-base",
+        "area-[time] flex flex-col flex-nowrap border-s border-s-tint-50 overflow-hidden bg-default",
       )}
     >
       <div className="flex">

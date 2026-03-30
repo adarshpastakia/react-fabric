@@ -320,7 +320,7 @@ const CommentCard = ({
         </div>
       )}
       <Footer>
-        <div className="p-px text-xs bg-base">
+        <div className="p-px text-xs bg-default">
           <Textarea
             placeholder={t("reply") + "..."}
             rows={1}

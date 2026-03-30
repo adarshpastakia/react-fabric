@@ -164,7 +164,7 @@ export const GraphContextMenu = () => {
             zIndex: "var(--z-popover)",
             fontSize: "0.75rem",
           },
-          className: "bg-base outline rounded-capped shadow-lg",
+          className: "bg-default outline rounded-capped shadow-lg",
           ref: refs.setFloating,
           onMouseUp: tryClosing.current,
         })}

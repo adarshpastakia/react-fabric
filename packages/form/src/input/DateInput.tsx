@@ -236,7 +236,7 @@ export const DateInput = ({
             zIndex: "var(--z-popover)",
             ...floatingStyles,
           }}
-          className="shadow-lg bg-base ring-1 ring-tint-100"
+          className="shadow-lg bg-default ring-1 ring-tint-100"
           data-ref="dropdownBody"
           {...getFloatingProps()}
         >

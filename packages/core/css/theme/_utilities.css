@@ -93,20 +93,6 @@
   font-variant: small-caps;
 }
 
-@utility scroll-hide {
-  ::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
-}
-
-@utility scroll-thin {
-  ::-webkit-scrollbar {
-    width: 3px;
-    height: 3px;
-  }
-}
-
 @utility sectioned {
   display: grid;
   grid-template: "head head head" auto "side-s content side-e" 1fr "foot foot foot" auto / auto 1fr auto;
@@ -191,7 +177,7 @@
   }
 }
 
-@utility bg-base {
+@utility bg-default {
   background-color: var(--bg-color-base);
 }
 
@@ -223,7 +209,7 @@
   background-color: var(--bg-color-invert);
 }
 
-@utility text-reset {
+@utility text-default {
   color: var(--text-color-base);
 }
 
@@ -255,16 +241,16 @@
   border-color: var(--border-color-base);
 }
 
-@utility border-dimmed {
-  border-color: var(--border-color-dimmed);
+@utility border-bright {
+  border-color: var(--border-color-bright);
 }
 
-@utility border-muted {
-  border-color: var(--border-color-muted);
+@utility border-soft {
+  border-color: var(--border-color-soft);
 }
 
 @utility border-gray {
-  border-color: var(--color-tint);
+  border-color: var(--border-color-gray);
 }
 
 @utility border-dark {

@@ -67,13 +67,13 @@ export const FilterView = ({
   }, [filter]);
 
   return (
-    <div className="p-2 bg-base relative">
+    <div className="p-2 bg-default relative">
       {"query" in filter && (
         <div className="absolute top-2 end-2 z-10">
           <Copy size="sm" text={view as AnyObject} />
         </div>
       )}
-      <pre className="overflow-auto bg-base outline text-sm p-2 max-h-96 max-w-3xl min-w-[24rem]">
+      <pre className="overflow-auto bg-default outline text-sm p-2 max-h-96 max-w-3xl min-w-[24rem]">
         {view}
       </pre>
       {!filter.required && (

@@ -47,7 +47,7 @@ export const FilterEdit = ({
   }, [filter]);
 
   return (
-    <div className="px-2 py-1 bg-base outline min-w-[420px]">
+    <div className="px-2 py-1 bg-default outline min-w-[420px]">
       {!isEmpty(fields) && (
         <div className="pb-4 flex justify-end">
           <span

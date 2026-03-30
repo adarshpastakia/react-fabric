@@ -90,7 +90,7 @@ export const Field = ({
         className={classNames(
           "fabric-fieldGroup",
           !plain && !noOutline && "outline",
-          !plain && "bg-base",
+          !plain && "bg-default",
           plain && "flex-wrap",
           "flex-1 rounded",
           !vertical && "flex",

@@ -163,7 +163,7 @@ export const HeadFoot: CardStory = {
               <MenuItem label="Item 3" />
             </Menu>
           </Dropdown>
-          <Footer className="border-t border-muted">
+          <Footer className="border-t border-soft">
             <ButtonGroup fullWidth variant="link" size="lg">
               <Button
                 className="flex-1"
@@ -238,7 +238,7 @@ export const _CardCover: CardCoverStory = {
           <Text className="p-4" clamp={4}>
             {faker.lorem.sentences(10)}
           </Text>
-          <Footer className="border-t border-muted">
+          <Footer className="border-t border-soft">
             <ButtonGroup fullWidth variant="link" size="lg">
               <Button
                 className="flex-1"
@@ -296,7 +296,7 @@ export const _CardCover: CardCoverStory = {
           <Text className="p-4" clamp={4}>
             {faker.lorem.sentences(10)}
           </Text>
-          <Footer className="border-t border-muted">
+          <Footer className="border-t border-soft">
             <ButtonGroup fullWidth variant="link" size="lg">
               <Button
                 className="flex-1"

@@ -58,7 +58,7 @@ export const Options = ({
   return (
     <div
       ref={ref}
-      className={classNames("bg-base select-none flex flex-col", className)}
+      className={classNames("bg-default select-none flex flex-col", className)}
       style={style}
       {...rest}
     >
@@ -72,7 +72,7 @@ export const Options = ({
             return (
               <p
                 key={index}
-                className="px-2 py-1 text-muted text-xs sticky -top-px z-2 bg-base border-t"
+                className="px-2 py-1 text-muted text-xs sticky -top-px z-2 bg-default border-t"
               >
                 {item.label}
               </p>

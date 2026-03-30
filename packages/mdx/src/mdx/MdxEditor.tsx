@@ -122,7 +122,7 @@ export const MdxEditor: FC<MdxEditorProps> = ({ value: _value, onChange }) => {
 
   return showPreview ? (
     <Section>
-      <Header flex justify="end" className="py-1 px-2 bg-base">
+      <Header flex justify="end" className="py-1 px-2 bg-default">
         <Button
           aria-label="close"
           icon="icon-[mdi--close]"
@@ -140,7 +140,7 @@ export const MdxEditor: FC<MdxEditorProps> = ({ value: _value, onChange }) => {
     <MDXEditor
       className={classNames(
         "fabric-mdxEditor",
-        "grid overflow-hidden area-content max-h-full h-full bg-base",
+        "grid overflow-hidden area-content max-h-full h-full bg-default",
         isDark ? "dark-theme" : "light-theme",
       )}
       markdown={actualValue ?? ""}

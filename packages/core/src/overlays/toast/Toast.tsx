@@ -144,7 +144,7 @@ export const Toast = ({
       role="alert"
       className={classNames(
         "fabric-toast",
-        "flex flex-nowrap max-w-sm bg-base min-w-72 border pointer-events-auto relative overflow-hidden rounded-capped mt-4 select-none",
+        "flex flex-nowrap max-w-sm bg-default min-w-72 border pointer-events-auto relative overflow-hidden rounded-capped mt-4 select-none",
       )}
       style={{
         borderColor: getColor(color + "-300"),

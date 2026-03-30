@@ -13,7 +13,7 @@ export const Tools = () => {
     useGraph();
 
   return (
-    <div className="flex flex-nowrap outline absolute top-0 start-0 p-0 z-1 bg-base">
+    <div className="flex flex-nowrap outline absolute top-0 start-0 p-0 z-1 bg-default">
       <ButtonGroup variant="link">
         <Button aria-label="Home" icon={ICONS.focus} onClick={resetViewport} />
         <Button aria-label="Zoomin" icon={ICONS.zoomIn} onClick={zoomIn} />

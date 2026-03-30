@@ -87,7 +87,7 @@ export const Message = ({
     <div
       className={classNames(
         "fabric-message",
-        "flex flex-nowrap gap-1 px-8 relative justify-center max-w-md pointer-events-auto rounded mb-2 select-none",
+        "flex flex-nowrap gap-1 px-8 relative justify-center items-center max-w-md pointer-events-auto rounded mb-2 select-none",
       )}
       style={{
         backgroundColor: color

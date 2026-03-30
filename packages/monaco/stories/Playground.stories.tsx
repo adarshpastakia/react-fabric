@@ -63,7 +63,7 @@ export const Playground: Story = {
     return (
       <div className="min-h-150">
         <Viewport>
-          <Header className="py-1 px-2 bg-base">
+          <Header className="py-1 px-2 bg-default">
             <ToggleButtonGroup
               value={lang}
               onChange={setLang}

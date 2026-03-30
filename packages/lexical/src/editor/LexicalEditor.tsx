@@ -217,7 +217,7 @@ export const LexicalEditor = ({
                 "sticky top-0 z-1",
               )}
             >
-              <Header className="bg-base">
+              <Header className="bg-default">
                 <ToolbarPlugin />
               </Header>
             </div>

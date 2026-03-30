@@ -62,7 +62,7 @@ export const _Dropdown: DropdownStory = {
     return (
       <Dropdown {...args}>
         <Button altIcon="icon-[mdi--chevron-down]">Dropdown Menu</Button>
-        <Menu onClick={fn()}>
+        <Menu onClick={fn()} className="overflow-auto scroll-thin">
           <MenuItem id="1" label="Item One" />
           <MenuItem id="2" label="Item Two" />
           <MenuItem id="3" label="Item Three" />

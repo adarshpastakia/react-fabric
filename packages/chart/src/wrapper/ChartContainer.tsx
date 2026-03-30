@@ -207,7 +207,7 @@ export const ChartContainer = memo(
           )}
         />
         {isEmpty && (
-          <div className="absolute inset-0 bg-base grid place-content-center">
+          <div className="absolute inset-0 bg-default grid place-content-center">
             <EmptyContent
               icon={emptyIcon ?? "icon-[mdi--chart-line]"}
               message="Empty chart"

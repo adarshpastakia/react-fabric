@@ -286,7 +286,7 @@ export const RangePanel = ({
   return (
     <div
       className={classNames(
-        "block overflow-hidden bg-base rounded-capped",
+        "block overflow-hidden bg-default rounded-capped",
         className,
       )}
       {...rest}

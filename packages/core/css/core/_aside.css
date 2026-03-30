@@ -23,8 +23,8 @@
 
 @layer components {
   .fabric-aside {
-    --aside-bg: color-mix(in lab, var(--fabric-bg) 95%, var(--color-tint));
-    --aside-border: color-mix(in lab, var(--fabric-bg) 75%, var(--color-tint));
+    --aside-bg: var(--bg-color-dimmed);
+    --aside-border: var(--border-color-soft);
 
     background-color: var(--aside-bg);
 

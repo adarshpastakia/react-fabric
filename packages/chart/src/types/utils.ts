@@ -73,7 +73,7 @@ export const seriesRenderer = (opt: KeyValue) => {
     opt.xAxis?.[0].type !== "value" ? opt.xAxis?.[0] : opt.yAxis?.[0];
   const series = opt.series;
   const table = [
-    '<table class="border-separate border-spacing-1 mx-auto table-fixed min-w-full"><thead><tr class="sticky top-0 bg-base"><th></th>',
+    '<table class="border-separate border-spacing-1 mx-auto table-fixed min-w-full"><thead><tr class="sticky top-0 bg-default"><th></th>',
   ];
   table.push(
     ...series.map((s: Series) => `<th class="truncate">${s.name ?? s.id}</th>`),
@@ -110,7 +110,7 @@ export const seriesRenderer = (opt: KeyValue) => {
 export const timeSeriesRenderer = (opt: KeyValue) => {
   const series = opt.series;
   const table = [
-    '<table class="border-separate border-spacing-1 mx-auto table-fixed min-w-full"><thead><tr class="sticky top-0 bg-base"><th></th>',
+    '<table class="border-separate border-spacing-1 mx-auto table-fixed min-w-full"><thead><tr class="sticky top-0 bg-default"><th></th>',
   ];
   table.push(...series.map((s: Series) => `<th>${s.name ?? s.id}</th>`));
   table.push("</tr></thead><tbody class='bg-alternate'>");
@@ -131,7 +131,7 @@ export const activityRenderer = (opt: KeyValue) => {
   const axis = opt.xAxis[0];
   const series = opt.series;
   const table = [
-    '<table class="border-separate border-spacing-1 mx-auto table-fixed min-w-full"><thead><tr><th class="sticky top-0 bg-base"></th>',
+    '<table class="border-separate border-spacing-1 mx-auto table-fixed min-w-full"><thead><tr><th class="sticky top-0 bg-default"></th>',
   ];
   table.push(...series.map((s: Series) => `<th>${s.name ?? s.id}</th>`));
   table.push("</tr></thead><tbody class='bg-alternate'>");

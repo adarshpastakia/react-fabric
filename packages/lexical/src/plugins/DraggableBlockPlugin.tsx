@@ -376,7 +376,7 @@ function useDraggableBlockMenu(
   return createPortal(
     <>
       <div
-        className="rounded px-0.5 py-px select-none cursor-grab opacity-0 absolute left-0 top-0 will-change-transform active:cursor-grabbing hover:bg-base"
+        className="rounded px-0.5 py-px select-none cursor-grab opacity-0 absolute left-0 top-0 will-change-transform active:cursor-grabbing hover:bg-default"
         ref={menuRef}
         draggable={true}
         onDragStart={onDragStart}

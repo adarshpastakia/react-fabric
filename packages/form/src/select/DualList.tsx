@@ -241,7 +241,7 @@ export const DualList = <T extends AnyObject = string>({
           />
         </div>
         <div className="self-center mx-2">
-          <ButtonGroup vertical className="outline overflow-hidden bg-base">
+          <ButtonGroup vertical className="outline overflow-hidden bg-default">
             <Button
               size="sm"
               variant="link"

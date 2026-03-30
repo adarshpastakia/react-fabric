@@ -169,7 +169,7 @@ export const FormBuilder: Story = {
     return (
       <div className="min-h-[600px]">
         <Viewport>
-          <Header flex className="px-2 py-1 bg-base">
+          <Header flex className="px-2 py-1 bg-default">
             <Title>Form Builder</Title>
             <div className="p-2 bg-tint-100 font-medium rounded">
               <Icon icon="mdi mdi-flask" />
@@ -178,7 +178,7 @@ export const FormBuilder: Story = {
           </Header>
           <div className="grid grid-cols-3 overflow-hidden area-content p-2 gap-2">
             <div
-              className="grid rounded-capped outline overflow-hidden bg-base"
+              className="grid rounded-capped outline overflow-hidden bg-default"
               style={{
                 gridTemplate: `"head" auto "content" 1fr "foot" auto / 1fr`,
               }}
@@ -196,7 +196,7 @@ export const FormBuilder: Story = {
                 </Button>
               </SchemaEditor>
             </div>
-            <div className="overflow-auto bg-base outline rounded-capped">
+            <div className="overflow-auto bg-default outline rounded-capped">
               <Form
                 resolver={resolver}
                 defaultValues={formValues}
@@ -207,7 +207,7 @@ export const FormBuilder: Story = {
                 <Footer
                   flex
                   justify="end"
-                  className="sticky bottom-0 border-t bg-base px-6 py-2"
+                  className="sticky bottom-0 border-t bg-default px-6 py-2"
                 >
                   <Button type="reset" variant="link">
                     Reset
@@ -218,7 +218,7 @@ export const FormBuilder: Story = {
                 </Footer>
               </Form>
             </div>
-            <div className="overflow-auto p-6 bg-base outline rounded-capped">
+            <div className="overflow-auto p-6 bg-default outline rounded-capped">
               <pre>{JSON.stringify(formValues, null, 4)}</pre>
             </div>
           </div>

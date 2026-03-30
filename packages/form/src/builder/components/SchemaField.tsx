@@ -147,7 +147,7 @@ export const SchemaField = ({
         <Footer
           flex
           justify="end"
-          className="sticky bottom-0 border-t bg-base px-6 py-2"
+          className="sticky bottom-0 border-t bg-default px-6 py-2"
         >
           <Button variant="link" onClick={props.onClose}>
             Close

@@ -178,7 +178,7 @@ export const Alert = ({
             role="alertdialog"
             className={classNames(
               "fabric-alert",
-              "grid bg-base border-2 pointer-events-auto overflow-hidden rounded-capped select-none",
+              "grid bg-default border-2 pointer-events-auto overflow-hidden rounded-capped select-none",
               "min-w-72 max-w-sm p-6 relative outline-0 shadow-lg",
             )}
             style={{
