@@ -26,6 +26,7 @@ import {
   type ChildrenProp,
   type CssProp,
 } from "@react-fabric/core/dist/types/types";
+import classNames from "classnames";
 import { cloneElement } from "react";
 import { FieldWrapper } from "../internal/FieldWrapper";
 import { type Radio } from "./Radio";
@@ -91,13 +92,14 @@ export const RadioGroup = ({
   name,
   className,
   optionWidth,
+  vertical,
   value,
   onChange,
   ...rest
 }: RadioGroupProps) => {
   return (
     <FieldWrapper {...rest}>
-      <div className={className}>
+      <div className={classNames(className, vertical && "flex flex-col gap-1")}>
         {cloneChildren(children, (child: AnyObject) =>
           cloneElement(child, {
             name,
