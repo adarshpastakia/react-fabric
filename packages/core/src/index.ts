@@ -28,6 +28,7 @@ export { Flyout, Modal, Tooltip } from "./overlays";
 export * from "./typography";
 
 export * from "./hooks/useClientService";
+export * from "./hooks/useContextMenu";
 export * from "./hooks/useDebounce";
 export * from "./hooks/useEffectDebugger";
 export * from "./hooks/useIsDark";
@@ -47,8 +48,4 @@ export { type ModalProps } from "./types";
 
 export { cloneChildren } from "./utils";
 
-export {
-  ApplicationProvider,
-  useApplicationContext,
-  useNotificationService,
-} from "./context/Global";
+export { ApplicationProvider, useApplicationContext, useNotificationService } from "./context/Global";

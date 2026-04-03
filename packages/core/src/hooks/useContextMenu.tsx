@@ -4,7 +4,7 @@
  *
  *
  * The MIT License (MIT)
- * Copyright (c) 2024 Adarsh Pastakia
+ * Copyright (c) 2026 Adarsh Pastakia
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
  * and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -34,36 +34,20 @@ import {
   useFloatingNodeId,
   useInteractions,
 } from "@floating-ui/react";
-import { cloneElement, useEffect, useRef, useState } from "react";
-import { type ChildrenProp } from "../../types";
-import { type Menu } from "./Menu";
-
-export interface ContextMenuProps extends ChildrenProp {
-  menu: React.ReactElement<typeof Menu>;
-
-  disabled?: boolean;
-}
+import { cloneElement, useEffectEvent, useRef, useState } from "react";
+import { type Menu } from "../components/menu/Menu";
 
 /**
- * A component that provides a context menu that appears on right-click.
+ * A hook that provides a context menu that appears on right-click.
  * It uses the Floating UI library to manage the positioning and interactions of the menu.
- * This component is useful for creating custom context menus that can be triggered by right-clicking on elements.
+ * This hook is useful for creating custom context menus that can be triggered by right-clicking on elements.
  *
- * @param {ContextMenuProps} props - The properties for the ContextMenu component.
- * @returns {React.ReactElement} The rendered ContextMenu component.
- *
- * @example
- * ```jsx
- * <ContextMenu
- *   menu={<Menu items={[{ label: "Option 1" }, { label: "Option 2" }]} />}
- * >
- *   <div className="context-menu-target">Right-click me!</div>
- * </ContextMenu>
- * ```
- *
- * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-menu--docs}
+ * @param {ContextMenuProps} props - The properties for the ContextMenu hook.
+ * @returns {[React.ReactElement | null, (e: MouseEvent) => void]} An array containing the rendered ContextMenu component (or null if not open) and the function to handle right-click events.
  */
-export const ContextMenu = ({ children, menu, disabled }: ContextMenuProps) => {
+export const useContextMenu = (
+  menu: React.ReactElement<typeof Menu>,
+): [Overlay: React.ReactNode, onContentMenu: (e: React.MouseEvent) => void] => {
   const [isOpen, setIsOpen] = useState(false);
   const nodeId = useFloatingNodeId();
 
@@ -88,7 +72,7 @@ export const ContextMenu = ({ children, menu, disabled }: ContextMenuProps) => {
 
   const { getFloatingProps } = useInteractions([dismiss, click]);
 
-  const handleClick = useRef((e: MouseEvent) => {
+  const handleClick = useEffectEvent((e: React.MouseEvent) => {
     const virtual = {
       getBoundingClientRect() {
         return {
@@ -105,56 +89,43 @@ export const ContextMenu = ({ children, menu, disabled }: ContextMenuProps) => {
     };
     refs.setReference(virtual);
     setIsOpen(true);
-    e.stopImmediatePropagation();
+    e.nativeEvent.stopImmediatePropagation();
     e.preventDefault();
     return false;
   });
-
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = wrapperRef.current;
-    if (el && !disabled) {
-      el?.parentElement?.addEventListener("contextmenu", handleClick.current);
-      return () => {
-        el?.parentElement?.removeEventListener("contextmenu", handleClick.current);
-      };
-    }
-  }, [disabled]);
 
   const tryClosing = useRef((e: React.MouseEvent) => {
     if (!(e.target as HTMLElement)?.closest("[data-dropdown-dismiss='false']")) setTimeout(() => setIsOpen(false), 50);
   });
 
-  return (
-    <div className="contents" ref={wrapperRef}>
-      {children}
-      {isOpen && (
-        <FloatingPortal root={refs.domReference.current?.closest<HTMLElement>(".theme-base") ?? undefined}>
-          <FloatingOverlay
-            lockScroll
-            style={{
-              zIndex: "var(--z-overlay-mask)",
-              position: "absolute",
-              overflow: "hidden",
-            }}
-          >
-            <FloatingFocusManager context={context}>
-              {cloneElement(menu as AnyObject, {
-                ...getFloatingProps(),
-                style: {
-                  ...floatingStyles,
-                  borderRadius: "var(--rounding)",
-                  zIndex: "var(--z-popover)",
-                  fontSize: "0.875rem",
-                },
-                className: "bg-default outline rounded-capped shadow-lg",
-                ref: refs.setFloating,
-                onMouseUp: tryClosing.current,
-              })}
-            </FloatingFocusManager>
-          </FloatingOverlay>
-        </FloatingPortal>
-      )}
-    </div>
-  );
+  return [
+    isOpen && (
+      <FloatingPortal root={refs.domReference.current?.closest<HTMLElement>(".theme-base") ?? undefined}>
+        <FloatingOverlay
+          lockScroll
+          style={{
+            zIndex: "var(--z-overlay-mask)",
+            position: "absolute",
+            overflow: "hidden",
+          }}
+        >
+          <FloatingFocusManager context={context}>
+            {cloneElement(menu as AnyObject, {
+              ...getFloatingProps(),
+              style: {
+                ...floatingStyles,
+                borderRadius: "var(--rounding)",
+                zIndex: "var(--z-popover)",
+                fontSize: "0.875rem",
+              },
+              className: "bg-default outline rounded-capped shadow-lg",
+              ref: refs.setFloating,
+              onMouseUp: tryClosing.current,
+            })}
+          </FloatingFocusManager>
+        </FloatingOverlay>
+      </FloatingPortal>
+    ),
+    handleClick,
+  ];
 };

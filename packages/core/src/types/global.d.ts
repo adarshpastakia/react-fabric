@@ -69,6 +69,14 @@ declare module "*.css" {
   const content: any;
   export default content;
 }
+declare module "*.txt" {
+  const content: any;
+  export default content;
+}
+declare module "*.vtt" {
+  const content: any;
+  export default content;
+}
 
 interface HDate extends Date {
   toGregorian: () => Date;

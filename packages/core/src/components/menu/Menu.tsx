@@ -47,14 +47,7 @@ import {
 } from "@floating-ui/react";
 import { mergeRefs } from "@react-fabric/utilities";
 import classNames from "classnames";
-import {
-  cloneElement,
-  Fragment,
-  useEffect,
-  useEffectEvent,
-  useRef,
-  useState,
-} from "react";
+import { cloneElement, Fragment, useEffect, useEffectEvent, useRef, useState } from "react";
 import { HotKeyWrapper } from "../../hotkeys/HotKeyWrapper";
 import { cloneChildren, nodeCheck } from "../../utils";
 import { MenuItem } from "./MenuItem";
@@ -71,6 +64,10 @@ const MenuComponent = ({
   trigger = "hover",
   // @ts-expect-error ignore
   ref,
+  // @ts-expect-error ignore
+  onMouseUp,
+  // @ts-expect-error ignore
+  onMouseDown,
   forDropdown,
   ...rest
 }: Partial<MenuProps>) => {
@@ -91,15 +88,10 @@ const MenuComponent = ({
     open: !isNested || isOpen,
     onOpenChange(open, event, reason) {
       isNested && setIsOpen(open);
-      if (reason === "outside-press" && trigger === "click")
-        tree?.events.emit("close");
+      if (reason === "outside-press" && trigger === "click") tree?.events.emit("close");
     },
     placement: isNested ? "right-start" : "bottom-start",
-    middleware: [
-      offset({ mainAxis: isNested ? 0 : 4, alignmentAxis: isNested ? -4 : 0 }),
-      flip(),
-      shift(),
-    ],
+    middleware: [offset({ mainAxis: isNested ? 0 : 4, alignmentAxis: isNested ? -4 : 0 }), flip(), shift()],
     whileElementsMounted: autoUpdate,
   });
 
@@ -127,9 +119,14 @@ const MenuComponent = ({
     activeIndex,
   });
 
-  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
-    [click, hover, role, dismiss, listNavigation, typeahead],
-  );
+  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
+    click,
+    hover,
+    role,
+    dismiss,
+    listNavigation,
+    typeahead,
+  ]);
 
   // Event emitter allows you to communicate across tree components.
   // This effect closes all menus when an item gets clicked anywhere
@@ -174,20 +171,12 @@ const MenuComponent = ({
   const Wrapper = isNested ? FloatingPortal : Fragment;
   const wrapperProps = isNested
     ? {
-        root:
-          refs.domReference.current?.closest<HTMLElement>(".theme-base") ??
-          undefined,
+        root: refs.domReference.current?.closest<HTMLElement>(".theme-base") ?? undefined,
       }
     : {};
 
   useEffect(() => {
-    setTimeout(
-      () =>
-        refs.floating.current
-          ?.querySelector(`[data-active="true"]`)
-          ?.scrollIntoView({ block: "nearest" }),
-      100,
-    );
+    setTimeout(() => refs.floating.current?.querySelector(`[data-active="true"]`)?.scrollIntoView({ block: "nearest" }), 100);
   }, [isOpen]);
 
   useEffect(() => {
@@ -234,13 +223,14 @@ const MenuComponent = ({
                   className={classNames(
                     menuClassName,
                     "flex flex-col bg-default p-1 menu-list",
-                    isNested &&
-                      "outline shadow-lg rounded-capped max-h-96 overflow-auto scroll-thin z-(--z-popover)",
+                    isNested && "outline shadow-lg rounded-capped max-h-96 overflow-auto scroll-thin z-(--z-popover)",
                   )}
                   autoFocus
                   ref={mergeRefs(isNested ? refs.setFloating : ref)}
                   {...getFloatingProps({
                     onClick: isNested ? undefined : handleClick,
+                    onMouseDown,
+                    onMouseUp,
                   })}
                   // @ts-expect-error ignore
                   {...{ style: !isNested ? rest.style : floatingStyles }}
@@ -253,8 +243,7 @@ const MenuComponent = ({
                         ? {
                             minimal: !isNested && minimal,
                             "data-focus": activeIndex === index,
-                            ref: (el: HTMLElement) =>
-                              (elementsRef.current[index] = el),
+                            ref: (el: HTMLElement) => (elementsRef.current[index] = el),
                             ...getItemProps({
                               onClick: child.props.onClick,
                               tabIndex: activeIndex === index ? 0 : -1,
@@ -307,23 +296,13 @@ export const Menu = (props: MenuProps) => {
   const tree = useFloatingTree();
 
   if (tree) {
-    return (
-      <MenuComponent
-        {...(props as AnyObject)}
-        className=""
-        menuClassName={props.className}
-      />
-    );
+    return <MenuComponent {...(props as AnyObject)} className="" menuClassName={props.className} />;
   }
 
   if (parentId === null) {
     return (
       <FloatingTree>
-        <MenuComponent
-          {...(props as AnyObject)}
-          className=""
-          menuClassName={props.className}
-        />
+        <MenuComponent {...(props as AnyObject)} className="" menuClassName={props.className} />
       </FloatingTree>
     );
   }

@@ -189,7 +189,7 @@ export const _ContextMenu: MenuStory = {
   render: (args: AnyObject) => {
     const menu = useMemo(
       () => (
-        <Menu onClick={fn()}>
+        <Menu onClick={args.onClick}>
           <MenuItem
             id="appItem"
             icon="mdi mdi-react"
