@@ -23,11 +23,7 @@
 
 @layer components {
   .fabric-viewport {
-    --fabric-viewport: color-mix(
-      in lab,
-      var(--fabric-bg) 76%,
-      var(--color-tint)
-    );
+    --fabric-viewport: color-mix(in lab, var(--fabric-bg) 76%, var(--color-tint));
 
     grid-template: "head head head" auto "crumbbar crumbbar crumbbar" auto "side-s content side-e" 1fr "foot foot foot" auto / auto 1fr auto;
     color: var(--fabric-text);

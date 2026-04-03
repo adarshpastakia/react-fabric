@@ -81,12 +81,13 @@ export const _Responsive: ResponsiveStory = {
                   Responsive col spans
                 </Col>
                 <Col flex="auto" className="text-muted">
-                  <span className="show-xs-only">xs 1 column</span>
-                  <span className="show-sm-only">sm 2 columns</span>
-                  <span className="show-md-only">md 3 columns</span>
-                  <span className="show-lg-only">lg 4 columns</span>
-                  <span className="show-xl-only">xl 6 columns</span>
-                  <span className="show-2xl-only">2xl 12 columns</span>
+                  <span className="not-2xs:hidden">2xs</span>
+                  <span className="not-xs:hidden">xs 1 column</span>
+                  <span className="not-sm:hidden">sm 2 columns</span>
+                  <span className="not-md:hidden">md 3 columns</span>
+                  <span className="not-lg:hidden">lg 4 columns</span>
+                  <span className="not-xl:hidden">xl 6 columns</span>
+                  <span className="not-2xl:hidden">2xl 12 columns</span>
                 </Col>
               </Row>
               <Row>
@@ -102,7 +103,7 @@ export const _Responsive: ResponsiveStory = {
                 <Col className="h-8 bg-dimmed outline p-2 span-12 sm:span-6 md:span-4 lg:span-3 xl:span-2 2xl:span-1" />
                 <Col className="h-8 bg-dimmed outline p-2 span-12 sm:span-6 md:span-4 lg:span-3 xl:span-2 2xl:span-1" />
                 <Col className="h-8 bg-dimmed outline p-2 span-12 sm:span-6 md:span-4 lg:span-3 xl:span-2 2xl:span-1" />
-              </Row>
+              </Row>{" "}
             </Container>
           </Content>
         </Page>

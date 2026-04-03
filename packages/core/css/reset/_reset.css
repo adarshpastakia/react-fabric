@@ -84,11 +84,7 @@
   }
 
   [class*="ring"] {
-    --tw-ring-color: color-mix(
-      in oklab,
-      var(--fabric-bg) 65%,
-      var(--color-tint)
-    );
+    --tw-ring-color: color-mix(in oklab, var(--fabric-bg) 65%, var(--color-tint));
   }
 
   body {
@@ -104,35 +100,19 @@
     }
 
     ::-webkit-scrollbar-track {
-      background-color: color-mix(
-        in lab,
-        var(--fabric-bg) 72%,
-        var(--color-tint)
-      );
+      background-color: color-mix(in lab, var(--fabric-bg) 72%, var(--color-tint));
     }
 
     ::-webkit-scrollbar-thumb {
-      background-color: color-mix(
-        in lab,
-        var(--fabric-bg) 35%,
-        var(--color-tint)
-      );
+      background-color: color-mix(in lab, var(--fabric-bg) 35%, var(--color-tint));
+    }
 
-      &:hover {
-        background-color: color-mix(
-          in lab,
-          var(--fabric-text) 50%,
-          var(--color-tint)
-        );
-      }
+    :hover::-webkit-scrollbar-thumb {
+      background-color: color-mix(in lab, var(--fabric-text) 50%, var(--color-tint));
+    }
 
-      &:active {
-        background-color: color-mix(
-          in lab,
-          var(--fabric-bg) 50%,
-          var(--fabric-text)
-        );
-      }
+    :active::-webkit-scrollbar-thumb {
+      background-color: color-mix(in lab, var(--fabric-bg) 50%, var(--fabric-text));
     }
 
     ::-webkit-scrollbar-corner {
@@ -177,10 +157,8 @@
       height: auto;
       margin: 0.25rem 0;
       border: 0;
-      border-top: 3px solid
-        color-mix(in lab, var(--fabric-bg) 95%, var(--color-tint)) !important;
-      border-bottom: 2px solid
-        color-mix(in lab, var(--fabric-bg) 50%, var(--color-tint));
+      border-top: 3px solid color-mix(in lab, var(--fabric-bg) 95%, var(--color-tint)) !important;
+      border-bottom: 2px solid color-mix(in lab, var(--fabric-bg) 50%, var(--color-tint));
 
       background: none;
 
@@ -191,10 +169,8 @@
 
         margin: 0 0.25rem;
         border: 0;
-        border-inline-start: 3px solid
-          color-mix(in lab, var(--fabric-bg) 95%, var(--color-tint)) !important;
-        border-inline-end: 2px solid
-          color-mix(in lab, var(--fabric-bg) 50%, var(--color-tint));
+        border-inline-start: 3px solid color-mix(in lab, var(--fabric-bg) 95%, var(--color-tint)) !important;
+        border-inline-end: 2px solid color-mix(in lab, var(--fabric-bg) 50%, var(--color-tint));
       }
     }
 
@@ -227,6 +203,11 @@
       width: 3px;
       height: 3px;
     }
+  }
+
+  .overflow-auto,
+  .overflow-scroll {
+    scrollbar-gutter: stable both-edges;
   }
 
   p,

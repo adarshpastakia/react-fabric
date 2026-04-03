@@ -23,7 +23,7 @@
 
 @layer components {
   .fabric-aside {
-    --aside-bg: var(--bg-color-dimmed);
+    --aside-bg: var(--bg-color-base);
     --aside-border: var(--border-color-soft);
 
     background-color: var(--aside-bg);

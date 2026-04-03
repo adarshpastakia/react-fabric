@@ -144,36 +144,20 @@
 }
 
 @utility bg-odd {
-  background-color: color-mix(
-    in oklab,
-    var(--fabric-bg) 99%,
-    var(--color-tint)
-  );
+  background-color: color-mix(in oklab, var(--fabric-bg) 99%, var(--color-tint));
 }
 
 @utility bg-even {
-  background-color: color-mix(
-    in oklab,
-    var(--fabric-bg) 92%,
-    var(--color-tint)
-  );
+  background-color: color-mix(in oklab, var(--fabric-bg) 92%, var(--color-tint));
 }
 
 @utility bg-alternate {
   > :nth-child(even) {
-    background-color: color-mix(
-      in oklab,
-      var(--fabric-bg) 92%,
-      var(--color-tint)
-    );
+    background-color: color-mix(in oklab, var(--fabric-bg) 92%, var(--color-tint));
   }
 
   > :nth-child(odd) {
-    background-color: color-mix(
-      in oklab,
-      var(--fabric-bg) 99%,
-      var(--color-tint)
-    );
+    background-color: color-mix(in oklab, var(--fabric-bg) 99%, var(--color-tint));
   }
 }
 
@@ -350,178 +334,90 @@
 }
 
 @utility grid-cols-repeat-* {
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(min(--value([*]), 100%), 1fr)
-  );
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(min(calc(var(--spacing) * --value(integer)), 100%), 1fr)
-  );
+  grid-template-columns: repeat(auto-fill, minmax(min(--value([*]), 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(calc(var(--spacing) * --value(integer)), 100%), 1fr));
 }
 
-@media (min-width: theme(screens.xs)) {
-  .hide-xs {
-    @apply hidden;
-  }
+@variant not-2xs (@media (width >= theme(--breakpoint-xs)));
 
-  @media (max-width: theme(screens.sm)) {
-    .hide-xs-only {
-      @apply hidden;
-    }
+@variant not-xs (@media ((width < theme(--breakpoint-xs)) or (width >= theme(--breakpoint-sm))));
 
-    .show-sm-only,
-    .show-md-only,
-    .show-lg-only,
-    .show-xl-only,
-    .show-2xl-only {
-      @apply hidden;
-    }
-  }
-}
+@variant not-sm (@media ((width < theme(--breakpoint-sm)) or (width >= theme(--breakpoint-md))));
 
-@media (min-width: theme(screens.sm)) {
-  .hide-sm {
-    @apply hidden;
-  }
+@variant not-md (@media ((width < theme(--breakpoint-md)) or (width >= theme(--breakpoint-lg))));
 
-  @media (max-width: theme(screens.md)) {
-    .hide-sm-only {
-      @apply hidden;
-    }
+@variant not-lg (@media ((width < theme(--breakpoint-lg)) or (width >= theme(--breakpoint-xl))));
 
-    .show-xs-only,
-    .show-md-only,
-    .show-lg-only,
-    .show-xl-only,
-    .show-2xl-only {
-      @apply hidden;
-    }
-  }
-}
+@variant not-xl (@media ((width < theme(--breakpoint-xl)) or (width >= theme(--breakpoint-2xl))));
 
-@media (min-width: theme(screens.md)) {
-  .hide-md {
-    @apply hidden;
-  }
+@variant not-2xl (@media (width < theme(--breakpoint-2xl)));
 
-  @media (max-width: theme(screens.lg)) {
-    .hide-md-only {
-      @apply hidden;
-    }
+@variant only-2xs (@media ((width >= 0) and (width < theme(--breakpoint-xs))));
 
-    .show-xs-only,
-    .show-sm-only,
-    .show-lg-only,
-    .show-xl-only,
-    .show-2xl-only {
-      @apply hidden;
-    }
-  }
-}
+@variant only-xs (@media ((width >= theme(--breakpoint-xs)) and (width < theme(--breakpoint-sm))));
 
-@media (min-width: theme(screens.lg)) {
-  .hide-lg {
-    @apply hidden;
-  }
+@variant only-sm (@media ((width >= theme(--breakpoint-sm)) and (width < theme(--breakpoint-md))));
 
-  @media (max-width: theme(screens.xl)) {
-    .hide-lg-only {
-      @apply hidden;
-    }
+@variant only-md (@media ((width >= theme(--breakpoint-md)) and (width < theme(--breakpoint-lg))));
 
-    .show-xs-only,
-    .show-sm-only,
-    .show-md-only,
-    .show-xl-only,
-    .show-2xl-only {
-      @apply hidden;
-    }
-  }
-}
+@variant only-lg (@media ((width >= theme(--breakpoint-lg)) and (width < theme(--breakpoint-xl))));
 
-@media (min-width: theme(screens.xl)) {
-  .hide-xl {
-    @apply hidden;
-  }
+@variant only-xl (@media ((width >= theme(--breakpoint-xl)) and (width < theme(--breakpoint-2xl))));
 
-  @media (max-width: theme(screens.2xl)) {
-    .hide-xl-only {
-      @apply hidden;
-    }
+@variant only-2xl (@media (width >= theme(--breakpoint-2xl)));
 
-    .show-xs-only,
-    .show-sm-only,
-    .show-md-only,
-    .show-lg-only,
-    .show-2xl-only {
-      @apply hidden;
-    }
-  }
-}
+@variant @not-4xs (@container (width >= theme(--container-3xs)));
 
-@media (min-width: theme(screens.2xl)) {
-  .hide-2xl,
-  .hide-2xl-only {
-    @apply hidden;
-  }
+@variant @not-3xs (@container ((width < theme(--container-3xs)) or (width >= theme(--container-2xs))));
 
-  .show-xs-only,
-  .show-sm-only,
-  .show-md-only,
-  .show-lg-only,
-  .show-xl-only {
-    @apply hidden;
-  }
-}
+@variant @not-2xs (@container ((width < theme(--container-2xs)) or (width >= theme(--container-xs))));
 
-@media (max-width: theme(screens.xs)) {
-  .show-xs,
-  .show-sm,
-  .show-md,
-  .show-lg,
-  .show-xl,
-  .show-2xl {
-    @apply hidden;
-  }
-}
+@variant @not-xs (@container ((width < theme(--container-xs)) or (width >= theme(--container-sm))));
 
-@media (max-width: theme(screens.sm)) {
-  .show-sm,
-  .show-md,
-  .show-lg,
-  .show-xl,
-  .show-2xl {
-    @apply hidden;
-  }
-}
+@variant @not-sm (@container ((width < theme(--container-sm)) or (width >= theme(--container-md))));
 
-@media (max-width: theme(screens.md)) {
-  .show-md,
-  .show-lg,
-  .show-xl,
-  .show-2xl {
-    @apply hidden;
-  }
-}
+@variant @not-md (@container ((width < theme(--container-md)) or (width >= theme(--container-lg))));
 
-@media (max-width: theme(screens.lg)) {
-  .show-lg,
-  .show-xl,
-  .show-2xl {
-    @apply hidden;
-  }
-}
+@variant @not-lg (@container ((width < theme(--container-lg)) or (width >= theme(--container-xl))));
 
-@media (max-width: theme(screens.xl)) {
-  .show-xl,
-  .show-2xl {
-    @apply hidden;
-  }
-}
+@variant @not-xl (@container ((width < theme(--container-xl)) or (width >= theme(--container-2xl))));
 
-@media (max-width: theme(screens.2xl)) {
-  .show-2xl {
-    @apply hidden;
-  }
-}
+@variant @not-2xl (@container ((width < theme(--container-2xl)) or (width >= theme(--container-3xl))));
+
+@variant @not-3xl (@container ((width < theme(--container-3xl)) or (width >= theme(--container-4xl))));
+
+@variant @not-4xl (@container ((width < theme(--container-4xl)) or (width >= theme(--container-5xl))));
+
+@variant @not-5xl (@container ((width < theme(--container-5xl)) or (width >= theme(--container-6xl))));
+
+@variant @not-6xl (@container ((width < theme(--container-6xl)) or (width >= theme(--container-7xl))));
+
+@variant @not-7xl (@container (width < theme(--container-7xl)));
+
+@variant @only-4xs (@container ((width >= 0) and (width < theme(--container-3xs))));
+
+@variant @only-3xs (@container ((width >= theme(--container-3xs)) and (width < theme(--container-2xs))));
+
+@variant @only-2xs (@container ((width >= theme(--container-2xs)) and (width < theme(--container-xs))));
+
+@variant @only-xs (@container ((width >= theme(--container-xs)) and (width < theme(--container-sm))));
+
+@variant @only-sm (@container ((width >= theme(--container-sm)) and (width < theme(--container-md))));
+
+@variant @only-md (@container ((width >= theme(--container-md)) and (width < theme(--container-lg))));
+
+@variant @only-lg (@container ((width >= theme(--container-lg)) and (width < theme(--container-xl))));
+
+@variant @only-xl (@container ((width >= theme(--container-xl)) and (width < theme(--container-2xl))));
+
+@variant @only-2xl (@container ((width >= theme(--container-2xl)) and (width < theme(--container-3xl))));
+
+@variant @only-3xl (@container ((width >= theme(--container-3xl)) and (width < theme(--container-4xl))));
+
+@variant @only-4xl (@container ((width >= theme(--container-4xl)) and (width < theme(--container-5xl))));
+
+@variant @only-5xl (@container ((width >= theme(--container-5xl)) and (width < theme(--container-6xl))));
+
+@variant @only-6xl (@container ((width >= theme(--container-6xl)) and (width < theme(--container-7xl))));
+
+@variant @only-7xl (@container (width >= theme(--container-7xl)));
