@@ -107,7 +107,7 @@ export const ProgressBar = ({
     <div
       className={classNames(
         "fabric-progressbar",
-        "block bg-dimmed relative rounded font-bold overflow-hidden whitespace-nowrap",
+        "block bg-tint-50 relative rounded font-bold overflow-hidden whitespace-nowrap",
       )}
       style={{
         ...progressVar,

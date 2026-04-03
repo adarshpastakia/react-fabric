@@ -24,7 +24,7 @@
 @layer components {
   .fabric-progressbar {
     height: 1em;
-    box-shadow: 0 0 4px 0 var(--fabric-shadow) inset;
+    box-shadow: 0 0 2px 0 var(--fabric-shadow) inset;
 
     & > div:last-child {
       width: calc(var(--progress) * 1%);

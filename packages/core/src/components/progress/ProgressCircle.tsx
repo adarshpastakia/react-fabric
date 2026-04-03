@@ -100,7 +100,7 @@ export const ProgressCircle = ({
     >
       <svg
         viewBox="0 0 100 100"
-        className={classNames("absolute inset-0 w-full h-full stroke-dimmed")}
+        className={classNames("absolute inset-0 w-full h-full stroke-tint-500")}
       >
         <circle
           cx="50"
