@@ -67,6 +67,8 @@ export const reduceHotKey = ({ keyCombo, global, handler }: HotKeyProps) => {
       else if (e.trim().toLowerCase() === "down") item.key = "arrowdown";
       else if (e.trim().toLowerCase().startsWith("del")) item.key = "delete";
       else if (e.trim().toLowerCase().startsWith("esc")) item.key = "escape";
+      else if (e.trim().toLowerCase().startsWith("plus")) item.key = "+";
+      else if (e.trim().toLowerCase().startsWith("minus")) item.key = "-";
       else item.key = e.trim().toLowerCase();
     }
   });
