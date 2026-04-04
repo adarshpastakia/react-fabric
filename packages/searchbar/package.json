@@ -52,7 +52,7 @@
     "@react-fabric/superdate": "^1.0.0-beta.62"
   },
   "engines": {
-    "node": ">=20.18.0",
+    "node": ">=22.18.0",
     "npm": ">=10.8.0"
   }
 }
