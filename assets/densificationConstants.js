@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{L as t,R as n}from"./Error.js";function r(){return t(`curve-densification-coarse-segments`)}function i(){return t(`curve-densification-max-segments`)}function a(){return t(`curve-densification-min-segments`)}function o(){return t(`curve-densification-pixel-deviation`)}var s=e((()=>{n()}));export{o as a,r as i,a as n,s as r,i as t};

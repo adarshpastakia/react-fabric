@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(e,t,n){for(let r=0;r<n;++r)t[2*r]=e[r],t[2*r+1]=e[r]-t[2*r]}function n(e,t){let n=e.length;for(let r=0;r<n;++r)i[0]=e[r],t[r]=i[0];return t}function r(e,t){let n=e.length;for(let r=0;r<n;++r)i[0]=e[r],i[1]=e[r]-i[0],t[r]=i[1];return t}var i,a=e((()=>{i=new Float32Array(2)}));export{t as i,n,r,a as t};

@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{v as t,w as n}from"./mathUtils.js";import{d as r,o as i}from"./vec3f64.js";function a(e){return n((e-o)/s,0,1)}var o,s,c,l,u,d,f,p,m=e((()=>{t(),i(),o=1e5,s=1e6-o,c=1e4,l=r(5802e-9,13558e-9,331e-7),u=3,d=r(65e-8*u,1881e-9*u,85e-9*u),f=3996e-9,p=r(l[0]+d[0],l[1]+d[1],l[2]+d[2])}));export{f as a,l as i,c as n,a as o,m as r,o as s,p as t};

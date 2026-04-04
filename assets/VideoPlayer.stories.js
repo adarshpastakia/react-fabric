@@ -1,91 +1,147 @@
-import{r as s,j as e}from"./iframe-BmpICDQJ.js";import{B as v}from"./useDebounce.js";import"./index.js";import{V as x}from"./Viewport.js";import{V as m}from"./VideoPlayer.js";import{b as w}from"./large_video.js";import"./ColorPicker.js";import"./Google.js";import{C as B}from"./Checkbox.js";import"./Tooltip.js";import"./Section.js";import"./ErrorBoundary.js";import"./createClass.js";import"./Global.js";import"./useResizeObserver.js";import"./HeadFoot.js";import"./Divider.js";import"./Text.js";import"./usePropToggle.js";import"./types.js";import"./debounce.js";import"./isEqual.js";import"./ThemeProvider.js";import"./useResize.js";import"./Dropdown.js";import"./Card2.js";import"./nodeCheck.js";import"./eventHandlers.js";import"./ErrorIcon.js";import"./Panel.js";import"./Content.js";import"./Textarea.js";import"./index2.js";import"./zh-CN.js";import"./endOfDay.js";import"./index5.js";const y=""+new URL("sample-DaKAthRF.mp4",import.meta.url).href,{fn:T}=__STORYBOOK_MODULE_TEST__,de={component:m,title:"@media/VideoPlayer",parameters:{layout:"fullscreen",controls:{exclude:"children"}}},N=new Array(300).fill([]).map((t,n)=>[Math.random()*30.5,Math.random()]),j=`WEBVTT
-
-00:11.000 --> 00:13.000
-<v Roger Bingham>We are in New York City
-
-00:13.000 --> 00:16.000
-<v Roger Bingham>We’re actually at the Lucern Hotel, just down the street
-
-00:16.000 --> 00:18.000
-<v Roger Bingham>from the American Museum of Natural History
-
-00:18.000 --> 00:20.000
-<v Roger Bingham>And with me is Neil deGrasse Tyson
-
-00:20.000 --> 00:22.000
-<v Roger Bingham>Astrophysicist, Director of the Hayden Planetarium
-
-00:22.000 --> 00:24.000
-<v Roger Bingham>at the AMNH.
-
-00:24.000 --> 00:26.000
-<v Roger Bingham>Thank you for walking down here.
-
-00:27.000 --> 00:30.000
-<v Roger Bingham>And I want to do a follow-up on the last conversation we did.
-`,r={render:t=>{const[n,o]=s.useState([[2.49,"Testing"],[18.24,"Testing"]]);return e.jsx("div",{className:"min-h-[600px]",children:e.jsx(x,{children:e.jsx(m,{...t,markers:N,vttText:j,comments:n,onCommentChange:o})})})},args:{src:y,onCut:T(),nsfwMessage({remove:t}){const[n,o]=s.useState(!1);return e.jsxs("div",{className:"p-4 bg-base rounded-capped shadow-xs",children:[e.jsx("h3",{className:"text-lg mb-2",children:"NSFW Content"}),e.jsx("p",{className:"mb-4",children:"This image has been marked as not safe for work."}),e.jsx("p",{children:e.jsx(B,{label:"I understand the risks",onChange:o})}),e.jsx(v,{className:"btn btn-primary",onClick:()=>t(),disabled:!n,children:"View Video"})]})}}},a={render:t=>{const[n,o]=s.useState([[2.49,"Testing"],[18.24,"Testing"]]),[f,V]=s.useState([{start:5,end:35,box:"878.0821384644843,194.20218353944534,311.53266942786024,238.70685060056823",fill:"#0F5F9051",stroke:2,labelTop:"Image 1",labelBottom:"80%",colorBottom:"#3D8C6BFF"},{start:5,end:35,box:"502.5,330,294,195",fill:"#F50F9051",stroke:2,labelTop:"Image 2",labelBottom:"50%",colorBottom:"#8B8725FF"}]),[l,i]=s.useState();return e.jsx("div",{className:"min-h-[600px]",children:e.jsxs(x,{children:[e.jsx(m,{...t,comments:n,onCommentChange:o,annotations:f,onCrop:(k,c,C)=>i(C),onExport:(k,c)=>i(c)}),l&&e.jsx("div",{onClick:()=>i(""),className:"absolute overflow-hidden inset-0 bg-black/90 z-10 p-8",children:e.jsx("img",{src:l,className:"size-full object-scale-down border-4 bg-black"})})]})})},args:{src:w}};var d,p,h;r.parameters={...r.parameters,docs:{...(d=r.parameters)==null?void 0:d.docs,source:{originalSource:`{
+import{a as e,n as t,r as n}from"./chunk.js";import{t as r}from"./react.js";import{t as i}from"./jsx-runtime.js";import{ct as a}from"./index.esm.js";import{D as o,L as s,O as c,Y as l,a as ee,b as u,c as d,d as te,g as f,it as ne,p,q as m,r as re,t as h,x as g,y as _}from"./iframe-B-Wcw5ev.js";import{r as v,t as y}from"./dist28.js";import{n as ie,t as b}from"./small_video.js";import{_ as x,a as S,c as C,g as ae,l as w,o as T,r as E,s as oe,t as D,u as O,v as k}from"./esm.js";import{i as A,t as j}from"./src7.js";import{a as M,i as N,r as P}from"./workaround.js";import{n as F,t as I}from"./large_video.js";var L,R=t((()=>{L=``+new URL(`sample-DaKAthRF.mp4`,import.meta.url).href})),z,B=t((()=>{z=`data:text/vtt;base64,V0VCVlRUCgowMDowMDowMC4xNjAgLS0+IDAwOjAwOjAzLjU0MApIaSBJ4oCZbSBKb2huIEdyZWVuIGFuZCB0aGlzIGlzIENyYXNoIENvdXJzZSBFdXJvcGVhbiBIaXN0b3J5LgoKMDA6MDA6MDMuNTQwIC0tPiAwMDowMDowOS41NDAKTGFzdCB0aW1lLCB3ZSBsb29rZWQgYXQgaG93IHRoZSBtb25hcmNocyBkaWQtLWFuZCBkaWRu4oCZdC0taW5jb3Jwb3JhdGUgdGhlIGlkZWFzIG9mIHRoZSBFbmxpZ2h0ZW5tZW50CgowMDowMDowOS41NDAgLS0+IDAwOjAwOjExLjI2OQppbnRvIHRoZWlyIGRvbWVzdGljIHBvbGljaWVzLiAKCjAwOjAwOjExLjI2OSAtLT4gMDA6MDA6MTYuNTIwClRvZGF5LCB3ZeKAmWxsIGxvb2sgb3V0d2FyZCB0byBob3cgdGhlIDE4dGggY2VudHVyeSBFdXJvcGVhbiBwb3dlcnMgZW5nYWdlZCB3aXRoIGVhY2gKCjAwOjAwOjE2LjUyMCAtLT4gMDA6MDA6MjIuMDM5Cm90aGVyIGFuZCBiZXlvbmQgRXVyb3BlLS13aGljaCBpcyB0byBzYXkgdGhhdCB3YXJmYXJlIGlzIGNvbWluZy4KCjAwOjAwOjIyLjAzOSAtLT4gMDA6MDA6MjguODgwCk9yLCBjb250aW51aW5nLCBJIHN1cHBvc2UsIGJlY2F1c2UgaXQgbmV2ZXIgcmVhbGx5IGxlZnQgdG93bi4KCjAwOjAwOjI4Ljg4MCAtLT4gMDA6MDA6MzcuNzE5ClNvLCBwb3B1bGF0aW9uIHdhcyByaXNpbmcgaW4gMTh0aCBjZW50dXJ5CgowMDowMDozNy43MTkgLS0+IDAwOjAwOjQ0LjIxMApFdXJvcGUgYW5kIGRlc3BpdGUgYW4gZXh0cmVtZWx5IHVuZXZlbiBkaXN0cmlidXRpb24gb2Ygd2VhbHRoIGFuZCBsb3RzIG9mIHdhcnRpbWUgY2FzdWFsdGllcywKCjAwOjAwOjQ0LjIxMCAtLT4gMDA6MDA6NDYuNjAwCm1hbnkgcGVvcGxlIHdlcmUgbGVhZGluZyBiZXR0ZXIgbGl2ZXMuCgowMDowMDo0Ni42MDAgLS0+IDAwOjAwOjUxLjY4MApGb3IgZXhhbXBsZSwgaW52ZW50b3JpZXMgb2YgRnJlbmNoIHBlb3BsZeKAmXMgcG9zc2Vzc2lvbnMgc2hvdyB0aGF0IGluIDE3MDAgd29tZW4gb3duZWQKCjAwOjAwOjUxLjY4MCAtLT4gMDA6MDA6NTYuMDM5CmFuIGF2ZXJhZ2Ugb2YgdHdvIGdhcm1lbnRzIGdlbmVyYWxseSBpbiBzb2xpZCBibGFjayBvciBicm93bjsKCjAwOjAwOjU2LjAzOSAtLT4gMDA6MDE6MDAuOTYwCmluIDE4MDAgdGhhdCBudW1iZXIgd2FzIGZpdmUgZ2FybWVudHMgb2YgbW9yZSB2YXJpZWQsIGV2ZW4gYnJpZ2h0IGNvbG9ycy4KCjAwOjAxOjAwLjk2MCAtLT4gMDA6MDE6MDUuMTQwCk5vdywgdGhpcyBtYXkgc2VlbSBsaWtlIG1pbm9yIHByb2dyZXNzLCBidXQgaGVyZeKAmXMgYW5vdGhlciB3YXkgb2YgdGhpbmtpbmcgYWJvdXQgaXQ6`})),V=n({Playground:()=>Z,__namedExportsOrder:()=>Q,default:()=>K}),H,U,W,G,K,q,J,Y,X,Z,Q,$=t((()=>{y(),h(),D(),H=e(a()),U=e(r()),j(),P(),I(),R(),B(),b(),W=i(),{fn:G}=__STORYBOOK_MODULE_TEST__,K={component:A,subcomponents:{VideoAnnotationShape:M,TextShape:N},title:`@media/VideoPlayer`,parameters:{layout:`fullscreen`,controls:{exclude:`children`}}},q=({width:e,height:t,value:n={type:`rect`,timestamps:[]},onClose:r})=>(0,W.jsx)(d,{onClose:r,children:(0,W.jsxs)(x,{defaultValues:n,onSubmit:e=>r(e),children:[(0,W.jsx)(f,{children:(0,W.jsxs)(`div`,{className:`flex flex-col flex-1`,children:[(0,W.jsx)(k,{name:`type`,children:(0,W.jsx)(O,{options:[`rect`,`ellipse`]})}),(0,W.jsx)(k,{name:`fill`,children:(0,W.jsx)(w,{label:`Shape Fill`,allowClear:!0})}),(0,W.jsx)(k,{name:`stroke`,children:(0,W.jsx)(w,{label:`Shape Stroke`,allowClear:!0})}),(0,W.jsx)(k,{name:`strokeWidth`,children:(0,W.jsx)(E,{label:`Shape Stroke`,min:0,max:5,showValue:!0})})]})}),(0,W.jsx)(s,{flex:!0,justify:`end`,className:`px-2 py-1`,children:(0,W.jsx)(l,{size:`sm`,variant:`soft`,color:`primary`,type:`submit`,children:`Update`})})]})}),J=Array(300).fill([]).map((e,t)=>[Math.random()*600.5,Math.random()]),Y=0,X=v.helpers.uniqueArray(()=>({x:v.number.int({min:0,max:100}),y:v.number.int({min:0,max:100}),width:v.number.int({min:100,max:250}),height:v.number.int({min:100,max:250}),time:Y++*.5}),60),Z={render:e=>{let t=(0,U.useRef)(null),[n,r]=(0,U.useState)(L),[i,a]=(0,U.useState)(!1),[l,d]=(0,U.useState)(`This video is marked as NSFW`),[h,y]=(0,U.useState)(`hover`),[b,E]=(0,U.useState)(null),D=(0,U.useMemo)(()=>v.image.url({width:1080,height:720}),[]),[O,j]=(0,U.useState)(``),[M,N]=ee((0,W.jsxs)(o,{children:[(0,W.jsx)(c,{label:`Export Frame`,onClick:()=>j(t.current?.export()??null)}),(0,W.jsx)(c,{label:`Export Crop`,onClick:()=>j(t.current?.crop({x:10,y:10,width:100,height:100})??null)})]})),[P,I]=(0,U.useState)([[2.49,`Testing`],[18.24,`Testing`]]),[R,B]=(0,U.useState)(!1),[V,G]=(0,U.useState)({fill:v.color.rgb({includeAlpha:!0}),shapes:v.helpers.uniqueArray(()=>({type:`rect`,timestamps:X,fill:v.color.rgb({includeAlpha:!0}),stroke:v.color.rgb(),strokeWidth:v.number.int({min:1,max:5}),textTop:{text:v.word.sample(),fontSize:v.number.int({min:12,max:24}),color:v.color.rgb(),fill:v.color.rgb()},textBottom:{text:v.word.sample(),fontSize:v.number.int({min:12,max:24}),color:v.color.rgb(),fill:v.color.rgb()}}),1)}),[K,Y]=re(q);return(0,W.jsx)(`div`,{className:`min-h-150`,children:(0,W.jsxs)(te,{children:[(0,W.jsxs)(p,{className:`relative`,children:[(0,W.jsx)(A,{src:n,ref:t,vttText:z,poster:D,onDebug:E,onExport:j,onCrop:j,onCut:e.onCut,comments:P,markers:J,onCommentChange:I,onTimeChange:e.onTimeChange,nsfw:i&&{message:l??``,trigger:h},annotations:R?V:void 0,onContextMenu:N}),O&&(0,W.jsx)(`div`,{className:`bg-black/50 backdrop-blur-sm absolute inset-0 overflow-hidden p-8 grid grid-cols-1 grid-rows-1 place-items-center`,onClick:()=>j(null),children:(0,W.jsx)(`img`,{className:`object-contain max-w-full max-h-full outline outline-tint-500 shadow-lg bg-black`,src:O,alt:`Exported`})}),M]}),(0,W.jsx)(_,{align:`end`,children:(0,W.jsxs)(u,{orientation:`end`,activeTab:`basic`,children:[(0,W.jsx)(g,{id:`basic`,icon:`icon-[mdi--image]`,tooltip:`Basic options`,children:(0,W.jsxs)(p,{className:`text-sm`,children:[(0,W.jsxs)(f,{children:[(0,W.jsxs)(m,{legend:`Video Source`,children:[(0,W.jsx)(`p`,{className:`break-all`,children:n}),(0,W.jsxs)(S,{onChange:r,name:`src`,value:n,vertical:!0,children:[(0,W.jsx)(T,{value:L,label:`Sample Video`}),(0,W.jsx)(T,{value:ie,label:`Small Video`}),(0,W.jsx)(T,{value:F,label:`Large Video`}),(0,W.jsx)(T,{value:`https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_640x360.m4v`,label:`Big Bunny`})]})]}),(0,W.jsxs)(m,{legend:`Toggle NSFW`,children:[(0,W.jsx)(C,{onChange:a,checked:i}),i&&(0,W.jsxs)(W.Fragment,{children:[(0,W.jsx)(oe,{allowClear:!0,label:`Message`,value:l,onChange:d}),(0,W.jsxs)(S,{value:h,onChange:y,children:[(0,W.jsx)(T,{value:`hover`,label:`Hover`}),(0,W.jsx)(T,{value:`click`,label:`Click`})]})]})]})]}),(0,W.jsxs)(s,{className:`p-4`,children:[(0,W.jsx)(`p`,{children:`Debug Info`}),(0,W.jsx)(`pre`,{className:`text-xs`,children:JSON.stringify(b,null,2)})]})]})}),(0,W.jsx)(g,{id:`annotate`,icon:`icon-[mdi--select-all]`,tooltip:`Annotate options`,children:(0,W.jsxs)(f,{className:`flex flex-col gap-2`,children:[(0,W.jsx)(C,{onChange:B,checked:R,label:`Toggle Annotations`}),R&&(0,W.jsxs)(x,{defaultValues:V,onChange:G,children:[(0,W.jsx)(k,{name:`fill`,children:(0,W.jsx)(w,{label:`Bg Fill`,allowClear:!0})}),(0,W.jsx)(ae,{name:`shapes`,label:`Shapes`,onAdd:()=>Y(),children:({item:e,index:t,onChange:n})=>(0,W.jsxs)(`div`,{className:`flex gap-1 items-center flex-1`,children:[(0,W.jsx)(`div`,{className:(0,H.default)(`w-16 h-6 border-2 flex items-center justify-center group cursor-pointer`,e.type===`ellipse`?`rounded-full`:``),style:{backgroundColor:e.fill,borderColor:e.stroke},onClick:()=>Y({value:e}).then(n),children:(0,W.jsx)(ne,{icon:`icon-[mdi--pencil]`,className:`hidden group-hover:inline-block`})}),(0,W.jsxs)(`span`,{children:[`Shape #`,t+1]})]})})]})]})}),(0,W.jsx)(g,{id:`editor`,icon:`icon-[mdi--draw]`,tooltip:`Editor options`,children:(0,W.jsx)(f,{children:`Editor options`})})]})}),(0,W.jsx)(K,{width:b?.originalSize[0],height:b?.originalSize[1]})]})})},args:{onTimeChange:G(),onCut:G()}},Z.parameters={...Z.parameters,docs:{...Z.parameters?.docs,source:{originalSource:`{
   render: args => {
-    const [annotations, setAnnotations] = useState<AnyObject>([[2.49, "Testing"], [18.24, "Testing"]]);
-    return <div className="min-h-[600px]">
-        <Viewport>
-          <VideoPlayer {...args} markers={markers} vttText={vtt} comments={annotations} onCommentChange={setAnnotations} />
-        </Viewport>
-      </div>;
-  },
-  args: {
-    src,
-    onCut: fn(),
-    nsfwMessage({
-      remove
-    }) {
-      const [checked, setChecked] = useState(false);
-      return <div className="p-4 bg-base rounded-capped shadow-xs">
-          <h3 className="text-lg mb-2">NSFW Content</h3>
-          <p className="mb-4">
-            This image has been marked as not safe for work.
-          </p>
-          <p>
-            <Checkbox label="I understand the risks" onChange={setChecked} />
-          </p>
-          <Button className="btn btn-primary" onClick={() => remove()} disabled={!checked}>
-            View Video
-          </Button>
-        </div>;
-    }
-  }
-}`,...(h=(p=r.parameters)==null?void 0:p.docs)==null?void 0:h.source}}};var g,b,u;a.parameters={...a.parameters,docs:{...(g=a.parameters)==null?void 0:g.docs,source:{originalSource:`{
-  render: args => {
+    const videoRef = useRef<VideoPlayerRef>(null);
+    const [src, setSrc] = useState(sampleVideo);
+    const [nsfw, setNsfw] = useState(false);
+    const [nsfwMessage, setNsfwMessage] = useState<string | null>("This video is marked as NSFW");
+    const [nsfwTrigger, setNsfwTrigger] = useState<"hover" | "click">("hover");
+    const [debugInfo, setDebugInfo] = useState<any>(null);
+    const posterUrl = useMemo(() => faker.image.url({
+      width: 1080,
+      height: 720
+    }), []);
+    const [exportSrc, setExport] = useState<string | null>("");
+    const [ContextMenu, onContextMenu] = useContextMenu(<Menu>
+        <MenuItem label="Export Frame" onClick={() => setExport(videoRef.current?.export() ?? null)} />
+        <MenuItem label="Export Crop" onClick={() => setExport(videoRef.current?.crop({
+        x: 10,
+        y: 10,
+        width: 100,
+        height: 100
+      }) ?? null)} />
+      </Menu>);
     const [comments, setComments] = useState<AnyObject>([[2.49, "Testing"], [18.24, "Testing"]]);
-    const [annotations, setAnnotations] = useState<VideoAnnotation[]>([{
-      start: 5,
-      end: 35,
-      box: "878.0821384644843,194.20218353944534,311.53266942786024,238.70685060056823",
-      fill: "#0F5F9051",
-      stroke: 2,
-      labelTop: "Image 1",
-      labelBottom: "80%",
-      colorBottom: "#3D8C6BFF"
-    }, {
-      start: 5,
-      end: 35,
-      box: "502.5,330,294,195",
-      fill: "#F50F9051",
-      stroke: 2,
-      labelTop: "Image 2",
-      labelBottom: "50%",
-      colorBottom: "#8B8725FF"
-    }]);
-    const [exp, setExp] = useState<string>();
-    return <div className="min-h-[600px]">
+    const [annotate, setAnnotate] = useState(false);
+    const [annotations, setAnnotations] = useState({
+      fill: faker.color.rgb({
+        includeAlpha: true
+      }),
+      shapes: faker.helpers.uniqueArray(() => ({
+        type: "rect",
+        timestamps,
+        fill: faker.color.rgb({
+          includeAlpha: true
+        }),
+        stroke: faker.color.rgb(),
+        strokeWidth: faker.number.int({
+          min: 1,
+          max: 5
+        }),
+        textTop: {
+          text: faker.word.sample(),
+          fontSize: faker.number.int({
+            min: 12,
+            max: 24
+          }),
+          color: faker.color.rgb(),
+          fill: faker.color.rgb()
+        },
+        textBottom: {
+          text: faker.word.sample(),
+          fontSize: faker.number.int({
+            min: 12,
+            max: 24
+          }),
+          color: faker.color.rgb(),
+          fill: faker.color.rgb()
+        }
+      }), 1)
+    } as VideoAnnotations);
+    const [ShapeEditorModal, openShapeEditor] = useOverlayService(ShapeEditor);
+    return <div className="min-h-150">
         <Viewport>
-          <VideoPlayer {...args} comments={comments} onCommentChange={setComments} annotations={annotations} onCrop={(ts, box, base64) => setExp(base64)} onExport={(ts, base64) => setExp(base64)} />
-          {exp && <div onClick={() => setExp("")} className="absolute overflow-hidden inset-0 bg-black/90 z-10 p-8">
-              <img src={exp} className="size-full object-scale-down border-4 bg-black" />
-            </div>}
+          <Section className="relative">
+            <VideoPlayer src={src} ref={videoRef} vttText={vtt} poster={posterUrl} onDebug={setDebugInfo} onExport={setExport} onCrop={setExport} onCut={args.onCut} comments={comments} markers={markers} onCommentChange={setComments} onTimeChange={args.onTimeChange} nsfw={nsfw && {
+            message: nsfwMessage ?? "",
+            trigger: nsfwTrigger
+          }} annotations={annotate ? annotations : undefined} onContextMenu={onContextMenu} />
+
+            {exportSrc && <div className="bg-black/50 backdrop-blur-sm absolute inset-0 overflow-hidden p-8 grid grid-cols-1 grid-rows-1 place-items-center" onClick={() => setExport(null)}>
+                <img className="object-contain max-w-full max-h-full outline outline-tint-500 shadow-lg bg-black" src={exportSrc} alt="Exported" />
+              </div>}
+            {ContextMenu}
+          </Section>
+          <Aside align="end">
+            <TabPanel orientation="end" activeTab="basic">
+              <Tab id="basic" icon="icon-[mdi--image]" tooltip="Basic options">
+                <Section className="text-sm">
+                  <Content>
+                    <Callout legend="Video Source">
+                      <p className="break-all">{src}</p>
+                      <RadioGroup onChange={setSrc} name="src" value={src} vertical>
+                        <Radio value={sampleVideo} label="Sample Video" />
+                        <Radio value={smallVideo} label="Small Video" />
+                        <Radio value={largeVideo} label="Large Video" />
+                        <Radio value="https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_640x360.m4v" label="Big Bunny" />
+                      </RadioGroup>
+                    </Callout>
+                    <Callout legend="Toggle NSFW">
+                      <Switch onChange={setNsfw} checked={nsfw} />
+                      {nsfw && <>
+                          <Textarea allowClear label="Message" value={nsfwMessage} onChange={setNsfwMessage} />
+                          <RadioGroup value={nsfwTrigger} onChange={setNsfwTrigger}>
+                            <Radio value="hover" label="Hover" />
+                            <Radio value="click" label="Click" />
+                          </RadioGroup>
+                        </>}
+                    </Callout>
+                  </Content>
+                  <Footer className="p-4">
+                    <p>Debug Info</p>
+                    <pre className="text-xs">{JSON.stringify(debugInfo, null, 2)}</pre>
+                  </Footer>
+                </Section>
+              </Tab>
+              <Tab id="annotate" icon="icon-[mdi--select-all]" tooltip="Annotate options">
+                <Content className="flex flex-col gap-2">
+                  <Switch onChange={setAnnotate} checked={annotate} label="Toggle Annotations" />
+                  {annotate && <Form defaultValues={annotations} onChange={setAnnotations}>
+                      <Controller name="fill">
+                        <ColorInput label="Bg Fill" allowClear />
+                      </Controller>
+
+                      <ArrayInput<VideoAnnotationShape> name="shapes" label="Shapes" onAdd={() => openShapeEditor()}>
+                        {({
+                      item,
+                      index,
+                      onChange
+                    }) => <div className="flex gap-1 items-center flex-1">
+                            <div className={classNames("w-16 h-6 border-2 flex items-center justify-center group cursor-pointer", item.type === "ellipse" ? "rounded-full" : "")} style={{
+                        backgroundColor: item.fill,
+                        borderColor: item.stroke
+                      }} onClick={() => openShapeEditor({
+                        value: item
+                      }).then(onChange)}>
+                              <Icon icon="icon-[mdi--pencil]" className="hidden group-hover:inline-block" />
+                            </div>
+                            <span>Shape #{index + 1}</span>
+                          </div>}
+                      </ArrayInput>
+                    </Form>}
+                </Content>
+              </Tab>
+              <Tab id="editor" icon="icon-[mdi--draw]" tooltip="Editor options">
+                <Content>Editor options</Content>
+              </Tab>
+            </TabPanel>
+          </Aside>
+
+          <ShapeEditorModal width={debugInfo?.originalSize[0]} height={debugInfo?.originalSize[1]} />
         </Viewport>
       </div>;
   },
   args: {
-    src: bunny
+    onTimeChange: fn(),
+    onCut: fn()
   }
-}`,...(u=(b=a.parameters)==null?void 0:b.docs)==null?void 0:u.source}}};const pe=["_VideoPlayer","VideoPlayground"];export{a as VideoPlayground,r as _VideoPlayer,pe as __namedExportsOrder,de as default};
+}`,...Z.parameters?.docs?.source}}},Q=[`Playground`]}));$();export{Z as Playground,Q as __namedExportsOrder,K as default,$ as n,V as t};

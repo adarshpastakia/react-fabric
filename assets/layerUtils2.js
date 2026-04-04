@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(e){return e?.type===`fill`}function n(e){return e?.type===`extrude`}function r(e){return e?.type===`object`}function i(e){return e?.type===`text`}var a=e((()=>{}));export{i as a,t as i,a as n,n as r,r as t};

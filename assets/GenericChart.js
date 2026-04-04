@@ -1,13 +1,13 @@
-import{j as r,M as c,T as l,A as s,S as t,D as e,P as x,C as a,b as d,a as j}from"./iframe-BmpICDQJ.js";import{useMDXComponents as h}from"./index3.js";import"./index.js";import{C as m}from"./Collapsable.js";import{G as f}from"./WordBubble.js";import{G as C,T as u,S as n}from"./GenericChart.stories.js";import"./toArray.js";import"./Tooltip.js";import"./useDebounce.js";import"./ToggleButtonGroup.js";import"./cloneElement.js";import"./Divider.js";import"./isEqual.js";import"./Dropdown.js";import"./Menu.js";import"./nodeCheck.js";import"./endOfDay.js";import"./useIsDark.js";import"./Title.js";import"./types.js";import"./EmptyContent.js";import"./useResizeObserver.js";import"./index2.js";import"./ErrorBoundary.js";import"./createClass.js";import"./Global.js";import"./Panel.js";import"./usePropToggle.js";function p(o){return r.jsxs(r.Fragment,{children:[r.jsx(c,{of:C}),`
-`,r.jsx(l,{children:"Generic Chart"}),`
-`,r.jsx(s,{storyId:"animations",children:r.jsx("div",{className:"hidden-anchor",children:r.jsx(t,{children:"Tree Map / Sunburst"})})}),`
-`,r.jsx(e,{of:f}),`
-`,r.jsx(x,{}),`
-`,r.jsxs(m,{className:"control-panel",children:[r.jsx("div",{children:"Controls"}),r.jsx(a,{of:u})]}),`
-`,r.jsx(s,{storyId:"sankey",children:r.jsx(t,{children:"Sankey"})}),`
-`,r.jsx(e,{of:n}),`
-`,r.jsx(d,{withToolbar:!0,of:n}),`
-`,r.jsxs(m,{className:"control-panel",children:[r.jsx("div",{children:"Controls"}),r.jsx(a,{of:n})]}),`
-`,r.jsx("hr",{}),`
-`,r.jsx(s,{storyId:"props",children:r.jsx(t,{children:"Props"})}),`
-`,r.jsx(j,{sort:"requiredFirst"})]})}function Q(o={}){const{wrapper:i}={...h(),...o.components};return i?r.jsx(i,{...o,children:r.jsx(p,{...o})}):p()}export{Q as default};
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{$t as i,Bt as a,Gt as o,Lt as s,M as c,Wt as l,Xt as u,Zt as d,nn as f,t as p,zt as m}from"./iframe-B-Wcw5ev.js";import{r as h}from"./react2.js";import{t as g}from"./mdx-react-shim.js";import{o as _,t as v}from"./src2.js";import{Sankey as y,TreeMap as b,n as x,t as S}from"./GenericChart.stories.js";function C(e){return(0,T.jsxs)(T.Fragment,{children:[(0,T.jsx)(u,{of:S}),`
+`,(0,T.jsx)(i,{children:`Generic Chart`}),`
+`,(0,T.jsx)(s,{storyId:`animations`,children:(0,T.jsx)(`div`,{className:`hidden-anchor`,children:(0,T.jsx)(d,{children:`Tree Map / Sunburst`})})}),`
+`,(0,T.jsx)(o,{of:_}),`
+`,(0,T.jsx)(a,{withToolbar:!0,of:b}),`
+`,(0,T.jsxs)(c,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(l,{of:b})]}),`
+`,(0,T.jsx)(s,{storyId:`sankey`,children:(0,T.jsx)(d,{children:`Sankey`})}),`
+`,(0,T.jsx)(o,{of:y}),`
+`,(0,T.jsx)(a,{withToolbar:!0,of:y}),`
+`,(0,T.jsxs)(c,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(l,{of:y})]}),`
+`,(0,T.jsx)(`hr`,{}),`
+`,(0,T.jsx)(s,{storyId:`props`,children:(0,T.jsx)(d,{children:`Props`})}),`
+`,(0,T.jsx)(m,{sort:`requiredFirst`})]})}function w(e={}){let{wrapper:t}={...h(),...e.components};return t?(0,T.jsx)(t,{...e,children:(0,T.jsx)(C,{...e})}):C(e)}var T;t((()=>{T=r(),g(),p(),f(),e(n()),v(),x()}))();export{w as default};

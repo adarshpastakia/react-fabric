@@ -1,0 +1,2 @@
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./bundle.js","./chunk.js"])))=>i.map(i=>d[i]);
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./preload-helper.js";import{n as r,r as i}from"./assets.js";async function a(){return s||=o(),s}async function o(){let e=await n(()=>import(`./bundle.js`).then(e=>(e.n(),e.t)),__vite__mapDeps([0,1]),import.meta.url);return await e.default({module_or_path:i(`esri/libs/parquet/pkg/bundle_bg.wasm`)}),e}var s,c=e((()=>{r(),t(),s=null}));export{a as n,c as t};

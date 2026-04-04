@@ -1,1 +1,1 @@
-import{k7 as n}from"./ShadowCastClear.glsl.js";let t,o,a=!1;function p(){return t??(t=n("arcadeGeometryOperatorsWorker").then(e=>{o=e,a=!0,t=void 0}))}async function i(e,r){return a?o.apply("invokeGeometryOp",[e,r]):(await p(),i(e,r))}export{i as a};
+import{n as e}from"./chunk.js";import{r as t,t as n}from"./workers.js";function r(){return a??=t(`arcadeGeometryOperatorsWorker`).then(e=>{o=e,s=!0,a=void 0})}async function i(e,t){return s?o.apply(`invokeGeometryOp`,[e,t]):(await r(),i(e,t))}var a,o,s,c=e((()=>{n(),s=!1}));export{c as n,i as t};

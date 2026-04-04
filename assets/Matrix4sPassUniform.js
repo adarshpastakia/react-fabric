@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./Uniform.js";var r,i=e((()=>{t(),r=class extends n{constructor(e,t,n,r){super(e,`mat4`,1,(n,i,a)=>n.setUniformMatrices4fv(e,t(i,a),r),n)}}}));export{r as n,i as t};

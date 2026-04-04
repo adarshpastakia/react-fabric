@@ -1,6 +1,6 @@
-import{f as c,j as e,V as p,d as x,g as a,e as s,H as h,h as j}from"./iframe-BmpICDQJ.js";import{f as r,m as g}from"./index4.js";const v={component:c,title:"@core/Application",parameters:{layout:"fullscreen",controls:{exclude:/^(on.*|children|as)/},jest:["core/tests/Section.test.tsx"]}},u=[...new Array(10).fill("").map(()=>r.lorem.sentences(10)+`
+import{n as e}from"./chunk.js";import{t}from"./jsx-runtime.js";import{n,r,t as i}from"./dist28.js";import{V as a,c as o,g as s,h as c,i as l,m as u,t as d,u as f}from"./src3.js";var p,m,h,g,_,v=e((()=>{i(),d(),p=t(),m={component:f,title:`@core/Application`,parameters:{layout:`fullscreen`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/Section.test.tsx`]}},h=[...Array(10).fill(``).map(()=>r.lorem.sentences(10)+`
 `+r.lorem.sentences(10)+`
-`+r.lorem.sentences(10)),...new Array(10).fill("").map(()=>g.lorem.sentences(30))],n={render:l=>e.jsx("div",{className:"min-h-[600px]",children:e.jsx(p,{children:e.jsxs(x,{paper:!0,children:[e.jsx(a,{children:e.jsx(s,{children:"Page level aside"})}),e.jsxs(c,{...l,children:[e.jsx(h,{className:"p-4 bg-dimmed",children:"Inner section header"}),e.jsx(a,{children:e.jsx(s,{children:"Inner section level aside"})}),e.jsx(s,{children:u.map((d,m)=>e.jsx(j,{clamp:3,align:"justify",children:d},m))})]})]})})}),args:{}};var t,i,o;n.parameters={...n.parameters,docs:{...(t=n.parameters)==null?void 0:t.docs,source:{originalSource:`{
+`+r.lorem.sentences(10)),...Array(10).fill(``).map(()=>n.lorem.sentences(30))],g={render:e=>(0,p.jsx)(`div`,{className:`min-h-[600px]`,children:(0,p.jsx)(o,{children:(0,p.jsxs)(u,{paper:!0,children:[(0,p.jsx)(s,{children:(0,p.jsx)(c,{children:`Page level aside`})}),(0,p.jsxs)(f,{...e,children:[(0,p.jsx)(a,{className:`p-4 bg-dimmed`,children:`Inner section header`}),(0,p.jsx)(s,{children:(0,p.jsx)(c,{children:`Inner section level aside`})}),(0,p.jsx)(c,{children:h.map((e,t)=>(0,p.jsx)(l,{clamp:3,align:`justify`,children:e},t))})]})]})})}),args:{}},g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <div className="min-h-[600px]">
         <Viewport>
@@ -24,4 +24,4 @@ import{f as c,j as e,V as p,d as x,g as a,e as s,H as h,h as j}from"./iframe-Bmp
       </div>;
   },
   args: {}
-}`,...(o=(i=n.parameters)==null?void 0:i.docs)==null?void 0:o.source}}};const C=["_Section"];export{n as _Section,C as __namedExportsOrder,v as default};
+}`,...g.parameters?.docs?.source}}},_=[`_Section`]}));v();export{g as _Section,_ as __namedExportsOrder,m as default,v as t};

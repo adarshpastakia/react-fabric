@@ -1,0 +1,1 @@
+import{n as e,t}from"./PivotQuery.js";t();export{e as default};

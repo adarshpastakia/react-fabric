@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";var t,n,r=e((()=>{t={value:.5,readOnly:!0},n={readOnly:!0,value:.5,get(){return this.updating?this.updatingProgressValue:1}}}));export{r as n,n as r,t};

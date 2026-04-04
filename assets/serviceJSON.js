@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./request.js";async function r(e,t){return(await n(e,{responseType:`json`,query:{f:`json`,...t?.customParameters,token:t?.apiKey}})).data}var i=e((()=>{t()}));export{r as n,i as t};

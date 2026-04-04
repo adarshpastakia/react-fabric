@@ -1,16 +1,16 @@
-import{j as r,M as m,T as p,A as i,S as e,D as a,P as c,C as l,a as d}from"./iframe-BmpICDQJ.js";import{useMDXComponents as s}from"./index3.js";import"./index.js";import{C as x}from"./Collapsable.js";import{J as j}from"./List.js";import{J as h,_ as f}from"./JsonViewer.stories.js";import"./toArray.js";import"./Tooltip.js";import"./ButtonGroup2.js";import"./cloneElement.js";import"./useDebounce.js";import"./EmptyContent.js";import"./isEqual.js";import"./memoize-one.esm.js";import"./Copy.js";import"./Text.js";import"./usePropToggle.js";import"./types.js";import"./HeadFoot.js";import"./Dropdown.js";import"./Menu.js";import"./nodeCheck.js";import"./Google.js";import"./createClass.js";import"./zh-CN.js";import"./endOfDay.js";import"./index5.js";import"./DateDisplay.js";import"./Global.js";import"./Divider.js";import"./DropdownTool.js";import"./ColorPicker.js";import"./index2.js";import"./Checkbox.js";import"./ErrorIcon.js";import"./Input.js";import"./eventHandlers.js";import"./dedupe.js";import"./debounce.js";import"./Section.js";import"./ErrorBoundary.js";import"./index4.js";function n(o){const t={code:"code",pre:"pre",...s(),...o.components};return r.jsxs(r.Fragment,{children:[r.jsx(m,{of:h}),`
-`,r.jsx(p,{children:"Json Viewer"}),`
-`,r.jsx(i,{storyId:"JsonViewer",children:r.jsx("div",{className:"hidden-anchor",children:r.jsx(e,{children:"Json Viewer"})})}),`
-`,r.jsx(a,{of:j}),`
-`,r.jsx(c,{}),`
-`,r.jsxs(x,{className:"control-panel",children:[r.jsx("div",{children:"Controls"}),r.jsx(l,{of:f})]}),`
-`,r.jsx("hr",{}),`
-`,r.jsx(i,{storyId:"props",children:r.jsx(e,{children:"Props"})}),`
-`,r.jsx(d,{sort:"requiredFirst"}),`
-`,r.jsx(i,{storyId:"sample",children:r.jsx(e,{children:"Example"})}),`
-`,r.jsx(t.pre,{children:r.jsx(t.code,{className:"language-tsx",children:`import { JsonViewer } from "@react-fabric/data";
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{$t as i,Bt as a,Gt as o,Lt as s,M as c,Wt as l,Xt as u,Zt as d,nn as f,t as p,zt as m}from"./iframe-B-Wcw5ev.js";import{r as h}from"./react2.js";import{t as g}from"./mdx-react-shim.js";import{c as _,t as v}from"./src4.js";import{_JsonViewer as y,n as b,t as x}from"./JsonViewer.stories.js";function S(e){let t={code:`code`,pre:`pre`,...h(),...e.components};return(0,w.jsxs)(w.Fragment,{children:[(0,w.jsx)(u,{of:x}),`
+`,(0,w.jsx)(i,{children:`Json Viewer`}),`
+`,(0,w.jsx)(s,{storyId:`JsonViewer`,children:(0,w.jsx)(`div`,{className:`hidden-anchor`,children:(0,w.jsx)(d,{children:`Json Viewer`})})}),`
+`,(0,w.jsx)(o,{of:_}),`
+`,(0,w.jsx)(a,{withToolbar:!0,of:y}),`
+`,(0,w.jsxs)(c,{className:`control-panel`,children:[(0,w.jsx)(`div`,{children:`Controls`}),(0,w.jsx)(l,{of:y})]}),`
+`,(0,w.jsx)(`hr`,{}),`
+`,(0,w.jsx)(s,{storyId:`props`,children:(0,w.jsx)(d,{children:`Props`})}),`
+`,(0,w.jsx)(m,{sort:`requiredFirst`}),`
+`,(0,w.jsx)(s,{storyId:`sample`,children:(0,w.jsx)(d,{children:`Example`})}),`
+`,(0,w.jsx)(t.pre,{children:(0,w.jsx)(t.code,{className:`language-tsx`,children:`import { JsonViewer } from "@react-fabric/data";
 
 export const Example = () => {
   return <JsonViewer json={AnyObject} />;
 };
-`})})]})}function nr(o={}){const{wrapper:t}={...s(),...o.components};return t?r.jsx(t,{...o,children:r.jsx(n,{...o})}):n(o)}export{nr as default};
+`})})]})}function C(e={}){let{wrapper:t}={...h(),...e.components};return t?(0,w.jsx)(t,{...e,children:(0,w.jsx)(S,{...e})}):S(e)}var w;t((()=>{w=r(),g(),p(),f(),e(n()),v(),b()}))();export{C as default};

@@ -1,1 +1,1 @@
-const e=""+new URL("large_video-DqcPq1wI.mp4",import.meta.url).href;export{e as b};
+import{n as e}from"./chunk.js";var t,n=e((()=>{t=``+new URL(`large_video-DqcPq1wI.mp4`,import.meta.url).href}));export{t as n,n as t};

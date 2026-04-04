@@ -1,49 +1,49 @@
-import{wh as K,Gi as X,Gj as ee,EY as te,EW as ie,Gk as re,Gl as ae,F1 as o,Gb as se,FA as oe,Ga as ne,F0 as w,Gm as ce,Gn as le,EZ as pe,E$ as de,F2 as he,FW as ve,F4 as ue,Go as G,Gp as E,Gq as me,Gr as fe,FE as ge,eF as Se,F5 as Pe,F6 as ye,F7 as C,F9 as N,Fa as _e,Fb as R,Fc as M,FF as we,Fe as ze,Ff as xe,Fh as $e,Fd as be,Fi as V,Gs as Te,Gt as U,Gu as I,Gv as Ve,Gw as ke,Gx as Fe,Fj as Oe,E as p,Fk as d,eC as De,FH as We,Gy as B,r1 as Ce,G2 as Me,l5 as Le,Fp as je,bI as q,bJ as Y,xR as Ae,fd as H,Gz as Ge}from"./ShadowCastClear.glsl.js";import{b5 as Ee}from"./iframe-BmpICDQJ.js";function J(r){const e=new K,{space:i,anchor:t,hasTip:P,hasScreenSizePerspective:z}=r,u=i===2,g=i===1;e.include(X,r),e.include(ee,r),e.include(te,r);const{vertex:a,fragment:S,varyings:y}=e;ie(a,r),e.attributes.add("position","vec3"),e.attributes.add("previousDelta","vec4"),e.attributes.add("uv0","vec2"),y.add("vColor","vec4"),y.add("vpos","vec3",{invariant:!0}),y.add("vUV","vec2"),y.add("vSize","float"),P&&y.add("vLineWidth","float"),a.uniforms.add(new re("nearFar",({camera:l})=>l.nearFar),new ae("viewport",({camera:l})=>l.fullViewport)).code.add(o`vec4 projectAndScale(vec4 pos) {
+import{n as e}from"./chunk.js";import{n as t,r as n,t as r}from"./glsl.js";import{n as i,t as a}from"./Texture2DPassUniform.js";import{n as o,t as s}from"./ShaderBuilder.js";import{n as c,r as l}from"./Slice.glsl.js";import{n as u,t as d}from"./Float4PassUniform.js";import{n as f,t as p}from"./FloatBindUniform.js";import{n as m,t as h}from"./Matrix4BindUniform.js";import{a as g,i as _,n as v,r as y}from"./View.glsl.js";import{a as b,d as x,f as S,h as C,m as w,n as T,p as E,t as D}from"./MarkerSizing.glsl.js";import{n as O,t as k}from"./ColorConversion.glsl.js";import{n as A,t as j}from"./PositionOutsideClipSpace.js";import{n as M,t as N}from"./Float2BindUniform.js";import{n as P,t as F}from"./TerrainDepthTest.glsl.js";import{n as I,t as L}from"./Float4BindUniform.js";import{n as R,t as z}from"./OutputHighlight.glsl.js";import{n as B,t as V}from"./OutputColorHighlightOLID.glsl.js";function H(e){let r=new o,{space:i,anchor:s,hasTip:l,hasScreenSizePerspective:u}=e,p=i===2,h=i===1;r.include(w,e),r.include(D,e),r.include(F,e);let{vertex:y,fragment:b,varyings:C}=r;v(y,e),r.attributes.add(`position`,`vec3`),r.attributes.add(`previousDelta`,`vec4`),r.attributes.add(`uv0`,`vec2`),C.add(`vColor`,`vec4`),C.add(`vpos`,`vec3`,{invariant:!0}),C.add(`vUV`,`vec2`),C.add(`vSize`,`float`),l&&C.add(`vLineWidth`,`float`),y.uniforms.add(new N(`nearFar`,({camera:e})=>e.nearFar),new L(`viewport`,({camera:e})=>e.fullViewport)).code.add(n`vec4 projectAndScale(vec4 pos) {
 vec4 posNdc = proj * pos;
 posNdc.xy *= viewport.zw / posNdc.w;
 return posNdc;
-}`),a.code.add(o`void clip(vec4 pos, inout vec4 prev) {
+}`),y.code.add(n`void clip(vec4 pos, inout vec4 prev) {
 float vnp = nearFar[0] * 0.99;
 if (prev.z > -nearFar[0]) {
 float interpolation = (-vnp - pos.z) / (prev.z - pos.z);
 prev = mix(pos, prev, interpolation);
 }
-}`),u?(e.attributes.add("normal","vec3"),se(a),a.constants.add("tiltThreshold","float",.7),a.code.add(o`vec3 perpendicular(vec3 v) {
+}`),p?(r.attributes.add(`normal`,`vec3`),_(y),y.constants.add(`tiltThreshold`,`float`,.7),y.code.add(n`vec3 perpendicular(vec3 v) {
 vec3 n = (viewNormal * vec4(normal.xyz, 1.0)).xyz;
 vec3 n2 = cross(v, n);
 vec3 forward = vec3(0.0, 0.0, 1.0);
 float tiltDot = dot(forward, n);
 return abs(tiltDot) < tiltThreshold ? n : n2;
-}`)):a.code.add(o`vec2 perpendicular(vec2 v) {
+}`)):y.code.add(n`vec2 perpendicular(vec2 v) {
 return vec2(v.y, -v.x);
-}`);const h=u?"vec3":"vec2";return a.code.add(o`
-      ${h} normalizedSegment(${h} pos, ${h} prev) {
-        ${h} segment = pos - prev;
+}`);let T=p?`vec3`:`vec2`;return y.code.add(n`
+      ${T} normalizedSegment(${T} pos, ${T} prev) {
+        ${T} segment = pos - prev;
         float segmentLen = length(segment);
 
         // normalize or zero if too short
-        return (segmentLen > 0.001) ? segment / segmentLen : ${u?"vec3(0.0, 0.0, 0.0)":"vec2(0.0, 0.0)"};
+        return (segmentLen > 0.001) ? segment / segmentLen : ${p?`vec3(0.0, 0.0, 0.0)`:`vec2(0.0, 0.0)`};
       }
 
-      ${h} displace(${h} pos, ${h} prev, float displacementLen) {
-        ${h} segment = normalizedSegment(pos, prev);
+      ${T} displace(${T} pos, ${T} prev, float displacementLen) {
+        ${T} segment = normalizedSegment(pos, prev);
 
-        ${h} displacementDirU = perpendicular(segment);
-        ${h} displacementDirV = segment;
+        ${T} displacementDirU = perpendicular(segment);
+        ${T} displacementDirV = segment;
 
-        ${t===1?"pos -= 0.5 * displacementLen * displacementDirV;":""}
+        ${s===1?`pos -= 0.5 * displacementLen * displacementDirV;`:``}
 
         return pos + displacementLen * (uv0.x * displacementDirU + uv0.y * displacementDirV);
       }
-    `),g&&(a.uniforms.add(new oe("inverseProjectionMatrix",({camera:l})=>l.inverseProjectionMatrix)),a.code.add(o`vec3 inverseProject(vec4 posScreen) {
+    `),h&&(y.uniforms.add(new m(`inverseProjectionMatrix`,({camera:e})=>e.inverseProjectionMatrix)),y.code.add(n`vec3 inverseProject(vec4 posScreen) {
 posScreen.xy = (posScreen.xy / viewport.zw) * posScreen.w;
 return (inverseProjectionMatrix * posScreen).xyz;
-}`),a.code.add(o`bool rayIntersectPlane(vec3 rayDir, vec3 planeOrigin, vec3 planeNormal, out vec3 intersection) {
+}`),y.code.add(n`bool rayIntersectPlane(vec3 rayDir, vec3 planeOrigin, vec3 planeNormal, out vec3 intersection) {
 float cos = dot(rayDir, planeNormal);
 float t = dot(planeOrigin, planeNormal) / cos;
 intersection = t * rayDir;
 return abs(cos) > 0.001 && t > 0.0;
-}`),a.uniforms.add(new ne("perScreenPixelRatio",({camera:l})=>l.perScreenPixelRatio)),a.code.add(o`
+}`),y.uniforms.add(new f(`perScreenPixelRatio`,({camera:e})=>e.perScreenPixelRatio)),y.code.add(n`
       vec4 toFront(vec4 displacedPosScreen, vec3 posLeft, vec3 posRight, vec3 prev, float lineWidth) {
         // Project displaced position back to camera space
         vec3 displacedPos = inverseProject(displacedPosScreen);
@@ -53,7 +53,7 @@ return abs(cos) > 0.001 && t > 0.0;
         vec3 planeNormal = normalize(cross(posLeft - posRight, posLeft - prev));
         vec3 planeOrigin = posLeft;
 
-        ${w(r.hasCap,`if(prev.z > posLeft.z) {
+        ${t(e.hasCap,`if(prev.z > posLeft.z) {
                 vec2 diff = posLeft.xy - posRight.xy;
                 planeOrigin.xy += perpendicular(diff) / 2.0;
              }`)};
@@ -75,37 +75,36 @@ return abs(cos) > 0.001 && t > 0.0;
         displacedPos *= minDepth / length(displacedPos);
         return vec4(displacedPos.xyz, 1.0);
       }
-  `)),ce(a),e.include(le),a.main.add(o`
+  `)),g(y),r.include(S),y.main.add(n`
     // Check for special value of uv0.y which is used by the Renderer when graphics
     // are removed before the VBO is recompacted. If this is the case, then we just
     // project outside of clip space.
     if (uv0.y == 0.0) {
       // Project out of clip space
-      gl_Position = vec4(1e038, 1e038, 1e038, 1.0);
+      gl_Position = ${A};
     }
     else {
       vec4 pos  = view * vec4(position, 1.0);
       vec4 prev = view * vec4(position + previousDelta.xyz * previousDelta.w, 1.0);
 
-      float lineWidth = getLineWidth(${w(z,"pos.xyz")});
+      float lineWidth = getLineWidth(${t(u,`pos.xyz`)});
       float screenMarkerSize = getScreenMarkerSize(lineWidth);
 
       clip(pos, prev);
 
-      ${u?o`${w(r.hideOnShortSegments,o`
+      ${p?n`${t(e.hideOnShortSegments,n`
                 if (areWorldMarkersHidden(pos.xyz, prev.xyz)) {
-                  // Project out of clip space
-                  gl_Position = vec4(1e038, 1e038, 1e038, 1.0);
+                  gl_Position = ${A};
                   return;
                 }`)}
             pos.xyz = displace(pos.xyz, prev.xyz, getWorldMarkerSize(pos.xyz));
-            vec4 displacedPosScreen = projectAndScale(pos);`:o`
+            vec4 displacedPosScreen = projectAndScale(pos);`:n`
             vec4 posScreen = projectAndScale(pos);
             vec4 prevScreen = projectAndScale(prev);
             vec4 displacedPosScreen = posScreen;
 
             displacedPosScreen.xy = displace(posScreen.xy, prevScreen.xy, screenMarkerSize);
-            ${w(g,o`
+            ${t(h,n`
                 vec2 displacementDirU = perpendicular(normalizedSegment(posScreen.xy, prevScreen.xy));
 
                 // We need three points of the ribbon line in camera space to calculate the plane it lies in
@@ -121,8 +120,8 @@ return abs(cos) > 0.001 && t > 0.0;
 
       // Convert texture coordinate into [0,1]
       vUV = (uv0 + 1.0) / 2.0;
-      ${w(!u,"vUV = noPerspectiveWrite(vUV, displacedPosScreen.w);")}
-      ${w(P,"vLineWidth = noPerspectiveWrite(lineWidth, displacedPosScreen.w);")}
+      ${t(!p,`vUV = noPerspectiveWrite(vUV, displacedPosScreen.w);`)}
+      ${t(l,`vLineWidth = noPerspectiveWrite(lineWidth, displacedPosScreen.w);`)}
 
       vSize = screenMarkerSize;
       vColor = getColor();
@@ -131,13 +130,13 @@ return abs(cos) > 0.001 && t > 0.0;
       vpos = pos.xyz;
 
       gl_Position = displacedPosScreen;
-    }`),S.include(pe,r),e.include(de,r),S.include(he),S.uniforms.add(new ve("intrinsicColor",({color:l})=>l),new ue("tex",({markerTexture:l})=>l)).constants.add("texelSize","float",1/G).code.add(o`float markerAlpha(vec2 samplePos) {
+    }`),b.include(c,e),r.include(V,e),b.include(k),b.uniforms.add(new d(`intrinsicColor`,({color:e})=>e),new a(`tex`,({markerTexture:e})=>e)).constants.add(`texelSize`,`float`,1/64).code.add(n`float markerAlpha(vec2 samplePos) {
 samplePos += vec2(0.5, -0.5) * texelSize;
 float sdf = texture(tex, samplePos).r;
 float pixelDistance = sdf * vSize;
 pixelDistance -= 0.5;
 return clamp(0.5 - pixelDistance, 0.0, 1.0);
-}`),P&&(e.include(E),S.constants.add("relativeMarkerSize","float",me/G).constants.add("relativeTipLineWidth","float",fe).code.add(o`
+}`),l&&(r.include(x),b.constants.add(`relativeMarkerSize`,`float`,32/64).constants.add(`relativeTipLineWidth`,`float`,.25).code.add(n`
     float tipAlpha(vec2 samplePos) {
       // Convert coordinates s.t. they are in pixels and relative to the tip of an arrow marker
       samplePos -= vec2(0.5, 0.5 + 0.5 * relativeMarkerSize);
@@ -146,18 +145,18 @@ return clamp(0.5 - pixelDistance, 0.0, 1.0);
       float halfMarkerSize = 0.5 * relativeMarkerSize * vSize;
       float halfTipLineWidth = 0.5 * max(1.0, relativeTipLineWidth * noPerspectiveRead(vLineWidth));
 
-      ${w(u,"halfTipLineWidth *= fwidth(samplePos.y);")}
+      ${t(p,`halfTipLineWidth *= fwidth(samplePos.y);`)}
 
       float distance = max(abs(samplePos.x) - halfMarkerSize, abs(samplePos.y) - halfTipLineWidth);
       return clamp(0.5 - distance, 0.0, 1.0);
     }
-  `)),e.include(ge,r),e.include(E),S.main.add(o`
+  `)),r.include(z,e),r.include(x),b.main.add(n`
     discardBySlice(vpos);
     discardByTerrainDepth();
 
     vec4 finalColor = intrinsicColor * vColor;
 
     // Cancel out perspective correct interpolation if in screen space or draped
-    vec2 samplePos = ${w(!u,"noPerspectiveRead(vUV)","vUV")};
-    finalColor.a *= ${P?"max(markerAlpha(samplePos), tipAlpha(samplePos))":"markerAlpha(samplePos)"};
-    outputColorHighlightOID(finalColor, vpos, finalColor.rgb);`),e}const Ne=Object.freeze(Object.defineProperty({__proto__:null,build:J},Symbol.toStringTag,{value:"Module"}));let Re=class extends Pe{constructor(e,i){super(e,i,new ye(Ne,()=>Ee(()=>Promise.resolve().then(()=>Ye),void 0,import.meta.url)),Q(i).locations)}_makePipelineState(e,i){const{output:t,oitPass:P,space:z,hasOccludees:u}=e;return C({blending:V(t)?$e(P):null,depthTest:z===0?null:{func:xe(P)},depthWrite:ze(e),drawBuffers:we(t,be(P,t)),colorWrite:M,stencilWrite:u?R:null,stencilTest:u?i?N:_e:null,polygonOffset:{factor:0,units:-10}})}initializePipeline(e){return e.occluder?(this._occluderPipelineTransparent=C({blending:I,depthTest:U,depthWrite:null,colorWrite:M,stencilWrite:null,stencilTest:Te}),this._occluderPipelineOpaque=C({blending:I,depthTest:U,depthWrite:null,colorWrite:M,stencilWrite:ke,stencilTest:Ve}),this._occluderPipelineMaskWrite=C({blending:null,depthTest:Fe,depthWrite:null,colorWrite:null,stencilWrite:R,stencilTest:N})):this._occluderPipelineTransparent=this._occluderPipelineOpaque=this._occluderPipelineMaskWrite=null,this._occludeePipelineState=this._makePipelineState(e,!0),this._makePipelineState(e,!1)}getPipeline(e,i){return e?this._occludeePipelineState:i===11?this._occluderPipelineTransparent??super.getPipeline():i===10?this._occluderPipelineOpaque??super.getPipeline():this._occluderPipelineMaskWrite??super.getPipeline()}};function Q(r){const e=Se().vec3f("position").vec4f16("previousDelta").vec2f16("uv0");return r.hasVVColor?e.f32("colorFeatureAttribute"):e.vec4u8("color",{glNormalized:!0}),r.hasVVOpacity&&e.f32("opacityFeatureAttribute"),r.hasVVSize?e.f32("sizeFeatureAttribute"):e.f16("size"),r.worldSpace&&e.vec3f16("normal"),e.freeze()}class c extends Oe{constructor(e){super(),this.spherical=e,this.space=1,this.anchor=0,this.occluder=!1,this.writeDepth=!1,this.hideOnShortSegments=!1,this.hasCap=!1,this.hasTip=!1,this.hasVVSize=!1,this.hasVVColor=!1,this.hasVVOpacity=!1,this.hasOccludees=!1,this.terrainDepthTest=!1,this.cullAboveTerrain=!1,this.hasScreenSizePerspective=!1,this.textureCoordinateType=0,this.emissionSource=0,this.discardInvisibleFragments=!0,this.occlusionPass=!1,this.hasVVInstancing=!1,this.hasSliceTranslatedView=!0,this.olidColorInstanced=!1,this.overlayEnabled=!1,this.snowCover=!1}get draped(){return this.space===0}get worldSpace(){return this.space===2}}p([d({count:3})],c.prototype,"space",void 0),p([d({count:2})],c.prototype,"anchor",void 0),p([d()],c.prototype,"occluder",void 0),p([d()],c.prototype,"writeDepth",void 0),p([d()],c.prototype,"hideOnShortSegments",void 0),p([d()],c.prototype,"hasCap",void 0),p([d()],c.prototype,"hasTip",void 0),p([d()],c.prototype,"hasVVSize",void 0),p([d()],c.prototype,"hasVVColor",void 0),p([d()],c.prototype,"hasVVOpacity",void 0),p([d()],c.prototype,"hasOccludees",void 0),p([d()],c.prototype,"terrainDepthTest",void 0),p([d()],c.prototype,"cullAboveTerrain",void 0),p([d()],c.prototype,"hasScreenSizePerspective",void 0);class Ke extends De{constructor(e,i){super(e,Ie),this.produces=new Map([[2,t=>t===9||V(t)&&this.parameters.renderOccluded===8],[3,t=>We(t)],[10,t=>B(t)&&this.parameters.renderOccluded===8],[11,t=>B(t)&&this.parameters.renderOccluded===8],[4,t=>V(t)&&this.parameters.writeDepth],[8,t=>V(t)&&!this.parameters.writeDepth],[18,t=>V(t)||t===9]]),this.intersectDraped=void 0,this._configuration=new c(i)}getConfiguration(e,i){return super.getConfiguration(e,i,this._configuration),this._configuration.space=i.slot===18?0:this.parameters.worldSpace?2:1,this._configuration.hideOnShortSegments=this.parameters.hideOnShortSegments,this._configuration.hasCap=this.parameters.cap!==0,this._configuration.anchor=this.parameters.anchor,this._configuration.hasTip=this.parameters.hasTip,this._configuration.hasSlicePlane=this.parameters.hasSlicePlane,this._configuration.hasOccludees=i.hasOccludees,this._configuration.writeDepth=this.parameters.writeDepth,this._configuration.hasVVSize=this.parameters.hasVVSize,this._configuration.hasVVColor=this.parameters.hasVVColor,this._configuration.hasVVOpacity=this.parameters.hasVVOpacity,this._configuration.occluder=this.parameters.renderOccluded===8,this._configuration.oitPass=i.oitPass,this._configuration.terrainDepthTest=i.terrainDepthTest&&V(e),this._configuration.cullAboveTerrain=i.cullAboveTerrain,this._configuration.hasScreenSizePerspective=this.parameters.screenSizePerspective!=null,this._configuration}get visible(){return this.parameters.color[3]>=Ce}intersect(){}createBufferWriter(){return new Be(Q(this.parameters),this.parameters)}createGLMaterial(e){return new Ue(e)}}class Ue extends je{dispose(){var e;super.dispose(),(e=this._markerTextures)==null||e.release(this._markerPrimitive),this._markerPrimitive=null}beginSlot(e){const i=this._material.parameters.markerPrimitive;return i!==this._markerPrimitive&&(this._material.setParameters({markerTexture:this._markerTextures.swap(i,this._markerPrimitive)}),this._markerPrimitive=i),this.getTechnique(Re,e)}}class Ie extends Me{constructor(){super(...arguments),this.width=0,this.color=[1,1,1,1],this.markerPrimitive="arrow",this.placement="end",this.cap=0,this.anchor=0,this.hasTip=!1,this.worldSpace=!1,this.hideOnShortSegments=!1,this.writeDepth=!0,this.hasSlicePlane=!1,this.vvFastUpdate=!1,this.stipplePattern=null,this.markerTexture=null}}class Be{constructor(e,i){this.layout=e,this._parameters=i}elementCount(){return this._parameters.placement==="begin-end"?12:6}write(e,i,t,P,z,u){const g=t.get("position").data,a=g.length/3;let S=[1,0,0];const y=t.get("normal");this._parameters.worldSpace&&y!=null&&(S=y.data);let h=1,l=0;this._parameters.vvSize?l=t.get("sizeFeatureAttribute").data[0]:t.has("size")&&(h=t.get("size").data[0]);let $=[1,1,1,1],L=0;this._parameters.vvColor?L=t.get("colorFeatureAttribute").data[0]:t.has("color")&&($=t.get("color").data);let j=0;this._parameters.vvOpacity&&(j=t.get("opacityFeatureAttribute").data[0]);const x=new Float32Array(z.buffer),_=Le(z.buffer),k=new Uint8Array(z.buffer);let v=u*(this.layout.stride/4);const b=x.BYTES_PER_ELEMENT/_.BYTES_PER_ELEMENT,Z=4/b,T=(n,O,m,f)=>{x[v++]=n[0],x[v++]=n[1],x[v++]=n[2],Ge(O,n,_,v*b),v+=Z;let s=v*b;if(_[s++]=m[0],_[s++]=m[1],v=Math.ceil(s/b),this._parameters.vvColor)x[v++]=L;else{const D=Math.min(4*f,$.length-4),W=4*v++;k[W]=255*$[D],k[W+1]=255*$[D+1],k[W+2]=255*$[D+2],k[W+3]=255*$[D+3]}this._parameters.vvOpacity&&(x[v++]=j),s=v*b,this._parameters.vvSize?(x[v++]=l,s+=2):_[s++]=h,this._parameters.worldSpace&&(_[s++]=S[0],_[s++]=S[1],_[s++]=S[2]),v=Math.ceil(s/b)},A=(n,O)=>{const m=q(qe,g[3*n],g[3*n+1],g[3*n+2]),f=He;let s=n+O;do q(f,g[3*s],g[3*s+1],g[3*s+2]),s+=O;while(Ae(m,f)&&s>=0&&s<a);e&&(H(m,m,e),H(f,f,e)),T(m,f,[-1,-1],n),T(m,f,[1,-1],n),T(m,f,[1,1],n),T(m,f,[-1,-1],n),T(m,f,[1,1],n),T(m,f,[-1,1],n)},F=this._parameters.placement;return F!=="begin"&&F!=="begin-end"||A(0,1),F!=="end"&&F!=="begin-end"||A(a-1,-1),null}}const qe=Y(),He=Y(),Ye=Object.freeze(Object.defineProperty({__proto__:null,build:J},Symbol.toStringTag,{value:"Module"}));export{Ke as g};
+    vec2 samplePos = ${t(!p,`noPerspectiveRead(vUV)`,`vUV`)};
+    finalColor.a *= ${l?`max(markerAlpha(samplePos), tipAlpha(samplePos))`:`markerAlpha(samplePos)`};
+    outputColorHighlightOLID(applySlice(finalColor, vpos), finalColor.rgb);`),r}var U,W=e((()=>{b(),l(),C(),R(),T(),j(),P(),O(),E(),y(),M(),I(),u(),p(),r(),h(),i(),B(),s(),U=Object.freeze(Object.defineProperty({__proto__:null,build:H},Symbol.toStringTag,{value:`Module`}))}));export{W as n,H as r,U as t};

@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{gt as t,mt as n}from"./SpatialReference2.js";import{c as r,o as i,r as a}from"./jsonConverter.js";function o(e,t){let n=i(e);return s.execute(n.getGeometry(),a(t),n.getSpatialReference(),null)}var s;e((()=>{n(),r(),s=new t}))();export{o as execute};

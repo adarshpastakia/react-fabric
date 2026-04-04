@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./Collection.js";function r(e,n,r=t){return n||=new r,n===e||n.destroyed||(n.removeAll(),a(e)?n.addMany(e):e&&n.add(e)),n}function i(e){return e}function a(e){return e&&(Array.isArray(e)||`items`in e&&Array.isArray(e.items))}var o=e((()=>{n()}));export{o as n,r,i as t};

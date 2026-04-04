@@ -1,14 +1,14 @@
-import{j as n,M as l,T as i,A as s,S as r,D as c,aJ as d,P as x,c as b,C as T,a as j}from"./iframe-BmpICDQJ.js";import{useMDXComponents as o}from"./index3.js";import{T as m,_ as p}from"./TabPanel.stories.js";import"./index4.js";function t(e){const a={code:"code",pre:"pre",...o(),...e.components};return n.jsxs(n.Fragment,{children:[n.jsx(l,{of:m}),`
-`,n.jsx(i,{children:"Tabbed Panel"}),`
-`,n.jsx(s,{storyId:"TabPanel",children:n.jsx("div",{className:"hidden-anchor",children:n.jsx(r,{children:"Tab Panel"})})}),`
-`,n.jsx(c,{of:d}),`
-`,n.jsx(x,{}),`
-`,n.jsxs(b,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(T,{of:p})]}),`
-`,n.jsx("hr",{}),`
-`,n.jsx(s,{storyId:"props",children:n.jsx(r,{children:"Props"})}),`
-`,n.jsx(j,{sort:"requiredFirst"}),`
-`,n.jsx(s,{storyId:"sample",children:n.jsx(r,{children:"Example"})}),`
-`,n.jsx(a.pre,{children:n.jsx(a.code,{className:"language-tsx",children:`import { TabPanel, Button, Menu, MenuItem } from "@react-fabric/core";
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{$t as i,Bt as a,Gt as o,Lt as s,Wt as c,Xt as l,Zt as u,nn as d,zt as f}from"./iframe-B-Wcw5ev.js";import{r as p}from"./react2.js";import{t as m}from"./mdx-react-shim.js";import{N as h,_ as g,t as _}from"./src3.js";import{_TabPanel as v,n as y,t as b}from"./TabPanel.stories.js";function x(e){let t={code:`code`,pre:`pre`,...p(),...e.components};return(0,C.jsxs)(C.Fragment,{children:[(0,C.jsx)(l,{of:b}),`
+`,(0,C.jsx)(i,{children:`Tabbed Panel`}),`
+`,(0,C.jsx)(s,{storyId:`TabPanel`,children:(0,C.jsx)(`div`,{className:`hidden-anchor`,children:(0,C.jsx)(u,{children:`Tab Panel`})})}),`
+`,(0,C.jsx)(o,{of:g}),`
+`,(0,C.jsx)(a,{withToolbar:!0,of:v}),`
+`,(0,C.jsxs)(h,{className:`control-panel`,children:[(0,C.jsx)(`div`,{children:`Controls`}),(0,C.jsx)(c,{of:v})]}),`
+`,(0,C.jsx)(`hr`,{}),`
+`,(0,C.jsx)(s,{storyId:`props`,children:(0,C.jsx)(u,{children:`Props`})}),`
+`,(0,C.jsx)(f,{sort:`requiredFirst`}),`
+`,(0,C.jsx)(s,{storyId:`sample`,children:(0,C.jsx)(u,{children:`Example`})}),`
+`,(0,C.jsx)(t.pre,{children:(0,C.jsx)(t.code,{className:`language-tsx`,children:`import { TabPanel, Button, Menu, MenuItem } from "@react-fabric/core";
 
 export const Example = () => {
   return (
@@ -25,4 +25,4 @@ export const Example = () => {
     </TabPanel>
   );
 };
-`})})]})}function f(e={}){const{wrapper:a}={...o(),...e.components};return a?n.jsx(a,{...e,children:n.jsx(t,{...e})}):t(e)}export{f as default};
+`})})]})}function S(e={}){let{wrapper:t}={...p(),...e.components};return t?(0,C.jsx)(t,{...e,children:(0,C.jsx)(x,{...e})}):x(e)}var C;t((()=>{C=r(),m(),d(),e(n()),_(),y()}))();export{S as default};

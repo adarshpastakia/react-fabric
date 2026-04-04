@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{o as t}from"./vec3f64.js";import{E as n}from"./vec3.js";import{t as r}from"./glsl.js";import{t as i}from"./ShaderBuilder.js";import{r as a,t as o}from"./Precipitation.glsl.js";e((()=>{n(),t(),r(),i(),o()}))();export{a as build};

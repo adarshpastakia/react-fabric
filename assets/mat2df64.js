@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(){return[1,0,0,1,0,0]}function n(e){return[e[0],e[1],e[2],e[3],e[4],e[5]]}function r(e,t,n,r,i,a){return[e,t,n,r,i,a]}var i,a=e((()=>{i=t(),Object.freeze(Object.defineProperty({__proto__:null,IDENTITY:i,clone:n,create:t,fromValues:r},Symbol.toStringTag,{value:`Module`}))}));export{a as n,n as r,t};

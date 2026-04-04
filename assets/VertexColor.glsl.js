@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{r as t,t as n}from"./glsl.js";function r(e,n){n.hasVertexColors?(e.attributes.add(`color`,`vec4`),e.varyings.add(`vColor`,`vec4`),e.vertex.code.add(t`void forwardVertexColor() { vColor = color; }`)):e.vertex.code.add(t`void forwardVertexColor() {}`)}var i=e((()=>{n()}));export{r as n,i as t};

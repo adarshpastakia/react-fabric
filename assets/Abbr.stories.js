@@ -1,7 +1,7 @@
-import{j as a,a0 as c,h as m}from"./iframe-BmpICDQJ.js";import{f as s,m as b}from"./index4.js";const i={component:c,title:"@core/Typography",parameters:{controls:{exclude:/^(on.*|children|as)/},jest:["core/tests/Abbr.test.tsx"]},decorators:[r=>a.jsx("div",{className:"max-w-2xl p-4",children:a.jsx(r,{})})]},l=s.lorem.sentences(10)+`
+import{n as e}from"./chunk.js";import{t}from"./jsx-runtime.js";import{n,r,t as i}from"./dist28.js";import{i as a,s as o,t as s}from"./src3.js";var c,l,u,d,f,p,m=e((()=>{i(),s(),c=t(),l={component:o,title:`@core/Typography`,parameters:{controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/Abbr.test.tsx`]},decorators:[e=>(0,c.jsx)(`div`,{className:`max-w-2xl p-4`,children:(0,c.jsx)(e,{})})]},u=r.lorem.sentences(10)+`
 
-`+b.lorem.sentences(10),p=s.helpers.arrayElements(l.replaceAll(`
-`,"").split(" ").filter(Boolean),9).map(r=>[r,s.animal.cat(),s.color.rgb()]),e={render:r=>a.jsx(m,{children:a.jsx(c,{...r,children:l})}),args:{abbr:p}};var t,n,o;e.parameters={...e.parameters,docs:{...(t=e.parameters)==null?void 0:t.docs,source:{originalSource:`{
+`+n.lorem.sentences(10),d=r.helpers.arrayElements(u.replaceAll(`
+`,``).split(` `).filter(Boolean),9).map(e=>[e,r.animal.cat(),r.color.rgb()]),f={render:e=>(0,c.jsx)(a,{children:(0,c.jsx)(o,{...e,children:u})}),args:{abbr:d}},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Text>
         <Abbr {...args}>{paras}</Abbr>
@@ -10,4 +10,4 @@ import{j as a,a0 as c,h as m}from"./iframe-BmpICDQJ.js";import{f as s,m as b}fro
   args: {
     abbr: abbrs
   }
-}`,...(o=(n=e.parameters)==null?void 0:n.docs)==null?void 0:o.source}}};const u=["_Abbr"];export{e as _Abbr,u as __namedExportsOrder,i as default};
+}`,...f.parameters?.docs?.source}}},p=[`_Abbr`]}));m();export{f as _Abbr,p as __namedExportsOrder,l as default,m as t};

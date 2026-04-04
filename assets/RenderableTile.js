@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./mat3f32.js";import{n as r,t as i}from"./TiledDisplayObject.js";var a,o=e((()=>{t(),i(),a=class extends r{_createTransforms(){return{displayViewScreenMat3:n(),tileMat3:n()}}}}));export{a as n,o as t};

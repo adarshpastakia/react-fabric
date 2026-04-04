@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(e){return e.type===`point`}var n=e((()=>{}));export{t as n,n as t};

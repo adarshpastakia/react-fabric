@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./Uniform.js";var r,i=e((()=>{t(),r=class extends n{constructor(e,t,n){super(e,`float`,1,(r,i,a)=>r.setUniform1f(e,t(i,a),n))}}}));export{r as n,i as t};

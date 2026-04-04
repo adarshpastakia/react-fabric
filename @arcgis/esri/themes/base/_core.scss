@@ -107,7 +107,7 @@ $calcite-fonts-path: "../base/fonts/fonts/" !default;
 
 @import "fonts/fonts";
 @import "icons/style";
-@import "@esri/calcite-components/dist/calcite/calcite";
+@import "@esri/calcite-components/dist/cdn/main";
 @import "color";
 @import "type";
 @import "sizes";

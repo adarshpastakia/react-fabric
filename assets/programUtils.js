@@ -1,7 +1,1 @@
-function r(i){const{options:e,value:o}=i;return typeof e[o]=="number"}function d(i){let e="";for(const o in i){const n=i[o];if(typeof n=="boolean")n&&(e+=`#define ${o}
-`);else if(typeof n=="number")e+=`#define ${o} ${n.toFixed()}
-`;else if(typeof n=="object")if(r(n)){const{value:t,options:f,namespace:s}=n,$=s?`${s}_`:"";for(const c in f)e+=`#define ${$}${c} ${f[c].toFixed()}
-`;e+=`#define ${o} ${$}${t}
-`}else{const t=n.options;let f=0;for(const s in t)e+=`#define ${t[s]} ${(f++).toFixed()}
-`;e+=`#define ${o} ${t[n.value]}
-`}}return e}export{d as n};
+import{n as e}from"./chunk.js";function t(e){let{options:t,value:n}=e;return typeof t[n]==`number`}function n(e){let n=``;for(let r in e){let i=e[r];if(typeof i==`boolean`)i&&(n+=`#define ${r}\n`);else if(typeof i==`number`)n+=`#define ${r} ${i.toFixed()}\n`;else if(typeof i==`object`)if(t(i)){let{value:e,options:t,namespace:a}=i,o=a?`${a}_`:``;for(let e in t)n+=`#define ${o}${e} ${t[e].toFixed()}\n`;n+=`#define ${r} ${o}${e}\n`}else{let e=i.options,t=0;for(let r in e)n+=`#define ${e[r]} ${(t++).toFixed()}\n`;n+=`#define ${r} ${e[i.value]}\n`}}return n}var r=e((()=>{}));export{n,r as t};

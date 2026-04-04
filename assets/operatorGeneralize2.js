@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./SimpleGeometryCursor.js";import{n as r,t as i}from"./OperatorGeneralize.js";function a(e,t,n){return c.execute(e,t,n,null)}function o(e,n,r){let i=c.executeMany(new t(e),n,r,null);return Array.from(i)}function s(){return c.supportsCurves()}var c,l=e((()=>{n(),r(),c=new i}));export{s as i,o as n,a as r,l as t};

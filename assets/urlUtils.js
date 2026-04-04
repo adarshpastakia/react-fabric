@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(e){let n={};for(let r in e){if(r===`declaredClass`)continue;let i=e[r];if(i!=null&&typeof i!=`function`)if(Array.isArray(i)){n[r]=[];for(let e=0;e<i.length;e++)n[r][e]=t(i[e])}else typeof i==`object`?i.toJSON&&(n[r]=JSON.stringify(i)):n[r]=i}return n}var n=e((()=>{}));export{t as n,n as t};

@@ -1,22 +1,22 @@
-import{j as n,M as h,T as m,A as r,S as o,D as a,af as p,P as u,c as t,C as c,b as l,a as f}from"./iframe-BmpICDQJ.js";import{useMDXComponents as j}from"./index3.js";import{B as g,_ as B,N as i,P as d}from"./Badge.stories.js";function x(s){const e={code:"code",pre:"pre",...j(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(h,{of:g}),`
-`,n.jsx(m,{children:"Badge"}),`
-`,n.jsx(r,{storyId:"emptycontent",children:n.jsx("div",{className:"hidden-anchor",children:n.jsx(o,{children:"Badge"})})}),`
-`,n.jsx(a,{of:p}),`
-`,n.jsx(u,{}),`
-`,n.jsxs(t,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(c,{of:B})]}),`
-`,n.jsx(r,{storyId:"number",children:n.jsx(o,{children:"Numbers"})}),`
-`,n.jsx(a,{of:i}),`
-`,n.jsx(l,{withToolbar:!0,of:i}),`
-`,n.jsxs(t,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(c,{of:i})]}),`
-`,n.jsx(r,{storyId:"ping",children:n.jsx(o,{children:"Pinging"})}),`
-`,n.jsx(a,{of:d}),`
-`,n.jsx(l,{withToolbar:!0,of:d}),`
-`,n.jsxs(t,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(c,{of:d})]}),`
-`,n.jsx("hr",{}),`
-`,n.jsx(r,{storyId:"props",children:n.jsx(o,{children:"Props"})}),`
-`,n.jsx(f,{sort:"requiredFirst"}),`
-`,n.jsx(r,{storyId:"sample",children:n.jsx(o,{children:"Example"})}),`
-`,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-tsx",children:`import { Button, Badge } from "@react-fabric/core";
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{$t as i,Bt as a,Gt as o,Lt as s,Wt as c,Xt as l,Zt as u,nn as d,zt as f}from"./iframe-B-Wcw5ev.js";import{r as p}from"./react2.js";import{t as m}from"./mdx-react-shim.js";import{N as h,it as g,t as _}from"./src3.js";import{Numbers as v,Ping as y,_Badge as b,n as x,t as S}from"./Badge.stories.js";function C(e){let t={code:`code`,pre:`pre`,...p(),...e.components};return(0,T.jsxs)(T.Fragment,{children:[(0,T.jsx)(l,{of:S}),`
+`,(0,T.jsx)(i,{children:`Badge`}),`
+`,(0,T.jsx)(s,{storyId:`emptycontent`,children:(0,T.jsx)(`div`,{className:`hidden-anchor`,children:(0,T.jsx)(u,{children:`Badge`})})}),`
+`,(0,T.jsx)(o,{of:g}),`
+`,(0,T.jsx)(a,{withToolbar:!0,of:b}),`
+`,(0,T.jsxs)(h,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(c,{of:b})]}),`
+`,(0,T.jsx)(s,{storyId:`number`,children:(0,T.jsx)(u,{children:`Numbers`})}),`
+`,(0,T.jsx)(o,{of:v}),`
+`,(0,T.jsx)(a,{withToolbar:!0,of:v}),`
+`,(0,T.jsxs)(h,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(c,{of:v})]}),`
+`,(0,T.jsx)(s,{storyId:`ping`,children:(0,T.jsx)(u,{children:`Pinging`})}),`
+`,(0,T.jsx)(o,{of:y}),`
+`,(0,T.jsx)(a,{withToolbar:!0,of:y}),`
+`,(0,T.jsxs)(h,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(c,{of:y})]}),`
+`,(0,T.jsx)(`hr`,{}),`
+`,(0,T.jsx)(s,{storyId:`props`,children:(0,T.jsx)(u,{children:`Props`})}),`
+`,(0,T.jsx)(f,{sort:`requiredFirst`}),`
+`,(0,T.jsx)(s,{storyId:`sample`,children:(0,T.jsx)(u,{children:`Example`})}),`
+`,(0,T.jsx)(t.pre,{children:(0,T.jsx)(t.code,{className:`language-tsx`,children:`import { Button, Badge } from "@react-fabric/core";
 
 export const Example = () => {
   return (
@@ -25,4 +25,4 @@ export const Example = () => {
     </Badge>
   );
 };
-`})})]})}function N(s={}){const{wrapper:e}={...j(),...s.components};return e?n.jsx(e,{...s,children:n.jsx(x,{...s})}):x(s)}export{N as default};
+`})})]})}function w(e={}){let{wrapper:t}={...p(),...e.components};return t?(0,T.jsx)(t,{...e,children:(0,T.jsx)(C,{...e})}):C(e)}var T;t((()=>{T=r(),m(),d(),e(n()),_(),x()}))();export{w as default};

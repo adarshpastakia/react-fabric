@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{G as t,H as n}from"./decorators.js";function r(e){let n=t(100*(1-e));return Math.max(0,Math.min(n,100))}function i(e){let t=1-e/100;return Math.max(0,Math.min(t,1))}var a=e((()=>{n()}));export{r as n,i as r,a as t};

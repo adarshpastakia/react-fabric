@@ -516,7 +516,7 @@
     // buttons, unless a custom appearance was specified
     &:not([appearance]),
     &[appearance="solid"] {
-      --calcite-color-foreground-3: $background-color;
+      --calcite-color-foreground-3: #{$background-color};
     }
 
     &:hover {

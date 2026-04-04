@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{t}from"./glsl.js";import{t as n}from"./ShaderBuilder.js";import{t as r}from"./ScreenSpacePass.glsl.js";import{r as i}from"./NoParameters.js";import{n as a,r as o,t as s}from"./GaussianSplatComposition.glsl.js";e((()=>{r(),t(),i(),n(),a()}))();export{o as GaussianSplatCompositionPassParameters,s as build};

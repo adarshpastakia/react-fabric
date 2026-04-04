@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{E as t}from"./units.js";import{t as n}from"./OperatorProximity.js";import{d as r}from"./apiConverter2.js";import{a as i,i as a,o,r as s,s as c,t as l}from"./proximityOperator.js";e((()=>{n(),t(),r(),c(),s()}))();export{l as getNearestCoordinate,a as getNearestVertex,i as getNearestVertices,o as supportsCurves};

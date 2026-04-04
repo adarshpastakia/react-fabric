@@ -1,4 +1,4 @@
-import{r as o,j as e}from"./iframe-BmpICDQJ.js";import{f as V}from"./index4.js";import{B as L}from"./ButtonGroup2.js";import{B as i,S as I}from"./useDebounce.js";import{C as S}from"./Card2.js";import"./index.js";import{T as R}from"./Title.js";import{H as p}from"./HeadFoot.js";import{R as B,C as f}from"./Responsive.js";import{S as N}from"./Section.js";import{V as H}from"./Viewport.js";import{T as G}from"./Text.js";import{V as b}from"./List.js";import"./cloneElement.js";import"./Tooltip.js";import"./ErrorBoundary.js";import"./createClass.js";import"./Global.js";import"./nodeCheck.js";import"./types.js";import"./usePropToggle.js";import"./EmptyContent.js";import"./isEqual.js";import"./memoize-one.esm.js";import"./Copy.js";import"./Dropdown.js";import"./Menu.js";import"./Google.js";import"./zh-CN.js";import"./endOfDay.js";import"./index5.js";import"./DateDisplay.js";import"./Divider.js";import"./DropdownTool.js";import"./ColorPicker.js";import"./index2.js";import"./Checkbox.js";import"./ErrorIcon.js";import"./Input.js";import"./eventHandlers.js";import"./dedupe.js";import"./debounce.js";const{fn:A}=__STORYBOOK_MODULE_TEST__,ke={component:b,title:"@data/Virtual/Gallery",parameters:{layout:"fullscreen",controls:{exclude:"data"}}},t=50,M=V.lorem.paragraph(),m={render:x=>{const l=o.useRef(null),[h,a]=o.useState(!1),[s,c]=o.useState(50),g=o.useCallback(()=>{a(!0),setTimeout(()=>{c(t+s),a(!1)},200)},[s,t]);return e.jsx("div",{className:"min-h-[600px]",children:e.jsx(H,{children:e.jsxs(N,{children:[e.jsxs(p,{flex:!0,className:"gap-2 p-2 bg-base",children:[e.jsx(i,{onClick:()=>{var n;return(n=l.current)==null?void 0:n.scrollToItem(8)},children:"ScrollTo #9"}),e.jsx(i,{onClick:()=>{var n;return(n=l.current)==null?void 0:n.scrollToItem(12)},children:"ScrollTo #13"}),e.jsx(i,{onClick:()=>{var n;return(n=l.current)==null?void 0:n.hilight(1)},children:"Hilight #2"}),e.jsx(i,{onClick:()=>{var n;return(n=l.current)==null?void 0:n.hilight(2)},children:"Hilight #3"})]}),e.jsx(b,{...x,galleryRef:l,defaultWidth:480,defaultHeight:176,items:new Array(s).fill(!0),onLoadMore:g,loading:h,children:({item:n,index:r})=>n&&e.jsxs("div",{className:"w-[480px] flex flex-nowrap gap-1 py-2 px-4",children:[e.jsxs(S,{bodyClassName:"p-2 flex-1",children:[e.jsx(p,{children:e.jsxs(R,{children:["List item ",r+1]})}),e.jsxs(B,{children:[e.jsx(f,{children:e.jsx("img",{loading:"lazy",className:"border-4 bg-bw-500/50 border-bw-500 object-contain h-24 w-32",src:`https://picsum.photos/id/${r}/192/108`})}),e.jsx(f,{flex:"fill",children:e.jsx(G,{clamp:3,children:M})})]})]}),e.jsxs(L,{vertical:!0,variant:"link",className:"self-start",children:[e.jsx(i,{"aria-label":"plus",variant:"link",icon:"mdi mdi-plus"}),e.jsx(i,{"aria-label":"minus",variant:"link",icon:"mdi mdi-minus"})]})]})})]})})})},args:{total:500,onScroll:A()}},u={render:x=>{const l=o.useRef(null),[h,a]=o.useState(!1),[s,c]=o.useState([]),g=o.useCallback(n=>{a(!0),setTimeout(()=>{if(n===void 0&&c([...s,...new Array(t).fill(!0)]),n!==void 0){const r=Math.floor(n/t),j=Math.ceil(n/t),d=[...s];d.splice(r*t,t,...new Array(t).fill(!0)),d[j*t]===null&&d.splice(j*t,t,...new Array(t).fill(!0)),c(d)}a(!1)},200)},[s]);return o.useEffect(()=>{const n=new Array(150).fill(null);for(var r=100;r<150;r++)n[r]=!0;c(n)},[]),e.jsx("div",{className:"min-h-[600px]",children:e.jsx(H,{children:e.jsxs(N,{children:[e.jsxs(p,{flex:!0,className:"gap-2 p-2 bg-base",children:[e.jsx(i,{onClick:()=>{var n;return(n=l.current)==null?void 0:n.scrollToItem(8)},children:"ScrollTo #9"}),e.jsx(i,{onClick:()=>{var n;return(n=l.current)==null?void 0:n.scrollToItem(12)},children:"ScrollTo #13"}),e.jsx(i,{onClick:()=>{var n;return(n=l.current)==null?void 0:n.hilight(1)},children:"Hilight #2"}),e.jsx(i,{onClick:()=>{var n;return(n=l.current)==null?void 0:n.hilight(2)},children:"Hilight #3"})]}),e.jsx(b,{...x,galleryRef:l,defaultHeight:80,defaultWidth:608,loading:h,items:s,initialScroll:100,onLoadMore:g,children:({item:n,index:r})=>e.jsxs("div",{className:"w-[620px] flex flex-nowrap gap-1 py-2 px-4",children:[n&&e.jsxs(o.Fragment,{children:[e.jsxs(S,{bodyClassName:"p-2 flex-1",children:[e.jsx(p,{children:e.jsxs(R,{children:["List item ",r+1]})}),e.jsxs(B,{children:[e.jsx(f,{children:e.jsx("img",{loading:"lazy",className:"border-4 bg-bw-500/50 border-bw-500 object-contain h-24 w-32",src:`https://picsum.photos/id/${r}/192/108`})}),e.jsx(f,{flex:"fill",children:e.jsx(G,{clamp:3,children:M})})]})]}),e.jsxs(L,{vertical:!0,variant:"link",className:"self-start",children:[e.jsx(i,{"aria-label":"plus",variant:"link",icon:"mdi mdi-plus"}),e.jsx(i,{"aria-label":"minus",variant:"link",icon:"mdi mdi-minus"})]})]}),!n&&e.jsx("div",{className:"flex-1",children:e.jsx(I,{})})]})})]})})})},args:{}};var C,w,y;m.parameters={...m.parameters,docs:{...(C=m.parameters)==null?void 0:C.docs,source:{originalSource:`{
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{H as i,I as a,R as o,Y as s,d as c,h as l,m as u,mt as d,o as f,p,t as m,ut as h}from"./iframe-B-Wcw5ev.js";import{r as g,t as _}from"./dist28.js";import{r as v,t as y}from"./src4.js";var b,x,S,C,w,T,E,D,O;t((()=>{_(),m(),b=e(n()),y(),x=r(),{fn:S}=__STORYBOOK_MODULE_TEST__,C={component:v,title:`@data/Virtual/Gallery`,parameters:{layout:`fullscreen`,controls:{exclude:`data`}}},w=50,T=g.lorem.paragraph(),E={render:e=>{let t=(0,b.useRef)(null),[n,r]=(0,b.useState)(!1),[m,h]=(0,b.useState)(50),g=(0,b.useCallback)(()=>{r(!0),setTimeout(()=>{h(w+m),r(!1)},200)},[m,w]);return(0,x.jsx)(`div`,{className:`min-h-150`,children:(0,x.jsx)(c,{children:(0,x.jsxs)(p,{children:[(0,x.jsxs)(o,{flex:!0,className:`gap-2 p-2 bg-default`,children:[(0,x.jsx)(s,{onClick:()=>t.current?.scrollToItem(8),children:`ScrollTo #9`}),(0,x.jsx)(s,{onClick:()=>t.current?.scrollToItem(12),children:`ScrollTo #13`}),(0,x.jsx)(s,{onClick:()=>t.current?.hilight(1),children:`Hilight #2`}),(0,x.jsx)(s,{onClick:()=>t.current?.hilight(2),children:`Hilight #3`})]}),(0,x.jsx)(v,{...e,galleryRef:t,defaultWidth:480,defaultHeight:176,items:Array(m).fill(!0),onLoadMore:g,loading:n,children:({item:e,index:t})=>e&&(0,x.jsxs)(`div`,{className:`w-120 flex flex-nowrap gap-1 py-2 px-4`,children:[(0,x.jsxs)(a,{bodyClassName:`p-2 flex-1`,children:[(0,x.jsx)(o,{children:(0,x.jsxs)(i,{children:[`List item `,t+1]})}),(0,x.jsxs)(l,{children:[(0,x.jsx)(u,{children:(0,x.jsx)(`img`,{loading:`lazy`,className:`border-4 bg-bw-500/50 border-bw-500 object-contain h-24 w-32`,src:`https://picsum.photos/id/${t}/192/108`})}),(0,x.jsx)(u,{flex:`fill`,children:(0,x.jsx)(f,{clamp:3,children:T})})]})]}),(0,x.jsxs)(d,{vertical:!0,variant:`link`,className:`self-start`,children:[(0,x.jsx)(s,{"aria-label":`plus`,variant:`link`,icon:`mdi mdi-plus`}),(0,x.jsx)(s,{"aria-label":`minus`,variant:`link`,icon:`mdi mdi-minus`})]})]})})]})})})},args:{total:500,onScroll:S()}},D={render:e=>{let t=(0,b.useRef)(null),[n,r]=(0,b.useState)(!1),[m,g]=(0,b.useState)([]),_=(0,b.useCallback)(e=>{r(!0),setTimeout(()=>{if(e===void 0&&g([...m,...Array(w).fill(!0)]),e!==void 0){let t=Math.floor(e/w),n=Math.ceil(e/w),r=[...m];r.splice(t*w,w,...Array(w).fill(!0)),r[n*w]===null&&r.splice(n*w,w,...Array(w).fill(!0)),g(r)}r(!1)},200)},[m]);return(0,b.useEffect)(()=>{let e=Array(150).fill(null);for(var t=100;t<150;t++)e[t]=!0;g(e)},[]),(0,x.jsx)(`div`,{className:`min-h-150`,children:(0,x.jsx)(c,{children:(0,x.jsxs)(p,{children:[(0,x.jsxs)(o,{flex:!0,className:`gap-2 p-2 bg-default`,children:[(0,x.jsx)(s,{onClick:()=>t.current?.scrollToItem(8),children:`ScrollTo #9`}),(0,x.jsx)(s,{onClick:()=>t.current?.scrollToItem(12),children:`ScrollTo #13`}),(0,x.jsx)(s,{onClick:()=>t.current?.hilight(1),children:`Hilight #2`}),(0,x.jsx)(s,{onClick:()=>t.current?.hilight(2),children:`Hilight #3`})]}),(0,x.jsx)(v,{...e,galleryRef:t,defaultHeight:80,defaultWidth:608,loading:n,items:m,initialScroll:100,onLoadMore:_,children:({item:e,index:t})=>(0,x.jsxs)(`div`,{className:`w-155 flex flex-nowrap gap-1 py-2 px-4`,children:[e&&(0,x.jsxs)(b.Fragment,{children:[(0,x.jsxs)(a,{bodyClassName:`p-2 flex-1`,children:[(0,x.jsx)(o,{children:(0,x.jsxs)(i,{children:[`List item `,t+1]})}),(0,x.jsxs)(l,{children:[(0,x.jsx)(u,{children:(0,x.jsx)(`img`,{loading:`lazy`,className:`border-4 bg-bw-500/50 border-bw-500 object-contain h-24 w-32`,src:`https://picsum.photos/id/${t}/192/108`})}),(0,x.jsx)(u,{flex:`fill`,children:(0,x.jsx)(f,{clamp:3,children:T})})]})]}),(0,x.jsxs)(d,{vertical:!0,variant:`link`,className:`self-start`,children:[(0,x.jsx)(s,{"aria-label":`plus`,variant:`link`,icon:`mdi mdi-plus`}),(0,x.jsx)(s,{"aria-label":`minus`,variant:`link`,icon:`mdi mdi-minus`})]})]}),!e&&(0,x.jsx)(`div`,{className:`flex-1`,children:(0,x.jsx)(h,{})})]})})]})})})},args:{}},E.parameters={...E.parameters,docs:{...E.parameters?.docs,source:{originalSource:`{
   render: args => {
     const listRef = useRef<VirtualGalleryRef>(null);
     const [isLoading, setLoading] = useState(false);
@@ -10,10 +10,10 @@ import{r as o,j as e}from"./iframe-BmpICDQJ.js";import{f as V}from"./index4.js";
         setLoading(false);
       }, 200);
     }, [recordCount, count]);
-    return <div className="min-h-[600px]">
+    return <div className="min-h-150">
         <Viewport>
           <Section>
-            <Header flex className="gap-2 p-2 bg-base">
+            <Header flex className="gap-2 p-2 bg-default">
               <Button onClick={() => listRef.current?.scrollToItem(8)}>
                 ScrollTo #9
               </Button>
@@ -31,7 +31,7 @@ import{r as o,j as e}from"./iframe-BmpICDQJ.js";import{f as V}from"./index4.js";
               {({
               item,
               index
-            }) => item && <div className="w-[480px] flex flex-nowrap gap-1 py-2 px-4">
+            }) => item && <div className="w-120 flex flex-nowrap gap-1 py-2 px-4">
                     <Card bodyClassName="p-2 flex-1">
                       <Header>
                         <Title>List item {index + 1}</Title>
@@ -59,7 +59,7 @@ import{r as o,j as e}from"./iframe-BmpICDQJ.js";import{f as V}from"./index4.js";
     total: 500,
     onScroll: fn()
   }
-}`,...(y=(w=m.parameters)==null?void 0:w.docs)==null?void 0:y.source}}};var v,T,k;u.parameters={...u.parameters,docs:{...(v=u.parameters)==null?void 0:v.docs,source:{originalSource:`{
+}`,...E.parameters?.docs?.source}}},D.parameters={...D.parameters,docs:{...D.parameters?.docs,source:{originalSource:`{
   render: args => {
     const listRef = useRef<VirtualGalleryRef>(null);
     const [isLoading, setLoading] = useState(false);
@@ -84,10 +84,10 @@ import{r as o,j as e}from"./iframe-BmpICDQJ.js";import{f as V}from"./index4.js";
       for (var idx = 100; idx < 150; idx++) items[idx] = true;
       setItems(items);
     }, []);
-    return <div className="min-h-[600px]">
+    return <div className="min-h-150">
         <Viewport>
           <Section>
-            <Header flex className="gap-2 p-2 bg-base">
+            <Header flex className="gap-2 p-2 bg-default">
               <Button onClick={() => listRef.current?.scrollToItem(8)}>
                 ScrollTo #9
               </Button>
@@ -105,7 +105,7 @@ import{r as o,j as e}from"./iframe-BmpICDQJ.js";import{f as V}from"./index4.js";
               {({
               item,
               index
-            }) => <div className="w-[620px] flex flex-nowrap gap-1 py-2 px-4">
+            }) => <div className="w-155 flex flex-nowrap gap-1 py-2 px-4">
                   {item && <Fragment>
                       <Card bodyClassName="p-2 flex-1">
                         <Header>
@@ -135,4 +135,4 @@ import{r as o,j as e}from"./iframe-BmpICDQJ.js";import{f as V}from"./index4.js";
       </div>;
   },
   args: {}
-}`,...(k=(T=u.parameters)==null?void 0:T.docs)==null?void 0:k.source}}};const Le=["Gallery","LoadableList"];export{m as Gallery,u as LoadableList,Le as __namedExportsOrder,ke as default};
+}`,...D.parameters?.docs?.source}}},O=[`Gallery`,`LoadableList`]}))();export{E as Gallery,D as LoadableList,O as __namedExportsOrder,C as default};

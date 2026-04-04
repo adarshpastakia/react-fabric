@@ -1,1 +1,0 @@
-import{$ as e}from"./iframe-BmpICDQJ.js";var o=function(t){for(var n=arguments.length,a=new Array(n>1?n-1:0),r=1;r<n;r++)a[r-1]=arguments[r];return e(t)&&"type"in t&&a.includes(t.type)};export{o as n};

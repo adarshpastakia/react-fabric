@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(e){if(e.graphic&&e.graphic.layer?.type!==`graphics`)return 1;let t=e.operations?.data.type;if(!t)return 3;switch(t){case`polygon`:case`point`:case`polyline`:case`mesh`:break;default:return 3}return 0}var n=e((()=>{}));export{n,t};

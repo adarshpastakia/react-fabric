@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{d as t}from"./apiConverter2.js";import{a as n,i as r,n as i,t as a}from"./equalsOperator.js";e((()=>{i(),t()}))();export{n as accelerateGeometry,a as execute,r as supportsCurves};

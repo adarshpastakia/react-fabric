@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";var t,n,r=e((()=>{t=`circle`,n=`sphere`}));export{t as n,r,n as t};

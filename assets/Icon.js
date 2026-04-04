@@ -1,24 +1,24 @@
-import{j as s,M as h,T as m,A as r,S as e,D as c,a7 as p,P as f,c as a,C as t,b as x,a as u}from"./iframe-BmpICDQJ.js";import{useMDXComponents as j}from"./index3.js";import{I as C,_ as I,C as i,S as l}from"./Icon.stories.js";function d(n){const o={code:"code",pre:"pre",...j(),...n.components};return s.jsxs(s.Fragment,{children:[s.jsx(h,{of:C}),`
-`,s.jsx(m,{children:"Icon"}),`
-`,s.jsx(r,{storyId:"icon",children:s.jsx("div",{className:"hidden-anchor",children:s.jsx(e,{children:"Icon"})})}),`
-`,s.jsx(c,{of:p}),`
-`,s.jsx(f,{}),`
-`,s.jsxs(a,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(t,{of:I})]}),`
-`,s.jsx(r,{storyId:"colors",children:s.jsx(e,{children:"Colors"})}),`
-`,s.jsx(c,{of:i}),`
-`,s.jsx(x,{withToolbar:!0,of:i}),`
-`,s.jsxs(a,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(t,{of:i})]}),`
-`,s.jsx(r,{storyId:"sizes",children:s.jsx(e,{children:"Sizes"})}),`
-`,s.jsx(c,{of:l}),`
-`,s.jsx(x,{withToolbar:!0,of:l}),`
-`,s.jsxs(a,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(t,{of:l})]}),`
-`,s.jsx("hr",{}),`
-`,s.jsx(r,{storyId:"props",children:s.jsx(e,{children:"Props"})}),`
-`,s.jsx(u,{sort:"requiredFirst"}),`
-`,s.jsx(r,{storyId:"sample",children:s.jsx(e,{children:"Example"})}),`
-`,s.jsx(o.pre,{children:s.jsx(o.code,{className:"language-tsx",children:`import { Icon } from "@react-fabric/core";
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{$t as i,Bt as a,Gt as o,Lt as s,Wt as c,Xt as l,Zt as u,nn as d,zt as f}from"./iframe-B-Wcw5ev.js";import{r as p}from"./react2.js";import{t as m}from"./mdx-react-shim.js";import{N as h,at as g,t as _}from"./src3.js";import{Colors as v,Sizes as y,_Icon as b,n as x,t as S}from"./Icon.stories.js";function C(e){let t={code:`code`,pre:`pre`,...p(),...e.components};return(0,T.jsxs)(T.Fragment,{children:[(0,T.jsx)(l,{of:S}),`
+`,(0,T.jsx)(i,{children:`Icon`}),`
+`,(0,T.jsx)(s,{storyId:`icon`,children:(0,T.jsx)(`div`,{className:`hidden-anchor`,children:(0,T.jsx)(u,{children:`Icon`})})}),`
+`,(0,T.jsx)(o,{of:g}),`
+`,(0,T.jsx)(a,{withToolbar:!0,of:b}),`
+`,(0,T.jsxs)(h,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(c,{of:b})]}),`
+`,(0,T.jsx)(s,{storyId:`colors`,children:(0,T.jsx)(u,{children:`Colors`})}),`
+`,(0,T.jsx)(o,{of:v}),`
+`,(0,T.jsx)(a,{withToolbar:!0,of:v}),`
+`,(0,T.jsxs)(h,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(c,{of:v})]}),`
+`,(0,T.jsx)(s,{storyId:`sizes`,children:(0,T.jsx)(u,{children:`Sizes`})}),`
+`,(0,T.jsx)(o,{of:y}),`
+`,(0,T.jsx)(a,{withToolbar:!0,of:y}),`
+`,(0,T.jsxs)(h,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(c,{of:y})]}),`
+`,(0,T.jsx)(`hr`,{}),`
+`,(0,T.jsx)(s,{storyId:`props`,children:(0,T.jsx)(u,{children:`Props`})}),`
+`,(0,T.jsx)(f,{sort:`requiredFirst`}),`
+`,(0,T.jsx)(s,{storyId:`sample`,children:(0,T.jsx)(u,{children:`Example`})}),`
+`,(0,T.jsx)(t.pre,{children:(0,T.jsx)(t.code,{className:`language-tsx`,children:`import { Icon } from "@react-fabric/core";
 
 export const Example = () => {
   return <Icon icon="svg path / image url" />;
 };
-`})})]})}function v(n={}){const{wrapper:o}={...j(),...n.components};return o?s.jsx(o,{...n,children:s.jsx(d,{...n})}):d(n)}export{v as default};
+`})})]})}function w(e={}){let{wrapper:t}={...p(),...e.components};return t?(0,T.jsx)(t,{...e,children:(0,T.jsx)(C,{...e})}):C(e)}var T;t((()=>{T=r(),m(),d(),e(n()),_(),x()}))();export{w as default};

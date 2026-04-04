@@ -1,26 +1,26 @@
-import{j as s,M as m,T as C,A as e,S as r,D as a,ag as p,P as f,c as l,C as t,b as c,a as u}from"./iframe-BmpICDQJ.js";import{useMDXComponents as h}from"./index3.js";import{C as T,_ as b,a as d,H as i,b as x}from"./Card.stories.js";import"./index4.js";function j(n){const o={code:"code",pre:"pre",...h(),...n.components};return s.jsxs(s.Fragment,{children:[s.jsx(m,{of:T}),`
-`,s.jsx(C,{children:"Card"}),`
-`,s.jsx(e,{storyId:"card",children:s.jsx("div",{className:"hidden-anchor",children:s.jsx(r,{children:"Card"})})}),`
-`,s.jsx(a,{of:p}),`
-`,s.jsx(f,{}),`
-`,s.jsxs(l,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(t,{of:b})]}),`
-`,s.jsx(e,{storyId:"clickable",children:s.jsx(r,{children:"Clickable"})}),`
-`,s.jsx(a,{of:d}),`
-`,s.jsx(c,{withToolbar:!0,of:d}),`
-`,s.jsxs(l,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(t,{of:d})]}),`
-`,s.jsx(e,{storyId:"headFoot",children:s.jsx(r,{children:"Header Footer"})}),`
-`,s.jsx(a,{of:i}),`
-`,s.jsx(c,{withToolbar:!0,of:i}),`
-`,s.jsxs(l,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(t,{of:i})]}),`
-`,s.jsx(e,{storyId:"cardCover",children:s.jsx(r,{children:"Card Cover"})}),`
-`,s.jsx(a,{of:x}),`
-`,s.jsx(c,{withToolbar:!0,of:x}),`
-`,s.jsxs(l,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(t,{of:x})]}),`
-`,s.jsx("hr",{}),`
-`,s.jsx(e,{storyId:"props",children:s.jsx(r,{children:"Props"})}),`
-`,s.jsx(u,{sort:"requiredFirst"}),`
-`,s.jsx(e,{storyId:"sample",children:s.jsx(r,{children:"Example"})}),`
-`,s.jsx(o.pre,{children:s.jsx(o.code,{className:"language-tsx",children:`import { Card } from "@react-fabric/core";
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{$t as i,Bt as a,Gt as o,Lt as s,Wt as c,Xt as l,Zt as u,nn as d,zt as f}from"./iframe-B-Wcw5ev.js";import{r as p}from"./react2.js";import{t as m}from"./mdx-react-shim.js";import{N as h,t as g,z as _}from"./src3.js";import{Clickable as v,HeadFoot as y,_Card as b,_CardCover as x,n as S,t as C}from"./Card.stories.js";function w(e){let t={code:`code`,pre:`pre`,...p(),...e.components};return(0,E.jsxs)(E.Fragment,{children:[(0,E.jsx)(l,{of:C}),`
+`,(0,E.jsx)(i,{children:`Card`}),`
+`,(0,E.jsx)(s,{storyId:`card`,children:(0,E.jsx)(`div`,{className:`hidden-anchor`,children:(0,E.jsx)(u,{children:`Card`})})}),`
+`,(0,E.jsx)(o,{of:_}),`
+`,(0,E.jsx)(a,{withToolbar:!0,of:b}),`
+`,(0,E.jsxs)(h,{className:`control-panel`,children:[(0,E.jsx)(`div`,{children:`Controls`}),(0,E.jsx)(c,{of:b})]}),`
+`,(0,E.jsx)(s,{storyId:`clickable`,children:(0,E.jsx)(u,{children:`Clickable`})}),`
+`,(0,E.jsx)(o,{of:v}),`
+`,(0,E.jsx)(a,{withToolbar:!0,of:v}),`
+`,(0,E.jsxs)(h,{className:`control-panel`,children:[(0,E.jsx)(`div`,{children:`Controls`}),(0,E.jsx)(c,{of:v})]}),`
+`,(0,E.jsx)(s,{storyId:`headFoot`,children:(0,E.jsx)(u,{children:`Header Footer`})}),`
+`,(0,E.jsx)(o,{of:y}),`
+`,(0,E.jsx)(a,{withToolbar:!0,of:y}),`
+`,(0,E.jsxs)(h,{className:`control-panel`,children:[(0,E.jsx)(`div`,{children:`Controls`}),(0,E.jsx)(c,{of:y})]}),`
+`,(0,E.jsx)(s,{storyId:`cardCover`,children:(0,E.jsx)(u,{children:`Card Cover`})}),`
+`,(0,E.jsx)(o,{of:x}),`
+`,(0,E.jsx)(a,{withToolbar:!0,of:x}),`
+`,(0,E.jsxs)(h,{className:`control-panel`,children:[(0,E.jsx)(`div`,{children:`Controls`}),(0,E.jsx)(c,{of:x})]}),`
+`,(0,E.jsx)(`hr`,{}),`
+`,(0,E.jsx)(s,{storyId:`props`,children:(0,E.jsx)(u,{children:`Props`})}),`
+`,(0,E.jsx)(f,{sort:`requiredFirst`}),`
+`,(0,E.jsx)(s,{storyId:`sample`,children:(0,E.jsx)(u,{children:`Example`})}),`
+`,(0,E.jsx)(t.pre,{children:(0,E.jsx)(t.code,{className:`language-tsx`,children:`import { Card } from "@react-fabric/core";
 
 export const Example = () => {
   return (
@@ -35,4 +35,4 @@ export const Example = () => {
     </Button>
   );
 };
-`})})]})}function I(n={}){const{wrapper:o}={...h(),...n.components};return o?s.jsx(o,{...n,children:s.jsx(j,{...n})}):j(n)}export{I as default};
+`})})]})}function T(e={}){let{wrapper:t}={...p(),...e.components};return t?(0,E.jsx)(t,{...e,children:(0,E.jsx)(w,{...e})}):w(e)}var E;t((()=>{E=r(),m(),d(),e(n()),g(),S()}))();export{T as default};

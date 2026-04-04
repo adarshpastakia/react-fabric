@@ -1,1 +1,1 @@
-const t=Symbol("ImageElementInstance"),e=Symbol("VideoElementInstance");function o(n){return n!=null&&typeof n=="object"&&t in n}function c(n){return n!=null&&typeof n=="object"&&e in n}function l(n){return o(n)||c(n)}export{l as c,e,t as n,c as o};
+import{n as e}from"./chunk.js";function t(e){return typeof e==`object`&&!!e&&i in e}function n(e){return typeof e==`object`&&!!e&&a in e}function r(e){return t(e)||n(e)}var i,a,o=e((()=>{i=Symbol(`ImageElementInstance`),a=Symbol(`VideoElementInstance`)}));export{n as a,i,a as n,o as r,r as t};

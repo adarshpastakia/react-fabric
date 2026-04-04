@@ -1,0 +1,1 @@
+import{n as e,t}from"./calcite-icon.js";t();export{e as Icon};

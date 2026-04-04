@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{E as t}from"./units.js";import{i as n}from"./operatorGeodeticDensify.js";import{a as r,i,n as a,o,s,t as c}from"./geodeticDensifyOperator.js";e((()=>{t(),n(),i()}))();export{r as execute,c as executeMany,a as isLoaded,s as load,o as supportsCurves};

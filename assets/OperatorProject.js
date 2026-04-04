@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{hn as t}from"./Point2D.js";import{mt as n,wt as r}from"./SpatialReference2.js";e((()=>{t(),n()}))();export{r as OperatorProject};

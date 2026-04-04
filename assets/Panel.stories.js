@@ -1,4 +1,4 @@
-import{j as e,au as g,av as o,e as x,as as f,a6 as l,ak as j}from"./iframe-BmpICDQJ.js";import{f as s}from"./index4.js";const{fn:t}=__STORYBOOK_MODULE_TEST__,P={component:o,subcomponents:{PanelGroup:g},title:"@core/components/Panel",parameters:{layout:"centered",controls:{exclude:/^(on.*|children|as)/},jest:["core/tests/Panel.test.tsx"]},decorators:[a=>e.jsx("div",{className:"w-96 p-4",children:e.jsx(a,{})})]},n={render:a=>e.jsx(e.Fragment,{children:e.jsxs(o,{...a,actions:e.jsx(j,{className:"self-center",onNavigate:t()}),children:[e.jsx(x,{children:s.lorem.paragraphs(2)}),e.jsxs(f,{flex:!0,justify:"end",className:"px-2 py-1",children:[e.jsx(l,{variant:"link",children:"Cancel"}),e.jsx(l,{variant:"solid",children:"OK"})]})]})}),args:{title:s.animal.cat()}},r={render:a=>e.jsx(o,{...a,children:e.jsx(x,{children:s.lorem.paragraphs(2)})}),args:{title:s.animal.cat(),collapsable:!0,expandable:!0,onClose:t(),onExpand:t(),onCollapse:t()}};var c,i,p;n.parameters={...n.parameters,docs:{...(c=n.parameters)==null?void 0:c.docs,source:{originalSource:`{
+import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";import{r,t as i}from"./dist28.js";import{B as a,C as o,Q as s,S as c,h as l,t as u,x as d}from"./src3.js";var f=t({PanelControls:()=>v,_Panel:()=>_,__namedExportsOrder:()=>y,default:()=>g}),p,m,h,g,_,v,y,b=e((()=>{i(),p=n(),u(),m=n(),{fn:h}=__STORYBOOK_MODULE_TEST__,g={component:c,subcomponents:{PanelGroup:d},title:`@core/components/Panel`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/Panel.test.tsx`]},decorators:[e=>(0,m.jsx)(`div`,{className:`w-96 p-4`,children:(0,m.jsx)(e,{})})]},_={render:e=>(0,m.jsx)(p.Fragment,{children:(0,m.jsxs)(c,{...e,actions:(0,m.jsx)(o,{className:`self-center`,onNavigate:h()}),children:[(0,m.jsx)(l,{children:r.lorem.paragraphs(2)}),(0,m.jsxs)(a,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,m.jsx)(s,{variant:`link`,children:`Cancel`}),(0,m.jsx)(s,{variant:`solid`,children:`OK`})]})]})}),args:{title:r.animal.cat()}},v={render:e=>(0,m.jsx)(c,{...e,children:(0,m.jsx)(l,{children:r.lorem.paragraphs(2)})}),args:{title:r.animal.cat(),collapsable:!0,expandable:!0,onClose:h(),onExpand:h(),onCollapse:h()}},_.parameters={..._.parameters,docs:{..._.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Fragment>
         <Panel {...args} actions={<Navigator className="self-center" onNavigate={fn()} />}>
@@ -13,7 +13,7 @@ import{j as e,au as g,av as o,e as x,as as f,a6 as l,ak as j}from"./iframe-BmpIC
   args: {
     title: faker.animal.cat()
   }
-}`,...(p=(i=n.parameters)==null?void 0:i.docs)==null?void 0:p.source}}};var d,m,u;r.parameters={...r.parameters,docs:{...(d=r.parameters)==null?void 0:d.docs,source:{originalSource:`{
+}`,..._.parameters?.docs?.source}}},v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Panel {...args}>
         <Content>{faker.lorem.paragraphs(2)}</Content>
@@ -27,4 +27,4 @@ import{j as e,au as g,av as o,e as x,as as f,a6 as l,ak as j}from"./iframe-BmpIC
     onExpand: fn(),
     onCollapse: fn()
   }
-}`,...(u=(m=r.parameters)==null?void 0:m.docs)==null?void 0:u.source}}};const _=["_Panel","PanelControls"],v=Object.freeze(Object.defineProperty({__proto__:null,PanelControls:r,_Panel:n,__namedExportsOrder:_,default:P},Symbol.toStringTag,{value:"Module"}));export{v as P,n as _,r as a};
+}`,...v.parameters?.docs?.source}}},y=[`_Panel`,`PanelControls`]}));b();export{v as PanelControls,_ as _Panel,y as __namedExportsOrder,g as default,b as n,f as t};

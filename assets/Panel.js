@@ -1,1 +1,33 @@
-import{_ as q,l as O,r as G,j as a,m as t,n as J}from"./iframe-BmpICDQJ.js";import{u as w}from"./usePropToggle.js";import{H as Q,L as U}from"./useDebounce.js";import{I as s,a as V}from"./Tooltip.js";var X=["children","className","titleClassName","headerClassName","title","actions","icon","panelId","height","width","minHeight","minWidth","maxHeight","maxWidth","loading","expandable","expanded","onExpand","collapsable","collapsed","onCollapse","onClose","onBack"];function k(i,e){var n=Object.keys(i);if(Object.getOwnPropertySymbols){var o=Object.getOwnPropertySymbols(i);e&&(o=o.filter(function(p){return Object.getOwnPropertyDescriptor(i,p).enumerable})),n.push.apply(n,o)}return n}function h(i){for(var e=1;e<arguments.length;e++){var n=arguments[e]!=null?arguments[e]:{};e%2?k(Object(n),!0).forEach(function(o){J(i,o,n[o])}):Object.getOwnPropertyDescriptors?Object.defineProperties(i,Object.getOwnPropertyDescriptors(n)):k(Object(n)).forEach(function(o){Object.defineProperty(i,o,Object.getOwnPropertyDescriptor(n,o))})}return i}var ae=function(e){var n=e.children,o=e.className,p=e.titleClassName,H=e.headerClassName,x=e.title,W=e.actions,g=e.icon,u=e.panelId,E=e.height,b=e.width,T=e.minHeight,j=e.minWidth,B=e.maxHeight,f=e.maxWidth,I=e.loading,m=e.expandable,A=e.expanded,D=e.onExpand,c=e.collapsable,L=e.collapsed,S=e.onCollapse,r=e.onClose,C=e.onBack,K=q(e,X),z=w(L,S,u),N=O(z,2),d=N[0],v=N[1],F=w(A,D,u),y=O(F,2),l=y[0],P=y[1],M=G.useMemo(function(){return!!m||!!c||!!r},[m,c,r]);return a.jsxs("div",h(h({className:t("fabric-panel",o,"rounded-capped overflow-hidden outline grid",l?"fixed inset-4 z-50":"relative"),"data-ref":"panel","data-collapsed":d,style:l?{}:d?{width:b,minWidth:j,maxWidth:f}:{height:E,width:b,minWidth:j,minHeight:T,maxWidth:f,maxHeight:B}},K),{},{children:[l&&a.jsx(Q,{keyCombo:"esc",handler:P}),a.jsxs("header",{role:"none",className:t("fabric-panelHeader",H,"flex flex-nowrap items-center area-head"),"data-ref":"panelHeader",onClick:c?v:void 0,children:[C&&a.jsx(s,{rtlFlip:!0,"data-ref":"panelBack",className:t("fabric-panelAction","cursor-pointer"),icon:"icon-[mdi--chevron-left]",onClick:C}),g&&a.jsx(s,h({className:"p-2 text-md select-none pointer-events-none"},V(g))),a.jsx("div",{className:t(p,"flex-1 select-none truncate",x&&"py-1 first:px-2"),children:x}),a.jsx("div",{className:"px-1 leading-none",children:W}),M&&a.jsxs("div",{role:"none",className:"px-1 gap-px flex",onClick:function(R){return R.stopPropagation()},children:[m&&a.jsx(s,{"data-ref":"panelExpand",className:t("fabric-panelAction","cursor-pointer"),icon:l?"icon-[mdi--fullscreen-exit]":"icon-[mdi--fullscreen]",onClick:P}),!l&&c&&a.jsx(s,{"data-ref":"panelCollapse",className:t("fabric-panelAction","cursor-pointer"),icon:d?"icon-[mdi--plus-box]":"icon-[mdi--minus-box]",onClick:v}),!l&&r&&a.jsx(s,{"data-ref":"panelClose",className:t("fabric-panelAction","cursor-pointer"),icon:"icon-[mdi--close]",onClick:r})]})]}),(!d||l)&&a.jsxs("div",{"data-ref":"panelBody",className:t("fabric-panelBody","area-content grid overflow-hidden"),children:[I&&a.jsx(U,{}),n]})]}))};export{ae as P};
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{$t as i,Bt as a,Gt as o,Lt as s,Wt as c,Xt as l,Zt as u,nn as d,zt as f}from"./iframe-B-Wcw5ev.js";import{r as p}from"./react2.js";import{t as m}from"./mdx-react-shim.js";import{N as h,S as g,t as _}from"./src3.js";import{PanelControls as v,_Panel as y,n as b,t as x}from"./Panel.stories.js";import{AsideContent as S,_PanelGroup as C,t as w}from"./PanelGroup.stories.js";function T(e){let t={code:`code`,pre:`pre`,...p(),...e.components};return(0,D.jsxs)(D.Fragment,{children:[(0,D.jsx)(l,{of:x}),`
+`,(0,D.jsx)(i,{children:`Panel`}),`
+`,(0,D.jsx)(s,{storyId:`panel`,children:(0,D.jsx)(`div`,{className:`hidden-anchor`,children:(0,D.jsx)(u,{children:`Panel`})})}),`
+`,(0,D.jsx)(o,{of:g}),`
+`,(0,D.jsx)(a,{withToolbar:!0,of:y}),`
+`,(0,D.jsxs)(h,{className:`control-panel`,children:[(0,D.jsx)(`div`,{children:`Controls`}),(0,D.jsx)(c,{of:y})]}),`
+`,(0,D.jsx)(s,{storyId:`controls`,children:(0,D.jsx)(u,{children:`With Controls`})}),`
+`,(0,D.jsx)(o,{of:v}),`
+`,(0,D.jsx)(a,{withToolbar:!0,of:v}),`
+`,(0,D.jsxs)(h,{className:`control-panel`,children:[(0,D.jsx)(`div`,{children:`Controls`}),(0,D.jsx)(c,{of:v})]}),`
+`,(0,D.jsx)(s,{storyId:`panelgroup`,children:(0,D.jsx)(u,{children:`Panel Group`})}),`
+`,(0,D.jsx)(o,{of:C}),`
+`,(0,D.jsx)(a,{withToolbar:!0,of:C}),`
+`,(0,D.jsxs)(h,{className:`control-panel`,children:[(0,D.jsx)(`div`,{children:`Controls`}),(0,D.jsx)(c,{of:C})]}),`
+`,(0,D.jsx)(s,{storyId:`asidecontent`,children:(0,D.jsx)(u,{children:`Aside Content`})}),`
+`,(0,D.jsx)(o,{of:S}),`
+`,(0,D.jsx)(a,{withToolbar:!0,of:S}),`
+`,(0,D.jsxs)(h,{className:`control-panel`,children:[(0,D.jsx)(`div`,{children:`Controls`}),(0,D.jsx)(c,{of:S})]}),`
+`,(0,D.jsx)(`hr`,{}),`
+`,(0,D.jsx)(s,{storyId:`props`,children:(0,D.jsx)(u,{children:`Props`})}),`
+`,(0,D.jsx)(f,{sort:`requiredFirst`}),`
+`,(0,D.jsx)(s,{storyId:`sample`,children:(0,D.jsx)(u,{children:`Example`})}),`
+`,(0,D.jsx)(t.pre,{children:(0,D.jsx)(t.code,{className:`language-tsx`,children:`import { Panel } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <Panel title="Empty title">
+      <Content>...</Content>
+      <Footer>...</Footer>
+    </EmptyContent>
+  );
+};
+`})})]})}function E(e={}){let{wrapper:t}={...p(),...e.components};return t?(0,D.jsx)(t,{...e,children:(0,D.jsx)(T,{...e})}):T(e)}var D;t((()=>{D=r(),m(),d(),e(n()),_(),b(),w()}))();export{E as default};

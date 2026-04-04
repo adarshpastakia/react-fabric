@@ -74,6 +74,12 @@
       padding: var(--calcite-spacing-md);
     }
 
+    &__edit-information-container {
+      border-bottom: var(--calcite-border-width-sm) solid var(--calcite-color-border-3);
+      background-color: var(--calcite-color-surface-1);
+      padding: var(--calcite-spacing-md);
+    }
+
     &__edit-toolbar-container {
       display: flex;
       flex-flow: column nowrap;

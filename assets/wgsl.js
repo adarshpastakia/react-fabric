@@ -1,4 +1,4 @@
-const g={comments:{lineComment:"//",blockComment:["/*","*/"]},brackets:[["{","}"],["[","]"],["(",")"]],autoClosingPairs:[{open:"[",close:"]"},{open:"{",close:"}"},{open:"(",close:")"}],surroundingPairs:[{open:"{",close:"}"},{open:"[",close:"]"},{open:"(",close:")"}]};function e(i){let o=[];const a=i.split(/\t+|\r+|\n+| +/);for(let r=0;r<a.length;++r)a[r].length>0&&o.push(a[r]);return o}const s=e("true false"),c=e(`
+import{n as e}from"./chunk.js";function t(e){let t=[],n=e.split(/\t+|\r+|\n+| +/);for(let e=0;e<n.length;++e)n[e].length>0&&t.push(n[e]);return t}var n,r,i,a,o,s,c,l,u,d,f,p,m,h;e((()=>{n={comments:{lineComment:`//`,blockComment:[`/*`,`*/`]},brackets:[[`{`,`}`],[`[`,`]`],[`(`,`)`]],autoClosingPairs:[{open:`[`,close:`]`},{open:`{`,close:`}`},{open:`(`,close:`)`}],surroundingPairs:[{open:`{`,close:`}`},{open:`[`,close:`]`},{open:`(`,close:`)`}]},r=t(`true false`),i=t(`
 			  alias
 			  break
 			  case
@@ -23,7 +23,7 @@ const g={comments:{lineComment:"//",blockComment:["/*","*/"]},brackets:[["{","}"
 			  switch
 			  var
 			  while
-			  `),m=e(`
+			  `),a=t(`
 			  NULL
 			  Self
 			  abstract
@@ -169,7 +169,7 @@ const g={comments:{lineComment:"//",blockComment:["/*","*/"]},brackets:[["{","}"
 			  with
 			  writeonly
 			  yield
-			  `),l=e(`
+			  `),o=t(`
 		read write read_write
 		function private workgroup uniform storage
 		perspective linear flat
@@ -195,7 +195,7 @@ const g={comments:{lineComment:"//",blockComment:["/*","*/"]},brackets:[["{","}"
 		rgba32sint
 		rgba32float
 		bgra8unorm
-`),u=e(`
+`),s=t(`
 		bool
 		f16
 		f32
@@ -209,7 +209,7 @@ const g={comments:{lineComment:"//",blockComment:["/*","*/"]},brackets:[["{","}"
 		texture_external
 		texture_external
 		u32
-		`),p=e(`
+		`),c=t(`
 		array
 		atomic
 		mat2x2
@@ -236,7 +236,7 @@ const g={comments:{lineComment:"//",blockComment:["/*","*/"]},brackets:[["{","}"
 		vec2
 		vec3
 		vec4
-		`),d=e(`
+		`),l=t(`
 		vec2i vec3i vec4i
 		vec2u vec3u vec4u
 		vec2f vec3f vec4f
@@ -247,7 +247,7 @@ const g={comments:{lineComment:"//",blockComment:["/*","*/"]},brackets:[["{","}"
 		mat2x2h mat2x3h mat2x4h
 		mat3x2h mat3x3h mat3x4h
 		mat4x2h mat4x3h mat4x4h
-		`),x=e(`
+		`),u=t(`
   bitcast all any select arrayLength abs acos acosh asin asinh atan atanh atan2
   ceil clamp cos cosh countLeadingZeros countOneBits countTrailingZeros cross
   degrees determinant distance dot exp exp2 extractBits faceForward firstLeadingBit
@@ -263,7 +263,7 @@ const g={comments:{lineComment:"//",blockComment:["/*","*/"]},brackets:[["{","}"
   pack4x8unorm pack2x16snorm pack2x16unorm pack2x16float unpack4x8snorm unpack4x8unorm
   unpack2x16snorm unpack2x16unorm unpack2x16float storageBarrier workgroupBarrier
   workgroupUniformLoad
-`),f=e(`
+`),d=t(`
 					 &
 					 &&
 					 ->
@@ -295,4 +295,4 @@ const g={comments:{lineComment:"//",blockComment:["/*","*/"]},brackets:[["{","}"
 					 ^=
 					 >>=
 					 <<=
-					 `),_=/enable|requires|diagnostic/,n=new RegExp("[_\\p{XID_Start}]\\p{XID_Continue}*","u"),t="variable.predefined",h={tokenPostfix:".wgsl",defaultToken:"invalid",unicode:!0,atoms:s,keywords:c,reserved:m,predeclared_enums:l,predeclared_types:u,predeclared_type_generators:p,predeclared_type_aliases:d,predeclared_intrinsics:x,operators:f,symbols:/[!%&*+\-\.\/:;<=>^|_~,]+/,tokenizer:{root:[[_,"keyword","@directive"],[n,{cases:{"@atoms":t,"@keywords":"keyword","@reserved":"invalid","@predeclared_enums":t,"@predeclared_types":t,"@predeclared_type_generators":t,"@predeclared_type_aliases":t,"@predeclared_intrinsics":t,"@default":"identifier"}}],{include:"@commentOrSpace"},{include:"@numbers"},[/[{}()\[\]]/,"@brackets"],["@","annotation","@attribute"],[/@symbols/,{cases:{"@operators":"operator","@default":"delimiter"}}],[/./,"invalid"]],commentOrSpace:[[/\s+/,"white"],[/\/\*/,"comment","@blockComment"],[/\/\/.*$/,"comment"]],blockComment:[[/[^\/*]+/,"comment"],[/\/\*/,"comment","@push"],[/\*\//,"comment","@pop"],[/[\/*]/,"comment"]],attribute:[{include:"@commentOrSpace"},[/\w+/,"annotation","@pop"]],directive:[{include:"@commentOrSpace"},[/[()]/,"@brackets"],[/,/,"delimiter"],[n,"meta.content"],[/;/,"delimiter","@pop"]],numbers:[[/0[fh]/,"number.float"],[/[1-9][0-9]*[fh]/,"number.float"],[/[0-9]*\.[0-9]+([eE][+-]?[0-9]+)?[fh]?/,"number.float"],[/[0-9]+\.[0-9]*([eE][+-]?[0-9]+)?[fh]?/,"number.float"],[/[0-9]+[eE][+-]?[0-9]+[fh]?/,"number.float"],[/0[xX][0-9a-fA-F]*\.[0-9a-fA-F]+(?:[pP][+-]?[0-9]+[fh]?)?/,"number.hex"],[/0[xX][0-9a-fA-F]+\.[0-9a-fA-F]*(?:[pP][+-]?[0-9]+[fh]?)?/,"number.hex"],[/0[xX][0-9a-fA-F]+[pP][+-]?[0-9]+[fh]?/,"number.hex"],[/0[xX][0-9a-fA-F]+[iu]?/,"number.hex"],[/[1-9][0-9]*[iu]?/,"number"],[/0[iu]?/,"number"]]}};export{g as conf,h as language};
+					 `),f=/enable|requires|diagnostic/,p=/[_\p{XID_Start}]\p{XID_Continue}*/u,m=`variable.predefined`,h={tokenPostfix:`.wgsl`,defaultToken:`invalid`,unicode:!0,atoms:r,keywords:i,reserved:a,predeclared_enums:o,predeclared_types:s,predeclared_type_generators:c,predeclared_type_aliases:l,predeclared_intrinsics:u,operators:d,symbols:/[!%&*+\-\.\/:;<=>^|_~,]+/,tokenizer:{root:[[f,`keyword`,`@directive`],[p,{cases:{"@atoms":m,"@keywords":`keyword`,"@reserved":`invalid`,"@predeclared_enums":m,"@predeclared_types":m,"@predeclared_type_generators":m,"@predeclared_type_aliases":m,"@predeclared_intrinsics":m,"@default":`identifier`}}],{include:`@commentOrSpace`},{include:`@numbers`},[/[{}()\[\]]/,`@brackets`],[`@`,`annotation`,`@attribute`],[/@symbols/,{cases:{"@operators":`operator`,"@default":`delimiter`}}],[/./,`invalid`]],commentOrSpace:[[/\s+/,`white`],[/\/\*/,`comment`,`@blockComment`],[/\/\/.*$/,`comment`]],blockComment:[[/[^\/*]+/,`comment`],[/\/\*/,`comment`,`@push`],[/\*\//,`comment`,`@pop`],[/[\/*]/,`comment`]],attribute:[{include:`@commentOrSpace`},[/\w+/,`annotation`,`@pop`]],directive:[{include:`@commentOrSpace`},[/[()]/,`@brackets`],[/,/,`delimiter`],[p,`meta.content`],[/;/,`delimiter`,`@pop`]],numbers:[[/0[fh]/,`number.float`],[/[1-9][0-9]*[fh]/,`number.float`],[/[0-9]*\.[0-9]+([eE][+-]?[0-9]+)?[fh]?/,`number.float`],[/[0-9]+\.[0-9]*([eE][+-]?[0-9]+)?[fh]?/,`number.float`],[/[0-9]+[eE][+-]?[0-9]+[fh]?/,`number.float`],[/0[xX][0-9a-fA-F]*\.[0-9a-fA-F]+(?:[pP][+-]?[0-9]+[fh]?)?/,`number.hex`],[/0[xX][0-9a-fA-F]+\.[0-9a-fA-F]*(?:[pP][+-]?[0-9]+[fh]?)?/,`number.hex`],[/0[xX][0-9a-fA-F]+[pP][+-]?[0-9]+[fh]?/,`number.hex`],[/0[xX][0-9a-fA-F]+[iu]?/,`number.hex`],[/[1-9][0-9]*[iu]?/,`number`],[/0[iu]?/,`number`]]}}}))();export{n as conf,h as language};

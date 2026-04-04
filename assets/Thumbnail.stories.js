@@ -1,13 +1,27 @@
-import{j as r}from"./iframe-BmpICDQJ.js";import{f as a}from"./index4.js";import"./index.js";import{R as l,C as t}from"./Responsive.js";import{T as i}from"./VideoPlayer.js";import"./Section.js";import"./ErrorBoundary.js";import"./createClass.js";import"./Global.js";import"./useDebounce.js";import"./Tooltip.js";import"./useResizeObserver.js";import"./HeadFoot.js";import"./Divider.js";import"./Text.js";import"./usePropToggle.js";import"./types.js";import"./ColorPicker.js";import"./Google.js";import"./zh-CN.js";import"./endOfDay.js";import"./index5.js";import"./index2.js";import"./debounce.js";import"./isEqual.js";import"./ThemeProvider.js";import"./useResize.js";import"./Dropdown.js";import"./Card2.js";import"./nodeCheck.js";import"./eventHandlers.js";import"./ErrorIcon.js";import"./Panel.js";import"./Content.js";import"./Textarea.js";const N={component:i,title:"@media/Thumbnail",parameters:{layout:"centered",controls:{exclude:"children"}}},o={render:m=>r.jsxs(l,{children:[r.jsxs(t,{children:[r.jsx("p",{children:"Valid image"}),r.jsx(i,{...m,src:a.image.url()})]}),r.jsxs(t,{children:[r.jsx("p",{children:"Fallback image"}),r.jsx(i,{...m,src:"badurl.png",fallback:a.image.url()})]}),r.jsxs(t,{children:[r.jsx("p",{children:"Default icon"}),r.jsx(i,{...m,src:"badurl.png"})]})]}),args:{}};var p,e,n;o.parameters={...o.parameters,docs:{...(p=o.parameters)==null?void 0:p.docs,source:{originalSource:`{
+import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";import{h as r,m as i,t as a}from"./iframe-B-Wcw5ev.js";import{r as o,t as s}from"./dist28.js";import{n as c,t as l}from"./src7.js";var u=t({_Thumbnail:()=>p,__namedExportsOrder:()=>m,default:()=>f}),d,f,p,m,h=e((()=>{s(),a(),l(),d=n(),f={component:c,title:`@media/Thumbnail`,parameters:{layout:`centered`,controls:{exclude:`children`}}},p={render:e=>(0,d.jsxs)(r,{children:[(0,d.jsxs)(i,{children:[(0,d.jsx)(`p`,{children:`Valid image`}),(0,d.jsx)(c,{...e,src:o.image.url({width:256,height:256})})]}),(0,d.jsxs)(i,{children:[(0,d.jsx)(`p`,{children:`Fallback sources`}),(0,d.jsx)(c,{...e,src:[`badurl.png`,o.image.url({width:256,height:256})]})]}),(0,d.jsxs)(i,{children:[(0,d.jsx)(`p`,{children:`Transparent light`}),(0,d.jsx)(c,{...e,src:`/colorset/white1.png`})]}),(0,d.jsxs)(i,{children:[(0,d.jsx)(`p`,{children:`Transparent dark`}),(0,d.jsx)(c,{...e,src:`/colorset/black1.png`})]}),(0,d.jsxs)(i,{children:[(0,d.jsx)(`p`,{children:`Default icon`}),(0,d.jsx)(c,{...e,src:`badurl.png`})]})]}),args:{}},p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Row>
         <Col>
           <p>Valid image</p>
-          <Thumbnail {...args} src={faker.image.url()} />
+          <Thumbnail {...args} src={faker.image.url({
+          width: 256,
+          height: 256
+        })} />
         </Col>
         <Col>
-          <p>Fallback image</p>
-          <Thumbnail {...args} src="badurl.png" fallback={faker.image.url()} />
+          <p>Fallback sources</p>
+          <Thumbnail {...args} src={["badurl.png", faker.image.url({
+          width: 256,
+          height: 256
+        })]} />
+        </Col>
+        <Col>
+          <p>Transparent light</p>
+          <Thumbnail {...args} src="/colorset/white1.png" />
+        </Col>
+        <Col>
+          <p>Transparent dark</p>
+          <Thumbnail {...args} src="/colorset/black1.png" />
         </Col>
         <Col>
           <p>Default icon</p>
@@ -16,4 +30,4 @@ import{j as r}from"./iframe-BmpICDQJ.js";import{f as a}from"./index4.js";import"
       </Row>;
   },
   args: {}
-}`,...(n=(e=o.parameters)==null?void 0:e.docs)==null?void 0:n.source}}};const P=["_Thumbnail"];export{o as _Thumbnail,P as __namedExportsOrder,N as default};
+}`,...p.parameters?.docs?.source}}},m=[`_Thumbnail`]}));h();export{p as _Thumbnail,m as __namedExportsOrder,f as default,h as n,u as t};

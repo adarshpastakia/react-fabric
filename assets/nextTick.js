@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(e){n.push(e),n.length===1&&queueMicrotask(()=>{let e=n.slice();n.length=0;for(let t of e)t()})}var n,r=e((()=>{n=[]}));export{t as n,r as t};

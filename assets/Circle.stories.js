@@ -1,4 +1,4 @@
-import{j as e,aH as l,r as a}from"./iframe-BmpICDQJ.js";const i={component:l,title:"@core/components/Progress",parameters:{layout:"centered",controls:{exclude:/^(on.*|children|as)/},jest:["core/tests/ProgressCircle.test.tsx"]},decorators:[t=>e.jsx("div",{className:"max-w-2xl p-4",children:e.jsx(t,{})})]},s={render:t=>{const[r,u]=a.useState(0);return a.useEffect(()=>{setTimeout(()=>{u(r>.99?0:r+.01)},100)},[r]),e.jsx(e.Fragment,{children:e.jsx(l,{...t,value:r})})},args:{size:"lg"}};var n,o,c;s.parameters={...s.parameters,docs:{...(n=s.parameters)==null?void 0:n.docs,source:{originalSource:`{
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{t as i,y as a}from"./src3.js";var o,s,c,l,u,d,f=t((()=>{o=e(n()),s=r(),i(),c=r(),l={component:a,title:`@core/components/Progress`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/ProgressCircle.test.tsx`]},decorators:[e=>(0,c.jsx)(`div`,{className:`max-w-2xl p-4`,children:(0,c.jsx)(e,{})})]},u={render:e=>{let[t,n]=(0,o.useState)(0);return(0,o.useEffect)(()=>{setTimeout(()=>{n(t>.99?0:t+.01)},100)},[t]),(0,c.jsx)(s.Fragment,{children:(0,c.jsx)(a,{...e,value:t})})},args:{size:`lg`}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
   render: args => {
     const [value, setValue] = useState(0);
     useEffect(() => {
@@ -13,4 +13,4 @@ import{j as e,aH as l,r as a}from"./iframe-BmpICDQJ.js";const i={component:l,tit
   args: {
     size: "lg"
   }
-}`,...(c=(o=s.parameters)==null?void 0:o.docs)==null?void 0:c.source}}};const g=["_ProgressCircle"];export{s as _ProgressCircle,g as __namedExportsOrder,i as default};
+}`,...u.parameters?.docs?.source}}},d=[`_ProgressCircle`]}));f();export{u as _ProgressCircle,d as __namedExportsOrder,l as default,f as t};

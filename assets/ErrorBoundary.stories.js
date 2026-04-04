@@ -1,4 +1,4 @@
-import{E as d,j as e,V as c,d as l,g as t,f as p,e as m}from"./iframe-BmpICDQJ.js";const u={component:d,title:"@core/Application",parameters:{layout:"fullscreen",controls:{exclude:/^(on.*|children|as)/},jest:["core/tests/ErrorBoundary.test.tsx"]}},r=()=>{throw Error("Bad component call")},n={render:i=>e.jsx("div",{className:"min-h-[600px]",children:e.jsx(c,{children:e.jsxs(l,{...i,children:[e.jsx(t,{children:e.jsx(r,{})}),e.jsx(p,{children:e.jsx(r,{})}),e.jsx(t,{align:"end",children:e.jsx(m,{children:e.jsx(r,{})})})]})})}),args:{paper:!0,title:"Page title",icon:"mdi mdi-react"}};var s,o,a;n.parameters={...n.parameters,docs:{...(s=n.parameters)==null?void 0:s.docs,source:{originalSource:`{
+import{n as e}from"./chunk.js";import{t}from"./jsx-runtime.js";import{H as n,c as r,g as i,h as a,m as o,t as s,u as c}from"./src3.js";var l,u,d,f,p,m=e((()=>{s(),l=t(),u={component:n,title:`@core/Application`,parameters:{layout:`fullscreen`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/ErrorBoundary.test.tsx`]}},d=()=>{throw Error(`Bad component call`)},f={render:e=>(0,l.jsx)(`div`,{className:`min-h-[600px]`,children:(0,l.jsx)(r,{children:(0,l.jsxs)(o,{...e,children:[(0,l.jsx)(i,{children:(0,l.jsx)(d,{})}),(0,l.jsx)(c,{children:(0,l.jsx)(d,{})}),(0,l.jsx)(i,{align:`end`,children:(0,l.jsx)(a,{children:(0,l.jsx)(d,{})})})]})})}),args:{paper:!0,title:`Page title`,icon:`mdi mdi-react`}},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <div className="min-h-[600px]">
         <Viewport>
@@ -23,4 +23,4 @@ import{E as d,j as e,V as c,d as l,g as t,f as p,e as m}from"./iframe-BmpICDQJ.j
     title: "Page title",
     icon: "mdi mdi-react"
   }
-}`,...(a=(o=n.parameters)==null?void 0:o.docs)==null?void 0:a.source}}};const g=["_ErrorBoundary"];export{n as _ErrorBoundary,g as __namedExportsOrder,u as default};
+}`,...f.parameters?.docs?.source}}},p=[`_ErrorBoundary`]}));m();export{f as _ErrorBoundary,p as __namedExportsOrder,u as default,m as t};

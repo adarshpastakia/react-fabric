@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{o as t}from"./vec4.js";import{a as n}from"./vec4f64.js";import{t as r}from"./glsl.js";import{t as i}from"./ShaderBuilder.js";import{r as a}from"./NoParameters.js";import{i as o,n as s,r as c}from"./Magnifier.glsl.js";e((()=>{t(),n(),r(),a(),i(),o()}))();export{s as MagnifierPassParameters,c as build};

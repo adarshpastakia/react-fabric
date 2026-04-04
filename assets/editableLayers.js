@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,s as n,w as r}from"./layerUtils.js";import{n as i,r as a}from"./catalogUtils.js";function o(e){return typeof e==`object`&&!!e&&`loaded`in e&&!0===e.loaded&&`type`in e}function s(e){return!(!o(e)||!t(e)?.operations?.supportsEditing||`editingEnabled`in e&&!n(e)||a(e))}var c=e((()=>{i(),r()}));export{c as n,s as t};

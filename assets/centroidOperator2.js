@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{d as t}from"./apiConverter2.js";import{n,r,t as i}from"./centroidOperator.js";e((()=>{n(),t()}))();export{r as execute,i as supportsCurves};

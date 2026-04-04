@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{d as t}from"./apiConverter2.js";import{a as n,i as r,n as i,o as a,t as o}from"./differenceOperator.js";e((()=>{a(),t(),i()}))();export{r as execute,n as executeMany,o as supportsCurves};

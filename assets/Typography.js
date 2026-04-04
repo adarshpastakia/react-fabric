@@ -1,37 +1,37 @@
-import{j as s,M as T,T as y,A as n,S as r,P as C,c as o,C as e,D as l,b as i,a as u}from"./iframe-BmpICDQJ.js";import{useMDXComponents as f}from"./index3.js";import{_Abbr as c}from"./Abbr.stories.js";import{_Anchor as x}from"./Anchor.stories.js";import{_Copy as d}from"./Copy.stories.js";import{_Mark as j}from"./Mark.stories.js";import{T as b,_ as v,C as h}from"./Text.stories.js";import{Titles as m}from"./Title.stories.js";import"./index4.js";function p(t){const a={code:"code",pre:"pre",...f(),...t.components};return s.jsxs(s.Fragment,{children:[s.jsx(T,{of:b}),`
-`,s.jsx(y,{children:"Typography"}),`
-`,s.jsx(n,{storyId:"typo",children:s.jsx("div",{className:"hidden-anchor",children:s.jsx(r,{children:"Typography"})})}),`
-`,s.jsx(C,{}),`
-`,s.jsxs(o,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(e,{of:v})]}),`
-`,s.jsx(n,{storyId:"clmaped",children:s.jsx(r,{children:"Clamped"})}),`
-`,s.jsx(l,{of:h}),`
-`,s.jsx(i,{withToolbar:!0,of:h}),`
-`,s.jsxs(o,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(e,{of:h})]}),`
-`,s.jsx(n,{storyId:"titles",children:s.jsx(r,{children:"Titles"})}),`
-`,s.jsx(l,{of:m}),`
-`,s.jsx(i,{withToolbar:!0,of:m}),`
-`,s.jsxs(o,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(e,{of:m})]}),`
-`,s.jsx(n,{storyId:"abbrs",children:s.jsx(r,{children:"Abbr"})}),`
-`,s.jsx(l,{of:c}),`
-`,s.jsx(i,{withToolbar:!0,of:c}),`
-`,s.jsxs(o,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(e,{of:c})]}),`
-`,s.jsx(n,{storyId:"marks",children:s.jsx(r,{children:"Mark"})}),`
-`,s.jsx(l,{of:j}),`
-`,s.jsx(i,{withToolbar:!0,of:j}),`
-`,s.jsxs(o,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(e,{of:j})]}),`
-`,s.jsx(n,{storyId:"links",children:s.jsx(r,{children:"Anchor"})}),`
-`,s.jsx(l,{of:x}),`
-`,s.jsx(i,{withToolbar:!0,of:x}),`
-`,s.jsxs(o,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(e,{of:x})]}),`
-`,s.jsx(n,{storyId:"copy",children:s.jsx(r,{children:"Copy"})}),`
-`,s.jsx(l,{of:d}),`
-`,s.jsx(i,{withToolbar:!0,of:d}),`
-`,s.jsxs(o,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(e,{of:d})]}),`
-`,s.jsx("hr",{}),`
-`,s.jsx(n,{storyId:"props",children:s.jsx(r,{children:"Props"})}),`
-`,s.jsx(u,{sort:"requiredFirst"}),`
-`,s.jsx(n,{storyId:"sample",children:s.jsx(r,{children:"Example"})}),`
-`,s.jsx(a.pre,{children:s.jsx(a.code,{className:"language-tsx",children:`import { Text, Title, Anchor } from "@react-fabric/core";
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{$t as i,Bt as a,Gt as o,Lt as s,Wt as c,Xt as l,Zt as u,nn as d,zt as f}from"./iframe-B-Wcw5ev.js";import{r as p}from"./react2.js";import{t as m}from"./mdx-react-shim.js";import{N as h,t as g}from"./src3.js";import{_Abbr as _,t as v}from"./Abbr.stories.js";import{_Anchor as y,t as b}from"./Anchor.stories.js";import{_Copy as x,t as S}from"./Copy.stories.js";import{_Mark as C,t as w}from"./Mark.stories.js";import{Clamped as T,_Text as E,n as D,t as O}from"./Text.stories.js";import{Titles as k,t as A}from"./Title.stories.js";function j(e){let t={code:`code`,pre:`pre`,...p(),...e.components};return(0,N.jsxs)(N.Fragment,{children:[(0,N.jsx)(l,{of:O}),`
+`,(0,N.jsx)(i,{children:`Typography`}),`
+`,(0,N.jsx)(s,{storyId:`typo`,children:(0,N.jsx)(`div`,{className:`hidden-anchor`,children:(0,N.jsx)(u,{children:`Typography`})})}),`
+`,(0,N.jsx)(a,{withToolbar:!0,of:E}),`
+`,(0,N.jsxs)(h,{className:`control-panel`,children:[(0,N.jsx)(`div`,{children:`Controls`}),(0,N.jsx)(c,{of:E})]}),`
+`,(0,N.jsx)(s,{storyId:`clmaped`,children:(0,N.jsx)(u,{children:`Clamped`})}),`
+`,(0,N.jsx)(o,{of:T}),`
+`,(0,N.jsx)(a,{withToolbar:!0,of:T}),`
+`,(0,N.jsxs)(h,{className:`control-panel`,children:[(0,N.jsx)(`div`,{children:`Controls`}),(0,N.jsx)(c,{of:T})]}),`
+`,(0,N.jsx)(s,{storyId:`titles`,children:(0,N.jsx)(u,{children:`Titles`})}),`
+`,(0,N.jsx)(o,{of:k}),`
+`,(0,N.jsx)(a,{withToolbar:!0,of:k}),`
+`,(0,N.jsxs)(h,{className:`control-panel`,children:[(0,N.jsx)(`div`,{children:`Controls`}),(0,N.jsx)(c,{of:k})]}),`
+`,(0,N.jsx)(s,{storyId:`abbrs`,children:(0,N.jsx)(u,{children:`Abbr`})}),`
+`,(0,N.jsx)(o,{of:_}),`
+`,(0,N.jsx)(a,{withToolbar:!0,of:_}),`
+`,(0,N.jsxs)(h,{className:`control-panel`,children:[(0,N.jsx)(`div`,{children:`Controls`}),(0,N.jsx)(c,{of:_})]}),`
+`,(0,N.jsx)(s,{storyId:`marks`,children:(0,N.jsx)(u,{children:`Mark`})}),`
+`,(0,N.jsx)(o,{of:C}),`
+`,(0,N.jsx)(a,{withToolbar:!0,of:C}),`
+`,(0,N.jsxs)(h,{className:`control-panel`,children:[(0,N.jsx)(`div`,{children:`Controls`}),(0,N.jsx)(c,{of:C})]}),`
+`,(0,N.jsx)(s,{storyId:`links`,children:(0,N.jsx)(u,{children:`Anchor`})}),`
+`,(0,N.jsx)(o,{of:y}),`
+`,(0,N.jsx)(a,{withToolbar:!0,of:y}),`
+`,(0,N.jsxs)(h,{className:`control-panel`,children:[(0,N.jsx)(`div`,{children:`Controls`}),(0,N.jsx)(c,{of:y})]}),`
+`,(0,N.jsx)(s,{storyId:`copy`,children:(0,N.jsx)(u,{children:`Copy`})}),`
+`,(0,N.jsx)(o,{of:x}),`
+`,(0,N.jsx)(a,{withToolbar:!0,of:x}),`
+`,(0,N.jsxs)(h,{className:`control-panel`,children:[(0,N.jsx)(`div`,{children:`Controls`}),(0,N.jsx)(c,{of:x})]}),`
+`,(0,N.jsx)(`hr`,{}),`
+`,(0,N.jsx)(s,{storyId:`props`,children:(0,N.jsx)(u,{children:`Props`})}),`
+`,(0,N.jsx)(f,{sort:`requiredFirst`}),`
+`,(0,N.jsx)(s,{storyId:`sample`,children:(0,N.jsx)(u,{children:`Example`})}),`
+`,(0,N.jsx)(t.pre,{children:(0,N.jsx)(t.code,{className:`language-tsx`,children:`import { Text, Title, Anchor } from "@react-fabric/core";
 import { NavLink } from "react-router-dom";
 
 export const Example = () => {
@@ -41,4 +41,4 @@ export const Example = () => {
     <Anchor as={NavLink}>Nav links</Anchor>
   </div>;
 };
-`})})]})}function E(t={}){const{wrapper:a}={...f(),...t.components};return a?s.jsx(a,{...t,children:s.jsx(p,{...t})}):p(t)}export{E as default};
+`})})]})}function M(e={}){let{wrapper:t}={...p(),...e.components};return t?(0,N.jsx)(t,{...e,children:(0,N.jsx)(j,{...e})}):j(e)}var N;t((()=>{N=r(),m(),d(),e(n()),g(),v(),b(),S(),w(),D(),A()}))();export{M as default};

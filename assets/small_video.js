@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";var t,n=e((()=>{t=``+new URL(`small_video-CdxnVEqE.mp4`,import.meta.url).href}));export{t as n,n as t};

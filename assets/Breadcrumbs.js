@@ -1,18 +1,18 @@
-import{j as r,M as x,T as m,A as e,S as o,D as a,ah as h,P as j,c as t,C as d,b as u,a as p}from"./iframe-BmpICDQJ.js";import{useMDXComponents as l}from"./index3.js";import{B as b,_ as f,S as c}from"./Breadcrumbs.stories.js";function i(n){const s={code:"code",pre:"pre",...l(),...n.components};return r.jsxs(r.Fragment,{children:[r.jsx(x,{of:b}),`
-`,r.jsx(m,{children:"Breadcrumbs"}),`
-`,r.jsx(e,{storyId:"Breadcrumbs",children:r.jsx("div",{className:"hidden-anchor",children:r.jsx(o,{children:"Breadcrumbs"})})}),`
-`,r.jsx(a,{of:h}),`
-`,r.jsx(j,{}),`
-`,r.jsxs(t,{className:"control-panel",children:[r.jsx("div",{children:"Controls"}),r.jsx(d,{of:f})]}),`
-`,r.jsx(e,{storyId:"card",children:r.jsx(o,{children:"Styles"})}),`
-`,r.jsx(a,{of:c}),`
-`,r.jsx(u,{withToolbar:!0,of:c}),`
-`,r.jsxs(t,{className:"control-panel",children:[r.jsx("div",{children:"Controls"}),r.jsx(d,{of:c})]}),`
-`,r.jsx("hr",{}),`
-`,r.jsx(e,{storyId:"props",children:r.jsx(o,{children:"Props"})}),`
-`,r.jsx(p,{sort:"requiredFirst"}),`
-`,r.jsx(e,{storyId:"sample",children:r.jsx(o,{children:"Example"})}),`
-`,r.jsx(s.pre,{children:r.jsx(s.code,{className:"language-tsx",children:`import { Breadcrumbs, Anchor, Icon } from "@react-fabric/core";
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{$t as i,Bt as a,Gt as o,Lt as s,Wt as c,Xt as l,Zt as u,nn as d,zt as f}from"./iframe-B-Wcw5ev.js";import{r as p}from"./react2.js";import{t as m}from"./mdx-react-shim.js";import{N as h,et as g,t as _}from"./src3.js";import{Styles as v,_Breadcrumbs as y,n as b,t as x}from"./Breadcrumbs.stories.js";function S(e){let t={code:`code`,pre:`pre`,...p(),...e.components};return(0,w.jsxs)(w.Fragment,{children:[(0,w.jsx)(l,{of:x}),`
+`,(0,w.jsx)(i,{children:`Breadcrumbs`}),`
+`,(0,w.jsx)(s,{storyId:`Breadcrumbs`,children:(0,w.jsx)(`div`,{className:`hidden-anchor`,children:(0,w.jsx)(u,{children:`Breadcrumbs`})})}),`
+`,(0,w.jsx)(o,{of:g}),`
+`,(0,w.jsx)(a,{withToolbar:!0,of:y}),`
+`,(0,w.jsxs)(h,{className:`control-panel`,children:[(0,w.jsx)(`div`,{children:`Controls`}),(0,w.jsx)(c,{of:y})]}),`
+`,(0,w.jsx)(s,{storyId:`card`,children:(0,w.jsx)(u,{children:`Styles`})}),`
+`,(0,w.jsx)(o,{of:v}),`
+`,(0,w.jsx)(a,{withToolbar:!0,of:v}),`
+`,(0,w.jsxs)(h,{className:`control-panel`,children:[(0,w.jsx)(`div`,{children:`Controls`}),(0,w.jsx)(c,{of:v})]}),`
+`,(0,w.jsx)(`hr`,{}),`
+`,(0,w.jsx)(s,{storyId:`props`,children:(0,w.jsx)(u,{children:`Props`})}),`
+`,(0,w.jsx)(f,{sort:`requiredFirst`}),`
+`,(0,w.jsx)(s,{storyId:`sample`,children:(0,w.jsx)(u,{children:`Example`})}),`
+`,(0,w.jsx)(t.pre,{children:(0,w.jsx)(t.code,{className:`language-tsx`,children:`import { Breadcrumbs, Anchor, Icon } from "@react-fabric/core";
 
 export const Example = () => {
   return (
@@ -25,4 +25,4 @@ export const Example = () => {
     </Breadcrumbs>
   );
 };
-`})})]})}function y(n={}){const{wrapper:s}={...l(),...n.components};return s?r.jsx(s,{...n,children:r.jsx(i,{...n})}):i(n)}export{y as default};
+`})})]})}function C(e={}){let{wrapper:t}={...p(),...e.components};return t?(0,w.jsx)(t,{...e,children:(0,w.jsx)(S,{...e})}):S(e)}var w;t((()=>{w=r(),m(),d(),e(n()),_(),b()}))();export{C as default};

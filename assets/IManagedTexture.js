@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(e){return!!e.update}var n=e((()=>{}));export{t as n,n as t};

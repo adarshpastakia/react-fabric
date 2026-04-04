@@ -1,1 +1,1 @@
-function n(c,a){const e=c.featureReduction;return e&&e.type!=="selection"&&(!("maxScale"in e)||!e.maxScale||e.maxScale<a.scale)?e:null}export{n as e};
+import{n as e}from"./chunk.js";function t(e,t){let n=e.featureReduction;return n&&n.type!==`selection`&&(!(`maxScale`in n)||!n.maxScale||n.maxScale<t.scale)?n:null}var n=e((()=>{}));export{n,t};

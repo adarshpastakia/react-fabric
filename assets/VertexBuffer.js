@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./BufferObject.js";var r,i=e((()=>{n(),r=class extends t{constructor(e,t,n,r=35044){super(e,34962,r,n),this.layout=t}}}));export{r as n,i as t};

@@ -1,14 +1,14 @@
-import{j as n,M as c,T as i,A as o,S as r,D as l,a5 as d,P as x,c as m,C as j,a as h}from"./iframe-BmpICDQJ.js";import{useMDXComponents as t}from"./index3.js";import{A as p,_ as b}from"./ActionLabel.stories.js";function a(e){const s={code:"code",pre:"pre",...t(),...e.components};return n.jsxs(n.Fragment,{children:[n.jsx(c,{of:p}),`
-`,n.jsx(i,{children:"Action Label"}),`
-`,n.jsx(o,{storyId:"ActionLabel",children:n.jsx("div",{className:"hidden-anchor",children:n.jsx(r,{children:"Action Label"})})}),`
-`,n.jsx(l,{of:d}),`
-`,n.jsx(x,{}),`
-`,n.jsxs(m,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(j,{of:b})]}),`
-`,n.jsx("hr",{}),`
-`,n.jsx(o,{storyId:"props",children:n.jsx(r,{children:"Props"})}),`
-`,n.jsx(h,{sort:"requiredFirst"}),`
-`,n.jsx(o,{storyId:"sample",children:n.jsx(r,{children:"Example"})}),`
-`,n.jsx(s.pre,{children:n.jsx(s.code,{className:"language-tsx",children:`import { ActionLabel, Button } from "@react-fabric/core";
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{$t as i,Bt as a,Gt as o,Lt as s,Wt as c,Xt as l,Zt as u,nn as d,zt as f}from"./iframe-B-Wcw5ev.js";import{r as p}from"./react2.js";import{t as m}from"./mdx-react-shim.js";import{N as h,ft as g,t as _}from"./src3.js";import{_ActionLabel as v,n as y,t as b}from"./ActionLabel.stories.js";function x(e){let t={code:`code`,pre:`pre`,...p(),...e.components};return(0,C.jsxs)(C.Fragment,{children:[(0,C.jsx)(l,{of:b}),`
+`,(0,C.jsx)(i,{children:`Action Label`}),`
+`,(0,C.jsx)(s,{storyId:`ActionLabel`,children:(0,C.jsx)(`div`,{className:`hidden-anchor`,children:(0,C.jsx)(u,{children:`Action Label`})})}),`
+`,(0,C.jsx)(o,{of:g}),`
+`,(0,C.jsx)(a,{withToolbar:!0,of:v}),`
+`,(0,C.jsxs)(h,{className:`control-panel`,children:[(0,C.jsx)(`div`,{children:`Controls`}),(0,C.jsx)(c,{of:v})]}),`
+`,(0,C.jsx)(`hr`,{}),`
+`,(0,C.jsx)(s,{storyId:`props`,children:(0,C.jsx)(u,{children:`Props`})}),`
+`,(0,C.jsx)(f,{sort:`requiredFirst`}),`
+`,(0,C.jsx)(s,{storyId:`sample`,children:(0,C.jsx)(u,{children:`Example`})}),`
+`,(0,C.jsx)(t.pre,{children:(0,C.jsx)(t.code,{className:`language-tsx`,children:`import { ActionLabel, Button } from "@react-fabric/core";
 
 export const Example = () => {
   return (
@@ -17,4 +17,4 @@ export const Example = () => {
     </ActionLabel>
   );
 };
-`})})]})}function L(e={}){const{wrapper:s}={...t(),...e.components};return s?n.jsx(s,{...e,children:n.jsx(a,{...e})}):a(e)}export{L as default};
+`})})]})}function S(e={}){let{wrapper:t}={...p(),...e.components};return t?(0,C.jsx)(t,{...e,children:(0,C.jsx)(x,{...e})}):x(e)}var C;t((()=>{C=r(),m(),d(),e(n()),_(),y()}))();export{S as default};

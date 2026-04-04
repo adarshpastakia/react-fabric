@@ -1,4 +1,4 @@
-import{j as a}from"./iframe-BmpICDQJ.js";import{R as l,b as o}from"./RangePanel.js";import"./index.js";const i={component:o,subcomponents:{RangePanel:l},title:"@date/Date Panel",parameters:{layout:"centered",controls:{exclude:"children",matchers:{date:/value|min|max/}}}},e={render:s=>a.jsx("div",{className:"outline",children:a.jsx(o,{...s})}),args:{withTime:!0,showHijriToggle:!0,max:new Date}};var r,t,n;e.parameters={...e.parameters,docs:{...(r=e.parameters)==null?void 0:r.docs,source:{originalSource:`{
+import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";import{n as r,r as i,t as a}from"./src5.js";var o=t({_DatePanel:()=>l,__namedExportsOrder:()=>u,default:()=>c}),s,c,l,u,d=e((()=>{a(),s=n(),c={component:i,subcomponents:{RangePanel:r},title:`@date/Date Panel`,parameters:{layout:`centered`,controls:{exclude:`children`,matchers:{date:/value|min|max/}}}},l={render:e=>(0,s.jsx)(`div`,{className:`outline`,children:(0,s.jsx)(i,{...e})}),args:{withTime:!0,showHijriToggle:!0,max:new Date}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <div className="outline">
         <DatePanel {...args} />
@@ -9,4 +9,4 @@ import{j as a}from"./iframe-BmpICDQJ.js";import{R as l,b as o}from"./RangePanel.
     showHijriToggle: true,
     max: new Date()
   }
-}`,...(n=(t=e.parameters)==null?void 0:t.docs)==null?void 0:n.source}}};const m=["_DatePanel"],p=Object.freeze(Object.defineProperty({__proto__:null,_DatePanel:e,__namedExportsOrder:m,default:i},Symbol.toStringTag,{value:"Module"}));export{p as D,e as _};
+}`,...l.parameters?.docs?.source}}},u=[`_DatePanel`]}));d();export{l as _DatePanel,u as __namedExportsOrder,c as default,d as n,o as t};

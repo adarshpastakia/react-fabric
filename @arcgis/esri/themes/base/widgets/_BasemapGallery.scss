@@ -169,6 +169,7 @@
         width: $thumbnail-width--narrow;
         min-width: $thumbnail-width--narrow;
         aspect-ratio: 1;
+        object-position: left; /* https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/78080 */
       }
     }
 

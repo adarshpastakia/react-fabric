@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{r as t,t as n}from"./glsl.js";var r,i=e((()=>{n(),r=t`vec4(0.0, 0.0, 2.0, 1.0)`}));export{r as n,i as t};

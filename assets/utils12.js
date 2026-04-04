@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./SpatialReference.js";import{a as r,t as i}from"./applyEditsUtils.js";function a(e){return e.map(e=>{let t=e.editedFeatures,r=n.fromJSON(t?.spatialReference);return t?{layerId:e.id,editedFeatures:i(t,r)}:null}).filter(e=>e!==null)}var o=e((()=>{t(),r()}));export{a as n,o as t};

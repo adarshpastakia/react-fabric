@@ -1,1 +1,1 @@
-function*i(e){switch(e.type){case"object-id":case"unique-id-simple":return void(yield e.fieldName);case"unique-id-composite":return void(yield*e.fieldNames)}}export{i as e};
+import{n as e}from"./chunk.js";function*t(e){switch(e.type){case`object-id`:case`unique-id-simple`:yield e.fieldName;return;case`unique-id-composite`:yield*e.fieldNames;return}}var n=e((()=>{}));export{n,t};

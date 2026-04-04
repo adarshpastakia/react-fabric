@@ -1,1 +1,1 @@
-const s=1;function c(e,r){var o;let t=0;for(const i of r){const n=(o=i.attributes)==null?void 0:o[e];typeof n=="number"&&isFinite(n)&&(t=Math.max(t,n))}return t}export{c as n,s as t};
+import{n as e}from"./chunk.js";function t(e,t){let n=0;for(let r of t){let t=r.attributes?.[e];typeof t==`number`&&isFinite(t)&&(n=Math.max(n,t))}return n}var n=e((()=>{}));export{t as n,n as t};

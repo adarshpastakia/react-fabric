@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{c as t,l as n}from"./bufferWriterUtils.js";var r,i=e((()=>{t(),r=class{constructor(e){this.layout=e}elementCount(e){return e.get(`position`).indices.length}write(e,t,r,i,a,o){return n(r,i,this.layout,e,t,a,o)}}}));export{r as n,i as t};

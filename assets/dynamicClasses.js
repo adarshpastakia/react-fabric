@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(e,t,n){return t?`${e}-${t}`:n?`${e}-${n}`:`${e}-m`}var n=e((()=>{}));export{n,t};

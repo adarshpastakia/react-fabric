@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";var t,n,r,i,a,o,s,c,l=e((()=>{t=1e-30,n=16777216,r=1.05,i=1.15,a=1024,o=1<<20,s=.75,c=.75}));export{t as a,n as c,r as i,a as l,s as n,l as o,c as r,i as s,o as t};

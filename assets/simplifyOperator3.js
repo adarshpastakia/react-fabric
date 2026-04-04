@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{d as t}from"./apiConverter2.js";import{t as n}from"./operatorSimplify.js";import{a as r,i,o as a,r as o,t as s}from"./simplifyOperator.js";e((()=>{n(),t(),i()}))();export{a as execute,o as executeMany,s as isSimple,r as supportsCurves};

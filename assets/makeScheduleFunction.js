@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{g as t,r as n}from"./promiseUtils.js";import{i as r,o as i}from"./Scheduler.js";function a(e){return t=>{if(e.destroyed){let e=t(i);return n(e)?e:Promise.resolve(e)}if(e.immediate)return e.immediate.schedule(t);let r=`No immediate scheduler`;throw console.error(r),Error(r)}}var o=e((()=>{t(),r()}));export{a as n,o as t};

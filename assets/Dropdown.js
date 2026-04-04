@@ -1,1 +1,33 @@
-import{w as P,j as l,F as ne,r as t,l as N,x as oe,y as re,z as te,B as se,G as ae,I as ie,J as le,K as de,L as ce,N as ue,O as fe,Q as pe,U as ve,W as me,X as ge,Y as we,m as he,Z as be,n as Oe}from"./iframe-BmpICDQJ.js";function S(i,e){var n=Object.keys(i);if(Object.getOwnPropertySymbols){var o=Object.getOwnPropertySymbols(i);e&&(o=o.filter(function(u){return Object.getOwnPropertyDescriptor(i,u).enumerable})),n.push.apply(n,o)}return n}function f(i){for(var e=1;e<arguments.length;e++){var n=arguments[e]!=null?arguments[e]:{};e%2?S(Object(n),!0).forEach(function(o){Oe(i,o,n[o])}):Object.getOwnPropertyDescriptors?Object.defineProperties(i,Object.getOwnPropertyDescriptors(n)):S(Object(n)).forEach(function(o){Object.defineProperty(i,o,Object.getOwnPropertyDescriptor(n,o))})}return i}var A=function(e){var n,o,u=e.ref,p=e.children,g=e.showArrow,C=e.closeOnClick,D=e.fitToParent,k=D===void 0?!0:D,E=e.placement,$=E===void 0?"bottom":E,c=e.onClose,U=e.onOpen,j=e.disabled,W=e.plainDropdown,_=e.dropdownEvent,z=e.dropdownClassName,F=t.useRef(null),B=t.useState(!1),R=N(B,2),w=R[0],v=R[1],h=P(),G=oe(),K=t.useMemo(function(){return t.Children.toArray(p)},[p]),M=N(K,2),m=M[0],T=M[1],y=re({nodeId:"dropdown-".concat(G),open:w,onOpenChange:function(r,a,O){var x;O!=="reference-press"&&(v(r),(x=r?U:c)===null||x===void 0||x())},strategy:"fixed",placement:$,whileElementsMounted:le,middleware:[te({padding:8}),se(),g&&ae(9),g&&ie({element:F})]}),d=y.refs,q=y.floatingStyles,b=y.context,H=_==="hover"?de:ce,J=H(b,{enabled:!j,handleClose:ue({blockPointerEvents:!0})}),L=fe(b,{referencePress:!0}),I=pe([L,J]),Q=I.getReferenceProps,X=I.getFloatingProps,Y=t.useMemo(function(){if(k){var s,r,a=(s=(r=d.reference.current)===null||r===void 0?void 0:r.closest('[data-ref="buttonGroup"]'))!==null&&s!==void 0?s:d.reference.current;return a==null?void 0:a.offsetWidth}},[d,w,k]),Z=t.useCallback(function(){v(!1),c==null||c()},[]),V=t.useCallback(function(s){var r,a;!((r=d.floating.current)!==null&&r!==void 0&&r.contains(s.target.closest("[data-dropdown-dismiss='false']")))&&(C||(a=d.floating.current)!==null&&a!==void 0&&a.contains(s.target.closest("[data-dropdown-dismiss='true']")))&&setTimeout(function(){v(!1),c==null||c()},100)},[C,c]),ee=t.useMemo(function(){return ve(u,m.props.ref,d.setReference)},[u,m.props.ref,d.setReference]);if(t.useEffect(function(){j&&v(!1)},[j]),t.useEffect(function(){if(!h)return;function s(){v(!1)}return h.events.on("close",s),function(){h.events.off("close",s)}},[h]),!m||!T)throw Error("Dropdown requires two elements [Anchor, Panel]");return l.jsxs(t.Fragment,{children:[t.cloneElement(m,f(f({},Q({onClick:function(r){var a,O;(a=(O=m.props).onClick)===null||a===void 0||a.call(O,r),r.stopPropagation(),r.preventDefault()}})),{},{"data-inner-clickable":"true","data-dropdown-open":w?!0:void 0,ref:ee})),w&&l.jsxs(me,{root:(n=(o=d.domReference.current)===null||o===void 0?void 0:o.closest(".theme-base"))!==null&&n!==void 0?n:void 0,children:[l.jsx(ge,{}),l.jsx(we,{context:b,modal:!0,children:l.jsxs("div",f(f({ref:d.setFloating,style:f({minWidth:Y,zIndex:"var(--z-popover)"},q),"data-ref":"dropdownBody"},X({onClick:function(r){return r.stopPropagation()}})),{},{children:[l.jsx("div",{role:"none",className:he("fabric-dropdownBody",z,!W&&"shadow-lg bg-base ring-1 ring-tint-100","rounded-capped overflow-auto scroll-thin grid max-h-[70vh]"),onMouseUpCapture:V,children:t.cloneElement(T,{dismiss:Z})}),g&&l.jsx(be,{ref:F,context:b,strokeWidth:.5,className:"fill-base stroke-dimmed"})]}))})]})]})},ye=function(e){var n=P();return n?l.jsx(A,f({},e)):l.jsx(ne,{children:l.jsx(A,f({},e))})},xe=function(e){var n=e.children,o=e.dismiss,u=o===void 0?!0:o,p=P();return l.jsx("div",{role:"none",className:"contents","data-dropdown-dismiss":u,onMouseUp:function(){return u&&setTimeout(function(){return p==null?void 0:p.events.emit("close")},50)},children:n})};export{ye as D,xe as a};
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{$t as i,Bt as a,Gt as o,Lt as s,Wt as c,Xt as l,Zt as u,nn as d,zt as f}from"./iframe-B-Wcw5ev.js";import{r as p}from"./react2.js";import{t as m}from"./mdx-react-shim.js";import{N as h,t as g,tt as _}from"./src3.js";import{CardContent as v,PanelContent as y,_Dropdown as b,n as x,t as S}from"./Dropdown.stories.js";function C(e){let t={code:`code`,pre:`pre`,...p(),...e.components};return(0,T.jsxs)(T.Fragment,{children:[(0,T.jsx)(l,{of:S}),`
+`,(0,T.jsx)(i,{children:`Dropdown`}),`
+`,(0,T.jsx)(s,{storyId:`Dropdown`,children:(0,T.jsx)(`div`,{className:`hidden-anchor`,children:(0,T.jsx)(u,{children:`Dropdown`})})}),`
+`,(0,T.jsx)(o,{of:_}),`
+`,(0,T.jsx)(a,{withToolbar:!0,of:b}),`
+`,(0,T.jsxs)(h,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(c,{of:b})]}),`
+`,(0,T.jsx)(s,{storyId:`card`,children:(0,T.jsx)(u,{children:`Card Content`})}),`
+`,(0,T.jsx)(o,{of:v}),`
+`,(0,T.jsx)(a,{withToolbar:!0,of:v}),`
+`,(0,T.jsxs)(h,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(c,{of:v})]}),`
+`,(0,T.jsx)(s,{storyId:`panel`,children:(0,T.jsx)(u,{children:`Panel Content`})}),`
+`,(0,T.jsx)(o,{of:y}),`
+`,(0,T.jsx)(a,{withToolbar:!0,of:y}),`
+`,(0,T.jsxs)(h,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(c,{of:y})]}),`
+`,(0,T.jsx)(`hr`,{}),`
+`,(0,T.jsx)(s,{storyId:`props`,children:(0,T.jsx)(u,{children:`Props`})}),`
+`,(0,T.jsx)(f,{sort:`requiredFirst`}),`
+`,(0,T.jsx)(s,{storyId:`sample`,children:(0,T.jsx)(u,{children:`Example`})}),`
+`,(0,T.jsx)(t.pre,{children:(0,T.jsx)(t.code,{className:`language-tsx`,children:`import { Dropdown, Button, Menu, MenuItem } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <Dropdown>
+      <Button altIcon="icon-[mdi--chevron-down]">Dropdown Menu</Button>
+      <Menu>
+        <MenuItem label="Item One" />
+        <MenuItem label="Item Two" />
+        <MenuItem label="Item Three" />
+      </Menu>
+    </Dropdown>
+  );
+};
+`})})]})}function w(e={}){let{wrapper:t}={...p(),...e.components};return t?(0,T.jsx)(t,{...e,children:(0,T.jsx)(C,{...e})}):C(e)}var T;t((()=>{T=r(),m(),d(),e(n()),g(),x()}))();export{w as default};

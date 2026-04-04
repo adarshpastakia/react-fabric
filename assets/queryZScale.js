@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,r as n}from"./zscale.js";function r(e,t,r){if(!r?.features||!r.hasZ)return;let i=n(r.geometryType,t,e.outSpatialReference);if(i)for(let e of r.features)i(e.geometry)}var i=e((()=>{t()}));export{r as n,i as t};

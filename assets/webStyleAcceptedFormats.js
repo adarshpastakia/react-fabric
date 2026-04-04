@@ -1,1 +1,1 @@
-const e=["web-gltf","web","cim"];export{e};
+import{n as e}from"./chunk.js";var t,n=e((()=>{t=[`web-gltf`,`web`,`cim`]}));export{n,t};

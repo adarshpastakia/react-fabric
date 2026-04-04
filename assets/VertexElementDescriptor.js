@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";var t,n=e((()=>{t=class{constructor(e,t,n,r,i,a=!1,o=0,s=!1){this.name=e,this.count=t,this.type=n,this.offset=r,this.stride=i,this.normalized=a,this.divisor=o,this.integer=s}}}));export{t as n,n as t};

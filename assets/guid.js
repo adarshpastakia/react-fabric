@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(e){return e.map(e=>{let t=``;for(let n=0;n<e;n++)t+=((1+Math.random())*65536|0).toString(16).substring(1);return t}).join(`-`)}var n,r=e((()=>{n=()=>t([2,1,1,1,3])}));export{r as n,n as t};

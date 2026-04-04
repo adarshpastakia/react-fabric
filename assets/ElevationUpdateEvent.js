@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{l as t,w as n}from"./aaBoundingRect.js";var r,i=e((()=>{n(),r=class{constructor(e=`scene`){this.context=e,this.extent=t(),this.spatialReference=null}}}));export{i as n,r as t};

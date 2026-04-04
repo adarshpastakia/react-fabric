@@ -1,0 +1,1 @@
+import{a as e,i as t,n,o as r,r as i,t as a}from"./projectOperator3.js";i();export{t as execute,a as executeMany,n as isLoaded,e as load,r as supportsCurves};

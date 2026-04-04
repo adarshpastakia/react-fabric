@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(e){let t,r,i=[],a=!1;function o(...o){return a&&t===this&&n(o,i)||(r=e.apply(this,o),t=this,i=o,a=!0),r}return o}function n(e,t){if(e.length!==t.length)return!1;for(let n=0;n<e.length;++n)if(e[n]!==t[n])return!1;return!0}var r=e((()=>{}));export{t as n,r as t};

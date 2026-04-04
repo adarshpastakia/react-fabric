@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";var t,n=e((()=>{t=class{constructor(e,t,n,r){this.targetPoint=e,this.constraint=t,this.isDraped=n,this.domain=r}}}));export{t as n,n as t};

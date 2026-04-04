@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./VertexArrayObject.js";var r,i=e((()=>{t(),r=class extends n{}}));export{r as n,i as t};

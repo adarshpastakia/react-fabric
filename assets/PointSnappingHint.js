@@ -1,1 +1,1 @@
-import{gL as i}from"./ShadowCastClear.glsl.js";import{s as n}from"./euclideanLengthMeasurementUtils.js";class s extends n{constructor(t,o,r){super(o,r),this.point=t}equals(t){return t instanceof s&&i(this.point,t.point)}}export{s as n};
+import{n as e}from"./chunk.js";import{E as t,n}from"./vec3.js";import{i as r,r as i}from"./LineSnappingHint.js";var a,o=e((()=>{t(),i(),a=class e extends r{constructor(e,t,n){super(t,n),this.point=e}equals(t){return t instanceof e&&n(this.point,t.point)}}}));export{a as n,o as t};

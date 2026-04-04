@@ -65,13 +65,10 @@
 
     &__selection-count-chip--horizontal {
       align-self: center;
-      margin-block: var(--calcite-spacing-xxs);
-      margin-inline: var(--calcite-spacing-xs);
     }
 
     &__selection-count-chip--vertical {
       align-self: center;
-      margin-block: calc(var(--calcite-spacing-md) * var(--sketch-chip-margin-scale-factor, 1));
       margin-inline: 0;
       scale: var(--sketch-chip-rescale, 1);
 

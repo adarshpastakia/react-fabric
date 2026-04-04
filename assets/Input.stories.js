@@ -1,4 +1,4 @@
-import{j as t}from"./iframe-BmpICDQJ.js";import{h as u,R as l,g as c,c as d,T as m,d as i,e as x,S as _,N as I,P as f,I as p}from"./DualList.js";import"./index.js";const{fn:s}=__STORYBOOK_MODULE_TEST__,g={component:p,subcomponents:{Password:f,Number:I,Search:_,FileInput:x,ColorInput:i,Textarea:m,Checkbox:d,Switch:c,Radio:l,RadioGroup:u},title:"@form/Inputs",parameters:{layout:"centered",jest:["form/tests/Input.test.tsx"]},decorators:[r=>t.jsx("div",{className:"max-w-[32rem] w-screen",children:t.jsx(r,{})})]},e={render:r=>t.jsx(p,{...r}),args:{label:"Text input",placeholder:"Text input...",allowClear:!0,onChange:s(),onEnterPressed:s()}};var n,a,o;e.parameters={...e.parameters,docs:{...(n=e.parameters)==null?void 0:n.docs,source:{originalSource:`{
+import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";import{C as r,c as i,f as a,h as o,l as s,o as c,p as l,s as u,t as d,u as f,w as p,y as m}from"./src6.js";var h=t({_Input:()=>y,__namedExportsOrder:()=>b,default:()=>v}),g,_,v,y,b,x=e((()=>{d(),g=n(),{fn:_}=__STORYBOOK_MODULE_TEST__,v={component:p,subcomponents:{Password:s,Number:m,Search:c,FileInput:f,ColorInput:o,Textarea:a,Checkbox:r,Switch:l,Radio:i,RadioGroup:u},title:`@form/Inputs`,parameters:{layout:`centered`,jest:[`form/tests/Input.test.tsx`]},decorators:[e=>(0,g.jsx)(`div`,{className:`max-w-[32rem] w-screen`,children:(0,g.jsx)(e,{})})]},y={render:e=>(0,g.jsx)(p,{...e}),args:{label:`Text input`,placeholder:`Text input...`,allowClear:!0,onChange:_(),onEnterPressed:_()}},y.parameters={...y.parameters,docs:{...y.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Input {...args} />;
   },
@@ -9,4 +9,4 @@ import{j as t}from"./iframe-BmpICDQJ.js";import{h as u,R as l,g as c,c as d,T as
     onChange: fn(),
     onEnterPressed: fn()
   }
-}`,...(o=(a=e.parameters)==null?void 0:a.docs)==null?void 0:o.source}}};const T=["_Input"],j=Object.freeze(Object.defineProperty({__proto__:null,_Input:e,__namedExportsOrder:T,default:g},Symbol.toStringTag,{value:"Module"}));export{j as I,e as _};
+}`,...y.parameters?.docs?.source}}},b=[`_Input`]}));x();export{y as _Input,b as __namedExportsOrder,v as default,x as n,h as t};

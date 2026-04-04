@@ -1,1 +1,1 @@
-import"./ShadowCastClear.glsl.js";function n(i){const{objectIdField:t,uniqueIdFields:e}=i;return e!=null&&e.length?e.length>=2?{type:"unique-id-composite",fieldNames:e}:{type:"unique-id-simple",fieldName:e[0]}:{type:"object-id",fieldName:t}}export{n as e};
+import{n as e}from"./chunk.js";import{R as t}from"./Error.js";function n(e){let{objectIdField:t,uniqueIdFields:n}=e;return n?.length?n.length>=2?{type:`unique-id-composite`,fieldNames:n}:{type:`unique-id-simple`,fieldName:n[0]}:{type:`object-id`,fieldName:t}}var r=e((()=>{t()}));export{r as n,n as t};

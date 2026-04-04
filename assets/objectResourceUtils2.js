@@ -1,0 +1,1 @@
+import{r as e,t}from"./objectResourceUtils.js";t();export{e as fetch};

@@ -1,0 +1,5 @@
+import{n as e}from"./chunk.js";import{r as t,t as n}from"./glsl.js";import{n as r,t as i}from"./Texture2DPassUniform.js";import{n as a,t as o}from"./ShaderBuilder.js";import{n as s,t as c}from"./ScreenSpacePass.glsl.js";import{r as l,t as u}from"./NoParameters.js";function d(){let e=new a;e.include(s);let{fragment:n,outputs:r}=e;return n.uniforms.add(new i(`colorTexture`,e=>e.colorTexture),new i(`alphaTexture`,e=>e.alphaTexture)),r.add(`fragColor`,`vec4`,0),r.add(`fragEmission`,`vec4`,1),n.main.add(t`float srcAlpha = texture(alphaTexture, uv).r;
+vec4 srcColor = texture(colorTexture, uv);
+srcColor.rgb = clamp(srcColor.rgb, vec3(0.0), srcColor.rgb);
+vec3 dimming = srcAlpha > 1.0 ? mix(vec3(1.0), srcColor.rgb, 1.0 / srcAlpha) : mix(vec3(1.0), srcColor.rgb, srcAlpha);
+fragEmission = vec4(dimming, 0.0);`),e}var f,p,m=e((()=>{c(),n(),r(),l(),o(),f=class extends u{},p=Object.freeze(Object.defineProperty({__proto__:null,OITDimPassParameters:f,build:d},Symbol.toStringTag,{value:`Module`}))}));export{p as i,m as n,f as r,d as t};

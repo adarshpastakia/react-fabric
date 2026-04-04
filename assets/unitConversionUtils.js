@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{T as t,z as n}from"./typedArrayUtil.js";import{n as r,t as i}from"./lengthUtils.js";function a(e){return!!e&&r[e]!=null}function o(e){return 1/(r[e]||1)}function s(){let e=Object.keys(r);return t(e,`decimal-degrees`),e.sort(),e}var c,l=e((()=>{n(),i(),c=s()}));export{c as i,l as n,o as r,a as t};

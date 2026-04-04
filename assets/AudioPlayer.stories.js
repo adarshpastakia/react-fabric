@@ -1,45 +1,70 @@
-import{j as r}from"./iframe-BmpICDQJ.js";import"./index.js";import{V as c}from"./Viewport.js";import{a as i}from"./VideoPlayer.js";import{b as l}from"./large_video.js";import"./Section.js";import"./ErrorBoundary.js";import"./createClass.js";import"./Global.js";import"./useDebounce.js";import"./Tooltip.js";import"./useResizeObserver.js";import"./HeadFoot.js";import"./Divider.js";import"./Text.js";import"./usePropToggle.js";import"./types.js";import"./ColorPicker.js";import"./Google.js";import"./zh-CN.js";import"./endOfDay.js";import"./index5.js";import"./index2.js";import"./debounce.js";import"./isEqual.js";import"./ThemeProvider.js";import"./useResize.js";import"./Dropdown.js";import"./Card2.js";import"./nodeCheck.js";import"./eventHandlers.js";import"./ErrorIcon.js";import"./Panel.js";import"./Content.js";import"./Textarea.js";const u=""+new URL("sample-DOsI675H.mp3",import.meta.url).href,T={component:i,title:"@media/AudioPlayer",parameters:{layout:"fullscreen",controls:{exclude:"children"}}},n={render:o=>r.jsx("div",{className:"min-h-[600px]",children:r.jsx(c,{children:r.jsx(i,{...o})})}),args:{src:u,regions:[{start:.1,end:1.3,channel:0,id:"any"},{start:5,end:9.3,channel:1,id:"2"}]}},e={render:o=>r.jsx("div",{className:"min-h-[600px]",children:r.jsx(c,{children:r.jsx(i,{forVideo:!0,...o})})}),args:{src:l,regions:[{start:.1,end:1.3,channel:0,id:"any"},{start:5,end:9.3,channel:1,id:"2"}]}};var t,a,s;n.parameters={...n.parameters,docs:{...(t=n.parameters)==null?void 0:t.docs,source:{originalSource:`{
+import{a as e,n as t,r as n}from"./chunk.js";import{t as r}from"./react.js";import{t as i}from"./jsx-runtime.js";import{L as a,Y as o}from"./ResizeObserver.es.js";import{Y as s,b as c,d as l,g as u,p as d,q as f,t as p,x as m,y as h}from"./iframe-B-Wcw5ev.js";import{a as g,c as _,o as v,t as y}from"./esm.js";import{a as b,t as x}from"./src7.js";import{r as S,t as C}from"./workaround.js";import{n as w,t as T}from"./large_video.js";var E,D=t((()=>{E=``+new URL(`sample-DOsI675H.mp3`,import.meta.url).href})),O,k=t((()=>{O=``+new URL(`sample-77PFpiGU.wav`,import.meta.url).href})),A=n({Playground:()=>F,__namedExportsOrder:()=>I,default:()=>P}),j,M,N,P,F,I,L=t((()=>{p(),y(),a(),j=e(r()),x(),S(),T(),D(),k(),M=i(),{fn:N}=__STORYBOOK_MODULE_TEST__,P={component:b,subcomponents:{AudioRegion:C},title:`@media/AudioPlayer`,parameters:{layout:`fullscreen`,controls:{exclude:`children`}}},F={render:e=>{let t=(0,j.useRef)(null),[n,r]=(0,j.useState)(E),[i,a]=(0,j.useState)(!1),[p,y]=(0,j.useState)([{id:`1`,start:.2,end:15.5,color:`#ffcc00`,channel:0},{id:`2`,start:5.2,end:9.5,color:`#ff00cc`,channel:1},{id:`3`,start:12.2,end:18.5,color:`#ff00cc`,channel:1}]);return(0,M.jsx)(`div`,{className:`min-h-150`,children:(0,M.jsxs)(l,{children:[(0,M.jsxs)(d,{className:`relative`,children:[(0,M.jsx)(b,{src:n,ref:t,autoPlay:!0,editable:i,showVideo:n===w,regions:p,onRegionsChange:y,onTimeChange:e.onTimeChange}),(0,M.jsx)(u,{className:`text-sm`,children:p.sort(o(`asc`,`start`)).map(e=>(0,M.jsx)(f,{legend:`Region ${e.id}`,legendClassName:`text-xs text-primary-600`,children:(0,M.jsxs)(`div`,{className:`flex items-center`,children:[(0,M.jsxs)(`p`,{className:`flex-1`,children:[`Start: `,e.start.toFixed(2),`s, End: `,e.end.toFixed(2),`s, Channel: `,e.channel]}),(0,M.jsx)(s,{size:`sm`,onClick:()=>t.current?.playRegion(e.id),children:`Play`})]})},e.id))})]}),(0,M.jsx)(h,{align:`end`,children:(0,M.jsx)(c,{orientation:`end`,activeTab:`basic`,children:(0,M.jsx)(m,{id:`basic`,icon:`icon-[mdi--image]`,tooltip:`Basic options`,children:(0,M.jsx)(d,{className:`text-sm`,children:(0,M.jsxs)(u,{children:[(0,M.jsxs)(f,{legend:`Audio Source`,children:[(0,M.jsx)(`p`,{className:`break-all`,children:n}),(0,M.jsxs)(g,{onChange:r,name:`src`,value:n,vertical:!0,children:[(0,M.jsx)(v,{value:E,label:`Sample MP3`}),(0,M.jsx)(v,{value:O,label:`Sample 7.1`}),(0,M.jsx)(v,{value:w,label:`Sample Video`}),(0,M.jsx)(v,{value:`/assets/samples/sample1.aiff`,label:`Unsupported Format`})]})]}),(0,M.jsx)(`div`,{children:(0,M.jsx)(_,{label:`Editable Regions`,checked:i,onChange:e=>a(e)})})]})})})})})]})})},args:{onTimeChange:N()}},F.parameters={...F.parameters,docs:{...F.parameters?.docs,source:{originalSource:`{
   render: args => {
-    return <div className="min-h-[600px]">
+    const audioRef = useRef<AudioPlayerRef>(null);
+    const [src, setSrc] = useState(sampleAudio);
+    const [editable, setEditable] = useState(false);
+    const [regions, setRegions] = useState<AudioRegion[]>([{
+      id: "1",
+      start: 0.2,
+      end: 15.5,
+      color: "#ffcc00",
+      channel: 0
+    }, {
+      id: "2",
+      start: 5.2,
+      end: 9.5,
+      color: "#ff00cc",
+      channel: 1
+    }, {
+      id: "3",
+      start: 12.2,
+      end: 18.5,
+      color: "#ff00cc",
+      channel: 1
+    }]);
+    return <div className="min-h-150">
         <Viewport>
-          <AudioPlayer {...args} />
+          <Section className="relative">
+            <AudioPlayer src={src} ref={audioRef} autoPlay editable={editable} showVideo={src === largeVideo} regions={regions} onRegionsChange={setRegions} onTimeChange={args.onTimeChange} />
+            <Content className="text-sm">
+              {regions.sort(compareValues("asc", "start")).map(r => <Callout key={r.id} legend={\`Region \${r.id}\`} legendClassName="text-xs text-primary-600">
+                  <div className="flex items-center">
+                    <p className="flex-1">
+                      Start: {r.start.toFixed(2)}s, End: {r.end.toFixed(2)}s, Channel: {r.channel}
+                    </p>
+                    <Button size="sm" onClick={() => audioRef.current?.playRegion(r.id)}>
+                      Play
+                    </Button>
+                  </div>
+                </Callout>)}
+            </Content>
+          </Section>
+          <Aside align="end">
+            <TabPanel orientation="end" activeTab="basic">
+              <Tab id="basic" icon="icon-[mdi--image]" tooltip="Basic options">
+                <Section className="text-sm">
+                  <Content>
+                    <Callout legend="Audio Source">
+                      <p className="break-all">{src}</p>
+                      <RadioGroup onChange={setSrc} name="src" value={src} vertical>
+                        <Radio value={sampleAudio} label="Sample MP3" />
+                        <Radio value={sample7Audio} label="Sample 7.1" />
+                        <Radio value={largeVideo} label="Sample Video" />
+                        <Radio value={"/assets/samples/sample1.aiff"} label="Unsupported Format" />
+                      </RadioGroup>
+                    </Callout>
+                    <div>
+                      <Switch label="Editable Regions" checked={editable} onChange={e => setEditable(e)} />
+                    </div>
+                  </Content>
+                </Section>
+              </Tab>
+            </TabPanel>
+          </Aside>
         </Viewport>
       </div>;
   },
   args: {
-    src: audio,
-    regions: [{
-      start: 0.1,
-      end: 1.3,
-      channel: 0,
-      id: "any"
-    }, {
-      start: 5,
-      end: 9.3,
-      channel: 1,
-      id: "2"
-    }]
+    onTimeChange: fn()
   }
-}`,...(s=(a=n.parameters)==null?void 0:a.docs)==null?void 0:s.source}}};var m,p,d;e.parameters={...e.parameters,docs:{...(m=e.parameters)==null?void 0:m.docs,source:{originalSource:`{
-  render: args => {
-    return <div className="min-h-[600px]">
-        <Viewport>
-          <AudioPlayer forVideo {...args} />
-        </Viewport>
-      </div>;
-  },
-  args: {
-    src: video,
-    regions: [{
-      start: 0.1,
-      end: 1.3,
-      channel: 0,
-      id: "any"
-    }, {
-      start: 5,
-      end: 9.3,
-      channel: 1,
-      id: "2"
-    }]
-  }
-}`,...(d=(p=e.parameters)==null?void 0:p.docs)==null?void 0:d.source}}};const X=["_AudioPlayer","WithVideo"];export{e as WithVideo,n as _AudioPlayer,X as __namedExportsOrder,T as default};
+}`,...F.parameters?.docs?.source}}},I=[`Playground`]}));L();export{F as Playground,I as __namedExportsOrder,P as default,L as n,A as t};

@@ -1,0 +1,1 @@
+import{n as e,t}from"./FlatGeometry2.js";e();export{t as constructFromFlatGeometry};

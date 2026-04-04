@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(e){return`performanceInfo`in e}var n,r=e((()=>{n=class{constructor(e,t=0,n=0,r=0,i=0,a=null){this.usedMemory=e,this.displayedFeatures=t,this.totalFeatures=n,this.maximumFeatures=r,this.nodes=i,this.core=a}}}));export{r as n,n as r,t};

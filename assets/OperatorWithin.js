@@ -1,1 +1,1 @@
-import{L as a,k as o}from"./ProjectionTransformation.js";class n extends a{getOperatorType(){return 7}execute(e,r,t,s){return o(e,r,t,2,s)}}export{n as t};
+import{n as e}from"./chunk.js";import{_ as t,mt as n,yt as r}from"./SpatialReference2.js";var i,a=e((()=>{n(),i=class extends t{getOperatorType(){return 7}execute(e,t,n,i){return r(e,t,n,2,i)}}}));export{i as n,a as t};

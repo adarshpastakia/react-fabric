@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./SpatialReference.js";import{n as r,t as i}from"./Point.js";var a,o,s,c=e((()=>{r(),t(),a=new i({x:0,y:0,z:0,spatialReference:n.WebMercator}),o=1e3,s=.3515625}));export{o as i,s as n,a as r,c as t};

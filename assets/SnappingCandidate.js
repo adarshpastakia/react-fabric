@@ -1,1 +1,1 @@
-function c(e,t,r){return{objectId:e,target:t,distance:r,type:"vertex"}}function o(e,t,r,n,d,a=!1){return{objectId:e,target:t,distance:r,type:"edge",start:n,end:d,draped:a}}export{o as e,c as t};
+import{n as e}from"./chunk.js";var t,n,r,i=e((()=>{t=class{constructor(e,t,n){this.objectId=e,this.target=t,this.distance=n}},n=class extends t{constructor(e,t,n){super(e,t,n),this.type=`vertex`}},r=class extends t{constructor(e,t,n,r,i,a=!1,o=null){super(e,t,n),this.start=r,this.end=i,this.draped=a,this.curve=o,this.type=`edge`}}}));export{i as n,n as r,r as t};

@@ -1,18 +1,18 @@
-import{j as n,M as x,T as m,A as r,S as s,D as a,P as j,c as l,C as c,b as p,a as u}from"./iframe-BmpICDQJ.js";import{useMDXComponents as d}from"./index3.js";import{u as h}from"./useOverlayService.js";import{_Flyout as t}from"./Flyout.stories.js";import{M as f,_ as y}from"./Modal.stories.js";import"./index4.js";function i(e){const o={code:"code",pre:"pre",...d(),...e.components};return n.jsxs(n.Fragment,{children:[n.jsx(x,{of:f}),`
-`,n.jsx(m,{children:"Overlays"}),`
-`,n.jsx(r,{storyId:"modal",children:n.jsx(s,{children:"Modal"})}),`
-`,n.jsx(a,{of:h}),`
-`,n.jsx(j,{}),`
-`,n.jsxs(l,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(c,{of:y})]}),`
-`,n.jsx(r,{storyId:"flyout",children:n.jsx(s,{children:"Flyouts"})}),`
-`,n.jsx(a,{of:t}),`
-`,n.jsx(p,{withToolbar:!0,of:t}),`
-`,n.jsxs(l,{className:"control-panel",children:[n.jsx("div",{children:"Controls"}),n.jsx(c,{of:t})]}),`
-`,n.jsx("hr",{}),`
-`,n.jsx(r,{storyId:"props",children:n.jsx(s,{children:"Props"})}),`
-`,n.jsx(u,{sort:"requiredFirst"}),`
-`,n.jsx(r,{storyId:"sample",children:n.jsx(s,{children:"Example"})}),`
-`,n.jsx(o.pre,{children:n.jsx(o.code,{className:"language-tsx",children:`import { Button, useOverlayService } from "@react-fabric/core";
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{$t as i,Bt as a,Gt as o,Lt as s,Wt as c,Xt as l,Zt as u,nn as d,zt as f}from"./iframe-B-Wcw5ev.js";import{r as p}from"./react2.js";import{t as m}from"./mdx-react-shim.js";import{N as h,n as g,t as _}from"./src3.js";import{_Flyout as v,t as y}from"./Flyout.stories.js";import{_Modal as b,n as x,t as S}from"./Modal.stories.js";function C(e){let t={code:`code`,pre:`pre`,...p(),...e.components};return(0,T.jsxs)(T.Fragment,{children:[(0,T.jsx)(l,{of:S}),`
+`,(0,T.jsx)(i,{children:`Overlays`}),`
+`,(0,T.jsx)(s,{storyId:`modal`,children:(0,T.jsx)(u,{children:`Modal`})}),`
+`,(0,T.jsx)(o,{of:g}),`
+`,(0,T.jsx)(a,{withToolbar:!0,of:b}),`
+`,(0,T.jsxs)(h,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(c,{of:b})]}),`
+`,(0,T.jsx)(s,{storyId:`flyout`,children:(0,T.jsx)(u,{children:`Flyouts`})}),`
+`,(0,T.jsx)(o,{of:v}),`
+`,(0,T.jsx)(a,{withToolbar:!0,of:v}),`
+`,(0,T.jsxs)(h,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(c,{of:v})]}),`
+`,(0,T.jsx)(`hr`,{}),`
+`,(0,T.jsx)(s,{storyId:`props`,children:(0,T.jsx)(u,{children:`Props`})}),`
+`,(0,T.jsx)(f,{sort:`requiredFirst`}),`
+`,(0,T.jsx)(s,{storyId:`sample`,children:(0,T.jsx)(u,{children:`Example`})}),`
+`,(0,T.jsx)(t.pre,{children:(0,T.jsx)(t.code,{className:`language-tsx`,children:`import { Button, useOverlayService } from "@react-fabric/core";
 
 export const Example = () => {
   const [ModelNode, openModal] = useOverlayService(ModalComponent);
@@ -33,4 +33,4 @@ export const Example = () => {
     </Fragment>
   );
 };
-`})})]})}function b(e={}){const{wrapper:o}={...d(),...e.components};return o?n.jsx(o,{...e,children:n.jsx(i,{...e})}):i(e)}export{b as default};
+`})})]})}function w(e={}){let{wrapper:t}={...p(),...e.components};return t?(0,T.jsx)(t,{...e,children:(0,T.jsx)(C,{...e})}):C(e)}var T;t((()=>{T=r(),m(),d(),e(n()),_(),y(),x()}))();export{w as default};

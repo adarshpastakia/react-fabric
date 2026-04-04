@@ -1,4 +1,4 @@
-import{j as e,ao as r,h as s,R as S,i as c}from"./iframe-BmpICDQJ.js";import{f as t,m}from"./index4.js";const _={component:r,title:"@core/components/Callout",parameters:{layout:"centered",controls:{exclude:/^(on.*|children|as)/},jest:["core/tests/callout/Callout.test.tsx"]},decorators:[n=>e.jsx("div",{className:"max-w-2xl p-4",children:e.jsx(n,{})})]},o={render:n=>e.jsxs(e.Fragment,{children:[e.jsx(r,{...n,children:e.jsx(s,{clamp:4,children:t.lorem.sentences(2)})}),e.jsx(r,{...n,title:m.commerce.productName(),children:e.jsx(s,{clamp:4,children:m.lorem.sentences(2)})})]}),args:{title:t.commerce.productName(),icon:"mdi mdi-react"}},a={render:n=>e.jsx(e.Fragment,{children:e.jsx(r,{...n,children:e.jsx(s,{clamp:4,children:t.lorem.sentences(2)})})}),args:{title:t.commerce.productName(),legend:t.animal.cat(),icon:"mdi mdi-react",border:"dashed",color:"info"}},l={render:n=>e.jsxs(S,{children:[e.jsx(c,{className:"span-12",stretchContent:!0,children:e.jsx(r,{...n,color:"primary",title:"Primary",icon:"mdi mdi-react",children:e.jsx(s,{clamp:4,children:t.lorem.sentences(2)})})}),e.jsx(c,{className:"span-12",stretchContent:!0,children:e.jsx(r,{...n,color:"accent",title:"Accent",icon:"mdi mdi-react",children:e.jsx(s,{clamp:4,children:t.lorem.sentences(2)})})}),e.jsx(c,{className:"span-12",stretchContent:!0,children:e.jsx(r,{...n,color:"info",title:"Info",icon:"mdi mdi-information-outline",children:e.jsx(s,{clamp:4,children:t.lorem.sentences(2)})})}),e.jsx(c,{className:"span-12",stretchContent:!0,children:e.jsx(r,{...n,color:"danger",title:"Danger",icon:"mdi mdi-close-circle-outline",children:e.jsx(s,{clamp:4,children:t.lorem.sentences(2)})})}),e.jsx(c,{className:"span-12",stretchContent:!0,children:e.jsx(r,{...n,color:"success",title:"Sucess",icon:"mdi mdi-check-circle-outline",children:e.jsx(s,{clamp:4,children:t.lorem.sentences(2)})})}),e.jsx(c,{className:"span-12",stretchContent:!0,children:e.jsx(r,{...n,color:"warning",title:"Warning",icon:"mdi mdi-alert-outline",children:e.jsx(s,{clamp:4,children:t.lorem.sentences(2)})})})]}),args:{}},i={render:n=>e.jsx(r,{...n}),args:{}};var d,u,p;o.parameters={...o.parameters,docs:{...(d=o.parameters)==null?void 0:d.docs,source:{originalSource:`{
+import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";import{n as r,r as i,t as a}from"./dist28.js";import{Y as o,d as s,i as c,p as l,t as u}from"./src3.js";var d=t({Colors:()=>_,Tester:()=>v,WithLegend:()=>g,_Callout:()=>h,__namedExportsOrder:()=>y,default:()=>m}),f,p,m,h,g,_,v,y,b=e((()=>{a(),f=n(),u(),p=n(),m={component:o,title:`@core/components/Callout`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/callout/Callout.test.tsx`]},decorators:[e=>(0,p.jsx)(`div`,{className:`max-w-2xl p-4`,children:(0,p.jsx)(e,{})})]},h={render:e=>(0,p.jsxs)(f.Fragment,{children:[(0,p.jsx)(o,{...e,children:(0,p.jsx)(c,{clamp:4,children:i.lorem.sentences(2)})}),(0,p.jsx)(o,{...e,title:r.commerce.productName(),children:(0,p.jsx)(c,{clamp:4,children:r.lorem.sentences(2)})})]}),args:{title:i.commerce.productName(),icon:`mdi mdi-react`}},g={render:e=>(0,p.jsx)(f.Fragment,{children:(0,p.jsx)(o,{...e,children:(0,p.jsx)(c,{clamp:4,children:i.lorem.sentences(2)})})}),args:{title:i.commerce.productName(),legend:i.animal.cat(),icon:`mdi mdi-react`,border:`dashed`,color:`info`}},_={render:e=>(0,p.jsxs)(l,{children:[(0,p.jsx)(s,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`default`,title:`Default`,icon:`mdi mdi-react`,children:(0,p.jsx)(c,{clamp:4,children:i.lorem.sentences(2)})})}),(0,p.jsx)(s,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`dimmed`,title:`Dimmed`,icon:`mdi mdi-react`,children:(0,p.jsx)(c,{clamp:4,children:i.lorem.sentences(2)})})}),(0,p.jsx)(s,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`muted`,title:`Muted`,icon:`mdi mdi-react`,children:(0,p.jsx)(c,{clamp:4,children:i.lorem.sentences(2)})})}),(0,p.jsx)(s,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`primary`,title:`Primary`,icon:`mdi mdi-react`,children:(0,p.jsx)(c,{clamp:4,children:i.lorem.sentences(2)})})}),(0,p.jsx)(s,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`accent`,title:`Accent`,icon:`mdi mdi-react`,children:(0,p.jsx)(c,{clamp:4,children:i.lorem.sentences(2)})})}),(0,p.jsx)(s,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`info`,title:`Info`,icon:`mdi mdi-information-outline`,children:(0,p.jsx)(c,{clamp:4,children:i.lorem.sentences(2)})})}),(0,p.jsx)(s,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`danger`,title:`Danger`,icon:`mdi mdi-close-circle-outline`,children:(0,p.jsx)(c,{clamp:4,children:i.lorem.sentences(2)})})}),(0,p.jsx)(s,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`success`,title:`Sucess`,icon:`mdi mdi-check-circle-outline`,children:(0,p.jsx)(c,{clamp:4,children:i.lorem.sentences(2)})})}),(0,p.jsx)(s,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`warning`,title:`Warning`,icon:`mdi mdi-alert-outline`,children:(0,p.jsx)(c,{clamp:4,children:i.lorem.sentences(2)})})})]}),args:{}},v={render:e=>(0,p.jsx)(o,{...e}),args:{}},h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Fragment>
         <Callout {...args}>
@@ -13,7 +13,7 @@ import{j as e,ao as r,h as s,R as S,i as c}from"./iframe-BmpICDQJ.js";import{f a
     title: faker.commerce.productName(),
     icon: "mdi mdi-react"
   }
-}`,...(p=(u=o.parameters)==null?void 0:u.docs)==null?void 0:p.source}}};var x,C,h;a.parameters={...a.parameters,docs:{...(x=a.parameters)==null?void 0:x.docs,source:{originalSource:`{
+}`,...h.parameters?.docs?.source}}},g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Fragment>
         <Callout {...args}>
@@ -28,9 +28,24 @@ import{j as e,ao as r,h as s,R as S,i as c}from"./iframe-BmpICDQJ.js";import{f a
     border: "dashed",
     color: "info"
   }
-}`,...(h=(C=a.parameters)==null?void 0:C.docs)==null?void 0:h.source}}};var g,j,f;l.parameters={...l.parameters,docs:{...(g=l.parameters)==null?void 0:g.docs,source:{originalSource:`{
+}`,...g.parameters?.docs?.source}}},_.parameters={..._.parameters,docs:{..._.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Row>
+        <Col className="span-12" stretchContent>
+          <Callout {...args} color="default" title="Default" icon="mdi mdi-react">
+            <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
+          </Callout>
+        </Col>
+        <Col className="span-12" stretchContent>
+          <Callout {...args} color="dimmed" title="Dimmed" icon="mdi mdi-react">
+            <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
+          </Callout>
+        </Col>
+        <Col className="span-12" stretchContent>
+          <Callout {...args} color="muted" title="Muted" icon="mdi mdi-react">
+            <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
+          </Callout>
+        </Col>
         <Col className="span-12" stretchContent>
           <Callout {...args} color="primary" title="Primary" icon="mdi mdi-react">
             <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
@@ -64,7 +79,7 @@ import{j as e,ao as r,h as s,R as S,i as c}from"./iframe-BmpICDQJ.js";import{f a
       </Row>;
   },
   args: {}
-}`,...(f=(j=l.parameters)==null?void 0:j.docs)==null?void 0:f.source}}};var T,N,k;i.parameters={...i.parameters,docs:{...(T=i.parameters)==null?void 0:T.docs,source:{originalSource:`{
+}`,..._.parameters?.docs?.source}}},v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
   render: args => <Callout {...args} />,
   args: {}
-}`,...(k=(N=i.parameters)==null?void 0:N.docs)==null?void 0:k.source}}};const y=["_Callout","WithLegend","Colors","Tester"],F=Object.freeze(Object.defineProperty({__proto__:null,Colors:l,Tester:i,WithLegend:a,_Callout:o,__namedExportsOrder:y,default:_},Symbol.toStringTag,{value:"Module"}));export{F as C,a as W,o as _,l as a};
+}`,...v.parameters?.docs?.source}}},y=[`_Callout`,`WithLegend`,`Colors`,`Tester`]}));b();export{_ as Colors,v as Tester,g as WithLegend,h as _Callout,y as __namedExportsOrder,m as default,b as n,d as t};

@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(e,t,n=``){return e?t:n}var n,r=e((()=>{n=(e,...t)=>{let n=``;for(let r=0;r<t.length;r++)n+=e[r]+t[r];return n+=e[e.length-1],n},n.int=e=>e.toFixed(),n.uint=e=>`${Math.max(0,e).toFixed()}u`,n.hexuint=e=>`0x${Math.round(Math.max(0,e)).toString(16)}u`,n.float=e=>e.toPrecision(8)}));export{t as n,n as r,r as t};

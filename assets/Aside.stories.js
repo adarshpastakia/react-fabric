@@ -1,4 +1,4 @@
-import{g as o,j as e,V as p,d,e as m}from"./iframe-BmpICDQJ.js";import{f as x,m as u}from"./index4.js";const{fn:r}=__STORYBOOK_MODULE_TEST__,h={component:o,title:"@core/Application",parameters:{layout:"fullscreen",controls:{exclude:/^(on.*|children|as)/},jest:["core/tests/Aside.test.tsx"]}},f=[...new Array(5).fill("").map(()=>x.lorem.sentences(5)),...new Array(5).fill("").map(()=>u.lorem.sentences(5))],n={render:i=>e.jsx("div",{className:"min-h-[600px]",children:e.jsx(p,{children:e.jsx(d,{paper:!0,children:e.jsx(o,{...i,children:e.jsx(m,{children:f.map((l,c)=>e.jsx("p",{children:l},c))})})})})}),args:{title:"Sidebar title",icon:"mdi mdi-react",onFlyout:r(),onCollapse:r()}};var s,t,a;n.parameters={...n.parameters,docs:{...(s=n.parameters)==null?void 0:s.docs,source:{originalSource:`{
+import{n as e}from"./chunk.js";import{t}from"./jsx-runtime.js";import{n,r,t as i}from"./dist28.js";import{c as a,g as o,h as s,m as c,t as l}from"./src3.js";var u,d,f,p,m,h,g=e((()=>{i(),l(),u=t(),{fn:d}=__STORYBOOK_MODULE_TEST__,f={component:o,title:`@core/Application`,parameters:{layout:`fullscreen`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/Aside.test.tsx`]}},p=[...[,,,,,].fill(``).map(()=>r.lorem.sentences(5)),...[,,,,,].fill(``).map(()=>n.lorem.sentences(5))],m={render:e=>(0,u.jsx)(`div`,{className:`min-h-[600px]`,children:(0,u.jsx)(a,{children:(0,u.jsx)(c,{paper:!0,children:(0,u.jsx)(o,{...e,children:(0,u.jsx)(s,{children:p.map((e,t)=>(0,u.jsx)(`p`,{children:e},t))})})})})}),args:{title:`Sidebar title`,icon:`mdi mdi-react`,onFlyout:d(),onCollapse:d()}},m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <div className="min-h-[600px]">
         <Viewport>
@@ -18,4 +18,4 @@ import{g as o,j as e,V as p,d,e as m}from"./iframe-BmpICDQJ.js";import{f as x,m 
     onFlyout: fn(),
     onCollapse: fn()
   }
-}`,...(a=(t=n.parameters)==null?void 0:t.docs)==null?void 0:a.source}}};const j=["_Aside"];export{n as _Aside,j as __namedExportsOrder,h as default};
+}`,...m.parameters?.docs?.source}}},h=[`_Aside`]}));g();export{m as _Aside,h as __namedExportsOrder,f as default,g as t};

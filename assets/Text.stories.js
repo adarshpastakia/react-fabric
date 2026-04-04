@@ -1,15 +1,15 @@
-import{j as a,a2 as i,a1 as g,a3 as u,a0 as T,a4 as j,h as n}from"./iframe-BmpICDQJ.js";import{f as d,m as x}from"./index4.js";const _={component:n,subcomponents:{Title:j,Abbr:T,Mark:u,Anchor:g,Copy:i},title:"@core/Typography",parameters:{controls:{exclude:/^(on.*|children|as)/},jest:["core/tests/Text.test.tsx"]},decorators:[e=>a.jsx("div",{className:"max-w-2xl p-4",children:a.jsx(e,{})})]},h=d.lorem.sentences(5)+`
+import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";import{n as r,r as i,t as a}from"./dist28.js";import{J as o,a as s,i as c,o as l,rt as u,s as d,t as f}from"./src3.js";var p=t({Clamped:()=>y,_Text:()=>v,__namedExportsOrder:()=>b,default:()=>h}),m,h,g,_,v,y,b,x=e((()=>{a(),f(),m=n(),h={component:c,subcomponents:{Title:o,Abbr:d,Mark:s,Anchor:u,Copy:l},title:`@core/Typography`,parameters:{controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/Text.test.tsx`]},decorators:[e=>(0,m.jsx)(`div`,{className:`max-w-2xl p-4`,children:(0,m.jsx)(e,{})})]},g=i.lorem.sentences(5)+`
 
-`+x.lorem.sentences(5),b=d.lorem.sentences(10)+`
+`+r.lorem.sentences(5),_=i.lorem.sentences(10)+`
 
-`+x.lorem.sentences(10),r={render:e=>a.jsx(n,{...e,children:h}),args:{className:"mixed-lang"}},s={render:e=>a.jsx(n,{...e,children:b}),args:{clamp:5,className:"mixed-lang"}};var t,o,c;r.parameters={...r.parameters,docs:{...(t=r.parameters)==null?void 0:t.docs,source:{originalSource:`{
+`+r.lorem.sentences(10),v={render:e=>(0,m.jsx)(c,{...e,children:g}),args:{className:`mixed-lang`}},y={render:e=>(0,m.jsx)(c,{...e,children:_}),args:{clamp:5,className:`mixed-lang`}},v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Text {...args}>{para}</Text>;
   },
   args: {
     className: "mixed-lang"
   }
-}`,...(c=(o=r.parameters)==null?void 0:o.docs)==null?void 0:c.source}}};var m,l,p;s.parameters={...s.parameters,docs:{...(m=s.parameters)==null?void 0:m.docs,source:{originalSource:`{
+}`,...v.parameters?.docs?.source}}},y.parameters={...y.parameters,docs:{...y.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Text {...args}>{paras}</Text>;
   },
@@ -17,4 +17,4 @@ import{j as a,a2 as i,a1 as g,a3 as u,a0 as T,a4 as j,h as n}from"./iframe-BmpIC
     clamp: 5,
     className: "mixed-lang"
   }
-}`,...(p=(l=s.parameters)==null?void 0:l.docs)==null?void 0:p.source}}};const f=["_Text","Clamped"],S=Object.freeze(Object.defineProperty({__proto__:null,Clamped:s,_Text:r,__namedExportsOrder:f,default:_},Symbol.toStringTag,{value:"Module"}));export{s as C,S as T,r as _};
+}`,...y.parameters?.docs?.source}}},b=[`_Text`,`Clamped`]}));x();export{y as Clamped,v as _Text,b as __namedExportsOrder,h as default,x as n,p as t};

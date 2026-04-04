@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";var t,n=e((()=>{t=class{*[Symbol.iterator](){let e=this.next();for(;e;)yield e,e=this.next()}}}));export{t as n,n as t};

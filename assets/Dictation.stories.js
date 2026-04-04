@@ -1,10 +1,10 @@
-import{j as r}from"./iframe-BmpICDQJ.js";import{D as p}from"./VideoPlayer.js";import"./index.js";import"./Section.js";import"./ErrorBoundary.js";import"./createClass.js";import"./Global.js";import"./useDebounce.js";import"./Tooltip.js";import"./useResizeObserver.js";import"./HeadFoot.js";import"./Divider.js";import"./Text.js";import"./usePropToggle.js";import"./types.js";import"./ColorPicker.js";import"./Google.js";import"./zh-CN.js";import"./endOfDay.js";import"./index5.js";import"./index2.js";import"./debounce.js";import"./isEqual.js";import"./ThemeProvider.js";import"./useResize.js";import"./Dropdown.js";import"./Card2.js";import"./nodeCheck.js";import"./eventHandlers.js";import"./ErrorIcon.js";import"./Panel.js";import"./Content.js";import"./Textarea.js";const{fn:s}=__STORYBOOK_MODULE_TEST__,C={component:p,title:"@media/Dictation",parameters:{layout:"centered",jest:["media/tests/Dictation.test.tsx"]}},t={render:e=>r.jsx("div",{className:"",children:r.jsx(p,{...e})}),args:{onRecord:s()}};var o,i,m;t.parameters={...t.parameters,docs:{...(o=t.parameters)==null?void 0:o.docs,source:{originalSource:`{
+import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";import{r,t as i}from"./src7.js";var a=t({_Dictation:()=>l,__namedExportsOrder:()=>u,default:()=>c}),o,s,c,l,u,d=e((()=>{i(),o=n(),{fn:s}=__STORYBOOK_MODULE_TEST__,c={component:r,title:`@media/Dictation`,parameters:{layout:`centered`,jest:[`media/tests/Dictation.test.tsx`]}},l={render:e=>(0,o.jsx)(`div`,{className:`w-48 flex justify-end`,children:(0,o.jsx)(r,{...e})}),args:{onRecord:s()}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
   render: args => {
-    return <div className="">
+    return <div className="w-48 flex justify-end">
         <Dictation {...args} />
       </div>;
   },
   args: {
     onRecord: fn()
   }
-}`,...(m=(i=t.parameters)==null?void 0:i.docs)==null?void 0:m.source}}};const F=["_Dictation"];export{t as _Dictation,F as __namedExportsOrder,C as default};
+}`,...l.parameters?.docs?.source}}},u=[`_Dictation`]}));d();export{l as _Dictation,u as __namedExportsOrder,c as default,d as n,a as t};

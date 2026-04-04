@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{z as t}from"./typedArrayUtil.js";import{c as n,i as r,o as i,r as a}from"./jsonConverter.js";import{n as o,t as s}from"./operatorIntersection2.js";function c(e,t){let n=i(e),s=n.getSpatialReference();return r(o(n.getGeometry(),a(t),s),s)}e((()=>{t(),s(),n()}))();export{c as execute};

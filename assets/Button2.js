@@ -1,1 +1,51 @@
-import{i as _}from"./Disposer.js";import{R as v,f as p,C as w}from"./Label.js";import{r as m,m as y}from"./Animation.js";class R extends v{_beforeChanged(){super._beforeChanged(),(this.isDirty("cornerRadiusTL")||this.isDirty("cornerRadiusTR")||this.isDirty("cornerRadiusBR")||this.isDirty("cornerRadiusBL"))&&(this._clear=!0)}_draw(){let i=this.width(),e=this.height(),o=i/Math.abs(i),c=e/Math.abs(e),t=0,s=0;const g=this.get("strokeWidth",0);this.get("containStroke",!1)&&(i-=o*g,e-=c*g,t+=o*g/2,s+=c*g/2);let a=i,n=e;if(_(a)&&_(n)){let b=Math.min(a,n)/2,l=m(this.get("cornerRadiusTL",8),b),h=m(this.get("cornerRadiusTR",8),b),u=m(this.get("cornerRadiusBR",8),b),d=m(this.get("cornerRadiusBL",8),b),f=Math.min(Math.abs(a/2),Math.abs(n/2));l=p(l,0,f),h=p(h,0,f),u=p(u,0,f),d=p(d,0,f);const r=this._display;r.moveTo(t+l*o,s),r.lineTo(t+a-h*o,s),h>0&&r.arcTo(t+a,s,t+a,s+h*c,h),r.lineTo(t+a,s+n-u*c),u>0&&r.arcTo(t+a,s+n,t+a-u*o,s+n,u),r.lineTo(t+d*o,s+n),d>0&&r.arcTo(t,s+n,t,s+n-d*c,d),r.lineTo(t,s+l*c),l>0&&r.arcTo(t,s,t+l*o,s,l),r.closePath()}}}Object.defineProperty(R,"className",{enumerable:!0,configurable:!0,writable:!0,value:"RoundedRectangle"});Object.defineProperty(R,"classNames",{enumerable:!0,configurable:!0,writable:!0,value:v.classNames.concat([R.className])});class T extends w{_afterNew(){this._settings.themeTags=y(this._settings.themeTags,["button"]),super._afterNew(),this._settings.background||this.set("background",R.new(this._root,{themeTags:y(this._settings.themeTags,["background"])})),this.setPrivate("trustBounds",!0)}_prepareChildren(){if(super._prepareChildren(),this.isDirty("icon")){const i=this._prevSettings.icon,e=this.get("icon");e!==i&&(this._disposeProperty("icon"),i&&i.dispose(),e&&this.children.push(e),this._prevSettings.icon=e)}if(this.isDirty("label")){const i=this._prevSettings.label,e=this.get("label");e!==i&&(this._disposeProperty("label"),i&&i.dispose(),e&&this.children.push(e),this._prevSettings.label=e)}}}Object.defineProperty(T,"className",{enumerable:!0,configurable:!0,writable:!0,value:"Button"});Object.defineProperty(T,"classNames",{enumerable:!0,configurable:!0,writable:!0,value:w.classNames.concat([T.className])});export{T as B,R};
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{$t as i,Bt as a,Gt as o,Lt as s,Wt as c,Xt as l,Zt as u,nn as d,zt as f}from"./iframe-B-Wcw5ev.js";import{r as p}from"./react2.js";import{t as m}from"./mdx-react-shim.js";import{N as h,Q as g,t as _}from"./src3.js";import{ActionState as v,Badges as y,Colors as b,Sizes as x,States as S,Styles as C,_Button as w,n as T,t as E}from"./Button.stories.js";import{n as D}from"./ConfirmButton.stories.js";function O(e){let t={code:`code`,pre:`pre`,...p(),...e.components};return(0,A.jsxs)(A.Fragment,{children:[(0,A.jsx)(l,{of:E}),`
+`,(0,A.jsx)(i,{children:`Button`}),`
+`,(0,A.jsx)(s,{storyId:`button`,children:(0,A.jsx)(`div`,{className:`hidden-anchor`,children:(0,A.jsx)(u,{children:`Button`})})}),`
+`,(0,A.jsx)(o,{of:g}),`
+`,(0,A.jsx)(a,{withToolbar:!0,of:w}),`
+`,(0,A.jsxs)(h,{className:`control-panel`,children:[(0,A.jsx)(`div`,{children:`Controls`}),(0,A.jsx)(c,{of:w})]}),`
+`,(0,A.jsx)(s,{storyId:`styles`,children:(0,A.jsx)(u,{children:`Styles`})}),`
+`,(0,A.jsx)(o,{of:C}),`
+`,(0,A.jsx)(a,{withToolbar:!0,of:C}),`
+`,(0,A.jsxs)(h,{className:`control-panel`,children:[(0,A.jsx)(`div`,{children:`Controls`}),(0,A.jsx)(c,{of:C})]}),`
+`,(0,A.jsx)(s,{storyId:`colors`,children:(0,A.jsx)(u,{children:`Colors`})}),`
+`,(0,A.jsx)(o,{of:b}),`
+`,(0,A.jsx)(a,{withToolbar:!0,of:b}),`
+`,(0,A.jsxs)(h,{className:`control-panel`,children:[(0,A.jsx)(`div`,{children:`Controls`}),(0,A.jsx)(c,{of:b})]}),`
+`,(0,A.jsx)(s,{storyId:`sizes`,children:(0,A.jsx)(u,{children:`Sizes`})}),`
+`,(0,A.jsx)(o,{of:x}),`
+`,(0,A.jsx)(a,{withToolbar:!0,of:x}),`
+`,(0,A.jsxs)(h,{className:`control-panel`,children:[(0,A.jsx)(`div`,{children:`Controls`}),(0,A.jsx)(c,{of:x})]}),`
+`,(0,A.jsx)(s,{storyId:`states`,children:(0,A.jsx)(u,{children:`States`})}),`
+`,(0,A.jsx)(o,{of:S}),`
+`,(0,A.jsx)(a,{withToolbar:!0,of:S}),`
+`,(0,A.jsxs)(h,{className:`control-panel`,children:[(0,A.jsx)(`div`,{children:`Controls`}),(0,A.jsx)(c,{of:S})]}),`
+`,(0,A.jsx)(s,{storyId:`badges`,children:(0,A.jsx)(u,{children:`Badges`})}),`
+`,(0,A.jsx)(o,{of:y}),`
+`,(0,A.jsx)(a,{withToolbar:!0,of:y}),`
+`,(0,A.jsxs)(h,{className:`control-panel`,children:[(0,A.jsx)(`div`,{children:`Controls`}),(0,A.jsx)(c,{of:y})]}),`
+`,(0,A.jsx)(s,{storyId:`actionState`,children:(0,A.jsx)(u,{children:`Action State`})}),`
+`,(0,A.jsx)(o,{of:v}),`
+`,(0,A.jsx)(a,{withToolbar:!0,of:v}),`
+`,(0,A.jsxs)(h,{className:`control-panel`,children:[(0,A.jsx)(`div`,{children:`Controls`}),(0,A.jsx)(c,{of:v})]}),`
+`,(0,A.jsx)(`hr`,{}),`
+`,(0,A.jsx)(s,{storyId:`props`,children:(0,A.jsx)(u,{children:`Props`})}),`
+`,(0,A.jsx)(f,{sort:`requiredFirst`}),`
+`,(0,A.jsx)(s,{storyId:`sample`,children:(0,A.jsx)(u,{children:`Example`})}),`
+`,(0,A.jsx)(t.pre,{children:(0,A.jsx)(t.code,{className:`language-tsx`,children:`import { Button } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <Button
+      icon="icon svg path"
+      altIcon="caret icon"
+      color="color"
+      variant="style"
+      loading={boolean}
+      disabled={boolean}
+    >
+      Button Label
+    </Button>
+  );
+};
+`})})]})}function k(e={}){let{wrapper:t}={...p(),...e.components};return t?(0,A.jsx)(t,{...e,children:(0,A.jsx)(O,{...e})}):O(e)}var A;t((()=>{A=r(),m(),d(),e(n()),_(),T(),D()}))();export{k as default};

@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(e){return e===`global`?1:2}function n(e){return e===1?`global`:`local`}var r=e((()=>{}));export{t as n,n as r,r as t};

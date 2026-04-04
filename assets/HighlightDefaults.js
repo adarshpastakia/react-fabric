@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./Color.js";var r,i,a,o,s,c,l,u,d,f=e((()=>{t(),r=new n(`cyan`),i=.25,a=new n(`black`),o=.4,s=.2,c=.25,l=`default`,u=`temporary`,d=new n(`yellow`)}));export{i as a,d as c,f as i,o as l,l as n,u as o,r,a as s,s as t,c as u};

@@ -1,1 +1,1 @@
-import{iv as f,iw as t}from"./ShadowCastClear.glsl.js";function n(u,e){return e.push(u.buffer),{buffer:u.buffer,layout:new f(u.layout)}}function o(u){return new t(u.layout).createView(u.buffer)}export{o as t,n as u};
+import{n as e}from"./chunk.js";import{i as t,r as n,t as r}from"./InterleavedLayout.js";function i(e,t){return t.push(e.buffer),{buffer:e.buffer,layout:new n(e.layout)}}function a(e){return new r(e.layout).createView(e.buffer)}var o=e((()=>{t()}));export{a as n,i as r,o as t};

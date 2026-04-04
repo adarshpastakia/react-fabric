@@ -1,1 +1,1 @@
-const _="ESRI__ID",I="ESRI__OriginID",t="ESRI__DestID",S="ESRI__LayoutGeometry",o="ESRI__AggregationCount",E="LC.ESRI__IsSpatial";export{E,I,S,_,o,t};
+import{n as e}from"./chunk.js";var t,n,r=e((()=>{t=4096,n=.125}));export{r as n,t as r,n as t};

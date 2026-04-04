@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t}from"./mat4f64.js";import{w as n}from"./mat4.js";import{t as r}from"./glsl.js";import{t as i}from"./ShaderBuilder.js";import{r as a,t as o}from"./Stars.glsl.js";e((()=>{n(),t(),r(),i(),o()}))();export{a as build};

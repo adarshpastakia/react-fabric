@@ -432,6 +432,7 @@
 
       &__item--preserved {
         --calcite-color-foreground-2: var(--calcite-color-status-success);
+        --calcite-chip-text-color: var(--calcite-color-text-inverse);
       }
     }
   }

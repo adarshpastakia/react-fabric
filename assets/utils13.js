@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./Version.js";function r(e){return typeof e==`object`&&!!e&&`declaredClass`in e&&e.declaredClass===`esri.WebMap`}var i,a=e((()=>{n(),i=new t(2,36,`webmap`)}));export{i as n,r,a as t};

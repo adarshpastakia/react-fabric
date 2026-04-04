@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./multiOriginJSONSupportUtils.js";function r(e){e?.writtenProperties&&e.writtenProperties.forEach(({target:e,propName:t,newOrigin:r})=>{n(e)&&r&&e.originOf(t)!==r&&e.updateOrigin(t,r)})}var i=e((()=>{t()}));export{i as n,r as t};

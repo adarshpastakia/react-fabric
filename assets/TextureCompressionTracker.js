@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./signal.js";var r,i=e((()=>{n(),r=class{constructor(){this._pendingCompressionTasks=t(0)}get compressing(){return!!this._pendingCompressionTasks.value}increment(){this._pendingCompressionTasks.value++}decrement(){this._pendingCompressionTasks.value--}}}));export{i as n,r as t};

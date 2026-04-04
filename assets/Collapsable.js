@@ -1,1 +1,25 @@
-import{_ as M,r as a,l as j,j as t,m as l,n as _}from"./iframe-BmpICDQJ.js";import{_ as z}from"./toArray.js";import{I as B}from"./Tooltip.js";var F=["ref","disabled","className","bodyClassName","headerClassName","children","iconAlign","stickyHeader","iconClosed","iconOpen","open","onClose","onOpen"];function C(n,e){var r=Object.keys(n);if(Object.getOwnPropertySymbols){var o=Object.getOwnPropertySymbols(n);e&&(o=o.filter(function(i){return Object.getOwnPropertyDescriptor(n,i).enumerable})),r.push.apply(r,o)}return r}function g(n){for(var e=1;e<arguments.length;e++){var r=arguments[e]!=null?arguments[e]:{};e%2?C(Object(r),!0).forEach(function(o){_(n,o,r[o])}):Object.getOwnPropertyDescriptors?Object.defineProperties(n,Object.getOwnPropertyDescriptors(r)):C(Object(r)).forEach(function(o){Object.defineProperty(n,o,Object.getOwnPropertyDescriptor(r,o))})}return n}var q=function(e){var r=e.ref,o=e.disabled,i=e.className,x=e.bodyClassName,N=e.headerClassName,d=e.children,w=e.iconAlign,P=e.stickyHeader,p=e.iconClosed,A=p===void 0?"icon-[mdi--chevron-right]":p,u=e.iconOpen,S=u===void 0?"icon-[mdi--chevron-down]":u,c=e.open;e.onClose,e.onOpen;var k=M(e,F),E=a.useState(c),m=j(E,2),s=m[0],b=m[1],y=a.useRef(null),f=a.useRef(null);a.useImperativeHandle(r,function(){return{button:y,body:f,open:!!s}},[s]),a.useEffect(function(){b(c)},[c]);var H=a.useMemo(function(){var v=a.Children.toArray(d),O=z(v),$=O[0],I=O.slice(1);return[$,I]},[d]),h=j(H,2),R=h[0],D=h[1];return t.jsxs("div",g(g({className:l("fabric-collapsable",i)},k),{},{children:[t.jsxs("div",{role:"none",ref:y,className:l("fabric-collapsableHead","flex gap-1 flex-nowrap py-2 font-medium cursor-pointer items-center select-none hover:opacity-70",N,P&&"bg-base sticky top-0 py-1 z-10",w==="end"?"flex-row-reverse":"flex-row"),onClick:function(){return!o&&b(!s)},children:[t.jsx(B,{size:"1.125em",icon:s?S:A,rtlFlip:!0}),t.jsx("div",{className:"flex-1",children:R})]}),s&&t.jsx("div",{ref:f,className:l("fabric-collapsableBody",x),children:D})]}))};export{q as C};
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{$t as i,Bt as a,Gt as o,Lt as s,Wt as c,Xt as l,Zt as u,nn as d,zt as f}from"./iframe-B-Wcw5ev.js";import{r as p}from"./react2.js";import{t as m}from"./mdx-react-shim.js";import{N as h,t as g}from"./src3.js";import{Multiple as _,_Collapsable as v,n as y,t as b}from"./Collapsable.stories.js";function x(e){let t={code:`code`,pre:`pre`,...p(),...e.components};return(0,C.jsxs)(C.Fragment,{children:[(0,C.jsx)(l,{of:b}),`
+`,(0,C.jsx)(i,{children:`Collapsable`}),`
+`,(0,C.jsx)(s,{storyId:`Collapsable`,children:(0,C.jsx)(`div`,{className:`hidden-anchor`,children:(0,C.jsx)(u,{children:`Collapsable`})})}),`
+`,(0,C.jsx)(o,{of:h}),`
+`,(0,C.jsx)(a,{withToolbar:!0,of:v}),`
+`,(0,C.jsxs)(h,{className:`control-panel`,children:[(0,C.jsx)(`div`,{children:`Controls`}),(0,C.jsx)(c,{of:v})]}),`
+`,(0,C.jsx)(s,{storyId:`withlegend`,children:(0,C.jsx)(u,{children:`Multiple`})}),`
+`,(0,C.jsx)(o,{of:_}),`
+`,(0,C.jsx)(a,{withToolbar:!0,of:_}),`
+`,(0,C.jsxs)(h,{className:`control-panel`,children:[(0,C.jsx)(`div`,{children:`Controls`}),(0,C.jsx)(c,{of:_})]}),`
+`,(0,C.jsx)(`hr`,{}),`
+`,(0,C.jsx)(s,{storyId:`props`,children:(0,C.jsx)(u,{children:`Props`})}),`
+`,(0,C.jsx)(f,{sort:`requiredFirst`}),`
+`,(0,C.jsx)(s,{storyId:`sample`,children:(0,C.jsx)(u,{children:`Example`})}),`
+`,(0,C.jsx)(t.pre,{children:(0,C.jsx)(t.code,{className:`language-tsx`,children:`import { Collapsable } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <Collapsable>
+        <Title>Collapsable title</Title>
+        <Content>{...message text}</Content>
+    </Collapsable>
+  );
+};
+`})})]})}function S(e={}){let{wrapper:t}={...p(),...e.components};return t?(0,C.jsx)(t,{...e,children:(0,C.jsx)(x,{...e})}):x(e)}var C;t((()=>{C=r(),m(),d(),e(n()),g(),y()}))();export{S as default};

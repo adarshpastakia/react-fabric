@@ -1,22 +1,22 @@
-import{j as s,M as h,T as m,A as n,S as o,D as t,aI as p,P as f,c as a,C as l,b as x,a as g}from"./iframe-BmpICDQJ.js";import{useMDXComponents as j}from"./index3.js";import{P as C,_ as u,C as c}from"./Progress.stories.js";import{_ProgressCircle as i}from"./Circle.stories.js";function d(r){const e={code:"code",pre:"pre",...j(),...r.components};return s.jsxs(s.Fragment,{children:[s.jsx(h,{of:C}),`
-`,s.jsx(m,{children:"Progress"}),`
-`,s.jsx(n,{storyId:"Progress",children:s.jsx("div",{className:"hidden-anchor",children:s.jsx(o,{children:"Progress Bar"})})}),`
-`,s.jsx(t,{of:p}),`
-`,s.jsx(f,{}),`
-`,s.jsxs(a,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(l,{of:u})]}),`
-`,s.jsx(n,{storyId:"circle",children:s.jsx(o,{children:"Circular"})}),`
-`,s.jsx(t,{of:i}),`
-`,s.jsx(x,{withToolbar:!0,of:i}),`
-`,s.jsxs(a,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(l,{of:i})]}),`
-`,s.jsx(n,{storyId:"colors",children:s.jsx(o,{children:"Colors"})}),`
-`,s.jsx(t,{of:c}),`
-`,s.jsx(x,{withToolbar:!0,of:c}),`
-`,s.jsxs(a,{className:"control-panel",children:[s.jsx("div",{children:"Controls"}),s.jsx(l,{of:c})]}),`
-`,s.jsx("hr",{}),`
-`,s.jsx(n,{storyId:"props",children:s.jsx(o,{children:"Props"})}),`
-`,s.jsx(g,{sort:"requiredFirst"}),`
-`,s.jsx(n,{storyId:"sample",children:s.jsx(o,{children:"Example"})}),`
-`,s.jsx(e.pre,{children:s.jsx(e.code,{className:"language-tsx",children:`import { Progress } from "@react-fabric/core";
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{$t as i,Bt as a,Gt as o,Lt as s,Wt as c,Xt as l,Zt as u,nn as d,zt as f}from"./iframe-B-Wcw5ev.js";import{r as p}from"./react2.js";import{t as m}from"./mdx-react-shim.js";import{N as h,b as g,t as _}from"./src3.js";import{_ProgressCircle as v,t as y}from"./Circle.stories.js";import{Colors as b,_ProgressBar as x,n as S,t as C}from"./Progress.stories.js";function w(e){let t={code:`code`,pre:`pre`,...p(),...e.components};return(0,E.jsxs)(E.Fragment,{children:[(0,E.jsx)(l,{of:C}),`
+`,(0,E.jsx)(i,{children:`Progress`}),`
+`,(0,E.jsx)(s,{storyId:`Progress`,children:(0,E.jsx)(`div`,{className:`hidden-anchor`,children:(0,E.jsx)(u,{children:`Progress Bar`})})}),`
+`,(0,E.jsx)(o,{of:g}),`
+`,(0,E.jsx)(a,{withToolbar:!0,of:x}),`
+`,(0,E.jsxs)(h,{className:`control-panel`,children:[(0,E.jsx)(`div`,{children:`Controls`}),(0,E.jsx)(c,{of:x})]}),`
+`,(0,E.jsx)(s,{storyId:`circle`,children:(0,E.jsx)(u,{children:`Circular`})}),`
+`,(0,E.jsx)(o,{of:v}),`
+`,(0,E.jsx)(a,{withToolbar:!0,of:v}),`
+`,(0,E.jsxs)(h,{className:`control-panel`,children:[(0,E.jsx)(`div`,{children:`Controls`}),(0,E.jsx)(c,{of:v})]}),`
+`,(0,E.jsx)(s,{storyId:`colors`,children:(0,E.jsx)(u,{children:`Colors`})}),`
+`,(0,E.jsx)(o,{of:b}),`
+`,(0,E.jsx)(a,{withToolbar:!0,of:b}),`
+`,(0,E.jsxs)(h,{className:`control-panel`,children:[(0,E.jsx)(`div`,{children:`Controls`}),(0,E.jsx)(c,{of:b})]}),`
+`,(0,E.jsx)(`hr`,{}),`
+`,(0,E.jsx)(s,{storyId:`props`,children:(0,E.jsx)(u,{children:`Props`})}),`
+`,(0,E.jsx)(f,{sort:`requiredFirst`}),`
+`,(0,E.jsx)(s,{storyId:`sample`,children:(0,E.jsx)(u,{children:`Example`})}),`
+`,(0,E.jsx)(t.pre,{children:(0,E.jsx)(t.code,{className:`language-tsx`,children:`import { Progress } from "@react-fabric/core";
 
 export const Example = () => {
   return (
@@ -25,4 +25,4 @@ export const Example = () => {
     </Progress>
   );
 };
-`})})]})}function M(r={}){const{wrapper:e}={...j(),...r.components};return e?s.jsx(e,{...r,children:s.jsx(d,{...r})}):d(r)}export{M as default};
+`})})]})}function T(e={}){let{wrapper:t}={...p(),...e.components};return t?(0,E.jsx)(t,{...e,children:(0,E.jsx)(w,{...e})}):w(e)}var E;t((()=>{E=r(),m(),d(),e(n()),_(),S(),y()}))();export{T as default};

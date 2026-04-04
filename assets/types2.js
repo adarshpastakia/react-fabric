@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";var t,n=e((()=>{t={AboveCoordinates:-1e3,Coordinates:-100,Middle:0,BelowMiddle:100,ShapeMeasurements:1e3}}));export{n,t};

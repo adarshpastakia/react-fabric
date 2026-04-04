@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(e){return!!e&&n in e}var n,r=e((()=>{n=Symbol(`isFeatureGraphicOrigin`)}));export{r as n,t as r,n as t};

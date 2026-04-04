@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{L as t,R as n}from"./Error.js";var r,i,a,o,s,c,l=e((()=>{n(),r=t(`esri-mobile`)?64:128,i=r/128,a=Math.ceil(Math.sqrt(r)),o=(r+2)*a,s=1e5,c=o/1560}));export{a,i,r as n,s as o,l as r,o as s,c as t};

@@ -1,0 +1,1 @@
+import{a as e,c as t,i as n,l as r,n as i,o as a,r as o,s,t as c}from"./jsonConverter.js";t();export{e as fromGeometries,a as fromGeometry,o as fromGeometryToGXGeometry,r as fromGeometryToGXGeometryUsingImportOperator,i as fromSpatialReference,c as getSpatialReference,n as toGeometry,s as toSpatialReference};

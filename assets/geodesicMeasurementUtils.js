@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{h as t,o as n}from"./spatialReferenceUtils.js";import{r,s as i}from"./geodesicUtils.js";function a(e){return i(e)||n(e)}function o(e,t,n,...r){return i(e)?t.apply(void 0,r):e.isWebMercator?n.apply(void 0,r):null}var s,c=e((()=>{r(),t(),s=1e5}));export{o as i,c as n,a as r,s as t};

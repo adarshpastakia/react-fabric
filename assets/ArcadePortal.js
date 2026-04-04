@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./Dictionary.js";var r,i=e((()=>{n(),r=class extends t{constructor(e){super(),this.declaredClass=`esri.arcade.Portal`,this.immutable=!1,this.setField(`url`,e),this.immutable=!0}}}));export{r as n,i as t};

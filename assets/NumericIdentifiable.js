@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{i as t,l as n}from"./tslib.es6.js";import{g as r,h as i}from"./decorators.js";var a,o,s=e((()=>{n(),i(),a=0,o=e=>{let n=e,i=class extends n{constructor(...e){super(...e),Object.defineProperty(this,`uid`,{writable:!1,configurable:!1,value:a++})}};return i=t([r(`esri.core.NumericIdentifiable`)],i),i}}));export{o as n,s as t};

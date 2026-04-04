@@ -1,1 +1,1 @@
-import{br as o}from"./ShadowCastClear.glsl.js";function e(n){return(n==null?void 0:n.name)??o}export{e as r};
+import{n as e}from"./chunk.js";import{i as t}from"./HighlightDefaults.js";function n(e){return e?.name??`default`}var r=e((()=>{t()}));export{n,r as t};

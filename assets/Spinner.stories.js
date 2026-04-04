@@ -1,6 +1,6 @@
-import{j as r,ab as t}from"./iframe-BmpICDQJ.js";import{f as i}from"./index4.js";const p={component:t,title:"@core/components/Animations",parameters:{layout:"centered",controls:{exclude:/^(on.*|children|as)/},jest:["core/tests/animations/Animations.test.tsx"]},decorators:[n=>r.jsxs("div",{className:"h-48 w-96 relative p-4 overflow-hidden outline rounded",children:[r.jsx("p",{children:i.lorem.paragraphs(10)}),r.jsx(n,{})]})]},e={render:n=>r.jsx(t,{...n}),args:{}};var s,o,a;e.parameters={...e.parameters,docs:{...(s=e.parameters)==null?void 0:s.docs,source:{originalSource:`{
+import{n as e}from"./chunk.js";import{t}from"./jsx-runtime.js";import{r as n,t as r}from"./dist28.js";import{t as i,ut as a}from"./src3.js";var o,s,c,l,u=e((()=>{r(),i(),o=t(),s={component:a,title:`@core/components/Animations`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/animations/Animations.test.tsx`]},decorators:[e=>(0,o.jsxs)(`div`,{className:`h-48 w-96 relative p-4 overflow-hidden outline rounded`,children:[(0,o.jsx)(`p`,{children:n.lorem.paragraphs(10)}),(0,o.jsx)(e,{})]})]},c={render:e=>(0,o.jsx)(a,{...e}),args:{}},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <LoadingSpinner {...args} />;
   },
   args: {}
-}`,...(a=(o=e.parameters)==null?void 0:o.docs)==null?void 0:a.source}}};const m=["_Spinner"];export{e as _Spinner,m as __namedExportsOrder,p as default};
+}`,...c.parameters?.docs?.source}}},l=[`_Spinner`]}));u();export{c as _Spinner,l as __namedExportsOrder,s as default,u as t};

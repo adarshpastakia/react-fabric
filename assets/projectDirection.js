@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{l as t,o as n}from"./vec3f64.js";import{A as r,E as i,S as a,b as o,v as s}from"./vec3.js";import{n as c,t as l}from"./projectVectorToVector.js";function u(e,t,n,i,l){r(d,e),o(f,e,t),c(d,n,d,l),c(f,n,f,l),a(i,f,d),s(i,i)}var d,f,p=e((()=>{i(),n(),l(),d=t(),f=t()}));export{u as n,p as t};

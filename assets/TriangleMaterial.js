@@ -1,1 +1,1 @@
-import{eC as d,eD as i,eE as o}from"./ShadowCastClear.glsl.js";class m extends d{intersect(r,s,e,t,a,n){return i(r,e,t,a,void 0,n)}intersectDraped(r,s,e,t){return o(e[0],e[1],r,t)}}export{m as i};
+import{n as e}from"./chunk.js";import{l as t,u as n}from"./OrderIndependentTransparency.js";import{i as r,o as i,s as a}from"./RayIntersections.js";var o,s=e((()=>{n(),a(),o=class extends t{intersect(e,t,n,r,a,o){return i(e,n,r,a,void 0,o)}intersectDraped(e,t,n,i){return r(n[0],n[1],e,i)}}}));export{s as n,o as t};

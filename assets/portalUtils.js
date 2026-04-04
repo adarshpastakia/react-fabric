@@ -1,1 +1,1 @@
-import{M as u}from"./ShadowCastClear.glsl.js";function l(r,n){return r===null?n:new u({url:r.field("url")})}export{l};
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./Portal.js";function r(e,t){return e===null?t:new n({url:e.field(`url`)})}var i=e((()=>{t()}));export{r as n,i as t};

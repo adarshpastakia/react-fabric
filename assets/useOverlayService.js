@@ -1,1 +1,0 @@
-import{r as s,j as o}from"./iframe-BmpICDQJ.js";const u=()=>()=>null,x=c=>{const[a,n]=s.useState(u),r=s.useRef(null);return[a,async({onClose:t,...i}={})=>{if(!r.current)return await new Promise(l=>{r.current=e=>{n(u),l(e),t==null||t(e),r.current=null},n(()=>e=>o.jsx(c,{...i,...e,onClose:r.current}))})},r.current]};export{x as u};

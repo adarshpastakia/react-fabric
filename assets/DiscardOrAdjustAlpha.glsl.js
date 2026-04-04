@@ -1,0 +1,10 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./mat3f64.js";import{a as r,o as i}from"./vec4f64.js";import{n as a,r as o,t as s}from"./glsl.js";import{n as c,t as l}from"./FloatDrawUniform.js";import{n as u,t as d}from"./FloatPassUniform.js";import{n as f,t as p}from"./Matrix3PassUniform.js";import{n as m,t as h}from"./AlphaCutoff.js";import{n as g,t as _}from"./Matrix3DrawUniform.js";import{i as v,r as y,t as b}from"./VertexPosition.glsl.js";import{n as x,t as S}from"./NormalAttribute.glsl.js";function C(e,t){let{vertex:n,varyings:r}=e;switch(t.normalType){case 0:case 1:{e.include(x,t),r.add(`vNormalWorld`,`vec3`),r.add(`vNormalView`,`vec3`),n.uniforms.add(new f(`transformNormalViewFromGlobal`,e=>e.transformNormalViewFromGlobal));let{hasModelRotationScale:i}=t;i&&n.uniforms.add(new g(`transformNormalGlobalFromModel`,e=>e.transformNormalGlobalFromModel)),n.code.add(o`
+        void forwardNormal() {
+          vNormalWorld = ${a(i,o`transformNormalGlobalFromModel * `)} normalModel();
+          vNormalView = transformNormalViewFromGlobal * vNormalWorld;
+        }
+      `);break}case 2:e.vertex.code.add(o`void forwardNormal() {}`);break;default:t.normalType;case 3:}}var w,T,E=e((()=>{t(),r(),S(),y(),s(),_(),p(),w=class extends v{constructor(){super(...arguments),this.transformNormalViewFromGlobal=n()}},T=class extends b{constructor(){super(...arguments),this.transformNormalGlobalFromModel=n(),this.toMapSpace=i()}}}));function D(e,t){k(e,t,new u(`textureAlphaCutoff`,e=>e.textureAlphaCutoff))}function O(e,t){k(e,t,new c(`textureAlphaCutoff`,e=>e.textureAlphaCutoff))}function k(e,t,n){let r=e.fragment,i=t.alphaDiscardMode,s=i===0;i!==2&&i!==3||r.uniforms.add(n),r.code.add(o`
+    void discardOrAdjustAlpha(inout vec4 color) {
+      ${i===1?`color.a = 1.0;`:`if (color.a < ${s?o.float(m):`textureAlphaCutoff`}) {\n              discard;\n             } ${a(i===2,`else { color.a = 1.0; }`)}`}
+    }
+  `)}var A=e((()=>{l(),d(),s(),h()}));export{C as a,T as i,A as n,E as o,O as r,w as s,D as t};

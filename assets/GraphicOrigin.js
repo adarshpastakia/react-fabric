@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{i as t,l as n}from"./tslib.es6.js";import{n as r,r as i}from"./decorators.js";function a(e){return typeof e==`object`&&!!e&&s in e}function o(e){return a(e)?e[s]:void 0}var s,c=e((()=>{s=Symbol(`getSliceableSymbol`)})),l,u=e((()=>{n(),i(),l=class{},l=t([r(`esri.graphic.GraphicOrigin`)],l)}));export{s as a,c as i,l as n,o as r,u as t};

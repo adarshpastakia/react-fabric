@@ -1,1 +1,38 @@
-import{r as v,l as E,_ as k,aP as b,b7 as D,j as S,m as A,b8 as N,n as T}from"./iframe-BmpICDQJ.js";import{c as W}from"./index.js";import{c as z}from"./cloneElement.js";var G=function(e,r){var t=v.useState(r),l=E(t,2),f=l[0],i=l[1],u=v.useDeferredValue(e);return W(function(){i(u??r)},[u],"useControlledValue change"),{currentValue:f,updateValue:i}},R=["vertical","className","children","variant","rounded","disabled","fullWidth","color","size","value","onChange"];function j(a,e){var r=Object.keys(a);if(Object.getOwnPropertySymbols){var t=Object.getOwnPropertySymbols(a);e&&(t=t.filter(function(l){return Object.getOwnPropertyDescriptor(a,l).enumerable})),r.push.apply(r,t)}return r}function p(a){for(var e=1;e<arguments.length;e++){var r=arguments[e]!=null?arguments[e]:{};e%2?j(Object(r),!0).forEach(function(t){T(a,t,r[t])}):Object.getOwnPropertyDescriptors?Object.defineProperties(a,Object.getOwnPropertyDescriptors(r)):j(Object(r)).forEach(function(t){Object.defineProperty(a,t,Object.getOwnPropertyDescriptor(r,t))})}return a}var K=function(e){var r=e.vertical,t=e.className,l=e.children,f=e.variant,i=e.rounded,u=e.disabled,m=e.fullWidth,y=e.color,C=e.size,g=e.value,c=e.onChange,P=k(e,R),O=G(g,b(g)?N:null),n=O.currentValue,h=O.updateValue,x=v.useCallback(function(o,d){return function(V){var s;b(n)?n.includes(d)?s=n.filter(function(w){return w!==d}):s=[].concat(D(n),[d]):s=d,h(s),c==null||c(s),o==null||o(V)}},[n,c]);return S.jsx("div",p(p({className:A("fabric-buttonGroup",t,m?"flex":"inline-flex","flex-nowrap align-middle",r&&"vertical",r&&"flex-col")},P),{},{children:z(l,function(o){return v.cloneElement(o,p(p({color:y,size:C,variant:f,disabled:u,rounded:i,fullWidth:m},o.props),{},{onClick:x(o.props.onClick,o.props.value),"data-checked":b(n)?n==null?void 0:n.includes(o.props.value):n===o.props.value}))})}))};export{K as T};
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{$t as i,Bt as a,Gt as o,Lt as s,Wt as c,Xt as l,Zt as u,nn as d,zt as f}from"./iframe-B-Wcw5ev.js";import{r as p}from"./react2.js";import{t as m}from"./mdx-react-shim.js";import{N as h,X as g,t as _}from"./src3.js";import{EditorToolbar as v,SingleSelection as y,_ToggleButtonGroup as b,n as x,t as S}from"./ToggleButtonGroup.stories.js";function C(e){let t={code:`code`,pre:`pre`,...p(),...e.components};return(0,T.jsxs)(T.Fragment,{children:[(0,T.jsx)(l,{of:S}),`
+`,(0,T.jsx)(i,{children:`Toggle Button Group`}),`
+`,(0,T.jsx)(s,{storyId:`ToggleButtonGroup`,children:(0,T.jsx)(`div`,{className:`hidden-anchor`,children:(0,T.jsx)(u,{children:`Toggle Group`})})}),`
+`,(0,T.jsx)(o,{of:g}),`
+`,(0,T.jsx)(a,{withToolbar:!0,of:b}),`
+`,(0,T.jsxs)(h,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(c,{of:b})]}),`
+`,(0,T.jsx)(s,{storyId:`singleSelect`,children:(0,T.jsx)(u,{children:`Single Selection`})}),`
+`,(0,T.jsx)(o,{of:y}),`
+`,(0,T.jsx)(a,{withToolbar:!0,of:y}),`
+`,(0,T.jsxs)(h,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(c,{of:y})]}),`
+`,(0,T.jsx)(s,{storyId:`editorToolbar`,children:(0,T.jsx)(u,{children:`Editor Toolbar`})}),`
+`,(0,T.jsx)(o,{of:v}),`
+`,(0,T.jsx)(a,{withToolbar:!0,of:v}),`
+`,(0,T.jsxs)(h,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(c,{of:v})]}),`
+`,(0,T.jsx)(`hr`,{}),`
+`,(0,T.jsx)(s,{storyId:`props`,children:(0,T.jsx)(u,{children:`Props`})}),`
+`,(0,T.jsx)(f,{sort:`requiredFirst`,of:g}),`
+`,(0,T.jsx)(s,{storyId:`sample`,children:(0,T.jsx)(u,{children:`Example`})}),`
+`,(0,T.jsx)(t.pre,{children:(0,T.jsx)(t.code,{className:`language-tsx`,children:`import { ToggleButtonGroup } from "@react-fabric/core";
+
+export const Example = () => {
+  return (
+    <ToggleButtonGroup
+      icon="icon svg path"
+      altIcon="caret icon"
+      color="color"
+      variant="style"
+      loading={boolean}
+      disabled={boolean}
+      message="Confirmation message"
+      okLabel="Yes"
+      cancelLabel="No"
+    >
+      Button Label
+    </Button>
+  );
+};
+`})})]})}function w(e={}){let{wrapper:t}={...p(),...e.components};return t?(0,T.jsx)(t,{...e,children:(0,T.jsx)(C,{...e})}):C(e)}var T;t((()=>{T=r(),m(),d(),e(n()),_(),x()}))();export{w as default};

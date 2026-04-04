@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(e){return e===`Enter`||e===` `}var n,r=e((()=>{n=[`0`,`1`,`2`,`3`,`4`,`5`,`6`,`7`,`8`,`9`]}));export{t as n,n as r,r as t};

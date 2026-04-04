@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";function t(e){return e}function n(e){return t(1e3*e)}function r(e){return e}function i(e){return r(.001*e)}var a=e((()=>{}));export{i as a,r as i,t as n,n as r,a as t};

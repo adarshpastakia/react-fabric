@@ -1,4 +1,4 @@
-import{j as e,a4 as i}from"./iframe-BmpICDQJ.js";const l={component:i,title:"@core/Typography",parameters:{controls:{exclude:/^(on.*|children|as)/},jest:["core/tests/Title.test.tsx"]},decorators:[n=>e.jsx("div",{className:"max-w-2xl p-4",children:e.jsx(n,{})})]},s={render:n=>e.jsxs(e.Fragment,{children:[e.jsx(i,{...n,as:"h1",size:void 0,children:"Heading 1"}),e.jsx(i,{...n,as:"h2",size:void 0,children:"Heading 2"}),e.jsx(i,{...n,as:"h3",size:void 0,children:"Heading 3"}),e.jsx(i,{...n,as:"h4",size:void 0,children:"Heading 4"}),e.jsx(i,{...n,as:"h5",size:void 0,children:"Heading 5"}),e.jsx(i,{...n,as:"h6",size:void 0,children:"Heading 6"}),e.jsx(i,{...n,children:"Normal Title"})]}),args:{}};var a,r,d;s.parameters={...s.parameters,docs:{...(a=s.parameters)==null?void 0:a.docs,source:{originalSource:`{
+import{n as e}from"./chunk.js";import{t}from"./jsx-runtime.js";import{J as n,t as r}from"./src3.js";var i,a,o,s,c,l=e((()=>{i=t(),r(),a=t(),o={component:n,title:`@core/Typography`,parameters:{controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/Title.test.tsx`]},decorators:[e=>(0,a.jsx)(`div`,{className:`max-w-2xl p-4`,children:(0,a.jsx)(e,{})})]},s={render:e=>(0,a.jsxs)(i.Fragment,{children:[(0,a.jsx)(n,{...e,as:`h1`,size:void 0,children:`Heading 1`}),(0,a.jsx)(n,{...e,as:`h2`,size:void 0,children:`Heading 2`}),(0,a.jsx)(n,{...e,as:`h3`,size:void 0,children:`Heading 3`}),(0,a.jsx)(n,{...e,as:`h4`,size:void 0,children:`Heading 4`}),(0,a.jsx)(n,{...e,as:`h5`,size:void 0,children:`Heading 5`}),(0,a.jsx)(n,{...e,as:`h6`,size:void 0,children:`Heading 6`}),(0,a.jsx)(n,{...e,children:`Normal Title`})]}),args:{}},s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Fragment>
         <Title {...args} as="h1" size={undefined}>
@@ -23,4 +23,4 @@ import{j as e,a4 as i}from"./iframe-BmpICDQJ.js";const l={component:i,title:"@co
       </Fragment>;
   },
   args: {}
-}`,...(d=(r=s.parameters)==null?void 0:r.docs)==null?void 0:d.source}}};const o=["Titles"];export{s as Titles,o as __namedExportsOrder,l as default};
+}`,...s.parameters?.docs?.source}}},c=[`Titles`]}));l();export{s as Titles,c as __namedExportsOrder,o as default,l as t};

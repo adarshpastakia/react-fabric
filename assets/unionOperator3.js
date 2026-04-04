@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{d as t}from"./apiConverter2.js";import{t as n}from"./operatorUnion.js";import{a as r,i,r as a,t as o}from"./unionOperator.js";e((()=>{n(),t(),a()}))();export{r as execute,i as executeMany,o as supportsCurves};

@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{L as t,R as n}from"./Error.js";function r(){return!!t(`enable-feature:objectAndLayerId-rendering`)}var i=e((()=>{n()}));export{i as n,r as t};

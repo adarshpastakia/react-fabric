@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{z as t}from"./typedArrayUtil.js";import{d as n}from"./apiConverter2.js";import{a as r,i,o as a,r as o,t as s}from"./symmetricDifferenceOperator.js";e((()=>{t(),a(),n(),o()}))();export{r as execute,s as executeMany,i as supportsCurves};

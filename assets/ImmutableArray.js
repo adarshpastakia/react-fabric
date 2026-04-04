@@ -1,1 +1,1 @@
-class h{constructor(t=[]){this._elements=t}length(){return this._elements.length}get(t){return this._elements[t]}toArray(){return this.slice()}slice(t=0,r=this.length()){const s=[];for(let e=t;e<r;e++)s.push(this.get(e));return s}}export{h as t};
+import{n as e}from"./chunk.js";var t,n=e((()=>{t=class{constructor(e=[]){this._elements=e}length(){return this._elements.length}get(e){return this._elements[e]}toArray(){return this.slice()}slice(e=0,t=this.length()){let n=[];for(let r=e;r<t;r++)n.push(this.get(r));return n}}}));export{t as n,n as t};

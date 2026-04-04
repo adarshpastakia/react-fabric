@@ -118,6 +118,114 @@
     &__block {
       margin-inline: -10px;
     }
+
+    &__text-element-input {
+      line-height: var(--calcite-font-line-height-relative-snug);
+      color: var(--calcite-color-text-3);
+      font-size: var(--calcite-font-size--1);
+      font-weight: var(--calcite-font-weight-normal);
+
+      a {
+        display: inline;
+        position: relative;
+        transition:
+          background-color,
+          block-size,
+          border-color,
+          box-shadow,
+          color,
+          inset-block-end,
+          inset-block-start,
+          inset-inline-end,
+          inset-inline-start inset-size,
+          opacity,
+          outline-color,
+          transform var(--calcite-animation-timing) ease-in-out 0s,
+          outline 0s,
+          outline-offset 0s;
+        border-style: none;
+        background-color: transparent;
+        background-image:
+          linear-gradient(currentColor, currentColor),
+          linear-gradient(var(--calcite-color-brand-underline), var(--calcite-color-brand-underline));
+        background-position-x: 0%, 100%;
+        background-position-y: min(1.5em, 100%);
+        background-repeat: no-repeat, no-repeat;
+        background-size:
+          0% 1px,
+          100% 1px;
+        padding: 0;
+        text-decoration: none;
+        color: var(--calcite-color-text-link);
+
+        &:hover,
+        &:focus {
+          background-size:
+            100% 1px,
+            100% 1px;
+        }
+
+        &:active {
+          background-size:
+            100% 2px,
+            100% 2px;
+        }
+
+        &.calcite--rtl {
+          background-position:
+            100% 100%,
+            100% 100%;
+        }
+      }
+
+      code {
+        border: var(--calcite-border-width-sm) solid var(--calcite-color-border-3);
+        border-radius: var(--calcite-corner-radius-xs);
+        background-color: var(--calcite-color-foreground-3);
+        padding: var(--calcite-spacing-xxs);
+        white-space: normal;
+        word-break: break-word;
+        color: var(--calcite-color-text-2);
+        font-family: var(--calcite-code-family);
+        font-size: 85%;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        margin-bottom: var(--calcite-spacing-xxs);
+        line-height: var(--calcite-font-line-height-relative-snug);
+        color: var(--calcite-color-text-1);
+        font-size: var(--calcite-font-size-0);
+        font-weight: var(--calcite-font-weight-bold);
+      }
+
+      h5 {
+        font-weight: var(--calcite-font-weight-medium);
+      }
+
+      h6 {
+        margin-bottom: var(--calcite-spacing-xxs);
+        line-height: var(--calcite-font-line-height-relative-snug);
+        color: var(--calcite-color-text-2);
+        font-size: var(--calcite-font-size--1);
+        font-weight: var(--calcite-font-weight-medium);
+      }
+
+      p {
+        margin-bottom: var(--calcite-spacing-lg);
+        line-height: var(--calcite-font-line-height-relative-snug);
+        color: var(--calcite-color-text-3);
+        font-size: var(--calcite-font-size--1);
+        font-weight: var(--calcite-font-weight-normal);
+      }
+
+      strong {
+        font-weight: var(--calcite-font-weight-bold);
+      }
+    }
   }
 
   [dir="rtl"] {

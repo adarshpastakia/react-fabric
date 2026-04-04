@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{d as t}from"./apiConverter2.js";import{a as n,i as r,o as i,r as a,t as o}from"./clipOperator.js";e((()=>{i(),t(),a()}))();export{n as execute,o as executeMany,r as supportsCurves};

@@ -1,0 +1,1 @@
+import{n as e}from"./chunk.js";import{n as t,t as n}from"./request.js";function r(e){let t=new URL(e).pathname.match(i);return!t||t.length<2?null:t[1].toUpperCase()}var i,a;e((()=>{t(),i=/\.(\w+)$/,a=async(e,t)=>{let r=(await n(e,{...t,method:`head`}))?.getHeader?.(`Content-Type`);return r?r.split(`/`)[1]:null}}))();export{a as getDatasetFormat,r as guessExtensionFromURI};
