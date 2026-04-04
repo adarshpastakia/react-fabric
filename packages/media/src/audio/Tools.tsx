@@ -4,7 +4,7 @@
  *
  *
  * The MIT License (MIT)
- * Copyright (c) 2024 Adarsh Pastakia
+ * Copyright (c) 2026 Adarsh Pastakia
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
  * and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -21,144 +21,82 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Button, Footer, HotKey } from "@react-fabric/core";
-import classNames from "classnames";
-import { Fragment, useMemo } from "react";
-import { MiniSlider } from "../sliders/MiniSlider";
-import { TimeSlider } from "../sliders/TimeSlider";
-import { useAudioContext } from "./Context";
+import { Divider } from "@react-fabric/core";
+import { useMemo, useState } from "react";
+import { FloatingSlider } from "../components/FloatingSlider";
+import { TimeSlider } from "../components/TimeSlider";
+import { Toolbar } from "../components/Toolbar";
+import { TooltipButton } from "../components/TooltipButton";
+import { Info } from "./Info";
+import { useAudioContext } from "./context";
 
 export const Tools = () => {
-  const { audioRef, state, toggleEqs } = useAudioContext();
+  const { audioState, wavesurfer, showEqs, setShowEqs } = useAudioContext();
+  const [showHelp, setShowHelp] = useState(false);
 
   const volumeIcon = useMemo(() => {
-    if (state.volume === 0) return "icon-[mdi--volume-mute]";
+    if (audioState.state.volume === 0) return "icon-[mdi--volume-mute]";
 
-    if (state.volume <= 0.4) return "icon-[mdi--volume-low]";
-    if (state.volume <= 0.7) return "icon-[mdi--volume-medium]";
+    if (audioState.state.volume <= 0.4) return "icon-[mdi--volume-low]";
+    if (audioState.state.volume <= 0.7) return "icon-[mdi--volume-medium]";
 
     return "icon-[mdi--volume-high]";
-  }, [state.volume]);
-
-  const handlers = useMemo(
-    () => ({
-      togglePlay: async () =>
-        audioRef.current?.paused
-          ? await audioRef.current?.play()
-          : audioRef.current?.pause(),
-      mute: () =>
-        audioRef.current &&
-        (audioRef.current.volume = audioRef.current.volume === 0 ? 0.5 : 0),
-      volumeUp: () =>
-        audioRef.current &&
-        audioRef.current.volume < 1 &&
-        (audioRef.current.volume = Math.min(1, audioRef.current.volume + 0.1)),
-      volumeDown: () =>
-        audioRef.current &&
-        audioRef.current.volume > 0 &&
-        (audioRef.current.volume = Math.max(0, audioRef.current.volume - 0.1)),
-      jumpDown: () =>
-        audioRef.current &&
-        audioRef.current.currentTime > 0 &&
-        (audioRef.current.currentTime -= 1),
-      jumpUp: () => audioRef.current && (audioRef.current.currentTime += 1),
-      seekDown: () =>
-        audioRef.current &&
-        audioRef.current.currentTime > 0 &&
-        (audioRef.current.currentTime -= 0.165),
-      seekUp: () => audioRef.current && (audioRef.current.currentTime += 0.165),
-      speedDown: () =>
-        audioRef.current &&
-        audioRef.current.playbackRate > 0 &&
-        (audioRef.current.playbackRate -= 0.5),
-      speedUp: () =>
-        audioRef.current &&
-        audioRef.current.playbackRate < 5 &&
-        (audioRef.current.playbackRate += 0.5),
-      toggleEqs: () => toggleEqs(),
-    }),
-    [],
-  );
+  }, [audioState.state.volume]);
 
   return (
-    <Footer
-      flex
-      className={classNames(
-        "select-none bg-tint-50",
-        state.isErrored &&
-          "after:absolute after:inset-0 after:bg-tint-500/20 after:cursor-not-allowed",
-      )}
-    >
-      {state.isLoaded && (
-        <Fragment>
-          <HotKey global keyCombo="space" handler={handlers.togglePlay} />
-          <HotKey global keyCombo="0" handler={handlers.mute} />
-          <HotKey global keyCombo="q" handler={handlers.toggleEqs} />
-          <HotKey global keyCombo="," handler={handlers.jumpDown} />
-          <HotKey global keyCombo="." handler={handlers.jumpUp} />
-          <HotKey global keyCombo="-" handler={handlers.volumeDown} />
-          <HotKey global keyCombo="=" handler={handlers.volumeUp} />
-          <HotKey global keyCombo="shift+{" handler={handlers.speedDown} />
-          <HotKey global keyCombo="shift+}" handler={handlers.speedUp} />
-          <HotKey global keyCombo="shift+<" handler={handlers.seekDown} />
-          <HotKey global keyCombo="shift+>" handler={handlers.seekUp} />
-        </Fragment>
-      )}
-      <Button
+    <Toolbar fullWidth hidePin>
+      <TooltipButton
+        tooltip={audioState.state.isPlaying ? "Pause" : "Play"}
         variant="link"
-        aria-label="togglePlay"
-        onClick={handlers.togglePlay}
-        icon={state.isPlaying ? "icon-[mdi--pause]" : "icon-[mdi--play]"}
+        color="primary"
+        icon={audioState.state.isPlaying ? "icon-[mdi--pause]" : "icon-[mdi--play]"}
+        aria-label={audioState.state.isPlaying ? "Pause" : "Play"}
+        onClick={() => wavesurfer?.instance.playPause()}
       />
-      <MiniSlider
+      <FloatingSlider
         icon={volumeIcon}
-        value={state.volume}
-        disabled={!state.isLoaded}
+        value={audioState.state.volume}
+        onChange={(v) => wavesurfer?.instance.setVolume(v)}
+        min={0}
         max={1}
-        onClick={() => {
-          const v = state.volume === 1 ? 0 : state.volume >= 0.5 ? 1 : 0.5;
-          audioRef.current && (audioRef.current.volume = v);
-        }}
-        onChange={(v) => audioRef.current && (audioRef.current.volume = v)}
+        step={0.01}
+        onClick={() => wavesurfer?.instance.setVolume(audioState.state.volume > 0 ? 0 : audioState.state.lastVolume)}
       />
-      <MiniSlider
-        icon={`${state.speed.toFixed(1)}x`}
-        value={state.speed}
-        disabled={!state.isLoaded}
-        max={5}
-        min={0.1}
-        textIcon
-        onClick={() => {
-          const v =
-            state.speed >= 2
-              ? 0.5
-              : state.speed >= 1.5
-                ? 2
-                : state.speed >= 1
-                  ? 1.5
-                  : state.volume >= 0.5
-                    ? 1
-                    : 0.5;
-          audioRef.current && (audioRef.current.playbackRate = v);
-        }}
-        onChange={(v) =>
-          audioRef.current && (audioRef.current.playbackRate = v)
-        }
+      <FloatingSlider
+        icon={`${audioState.state.playbackRate.toFixed(1)}x`}
+        value={audioState.state.playbackRate}
+        onChange={(v) => wavesurfer?.instance.setPlaybackRate(v)}
+        min={0.5}
+        max={2}
+        step={0.1}
+        className="fabric-btnTextIcon"
+        onClick={() => wavesurfer?.instance.setPlaybackRate(1)}
       />
       <TimeSlider
-        time={state.time}
-        duration={state.duration}
-        onChange={(time) =>
-          audioRef.current && (audioRef.current.currentTime = time)
-        }
+        duration={audioState.state.duration}
+        time={audioState.state.currentTime}
+        onChange={(time) => wavesurfer?.instance.setTime(time)}
       />
-      <Button
-        aria-label="eqs"
-        variant={state.showEqs ? "solid" : "link"}
-        onClick={toggleEqs}
-        disabled={!state.isLoaded}
+      <Divider vertical />
+      <TooltipButton
+        tooltip="EQ Options"
+        variant="link"
+        color="primary"
+        data-checked={showEqs}
         icon="icon-[mdi--tune-vertical]"
+        aria-label="EQ Options"
+        onClick={() => setShowEqs((e) => !e)}
       />
-    </Footer>
+      <TooltipButton
+        tooltip="Help"
+        variant="link"
+        color="muted"
+        icon="icon-[mdi--help-circle-outline]"
+        aria-label="Help"
+        onClick={() => setShowHelp((h) => !h)}
+      />
+
+      {showHelp && <Info onClose={() => setShowHelp(false)} />}
+    </Toolbar>
   );
 };

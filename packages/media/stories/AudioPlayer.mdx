@@ -1,0 +1,38 @@
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Heading,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import { AudioPlayer } from "../src";
+import * as AudioPlayerStories from "./AudioPlayer.stories";
+
+<Meta of={AudioPlayerStories} />
+
+<Title>Audio Player</Title>
+
+<Anchor storyId="audio-player">
+  <div className="hidden-anchor">
+    <Subheading>Audio Player</Subheading>
+  </div>
+</Anchor>
+
+<Description of={AudioPlayer} />
+
+[View Playground](?path=/story/media-audioplayer--playground)
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />

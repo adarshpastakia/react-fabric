@@ -4,7 +4,7 @@
  *
  *
  * The MIT License (MIT)
- * Copyright (c) 2024 Adarsh Pastakia
+ * Copyright (c) 2026 Adarsh Pastakia
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
  * and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -21,118 +21,143 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Icon, useResize } from "@react-fabric/core";
 import classNames from "classnames";
-import { Fragment, useEffect, useMemo, useRef, useState } from "react";
-import { useImageContext } from "./Context";
+import { useEffectEvent, useMemo, useRef } from "react";
+import { useImageContext } from "./context";
+import { Image } from "./Image";
 
-export const Overlay = ({ src }: { src: string }) => {
-  const { state, toggleSplitterOrientation } = useImageContext();
-  const overlayRef = useRef<HTMLDivElement>(null);
-  const [overlaySize, setOverlaySize] = useState<number>(0);
+export const Overlay = () => {
+  const { viewState, overlayState } = useImageContext();
 
-  const orientVertical = useMemo(
-    () => state.splitterOrient === "vertical",
-    [state.splitterOrient],
-  );
-  const { ref, onMouseDown } = useResize(
-    ({ x, y }) => {
-      if (overlayRef.current != null) {
-        orientVertical
-          ? setOverlaySize(overlayRef.current.offsetHeight + y)
-          : setOverlaySize(overlayRef.current.offsetWidth + x);
-      }
+  const dragRef = useRef({ size: 0, start: 0 });
+  const startDrag = useEffectEvent(
+    (event: React.MouseEvent<HTMLDivElement>) => {
+      const stopDrag = (event: MouseEvent) => {
+        document.removeEventListener("mousemove", handleDrag);
+        document.removeEventListener("mouseup", stopDrag);
+        document.body.style.cursor = "unset";
+        event.preventDefault();
+      };
+      const handleDrag = (event: MouseEvent) => {
+        event.preventDefault();
+        const delta =
+          overlayState.state.orientation === "vertical"
+            ? event.clientY
+            : event.clientX;
+        overlayState.changeSize(
+          Math.max(
+            -4,
+            Math.min(
+              overlayState.state.orientation === "vertical"
+                ? viewState.state.wrapperHeight
+                : viewState.state.wrapperWidth,
+              dragRef.current.size + (delta - dragRef.current.start),
+            ),
+          ),
+        );
+      };
+
+      const el = event.currentTarget.previousSibling as HTMLElement;
+      dragRef.current.size =
+        overlayState.state.orientation === "vertical"
+          ? el.offsetHeight
+          : el.offsetWidth;
+      dragRef.current.start =
+        overlayState.state.orientation === "vertical"
+          ? event.clientY
+          : event.clientX;
+      event.preventDefault();
+      document.body.style.cursor = handle;
+      document.addEventListener("mousemove", handleDrag);
+      document.addEventListener("mouseup", stopDrag);
     },
-    { isVertical: orientVertical },
   );
 
-  useEffect(() => {
-    setOverlaySize(
-      (orientVertical ? state.containerHeight : state.containerWidth) / 2,
-    );
-  }, [state.containerHeight, state.containerWidth, orientVertical]);
+  const {
+    fullDimension,
+    variableDimension,
+    handle,
+    handleFullDimension,
+    handleSizeDimension,
+    handleInset,
+    handlePosition,
+    sizeProperty,
+  } = useMemo(() => {
+    if (overlayState.state.orientation === "vertical") {
+      return {
+        fullDimension: "width",
+        variableDimension: "height",
+        handle: "ns-resize",
+        handlePosition: "top",
+        handleInset: "inset-inline",
+        handleFullDimension: "width",
+        handleSizeDimension: "height",
+        sizeProperty: "wrapperWidth",
+      };
+    }
+    return {
+      fullDimension: "height",
+      variableDimension: "width",
+      handle: "ew-resize",
+      handlePosition: "left",
+      handleInset: "inset-block",
+      handleFullDimension: "height",
+      handleSizeDimension: "width",
+      sizeProperty: "wrapperHeight",
+    };
+  }, [overlayState.state.orientation]);
 
   return (
-    <Fragment>
+    <div
+      className="absolute m-auto"
+      style={{
+        width: viewState.state.wrapperWidth,
+        height: viewState.state.wrapperHeight,
+      }}
+    >
       <div
-        className="absolute overflow-hidden pointer-events-none min-h-2 min-w-2"
-        ref={overlayRef}
-        style={
-          orientVertical
-            ? {
-                top: 0,
-                insetInline: 0,
-                height: overlaySize,
-                maxHeight: state.containerHeight,
-              }
-            : {
-                insetInlineStart: 0,
-                insetBlock: 0,
-                width: overlaySize,
-                maxWidth: state.containerWidth,
-              }
-        }
+        role="none"
+        className={classNames("relative overflow-hidden")}
+        style={{
+          [fullDimension]:
+            viewState.state[
+              sizeProperty as unknown as keyof typeof viewState.state
+            ],
+          [variableDimension]: overlayState.state.size,
+        }}
       >
-        <div
-          className="grid p-2"
-          style={{
-            width: state.containerWidth,
-            height: state.containerHeight,
-          }}
-        >
-          <div
-            className="origin-center relative m-auto pointer-events-none"
-            style={{
-              width: state.mediaWidth,
-              height: state.mediaHeight,
-              transform: `rotate(${state.rotate}deg)`,
-            }}
-          >
-            <img
-              alt={src}
-              src={src}
-              loading="lazy"
-              crossOrigin="anonymous"
-              className="object-contain size-full"
-            />
-          </div>
-        </div>
         <div
           role="none"
-          ref={ref}
-          onMouseDown={onMouseDown}
           className={classNames(
-            "bg-white outline-2 outline-black -outline-offset-2 absolute pointer-events-auto",
-            orientVertical && "h-2 inset-x-0 bottom-0 cursor-ns-resize",
-            !orientVertical && "w-2 inset-y-0 end-0 cursor-ew-resize",
+            "relative overflow-hidden m-auto grid place-content-center bg-tint-50",
           )}
-        />
+          style={{
+            width: viewState.state.wrapperWidth,
+            height: viewState.state.wrapperHeight,
+          }}
+        >
+          <Image src={overlayState.state.src} ref={overlayState.ref} />
+        </div>
       </div>
       <div
-        className={classNames(
-          "absolute leading-none bg-accent-500 rounded-full p-1 ring-1 ring-white",
-          orientVertical && "left-1/2 -translate-x-1/2",
-          !orientVertical && "top-1/2 -translate-y-1/2",
-        )}
-        style={
-          orientVertical
-            ? {
-                top:
-                  Math.min(Math.max(overlaySize, 0), state.containerHeight) -
-                  16,
-              }
-            : {
-                insetInlineStart:
-                  Math.min(Math.max(overlaySize, 0), state.containerWidth) - 16,
-              }
-        }
+        role="none"
+        className="absolute bg-transparent z-1"
+        onMouseDown={startDrag}
+        style={{
+          [handleSizeDimension]: 10,
+          [handleInset]: 0,
+          [handlePosition]: overlayState.state.size,
+          cursor: handle,
+        }}
       >
-        <Icon
-          icon="icon-[mdi--format-rotate-90]"
-          data-orient={orientVertical ? "vertical" : "horizontal"}
-          onClick={() => toggleSplitterOrientation()}
+        <div
+          className="bg-tint-500 border-2 border-tint-50 hover:bg-accent-500"
+          style={{
+            [handleFullDimension]: "100%",
+            [handleSizeDimension]: 6,
+          }}
         />
       </div>
-    </Fragment>
+    </div>
   );
 };

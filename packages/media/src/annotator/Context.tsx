@@ -24,9 +24,9 @@
 import { Icon, LoadingBars, useResizeObserver } from "@react-fabric/core";
 import {
   createContext,
-  useCallback,
   useContext,
   useEffect,
+  useEffectEvent,
   useReducer,
 } from "react";
 import { Annotation, type AnnotationItem } from "./Annotation";
@@ -221,30 +221,29 @@ export const AnnotatorProvider = ({
     });
   }, [annotations]);
 
-  const handleLoad = useCallback(() => {
+  const handleLoad = useEffectEvent(() => {
     dispatch({
       type: "loaded",
     });
     onLoad?.();
-  }, [onLoad]);
+  });
 
-  const handleError = useCallback(() => {
+  const handleError = useEffectEvent(() => {
     dispatch({
       type: "errored",
     });
     onError?.();
-  }, [onError]);
+  });
 
-  const handleChange = useCallback(
+  const handleChange = useEffectEvent(
     (index: number, box: [number, number, number, number]) => {
       dispatch({ type: "update", index, box });
     },
-    [],
   );
 
-  const handleRemove = useCallback((index: number) => {
+  const handleRemove = useEffectEvent((index: number) => {
     dispatch({ type: "remove", index });
-  }, []);
+  });
 
   return (
     <AnnotatorContext.Provider value={{ ...state, handleLoad }}>

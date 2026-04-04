@@ -23,7 +23,7 @@
 
 import { ProgressCircle } from "@react-fabric/core";
 import { useEffect, useState } from "react";
-import { useAudioContext } from "./Context";
+import { useAudioContext } from "./context";
 
 export const Loading = () => {
   const [progress, setProgress] = useState(0);
@@ -37,7 +37,7 @@ export const Loading = () => {
   }, [wavesurfer]);
 
   return (
-    <div className="absolute inset-0 grid place-content-center">
+    <div className="absolute inset-0 grid place-content-center z-10 bg-tint-50/50 backdrop-blur-2xl">
       <ProgressCircle value={progress} />
     </div>
   );

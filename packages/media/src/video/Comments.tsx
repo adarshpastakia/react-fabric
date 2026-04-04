@@ -21,17 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  Button,
-  Content,
-  Dropdown,
-  DropdownDismiss,
-  Footer,
-  Icon,
-  Panel,
-  PanelStack,
-  Tooltip,
-} from "@react-fabric/core";
+import { Button, Content, Dropdown, DropdownDismiss, Footer, Icon, Panel, PanelStack, Text, Tooltip } from "@react-fabric/core";
 import { Textarea } from "@react-fabric/form";
 import { useCallback, useState } from "react";
 import { TooltipButton } from "../components/TooltipButton";
@@ -45,23 +35,16 @@ export const CommentTool = ({ onChange, onOpen }: KeyValue) => {
         aria-label="comment-add"
         icon="icon-[mdi--comment-plus-outline]"
         onClick={onOpen}
+        variant="link"
+        color="primary"
       />
       <div>
         <div className="p-2 w-96 max-w-screen">
-          <Textarea
-            rows={5}
-            autoFocus
-            value={value}
-            onChange={(v) => setValue(v ?? "")}
-          />
+          <Textarea rows={5} autoFocus value={value} onChange={(v) => setValue(v ?? "")} />
         </div>
         <Footer flex justify="end" className="p-1">
           <DropdownDismiss>
-            <Button
-              size="sm"
-              variant="solid"
-              onClick={() => [onChange?.(value), setValue("")]}
-            >
+            <Button size="sm" variant="solid" onClick={() => [onChange?.(value), setValue("")]}>
               Update
             </Button>
           </DropdownDismiss>
@@ -71,84 +54,53 @@ export const CommentTool = ({ onChange, onOpen }: KeyValue) => {
   );
 };
 
-export const CommentTag = ({
-  time,
-  duration,
-  text,
-  currentTime,
-  onChange,
-  onDelete,
-  onPlay,
-}: KeyValue) => {
+export const CommentTag = ({ time, duration, text, currentTime, onChange, onDelete, onPlay }: KeyValue) => {
   const [value, setValue] = useState(text);
-  const resetValue = useCallback((id: string) => {
-    id === "edit" && setValue(text);
-  }, []);
+  const resetValue = useCallback(
+    (id: string) => {
+      id === "edit" && setValue(text);
+    },
+    [text],
+  );
   return (
     <div
       key={time}
-      className="absolute hover:text-primary -top-5"
+      className="absolute hover:text-primary -top-4"
       style={{
         insetInlineStart: `${(time / duration) * 100}%`,
       }}
     >
-      <Tooltip
-        disabled
-        color="info"
-        content={`${time}: ${text}`}
-        open={currentTime >= time && currentTime <= time + 2}
-      >
+      <Tooltip disabled color="info" content={`${time}: ${text}`} open={currentTime >= time && currentTime <= time + 2}>
         <Dropdown showArrow>
-          <Icon
-            icon="icon-[mdi--comment-text]"
-            className="hover:text-primary bg-tint-50/80"
-          />
+          <Icon icon="icon-[mdi--comment-text]" className="hover:text-primary bg-tint-50/80" />
           <PanelStack onPanelChange={resetValue}>
-            <Panel width={360} height={192} className="max-w-screen">
-              <Content>{text}</Content>
+            <Panel width={360} className="max-w-screen">
+              <Content className="overflow-auto max-h-32 text-sm">
+                <Text>{text}</Text>
+              </Content>
               <Footer flex justify="between" className="p-1">
-                <Button
-                  size="sm"
-                  variant="outline"
-                  icon="icon-[mdi--lead-pencil]"
-                  data-panel="edit"
-                >
+                <Button size="xs" variant="outline" className="btn-dashed" icon="icon-[mdi--lead-pencil]" data-panel="edit">
                   Edit
                 </Button>
                 <DropdownDismiss>
-                  <Button size="sm" variant="solid" onClick={onPlay}>
+                  <Button size="xs" variant="solid" color="primary" onClick={onPlay}>
                     Play
                   </Button>
                 </DropdownDismiss>
               </Footer>
             </Panel>
             <Panel panelId="edit" width={360} className="max-w-screen">
-              <Content className="p-1">
-                <Textarea
-                  autoFocus
-                  rows={5}
-                  value={value}
-                  onChange={setValue}
-                />
+              <Content className="p-1 h-28 text-sm">
+                <Textarea autoFocus rows={5} value={value} onChange={setValue} />
               </Content>
               <Footer flex justify="between" className="p-1">
                 <DropdownDismiss>
-                  <Button
-                    size="sm"
-                    variant="link"
-                    icon="icon-[mdi--trash-can-outline]"
-                    color="danger"
-                    onClick={onDelete}
-                  >
+                  <Button size="xs" variant="link" icon="icon-[mdi--trash-can-outline]" color="danger" onClick={onDelete}>
                     Delete
                   </Button>
                 </DropdownDismiss>
                 <DropdownDismiss>
-                  <Button
-                    size="sm"
-                    variant="solid"
-                    onClick={() => onChange?.(value)}
-                  >
+                  <Button size="xs" variant="solid" onClick={() => onChange?.(value)}>
                     Update
                   </Button>
                 </DropdownDismiss>

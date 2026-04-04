@@ -22,10 +22,22 @@
  */
 
 export { Annotator } from "./annotator/Annotator";
-export { AudioPlayer, type AudioPlayerRef } from "./audio/AudioPlayer";
-export { type CanvasRef as ImageViewerRef } from "./components/Canvas";
-export { Dictation } from "./dictation/Dictation";
-export { ImageViewer } from "./image/ImageViewer";
-export { Thumbnail } from "./thumbnail/Thumbnail";
+
+import { ImageProps } from "./image/types";
+import { VideoProps } from "./video/types";
+
+export { ImageViewer } from "./image";
+export { type ImageViewerRef } from "./image/types";
+
+export { AudioPlayer } from "./audio";
+export { type AudioPlayerRef, type AudioRegion } from "./audio/types";
+
+export { VideoPlayer } from "./video";
 export { type VideoPlayerRef } from "./video/types";
-export { VideoPlayer } from "./video/VideoPlayer";
+
+export { type ImageAnnotationShape, type VideoAnnotationShape } from "./typedefs";
+export type ImageAnnotations = ImageProps["annotations"];
+export type VideoAnnotations = VideoProps["annotations"];
+
+export { Dictation } from "./dictation";
+export { Thumbnail } from "./thumbnail";

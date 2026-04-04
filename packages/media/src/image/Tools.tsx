@@ -4,7 +4,7 @@
  *
  *
  * The MIT License (MIT)
- * Copyright (c) 2024 Adarsh Pastakia
+ * Copyright (c) 2026 Adarsh Pastakia
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
  * and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -21,222 +21,254 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Divider, Dropdown, Footer, HotKey } from "@react-fabric/core";
-import { Fragment, useMemo } from "react";
-import { Colorscape } from "../components/Colorscape";
+import { Button, Divider, ToggleButtonGroup } from "@react-fabric/core";
+import { Slider } from "@react-fabric/form";
+import { useState } from "react";
+import { ColorOptions } from "../components/ColorOptions";
+import { FloatingSlider } from "../components/FloatingSlider";
+import { Toolbar } from "../components/Toolbar";
 import { TooltipButton } from "../components/TooltipButton";
-import { useImageContext } from "./Context";
-import { ZoomMeter } from "./ZoomMeter";
+import { useImageContext } from "./context";
+import { Info } from "./Info";
 
-export const Tools = ({
-  enableZoom = true,
-  enableCrop = true,
-  onExport,
-}: {
-  enableZoom?: boolean;
-  enableCrop?: boolean;
-  onExport?: (base64: string) => void;
-}) => {
-  const {
-    state,
-    reset,
-    rotate,
-    zoomScale,
-    fitToSize,
-    fitToView,
-    toggleFit,
-    changeZoom,
-    toggleSplitter,
-    toggleCropping,
-    cancelCropping,
-    startCropping,
-    adjustColor,
-    resetColor,
-    exportToBase64,
-  } = useImageContext();
+export const Tools = ({ autoHideToolbar }: { autoHideToolbar?: boolean }) => {
+  const { source, viewState, overlayState, canExport, canCrop, fireExport } = useImageContext();
+  const [showHelp, setShowHelp] = useState(false);
 
-  const startDrag = (e: React.MouseEvent) => {
-    const target = e.currentTarget as HTMLDivElement;
-    let startX = e.clientX;
-    let zoomStart = state.zoom || 1;
-
-    const doDrag = (ev: MouseEvent) => {
-      if (target.parentElement != null) {
-        zoomStart += (startX - ev.clientX) * 0.05;
-        zoomScale(Math.max(0.1, Math.min(5, zoomStart)));
-        startX = ev.clientX;
-        ev.preventDefault();
-        ev.stopPropagation();
-      }
-    };
-
-    document.addEventListener("mousemove", doDrag);
-    document.addEventListener(
-      "mouseup",
-      () => {
-        document.removeEventListener("mousemove", doDrag);
-      },
-      {
-        capture: true,
-        once: true,
-      },
-    );
-  };
-
-  const handlers = useMemo(
-    () => ({
-      rotateDown: () => rotate(-90),
-      rotateUp: () => rotate(90),
-      zoomDown: () => changeZoom(-0.5, true),
-      zoomUp: () => changeZoom(+0.5, true),
-      toggleFit: () => toggleFit(),
-      startCropping: () => startCropping(),
-      cancelCropping: () => cancelCropping(),
-      reset: () => reset(),
-    }),
-    [],
-  );
-
+  if (source.state.errored) return null;
   return (
-    <Footer flex justify="center" className="select-none">
-      {state.isLoaded && (
-        <Fragment>
-          {!state.splitter && enableZoom && (
-            <HotKey global keyCombo="," handler={handlers.zoomDown} />
-          )}
-          {!state.splitter && enableZoom && (
-            <HotKey global keyCombo="." handler={handlers.zoomUp} />
-          )}
-          <HotKey global keyCombo="[" handler={handlers.rotateDown} />
-          <HotKey global keyCombo="]" handler={handlers.rotateUp} />
-          {enableZoom && (
-            <HotKey global keyCombo="f" handler={handlers.toggleFit} />
-          )}
-          <HotKey global keyCombo="r" handler={handlers.reset} />
-          {enableCrop && (
-            <HotKey global keyCombo="c" handler={handlers.startCropping} />
-          )}
-          {state.cropping && (
-            <HotKey global keyCombo="esc" handler={handlers.cancelCropping} />
-          )}
-        </Fragment>
-      )}
-      {enableZoom && (
-        <Fragment>
-          <label className="text-xs basis-16 whitespace-nowrap">
-            Zoom: {state.zoom === 0 ? "FIT" : state.zoom.toFixed(2)}
-          </label>
-          <TooltipButton
-            aria-label="fit-to-view"
-            tooltip="Fit to View (F)"
-            onClick={fitToView}
-            disabled={!state.isLoaded}
-            icon="icon-[mdi--fit-to-screen]"
-          />
-          {!state.splitter && (
+    <>
+      <Toolbar
+        autoHideToolbar={autoHideToolbar}
+        hidePin={viewState.state.mode !== "default"}
+        floating={
+          overlayState.state.hasOverlay &&
+          viewState.state.mode !== "splitter" && (
+            <div className="w-3xs bg-tint-50/70 rounded [&_.fabric-inputWrapper]:bg-transparent!">
+              <Slider
+                min={0}
+                max={1}
+                step={0.01}
+                value={overlayState.state.opacity}
+                onChange={(v) => v && overlayState.changeOpacity(v)}
+                onSlide={overlayState.changeOpacity}
+              />
+            </div>
+          )
+        }
+      >
+        {viewState.state.mode === "default" && (
+          <>
+            <div className="px-2 text-muted text-xs flex gap-1 items-center">
+              <span>Zoom:</span>
+              <span>{viewState.state.zoomLevel === -1 ? "Fit" : `${viewState.state.zoomLevel.toFixed(1)}x`}</span>
+            </div>
             <TooltipButton
-              aria-label="fit-to-size"
-              tooltip="Fit to Size (F)"
-              onClick={fitToSize}
-              disabled={!state.isLoaded}
-              icon="icon-[mdi--aspect-ratio]"
+              tooltip="Fit to Screen"
+              variant="link"
+              color="primary"
+              icon="icon-[mdi--fit-to-screen-outline]"
+              aria-label="Fit to Screen"
+              onClick={() => viewState.zoom(-1)}
             />
-          )}
-          {!state.splitter && (
-            <Dropdown
-              placement="top"
-              dropdownEvent="hover"
-              dropdownClassName="overflow-hidden bg-black/80 backdrop-blur-md w-48 h-24 rounded-t-full"
+            <TooltipButton
+              tooltip="Fit to Size"
+              variant="link"
+              color="primary"
+              icon="icon-[mdi--aspect-ratio]"
+              aria-label="Fit to Size"
+              onClick={() => viewState.zoom(1)}
+            />
+            <FloatingSlider
+              icon="icon-[mdi--magnify]"
+              value={viewState.state.ratio}
+              onChange={viewState.zoom}
+              min={0.5}
+              max={5}
+              step={0.1}
+            />
+            <Divider vertical />
+            <TooltipButton
+              tooltip="Flip Horizontal"
+              variant="link"
+              color="primary"
+              icon="icon-[mdi--axis-z-rotate-counterclockwise]"
+              aria-label="Flip Horizontal"
+              onClick={viewState.flipHorizontal}
+            />
+            <TooltipButton
+              tooltip="Flip Vertical"
+              variant="link"
+              color="primary"
+              icon="icon-[mdi--horizontal-rotate-counterclockwise]"
+              aria-label="Flip Vertical"
+              onClick={viewState.flipVertical}
+            />
+            <TooltipButton
+              tooltip="Rotate Left"
+              variant="link"
+              color="primary"
+              icon="icon-[mdi--rotate-left]"
+              aria-label="Rotate Left"
+              onClick={viewState.rotateLeft}
+            />
+            <TooltipButton
+              tooltip="Rotate Right"
+              variant="link"
+              color="primary"
+              icon="icon-[mdi--rotate-right]"
+              aria-label="Rotate Right"
+              onClick={viewState.rotateRight}
+            />
+            <div className="px-2 text-muted text-xs flex gap-1 items-center">
+              <span>Rotate:</span>
+              <span>{viewState.state.rotate}°</span>
+            </div>
+            <Divider vertical />
+            {canCrop && (
+              <TooltipButton
+                tooltip="Crop"
+                variant="link"
+                color="primary"
+                icon="icon-[mdi--crop]"
+                aria-label="Crop"
+                onClick={() => viewState.changeMode("cropper")}
+              />
+            )}
+            {canExport && (
+              <TooltipButton
+                tooltip="Capture"
+                variant="link"
+                color="primary"
+                icon="icon-[mdi--camera-enhance-outline]"
+                aria-label="Capture"
+                onClick={fireExport}
+              />
+            )}
+            {overlayState.state.hasOverlay && (
+              <TooltipButton
+                tooltip="Compare"
+                variant="link"
+                color="primary"
+                icon="icon-[mdi--compare]"
+                aria-label="Compare"
+                onClick={() => viewState.changeMode("splitter")}
+              />
+            )}
+            {(canCrop || canExport || overlayState.state.hasOverlay) && <Divider vertical />}
+            <ColorOptions
+              colorscape={viewState.state.colorscape}
+              onChange={viewState.changeColorscape}
+              onReset={viewState.resetColorscape}
+            />
+            <TooltipButton
+              tooltip="Reset View"
+              variant="link"
+              color="muted"
+              disabled={!viewState.state.canReset}
+              icon="icon-[mdi--backup-restore]"
+              aria-label="Reset View"
+              onClick={viewState.reset}
+            />
+            <TooltipButton
+              tooltip="Help"
+              variant="link"
+              color="muted"
+              icon="icon-[mdi--help-circle-outline]"
+              aria-label="Help"
+              onClick={() => setShowHelp((h) => !h)}
+            />
+          </>
+        )}
+        {viewState.state.mode === "splitter" && (
+          <>
+            <ToggleButtonGroup
+              size="sm"
+              variant="link"
+              value={overlayState.state.orientation}
+              onChange={(v: "horizontal" | "vertical" | null) => overlayState.toggleOrientation(v ?? "horizontal")}
             >
               <TooltipButton
-                aria-label="zoom"
-                tooltip="Zoom (. / ,)"
-                icon="icon-[mdi--magnify-plus-outline]"
-                disabled={!state.isLoaded}
-                onWheel={(e) => {
-                  changeZoom(e.deltaY * 0.05);
-                  e.stopPropagation();
-                }}
-                onClick={handlers.zoomUp}
+                tooltip="Horizontal slider"
+                variant="link"
+                color="primary"
+                value="horizontal"
+                active={overlayState.state.orientation === "horizontal"}
+                icon="icon-[mdi--flip-horizontal]"
+                aria-label="Slide Horizontal"
               />
-              <div
-                role="none"
-                className="select-none"
-                onMouseDown={startDrag}
-                onWheel={(e) => {
-                  changeZoom(e.deltaY * 0.05);
-                  e.stopPropagation();
-                }}
-              >
-                <ZoomMeter zoom={state.zoom} />
-                <span className="absolute top-0.5 left-1/2 -translate-x-1/2 bg-accent-300 outline -outline-offset-1 outline-accent-700 rounded-full text-white text-xs py-px px-1">
-                  {state.zoom > 0 ? state.zoom.toFixed(1) : "FIT"}
-                </span>
-              </div>
-            </Dropdown>
-          )}
-          <Colorscape
-            disabled={!state.isLoaded}
-            colorscape={state.colorscape}
-            resetColor={resetColor}
-            adjustColor={adjustColor}
-          />
-          <Divider vertical />
-        </Fragment>
-      )}
-      {state.overlay && (
-        <TooltipButton
-          tooltip="Toggle Splitter"
-          aria-label="splitter"
-          disabled={!state.isLoaded}
-          color={state.splitter ? "primary" : "default"}
-          icon={
-            state.splitter
-              ? "icon-[mdi--compare-remove]"
-              : "icon-[mdi--compare]"
-          }
-          onClick={toggleSplitter}
-        />
-      )}
-      {!state.splitter && enableCrop && (
-        <TooltipButton
-          tooltip={
-            state.cropping ? "Cancel Cropping (Esc)" : "Start Cropping (C)"
-          }
-          aria-label="crop"
-          disabled={!state.isLoaded}
-          variant={state.cropping ? "solid" : "link"}
-          icon="icon-[mdi--crop]"
-          onClick={toggleCropping}
-        />
-      )}
-      {!state.splitter && onExport && (
-        <TooltipButton
-          tooltip="Export Image"
-          aria-label="export"
-          disabled={!state.isLoaded}
-          icon="icon-[mdi--camera-enhance-outline]"
-          onClick={() => onExport?.(exportToBase64() ?? "")}
-        />
-      )}
-      <Divider vertical />
-      <TooltipButton
-        tooltip="Rotate Counter Clockwise ([)"
-        disabled={!state.isLoaded}
-        aria-label="rotate-ccw"
-        icon="icon-[mdi--rotate-left]"
-        onClick={handlers.rotateDown}
-      />
-      <TooltipButton
-        tooltip="Rotate Clockwise (])"
-        disabled={!state.isLoaded}
-        aria-label="rotate-cw"
-        icon="icon-[mdi--rotate-right]"
-        onClick={handlers.rotateUp}
-      />
-      <label className="text-xs basis-16 whitespace-nowrap">
-        Rotate: {state.rotate}°
-      </label>
-    </Footer>
+              <TooltipButton
+                tooltip="Vertical slider"
+                variant="link"
+                color="primary"
+                value="vertical"
+                active={overlayState.state.orientation === "vertical"}
+                icon="icon-[mdi--flip-vertical]"
+                aria-label="Slide Vertical"
+              />
+            </ToggleButtonGroup>
+            <Divider vertical />
+            <TooltipButton
+              tooltip="Stop Comparing"
+              variant="link"
+              color="muted"
+              icon="icon-[mdi--compare-remove]"
+              aria-label="stop comparing"
+              onClick={() => viewState.changeMode("default")}
+            />
+          </>
+        )}
+        {viewState.state.mode === "cropper" && (
+          <>
+            <TooltipButton
+              tooltip="Rectangle Crop"
+              variant="link"
+              color="primary"
+              value="vertical"
+              active={viewState.state.cropMode === "rect"}
+              icon="icon-[mdi--selection]"
+              aria-label="Rectangle Crop"
+              onClick={() => viewState.changeCropMode("rect")}
+            />
+            <TooltipButton
+              tooltip="Ellipse Crop"
+              variant="link"
+              color="primary"
+              value="vertical"
+              active={viewState.state.cropMode === "ellipse"}
+              icon="icon-[mdi--selection-ellipse]"
+              aria-label="Ellipse Crop"
+              onClick={() => viewState.changeCropMode("ellipse")}
+            />
+            {/* 
+            TODO: Freehand crop to be implemented in future
+            <TooltipButton
+              tooltip="Freehand Crop"
+              variant="link"
+              color="primary"
+              value="vertical"
+              active={viewState.state.cropMode === "draw"}
+              icon="icon-[mdi--draw]"
+              aria-label="Freehand Crop"
+              onClick={()=>viewState.changeCropMode("draw")}
+            /> */}
+            <Button
+              icon="icon-[mdi--close-circle-outline]"
+              aria-label="stop cropping"
+              color="muted"
+              variant="link"
+              onClick={() => viewState.changeMode("default")}
+            />
+          </>
+        )}
+        {viewState.state.mode === "editor" && (
+          <>
+            <Divider vertical />
+            <Button icon="icon-[mdi--close-circle-outline]" aria-label="stop editing" />
+          </>
+        )}
+      </Toolbar>
+      {showHelp && <Info onClose={() => setShowHelp(false)} />}
+    </>
   );
 };

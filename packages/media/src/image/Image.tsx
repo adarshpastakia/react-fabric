@@ -4,7 +4,7 @@
  *
  *
  * The MIT License (MIT)
- * Copyright (c) 2024 Adarsh Pastakia
+ * Copyright (c) 2026 Adarsh Pastakia
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
  * and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -21,121 +21,51 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { ErrorBoundary, LoadingBars } from "@react-fabric/core";
+import { Icon } from "@react-fabric/core";
 import classNames from "classnames";
-import { useCanvasContext } from "../components/Canvas";
-import { Cropper } from "../components/Cropper";
-import { useImageContext } from "./Context";
-import { Overlay } from "./Overlay";
-import { type ImageProps } from "./types";
+import { useImageContext } from "./context";
 
-export const Image = ({ onCrop }: Pick<ImageProps<KeyValue>, "onCrop">) => {
-  const {
-    imageRef,
-    scrollerRef,
-    state,
-    toggleCropping,
-    handleLoad,
-    handleError,
-  } = useImageContext();
-  const { canvasRef } = useCanvasContext();
+export const Image = ({
+  src,
+  ref,
+  onLoad,
+  onError,
+}: {
+  src?: string;
+  ref: React.Ref<HTMLImageElement | null>;
+  onLoad?: (e: any) => void;
+  onError?: (e: any) => void;
+}) => {
+  const { viewState, source, missingIcon } = useImageContext();
 
-  const startDrag = (e: React.MouseEvent) => {
-    let startX = e.clientX;
-    let startY = e.clientY;
-
-    const doDrag = (ev: MouseEvent) => {
-      if (scrollerRef.current) {
-        scrollerRef.current.scrollTop -= Math.floor(ev.clientY - startY);
-        scrollerRef.current.scrollLeft -= Math.floor(ev.clientX - startX);
-        startX = ev.clientX;
-        startY = ev.clientY;
-        ev.preventDefault();
-        ev.stopPropagation();
-      }
-    };
-
-    document.addEventListener("mousemove", doDrag);
-    document.addEventListener(
-      "mouseup",
-      () => {
-        document.removeEventListener("mousemove", doDrag);
-      },
-      {
-        capture: true,
-        once: true,
-      },
-    );
-  };
+  if (source.state.errored)
+    return <Icon icon={missingIcon ?? "icon-[mdi--image-off-outline]"} className="text-muted" size="5rem" />;
 
   return (
     <div
-      ref={scrollerRef}
-      className="media-container area-content overflow-auto relative scroll-hide grid bg-tint-50 select-none p-2"
-      style={
-        {
-          "--brightness": state.colorscape.brightness,
-          "--invert": state.colorscape.invert,
-          "--hue": `${state.colorscape.hue}deg`,
-          "--contrast": state.colorscape.contrast,
-          "--saturate": state.colorscape.saturate,
-        } as AnyObject
-      }
+      className="relative pointer-events-none motion-safe:transition-transform duration-250 ease-in-out"
+      style={{
+        width: viewState.state.width,
+        height: viewState.state.height,
+        scale: `${viewState.state.flipX ? -1 : 1} ${viewState.state.flipY ? -1 : 1}`,
+        rotate: `${90 * viewState.state.rotateMultiplier}deg`,
+      }}
     >
-      <ErrorBoundary>
-        <div
-          role="none"
-          className="relative overflow-hidden m-auto grid place-content-center size-full cursor-grab active:cursor-grabbing"
-          onMouseDown={startDrag}
-          style={{
-            width: state.width,
-            height: state.height,
-          }}
-        >
-          <div
-            className={classNames(
-              "origin-center relative pointer-events-none",
-              state.colorScheme.startsWith("dark") && "bg-light",
-            )}
-            style={{
-              width: state.mediaWidth,
-              height: state.mediaHeight,
-              transform: `rotate(${state.rotate}deg)`,
-            }}
-          >
-            {state.src && (
-              <img
-                alt={state.src}
-                src={state.src}
-                onLoad={handleLoad}
-                onError={handleError}
-                ref={imageRef}
-                loading="lazy"
-                crossOrigin="anonymous"
-                className="size-full"
-              />
-            )}
-            <canvas
-              ref={canvasRef}
-              width={state.mediaWidth}
-              height={state.mediaHeight}
-              className="absolute inset-0"
-            />
-          </div>
-        </div>
-
-        {state.isLoading && <LoadingBars />}
-      </ErrorBoundary>
-      {state.overlay && state.splitter && <Overlay src={state.overlay} />}
-
-      {onCrop && state.cropping && (
-        <Cropper
-          state={state}
-          mediaRef={imageRef}
-          onCrop={onCrop}
-          onCropEnd={() => toggleCropping()}
-        />
-      )}
+      <img
+        src={src}
+        alt={src}
+        ref={ref}
+        crossOrigin="anonymous"
+        loading="lazy"
+        className={classNames(
+          "size-full object-fill text-transparent overflow-hidden transition-opacity duration-500 select-none",
+          source.state.colorScheme === "dark" && "bg-white",
+          source.state.colorScheme === "light" && "bg-black",
+          source.state.loading && "opacity-0",
+        )}
+        onLoad={onLoad}
+        onError={onError}
+      />
     </div>
   );
 };

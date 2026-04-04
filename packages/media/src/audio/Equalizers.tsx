@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Button, Divider, Icon, Text } from "@react-fabric/core";
+import { Divider, Icon, Text } from "@react-fabric/core";
 import { Slider } from "@react-fabric/form";
 import {
   Fragment,
@@ -32,7 +32,8 @@ import {
   useRef,
   useState,
 } from "react";
-import { useAudioContext } from "./Context";
+import { TooltipButton } from "../components/TooltipButton";
+import { useAudioContext } from "./context";
 
 const EQ_FREQUENCY = [
   32, 64, 128, 256, 512, 1000, 2000, 4000, 6000, 8000, 12000, 16000,
@@ -60,13 +61,13 @@ const EqSlider = memo(
         height={128}
         value={value}
         showLabels
-        color={value < 0 ? "#e11d48" : color}
+        color={value < 0 ? "#e11d48" : value === 0 ? "#888" : color}
         data-channel={forChannel}
         maxLabel={`${!forChannel && value > 0 ? "+" : ""}${~~value}`}
         minLabel={label}
         min={forChannel ? 0 : -40}
         max={forChannel ? 100 : 40}
-        onChange={(e) => onChange(index, e)}
+        onSlide={(e) => onChange(index, e)}
       />
     </div>
   ),
@@ -74,7 +75,7 @@ const EqSlider = memo(
 EqSlider.displayName = "Audio.EQSlider";
 
 export const Equalizers = memo(() => {
-  const { wavesurfer, state } = useAudioContext();
+  const { wavesurfer, showEqs } = useAudioContext();
   const contextRef = useRef<AudioContext>(null);
   const mediaModelRef = useRef<MediaElementAudioSourceNode>(null);
   const [filters, setFilters] = useState<AnyObject>([]);
@@ -83,6 +84,7 @@ export const Equalizers = memo(() => {
 
   const createFilters = useCallback(() => {
     if (wavesurfer) {
+      mediaModelRef.current?.disconnect();
       const EQ = [
         {
           f: EQ_FREQUENCY[0],
@@ -299,7 +301,7 @@ export const Equalizers = memo(() => {
     [channelGains],
   );
 
-  return state.showEqs ? (
+  return showEqs ? (
     <div className="flex flex-row h-48 justify-center overflow-x-auto">
       {channelGains != null && (
         <Fragment>
@@ -341,21 +343,36 @@ export const Equalizers = memo(() => {
         />
       ))}
       <Divider vertical />
-      <div style={{ width: 196 }} className="self-center">
+      <div className="self-center flex flex-col gap-1">
         <Text className="text-muted text-sm text-center">Presets</Text>
-        <Button
+        <TooltipButton
           fullWidth
           variant="link"
+          placement="right"
+          aria-label="Speech"
+          tooltip="Enhance speech"
+          icon="icon-[mdi--account-voice]"
           onClick={() => resetFrequency("speech")}
-        >
-          Speech
-        </Button>
-        <Button fullWidth variant="link" onClick={() => resetFrequency("back")}>
-          Background Noise
-        </Button>
-        <Button fullWidth variant="link" onClick={reset} color="danger">
-          Reset
-        </Button>
+        />
+        <TooltipButton
+          fullWidth
+          variant="link"
+          placement="right"
+          aria-label="Background Noise"
+          tooltip="Enhance background noise"
+          icon="icon-[mdi--waveform]"
+          onClick={() => resetFrequency("back")}
+        />
+        <TooltipButton
+          fullWidth
+          variant="link"
+          placement="right"
+          onClick={reset}
+          color="danger"
+          tooltip="Reset EQ"
+          aria-label="Reset EQ"
+          icon="icon-[mdi--backup-restore]"
+        />
       </div>
     </div>
   ) : null;

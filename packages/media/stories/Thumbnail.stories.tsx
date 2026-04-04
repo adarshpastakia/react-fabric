@@ -44,11 +44,19 @@ export const _Thumbnail: Story = {
       <Row>
         <Col>
           <p>Valid image</p>
-          <Thumbnail {...args} src={faker.image.url()} />
+          <Thumbnail {...args} src={faker.image.url({ width: 256, height: 256 })} />
         </Col>
         <Col>
-          <p>Fallback image</p>
-          <Thumbnail {...args} src="badurl.png" fallback={faker.image.url()} />
+          <p>Fallback sources</p>
+          <Thumbnail {...args} src={["badurl.png", faker.image.url({ width: 256, height: 256 })]} />
+        </Col>
+        <Col>
+          <p>Transparent light</p>
+          <Thumbnail {...args} src="/colorset/white1.png" />
+        </Col>
+        <Col>
+          <p>Transparent dark</p>
+          <Thumbnail {...args} src="/colorset/black1.png" />
         </Col>
         <Col>
           <p>Default icon</p>

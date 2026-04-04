@@ -21,35 +21,44 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { useLogger } from "@react-fabric/utilities";
+import { debounce, useLogger } from "@react-fabric/utilities";
+import chroma from "chroma-js";
 import WaveSurfer from "wavesurfer.js";
 import HoverPlugin from "wavesurfer.js/dist/plugins/hover";
 import RegionsPlugin from "wavesurfer.js/dist/plugins/regions";
 import TimelinePlugin from "wavesurfer.js/dist/plugins/timeline";
 
 const CHANNEL_COLORS: Array<[wave: string, progress: string]> = [
-  ["#75BBC1", "#108188"],
-  ["#74a9cf", "#0570b0"],
-  ["#8c96c6", "#88419d"],
-  ["#df65b0", "#ae017e"],
-  ["#fa9fb5", "#ce1256"],
-  ["#fdbb84", "#ef6548"],
-  ["#fec44f", "#cc4c02"],
-  ["#bf812d", "#543005"],
+  ["#4FC3F7", "#0288D1"],
+  ["#4DB6AC", "#00796B"],
+  ["#AED581", "#689F38"],
+  ["#FFF176", "#FBC02D"],
+  ["#FFB74D", "#F57C00"],
+  ["#F06292", "#C2185B"],
+  ["#BA68C8", "#7B1FA2"],
+  ["#7986CB", "#303F9F"],
 ];
 
-export const Wavesurfer = (container: HTMLElement, media: HTMLAudioElement) => {
+export const Wavesurfer = (
+  container: HTMLElement,
+  media: HTMLAudioElement,
+  onLoad?: (e: any) => void,
+  onError?: (e: any) => void,
+) => {
   const logger = useLogger("WaveSurfer");
 
-  let activeRegion: AnyObject;
-  let userEnabled: AnyObject;
-
   const plugins = {
-    cursor: HoverPlugin.create(),
+    cursor: HoverPlugin.create({
+      lineColor: "#8888",
+      lineWidth: 1,
+    }),
     regions: RegionsPlugin.create(),
     timeline: TimelinePlugin.create({
+      height: 20,
+      timeInterval: 0.5,
+      primaryLabelInterval: 5,
+      secondaryLabelInterval: 0,
       style: {
-        backgroundColor: "#18181b",
         position: "relative",
         color: "#fff",
         zIndex: "5",
@@ -62,13 +71,14 @@ export const Wavesurfer = (container: HTMLElement, media: HTMLAudioElement) => {
     container,
     media,
     cursorWidth: 2,
-    height: 200,
+    height: 180,
     barWidth: 2,
     barRadius: 3,
     barGap: 1,
     barHeight: 0.85,
     minPxPerSec: 16,
-    progressColor: "#8883",
+    dragToSeek: true,
+    progressColor: "#8885",
     splitChannels: CHANNEL_COLORS.map(
       (c, i) => ({
         waveColor: c[0],
@@ -78,39 +88,41 @@ export const Wavesurfer = (container: HTMLElement, media: HTMLAudioElement) => {
     ),
     plugins: Object.values(plugins).filter(Boolean) as AnyObject,
   });
-  instance.getMediaElement().crossOrigin = "anonymous";
-  instance.on("ready", () => {
+  instance.on("ready", (e: AnyObject) => {
     // @ts-expect-error ignore
     const count = instance.decodedData.numberOfChannels;
     logger.info("Found channels", {}, count);
     instance.setOptions({
-      height: 200 / count,
+      height: 180 / count,
     });
+    onLoad?.(e);
   });
   instance.on("error", (err: AnyObject) => {
     logger.debug("error", {}, err);
+    onError?.(err);
+  });
+
+  plugins.regions.on("region-created", (region) => {
+    region.on("over", () => {
+      // @ts-expect-error ignore
+      instance.emit("region-over", region);
+    });
+    region.on("leave", () => {
+      // @ts-expect-error ignore
+      instance.emit("region-leave", region);
+    });
   });
 
   plugins.regions.on("region-double-clicked", (region: KeyValue) => {
-    const { id, start, end } = region;
-    logger.debug("play region", {}, { id, start, end });
-    setTimeout(() => {
-      instance.setTime(start);
-    }, 10);
-    activeRegion = region;
-    region.play();
-  });
-
-  plugins.regions.on("region-out", (region: KeyValue) => {
-    if (activeRegion) {
-      instance.pause();
-      activeRegion = undefined;
-    }
+    playRegion(region.id);
   });
 
   /** ***************** destroy *******************/
   const destroy = () => {
     try {
+      plugins.timeline.destroy();
+      plugins.cursor.destroy();
+      plugins.regions.destroy();
       instance?.destroy();
     } catch (_) {
       //
@@ -120,11 +132,33 @@ export const Wavesurfer = (container: HTMLElement, media: HTMLAudioElement) => {
   /** ***************** set wave colors *******************/
   const setColors = (colors: Array<[wave: string, progress: string]> = []) => {
     instance.setOptions({
-      splitChannels: CHANNEL_COLORS.map(([wave, progress], idx) => ({
+      splitChannels: colors.map(([wave, progress], idx) => ({
         waveColor: colors[idx]?.[0] ?? wave,
         progressColor: colors[idx]?.[1] ?? progress,
       })),
     });
+  };
+
+  const changeHandler = debounce(() => {
+    // @ts-expect-error ignore
+    instance.emit(
+      // @ts-expect-error ignore
+      "region-changed",
+      plugins.regions.getRegions().map((r) => ({
+        id: r.id,
+        start: r.start,
+        end: r.end,
+        color: r.color,
+        channel: r.channelIdx,
+      })),
+    );
+  });
+
+  const clearRegions = () => {
+    plugins.regions.un("region-created", changeHandler);
+    plugins.regions.un("region-updated", changeHandler);
+    plugins.regions.un("region-removed", changeHandler);
+    plugins.regions.clearRegions();
   };
 
   /** ***************** set wave regions *******************/
@@ -133,39 +167,58 @@ export const Wavesurfer = (container: HTMLElement, media: HTMLAudioElement) => {
       id: string;
       start: number;
       end: number;
+      color?: string;
       channel?: number;
     }>,
   ) => {
-    plugins.regions.clearRegions();
     const colors = instance.options.splitChannels;
-    regions?.forEach(({ channel = -1, ...region }) => {
+    clearRegions();
+    plugins.regions.enableDragSelection({
+      color: "#DBCBB640",
+    });
+    logger.debug("creating regions", {}, regions);
+    regions?.forEach(({ channel = -1, color, ...region }) => {
       plugins.regions.addRegion({
         ...region,
         channelIdx: channel,
-        color: `${colors?.[channel]?.waveColor?.toString() ?? "#a37f4f"}30`,
+        color: chroma(`${color ?? colors?.[channel]?.waveColor?.toString() ?? "#a37f4f"}`)
+          .alpha(0.3)
+          .hex(),
+        drag: false,
+        resize: false,
+      });
+    });
+    plugins.regions.on("region-created", changeHandler);
+    plugins.regions.on("region-updated", changeHandler);
+    plugins.regions.on("region-removed", changeHandler);
+  };
+
+  const enableUserRegions = () => {
+    instance.setOptions({ dragToSeek: false });
+    plugins.regions.getRegions().forEach((r) => {
+      r.setOptions({
+        drag: true,
+        resize: true,
+      });
+    });
+  };
+
+  const disableUserRegions = () => {
+    instance.setOptions({ dragToSeek: true });
+    plugins.regions.getRegions().forEach((r) => {
+      r.setOptions({
         drag: false,
         resize: false,
       });
     });
   };
 
-  const enableUserRegions = () => {
-    userEnabled = plugins.regions.enableDragSelection({
-      color: "#a37f4f30",
-    });
-    plugins.regions.clearRegions();
-  };
-
-  const disableUserRegions = (
-    regions?: Array<{
-      id: string;
-      start: number;
-      end: number;
-      channel?: number;
-    }>,
-  ) => {
-    userEnabled?.();
-    setRegions(regions);
+  const playRegion = (id: string) => {
+    const region = plugins.regions.getRegions().find((r) => r.id === id);
+    if (region) {
+      logger.debug("play region", {}, { id, start: region.start, end: region.end });
+      region.play(true);
+    }
   };
 
   /** ***************** load audio file *******************/
@@ -183,14 +236,17 @@ export const Wavesurfer = (container: HTMLElement, media: HTMLAudioElement) => {
         //
       }
       try {
-        plugins.regions.clearRegions();
+        clearRegions();
       } catch (_) {
         //
       }
       instance.empty();
-      return await instance.load(src).then(() => {
-        tmr.end();
-      });
+      return await instance
+        .load(src)
+        .then(() => {
+          tmr.end();
+        })
+        .finally(() => {});
     }
     return await Promise.resolve();
   };
@@ -200,6 +256,7 @@ export const Wavesurfer = (container: HTMLElement, media: HTMLAudioElement) => {
     destroy,
     setColors,
     setRegions,
+    playRegion,
     enableUserRegions,
     disableUserRegions,
     instance,

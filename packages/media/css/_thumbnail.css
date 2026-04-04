@@ -4,7 +4,7 @@
  *
  *
  * The MIT License (MIT)
- * Copyright (c) 2024 Adarsh Pastakia
+ * Copyright (c) 2026 Adarsh Pastakia
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
  * and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -25,17 +25,17 @@
   .fabric-thumbnail {
     background-color: var(--color-tint-50);
 
-    &.bg-dark {
+    &.bg-black {
       .contrastAction {
-        color: white;
-        background-color: black;
+        color: var(--color-white);
+        background-color: var(--color-black);
       }
     }
 
-    &.bg-light {
+    &.bg-white {
       .contrastAction {
-        color: black;
-        background-color: white;
+        color: var(--color-black);
+        background-color: var(--color-white);
       }
     }
 
@@ -45,32 +45,31 @@
         content: "";
 
         position: absolute;
-        z-index: 2;
+        z-index: 5;
         inset-inline: 0;
 
-        height: 0.5rem;
-        border: 0.125rem solid #53473ccc;
+        height: 6px;
+        border: solid #1f1c1f;
+        border-width: 1px 2px;
 
         background-image: linear-gradient(
           to right,
-          #53473ccc 0,
-          #53473ccc 0.375rem,
-          #fffc 0.375rem,
-          #fffc 0.75rem
+          #1f1c1fcc 0,
+          #1f1c1fcc 6px,
+          #fffc 6px,
+          #fffc 12px
         );
         background-repeat: repeat-x;
         background-position: center center;
-        background-size: 0.75rem;
+        background-size: 12px;
       }
 
       &::before {
         top: 0;
-        border-top-color: #080808cc;
       }
 
       &::after {
         bottom: 0;
-        border-bottom-color: #080808cc;
       }
     }
   }

@@ -25,8 +25,8 @@ import { Section } from "@react-fabric/core";
 import { type AnnotatorProps, AnnotatorProvider } from "./Context";
 
 /**
- * Annotator component provides a user interface for annotating images.
- * It allows users to draw shapes, add text, and highlight areas on the image.
+ * Annotator component provides a user interface for annotating document scans.
+ * It allows users to draw shapes, add text, and highlight areas on the document.
  * It is designed to be used within a section of the application,
  * providing a grid layout for the content area.
  *

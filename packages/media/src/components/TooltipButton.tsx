@@ -26,12 +26,14 @@ import { type ButtonProps } from "@react-fabric/core/dist/types/components/butto
 
 export const TooltipButton = ({
   tooltip,
+  placement,
   ...props
 }: ButtonProps & {
   tooltip: string;
+  placement?: "top" | "bottom" | "left" | "right";
 }) => {
   return (
-    <Tooltip content={tooltip}>
+    <Tooltip content={tooltip} placement={placement}>
       <Button variant="link" {...props} />
     </Tooltip>
   );

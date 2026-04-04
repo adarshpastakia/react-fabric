@@ -24,7 +24,7 @@
 import { Icon } from "@react-fabric/core";
 import { getBox } from "@react-fabric/utilities";
 import classNames from "classnames";
-import { useCallback, useEffect, useMemo, useReducer } from "react";
+import { useEffect, useEffectEvent, useMemo, useReducer } from "react";
 
 export interface AnnotationItem<T = KeyValue> {
   box: string | [number, number, number, number];
@@ -137,7 +137,7 @@ export const Annotation = ({
     [state.dragging, state.pos, defaultPos],
   );
 
-  const startDragging = useCallback(
+  const startDragging = useEffectEvent(
     (mode: DragState["mode"], e: React.MouseEvent) => {
       e.stopPropagation();
       e.preventDefault();
@@ -148,7 +148,6 @@ export const Annotation = ({
         startPoint: [e.clientX, e.clientY],
       });
     },
-    [defaultPos],
   );
 
   useEffect(() => {

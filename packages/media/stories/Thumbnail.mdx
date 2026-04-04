@@ -1,0 +1,44 @@
+import { Collapsable } from "@react-fabric/core";
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Heading,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import { Thumbnail } from "../src";
+import * as ThumbnailStories from "./Thumbnail.stories";
+
+<Meta of={ThumbnailStories} />
+
+<Title>Thumbnail</Title>
+
+<Anchor storyId="thumbnail">
+  <div className="hidden-anchor">
+    <Subheading>Thumbnail</Subheading>
+  </div>
+</Anchor>
+
+<Description of={Thumbnail} />
+
+<Canvas withToolbar of={ThumbnailStories._Thumbnail} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ThumbnailStories._Thumbnail} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />

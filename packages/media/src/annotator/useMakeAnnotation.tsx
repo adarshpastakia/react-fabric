@@ -22,7 +22,7 @@
  */
 
 import classNames from "classnames";
-import { useCallback, useEffect, useReducer } from "react";
+import { useEffect, useEffectEvent, useReducer } from "react";
 
 interface DragState {
   dragging: boolean;
@@ -94,14 +94,14 @@ export const useMakeAnnotation = ({
     } as any,
   );
 
-  const startDragging = useCallback((e: React.MouseEvent) => {
+  const startDragging = useEffectEvent((e: React.MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
     dispatch({
       type: "dragstart",
       startPoint: [e.clientX, e.clientY],
     });
-  }, []);
+  });
 
   useEffect(() => {
     const handleMove = (e: MouseEvent) => {

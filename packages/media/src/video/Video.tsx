@@ -4,7 +4,7 @@
  *
  *
  * The MIT License (MIT)
- * Copyright (c) 2024 Adarsh Pastakia
+ * Copyright (c) 2026 Adarsh Pastakia
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
  * and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -21,131 +21,54 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { ErrorBoundary, LoadingBars } from "@react-fabric/core";
-import { useCallback, useEffect, useState } from "react";
-import { useCanvasContext } from "../components/Canvas";
-import { Cropper } from "../components/Cropper";
-import { useVideoContext } from "./Context";
+import { Icon } from "@react-fabric/core";
+import classNames from "classnames";
+import { useVideoContext } from "./context";
 
 export const Video = ({
-  poster,
+  src,
+  ref,
   vttText,
-  onCrop,
+  onLoad,
+  onError,
 }: {
-  poster?: string;
+  src?: string;
   vttText?: string;
-  onCrop?: (ts: number, box: number[], base64: string) => void;
+  ref: React.Ref<HTMLVideoElement | null>;
+  onLoad?: (e: any) => void;
+  onError?: (e: any) => void;
 }) => {
-  const {
-    videoRef,
-    scrollerRef,
-    state,
-    handleLoad,
-    handleMetadata,
-    handleError,
-    handlePlay,
-    handlePause,
-    handleRateChange,
-    handleVolumeChange,
-    handleSeeking,
-    handleTimeUpdate,
-    toggleCropping,
-  } = useVideoContext();
-  const { canvasRef } = useCanvasContext();
+  const { viewState, videoState, source, missingIcon, poster, autoPlay } = useVideoContext();
 
-  const togglePlay = useCallback(
-    async () =>
-      videoRef.current?.paused
-        ? await videoRef.current?.play()
-        : videoRef.current?.pause(),
-    [],
-  );
-
-  const [vttSrc, setVtt] = useState<AnyObject>();
-  useEffect(() => {
-    if (vttText && state.showVtt) {
-      const vtt = URL.createObjectURL(
-        new Blob([vttText], { type: "text/vtt" }),
-      );
-      setVtt(vtt);
-      return () => {
-        setVtt(undefined);
-        URL.revokeObjectURL(vtt);
-      };
-    }
-  }, [vttText, state.showVtt]);
+  if (source.state.errored)
+    return <Icon icon={missingIcon ?? "icon-[mdi--video-off-outline]"} className="text-muted" size="5rem" />;
 
   return (
     <div
       role="none"
-      ref={scrollerRef}
-      onClick={togglePlay}
-      className="media-container area-content overflow-hidden relative scroll-hide grid bg-tint-50 select-none p-2"
-      style={
-        {
-          "--brightness": state.colorscape.brightness,
-          "--invert": state.colorscape.invert,
-          "--hue": `${state.colorscape.hue}deg`,
-          "--contrast": state.colorscape.contrast,
-          "--saturate": state.colorscape.saturate,
-        } as AnyObject
-      }
+      className="relative pointer-events-none motion-safe:transition-transform duration-250 ease-in-out"
+      style={{
+        width: viewState.state.width,
+        height: viewState.state.height,
+        scale: `${viewState.state.flipX ? -1 : 1} ${viewState.state.flipY ? -1 : 1}`,
+        rotate: `${90 * viewState.state.rotateMultiplier}deg`,
+      }}
     >
-      <ErrorBoundary>
-        <div
-          className="relative overflow-hidden m-auto grid place-content-center size-full"
-          style={{
-            width: state.width,
-            height: state.height,
-          }}
-        >
-          <div
-            className="origin-center relative pointer-events-none"
-            style={{
-              width: state.mediaWidth,
-              height: state.mediaHeight,
-              transform: `rotate(${state.rotate}deg)`,
-            }}
-          >
-            {state.src && (
-              <video
-                poster={poster}
-                onLoadedMetadata={handleMetadata}
-                onLoadedData={handleLoad}
-                onError={handleError}
-                ref={videoRef}
-                className="size-full"
-                onPlay={handlePlay}
-                onPause={handlePause}
-                onRateChange={handleRateChange}
-                onVolumeChange={handleVolumeChange}
-                onSeeking={handleSeeking}
-                onTimeUpdate={handleTimeUpdate}
-                crossOrigin="anonymous"
-              >
-                {state.src && <source src={state.src} />}
-                <track kind="captions" src={vttSrc} default />
-              </video>
-            )}
-            <canvas
-              ref={canvasRef}
-              width={state.mediaWidth}
-              height={state.mediaHeight}
-              className="absolute inset-0"
-            />
-          </div>
-        </div>
-
-        {onCrop && state.cropping && (
-          <Cropper
-            state={state}
-            mediaRef={videoRef}
-            onCropEnd={() => toggleCropping()}
-            onCrop={(box, base64) => onCrop(state.time, box, base64)}
-          />
+      <video
+        src={src}
+        ref={ref}
+        poster={poster}
+        autoPlay={autoPlay}
+        preload="metadata"
+        className={classNames(
+          "size-full object-fill text-transparent overflow-hidden transition-opacity duration-500 select-none",
+          source.state.loading && "opacity-0",
         )}
-        {state.isLoading && <LoadingBars />}
-      </ErrorBoundary>
+        onLoadedMetadata={onLoad}
+        onError={onError}
+      >
+        <track kind="captions" src={videoState.state.showVtt ? vttText : undefined} default />
+      </video>
     </div>
   );
 };

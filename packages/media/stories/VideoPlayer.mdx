@@ -1,0 +1,38 @@
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Heading,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import { VideoPlayer } from "../src";
+import * as VideoPlayerStories from "./VideoPlayer.stories";
+
+<Meta of={VideoPlayerStories} />
+
+<Title>Video Player</Title>
+
+<Anchor storyId="video-player">
+  <div className="hidden-anchor">
+    <Subheading>Video Player</Subheading>
+  </div>
+</Anchor>
+
+<Description of={VideoPlayer} />
+
+[View Playground](?path=/story/media-videoplayer--playground)
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />

@@ -40,7 +40,7 @@ type DictationStory = StoryObj<typeof Dictation>;
 export const _Dictation: DictationStory = {
   render: (args) => {
     return (
-      <div className="">
+      <div className="w-48 flex justify-end">
         <Dictation {...args} />
       </div>
     );

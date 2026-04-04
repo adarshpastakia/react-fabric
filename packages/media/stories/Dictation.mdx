@@ -1,0 +1,44 @@
+import { Collapsable } from "@react-fabric/core";
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Heading,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import { Dictation } from "../src";
+import * as DictationStories from "./Dictation.stories";
+
+<Meta of={DictationStories} />
+
+<Title>Dictation</Title>
+
+<Anchor storyId="dictation">
+  <div className="hidden-anchor">
+    <Subheading>Dictation</Subheading>
+  </div>
+</Anchor>
+
+<Description of={Dictation} />
+
+<Canvas withToolbar of={DictationStories._Dictation} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={DictationStories._Dictation} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />

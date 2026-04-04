@@ -1,0 +1,38 @@
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Heading,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import { ImageViewer } from "../src";
+import * as ImageViewerStories from "./ImageViewer.stories";
+
+<Meta of={ImageViewerStories} />
+
+<Title>Image Viewer</Title>
+
+<Anchor storyId="image-viewer">
+  <div className="hidden-anchor">
+    <Subheading>Image Viewer</Subheading>
+  </div>
+</Anchor>
+
+<Description of={ImageViewer} />
+
+[View Playground](?path=/story/media-imageviewer--playground)
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
