@@ -22,20 +22,10 @@
  */
 
 import classNames from "classnames";
-import {
-  type AriaProps,
-  type ChildrenProp,
-  type ColorState,
-  type CssProp,
-  type TestProps,
-} from "../../types";
+import { type AriaProps, type ChildrenProp, type ColorState, type CssProp, type TestProps } from "../../types";
 import { Icon } from "../icon/Icon";
 
-export interface CalloutProps
-  extends AriaProps,
-    ChildrenProp,
-    CssProp,
-    TestProps {
+export interface CalloutProps extends AriaProps, ChildrenProp, CssProp, TestProps {
   /**
    * callout color
    */
@@ -44,6 +34,10 @@ export interface CalloutProps
    * legend title
    */
   legend?: string | React.ReactElement;
+  /**
+   * legend class name
+   */
+  legendClassName?: string;
   /**
    * callout icon
    */
@@ -105,6 +99,7 @@ export const Callout = ({
   children,
   color = "default",
   legend,
+  legendClassName,
   title,
   icon,
   border,
@@ -124,7 +119,7 @@ export const Callout = ({
       {...aria}
     >
       {legend && (
-        <legend className="px-2 mx-4 font-medium" data-ref="calloutLegend">
+        <legend className={classNames("px-2 mx-4 font-medium", legendClassName)} data-ref="calloutLegend">
           {legend}
         </legend>
       )}
