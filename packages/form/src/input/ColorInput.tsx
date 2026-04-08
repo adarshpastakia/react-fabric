@@ -35,22 +35,12 @@ import {
 } from "@floating-ui/react";
 import { Icon } from "@react-fabric/core";
 import { type RefProp } from "@react-fabric/core/dist/types/types";
-import {
-  startTransition,
-  useCallback,
-  useDeferredValue,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { startTransition, useCallback, useDeferredValue, useEffect, useRef, useState } from "react";
 import { InputWrapper } from "../internal/InputWrapper";
 import { type InputProps } from "../types";
 import { ColorPicker, type ColorProps } from "./ColorPicker";
 
-export interface ColorInputProps
-  extends InputProps,
-    Omit<ColorProps, "onChange">,
-    RefProp {
+export interface ColorInputProps extends InputProps, Omit<ColorProps, "onChange">, RefProp {
   /**
    * show eydrop picker
    */
@@ -130,10 +120,7 @@ export const ColorInput = ({
     referencePress: true,
   });
 
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    dismiss,
-    click,
-  ]);
+  const { getReferenceProps, getFloatingProps } = useInteractions([dismiss, click]);
 
   return (
     <InputWrapper
@@ -167,9 +154,7 @@ export const ColorInput = ({
             pointerEvents: disabled ? "none" : undefined,
           }}
         >
-          {!actualValue && (
-            <Icon size="md" className="text-muted" icon="icon-[mdi--palette]" />
-          )}
+          {!actualValue && <Icon size="md" className="text-muted" icon="icon-[mdi--palette]" />}
         </div>
       </button>
       {isOpen && (
@@ -182,17 +167,15 @@ export const ColorInput = ({
           data-ref="dropdownBody"
           {...getFloatingProps()}
         >
-          <ColorPicker
-            {...rest}
-            onChange={handleChange}
-            defaultColor={defaultColor}
-            value={actualValue}
-          />
+          <ColorPicker {...rest} onChange={handleChange} defaultColor={defaultColor} value={actualValue} />
           <FloatingArrow
             ref={arrowRef}
             context={context}
             strokeWidth={0.5}
-            className="fill-base stroke-muted"
+            className="stroke-muted"
+            style={{
+              fill: actualValue || "var(--bg-color-base)",
+            }}
           />
         </div>
       )}
@@ -202,9 +185,7 @@ export const ColorInput = ({
           icon="icon-[mdi--eyedropper]"
           onClick={() =>
             (window as AnyObject).EyeDropper &&
-            new (window as AnyObject).EyeDropper()
-              .open()
-              .then((resp: AnyObject) => handleChange(resp.sRGBHex))
+            new (window as AnyObject).EyeDropper().open().then((resp: AnyObject) => handleChange(resp.sRGBHex))
           }
         />
       )}

@@ -22,8 +22,38 @@
  */
 
 @layer components {
+  .fabric-colorPicker-container ~ svg {
+    fill: var(--color-selected);
+  }
+
   .fabric-colorPicker {
-    --color-shadow: var(--border-color-base);
+    --color-shadow: var(--border-color-bright);
+
+    outline: 2px solid var(--color-selected, var(--border-color-soft)) !important;
+
+    &.block-picker {
+      background-color: var(--bg-color-content) !important;
+      box-shadow: 0 0 4px 0 var(--color-shadow) !important;
+
+      input {
+        display: none;
+      }
+
+      & > div:first-child {
+        display: none;
+      }
+
+      & > div:last-child > div:first-child {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      & span > div {
+        margin: 0 !important;
+        box-shadow: 0 0 1px 1px var(--border-color-base) inset !important;
+      }
+    }
 
     & input {
       padding: 0 4px !important;
@@ -33,7 +63,7 @@
       line-height: 2;
       color: var(--text-color-base);
 
-      background-color: var(--bg-color-base);
+      background-color: var(--bg-color-content);
       box-shadow: none;
 
       &:focus {
@@ -47,7 +77,7 @@
 
     & .flexbox-fix {
       justify-content: center;
-      border-color: var(--border-color-muted);
+      border-color: var(--border-color-soft);
 
       & > div > div {
         text-align: center;

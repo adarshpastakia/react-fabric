@@ -22,16 +22,8 @@
  */
 
 import chroma from "chroma-js";
-import {
-  memo,
-  startTransition,
-  useCallback,
-  useDeferredValue,
-  useEffect,
-  useState,
-  type FC,
-} from "react";
-import { SketchPicker } from "react-color";
+import { memo, startTransition, useCallback, useDeferredValue, useEffect, useState, type FC } from "react";
+import { BlockPicker, SketchPicker } from "react-color";
 
 export interface ColorProps {
   /**
@@ -46,6 +38,10 @@ export interface ColorProps {
    * hide alpha value
    */
   hideAlpha?: boolean;
+  /**
+   * show only swatches, hide the color picker
+   */
+  picker?: "default" | "swatches";
   /**
    * color value
    */
@@ -113,13 +109,7 @@ const DEFAULT_SWATCHES = [
  * @see {@link https://react-color.github.io/react-color/} for more details on the color picker library.
  */
 export const ColorPicker: FC<ColorProps> = memo(
-  ({
-    value,
-    onChange,
-    hideAlpha,
-    defaultColor = "#fff",
-    swatches = DEFAULT_SWATCHES,
-  }: ColorProps) => {
+  ({ value, onChange, hideAlpha, defaultColor = "#fff", swatches = DEFAULT_SWATCHES, picker = "default" }: ColorProps) => {
     const [actualValue, setActualValue] = useState("");
     const deferred = useDeferredValue(value ?? defaultColor);
 
@@ -135,13 +125,21 @@ export const ColorPicker: FC<ColorProps> = memo(
       [onChange],
     );
 
+    const E = (picker === "swatches" ? BlockPicker : SketchPicker) as unknown as FC<any>;
+
     return (
       <div
         role="none"
+        className="fabric-colorPicker-container"
         // prevent default on mouse down to avoid selection issues
         onMouseDown={(e) => e.preventDefault()}
+        style={
+          {
+            "--color-selected": value,
+          } as any
+        }
       >
-        <SketchPicker
+        <E
           width="16rem"
           className={"fabric-colorPicker"}
           styles={
@@ -165,8 +163,7 @@ export const ColorPicker: FC<ColorProps> = memo(
                 },
                 picker: {
                   backgroundColor: "var(--fabric-bg)",
-                  boxShadow:
-                    "0 0 0 1px var(--color-shadow), 0 0 8px var(--fabric-shadow)",
+                  boxShadow: "0 0 0 1px var(--color-shadow), 0 0 8px var(--fabric-shadow)",
                 },
                 checkboard: {
                   white: "transparent",
@@ -176,14 +173,11 @@ export const ColorPicker: FC<ColorProps> = memo(
             } as AnyObject
           }
           color={actualValue}
+          colors={swatches}
           presetColors={swatches}
           disableAlpha={hideAlpha}
-          onChange={({ rgb: { a = 1, ...rgb } }) =>
-            setActualValue(chroma(rgb).alpha(a).hex())
-          }
-          onChangeComplete={({ rgb: { a = 1, ...rgb } }) =>
-            handleChange(chroma(rgb).alpha(a).hex())
-          }
+          onChange={({ rgb: { a = 1, ...rgb } }) => setActualValue(chroma(rgb).alpha(a).hex())}
+          onChangeComplete={({ rgb: { a = 1, ...rgb } }) => handleChange(chroma(rgb).alpha(a).hex())}
         />
       </div>
     );
