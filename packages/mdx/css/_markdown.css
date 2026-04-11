@@ -513,11 +513,11 @@
   &.markdown-body table th,
   &.markdown-body table td {
     padding: 6px 13px;
-    border-color: var(--border-color-dimmed);
+    border-color: var(--border-color-bright);
   }
 
   &.markdown-body table tr {
-    border-color: var(--border-color-dimmed);
+    border-color: var(--border-color-bright);
     border-top: 1px solid;
   }
 

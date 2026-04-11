@@ -28,6 +28,7 @@
   --color-steel: #7c99af;
   --color-olive: #769b8d;
   --color-sand: #9b9789;
+  --color-clay: #666A6D;
   --color-info: #00bfff;
   --color-danger: #f24c3d;
   --color-success: #44bc69;
@@ -135,6 +136,19 @@
   --color-sand-800: ;
   --color-sand-900: ;
   --color-sand-950: ;
+
+  /* clay */
+  --color-clay-50: ;
+  --color-clay-100: ;
+  --color-clay-200: ;
+  --color-clay-300: ;
+  --color-clay-400: ;
+  --color-clay-500: ;
+  --color-clay-600: ;
+  --color-clay-700: ;
+  --color-clay-800: ;
+  --color-clay-900: ;
+  --color-clay-950: ;
 
   /* info */
   --color-info-50: ;

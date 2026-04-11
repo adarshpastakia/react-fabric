@@ -66,7 +66,7 @@ code {
       background: none;
       margin: 0.5rem 0;
       border-top: 3px solid var(--ax-bg);
-      border-bottom: 2px solid var(--ax-border-base);
+      border-bottom: 2px solid var(--ax-border-default);
       transform: scaleY(0.5);
     }
 
@@ -80,7 +80,7 @@ code {
       border: 0;
       margin: 0 0.25rem;
       border-inline-start: 3px solid var(--ax-bg);
-      border-inline-end: 2px solid var(--ax-border-base);
+      border-inline-end: 2px solid var(--ax-border-default);
       transform: scaleX(0.5);
     }
 

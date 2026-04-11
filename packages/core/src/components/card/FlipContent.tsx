@@ -80,7 +80,7 @@ export const FlipContent = ({ ref, children }: Props) => {
           cloneElement(child, {
             className: classNames(
               child.props?.className ?? "",
-              idx === 0 ? "bg-default relative" : "bg-default absolute inset-0",
+              idx === 0 ? "bg-content relative" : "bg-content absolute inset-0",
             ),
             "data-card-flip-face": idx === 0 ? "front" : "back",
           } as AnyObject),

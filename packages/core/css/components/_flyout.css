@@ -29,7 +29,7 @@
     transition: margin 0.5s;
 
     & .fabric-flyoutHeader {
-      border-bottom: 0.5px solid var(--border-color-dimmed);
+      border-bottom: 0.5px solid var(--border-color-bright);
       background-color: var(--bg-color-base);
     }
 

@@ -29,7 +29,7 @@
       grid-template: "tablist" auto "content" 1fr / 1fr;
 
       .fabric-tabHeader {
-        box-shadow: 0 -1px 0 var(--border-color-dimmed) inset;
+        box-shadow: 0 -1px 0 var(--border-color-bright) inset;
 
         .fabric-tabButton {
           padding: 0.25rem 0.5rem;
@@ -42,7 +42,7 @@
 
       .fabric-tabHeader {
         margin-top: 1px;
-        box-shadow: 0 1px 0 var(--border-color-dimmed) inset;
+        box-shadow: 0 1px 0 var(--border-color-bright) inset;
 
         .fabric-tabButton {
           padding: 0.25rem 0.5rem;
@@ -54,7 +54,7 @@
       grid-template: "tablist content" 1fr / auto 1fr;
 
       .fabric-tabHeader {
-        box-shadow: -1px 0 0 var(--border-color-dimmed) inset;
+        box-shadow: -1px 0 0 var(--border-color-bright) inset;
 
         .fabric-tabButton {
           min-width: 5rem;
@@ -78,7 +78,7 @@
       grid-template: "content tablist" 1fr / 1fr auto;
 
       .fabric-tabHeader {
-        box-shadow: 1px 0 0 var(--border-color-dimmed) inset;
+        box-shadow: 1px 0 0 var(--border-color-bright) inset;
 
         .fabric-tabButton {
           min-width: 5rem;

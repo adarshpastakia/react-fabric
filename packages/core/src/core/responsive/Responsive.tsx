@@ -22,19 +22,9 @@
  */
 
 import classNames from "classnames";
-import {
-  type AriaProps,
-  type ChildrenProp,
-  type CssProp,
-  type SizeTypeWithZero,
-  type TestProps,
-} from "../../types";
+import { type AriaProps, type ChildrenProp, type CssProp, type SizeTypeWithZero, type TestProps } from "../../types";
 
-export interface ContainerProps
-  extends AriaProps,
-    CssProp,
-    ChildrenProp,
-    TestProps {
+export interface ContainerProps extends AriaProps, CssProp, ChildrenProp, TestProps {
   /**
    * use full width
    */
@@ -43,6 +33,10 @@ export interface ContainerProps
    * gutter size
    */
   gutter?: SizeTypeWithZero;
+  /**
+   * use @container size queries for max-width
+   */
+  useContainer?: boolean;
 }
 
 export interface RowProps extends AriaProps, CssProp, ChildrenProp, TestProps {
@@ -68,11 +62,7 @@ export interface RowProps extends AriaProps, CssProp, ChildrenProp, TestProps {
   justify?: "start" | "end" | "center" | "between";
 }
 
-export interface ColProps
-  extends AriaProps,
-    CssProp,
-    TestProps,
-    Partial<ChildrenProp> {
+export interface ColProps extends AriaProps, CssProp, TestProps, Partial<ChildrenProp> {
   /**
    * align items
    */
@@ -107,19 +97,13 @@ export interface ColProps
  * </Container>
  * ```
  */
-export const Container = ({
-  children,
-  fullWidth,
-  className,
-  gutter,
-  ...aria
-}: ContainerProps) => {
+export const Container = ({ children, fullWidth, className, gutter, useContainer, ...aria }: ContainerProps) => {
   return (
     <div
       className={classNames(
         "fabric-container",
         className,
-        !fullWidth && "container mx-auto",
+        !fullWidth && (useContainer ? "container-inner mx-auto" : "container mx-auto"),
       )}
       data-gutter={gutter}
       {...aria}
@@ -199,15 +183,7 @@ export const Row = ({
  *
  * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-application--responsive} for more details.
  */
-export const Col = ({
-  children,
-  flex,
-  align,
-  truncate,
-  className,
-  stretchContent,
-  ...aria
-}: ColProps) => {
+export const Col = ({ children, flex, align, truncate, className, stretchContent, ...aria }: ColProps) => {
   return (
     <div
       className={classNames(

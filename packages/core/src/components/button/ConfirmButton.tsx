@@ -247,7 +247,7 @@ export const ConfirmButton = <Tag extends React.ElementType = "button">({
                 ref={arrowRef}
                 context={context}
                 strokeWidth={0.5}
-                className="fill-base stroke-muted"
+                className="fill-default stroke-muted"
               />
             </div>
           </FloatingFocusManager>

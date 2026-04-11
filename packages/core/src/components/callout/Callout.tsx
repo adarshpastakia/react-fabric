@@ -110,7 +110,7 @@ export const Callout = ({
   return (
     <fieldset
       className={classNames(
-        "block rounded-capped border max-w-full relative overflow-hidden mb-4",
+        "block rounded-capped border max-w-full relative overflow-hidden",
         colors[color],
         className,
         border === "dashed" && "border-dashed",

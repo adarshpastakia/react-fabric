@@ -285,7 +285,7 @@ const DropdownElement = ({
                   ref={arrowRef}
                   context={context}
                   strokeWidth={0.5}
-                  className="fill-base stroke-dimmed"
+                  className="fill-default stroke-dimmed"
                 />
               )}
             </div>

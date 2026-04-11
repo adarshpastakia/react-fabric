@@ -47,7 +47,7 @@ export const Viewport = ({ children }: PropsWithChildren) => {
       data-ref="viewport"
       className={classNames(
         "fabric-viewport",
-        "grid overflow-hidden absolute inset-0",
+        "grid overflow-hidden absolute inset-0 @container",
       )}
     >
       {children}

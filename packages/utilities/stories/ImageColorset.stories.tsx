@@ -25,6 +25,21 @@ import type { Meta, StoryObj } from "@storybook/react";
 import classnames from "classnames";
 import { SyntheticEvent, useCallback, useState } from "react";
 import { getImageColorset } from "../src";
+import black1 from "/assets/colorset/black1.png";
+import black2 from "/assets/colorset/black2.png";
+import black3 from "/assets/colorset/black3.png";
+import img1 from "/assets/colorset/img1.png";
+import img2 from "/assets/colorset/img2.png";
+import img3 from "/assets/colorset/img3.png";
+import img4 from "/assets/colorset/img4.png";
+import img5 from "/assets/colorset/img5.png";
+import img6 from "/assets/colorset/img6.png";
+import img7 from "/assets/colorset/img7.png";
+import white1 from "/assets/colorset/white1.png";
+import white2 from "/assets/colorset/white2.png";
+import white3 from "/assets/colorset/white3.png";
+import sample from "/assets/samples/sample.jpg";
+import sample_large from "/assets/samples/sample_large.jpg";
 
 const meta: Meta = {
   title: "@utility/ImageColorset",
@@ -47,11 +62,7 @@ const ImageTest = ({ src }: { src: string }) => {
         src={src}
         onLoad={checkColor}
         crossOrigin="anonymous"
-        className={classnames(
-          "size-24",
-          colorset === "light" && "bg-black",
-          colorset === "dark" && "bg-white",
-        )}
+        className={classnames("size-24", colorset === "light" && "bg-black", colorset === "dark" && "bg-white")}
       />
       <span>{colorset}</span>
     </div>
@@ -62,21 +73,21 @@ export const ImageColorset: StoryObj = {
   render: () => {
     return (
       <div className="flex flex-wrap gap-4">
-        <ImageTest src="/samples/sample.jpg" />
-        <ImageTest src="/samples/sample_large.jpg" />
-        <ImageTest src="/colorset/img1.png" />
-        <ImageTest src="/colorset/img2.png" />
-        <ImageTest src="/colorset/img3.png" />
-        <ImageTest src="/colorset/img4.png" />
-        <ImageTest src="/colorset/img5.png" />
-        <ImageTest src="/colorset/img6.png" />
-        <ImageTest src="/colorset/img7.png" />
-        <ImageTest src="/colorset/white1.png" />
-        <ImageTest src="/colorset/white2.png" />
-        <ImageTest src="/colorset/white3.png" />
-        <ImageTest src="/colorset/black1.png" />
-        <ImageTest src="/colorset/black2.png" />
-        <ImageTest src="/colorset/black3.png" />
+        <ImageTest src={sample} />
+        <ImageTest src={sample_large} />
+        <ImageTest src={img1} />
+        <ImageTest src={img2} />
+        <ImageTest src={img3} />
+        <ImageTest src={img4} />
+        <ImageTest src={img5} />
+        <ImageTest src={img6} />
+        <ImageTest src={img7} />
+        <ImageTest src={white1} />
+        <ImageTest src={white2} />
+        <ImageTest src={white3} />
+        <ImageTest src={black1} />
+        <ImageTest src={black2} />
+        <ImageTest src={black3} />
       </div>
     );
   },

@@ -221,7 +221,7 @@
   color: var(--text-color-invert);
 }
 
-@utility border-base {
+@utility border-default {
   border-color: var(--border-color-base);
 }
 
@@ -245,16 +245,16 @@
   border-color: var(--border-color-light);
 }
 
-@utility outline-base {
+@utility outline-default {
   outline-color: var(--border-color-base);
 }
 
-@utility outline-dimmed {
-  outline-color: var(--border-color-dimmed);
+@utility outline-bright {
+  outline-color: var(--border-color-bright);
 }
 
-@utility outline-muted {
-  outline-color: var(--border-color-muted);
+@utility outline-soft {
+  outline-color: var(--border-color-soft);
 }
 
 @utility outline-gray {
@@ -269,16 +269,16 @@
   outline-color: var(--border-color-light);
 }
 
-@utility stroke-base {
+@utility stroke-default {
   stroke: var(--border-color-base);
 }
 
-@utility stroke-dimmed {
-  stroke: var(--border-color-dimmed);
+@utility stroke-bright {
+  stroke: var(--border-color-bright);
 }
 
-@utility stroke-muted {
-  stroke: var(--border-color-muted);
+@utility stroke-soft {
+  stroke: var(--border-color-soft);
 }
 
 @utility stroke-gray {
@@ -293,7 +293,7 @@
   stroke: var(--border-color-light);
 }
 
-@utility fill-base {
+@utility fill-default {
   fill: var(--bg-color-base);
 }
 

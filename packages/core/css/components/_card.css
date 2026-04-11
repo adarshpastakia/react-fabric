@@ -54,10 +54,8 @@
   }
 
   .fabric-card {
-    --tw-shadow-color: var(--border-color-muted);
-
     background-color: var(--fabric-bg);
-    box-shadow: 0 0 0 1px var(--tw-shadow-color);
+    outline: 1px solid var(--border-color-bright);
 
     & > * {
       background-color: transparent;
@@ -81,19 +79,22 @@
 
     & .fabric-cardBody {
       padding: 1rem;
+
+      & > * {
+        grid-area: unset;
+        background-color: transparent;
+      }
     }
 
     &.clickable {
-      --tw-shadow-color: var(--border-color-dimmed);
+      --tw-shadow-color: var(--border-color-soft);
 
       box-shadow:
         0 0 0 1px var(--tw-shadow-color),
         0 1px 2px 0 var(--fabric-shadow);
       transition: box-shadow 0ms;
 
-      &:has(.fabric-cardBody:hover):not(
-          :has([data-inner-clickable="true"]:hover)
-        ) {
+      &:has(.fabric-cardBody:hover):not(:has([data-inner-clickable="true"]:hover)) {
         box-shadow:
           0 0 0 1px var(--tw-shadow-color),
           0 1px 4px 0 var(--fabric-shadow),
@@ -101,9 +102,7 @@
         transition-delay: 150ms;
       }
 
-      &:has(.fabric-cardBody:active):not(
-          :has([data-inner-clickable="true"]:hover)
-        ) {
+      &:has(.fabric-cardBody:active):not(:has([data-inner-clickable="true"]:hover)) {
         transform: translateY(1px);
         box-shadow: 0 0 0 1px var(--tw-shadow-color);
         transition-delay: 0ms;
@@ -135,13 +134,6 @@
 
 @layer utilities {
   .fabric-card {
-    & .fabric-cardBody {
-      & > * {
-        grid-area: unset;
-        background-color: transparent;
-      }
-    }
-
     & .fabric-cardCover {
       & > [data-ref="image"],
       & > [data-ref="video"] {

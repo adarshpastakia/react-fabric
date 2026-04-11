@@ -222,7 +222,7 @@ const MenuComponent = ({
                 <div
                   className={classNames(
                     menuClassName,
-                    "flex flex-col bg-default p-1 menu-list",
+                    "flex flex-col p-1 menu-list",
                     isNested && "outline shadow-lg rounded-capped max-h-96 overflow-auto scroll-thin z-(--z-popover)",
                   )}
                   autoFocus

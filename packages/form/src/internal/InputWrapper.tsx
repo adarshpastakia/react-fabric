@@ -152,7 +152,6 @@ export const InputWrapper = ({
           className={classNames(
             "text-tint-500 hover:text-tint-700 p-1 z-1 flex-content",
             "fabric-inputClear",
-            textarea && "self-start mt-1 me-1",
           )}
         />
       )}

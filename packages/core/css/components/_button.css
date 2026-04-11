@@ -176,21 +176,21 @@
     }
 
     &[data-variant="soft"] {
-      --bg: color-mix(in lab, var(--color) 25%, var(--fabric-bg));
-      --bg-hover: color-mix(in lab, var(--color) 35%, var(--fabric-bg));
-      --bg-click: color-mix(in lab, var(--color) 50%, var(--color-tint-50));
-      --bg-active: color-mix(in lab, var(--color) 50%, var(--color-tint-50));
+      --bg: color-mix(in lab, var(--color) 15%, var(--fabric-bg));
+      --bg-hover: color-mix(in lab, var(--color) 25%, var(--fabric-bg));
+      --bg-click: color-mix(in lab, var(--color) 35%, var(--color-tint-50));
+      --bg-active: color-mix(in lab, var(--color) 30%, var(--color-tint-50));
 
        &[data-color="default"] {
         --bg-hover: color-mix(in lab, var(--color-primary-500) 25%, var(--fabric-bg));
-        --bg-click: color-mix(in lab, var(--color-primary-500) 42%, var(--color-tint-50));
-        --bg-active: color-mix(in lab, var(--color-primary-500) 35%, var(--color-tint-50));
+        --bg-click: color-mix(in lab, var(--color-primary-500) 35%, var(--color-tint-50));
+        --bg-active: color-mix(in lab, var(--color-primary-500) 30%, var(--color-tint-50));
        }
 
        &[data-color="muted"] {
         --bg-hover: color-mix(in lab, var(--color-primary-500) 18%, var(--fabric-bg));
         --bg-click: color-mix(in lab, var(--color-primary-500) 25%, var(--color-tint-50));
-        --bg-active: color-mix(in lab, var(--color-primary-500) 22%, var(--color-tint-50));
+        --bg-active: color-mix(in lab, var(--color-primary-500) 30%, var(--color-tint-50));
        }
     }
 
@@ -217,8 +217,8 @@
        }
 
        &[data-color="muted"] {
-        --bg-hover: color-mix(in lab, var(--color-primary-500) 65%, var(--fabric-bg));
-        --bg-click: color-mix(in lab, var(--color-primary-500) 80%, var(--color-black));
+        --bg-hover: color-mix(in lab, var(--color-primary-500) 80%, var(--fabric-bg));
+        --bg-click: color-mix(in lab, var(--color-primary-500) 85%, var(--color-black));
         --bg-active: color-mix(in lab, var(--color-primary-500) 70%, var(--color-black));
         --text-hover: var(--color-white);
        }

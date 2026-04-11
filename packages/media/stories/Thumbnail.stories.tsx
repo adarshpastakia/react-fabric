@@ -25,6 +25,8 @@ import { faker } from "@faker-js/faker";
 import { Col, Row } from "@react-fabric/core";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Thumbnail } from "../src";
+import sampleBlack from "/assets/colorset/black1.png";
+import sampleWhite from "/assets/colorset/white1.png";
 
 const meta: Meta = {
   component: Thumbnail,
@@ -52,11 +54,11 @@ export const _Thumbnail: Story = {
         </Col>
         <Col>
           <p>Transparent light</p>
-          <Thumbnail {...args} src="/colorset/white1.png" />
+          <Thumbnail {...args} src={sampleWhite} />
         </Col>
         <Col>
           <p>Transparent dark</p>
-          <Thumbnail {...args} src="/colorset/black1.png" />
+          <Thumbnail {...args} src={sampleBlack} />
         </Col>
         <Col>
           <p>Default icon</p>
