@@ -35,6 +35,7 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
+    "@floating-ui/react": "~0.27.19",
     "@react-fabric/core": "^1.0.0-beta.62",
     "@react-fabric/form": "^1.0.0-beta.62",
     "@react-fabric/utilities": "^1.0.0-beta.62",

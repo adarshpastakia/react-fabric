@@ -24,19 +24,15 @@
 import "./i18n";
 
 export { Controller } from "./form/Controller";
-export { Form, useForm, type FormRef } from "./form/Form";
+export { Form, type FormRef } from "./form/Form";
+export { useForm } from "./form/useForm";
 
 export { SchemaEditor } from "./builder/SchemaEditor";
 
 export { useFileUploader } from "./hooks/useFileUploader";
 export { useFormBuilder } from "./hooks/useFormBuilder";
 
-export {
-  DATA_TYPES,
-  SCHEMA_CUSTOM_LIST,
-  type FormSchema,
-  type SchemaDef,
-} from "./types/schema";
+export { DATA_TYPES, SCHEMA_CUSTOM_LIST, type FormSchema, type SchemaDef } from "./types/schema";
 
 export { ArrayInput } from "./input/ArrayInput";
 export { AvatarInput } from "./input/AvatarInput";

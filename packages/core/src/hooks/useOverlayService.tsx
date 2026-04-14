@@ -23,9 +23,7 @@
 
 import { useRef, useState } from "react";
 import { type ModalProps } from "../types";
-
-// return the blank function since state functionality will execute if the value is function
-const EMPTY_FC = () => () => null;
+import { EMPTY_FC } from "@react-fabric/utilities";
 
 /**
  * Hook to manage overlay components like modals or flyouts.
@@ -59,8 +57,7 @@ export const useOverlayService = <T extends AnyObject = AnyObject>(
   openOverlay: (props?: Partial<T>) => Promise<AnyObject>,
   closeOverlay: ((args?: AnyObject) => void) | null,
 ] => {
-  const [Overlay, setOverlay] =
-    useState<React.FunctionComponent<Partial<T>>>(EMPTY_FC);
+  const [Overlay, setOverlay] = useState<React.FunctionComponent<Partial<T>>>(EMPTY_FC);
 
   const existingOpenPromise = useRef<AnyObject | null>(null);
   const openOverlay = async ({ onClose, ...outerProps }: AnyObject = {}) => {
@@ -75,11 +72,7 @@ export const useOverlayService = <T extends AnyObject = AnyObject>(
         existingOpenPromise.current = null;
       };
       setOverlay(() => (overrideProps: Partial<T>) => (
-        <ModalOrFlyout
-          {...outerProps}
-          {...(overrideProps as any)}
-          onClose={existingOpenPromise.current}
-        />
+        <ModalOrFlyout {...outerProps} {...(overrideProps as any)} onClose={existingOpenPromise.current} />
       ));
     });
   };

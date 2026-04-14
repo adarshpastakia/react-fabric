@@ -24,28 +24,17 @@
 import Basemap from "@arcgis/core/Basemap";
 import VectorTileLayer from "@arcgis/core/layers/VectorTileLayer";
 import LocalBasemapsSource from "@arcgis/core/widgets/BasemapGallery/support/LocalBasemapsSource";
-import {
-  ArcgisBasemapGallery,
-  ArcgisBasemapLayerList,
-  ArcgisExpand,
-} from "@arcgis/map-components-react";
+import { ArcgisBasemapGallery, ArcgisBasemapLayerList, ArcgisExpand } from "@arcgis/map-components-react";
 import "@arcgis/map-components/components/arcgis-basemap-gallery";
 import "@arcgis/map-components/components/arcgis-basemap-layer-list";
 import "@arcgis/map-components/components/arcgis-expand";
-import { useMap } from "../viewer/Context";
+import { useMap } from "../viewer/context";
 
 export const BasemapGallery = () => {
   const { basemaps, map } = useMap();
   return (
     <>
-      <ArcgisExpand
-        className="mb-2"
-        expandIcon="basemap"
-        collapseIcon="x"
-        mode="floating"
-        slot="top-right"
-        autoCollapse
-      >
+      <ArcgisExpand className="mb-2" expandIcon="basemap" collapseIcon="x" mode="floating" slot="top-right" autoCollapse>
         <ArcgisBasemapGallery
           source={
             new LocalBasemapsSource({
@@ -75,14 +64,7 @@ export const BasemapGallery = () => {
         />
       </ArcgisExpand>
       {(map?.basemap?.baseLayers.length ?? 1) > 1 && (
-        <ArcgisExpand
-          className="mb-2"
-          expandIcon="layer-map"
-          collapseIcon="x"
-          mode="floating"
-          slot="top-right"
-          autoCollapse
-        >
+        <ArcgisExpand className="mb-2" expandIcon="layer-map" collapseIcon="x" mode="floating" slot="top-right" autoCollapse>
           <ArcgisBasemapLayerList />
         </ArcgisExpand>
       )}

@@ -35,16 +35,12 @@ import {
   type ExpandProps,
   type TestProps,
 } from "../../types";
+import { getIconProps } from "../../utils";
 import { LoadingLine } from "../animations/Animations";
-import { getIconProps, Icon, type IconProps } from "../icon/Icon";
+import { Icon, type IconProps } from "../icon/Icon";
 
 export interface PanelProps
-  extends CssProp,
-    AriaProps,
-    TestProps,
-    ExpandProps,
-    CollapseProps,
-    ChildrenProp<HeadFootProps | ContentProps> {
+  extends CssProp, AriaProps, TestProps, ExpandProps, CollapseProps, ChildrenProp<HeadFootProps | ContentProps> {
   /**
    * panel id used by panel stack
    */
@@ -165,11 +161,7 @@ export const Panel = ({
   onBack,
   ...aria
 }: PanelProps) => {
-  const [collapsed, toggleCollapse] = usePropToggle(
-    _collapsed,
-    onCollapse,
-    panelId,
-  );
+  const [collapsed, toggleCollapse] = usePropToggle(_collapsed, onCollapse, panelId);
   const [expanded, toggleExpand] = usePropToggle(_expanded, onExpand, panelId);
 
   const hasTools = useMemo(() => {
@@ -205,11 +197,7 @@ export const Panel = ({
       {expanded && <HotKey keyCombo="esc" handler={toggleExpand} />}
       <header
         role="none"
-        className={classNames(
-          "fabric-panelHeader",
-          headerClassName,
-          "flex flex-nowrap items-center area-head",
-        )}
+        className={classNames("fabric-panelHeader", headerClassName, "flex flex-nowrap items-center area-head")}
         data-ref="panelHeader"
         onClick={collapsable ? toggleCollapse : undefined}
       >
@@ -222,37 +210,16 @@ export const Panel = ({
             onClick={onBack}
           />
         )}
-        {icon && (
-          <Icon
-            className="p-2 text-md select-none pointer-events-none"
-            {...getIconProps(icon)}
-          />
-        )}
-        <div
-          className={classNames(
-            titleClassName,
-            "flex-1 select-none truncate",
-            title && "py-1 first:px-2",
-          )}
-        >
-          {title}
-        </div>
+        {icon && <Icon className="p-2 text-md select-none pointer-events-none" {...getIconProps(icon)} />}
+        <div className={classNames(titleClassName, "flex-1 select-none truncate", title && "py-1 first:px-2")}>{title}</div>
         <div className="px-1 leading-none">{actions}</div>
         {hasTools && (
-          <div
-            role="none"
-            className="px-1 gap-px flex"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div role="none" className="px-1 gap-px flex" onClick={(e) => e.stopPropagation()}>
             {expandable && (
               <Icon
                 data-ref="panelExpand"
                 className={classNames("fabric-panelAction", "cursor-pointer")}
-                icon={
-                  expanded
-                    ? "icon-[mdi--fullscreen-exit]"
-                    : "icon-[mdi--fullscreen]"
-                }
+                icon={expanded ? "icon-[mdi--fullscreen-exit]" : "icon-[mdi--fullscreen]"}
                 onClick={toggleExpand}
               />
             )}
@@ -260,9 +227,7 @@ export const Panel = ({
               <Icon
                 data-ref="panelCollapse"
                 className={classNames("fabric-panelAction", "cursor-pointer")}
-                icon={
-                  collapsed ? "icon-[mdi--plus-box-outline]" : "icon-[mdi--minus-box-outline]"
-                }
+                icon={collapsed ? "icon-[mdi--plus-box-outline]" : "icon-[mdi--minus-box-outline]"}
                 onClick={toggleCollapse}
               />
             )}
@@ -278,13 +243,7 @@ export const Panel = ({
         )}
       </header>
       {(!collapsed || expanded) && (
-        <div
-          data-ref="panelBody"
-          className={classNames(
-            "fabric-panelBody",
-            "area-content grid overflow-hidden",
-          )}
-        >
+        <div data-ref="panelBody" className={classNames("fabric-panelBody", "area-content grid overflow-hidden")}>
           {loading && <LoadingLine />}
           {children}
         </div>

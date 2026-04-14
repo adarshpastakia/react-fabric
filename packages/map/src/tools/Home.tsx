@@ -29,7 +29,7 @@ import "@arcgis/map-components/components/arcgis-placement";
 import { CalciteButton } from "@esri/calcite-components-react";
 import { debounce, getLatitudeLongitude } from "@react-fabric/utilities";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useMap } from "../viewer/Context";
+import { useMap } from "../viewer/context";
 
 export const Home = ({ enableHistory }: { enableHistory?: boolean }) => {
   const { map, view, disableDrag, center, zoom } = useMap();
@@ -100,10 +100,7 @@ export const Home = ({ enableHistory }: { enableHistory?: boolean }) => {
 
   return (
     !disableDrag && (
-      <ArcgisPlacement
-        slot="top-left"
-        className="mb-2 flex flex-col divide-y divide-tint-100"
-      >
+      <ArcgisPlacement slot="top-left" className="mb-2 flex flex-col divide-y divide-tint-100">
         {enableHistory && (
           <CalciteButton
             appearance="solid"
@@ -113,12 +110,7 @@ export const Home = ({ enableHistory }: { enableHistory?: boolean }) => {
             onClick={() => navigate(activeIndex - 1)}
           />
         )}
-        <CalciteButton
-          appearance="solid"
-          kind="neutral"
-          iconStart="home"
-          onClick={() => gotoHome()}
-        />
+        <CalciteButton appearance="solid" kind="neutral" iconStart="home" onClick={() => gotoHome()} />
         {enableHistory && (
           <CalciteButton
             appearance="solid"

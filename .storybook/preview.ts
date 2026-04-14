@@ -8,15 +8,15 @@ import "@mdi/font/css/materialdesignicons.min.css";
 import "./monaco";
 import "./styles/styles.css";
 
-import { Anchor, DocsContainer } from "@storybook/addon-docs/blocks";
 import type { Preview } from "@storybook/react-vite";
 import { initialize, mswLoader } from "msw-storybook-addon";
-import { Fragment, useEffect } from "react";
-import { I18nextProvider } from "react-i18next";
-import { addons, useGlobals } from "storybook/internal/preview-api";
-import { ApplicationProvider, useApplicationContext } from "@react-fabric/core";
 import { default as i18n } from "./i18n";
 import { darkTheme, lightTheme } from "./theme";
+import { ContainerWrapper } from "./wrappers/Container";
+import { H1Wrapper } from "./wrappers/H1";
+import { H2Wrapper } from "./wrappers/H2";
+import { H3Wrapper } from "./wrappers/H3";
+import { StoryWrapper } from "./wrappers/Story";
 
 enum THEME {
   DENIM = "denim:avacado",
@@ -30,6 +30,7 @@ enum TINT {
   STEEL = "steel",
   OLIVE = "olive",
   SAND = "sand",
+  CLAY = "clay",
 }
 enum ROUNDING {
   SMALL = "sm",
@@ -49,19 +50,6 @@ initialize({
 });
 
 document.documentElement.dir = i18n.dir();
-
-const ContextWrapper = (props: AnyObject) => {
-  const { changeLocale, changeCalendar } = useApplicationContext();
-  useEffect(() => {
-    addons.getChannel().on("CALENDAR_CHANGE", (calendar: AnyObject) => {
-      changeCalendar?.(calendar);
-    });
-    addons.getChannel().on("LOCALE_CHANGED", (locale: AnyObject) => {
-      changeLocale?.(locale);
-    });
-  }, []);
-  return <Fragment {...props} />;
-};
 
 export default {
   parameters: {
@@ -105,59 +93,11 @@ export default {
       extractComponentDescription: (comp: AnyObject) => {
         return comp?.__docgenInfo?.description?.replace(/\n@.*(\n.*)*/g, "");
       },
-      container: ({ children, context }: AnyObject) => {
-        const globals = context.store.userGlobals.globals;
-
-        useEffect(() => {
-          const [primary, accent] = (globals.theme ?? "denim:jade").split(":");
-          document.documentElement.style.setProperty(
-            "--color-primary",
-            `var(--color-${primary})`,
-          );
-          document.documentElement.style.setProperty(
-            "--color-accent",
-            `var(--color-${accent})`,
-          );
-          document.documentElement.style.setProperty(
-            "--color-tint",
-            `var(--color-${globals.tint ?? "silver"})`,
-          );
-          document.documentElement.dataset.colorScheme = globals.scheme;
-          document.documentElement.dataset.rounding = globals.round;
-        }, [globals]);
-
-        return (
-          <ApplicationProvider
-            defaultLocale={globals.locale}
-            defaultCalendar={globals.calendar}
-          >
-            <ContextWrapper>
-              <DocsContainer
-                context={context}
-                theme={globals.scheme === "dark" ? darkTheme : lightTheme}
-              >
-                {children}
-              </DocsContainer>
-            </ContextWrapper>
-          </ApplicationProvider>
-        );
-      },
+      container: ContainerWrapper,
       components: {
-        h1: ({ storyId, ...props }: AnyObject) => (
-          <Fragment>
-            {storyId && <Anchor storyId={storyId} />}
-            <div className="sbdocs-title" {...props} />
-            <hr />
-          </Fragment>
-        ),
-        h2: ({ storyId, ...props }: AnyObject) => (
-          <Fragment>
-            {storyId && <Anchor storyId={storyId} />}
-            <p>ssdfsdfdf</p>
-            <cite className="toc-selector" {...props} />
-          </Fragment>
-        ),
-        h3: (props: AnyObject) => <code {...props} />,
+        h1: H1Wrapper,
+        h2: H2Wrapper,
+        h3: H3Wrapper,
       },
     },
   },
@@ -236,48 +176,14 @@ export default {
           { value: TINT.STEEL, title: "Steel" },
           { value: TINT.OLIVE, title: "Olive" },
           { value: TINT.SAND, title: "Sand" },
+          { value: TINT.CLAY, title: "Clay" },
         ],
       },
     },
   },
   loaders: [mswLoader],
   decorators: [
-    (Story) => {
-      const [globals, setGlobals] = useGlobals();
-
-      useEffect(() => {
-        const [primary, accent] = (globals.theme ?? "denim:jade").split(":");
-        document.documentElement.style.setProperty(
-          "--color-primary",
-          `var(--color-${primary})`,
-        );
-        document.documentElement.style.setProperty(
-          "--color-accent",
-          `var(--color-${accent})`,
-        );
-        document.documentElement.style.setProperty(
-          "--color-tint",
-          `var(--color-${globals.tint ?? "silver"})`,
-        );
-        document.documentElement.dataset.colorScheme = globals.scheme;
-        document.documentElement.dataset.rounding = globals.round;
-      }, [globals]);
-
-      return (
-        <I18nextProvider i18n={i18n}>
-          <ApplicationProvider
-            defaultLocale={globals.locale}
-            defaultColorScheme={globals.scheme}
-            defaultCalendar={globals.calendar}
-          >
-            <ContextWrapper>
-              {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-              <Story />
-            </ContextWrapper>
-          </ApplicationProvider>
-        </I18nextProvider>
-      );
-    },
+    StoryWrapper,
     // withTests({ results }),
   ],
 } as Preview;

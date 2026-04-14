@@ -34,16 +34,11 @@ import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { isValidElement, useEffect, useEffectEvent } from "react";
 import { LoadingLine } from "../../components/animations/Animations";
-import { getIconProps, Icon, type IconProps } from "../../components/icon/Icon";
+import { Icon, type IconProps } from "../../components/icon/Icon";
 import { Header } from "../../core/headfoot/HeadFoot";
 import { HotKeyWrapper } from "../../hotkeys/HotKeyWrapper";
-import {
-  type AriaProps,
-  type CallbackReturn,
-  type ChildrenProp,
-  type Elements,
-  type TestProps,
-} from "../../types";
+import { type AriaProps, type CallbackReturn, type ChildrenProp, type Elements, type TestProps } from "../../types";
+import { getIconProps } from "../../utils";
 
 export interface ModalProps extends AriaProps, TestProps, ChildrenProp {
   icon?: IconProps;
@@ -147,14 +142,7 @@ export const Modal = ({
           onClose?.(...args);
         }, 250);
       }
-      ret === false &&
-        setTimeout(
-          () =>
-            refs.floating.current
-              ?.querySelector<HTMLElement>("[role='dialog']")
-              ?.focus(),
-          50,
-        );
+      ret === false && setTimeout(() => refs.floating.current?.querySelector<HTMLElement>("[role='dialog']")?.focus(), 50);
     });
   });
 
@@ -173,10 +161,7 @@ export const Modal = ({
           position: "absolute",
           overflow: "hidden",
         }}
-        className={classNames(
-          "grid place-items-center p-16",
-          !hideMask && "bg-tint-100/20 backdrop-blur-sm",
-        )}
+        className={classNames("grid place-items-center p-16", !hideMask && "bg-tint-100/20 backdrop-blur-sm")}
       >
         <FloatingFocusManager context={context}>
           <dialog
@@ -201,26 +186,14 @@ export const Modal = ({
             {...aria}
           >
             <HotKeyWrapper>
-              <Header
-                flex
-                align="center"
-                className={classNames("fabric-modalHeader", headerClassName)}
-              >
-                {isString(icon) && (
-                  <Icon
-                    className={classNames(iconClassName, "p-1")}
-                    {...getIconProps(icon)}
-                  />
-                )}
+              <Header flex align="center" className={classNames("fabric-modalHeader", headerClassName)}>
+                {isString(icon) && <Icon className={classNames(iconClassName, "p-1")} {...getIconProps(icon)} />}
                 {isValidElement(icon) && icon}
                 <label className="flex-1 truncate py-2 px-1">{title}</label>
                 {actions}
                 <Icon
                   data-ref="panelClose"
-                  className={classNames(
-                    "fabric-panelAction",
-                    "cursor-pointer p-1 text-xl self-center",
-                  )}
+                  className={classNames("fabric-panelAction", "cursor-pointer p-1 text-xl self-center")}
                   icon="icon-[mdi--close]"
                   onClick={() => handleClose(false)}
                 />
@@ -228,10 +201,7 @@ export const Modal = ({
               {loading && <LoadingLine />}
               <div
                 role="dialog"
-                className={classNames(
-                  "fabric-modalBody",
-                  "flex-1 grid overflow-hidden",
-                )}
+                className={classNames("fabric-modalBody", "flex-1 grid overflow-hidden")}
                 {...({ tabIndex: 0 } as AnyObject)}
               >
                 {children}

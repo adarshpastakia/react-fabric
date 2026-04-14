@@ -4,7 +4,7 @@
  *
  *
  * The MIT License (MIT)
- * Copyright (c) 2024 Adarsh Pastakia
+ * Copyright (c) 2026 Adarsh Pastakia
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
  * and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -21,50 +21,13 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { type ChildrenProp } from "@react-fabric/core/dist/types/types";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useRef,
-  useState,
-} from "react";
-import { useResizer } from "./useResizer";
+import { createContext, useContext } from "react";
 
 interface Context {
   widths: Map<string, number>;
   startResize: (col: HTMLElement) => void;
 }
 
-const TableContext = createContext<Context>({} as Context);
-
-export const TableProvider = ({ children }: ChildrenProp) => {
-  const ghostRef = useRef<HTMLDivElement>(null);
-  const [widths, setWidths] = useState<Map<string, number>>(new Map());
-  const startResize = useCallback(
-    (col: HTMLElement) => {
-      if (col) {
-        ghostRef.current != null &&
-          useResizer(col, ghostRef.current, (width) => {
-            setWidths(new Map(widths.set(col.dataset.id ?? "", width)));
-          });
-      }
-    },
-    [widths],
-  );
-
-  return (
-    <TableContext.Provider value={{ startResize, widths }}>
-      {children}
-
-      <div
-        className="absolute inset-0 hidden z-20 cursor-col-resize"
-        ref={ghostRef}
-      >
-        <div className="absolute inset-y-0 bg-muted opacity-50 border-primary border-e-2" />
-      </div>
-    </TableContext.Provider>
-  );
-};
+export const TableContext = createContext<Context>({} as Context);
 
 export const useTableContext = () => useContext(TableContext);

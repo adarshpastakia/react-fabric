@@ -34,21 +34,15 @@ import {
 } from "@floating-ui/react";
 import { Divider, Menu, MenuItem } from "@react-fabric/core";
 import { cloneElement, useEffect, useRef, useState } from "react";
-import {
-  type SigmaEdgeEventPayload,
-  type SigmaNodeEventPayload,
-  type SigmaStageEventPayload,
-} from "sigma/types";
+import { type SigmaEdgeEventPayload, type SigmaNodeEventPayload, type SigmaStageEventPayload } from "sigma/types";
 import { ICONS } from "../constants";
-import { useGraph } from "./Context";
+import { useGraph } from "./context";
 
 export const GraphContextMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const nodeId = useFloatingNodeId();
   const { sigma } = useGraph();
-  const [menu, setMenu] = useState<Array<React.ReactElement<typeof MenuItem>>>(
-    [],
-  );
+  const [menu, setMenu] = useState<Array<React.ReactElement<typeof MenuItem>>>([]);
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -72,51 +66,26 @@ export const GraphContextMenu = () => {
   const { getFloatingProps } = useInteractions([dismiss, click]);
 
   const tryClosing = useRef((e: React.MouseEvent) => {
-    if ((e.target as HTMLElement)?.closest("[data-dropdown-dismiss='true']"))
-      setTimeout(() => setIsOpen(false), 50);
+    if ((e.target as HTMLElement)?.closest("[data-dropdown-dismiss='true']")) setTimeout(() => setIsOpen(false), 50);
   });
 
   useEffect(() => {
-    const handleContextMenu = (
-      e: SigmaNodeEventPayload | SigmaEdgeEventPayload | SigmaStageEventPayload,
-    ) => {
+    const handleContextMenu = (e: SigmaNodeEventPayload | SigmaEdgeEventPayload | SigmaStageEventPayload) => {
       if ("node" in e) {
         setMenu([
           <MenuItem key="0.0" label="Select neighbors" />,
           <Divider key="0.1" />,
-          <MenuItem
-            key="0.2"
-            label="Delete node(s)"
-            color="danger"
-            icon={ICONS.delete}
-          />,
-          <MenuItem
-            key="0.3"
-            label="Clear graph"
-            color="danger"
-            icon={ICONS.clear}
-          />,
+          <MenuItem key="0.2" label="Delete node(s)" color="danger" icon={ICONS.delete} />,
+          <MenuItem key="0.3" label="Clear graph" color="danger" icon={ICONS.clear} />,
         ]);
       } else if ("edge" in e) {
         setMenu([
           <MenuItem key="1.0" label="Select neighbors" />,
           <Divider key="1.1" />,
-          <MenuItem
-            key="1.2"
-            label="Clear graph"
-            color="danger"
-            icon={ICONS.clear}
-          />,
+          <MenuItem key="1.2" label="Clear graph" color="danger" icon={ICONS.clear} />,
         ]);
       } else {
-        setMenu([
-          <MenuItem
-            key="2.0"
-            label="Clear graph"
-            color="danger"
-            icon={ICONS.clear}
-          />,
-        ]);
+        setMenu([<MenuItem key="2.0" label="Clear graph" color="danger" icon={ICONS.clear} />]);
       }
       const virtual = {
         getBoundingClientRect() {
@@ -150,12 +119,7 @@ export const GraphContextMenu = () => {
 
   return (
     isOpen && (
-      <FloatingPortal
-        root={
-          refs.domReference.current?.closest<HTMLElement>(".theme-base") ??
-          undefined
-        }
-      >
+      <FloatingPortal root={refs.domReference.current?.closest<HTMLElement>(".theme-base") ?? undefined}>
         {cloneElement((<Menu>{menu}</Menu>) as AnyObject, {
           ...getFloatingProps(),
           style: {

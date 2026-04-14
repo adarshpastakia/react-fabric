@@ -1,16 +1,9 @@
-import {
-  Button,
-  ButtonGroup,
-  Dropdown,
-  Menu,
-  MenuItem,
-} from "@react-fabric/core";
+import { Button, ButtonGroup, Dropdown, Menu, MenuItem } from "@react-fabric/core";
 import { ICONS } from "../constants";
-import { useGraph } from "./Context";
+import { useGraph } from "./context";
 
 export const Tools = () => {
-  const { dragSelector, graph, selected, resetViewport, zoomIn, zoomOut } =
-    useGraph();
+  const { dragSelector, graph, selected, resetViewport, zoomIn, zoomOut } = useGraph();
 
   return (
     <div className="flex flex-nowrap outline absolute top-0 start-0 p-0 z-1 bg-default">
@@ -29,12 +22,7 @@ export const Tools = () => {
           />
         )}
         {dragSelector.selectionMode && (
-          <Button
-            color="danger"
-            aria-label="cancel"
-            icon={ICONS.cancel}
-            onClick={() => dragSelector.cancelSelection()}
-          />
+          <Button color="danger" aria-label="cancel" icon={ICONS.cancel} onClick={() => dragSelector.cancelSelection()} />
         )}
         {dragSelector.selectionMode !== "rectangle" && (
           <Button
@@ -55,34 +43,13 @@ export const Tools = () => {
             }
           />
           <Menu className="text-sm">
-            <MenuItem
-              label="box"
-              onClick={async () => await graph.elkLayout("box")}
-            />
-            <MenuItem
-              label="force"
-              onClick={async () => await graph.elkLayout("force")}
-            />
-            <MenuItem
-              label="layered"
-              onClick={async () => await graph.elkLayout("layered")}
-            />
-            <MenuItem
-              label="stress"
-              onClick={async () => await graph.elkLayout("stress")}
-            />
-            <MenuItem
-              label="radial"
-              onClick={async () => await graph.elkLayout("radial")}
-            />
-            <MenuItem
-              label="sporeOverlap"
-              onClick={async () => await graph.elkLayout("sporeOverlap")}
-            />
-            <MenuItem
-              label="sporeCompaction"
-              onClick={async () => await graph.elkLayout("sporeCompaction")}
-            />
+            <MenuItem label="box" onClick={async () => await graph.elkLayout("box")} />
+            <MenuItem label="force" onClick={async () => await graph.elkLayout("force")} />
+            <MenuItem label="layered" onClick={async () => await graph.elkLayout("layered")} />
+            <MenuItem label="stress" onClick={async () => await graph.elkLayout("stress")} />
+            <MenuItem label="radial" onClick={async () => await graph.elkLayout("radial")} />
+            <MenuItem label="sporeOverlap" onClick={async () => await graph.elkLayout("sporeOverlap")} />
+            <MenuItem label="sporeCompaction" onClick={async () => await graph.elkLayout("sporeCompaction")} />
           </Menu>
         </Dropdown>
       </ButtonGroup>
@@ -94,12 +61,7 @@ export const Tools = () => {
           disabled={!selected.length}
           onClick={() => graph.dropNodes(selected)}
         />
-        <Button
-          aria-label="clear"
-          color="danger"
-          icon={ICONS.clear}
-          onClick={() => graph.clear()}
-        />
+        <Button aria-label="clear" color="danger" icon={ICONS.clear} onClick={() => graph.clear()} />
       </ButtonGroup>
     </div>
   );

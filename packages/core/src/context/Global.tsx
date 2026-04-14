@@ -22,21 +22,10 @@
  */
 
 import i18next from "i18next";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-  type ComponentType,
-  type FC,
-  type PropsWithChildren,
-} from "react";
+import { useCallback, useEffect, useState, type ComponentType, type FC, type PropsWithChildren } from "react";
 import { HotKeyWrapper } from "../hotkeys/HotKeyWrapper";
-import {
-  NotificationManager,
-  type NotificationManagerRef,
-} from "./NotificationCenter";
+import { NotificationManager, type NotificationManagerRef } from "./NotificationCenter";
+import { GlobalContext } from "./context";
 
 interface State {
   locale: string;
@@ -55,68 +44,23 @@ export interface GlobalProps extends PropsWithChildren {
   defaultColorScheme?: State["colorScheme"];
 }
 
-interface GlobalContextType {
-  /**
-   * change language locale
-   * @param locale
-   */
-  changeLocale: (locale: string) => string;
-  /**
-   * change date calendat
-   * @param locale
-   */
-  changeCalendar: (calendar: State["calendar"]) => State["calendar"];
-  /**
-   * toggle theme between light and dark
-   * or force to theme provided
-   * @param theme
-   */
-  toggleColorScheme: (
-    colorScheme?: State["colorScheme"],
-  ) => State["colorScheme"];
-  /**
-   * application default error display
-   */
-  errorElement: GlobalProps["errorElement"];
-
-  currentLocale: string;
-  currentCalendar: State["calendar"];
-  currentColorScheme: State["colorScheme"];
-
-  notificationManager: NotificationManagerRef;
-}
-
 const KEY_LOCALE = "ruf:locale";
 const KEY_CALENDAR = "ruf:calendar";
 const KEY_COLOR_SCHEME = "ruf:colorScheme";
 const systemLocale = () => {
-  return (
-    (typeof window !== "undefined"
-      ? localStorage.getItem(KEY_LOCALE)
-      : undefined) ?? "en"
-  );
+  return (typeof window !== "undefined" ? localStorage.getItem(KEY_LOCALE) : undefined) ?? "en";
 };
 const systemCalendar = () => {
-  return (
-    (typeof window !== "undefined"
-      ? (localStorage.getItem(KEY_CALENDAR) as AnyObject)
-      : undefined) ?? "gregorian"
-  );
+  return (typeof window !== "undefined" ? (localStorage.getItem(KEY_CALENDAR) as AnyObject) : undefined) ?? "gregorian";
 };
 const systemColorScheme = () => {
   const theme: AnyObject =
     typeof window !== "undefined"
       ? (localStorage.getItem(KEY_COLOR_SCHEME) ??
-        (window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light"))
+        (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"))
       : "light";
   return theme;
 };
-
-export const GlobalContext = createContext<GlobalContextType>(
-  {} as GlobalContextType,
-);
 
 /**
  * global context provider
@@ -128,23 +72,16 @@ export const ApplicationProvider: FC<GlobalProps> = ({
   defaultCalendar,
   defaultColorScheme,
 }) => {
-  const [refNotifications, setNotificationRef] =
-    useState<NotificationManagerRef>({
-      closeAll: () => undefined,
-      showAlert: () => undefined as AnyObject,
-      showError: () => undefined as AnyObject,
-      showMessage: () => undefined as AnyObject,
-      showToast: () => undefined as AnyObject,
-    });
-  const [colorScheme, setColorScheme] = useState<State["colorScheme"]>(
-    defaultColorScheme ?? systemColorScheme(),
-  );
-  const [calendar, setCalendar] = useState<State["calendar"]>(
-    defaultCalendar ?? systemCalendar(),
-  );
-  const [locale, setLocale] = useState<State["locale"]>(
-    defaultLocale ?? systemLocale(),
-  );
+  const [refNotifications, setNotificationRef] = useState<NotificationManagerRef>({
+    closeAll: () => undefined,
+    showAlert: () => undefined as AnyObject,
+    showError: () => undefined as AnyObject,
+    showMessage: () => undefined as AnyObject,
+    showToast: () => undefined as AnyObject,
+  });
+  const [colorScheme, setColorScheme] = useState<State["colorScheme"]>(defaultColorScheme ?? systemColorScheme());
+  const [calendar, setCalendar] = useState<State["calendar"]>(defaultCalendar ?? systemCalendar());
+  const [locale, setLocale] = useState<State["locale"]>(defaultLocale ?? systemLocale());
 
   useEffect(() => {
     defaultColorScheme && setColorScheme(defaultColorScheme);
@@ -172,8 +109,7 @@ export const ApplicationProvider: FC<GlobalProps> = ({
   /** ***************** theme toggle *******************/
   const toggleColorScheme = useCallback(
     (forceTheme?: State["colorScheme"]) => {
-      const newTheme =
-        forceTheme ?? (colorScheme === "dark" ? "light" : "dark");
+      const newTheme = forceTheme ?? (colorScheme === "dark" ? "light" : "dark");
       setColorScheme(newTheme);
       localStorage.setItem(KEY_COLOR_SCHEME, newTheme);
       document.documentElement.dataset.colorScheme = newTheme;
@@ -222,46 +158,4 @@ export const ApplicationProvider: FC<GlobalProps> = ({
       <NotificationManager onLoad={setNotificationRef} />
     </GlobalContext.Provider>
   );
-};
-
-/**
- * internal usage only
- * @internal
- */
-export const useGlobals = () => useContext(GlobalContext);
-
-/**
- * Hook to access the global application context.
- * This hook provides access to the global context values, including the current locale, calendar, and color scheme.
- *
- * @returns {GlobalContextType} The global context values excluding the error element.
- *
- * @example
- * ```jsx
- * const { changeLocale, currentLocale, toggleColorScheme } = useApplicationContext();
- * ```
- */
-export const useApplicationContext = () => {
-  const { errorElement, ...rest } = useContext(GlobalContext);
-  return rest;
-};
-
-/**
- * Hook to access the notification manager from the global context.
- * This hook provides methods to show alerts, errors, messages, and toasts.
- * It returns a reference to the notification manager, which can be used to display notifications in the application.
- *
- * @returns {NotificationManagerRef} The notification manager reference.
- *
- * @example
- * ```jsx
- * const notificationService = useNotificationService();
- * notificationService.showMessage("Hello World");
- * ```
- *
- * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/docs/core-components-notifications--notifications} for more details on available methods.
- */
-export const useNotificationService = () => {
-  const { notificationManager } = useContext(GlobalContext);
-  return notificationManager ?? {};
 };

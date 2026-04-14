@@ -21,27 +21,12 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  Button,
-  Divider,
-  DropdownTool,
-  getIconProps,
-  Icon,
-  Menu,
-  MenuItem,
-  Tooltip,
-} from "@react-fabric/core";
+import { Button, Divider, DropdownTool, getIconProps, Icon, Menu, MenuItem, Tooltip } from "@react-fabric/core";
 import { isEmpty } from "@react-fabric/utilities";
 import { useCallback, useMemo } from "react";
 import { ColumnFilters } from "./ColumnFilters";
-import { useTableContext } from "./Context";
-import {
-  COL_DEFAULT_WIDTH,
-  COL_MAX_WIDTH,
-  COL_MIN_WIDTH,
-  type TableColumn,
-  type TableProps,
-} from "./types";
+import { useTableContext } from "./context";
+import { COL_DEFAULT_WIDTH, COL_MAX_WIDTH, COL_MIN_WIDTH, type TableColumn, type TableProps } from "./types";
 
 export const HeaderCell = ({
   id,
@@ -66,18 +51,14 @@ export const HeaderCell = ({
 }: TableColumn & Pick<TableProps, "sort" | "onSort" | "onFilter">) => {
   const { startResize, widths } = useTableContext();
 
-  const width = useMemo(
-    () => widths.get(id.toString()) ?? _width,
-    [widths, _width, id],
-  );
+  const width = useMemo(() => widths.get(id.toString()) ?? _width, [widths, _width, id]);
 
   const handleSort = useCallback(
     (order?: "asc" | "desc") => {
       sortable &&
         onSort?.({
           id: id.toString(),
-          order:
-            order ?? (sort?.id === id && sort.order === "asc" ? "desc" : "asc"),
+          order: order ?? (sort?.id === id && sort.order === "asc" ? "desc" : "asc"),
         });
     },
     [onSort, sort, sortable],
@@ -87,12 +68,7 @@ export const HeaderCell = ({
     let ret = [];
     if (filterable && (dataType ?? filterOptions)) {
       ret.push(
-        <Menu
-          key="filters"
-          label="Filter"
-          icon={filter ? "icon-[mdi--check]" : ""}
-          trigger="click"
-        >
+        <Menu key="filters" label="Filter" icon={filter ? "icon-[mdi--check]" : ""} trigger="click">
           <ColumnFilters
             type={dataType}
             list={filterOptions}
@@ -104,12 +80,7 @@ export const HeaderCell = ({
     }
     if (sortable) {
       ret.push(
-        <MenuItem
-          key="sort-asc"
-          label="Sort ascending"
-          icon="icon-[mdi--sort-ascending]"
-          onClick={() => handleSort("asc")}
-        />,
+        <MenuItem key="sort-asc" label="Sort ascending" icon="icon-[mdi--sort-ascending]" onClick={() => handleSort("asc")} />,
         <MenuItem
           key="sort-desc"
           label="Sort descending"
@@ -180,10 +151,7 @@ export const HeaderCell = ({
         <div
           role="none"
           className="cursor-col-resize border-e bg-transparent border-tint-200 w-[5px] self-stretch"
-          onMouseDown={(e) =>
-            e.currentTarget.parentElement &&
-            startResize(e.currentTarget.parentElement)
-          }
+          onMouseDown={(e) => e.currentTarget.parentElement && startResize(e.currentTarget.parentElement)}
         />
       )}
     </div>

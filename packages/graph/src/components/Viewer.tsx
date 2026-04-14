@@ -22,11 +22,12 @@
  */
 
 import { Section } from "@react-fabric/core";
-import { type GraphProps } from "../types";
-import { GraphProvider, useGraph } from "./Context";
-import { Tools } from "./Tools";
 import { useEffect, useRef } from "react";
+import { type GraphProps } from "../types";
 import { GraphContextMenu } from "./ContextMenu";
+import { GraphProvider } from "./Provider";
+import { Tools } from "./Tools";
+import { useGraph } from "./context";
 
 const Graph = () => {
   const { sigma, graph } = useGraph();
@@ -61,9 +62,7 @@ const Graph = () => {
   );
 };
 
-export const SigmaGraph = <N = KeyValue, E = KeyValue>(
-  props: GraphProps<N, E>,
-) => {
+export const SigmaGraph = <N = KeyValue, E = KeyValue>(props: GraphProps<N, E>) => {
   return (
     <Section className="relative">
       <GraphProvider {...props}>

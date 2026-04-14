@@ -37,6 +37,7 @@
   "dependencies": {
     "@lexical/react": "0.41.0",
     "@react-fabric/core": "^1.0.0-beta.62",
+    "@react-fabric/date": "^1.0.0-beta.62",
     "@react-fabric/form": "^1.0.0-beta.62",
     "@react-fabric/utilities": "^1.0.0-beta.62",
     "classnames": "~2.5.1",

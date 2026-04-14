@@ -26,11 +26,11 @@ import classNames from "classnames";
 import { Component } from "react";
 import { useTranslation } from "react-i18next";
 import { Fragment } from "react/jsx-runtime";
+import { useGlobals } from "../../context/context";
 import { useMemoDebugger } from "../../hooks/useEffectDebugger";
 import { usePropToggle } from "../../hooks/usePropToggle";
 import { type ChildrenProp } from "../../types";
 import { ErrorIcon } from "./ErrorIcon";
-import { useGlobals } from "../../context/Global";
 
 const DefaultError = ({ error }: { error?: string }) => {
   const { t } = useTranslation("core");
@@ -44,11 +44,7 @@ const DefaultError = ({ error }: { error?: string }) => {
 
 const ErrorMessage = ({ error, errorElement }: KeyValue) => {
   const { errorElement: globalError } = useGlobals();
-  const EE = useMemoDebugger(
-    () => errorElement ?? globalError ?? DefaultError,
-    [],
-    "ErrorBoundary element",
-  );
+  const EE = useMemoDebugger(() => errorElement ?? globalError ?? DefaultError, [], "ErrorBoundary element");
   return (
     <Fragment>
       <ErrorIcon />
@@ -63,26 +59,14 @@ const ErrorStack = ({ error, stack }: KeyValue) => {
   const [show, toggleShow] = usePropToggle(false);
   useLogger().error(error, {}, stack);
   return (
-    <div
-      className={classNames("fabric-boundaryDetail", "overflow-hidden grid")}
-    >
-      <div
-        className={classNames(
-          "fabric-boundaryLink",
-          "px-2 py-1 text-xs text-end",
-        )}
-      >
+    <div className={classNames("fabric-boundaryDetail", "overflow-hidden grid")}>
+      <div className={classNames("fabric-boundaryLink", "px-2 py-1 text-xs text-end")}>
         <span role="link" tabIndex={0} className="link" onClick={toggleShow}>
           {show ? "Hide Detail" : "Show Detail"}
         </span>
       </div>
       {show && (
-        <div
-          className={classNames(
-            "fabric-boundaryStack",
-            "overflow-auto p-2 text-xs border-t",
-          )}
-        >
+        <div className={classNames("fabric-boundaryStack", "overflow-auto p-2 text-xs border-t")}>
           <pre className="whitespace-pre-wrap">{stack}</pre>
         </div>
       )}
@@ -137,22 +121,10 @@ export class ErrorBoundary extends Component<
       const { errorElement: E } = this.props;
       // You can render any custom fallback UI
       return (
-        <div
-          className={classNames(
-            "fabric-errorBoundary",
-            "grid grid-rows-1 overflow-hidden p-0.5 rounded-capped",
-          )}
-        >
-          <div
-            className={classNames(
-              "fabric-boundaryContent",
-              "overflow-hidden grid rounded-capped",
-            )}
-          >
+        <div className={classNames("fabric-errorBoundary", "grid grid-rows-1 overflow-hidden p-0.5 rounded-capped")}>
+          <div className={classNames("fabric-boundaryContent", "overflow-hidden grid rounded-capped")}>
             <ErrorMessage error={this.state.error} errorElement={E} />
-            {env === "development" && (
-              <ErrorStack error={this.state.error} stack={this.state.stack} />
-            )}
+            {env === "development" && <ErrorStack error={this.state.error} stack={this.state.stack} />}
           </div>
         </div>
       );

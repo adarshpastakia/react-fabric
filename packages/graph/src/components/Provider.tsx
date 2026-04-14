@@ -1,39 +1,12 @@
 import { Icon } from "@react-fabric/core";
 import { fitViewportToNodes } from "@sigma/utils";
-import {
-  createContext,
-  type PropsWithChildren,
-  useContext,
-  useEffect,
-  useImperativeHandle,
-  useState,
-} from "react";
+import { type PropsWithChildren, useEffect, useImperativeHandle, useState } from "react";
 import { type SigmaNodeEventPayload } from "sigma/types";
-import { type Graph } from "../graph";
 import { useDragSelection } from "../hooks/sigmaDragSelect";
 import { useGraphology } from "../hooks/useGraphology";
 import { useSigma } from "../hooks/useSigma";
-import {
-  type EdgeAttributes,
-  type GraphProps,
-  type NodeAttributes,
-} from "../types";
-
-interface Context<N = KeyValue, E = KeyValue> {
-  sigma: ReturnType<typeof useSigma>;
-  graph: Graph<NodeAttributes<N>, EdgeAttributes<E>>;
-  selected: string[];
-  layoutRunning: boolean;
-  dragSelector: ReturnType<typeof useDragSelection>;
-  resetViewport: () => void;
-  zoomIn: () => void;
-  zoomOut: () => void;
-}
-
-const GraphContext = createContext<Context>({} as Context);
-
-export const useGraph = <N = KeyValue, E = KeyValue>() =>
-  useContext(GraphContext) as Context<N, E>;
+import { type GraphProps } from "../types";
+import { GraphContext } from "./context";
 
 export const GraphProvider = <N = KeyValue, E = KeyValue>({
   ref,

@@ -21,6 +21,8 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { useCallback } from "react";
+
 export const useResizer = (
   colEl: HTMLElement,
   ghostEl: HTMLElement,
@@ -29,20 +31,20 @@ export const useResizer = (
   const placeholder = ghostEl.firstElementChild as HTMLElement;
   const isRtl = getComputedStyle(colEl).direction === "rtl";
 
-  const onResize = (evt: MouseEvent) => {
+  const onResize = useCallback((evt: MouseEvent) => {
     /** ***************** check if reverse enabled of RTL *******************/
     const box = colEl.getBoundingClientRect();
     const x = isRtl ? box.left - evt.clientX : evt.clientX - box.right;
     placeholder.style.width = `${colEl.offsetWidth + x}px`;
-  };
+  }, [colEl, isRtl, placeholder]);
 
   /** ***************** dettach handlers on mouseup *******************/
-  const onResizeEnd = () => {
+  const onResizeEnd = useCallback(() => {
     callback(placeholder.offsetWidth);
     ghostEl.style.display = "none";
     document.removeEventListener("mousemove", onResize);
     document.removeEventListener("mouseup", onResizeEnd);
-  };
+  }, [callback, placeholder, ghostEl]);
 
   /** ***************** attach handlers *******************/
   const box = colEl.getBoundingClientRect();

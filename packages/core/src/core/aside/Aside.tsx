@@ -24,21 +24,15 @@
 import classNames from "classnames";
 import { useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 import { LoadingLine } from "../../components/animations/Animations";
-import { getIconProps, Icon, type IconProps } from "../../components/icon/Icon";
+import { Icon, type IconProps } from "../../components/icon/Icon";
 import { useLayoutEffectDebugger } from "../../hooks/useEffectDebugger";
 import { usePropToggle } from "../../hooks/usePropToggle";
 import { useResize } from "../../hooks/useResize";
-import {
-  type ChildrenProp,
-  type CollapseProps,
-  type CssProp,
-  type Elements,
-  type TestProps,
-} from "../../types";
+import { type ChildrenProp, type CollapseProps, type CssProp, type Elements, type TestProps } from "../../types";
+import { getIconProps } from "../../utils";
 import { ErrorBoundary } from "../boundary/ErrorBoundary";
 
-export interface AsideProps
-  extends ChildrenProp, CollapseProps, CssProp, TestProps {
+export interface AsideProps extends ChildrenProp, CollapseProps, CssProp, TestProps {
   /**
    * page title
    */
@@ -167,7 +161,7 @@ export const Aside = ({
 
   const handleResize = useRef(({ x }: { x: number }) => {
     if (elementRef.current != null) {
-      setWidth(elementRef.current.offsetWidth + x);
+      x !== 0 && setWidth(elementRef.current.offsetWidth + x);
     }
   });
   const resizeHandleProps = useResize(handleResize.current, {
@@ -190,11 +184,8 @@ export const Aside = ({
       if (peek) {
         const handler = (e: MouseEvent) => {
           if (
-            (e.target as HTMLElement).closest(`[data-ref="asideBody"]`) ==
-              null &&
-            (e.target as HTMLElement).closest(
-              `[data-ref="asidePlaceholder"]`,
-            ) == null
+            (e.target as HTMLElement).closest(`[data-ref="asideBody"]`) == null &&
+            (e.target as HTMLElement).closest(`[data-ref="asidePlaceholder"]`) == null
           ) {
             setPeek(false);
           }
@@ -227,24 +218,14 @@ export const Aside = ({
       style={isCollapsed ? undefined : widthStyles}
       data-testid={testId}
       data-test-value={testValue}
+      ref={elementRef}
     >
       <header
-        className={classNames(
-          "fabric-asideHeader",
-          headerClassName,
-          "grid area-head items-center",
-        )}
+        className={classNames("fabric-asideHeader", headerClassName, "grid area-head items-center")}
         data-ref="asideHeader"
       >
         {title && (
-          <div
-            className={classNames(
-              "fabric-asideTitle",
-              "truncate py-0.5 px-1 select-none pointer-events-none",
-            )}
-          >
-            {title}
-          </div>
+          <div className={classNames("fabric-asideTitle", "truncate py-0.5 px-1 select-none pointer-events-none")}>{title}</div>
         )}
         {collapsable && (
           <Icon
@@ -258,32 +239,17 @@ export const Aside = ({
         )}
         {icon && (
           <Icon
-            className={classNames(
-              "fabric-asideIcon",
-              "p-1 text-lg select-none pointer-events-none",
-            )}
+            className={classNames("fabric-asideIcon", "p-1 text-lg select-none pointer-events-none")}
             {...getIconProps(icon)}
           />
         )}
         {actions && <div className={"fabric-asideActions"}>{actions}</div>}
       </header>
       {loading && <LoadingLine />}
-      {isCollapsed && (
-        <div
-          role="none"
-          onClick={tryPeek}
-          data-ref="asidePlaceholder"
-          className={"fabric-asidePlaceholder"}
-        />
-      )}
+      {isCollapsed && <div role="none" onClick={tryPeek} data-ref="asidePlaceholder" className={"fabric-asidePlaceholder"} />}
       <section
-        ref={elementRef}
         data-ref="asideBody"
-        className={classNames(
-          "fabric-asideBody",
-          bodyClassName,
-          "overflow-hidden grid",
-        )}
+        className={classNames("fabric-asideBody", bodyClassName, "overflow-hidden grid")}
         style={isCollapsed ? widthStyles : undefined}
       >
         <ErrorBoundary>{children}</ErrorBoundary>

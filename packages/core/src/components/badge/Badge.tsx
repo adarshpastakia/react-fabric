@@ -21,16 +21,12 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { isNil, isNumber, isObject, mergeRefs } from "@react-fabric/utilities";
+import { isNil, isNumber, mergeRefs } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { cloneElement, isValidElement, useMemo } from "react";
-import {
-  type BadgeType,
-  type ChildProp,
-  type CssProp,
-  type RefProp,
-} from "../../types";
-import { getIconProps, Icon, type IconProps } from "../icon/Icon";
+import { type ChildProp, type CssProp, type RefProp } from "../../types";
+import { getIconProps } from "../../utils";
+import { Icon, type IconProps } from "../icon/Icon";
 
 export interface BadgeProps extends CssProp, RefProp, Partial<ChildProp> {
   /**
@@ -60,37 +56,8 @@ export interface BadgeProps extends CssProp, RefProp, Partial<ChildProp> {
   /**
    * badge placement
    */
-  placement?:
-    | "top-start"
-    | "top-end"
-    | "bottom-start"
-    | "bottom-end"
-    | "top"
-    | "bottom"
-    | "start"
-    | "end";
+  placement?: "top-start" | "top-end" | "bottom-start" | "bottom-end" | "top" | "bottom" | "start" | "end";
 }
-
-/**
- * Utility function to get badge properties from a badge value or object.
- * It checks if the badge is an object and returns its properties,
- *
- * @param {string | number | BadgeType} badge - The badge value or object.
- * @returns {AnyObject} An object containing badge properties.
- */
-export const getBadgeProps = (
-  badge?: string | number | BadgeType,
-): AnyObject => {
-  if (isObject(badge) && !isValidElement(badge)) {
-    return Object.assign({ forButton: true, placement: "" }, badge);
-  } else {
-    return {
-      value: badge,
-      forButton: true,
-      placement: "",
-    };
-  }
-};
 
 /**
  * A component that displays a badge with a value, icon, and optional ping animation.
@@ -137,10 +104,7 @@ export const Badge = ({
     }
   }, [value, max]);
 
-  const innerRef = useMemo(
-    () => mergeRefs(ref, (children as AnyObject)?.props.ref),
-    [ref, (children as AnyObject)?.props.ref],
-  );
+  const innerRef = useMemo(() => mergeRefs(ref, (children as AnyObject)?.props.ref), [ref, (children as AnyObject)?.props.ref]);
 
   /**
    * wrap children in a relative div to float badge, wrapper allows for floating a badge on elements with overflow hidden
@@ -166,9 +130,7 @@ export const Badge = ({
             "fabric-badge",
             className,
             "inline-block p-px min-w-2 min-h-2 text-center select-none rounded-full leading-none z-2 pointer-events-none",
-            (forButton && !placement) || inline
-              ? "relative flex-content"
-              : "absolute",
+            (forButton && !placement) || inline ? "relative flex-content" : "absolute",
           )}
         >
           {label && <span className="p-1">{label}</span>}

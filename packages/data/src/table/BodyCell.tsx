@@ -22,38 +22,16 @@
  */
 
 import { DateDisplay } from "@react-fabric/date";
-import {
-  Format,
-  getByPath,
-  isArray,
-  isObject,
-  isTrue,
-} from "@react-fabric/utilities";
+import { Format, getByPath, isArray, isObject, isTrue } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useMemo } from "react";
-import { useTableContext } from "./Context";
-import {
-  COL_DEFAULT_WIDTH,
-  COL_MAX_WIDTH,
-  COL_MIN_WIDTH,
-  type TableColumn,
-} from "./types";
+import { useTableContext } from "./context";
+import { COL_DEFAULT_WIDTH, COL_MAX_WIDTH, COL_MIN_WIDTH, type TableColumn } from "./types";
 
-export const BodyCell = ({
-  column,
-  item,
-  index,
-}: {
-  column: TableColumn;
-  item: KeyValue;
-  index: number;
-}) => {
+export const BodyCell = ({ column, item, index }: { column: TableColumn; item: KeyValue; index: number }) => {
   const { widths } = useTableContext();
 
-  const width = useMemo(
-    () => widths.get(column.id.toString()) ?? column.width,
-    [widths, column],
-  );
+  const width = useMemo(() => widths.get(column.id.toString()) ?? column.width, [widths, column]);
 
   const content = useMemo(() => {
     const value = getByPath(item, column.id.toString());
@@ -65,10 +43,7 @@ export const BodyCell = ({
       return map[`${isTrue(value) ? "true" : "false"}`];
     }
     if (column.valueMap != null) {
-      if (
-        ["number", "string"].includes(column.dataType ?? "string") &&
-        value in column.valueMap
-      ) {
+      if (["number", "string"].includes(column.dataType ?? "string") && value in column.valueMap) {
         return column.valueMap[value];
       }
     }

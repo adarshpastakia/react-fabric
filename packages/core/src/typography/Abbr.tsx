@@ -25,14 +25,9 @@ import { isEmpty, isString, tokenize } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { Fragment, useCallback, useMemo } from "react";
 import { useMemoDebugger } from "../hooks/useEffectDebugger";
-import { Tooltip, getTooltipProps } from "../overlays/tooltip/Tooltip";
-import {
-  type ChildProp,
-  type ColorType,
-  type CssProp,
-  type PaletteType,
-} from "../types";
-import { getColor } from "../utils";
+import { Tooltip } from "../overlays/tooltip/Tooltip";
+import { type ChildProp, type ColorType, type CssProp, type PaletteType } from "../types";
+import { getColor, getTooltipProps } from "../utils";
 
 interface AbbrTextProps {
   children: string;
@@ -42,10 +37,7 @@ interface AbbrTextProps {
 }
 
 const AbbrText = ({ color, children, tooltip, content }: AbbrTextProps) => {
-  const TooltipWrapper = useMemo(
-    () => (tooltip ? Tooltip : Fragment),
-    [tooltip],
-  );
+  const TooltipWrapper = useMemo(() => (tooltip ? Tooltip : Fragment), [tooltip]);
   const tooltipProps = useMemo(() => {
     return tooltip ? { ...getTooltipProps(tooltip), copyContent: content } : {};
   }, [tooltip, content]);
@@ -54,9 +46,7 @@ const AbbrText = ({ color, children, tooltip, content }: AbbrTextProps) => {
     <TooltipWrapper {...tooltipProps}>
       <abbr
         className={classNames("fabric-abbr", "whitespace-nowrap")}
-        style={
-          color ? ({ "--abbr-color": getColor(color) } as AnyObject) : undefined
-        }
+        style={color ? ({ "--abbr-color": getColor(color) } as AnyObject) : undefined}
       >
         {children}
       </abbr>
@@ -74,13 +64,7 @@ export interface AbbrProps extends ChildProp<string>, CssProp {
    *
    * [textPart, tooltip, color (class name or color string)]
    */
-  abbr: Array<
-    [
-      textPart: string,
-      tooltip: string,
-      color?: ColorType | PaletteType | string,
-    ]
-  >;
+  abbr: Array<[textPart: string, tooltip: string, color?: ColorType | PaletteType | string]>;
   /**
    * renderer callback
    */
@@ -117,22 +101,12 @@ export interface AbbrProps extends ChildProp<string>, CssProp {
  *
  * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/core-typography--abbr} for more details.
  */
-export const Abbr = ({
-  children,
-  abbr,
-  className,
-  renderer,
-  copyContent = "text",
-}: AbbrProps) => {
+export const Abbr = ({ children, abbr, className, renderer, copyContent = "text" }: AbbrProps) => {
   /** ***************** abbr text renderer *******************/
   const abbrRender = useCallback(
     (text: string, tooltip: string, color = "") => {
       return (
-        <AbbrText
-          color={color}
-          tooltip={tooltip}
-          content={copyContent === "tooltip" ? tooltip : text}
-        >
+        <AbbrText color={color} tooltip={tooltip} content={copyContent === "tooltip" ? tooltip : text}>
           {(renderer?.([text, tooltip, color]) ?? text) as string}
         </AbbrText>
       );
@@ -162,8 +136,7 @@ export const Abbr = ({
           return (
             <Fragment>
               {tokens.map(([start, text], i) => {
-                const { tooltip = "", color = "" } =
-                  titles[text.toLowerCase()] ?? {};
+                const { tooltip = "", color = "" } = titles[text.toLowerCase()] ?? {};
                 return (
                   <Fragment key={i}>
                     {start}

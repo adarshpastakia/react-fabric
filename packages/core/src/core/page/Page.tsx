@@ -23,13 +23,11 @@
 
 import classNames from "classnames";
 import { LoadingLine } from "../../components/animations/Animations";
-import { getIconProps, Icon, type IconProps } from "../../components/icon/Icon";
+import { Icon, type IconProps } from "../../components/icon/Icon";
 import { type ChildrenProp, type RefProp, type TestProps } from "../../types";
+import { getIconProps } from "../../utils";
 
-export interface PageProps
-  extends ChildrenProp,
-    TestProps,
-    RefProp<HTMLDivElement> {
+export interface PageProps extends ChildrenProp, TestProps, RefProp<HTMLDivElement> {
   /**
    * page title
    */

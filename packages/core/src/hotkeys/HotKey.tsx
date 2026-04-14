@@ -22,8 +22,8 @@
  */
 
 import { useEffectDebugger } from "../hooks/useEffectDebugger";
-import { useHotKeys } from "./HotKeyWrapper";
 import { type HotKeyProps } from "./commons";
+import { useHotKeys } from "./context";
 
 export const HotKey = ({ keyCombo, global, handler }: HotKeyProps) => {
   const { addHotKey, removeHotKey } = useHotKeys();

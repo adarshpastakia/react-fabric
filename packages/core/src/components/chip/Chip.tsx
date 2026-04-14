@@ -35,16 +35,10 @@ import {
   type SizeType,
   type TestProps,
 } from "../../types";
-import { getColor } from "../../utils";
-import { getIconProps, Icon, type IconProps } from "../icon/Icon";
+import { getColor, getIconProps } from "../../utils";
+import { Icon, type IconProps } from "../icon/Icon";
 
-export interface ChipProps
-  extends
-    CssProp,
-    AriaProps,
-    TestProps,
-    ChildProp<string | ReactElement>,
-    RefProp<HTMLDivElement> {
+export interface ChipProps extends CssProp, AriaProps, TestProps, ChildProp<string | ReactElement>, RefProp<HTMLDivElement> {
   /**
    * chip size
    */
@@ -196,10 +190,7 @@ export const Chip = <Tag extends React.ElementType = "div">({
         />
       )}
       {children && (
-        <label
-          data-ref="chipLabel"
-          className={classNames("fabric-chipLabel", "truncate flex-1")}
-        >
+        <label data-ref="chipLabel" className={classNames("fabric-chipLabel", "truncate flex-1")}>
           {children}
         </label>
       )}
@@ -208,10 +199,7 @@ export const Chip = <Tag extends React.ElementType = "div">({
           role="none"
           data-ref="chipRemove"
           data-inner-cliackable
-          className={classNames(
-            "fabric-chipRemove",
-            "cursor-pointer pe-1 opacity-65 hover:opacity-90",
-          )}
+          className={classNames("fabric-chipRemove", "cursor-pointer pe-1 opacity-65 hover:opacity-90")}
           onClick={removeHandler}
         >
           &times;

@@ -50,10 +50,10 @@ import {
   type TestProps,
   type TooltipType,
 } from "../../types";
-import { getColor } from "../../utils";
+import { getBadgeProps, getColor, getIconProps } from "../../utils";
 import { AnimationIndicator } from "../animations/Animations";
-import { Badge, getBadgeProps } from "../badge/Badge";
-import { getIconProps, Icon, type IconProps } from "../icon/Icon";
+import { Badge } from "../badge/Badge";
+import { Icon, type IconProps } from "../icon/Icon";
 
 export interface BaseProps extends CssProp, AriaProps, RefProp, TestProps {
   /**
@@ -153,9 +153,7 @@ type ButtonTypeProps =
   | { children: string | React.ReactElement; "aria-label"?: string }
   | { children?: never; "aria-label": string };
 
-export type ButtonProps<Tag extends React.ElementType = "button"> = BaseProps &
-  ButtonTypeProps &
-  PolymorphicProps<Tag>;
+export type ButtonProps<Tag extends React.ElementType = "button"> = BaseProps & ButtonTypeProps & PolymorphicProps<Tag>;
 
 /**
  * A versatile button component that supports various styles, icons, and actions.
@@ -245,10 +243,7 @@ export const Button = <Tag extends React.ElementType = "button">({
     "ActionButton done handler",
   );
 
-  const TooltipWrapper = useMemo(
-    () => (actionMessage ? Tooltip : Fragment),
-    [actionMessage, actionDone],
-  );
+  const TooltipWrapper = useMemo(() => (actionMessage ? Tooltip : Fragment), [actionMessage, actionDone]);
   const tooltipProps = useMemo(() => {
     if (actionDone && actionMessage) {
       return {
@@ -282,9 +277,7 @@ export const Button = <Tag extends React.ElementType = "button">({
       data-loading={busy || loading}
       data-disabled={disabled}
     >
-      {!disabled && hotKey && (
-        <HotKey keyCombo={hotKey} handler={hotKeyHandler.current} />
-      )}
+      {!disabled && hotKey && <HotKey keyCombo={hotKey} handler={hotKeyHandler.current} />}
       <TooltipWrapper {...tooltipProps}>
         <E
           ref={mergeRefs(ref, refEl)}
@@ -307,29 +300,16 @@ export const Button = <Tag extends React.ElementType = "button">({
           data-variant={variant}
           {...aria}
         >
-          {icon && (
-            <Icon
-              className={"fabric-buttonIcon"}
-              data-align={iconAlign}
-              {...getIconProps(icon)}
-            />
-          )}
-          {isValidElement(children) && (
-            <div className={"fabric-buttonChild"}>{children}</div>
-          )}
+          {icon && <Icon className={"fabric-buttonIcon"} data-align={iconAlign} {...getIconProps(icon)} />}
+          {isValidElement(children) && <div className={"fabric-buttonChild"}>{children}</div>}
           {isString(children) && (
-            <label
-              className={classNames("fabric-buttonLabel", "truncate")}
-              data-colored-icon={isObject(icon) && "bg" in icon}
-            >
+            <label className={classNames("fabric-buttonLabel", "truncate")} data-colored-icon={isObject(icon) && "bg" in icon}>
               {children}
             </label>
           )}
           {!isNil(badge) && <Badge {...badgeProps} />}
           {hotKey && children && <HotKeyLabel keyCombo={hotKey} />}
-          {altIcon && (
-            <Icon className={"fabric-altIcon"} icon={altIcon} rtlFlip />
-          )}
+          {altIcon && <Icon className={"fabric-altIcon"} icon={altIcon} rtlFlip />}
         </E>
       </TooltipWrapper>
       {actionDone && (

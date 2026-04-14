@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { useEffectEvent, useRef, type RefObject } from "react";
+import { useCallback, useEffectEvent, useRef, type RefObject } from "react";
 import { useIsRtl } from "./useIsRtl";
 
 interface Options {
@@ -68,25 +68,29 @@ export const useResize = <T extends HTMLElement = HTMLDivElement>(
   const refEl = useRef<T>(null);
   const isRtl = useIsRtl();
 
-  const onResizing = useEffectEvent((evt: MouseEvent) => {
-    if (refEl.current != null) {
-      /** ***************** check if reverse enabled of RTL *******************/
-      const reversed = ((isRtl ? 1 : 0) ^ (isReverse ? 1 : 0)) === 1;
-      const box = refEl.current?.getBoundingClientRect();
-      const x =
-        (evt.clientX - (reversed ? box.left : box.right)) * (reversed ? -1 : 1);
-      const y = evt.clientY - box.bottom;
-      onResize({ x, y });
-    }
-  });
+  const onResizing = useCallback(
+    (evt: MouseEvent) => {
+      if (refEl.current != null) {
+        /** ***************** check if reverse enabled of RTL *******************/
+        const reversed = ((isRtl ? 1 : 0) ^ (isReverse ? 1 : 0)) === 1;
+        const box = refEl.current?.getBoundingClientRect();
+        const diffX = ((box.left + box.right) / 2) * (reversed ? -1 : 1);
+        const diffY = (box.top + box.bottom) / 2;
+        const x = evt.clientX - diffX;
+        const y = evt.clientY - diffY;
+        onResize({ x, y });
+      }
+    },
+    [isRtl, isReverse, onResize],
+  );
 
   /** ***************** dettach handlers on mouseup *******************/
-  const onResizeEnd = useEffectEvent(() => {
+  const onResizeEnd = useCallback(() => {
     document.body.style.cursor = "unset";
     document.removeEventListener("mousemove", onResizing);
     document.removeEventListener("mouseup", onResizeEnd);
     onEnd?.();
-  });
+  }, [onResizing, onEnd]);
 
   /** ***************** attach handlers on mousedown *******************/
   const onResizeStart = useEffectEvent((e: React.MouseEvent) => {

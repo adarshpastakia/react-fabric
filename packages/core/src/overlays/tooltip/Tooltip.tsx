@@ -35,7 +35,7 @@ import {
   useInteractions,
   type Placement,
 } from "@floating-ui/react";
-import { isObject, isString, mergeRefs } from "@react-fabric/utilities";
+import { isString, mergeRefs } from "@react-fabric/utilities";
 import classNames from "classnames";
 import {
   Fragment,
@@ -66,18 +66,6 @@ export interface TooltipProps extends TooltipType, RefProp {
   children: ReactElement<KeyValue>;
 }
 
-export const getTooltipProps = (
-  tooltip?: string | TooltipType,
-  innerRef?: AnyObject,
-): (TooltipType & { ref: AnyObject }) | undefined => {
-  if (isString(tooltip) || isValidElement(tooltip)) {
-    return { ref: innerRef, placement: "top", content: tooltip };
-  }
-  if (isObject(tooltip)) {
-    return Object.assign({ ref: innerRef, placement: "top" }, tooltip);
-  }
-};
-
 export const Tooltip = ({
   ref,
   children,
@@ -101,9 +89,7 @@ export const Tooltip = ({
   const placement = useMemo<Placement>(() => {
     if (isRtl)
       return (
-        _placement?.includes("left")
-          ? _placement.replace("left", "right")
-          : (_placement?.replace("right", "left") ?? "top")
+        _placement?.includes("left") ? _placement.replace("left", "right") : (_placement?.replace("right", "left") ?? "top")
       ) as Placement;
 
     return _placement ?? "top";
@@ -131,9 +117,7 @@ export const Tooltip = ({
     handleClose: copyContent ? safePolygon({ buffer: 1 }) : undefined,
   });
 
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    open ? undefined : hover,
-  ]);
+  const { getReferenceProps, getFloatingProps } = useInteractions([open ? undefined : hover]);
 
   useEffect(() => {
     context.update();
@@ -172,12 +156,7 @@ export const Tooltip = ({
         ...(open ? {} : getReferenceProps(rest)),
       })}
       {isOpen && content && (
-        <FloatingPortal
-          root={
-            refs.domReference.current?.closest<HTMLElement>(".theme-base") ??
-            undefined
-          }
-        >
+        <FloatingPortal root={refs.domReference.current?.closest<HTMLElement>(".theme-base") ?? undefined}>
           <dfn
             data-ref="tooltip"
             className={classNames(
@@ -195,16 +174,9 @@ export const Tooltip = ({
             {isValidElement(content) && content}
             {isString(content) && (
               <span
-                className={classNames(
-                  "font-medium flex-1 break-all whitespace-pre-wrap mixed-lang",
-                  !textColor && "contrast",
-                )}
+                className={classNames("font-medium flex-1 break-all whitespace-pre-wrap mixed-lang", !textColor && "contrast")}
                 style={{
-                  color: textColor
-                    ? undefined
-                    : color
-                      ? getColor(color)
-                      : "var(--bg-color-muted)",
+                  color: textColor ? undefined : color ? getColor(color) : "var(--bg-color-muted)",
                 }}
               >
                 {content}

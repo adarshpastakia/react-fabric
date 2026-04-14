@@ -211,32 +211,3 @@ export const Form = <K extends KeyValue>({
     </FormProvider>
   );
 };
-
-export const useForm = <K extends KeyValue = KeyValue>() => {
-  const {
-    formState,
-    getValues,
-    setValue,
-    watch,
-    reset,
-    resetField,
-    setError,
-    setFocus,
-  } = useFormContext<K>();
-  const values = useWatch<K>();
-
-  return {
-    values: {
-      ...values,
-      ...getValues(),
-    },
-    formState,
-    getValues,
-    setValue,
-    watch,
-    reset,
-    resetField,
-    setError,
-    setFocus,
-  };
-};

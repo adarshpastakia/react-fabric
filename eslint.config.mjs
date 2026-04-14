@@ -1,10 +1,11 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import stylistic from "@stylistic/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
 import jsxA11Y from "eslint-plugin-jsx-a11y";
+import { reactRefresh } from "eslint-plugin-react-refresh";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
-import tsParser from "@typescript-eslint/parser";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -33,6 +34,7 @@ export default defineConfig([
     plugins: {
       "@stylistic": stylistic,
       "jsx-a11y": jsxA11Y,
+      "react-refresh": reactRefresh.plugin,
     },
 
     files: ["packages/**/*.ts", "packages/**/*.tsx"],
@@ -60,6 +62,7 @@ export default defineConfig([
     rules: {
       "react/react-in-jsx-scope": "off",
       "jsx-a11y/no-autofocus": "off",
+      "react-refresh/only-export-components": "error",
       "jsx-a11y/click-events-have-key-events": "off",
       "@typescript-eslint/no-namespace": "off",
       "@typescript-eslint/no-unsafe-argument": "off",

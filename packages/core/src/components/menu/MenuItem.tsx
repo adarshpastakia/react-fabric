@@ -29,8 +29,9 @@ import { HotKey } from "../../hotkeys/HotKey";
 import { HotKeyLabel } from "../../hotkeys/HotKeyLabel";
 import { Tooltip } from "../../overlays";
 import { type PolymorphicProps } from "../../types";
-import { Badge, getBadgeProps } from "../badge/Badge";
-import { getIconProps, Icon } from "../icon/Icon";
+import { getBadgeProps, getIconProps } from "../../utils";
+import { Badge } from "../badge/Badge";
+import { Icon } from "../icon/Icon";
 import { type MenuItemProps } from "./types";
 
 /**
@@ -92,23 +93,13 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
     if (minimal && !path) {
       path = iconToken(label);
     }
-    return (
-      <Icon
-        className={classNames("fabric-menuIcon", minimal && "minimal")}
-        {...getIconProps(path ?? "")}
-      />
-    );
+    return <Icon className={classNames("fabric-menuIcon", minimal && "minimal")} {...getIconProps(path ?? "")} />;
   }, [icon, minimal, label]);
 
   const Wrapper = useCallback(
     ({ children, ...rest }: AnyObject) => {
       return minimal ? (
-        <Tooltip
-          content={label}
-          placement="right"
-          disabled={childOpen}
-          {...rest}
-        >
+        <Tooltip content={label} placement="right" disabled={childOpen} {...rest}>
           {children}
         </Tooltip>
       ) : (
@@ -122,9 +113,7 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
     return (
       <div className="flex flex-nowrap text-start items-center">
         {iconEl}
-        {!minimal && (
-          <label className="flex-1 pe-4 py-[0.375em] truncate">{label}</label>
-        )}
+        {!minimal && <label className="flex-1 pe-4 py-[0.375em] truncate">{label}</label>}
         {appendLabel && (
           <span
             className={classNames(
@@ -138,16 +127,10 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
           </span>
         )}
         {badge && (
-          <Badge
-            {...badgeProps}
-            placement={minimal ? "end" : ""}
-            className={classNames("me-1", badgeProps.className)}
-          />
+          <Badge {...badgeProps} placement={minimal ? "end" : ""} className={classNames("me-1", badgeProps.className)} />
         )}
         {hotKey && <HotKeyLabel keyCombo={hotKey} />}
-        {!minimal && altIcon && (
-          <Icon className="text-muted px-1" icon={altIcon} rtlFlip />
-        )}
+        {!minimal && altIcon && <Icon className="text-muted px-1" icon={altIcon} rtlFlip />}
       </div>
     );
   }, [iconEl, minimal, appendLabel, label, badge, badgeProps, hotKey, active]);
@@ -177,9 +160,7 @@ export const MenuItem = <Tag extends React.ElementType = "button">({
         }}
         {...(minimal ? {} : aria)}
       >
-        {!disabled && hotKey && (
-          <HotKey keyCombo={hotKey} handler={() => elRef.current?.click?.()} />
-        )}
+        {!disabled && hotKey && <HotKey keyCombo={hotKey} handler={() => elRef.current?.click?.()} />}
         {menuLabel}
       </E>
     </Wrapper>

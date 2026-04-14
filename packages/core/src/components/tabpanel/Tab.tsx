@@ -37,17 +37,12 @@ import {
   type TestProps,
   type TooltipProp,
 } from "../../types";
-import { Badge, getBadgeProps } from "../badge/Badge";
+import { getBadgeProps, getIconProps } from "../../utils";
+import { Badge } from "../badge/Badge";
 import { DropdownTool } from "../dropdown/DropdownTool";
-import { getIconProps, Icon, type IconProps } from "../icon/Icon";
+import { Icon, type IconProps } from "../icon/Icon";
 
-export interface TabProps
-  extends Partial<ChildrenProp>,
-    CssProp,
-    RefProp,
-    AriaProps,
-    TestProps,
-    TooltipProp {
+export interface TabProps extends Partial<ChildrenProp>, CssProp, RefProp, AriaProps, TestProps, TooltipProp {
   /**
    * tab id
    */
@@ -179,29 +174,15 @@ export const Tab = <Tag extends React.ElementType = "button">({
         {...aria}
       >
         {icon && <Icon className="flex-content p-2" {...getIconProps(icon)} />}
-        {!minimal && (
-          <label className="flex-initial truncate text-center px-1 py-1">
-            {label}
-          </label>
-        )}
+        {!minimal && <label className="flex-initial truncate text-center px-1 py-1">{label}</label>}
         {badge && (
-          <Badge
-            {...badgeProps}
-            placement={minimal ? "end" : ""}
-            className={classNames("me-1", badgeProps.className)}
-          />
+          <Badge {...badgeProps} placement={minimal ? "end" : ""} className={classNames("me-1", badgeProps.className)} />
         )}
-        {actions && active && (
-          <DropdownTool className="bg-tint-50/20 me-1 z-5">
-            {actions}
-          </DropdownTool>
-        )}
+        {actions && active && <DropdownTool className="bg-tint-50/20 me-1 z-5">{actions}</DropdownTool>}
         {onClose && (
           <span
             role="none"
-            className={classNames(
-              "cursor-pointer me-1 opacity-65 hover:opacity-90 pointer-events-auto",
-            )}
+            className={classNames("cursor-pointer me-1 opacity-65 hover:opacity-90 pointer-events-auto")}
             onClick={(e) => {
               onClose?.();
               e.stopPropagation();

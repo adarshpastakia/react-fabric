@@ -23,7 +23,7 @@
 
 import { ArcgisZoom } from "@arcgis/map-components-react";
 import "@arcgis/map-components/components/arcgis-zoom";
-import { useMap } from "../viewer/Context";
+import { useMap } from "../viewer/context";
 
 export const Zoom = () => {
   const { disableZoom } = useMap();

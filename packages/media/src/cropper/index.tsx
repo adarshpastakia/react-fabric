@@ -22,7 +22,7 @@
  */
 
 import Konva from "konva";
-import { useEffect, useEffectEvent, useRef, useState } from "react";
+import { useCallback, useEffect, useEffectEvent, useRef, useState } from "react";
 import { Ellipse, Layer, Rect, Stage } from "react-konva";
 import { CropProps } from "../typedefs";
 
@@ -84,7 +84,7 @@ export const Cropper = ({
       });
     }
   });
-  const stopDraw = useEffectEvent(() => {
+  const stopDraw = useCallback(() => {
     if (!isDrawing.current) return;
     isDrawing.current = false;
 
@@ -100,10 +100,7 @@ export const Cropper = ({
           },
         });
       }
-      if (
-        mode.current === "ellipse" &&
-        shapeRef.current instanceof Konva.Ellipse
-      ) {
+      if (mode.current === "ellipse" && shapeRef.current instanceof Konva.Ellipse) {
         onCrop({
           x: shapeRef.current.x() - shapeRef.current.radiusX(),
           y: shapeRef.current.y() - shapeRef.current.radiusY(),
@@ -118,14 +115,14 @@ export const Cropper = ({
       }
     }
     setProps({});
-  });
+  }, [onCrop]);
   useEffect(() => {
     document.addEventListener("mouseup", stopDraw);
 
     return () => {
       document.removeEventListener("mouseup", stopDraw);
     };
-  }, []);
+  }, [stopDraw]);
 
   useEffect(() => {
     setProps({});
@@ -141,12 +138,8 @@ export const Cropper = ({
       onMouseMove={draw}
     >
       <Layer scaleX={ratio} scaleY={ratio}>
-        {cropMode === "rect" && (
-          <Rect {...props} {...style.current} ref={shapeRef} />
-        )}
-        {cropMode === "ellipse" && (
-          <Ellipse {...props} {...style.current} ref={shapeRef} />
-        )}
+        {cropMode === "rect" && <Rect {...props} {...style.current} ref={shapeRef} />}
+        {cropMode === "ellipse" && <Ellipse {...props} {...style.current} ref={shapeRef} />}
       </Layer>
     </Stage>
   );

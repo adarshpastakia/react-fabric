@@ -21,24 +21,13 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import GraphicsLayer, {
-  type GraphicsLayerProperties,
-} from "@arcgis/core/layers/GraphicsLayer";
+import GraphicsLayer, { type GraphicsLayerProperties } from "@arcgis/core/layers/GraphicsLayer";
 import "@arcgis/map-components/components/arcgis-features";
-import {
-  createContext,
-  type ReactElement,
-  useContext,
-  useEffect,
-  useMemo,
-} from "react";
+import { type ReactElement, useEffect, useMemo } from "react";
+import { MarkerContext } from "../markers/context";
 import { type Fill } from "../markers/Fill";
 import { type Pin } from "../markers/Pin";
-import { useMap } from "../viewer/Context";
-
-const MarkerContext = createContext<GraphicsLayer>(
-  null as unknown as GraphicsLayer,
-);
+import { useMap } from "../viewer/context";
 
 type MarkerChildren = ReactElement<typeof Fill | typeof Pin>;
 
@@ -79,9 +68,5 @@ export const MarkerLayer = ({
     }
   }, [layer, map, view]);
 
-  return (
-    <MarkerContext.Provider value={layer}>{children}</MarkerContext.Provider>
-  );
+  return <MarkerContext.Provider value={layer}>{children}</MarkerContext.Provider>;
 };
-
-export const useMarkerLayer = () => useContext(MarkerContext);

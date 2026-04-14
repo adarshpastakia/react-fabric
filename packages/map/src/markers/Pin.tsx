@@ -26,8 +26,8 @@ import Graphic, { type GraphicProperties } from "@arcgis/core/Graphic";
 import SimpleMarkerSymbol from "@arcgis/core/symbols/SimpleMarkerSymbol";
 import { type LngLatLike, getLatitudeLongitude } from "@react-fabric/utilities";
 import { useEffect, useMemo } from "react";
-import { useMarkerLayer } from "../layers/Marker";
-import { useMap } from "../viewer/Context";
+import { useMap } from "../viewer/context";
+import { useMarkerLayer } from "./context";
 
 type Markers = "pin" | "pin-radius" | "marker" | "marker-radius";
 const paths: Record<Markers, string> = {
@@ -58,14 +58,7 @@ export const Pin = ({
   size?: string | number;
   color?: string;
   path?: string;
-  style?:
-    | "circle"
-    | "square"
-    | "cross"
-    | "x"
-    | "diamond"
-    | "triangle"
-    | Markers;
+  style?: "circle" | "square" | "cross" | "x" | "diamond" | "triangle" | Markers;
   borderWidth?: string | number;
   borderColor?: string;
   animate?: boolean;

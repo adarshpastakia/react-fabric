@@ -22,26 +22,13 @@
  */
 
 import { useMemo } from "react";
-import { useTableContext } from "./Context";
-import {
-  COL_DEFAULT_WIDTH,
-  COL_MAX_WIDTH,
-  COL_MIN_WIDTH,
-  type TableColumn,
-} from "./types";
+import { useTableContext } from "./context";
+import { COL_DEFAULT_WIDTH, COL_MAX_WIDTH, COL_MIN_WIDTH, type TableColumn } from "./types";
 
-export const EmptyCell = ({
-  id,
-  width: _width,
-  maxWidth,
-  minWidth,
-}: TableColumn) => {
+export const EmptyCell = ({ id, width: _width, maxWidth, minWidth }: TableColumn) => {
   const { widths } = useTableContext();
 
-  const width = useMemo(
-    () => widths.get(id.toString()) ?? _width,
-    [widths, id, _width],
-  );
+  const width = useMemo(() => widths.get(id.toString()) ?? _width, [widths, id, _width]);
 
   return (
     <div

@@ -31,7 +31,7 @@ import {
   type TLShapeId,
 } from "@tldraw/tldraw";
 import domtoimage from "dom-to-image";
-import { useDrawContext } from "../../DrawContext";
+import { useDrawContext } from "../../context";
 
 type CardShape = TLBaseShape<
   "data-card",

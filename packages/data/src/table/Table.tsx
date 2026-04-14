@@ -40,7 +40,7 @@ import { useTranslation } from "react-i18next";
 import { AddColumn } from "./AddColumn";
 import { BodyRow } from "./BodyRow";
 import { CheckboxCell } from "./CheckboxCell";
-import { TableProvider } from "./Context";
+import { TableProvider } from "./Provider";
 import { EmptyCell } from "./EmptyCell";
 import { HeaderCell } from "./HeaderCell";
 import { type TableProps } from "./types";

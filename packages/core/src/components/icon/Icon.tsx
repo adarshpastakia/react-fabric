@@ -82,28 +82,7 @@ export interface Props extends CssProp, AriaProps, RefProp, TestProps {
 export type IconProps =
   | string
   | React.ReactElement
-  | Pick<
-      Props,
-      | "icon"
-      | "iconSrc"
-      | "bg"
-      | "color"
-      | "size"
-      | "rtlFlip"
-      | "viewBox"
-      | "rounded"
-      | "animate"
-    >;
-
-export const getIconProps = (props: IconProps): Props => {
-  if (typeof props === "string") {
-    return { icon: props };
-  }
-  if (isValidElement(props)) {
-    return { icon: props };
-  }
-  return props as unknown as Props;
-};
+  | Pick<Props, "icon" | "iconSrc" | "bg" | "color" | "size" | "rtlFlip" | "viewBox" | "rounded" | "animate">;
 
 const SvgTextSize = ["", ".875em", ".525em", ".35em", ".25em"];
 const SizeMap: KeyValue<string> = {
@@ -241,13 +220,7 @@ export const Icon = ({
       data-clickable={!!onClick}
       data-inner-clickable={!!onClick}
     >
-      {iconSrc && !imageFailed && (
-        <img
-          src={iconSrc}
-          alt="fallback icon"
-          onError={() => setImageFailed(true)}
-        />
-      )}
+      {iconSrc && !imageFailed && <img src={iconSrc} alt="fallback icon" onError={() => setImageFailed(true)} />}
       {(!iconSrc || imageFailed) && iconEl}
     </dfn>
   );

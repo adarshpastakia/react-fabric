@@ -21,7 +21,8 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-export { Annotator } from "./annotator/Annotator";
+export { Annotator } from "./annotator";
+export { AnnotatorFieldType } from "./annotator/types";
 
 import { ImageProps } from "./image/types";
 import { VideoProps } from "./video/types";

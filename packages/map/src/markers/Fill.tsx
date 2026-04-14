@@ -27,8 +27,8 @@ import SimpleFillSymbol from "@arcgis/core/symbols/SimpleFillSymbol";
 import { type LngLatLike, convertLatLng } from "@react-fabric/utilities";
 import chroma from "chroma-js";
 import { useEffect, useMemo } from "react";
-import { useMarkerLayer } from "../layers/Marker";
-import { useMap } from "../viewer/Context";
+import { useMap } from "../viewer/context";
+import { useMarkerLayer } from "./context";
 
 /**
  * Fill graphic for displaying a fill polygon on the map.
@@ -44,15 +44,7 @@ export const Fill = ({
 }: {
   coords: LngLatLike[];
   color?: string;
-  style?:
-    | "backward-diagonal"
-    | "cross"
-    | "diagonal-cross"
-    | "forward-diagonal"
-    | "horizontal"
-    | "none"
-    | "solid"
-    | "vertical";
+  style?: "backward-diagonal" | "cross" | "diagonal-cross" | "forward-diagonal" | "horizontal" | "none" | "solid" | "vertical";
   borderWidth?: string | number;
   borderColor?: string;
   animate?: boolean;

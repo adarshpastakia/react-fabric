@@ -34,16 +34,11 @@ import { isString } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { isValidElement, useEffect, useEffectEvent } from "react";
 import { LoadingLine } from "../../components/animations/Animations";
-import { getIconProps, Icon, type IconProps } from "../../components/icon/Icon";
+import { Icon, type IconProps } from "../../components/icon/Icon";
 import { Header } from "../../core/headfoot/HeadFoot";
 import { HotKeyWrapper } from "../../hotkeys/HotKeyWrapper";
-import {
-  type AriaProps,
-  type CallbackReturn,
-  type ChildrenProp,
-  type Elements,
-  type TestProps,
-} from "../../types";
+import { type AriaProps, type CallbackReturn, type ChildrenProp, type Elements, type TestProps } from "../../types";
+import { getIconProps } from "../../utils";
 
 export interface FlyoutProps extends AriaProps, TestProps, ChildrenProp {
   icon?: IconProps;
@@ -148,14 +143,7 @@ export const Flyout = ({
           onClose?.(...args);
         }, 250);
       }
-      ret === false &&
-        setTimeout(
-          () =>
-            refs.floating.current
-              ?.querySelector<HTMLElement>('[role="dialog"]')
-              ?.focus(),
-          50,
-        );
+      ret === false && setTimeout(() => refs.floating.current?.querySelector<HTMLElement>('[role="dialog"]')?.focus(), 50);
     });
   });
 
@@ -166,10 +154,7 @@ export const Flyout = ({
   }, []);
 
   const tryClosing = useEffectEvent((e: React.MouseEvent) => {
-    if (
-      !!closeOnClick ||
-      (e.target as HTMLElement).closest("[data-flyout-dismiss='true']")
-    ) {
+    if (!!closeOnClick || (e.target as HTMLElement).closest("[data-flyout-dismiss='true']")) {
       setTimeout(() => {
         handleClose();
       }, 100);
@@ -208,26 +193,14 @@ export const Flyout = ({
           {...aria}
         >
           <HotKeyWrapper>
-            <Header
-              flex
-              align="center"
-              className={classNames("fabric-flyoutHeader", headerClassName)}
-            >
-              {isString(icon) && (
-                <Icon
-                  className={classNames(iconClassName, "p-1")}
-                  {...getIconProps(icon)}
-                />
-              )}
+            <Header flex align="center" className={classNames("fabric-flyoutHeader", headerClassName)}>
+              {isString(icon) && <Icon className={classNames(iconClassName, "p-1")} {...getIconProps(icon)} />}
               {isValidElement(icon) && icon}
               <label className="flex-1 truncate py-2 px-1">{title}</label>
               {actions}
               <Icon
                 data-ref="panelClose"
-                className={classNames(
-                  "fabric-panelAction",
-                  "cursor-pointer p-1 text-xl self-center",
-                )}
+                className={classNames("fabric-panelAction", "cursor-pointer p-1 text-xl self-center")}
                 icon="icon-[mdi--close]"
                 onClick={() => handleClose(false)}
               />
@@ -235,10 +208,7 @@ export const Flyout = ({
             {loading && <LoadingLine />}
             <div
               role="dialog"
-              className={classNames(
-                "fabric-flyoutBody",
-                "flex-1 grid overflow-hidden",
-              )}
+              className={classNames("fabric-flyoutBody", "flex-1 grid overflow-hidden")}
               {...({ tabIndex: 0 } as AnyObject)}
             >
               {children}

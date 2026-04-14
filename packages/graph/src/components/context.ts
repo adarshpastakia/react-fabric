@@ -4,7 +4,7 @@
  *
  *
  * The MIT License (MIT)
- * Copyright (c) 2024 Adarsh Pastakia
+ * Copyright (c) 2026 Adarsh Pastakia
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
  * and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -22,15 +22,22 @@
  */
 
 import { createContext, useContext } from "react";
+import { Graph } from "../graph";
+import { useDragSelection } from "../hooks/sigmaDragSelect";
+import { useSigma } from "../hooks/useSigma";
+import { EdgeAttributes, NodeAttributes } from "../types";
 
-interface Props {
-  renderer?: (props: KeyValue) => AnyObject;
+interface Context<N = KeyValue, E = KeyValue> {
+  sigma: ReturnType<typeof useSigma>;
+  graph: Graph<NodeAttributes<N>, EdgeAttributes<E>>;
+  selected: string[];
+  layoutRunning: boolean;
+  dragSelector: ReturnType<typeof useDragSelection>;
+  resetViewport: () => void;
+  zoomIn: () => void;
+  zoomOut: () => void;
 }
 
-const DrawContext = createContext<Props>({});
+export const GraphContext = createContext<Context>({} as Context);
 
-export const DrawContextProvider = ({ children, ...props }: KeyValue) => {
-  return <DrawContext.Provider value={props}>{children}</DrawContext.Provider>;
-};
-
-export const useDrawContext = () => useContext(DrawContext);
+export const useGraph = <N = KeyValue, E = KeyValue>() => useContext(GraphContext) as Context<N, E>;

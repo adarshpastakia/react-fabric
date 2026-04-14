@@ -25,7 +25,7 @@ import "@arcgis/core/assets/esri/themes/light/main.css";
 import { Section, useIsDark } from "@react-fabric/core";
 import { useEffect } from "react";
 import { type MapViewerProps } from "../types";
-import { MapProvider } from "./Context";
+import { MapProvider } from "./Provider";
 
 export const MapViewer = ({ children, ...props }: MapViewerProps) => {
   const isDark = useIsDark();

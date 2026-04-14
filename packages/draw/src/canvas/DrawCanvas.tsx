@@ -48,11 +48,9 @@ import {
   type FC,
   type Ref,
 } from "react";
-import { DrawContextProvider } from "./DrawContext";
-import {
-  AvatarShapeTool,
-  AvatarShapeUtil,
-} from "./shapes/avatar/AvatarShapeTool";
+import { getSvgAsDataUrl } from "./exportToSvg";
+import { DrawContextProvider } from "./Provider";
+import { AvatarShapeTool, AvatarShapeUtil } from "./shapes/avatar/AvatarShapeTool";
 import { AudioShapeUtil } from "./shapes/custom/AudioShape";
 import { CardShapeUtil } from "./shapes/custom/CardShape";
 import { FileShapeUtil } from "./shapes/custom/FileShape";
@@ -65,37 +63,6 @@ const customAssetUrls: TLUiAssetUrlOverrides = {
       "data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiPgo8cGF0aCBkPSJNMjIuOCAyMi44di0yLjRjMC0xLjY1Ni0wLjY3My0zLjE1OC0xLjc1Ny00LjI0M3MtMi41ODctMS43NTctNC4yNDMtMS43NTdoLTkuNmMtMS42NTYgMC0zLjE1OCAwLjY3My00LjI0MyAxLjc1N3MtMS43NTcgMi41ODctMS43NTcgNC4yNDN2Mi40YzAgMC42NjIgMC41MzggMS4yIDEuMiAxLjJzMS4yLTAuNTM4IDEuMi0xLjJ2LTIuNGMwLTAuOTk1IDAuNDAyLTEuODkyIDEuMDU1LTIuNTQ1czEuNTUtMS4wNTUgMi41NDUtMS4wNTVoOS42YzAuOTk1IDAgMS44OTIgMC40MDIgMi41NDUgMS4wNTVzMS4wNTUgMS41NSAxLjA1NSAyLjU0NXYyLjRjMCAwLjY2MiAwLjUzOCAxLjIgMS4yIDEuMnMxLjItMC41MzggMS4yLTEuMnpNMTggNmMwLTEuNjU2LTAuNjczLTMuMTU4LTEuNzU3LTQuMjQzcy0yLjU4Ny0xLjc1Ny00LjI0My0xLjc1Ny0zLjE1OCAwLjY3My00LjI0MyAxLjc1Ny0xLjc1NyAyLjU4Ny0xLjc1NyA0LjI0MyAwLjY3MyAzLjE1OCAxLjc1NyA0LjI0MyAyLjU4NyAxLjc1NyA0LjI0MyAxLjc1NyAzLjE1OC0wLjY3MyA0LjI0My0xLjc1NyAxLjc1Ny0yLjU4NyAxLjc1Ny00LjI0M3pNMTUuNiA2YzAgMC45OTUtMC40MDIgMS44OTItMS4wNTUgMi41NDVzLTEuNTUgMS4wNTUtMi41NDUgMS4wNTUtMS44OTItMC40MDItMi41NDUtMS4wNTUtMS4wNTUtMS41NS0xLjA1NS0yLjU0NSAwLjQwMi0xLjg5MiAxLjA1NS0yLjU0NSAxLjU1LTEuMDU1IDIuNTQ1LTEuMDU1IDEuODkyIDAuNDAyIDIuNTQ1IDEuMDU1IDEuMDU1IDEuNTUgMS4wNTUgMi41NDV6Ij48L3BhdGg+Cjwvc3ZnPgo=",
   },
 };
-
-export async function getSvgAsDataUrl(svg: SVGElement) {
-  const clone = svg.cloneNode(true) as SVGGraphicsElement;
-  clone.setAttribute("encoding", 'UTF-8"');
-
-  const fileReader = new FileReader();
-  const imgs = Array.from(clone.querySelectorAll("image"));
-
-  for (const img of imgs) {
-    const src = img.getAttribute("xlink:href");
-    if (src) {
-      if (!src.startsWith("data:")) {
-        const blob = await (await fetch(src)).blob();
-        const base64 = await new Promise<string>((resolve, reject) => {
-          fileReader.onload = () => resolve(fileReader.result as string);
-          fileReader.onerror = () => reject(fileReader.error);
-          fileReader.readAsDataURL(blob);
-        });
-        img.setAttribute("xlink:href", base64);
-      }
-    }
-  }
-
-  const svgStr = new XMLSerializer().serializeToString(clone);
-  // NOTE: `unescape` works everywhere although deprecated
-  const base64SVG =
-    typeof window !== "undefined"
-      ? window.btoa(unescape(encodeURIComponent(svgStr)))
-      : "";
-  return `data:image/svg+xml;base64,${base64SVG}`;
-}
 
 export interface DrawProps {
   snapshot?: TLEditorSnapshot;
@@ -133,12 +100,7 @@ const TypeMap: KeyValue = {
  * @see {@link https://adarshpastakia.github.io/react-fabric/?path=/story/draw-playground--playground}
  * @see {@link https://tldraw.com/docs/}
  */
-export const DrawCanvas: FC<DrawProps> = ({
-  snapshot,
-  renderer,
-  onUpdate,
-  canvasRef,
-}) => {
+export const DrawCanvas: FC<DrawProps> = ({ snapshot, renderer, onUpdate, canvasRef }) => {
   const [editorRef, setEditor] = useState<Editor>();
   const isDark = useIsDark();
 
@@ -184,8 +146,7 @@ export const DrawCanvas: FC<DrawProps> = ({
       }
       const { type, ...props } = JSON.parse(data);
       if (type in TypeMap) {
-        const { x = 0, y = 0 } =
-          editorRef?.getContainer().getBoundingClientRect() ?? {};
+        const { x = 0, y = 0 } = editorRef?.getContainer().getBoundingClientRect() ?? {};
         editorRef?.createShape({
           type: TypeMap[type],
           x: e.clientX - x,
@@ -203,9 +164,7 @@ export const DrawCanvas: FC<DrawProps> = ({
     () => ({
       exportPages: async () => {
         const currentPage = editorRef?.getCurrentPageId();
-        const pages = Object.keys(
-          editorRef?.store.getStoreSnapshot().store ?? {},
-        ).filter((key) => key.startsWith("page:"));
+        const pages = Object.keys(editorRef?.store.getStoreSnapshot().store ?? {}).filter((key) => key.startsWith("page:"));
         const pageSnapshots: KeyValue[] = [];
         while (pages.length) {
           const pg: AnyObject = pages.shift();
@@ -241,14 +200,7 @@ export const DrawCanvas: FC<DrawProps> = ({
     () => (
       <Tldraw
         assetUrls={customAssetUrls}
-        shapeUtils={[
-          AvatarShapeUtil,
-          AudioShapeUtil,
-          ImageShapeUtil,
-          VideoShapeUtil,
-          CardShapeUtil,
-          FileShapeUtil,
-        ]}
+        shapeUtils={[AvatarShapeUtil, AudioShapeUtil, ImageShapeUtil, VideoShapeUtil, CardShapeUtil, FileShapeUtil]}
         tools={[AvatarShapeTool]}
         onMount={setEditor}
         components={{
@@ -258,10 +210,7 @@ export const DrawCanvas: FC<DrawProps> = ({
             return (
               <DefaultToolbar {...props}>
                 <DefaultToolbarContent />
-                <TldrawUiMenuItem
-                  {...tools.avatar}
-                  isSelected={isAvatarSelected}
-                />
+                <TldrawUiMenuItem {...tools.avatar} isSelected={isAvatarSelected} />
               </DefaultToolbar>
             );
           },
@@ -298,12 +247,7 @@ export const DrawCanvas: FC<DrawProps> = ({
   return (
     <DrawContextProvider renderer={renderer}>
       <Section>
-        <div
-          className="absolute inset-0"
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-          data-ref="drawCanvas"
-        >
+        <div className="absolute inset-0" onDragOver={handleDragOver} onDrop={handleDrop} data-ref="drawCanvas">
           {TLDraw}
         </div>
       </Section>

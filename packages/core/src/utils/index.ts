@@ -25,5 +25,8 @@
 
 export * from "./calculateDimensions";
 export * from "./cloneElement";
+export * from "./getBadgeProps";
 export * from "./getColor";
+export * from "./getIconProps";
+export * from "./getTooltipProps";
 export * from "./nodeCheck";

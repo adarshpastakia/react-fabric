@@ -32,7 +32,7 @@ export {
 } from "./animations/Animations";
 export { Avatar } from "./avatar/Avatar";
 export { AvatarGroup } from "./avatar/AvatarGroup";
-export { Badge, getBadgeProps } from "./badge/Badge";
+export { Badge } from "./badge/Badge";
 export { Breadcrumbs } from "./breadcrumbs/Breadcrumbs";
 export { Button } from "./button/Button";
 export { ButtonGroup } from "./button/ButtonGroup";
@@ -48,7 +48,7 @@ export { Divider } from "./divider/Divider";
 export { Dropdown, DropdownDismiss } from "./dropdown/Dropdown";
 export { DropdownTool } from "./dropdown/DropdownTool";
 export { EmptyContent } from "./empty/EmptyContent";
-export { getIconProps, Icon } from "./icon/Icon";
+export { Icon } from "./icon/Icon";
 export { Image, Video } from "./media/Media";
 export { ContextMenu } from "./menu/ContextMenu";
 export { Menu } from "./menu/Menu";

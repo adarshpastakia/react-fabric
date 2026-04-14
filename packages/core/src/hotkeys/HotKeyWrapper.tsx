@@ -21,120 +21,95 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  createContext,
-  memo,
-  useContext,
-  useEffectEvent,
-  useRef,
-  type FC,
-  type PropsWithChildren,
-} from "react";
+import { memo, useCallback, useEffectEvent, useRef, type FC, type PropsWithChildren } from "react";
 import { useEffectDebugger } from "../hooks/useEffectDebugger";
 import { reduceHotKey } from "./commons";
+import { HotKeysContext } from "./context";
 
-/** @internal */
-export const HotKeysContext = createContext<{
-  addHotKey: (key: string, handler: () => void, global?: boolean) => void;
-  removeHotKey: (key: string) => void;
-}>({} as AnyObject);
+export const HotKeyWrapper: FC<PropsWithChildren> = memo(({ children }: PropsWithChildren) => {
+  const refEl = useRef<HTMLDivElement>(null);
+  const keyList = useRef<KeyValue[]>([]);
 
-export const useHotKeys = () => useContext(HotKeysContext);
+  const addHotKey = useEffectEvent(
+    (keyCombo: string, handler: () => void, global = false) =>
+      (keyList.current = [
+        ...keyList.current.filter(({ _key }) => _key !== keyCombo),
+        reduceHotKey({ keyCombo, handler, global }),
+      ]),
+  );
+  const removeHotKey = useEffectEvent(
+    (key: string) => (keyList.current = [...keyList.current.filter(({ _key }) => _key !== key)]),
+  );
 
-export const HotKeyWrapper: FC<PropsWithChildren> = memo(
-  ({ children }: PropsWithChildren) => {
-    const refEl = useRef<HTMLDivElement>(null);
-    const keyList = useRef<KeyValue[]>([]);
-
-    const addHotKey = useEffectEvent(
-      (keyCombo: string, handler: () => void, global = false) =>
-        (keyList.current = [
-          ...keyList.current.filter(({ _key }) => _key !== keyCombo),
-          reduceHotKey({ keyCombo, handler, global }),
-        ]),
+  const handler = useEffectEvent((items: KeyValue[], event: KeyboardEvent) => {
+    if (items.length === 0) return;
+    const { key: keyCode, code, altKey, ctrlKey, metaKey, shiftKey } = event;
+    if (
+      keyCode !== "Enter" &&
+      keyCode !== "Esc" &&
+      ["INPUT", "TEXTAREA", "SELECT"].includes((event.target as HTMLElement).tagName)
+    )
+      return;
+    const find = items.find(
+      ({ key, alt, ctrl, meta, shift }: KeyValue) =>
+        (key.toLowerCase() === keyCode.toLowerCase() ||
+          key.toLowerCase() === code.toLowerCase() ||
+          // work around for macos alt+key issue
+          `key${key.toLowerCase()}` === code.toLowerCase()) &&
+        alt === altKey &&
+        ctrl === ctrlKey &&
+        meta === metaKey &&
+        shift === shiftKey,
     );
-    const removeHotKey = useEffectEvent(
-      (key: string) =>
-        (keyList.current = [
-          ...keyList.current.filter(({ _key }) => _key !== key),
-        ]),
-    );
+    if (find?.handler) {
+      find.handler();
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+  });
 
-    const handler = useEffectEvent(
-      (items: KeyValue[], event: KeyboardEvent) => {
-        if (items.length === 0) return;
-        const {
-          key: keyCode,
-          code,
-          altKey,
-          ctrlKey,
-          metaKey,
-          shiftKey,
-        } = event;
-        if (
-          keyCode !== "Enter" &&
-          keyCode !== "Esc" &&
-          ["INPUT", "TEXTAREA", "SELECT"].includes(
-            (event.target as HTMLElement).tagName,
-          )
-        )
-          return;
-        const find = items.find(
-          ({ key, alt, ctrl, meta, shift }: KeyValue) =>
-            (key.toLowerCase() === keyCode.toLowerCase() ||
-              key.toLowerCase() === code.toLowerCase() ||
-              // work around for macos alt+key issue
-              `key${key.toLowerCase()}` === code.toLowerCase()) &&
-            alt === altKey &&
-            ctrl === ctrlKey &&
-            meta === metaKey &&
-            shift === shiftKey,
-        );
-        if (find?.handler) {
-          find.handler();
-          event.preventDefault();
-          event.stopImmediatePropagation();
-        }
-      },
-    );
-
-    const handleGlobal = useEffectEvent((event: KeyboardEvent) => {
+  const handleGlobal = useCallback(
+    (event: KeyboardEvent) => {
       handler(
         keyList.current.filter((i) => i.global),
         event,
       );
-    });
-    const handleHotKey = useEffectEvent((event: KeyboardEvent) => {
+    },
+    [handler],
+  );
+  const handleHotKey = useCallback(
+    (event: KeyboardEvent) => {
       handler(
         keyList.current.filter((i) => !i.global),
         event,
       );
-    });
+    },
+    [handler],
+  );
 
-    useEffectDebugger(
-      () => {
-        const el: HTMLElement | null | undefined = refEl.current?.parentElement;
-        if (el) {
-          el.tabIndex = 0;
-          el.addEventListener("keydown", handleHotKey);
-          document.addEventListener("keydown", handleGlobal);
-          return () => {
-            el.removeEventListener("keydown", handleHotKey);
-            document.removeEventListener("keydown", handleGlobal);
-          };
-        }
-      },
-      [handleGlobal, handleHotKey],
-      "HotKeyWrapper attach handlers",
-    );
+  useEffectDebugger(
+    () => {
+      const el: HTMLElement | null | undefined = refEl.current?.parentElement;
+      if (el) {
+        el.tabIndex = 0;
+        el.addEventListener("keydown", handleHotKey);
+        document.addEventListener("keydown", handleGlobal);
+        return () => {
+          el.removeEventListener("keydown", handleHotKey);
+          document.removeEventListener("keydown", handleGlobal);
+        };
+      }
+    },
+    [handleGlobal, handleHotKey],
+    "HotKeyWrapper attach handlers",
+  );
 
-    return (
-      <HotKeysContext.Provider value={{ addHotKey, removeHotKey }}>
-        <div ref={refEl} style={{ display: "contents" }}>
-          {children}
-        </div>
-      </HotKeysContext.Provider>
-    );
-  },
-);
+  return (
+    <HotKeysContext.Provider value={{ addHotKey, removeHotKey }}>
+      <div ref={refEl} style={{ display: "contents" }}>
+        {children}
+      </div>
+    </HotKeysContext.Provider>
+  );
+});
 HotKeyWrapper.displayName = "HotKeyProvider";

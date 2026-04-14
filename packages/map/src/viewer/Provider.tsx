@@ -33,21 +33,11 @@ import "@arcgis/map-components/components/arcgis-map";
 import "@arcgis/map-components/components/arcgis-popup";
 import "@arcgis/map-components/components/arcgis-scene";
 import { CalciteButton } from "@esri/calcite-components-react";
-import { getLatitudeLongitude, type LngLatLike } from "@react-fabric/utilities";
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { getLatitudeLongitude } from "@react-fabric/utilities";
+import { useEffect, useMemo, useState } from "react";
 import { BASEMAPS, DEFAULT_VIEWPOINT } from "../constants";
-import { type FabricBaseMap, type MapViewerProps } from "../types";
-
-const Context = createContext<{
-  map?: Map | null;
-  view?: MapView | SceneView;
-  disableDrag?: boolean;
-  disableZoom?: boolean;
-  basemaps: FabricBaseMap[];
-  center: LngLatLike;
-  zoom: number;
-  is3D: boolean;
-}>({} as any);
+import { type MapViewerProps } from "../types";
+import { MapContext } from "./context";
 
 export const MapProvider = ({
   children,
@@ -63,10 +53,7 @@ export const MapProvider = ({
   const [view, setView] = useState<MapView | SceneView>();
   const [is3D, setIs3D] = useState(false);
 
-  const defaultBaseMap = useMemo(
-    () => basemaps.find((b) => b.default) ?? basemaps[0],
-    [basemaps],
-  );
+  const defaultBaseMap = useMemo(() => basemaps.find((b) => b.default) ?? basemaps[0], [basemaps]);
 
   useEffect(() => {
     view?.navigation.set("actionMap", {
@@ -92,13 +79,10 @@ export const MapProvider = ({
     }
   }, [view, onClick]);
 
-  const E = useMemo(
-    () => (enable3D && is3D ? ArcgisScene : ArcgisMap),
-    [is3D, enable3D],
-  );
+  const E = useMemo(() => (enable3D && is3D ? ArcgisScene : ArcgisMap), [is3D, enable3D]);
 
   return (
-    <Context.Provider
+    <MapContext.Provider
       value={{
         map,
         view,
@@ -156,8 +140,6 @@ export const MapProvider = ({
         )}
         {children}
       </E>
-    </Context.Provider>
+    </MapContext.Provider>
   );
 };
-
-export const useMap = () => useContext(Context);

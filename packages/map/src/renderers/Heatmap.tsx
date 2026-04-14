@@ -21,10 +21,8 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import HeatmapRenderer, {
-  type HeatmapRendererProperties,
-} from "@arcgis/core/renderers/HeatmapRenderer";
-import Color from "color";
+import HeatmapRenderer, { type HeatmapRendererProperties } from "@arcgis/core/renderers/HeatmapRenderer";
+import chroma from "chroma-js";
 import { useMemo } from "react";
 
 export interface Props {
@@ -52,15 +50,15 @@ export const useHeatmapRenderer = (props?: Props) => {
     let colorLow = "#FF3300FF";
 
     if (props?.colors?.length === 1) {
-      colorHigh = Color(props.colors[0]).lightness(95).toString();
-      colorLow = Color(props.colors[0]).lightness(25).toString();
-      colorMid = Color(colorHigh).mix(Color(colorLow), 0.5).toString();
+      colorHigh = chroma(props.colors[0]).luminance(0.85, "oklab").hex();
+      colorLow = chroma(props.colors[0]).luminance(0.25, "oklab").hex();
+      colorMid = chroma.mix(colorHigh, colorLow, 0.5).hex();
     }
 
     if (props?.colors?.length === 2) {
       colorHigh = props.colors[0];
       colorLow = props.colors[1];
-      colorMid = Color(colorHigh).mix(Color(colorLow), 0.5).toString();
+      colorMid = chroma.mix(colorHigh, colorLow, 0.5).hex();
     }
 
     if (props?.colors?.length === 3) {
@@ -78,15 +76,11 @@ export const useHeatmapRenderer = (props?: Props) => {
         : [
             ...Array.from({ length: 6 }, (_, i) => ({
               ratio: (i + 1) / 12,
-              color: Color(colorLow)
-                .mix(Color(colorMid), i / 6)
-                .toString(),
+              color: chroma.mix(colorLow, colorMid, i / 6).hex(),
             })),
             ...Array.from({ length: 6 }, (_, i) => ({
               ratio: (i + 6) / 12,
-              color: Color(colorMid)
-                .mix(Color(colorHigh), i / 6)
-                .toString(),
+              color: chroma.mix(colorMid, colorHigh, i / 6).hex(),
             })),
           ];
 

@@ -23,55 +23,36 @@
 
 import { Divider, Icon, Text } from "@react-fabric/core";
 import { Slider } from "@react-fabric/form";
-import {
-  Fragment,
-  memo,
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { Fragment, memo, useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { TooltipButton } from "../components/TooltipButton";
 import { useAudioContext } from "./context";
 
-const EQ_FREQUENCY = [
-  32, 64, 128, 256, 512, 1000, 2000, 4000, 6000, 8000, 12000, 16000,
-];
+const EQ_FREQUENCY = [32, 64, 128, 256, 512, 1000, 2000, 4000, 6000, 8000, 12000, 16000];
 
-const EqSlider = memo(
-  ({
-    index,
-    value,
-    label,
-    onChange,
-    color = "#0d9488",
-    forChannel = false,
-  }: AnyObject) => (
-    <div
-      className="flex"
-      style={{ width: "2.5rem" }}
-      data-negative={value === 0 ? "zero" : value < 0}
-      data-for-channel={forChannel}
-      dir={index === "left" ? "rtl" : "ltr"}
-    >
-      <Slider
-        vertical
-        step={1}
-        height={128}
-        value={value}
-        showLabels
-        color={value < 0 ? "#e11d48" : value === 0 ? "#888" : color}
-        data-channel={forChannel}
-        maxLabel={`${!forChannel && value > 0 ? "+" : ""}${~~value}`}
-        minLabel={label}
-        min={forChannel ? 0 : -40}
-        max={forChannel ? 100 : 40}
-        onSlide={(e) => onChange(index, e)}
-      />
-    </div>
-  ),
-);
+const EqSlider = memo(({ index, value, label, onChange, color = "#0d9488", forChannel = false }: AnyObject) => (
+  <div
+    className="flex"
+    style={{ width: "2.5rem" }}
+    data-negative={value === 0 ? "zero" : value < 0}
+    data-for-channel={forChannel}
+    dir={index === "left" ? "rtl" : "ltr"}
+  >
+    <Slider
+      vertical
+      step={1}
+      height={128}
+      value={value}
+      showLabels
+      color={value < 0 ? "#e11d48" : value === 0 ? "#888" : color}
+      data-channel={forChannel}
+      maxLabel={`${!forChannel && value > 0 ? "+" : ""}${~~value}`}
+      minLabel={label}
+      min={forChannel ? 0 : -40}
+      max={forChannel ? 100 : 40}
+      onSlide={(e) => onChange(index, e)}
+    />
+  </div>
+));
 EqSlider.displayName = "Audio.EQSlider";
 
 export const Equalizers = memo(() => {
@@ -150,9 +131,7 @@ export const Equalizers = memo(() => {
 
       if (!contextRef.current) {
         contextRef.current = new AudioContext();
-        mediaModelRef.current = contextRef.current.createMediaElementSource(
-          wavesurfer.instance.getMediaElement(),
-        );
+        mediaModelRef.current = contextRef.current.createMediaElementSource(wavesurfer.instance.getMediaElement());
       }
 
       // Create filters
@@ -188,13 +167,10 @@ export const Equalizers = memo(() => {
           splitFilters.push(channelMergerNode);
         }
 
-        const equalizer = [..._filters, ...splitFilters].reduce(
-          (prev, curr) => {
-            prev.connect(curr);
-            return curr;
-          },
-          mediaModel,
-        );
+        const equalizer = [..._filters, ...splitFilters].reduce((prev, curr) => {
+          prev.connect(curr);
+          return curr;
+        }, mediaModel);
         equalizer.connect(context.destination);
         setFilters(_filters);
       }
@@ -208,20 +184,16 @@ export const Equalizers = memo(() => {
   }, [wavesurfer, createFilters]);
 
   useLayoutEffect(() => {
-    document.addEventListener(
-      "mousedown",
-      () => {
-        void contextRef.current?.resume();
-      },
-      { capture: true },
-    );
-    document.addEventListener(
-      "keydown",
-      () => {
-        void contextRef.current?.resume();
-      },
-      { capture: true },
-    );
+    const handler = () => {
+      void contextRef.current?.resume();
+    };
+    document.addEventListener("mousedown", handler, { capture: true });
+    document.addEventListener("keydown", handler, { capture: true });
+
+    return () => {
+      document.removeEventListener("mousedown", handler, { capture: true });
+      document.removeEventListener("keydown", handler, { capture: true });
+    };
   }, []);
 
   const updateFilters = useCallback(
@@ -313,20 +285,14 @@ export const Equalizers = memo(() => {
               label={
                 <Icon
                   size="1.25rem"
-                  onClick={() =>
-                    toggleChannel(idx, gainNode.gain.value > 0 ? 0 : 100)
-                  }
+                  onClick={() => toggleChannel(idx, gainNode.gain.value > 0 ? 0 : 100)}
                   icon="icon-[mdi--speaker]"
-                  color={wavesurfer?.instance.options.splitChannels?.[
-                    idx
-                  ]?.waveColor?.toString()}
+                  color={wavesurfer?.instance.options.splitChannels?.[idx]?.waveColor?.toString()}
                 />
               }
               value={gainNode.gain.value * 100}
               onChange={toggleChannel}
-              color={wavesurfer?.instance.options.splitChannels?.[
-                idx
-              ]?.waveColor?.toString()}
+              color={wavesurfer?.instance.options.splitChannels?.[idx]?.waveColor?.toString()}
             />
           ))}
 
@@ -334,13 +300,7 @@ export const Equalizers = memo(() => {
         </Fragment>
       )}
       {filters.map((filter: AnyObject, index: number) => (
-        <EqSlider
-          key={index}
-          index={index}
-          label={filter.name}
-          value={filter.gain.value}
-          onChange={updateFilters}
-        />
+        <EqSlider key={index} index={index} label={filter.name} value={filter.gain.value} onChange={updateFilters} />
       ))}
       <Divider vertical />
       <div className="self-center flex flex-col gap-1">

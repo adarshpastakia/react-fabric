@@ -24,7 +24,7 @@
 import { isColor } from "@react-fabric/utilities";
 import classNames from "classnames";
 import { useMemo } from "react";
-import { useApplicationContext } from "../../context/Global";
+import { useApplicationContext } from "../../context/context";
 import { type ChildrenProp, type CssProp } from "../../types";
 
 export interface ThemeProps {
@@ -122,12 +122,7 @@ export const ThemeProvider = ({
       style={styles}
       data-color-scheme={colorScheme ?? currentColorScheme}
       data-rounding={rounding}
-      className={classNames(
-        "fabric-themeProvider",
-        "contents theme-base",
-        branding,
-        className,
-      )}
+      className={classNames("fabric-themeProvider", "contents theme-base", branding, className)}
     >
       {children}
     </div>
