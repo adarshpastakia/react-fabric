@@ -21,12 +21,15 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { useNotificationService, Viewport } from "@react-fabric/core";
-import { isString } from "@react-fabric/utilities";
+import { Aside, Callout, Content, Viewport } from "@react-fabric/core";
+import { Radio, RadioGroup } from "@react-fabric/form";
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "storybook/test";
-import { Annotator } from "../src";
+import { useState } from "react";
+import { Annotator, AnnotatorFieldType } from "../src";
 import form from "/assets/samples/sample_form.png";
+import invoice1 from "/assets/samples/sample_invoice1.png";
+import invoice2 from "/assets/samples/sample_invoice2.webp";
+import invoice3 from "/assets/samples/sample_invoice3.jpeg";
 
 const meta: Meta = {
   component: Annotator,
@@ -42,35 +45,59 @@ type Story = StoryObj<typeof Annotator>;
 
 export const _Annotator: Story = {
   render: (args) => {
-    const { showAlert } = useNotificationService();
+    const [src, setSrc] = useState(form);
+
     return (
       <div className="min-h-[600px]">
         <Viewport>
           <Annotator
             {...args}
-            onAdd={() =>
-              showAlert({ type: "prompt", message: "Annotation label" }).then(
-                (b) => (isString(b) ? b : undefined),
-              )
-            }
+            src={src}
+            annotations={[
+              {
+                x: 50,
+                y: 50,
+                width: 320,
+                height: 40,
+                id: "1",
+                type: AnnotatorFieldType.Text,
+              },
+              {
+                x: 50,
+                y: 120,
+                width: 320,
+                height: 40,
+                id: "2",
+                type: AnnotatorFieldType.Number,
+              },
+              {
+                x: 50,
+                y: 180,
+                width: 320,
+                height: 40,
+                id: "3",
+                type: AnnotatorFieldType.Float,
+              },
+            ]}
           />
+          <Aside align="end">
+            <Content>
+              <Callout legend="Scan samples">
+                <p className="break-all">{src}</p>
+                <RadioGroup onChange={setSrc} name="src" value={src} vertical>
+                  <Radio value={form} label="Sample Form" />
+                  <Radio value={invoice1} label="Sample Invoice 1" />
+                  <Radio value={invoice2} label="Sample Invoice 2" />
+                  <Radio value={invoice3} label="Sample Invoice 3" />
+                </RadioGroup>
+              </Callout>
+            </Content>
+          </Aside>
         </Viewport>
       </div>
     );
   },
   args: {
-    src: form,
-    onChange: fn(),
-    annotations: [
-      {
-        box: "30,30,240,48",
-        label: "Tester",
-      },
-      {
-        box: "30,90,240,48",
-        label: "Tester",
-        color: "#29a383",
-      },
-    ],
+    // onChange: fn(),
   },
 };
