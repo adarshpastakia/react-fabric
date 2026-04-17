@@ -163,7 +163,7 @@ export const Modal = ({
         }}
         className={classNames("grid place-items-center p-16", !hideMask && "bg-tint-100/20 backdrop-blur-sm")}
       >
-        <FloatingFocusManager context={context}>
+        <FloatingFocusManager context={context} modal>
           <dialog
             className={classNames(
               "fabric-modal",

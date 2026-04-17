@@ -204,7 +204,7 @@ export const ConfirmButton = <Tag extends React.ElementType = "button">({
             undefined
           }
         >
-          <FloatingFocusManager modal context={context}>
+          <FloatingFocusManager context={context}>
             <div
               data-color={color}
               className={classNames(

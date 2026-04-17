@@ -170,7 +170,7 @@ export const Flyout = ({
           className="bg-tint-100/10 backdrop-blur-sm transition-all"
         />
       )}
-      <FloatingFocusManager context={context}>
+      <FloatingFocusManager context={context} modal>
         <div
           data-align={align}
           className={classNames(

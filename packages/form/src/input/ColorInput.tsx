@@ -26,6 +26,7 @@ import {
   autoUpdate,
   flip,
   FloatingArrow,
+  FloatingFocusManager,
   offset,
   shift,
   useClick,
@@ -158,26 +159,28 @@ export const ColorInput = ({
         </div>
       </button>
       {isOpen && (
-        <div
-          ref={refs.setFloating}
-          style={{
-            zIndex: "var(--z-popover)",
-            ...floatingStyles,
-          }}
-          data-ref="dropdownBody"
-          {...getFloatingProps()}
-        >
-          <ColorPicker {...rest} onChange={handleChange} defaultColor={defaultColor} value={actualValue} />
-          <FloatingArrow
-            ref={arrowRef}
-            context={context}
-            strokeWidth={0.5}
-            className="stroke-muted"
+        <FloatingFocusManager context={context} closeOnFocusOut>
+          <div
+            ref={refs.setFloating}
             style={{
-              fill: actualValue || "var(--bg-color-base)",
+              zIndex: "var(--z-popover)",
+              ...floatingStyles,
             }}
-          />
-        </div>
+            data-ref="dropdownBody"
+            {...getFloatingProps()}
+          >
+            <ColorPicker {...rest} onChange={handleChange} defaultColor={defaultColor} value={actualValue} />
+            <FloatingArrow
+              ref={arrowRef}
+              context={context}
+              strokeWidth={0.5}
+              className="stroke-muted"
+              style={{
+                fill: actualValue || "var(--bg-color-base)",
+              }}
+            />
+          </div>
+        </FloatingFocusManager>
       )}
       {!disabled && showPicker && (
         <Icon

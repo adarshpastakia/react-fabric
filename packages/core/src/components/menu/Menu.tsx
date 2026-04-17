@@ -213,12 +213,7 @@ const MenuComponent = ({
           <Wrapper {...wrapperProps}>
             {isNested && <FloatingOverlay />}
             <HotKeyWrapper>
-              <FloatingFocusManager
-                context={context}
-                modal={!isNested}
-                initialFocus={isNested ? -1 : 0}
-                returnFocus={!isNested}
-              >
+              <FloatingFocusManager context={context} closeOnFocusOut initialFocus={isNested ? -1 : 0} returnFocus={!isNested}>
                 <div
                   className={classNames(
                     menuClassName,

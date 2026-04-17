@@ -44,16 +44,7 @@ import {
 } from "@floating-ui/react";
 import { mergeRefs } from "@react-fabric/utilities";
 import classNames from "classnames";
-import {
-  Children,
-  Fragment,
-  cloneElement,
-  useEffect,
-  useEffectEvent,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { Children, Fragment, cloneElement, useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 import { type ChildProp, type RefProp } from "../../types";
 
 export interface DropdownProps extends RefProp {
@@ -124,10 +115,7 @@ const DropdownElement = ({
   const tree = useFloatingTree();
   const nodeId = useFloatingNodeId();
 
-  const [anchor, panel] = useMemo<AnyObject[]>(
-    () => Children.toArray(children as AnyObject),
-    [children],
-  );
+  const [anchor, panel] = useMemo<AnyObject[]>(() => Children.toArray(children as AnyObject), [children]);
 
   const { refs, floatingStyles, context } = useFloating({
     nodeId: `dropdown-${nodeId}`,
@@ -161,17 +149,13 @@ const DropdownElement = ({
     referencePress: true,
   });
 
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    dismiss,
-    click,
-  ]);
+  const { getReferenceProps, getFloatingProps } = useInteractions([dismiss, click]);
 
   const minWidth = useMemo(() => {
     if (fitToParent) {
       const el: HTMLElement =
         // @ts-expect-error ignore
-        refs.reference.current?.closest('[data-ref="buttonGroup"]') ??
-        refs.reference.current;
+        refs.reference.current?.closest('[data-ref="buttonGroup"]') ?? refs.reference.current;
       return el?.offsetWidth;
     }
     return undefined;
@@ -184,13 +168,8 @@ const DropdownElement = ({
 
   const tryClosing = useEffectEvent((e: React.MouseEvent) => {
     if (
-      !refs.floating.current?.contains(
-        (e.target as HTMLElement).closest("[data-dropdown-dismiss='false']"),
-      ) &&
-      (!!closeOnClick ||
-        refs.floating.current?.contains(
-          (e.target as HTMLElement).closest("[data-dropdown-dismiss='true']"),
-        ))
+      !refs.floating.current?.contains((e.target as HTMLElement).closest("[data-dropdown-dismiss='false']")) &&
+      (!!closeOnClick || refs.floating.current?.contains((e.target as HTMLElement).closest("[data-dropdown-dismiss='true']")))
     ) {
       setTimeout(() => {
         setIsOpen(false);
@@ -222,8 +201,7 @@ const DropdownElement = ({
     };
   }, [tree]);
 
-  if (!anchor || !panel)
-    throw Error("Dropdown requires two elements [Anchor, Panel]");
+  if (!anchor || !panel) throw Error("Dropdown requires two elements [Anchor, Panel]");
 
   return (
     <Fragment>
@@ -240,15 +218,9 @@ const DropdownElement = ({
         ref: innerRef,
       })}
       {isOpen && (
-        <FloatingPortal
-          root={
-            root ??
-            refs.domReference.current?.closest<HTMLElement>(".theme-base") ??
-            undefined
-          }
-        >
+        <FloatingPortal root={root ?? refs.domReference.current?.closest<HTMLElement>(".theme-base") ?? undefined}>
           <FloatingOverlay />
-          <FloatingFocusManager context={context} modal>
+          <FloatingFocusManager context={context} closeOnFocusOut>
             <div
               ref={refs.setFloating}
               style={{
@@ -281,12 +253,7 @@ const DropdownElement = ({
                 )}
               </div>
               {showArrow && (
-                <FloatingArrow
-                  ref={arrowRef}
-                  context={context}
-                  strokeWidth={0.5}
-                  className="fill-default stroke-dimmed"
-                />
+                <FloatingArrow ref={arrowRef} context={context} strokeWidth={0.5} className="fill-default stroke-dimmed" />
               )}
             </div>
           </FloatingFocusManager>
@@ -348,10 +315,7 @@ export const Dropdown = (props: DropdownProps) => {
  * @param dismiss - Whether to dismiss the dropdown on click (default: true).
  * @returns JSX Element
  */
-export const DropdownDismiss = ({
-  children,
-  dismiss = true,
-}: ChildProp & { dismiss?: boolean }) => {
+export const DropdownDismiss = ({ children, dismiss = true }: ChildProp & { dismiss?: boolean }) => {
   const tree = useFloatingTree();
 
   return (
@@ -359,9 +323,7 @@ export const DropdownDismiss = ({
       role="none"
       className="contents"
       data-dropdown-dismiss={dismiss}
-      onMouseUp={() =>
-        dismiss && setTimeout(() => tree?.events.emit("close"), 50)
-      }
+      onMouseUp={() => dismiss && setTimeout(() => tree?.events.emit("close"), 50)}
     >
       {children}
     </div>

@@ -152,16 +152,16 @@ export const Select = <T extends AnyObject = string>({
     onMatch(index) {
       state.open && setActiveIndex(index);
 
-      !searchable &&
-        !multiple &&
-        !state.open &&
-        handleChange(listContentRef.current[index]);
+      !searchable && !multiple && !state.open && handleChange(listContentRef.current[index]);
     },
   });
 
-  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
-    [dismiss, searchable ? undefined : click, navigation, typeahead],
-  );
+  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
+    dismiss,
+    searchable ? undefined : click,
+    navigation,
+    typeahead,
+  ]);
 
   const referenceProps = useMemo(() => {
     const props: AnyObject = getReferenceProps();
@@ -169,9 +169,7 @@ export const Select = <T extends AnyObject = string>({
     return {
       ...props,
       onBlur(evt: React.FocusEvent) {
-        if (
-          evt.relatedTarget?.closest(`[data-select-dropdown="${dropdownKey}"]`)
-        ) {
+        if (evt.relatedTarget?.closest(`[data-select-dropdown="${dropdownKey}"]`)) {
           refs.domReference.current?.querySelector("input")?.focus();
           return;
         }
@@ -198,10 +196,7 @@ export const Select = <T extends AnyObject = string>({
         } else if (evt.key === "Backspace") {
           !state.query && handleRemove();
         } else if (!searchable || ["ArrowUp", "ArrowDown"].includes(evt.key)) {
-          if (
-            ["ArrowUp", "ArrowDown"].includes(evt.key) &&
-            state.activeIndex === null
-          ) {
+          if (["ArrowUp", "ArrowDown"].includes(evt.key) && state.activeIndex === null) {
             setActiveIndex(state.selectedIndex);
           }
           setTimeout(() => {
@@ -210,14 +205,7 @@ export const Select = <T extends AnyObject = string>({
         }
       },
     };
-  }, [
-    getReferenceProps,
-    onEnterPressed,
-    handleQuery,
-    refs,
-    state.query,
-    state.activeIndex,
-  ]);
+  }, [getReferenceProps, onEnterPressed, handleQuery, refs, state.query, state.activeIndex]);
 
   const floatingProps = useMemo(() => {
     return getFloatingProps({
@@ -227,9 +215,7 @@ export const Select = <T extends AnyObject = string>({
 
   const makeItemProps = useCallback(
     (item: AnyObject) => {
-      const selected = isArray(state.value)
-        ? state.value?.includes?.(item)
-        : state.value === item;
+      const selected = isArray(state.value) ? state.value?.includes?.(item) : state.value === item;
       return getItemProps({
         "data-selected": selected ? true : undefined,
         onClick() {
@@ -292,9 +278,7 @@ export const Select = <T extends AnyObject = string>({
           multiple ? "flex-wrap" : "flex-nowrap overflow-hidden",
         )}
         {...referenceProps}
-        onMouseUp={(e) =>
-          e.currentTarget.querySelector<HTMLElement>("input")?.focus()
-        }
+        onMouseUp={(e) => e.currentTarget.querySelector<HTMLElement>("input")?.focus()}
       >
         {displayValue}
         <input
@@ -329,24 +313,13 @@ export const Select = <T extends AnyObject = string>({
       )}
       {state.loading && (
         <Icon
-          className={classNames(
-            "flex-content p-2 z-0 order-9 text-muted pointer-events-none",
-          )}
+          className={classNames("flex-content p-2 z-0 order-9 text-muted pointer-events-none")}
           icon="icon-[svg-spinners--eclipse]"
         />
       )}
       {state.open && !state.loading && (
-        <FloatingPortal
-          root={
-            refs.domReference.current?.closest<HTMLElement>(".theme-base") ??
-            undefined
-          }
-        >
-          <FloatingFocusManager
-            context={context}
-            initialFocus={-1}
-            visuallyHiddenDismiss
-          >
+        <FloatingPortal root={refs.domReference.current?.closest<HTMLElement>(".theme-base") ?? undefined}>
+          <FloatingFocusManager context={context} initialFocus={-1} visuallyHiddenDismiss closeOnFocusOut>
             <Options
               ref={refs.setFloating}
               className="outline shadow-lg max-h-[40vh] z-(--z-popover)"

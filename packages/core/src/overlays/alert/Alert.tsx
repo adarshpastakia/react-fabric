@@ -173,7 +173,7 @@ export const Alert = ({
         style={{ zIndex: "var(--z-overlay-mask)" }}
         className="bg-tint-100/50 backdrop-blur-sm grid place-items-center"
       >
-        <FloatingFocusManager context={context}>
+        <FloatingFocusManager context={context} modal>
           <dialog
             role="alertdialog"
             className={classNames(

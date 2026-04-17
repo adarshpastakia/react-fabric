@@ -88,37 +88,25 @@ export const List = <T extends AnyObject = string>({
   height?: string | number;
 }) => {
   const Wrapper = useMemo(() => (isInner ? Fragment : FieldWrapper), [isInner]);
-  const wrapperProps = useMemo(
-    () => (isInner ? {} : { ...rest }),
-    [isInner, rest],
-  );
+  const wrapperProps = useMemo(() => (isInner ? {} : { ...rest }), [isInner, rest]);
 
-  const {
-    state,
-    listRef,
-    listContentRef,
-    macthOption,
-    handleChange,
-    handleRemove,
-    handleQuery,
-    setItemRef,
-    setActiveIndex,
-  } = useSelect({
-    value,
-    options,
-    multiple,
-    alwaysOpen: true,
-    groupProperty,
-    labelProperty,
-    valueProperty,
-    sortProperty,
-    allowCreate,
-    createOption,
-    matcher,
-    onChange,
-    onSelect,
-    onQuery,
-  });
+  const { state, listRef, listContentRef, macthOption, handleChange, handleRemove, handleQuery, setItemRef, setActiveIndex } =
+    useSelect({
+      value,
+      options,
+      multiple,
+      alwaysOpen: true,
+      groupProperty,
+      labelProperty,
+      valueProperty,
+      sortProperty,
+      allowCreate,
+      createOption,
+      matcher,
+      onChange,
+      onSelect,
+      onQuery,
+    });
 
   const dropdownKey = useId();
 
@@ -152,9 +140,7 @@ export const List = <T extends AnyObject = string>({
     },
   });
 
-  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
-    [navigation, typeahead],
-  );
+  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([navigation, typeahead]);
 
   const referenceProps = useMemo(() => {
     const props: AnyObject = getReferenceProps();
@@ -162,9 +148,7 @@ export const List = <T extends AnyObject = string>({
     return {
       ...props,
       onBlur(evt: React.FocusEvent) {
-        if (
-          evt.relatedTarget?.closest(`[data-select-dropdown="${dropdownKey}"]`)
-        ) {
+        if (evt.relatedTarget?.closest(`[data-select-dropdown="${dropdownKey}"]`)) {
           refs.domReference.current?.querySelector("input")?.focus();
           return;
         }
@@ -183,10 +167,7 @@ export const List = <T extends AnyObject = string>({
         } else if (evt.key === "Backspace") {
           !state.query && handleRemove();
         } else if (!searchable || ["ArrowUp", "ArrowDown"].includes(evt.key)) {
-          if (
-            ["ArrowUp", "ArrowDown"].includes(evt.key) &&
-            state.activeIndex === null
-          ) {
+          if (["ArrowUp", "ArrowDown"].includes(evt.key) && state.activeIndex === null) {
             setActiveIndex(state.selectedIndex ?? 0);
           }
           setTimeout(() => {
@@ -195,14 +176,7 @@ export const List = <T extends AnyObject = string>({
         }
       },
     };
-  }, [
-    getReferenceProps,
-    onEnterPressed,
-    handleQuery,
-    refs,
-    state.query,
-    state.activeIndex,
-  ]);
+  }, [getReferenceProps, onEnterPressed, handleQuery, refs, state.query, state.activeIndex]);
 
   const floatingProps = useMemo(() => {
     return getFloatingProps({
@@ -212,9 +186,7 @@ export const List = <T extends AnyObject = string>({
 
   const makeItemProps = useCallback(
     (item: AnyObject) => {
-      const selected = isArray(state.value)
-        ? state.value?.includes?.(item)
-        : state.value === item;
+      const selected = isArray(state.value) ? state.value?.includes?.(item) : state.value === item;
       return {
         ...getItemProps({
           "data-selected": selected ? true : undefined,
@@ -236,11 +208,7 @@ export const List = <T extends AnyObject = string>({
         </Chip>
       ));
     } else if (!isEmpty(state.value) && !state.query) {
-      return (
-        <span>
-          {renderer?.(state.value) ?? state.value[labelProperty] ?? state.value}
-        </span>
-      );
+      return <span>{renderer?.(state.value) ?? state.value[labelProperty] ?? state.value}</span>;
     }
   }, [state.value, state.query, placeholder, renderer]);
 
@@ -275,9 +243,7 @@ export const List = <T extends AnyObject = string>({
             multiple ? "flex-wrap" : "flex-nowrap overflow-hidden",
           )}
           {...referenceProps}
-          onMouseUp={(e) =>
-            e.currentTarget.querySelector<HTMLElement>("input")?.focus()
-          }
+          onMouseUp={(e) => e.currentTarget.querySelector<HTMLElement>("input")?.focus()}
         >
           {!hideSelected && displayValue}
           <input
@@ -300,11 +266,7 @@ export const List = <T extends AnyObject = string>({
           />
         </div>
       </InputWrapper>
-      <FloatingFocusManager
-        context={context}
-        initialFocus={-1}
-        visuallyHiddenDismiss
-      >
+      <FloatingFocusManager context={context} initialFocus={-1} visuallyHiddenDismiss closeOnFocusOut>
         <Options
           ref={refs.setFloating}
           className={classNames(

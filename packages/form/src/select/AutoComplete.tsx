@@ -43,10 +43,7 @@ import { type SelectProps } from "../types";
 import { Options } from "./Options";
 import { useSelect } from "./useSelect";
 
-type AutoCompleteProps = Omit<
-  SelectProps<string>,
-  "options" | "allowCreate" | "createOption"
-> & {
+type AutoCompleteProps = Omit<SelectProps<string>, "options" | "allowCreate" | "createOption"> & {
   /**
    * auto-complete history
    */
@@ -156,9 +153,7 @@ export const AutoComplete = ({
     },
   });
 
-  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
-    [dismiss, navigation, typeahead],
-  );
+  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([dismiss, navigation, typeahead]);
 
   const referenceProps = useMemo(() => {
     const props: AnyObject = getReferenceProps();
@@ -167,9 +162,7 @@ export const AutoComplete = ({
       ...props,
       onFocus,
       onBlur(evt: React.FocusEvent) {
-        if (
-          evt.relatedTarget?.closest(`[data-select-dropdown="${dropdownKey}"]`)
-        ) {
+        if (evt.relatedTarget?.closest(`[data-select-dropdown="${dropdownKey}"]`)) {
           refs.domReference.current?.querySelector("input")?.focus();
           return;
         }
@@ -195,10 +188,7 @@ export const AutoComplete = ({
         } else if (evt.key === "Backspace") {
           !state.query && multiple && handleRemove();
         } else if (["ArrowUp", "ArrowDown"].includes(evt.key)) {
-          if (
-            ["ArrowUp", "ArrowDown"].includes(evt.key) &&
-            state.activeIndex === null
-          ) {
+          if (["ArrowUp", "ArrowDown"].includes(evt.key) && state.activeIndex === null) {
             setActiveIndex(state.selectedIndex);
           }
           setTimeout(() => {
@@ -207,17 +197,7 @@ export const AutoComplete = ({
         }
       },
     };
-  }, [
-    getReferenceProps,
-    onEnterPressed,
-    handleQuery,
-    onFocus,
-    onBlur,
-    multiple,
-    refs,
-    state.query,
-    state.activeIndex,
-  ]);
+  }, [getReferenceProps, onEnterPressed, handleQuery, onFocus, onBlur, multiple, refs, state.query, state.activeIndex]);
 
   const floatingProps = useMemo(() => {
     return getFloatingProps({
@@ -227,9 +207,7 @@ export const AutoComplete = ({
 
   const makeItemProps = useCallback(
     (item: AnyObject) => {
-      const selected = isArray(state.value)
-        ? state.value?.includes?.(item)
-        : state.value === item;
+      const selected = isArray(state.value) ? state.value?.includes?.(item) : state.value === item;
       return getItemProps({
         "data-selected": selected ? true : undefined,
         onClick() {
@@ -287,9 +265,7 @@ export const AutoComplete = ({
           "group flex-1 py-1 px-2 truncate text-start flex gap-1 relative min-h-5 justify-start",
           multiple ? "flex-wrap" : "flex-nowrap overflow-hidden",
         )}
-        onMouseUp={(e) =>
-          e.currentTarget.querySelector<HTMLElement>("input")?.focus()
-        }
+        onMouseUp={(e) => e.currentTarget.querySelector<HTMLElement>("input")?.focus()}
       >
         {displayValue}
         <textarea
@@ -314,33 +290,17 @@ export const AutoComplete = ({
           {...referenceProps}
           onChange={(evt) => handleQuery(evt.target.value)}
         />
-        <button
-          type="submit"
-          ref={submitRef}
-          tabIndex={-1}
-          className="opacity-0 absolute"
-        />
+        <button type="submit" ref={submitRef} tabIndex={-1} className="opacity-0 absolute" />
       </div>
       {state.loading && (
         <Icon
-          className={classNames(
-            "flex-content p-2 z-0 order-9 text-muted pointer-events-none",
-          )}
+          className={classNames("flex-content p-2 z-0 order-9 text-muted pointer-events-none")}
           icon="icon-[svg-spinners--eclipse]"
         />
       )}
       {state.open && !state.loading && (
-        <FloatingPortal
-          root={
-            refs.domReference.current?.closest<HTMLElement>(".theme-base") ??
-            undefined
-          }
-        >
-          <FloatingFocusManager
-            context={context}
-            initialFocus={-1}
-            visuallyHiddenDismiss
-          >
+        <FloatingPortal root={refs.domReference.current?.closest<HTMLElement>(".theme-base") ?? undefined}>
+          <FloatingFocusManager context={context} initialFocus={-1} visuallyHiddenDismiss closeOnFocusOut>
             <Options
               ref={refs.setFloating}
               className="outline shadow-lg max-h-[40vh] z-(--z-popover)"
@@ -353,11 +313,7 @@ export const AutoComplete = ({
               active={state.activeIndex}
               itemRef={setItemRef}
               itemProps={makeItemProps}
-              empty={
-                <div className="text-muted text-sm px-2 py-1">
-                  No history available
-                </div>
-              }
+              empty={<div className="text-muted text-sm px-2 py-1">No history available</div>}
             >
               {(item) => item}
             </Options>
