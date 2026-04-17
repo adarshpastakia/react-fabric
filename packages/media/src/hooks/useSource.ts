@@ -54,7 +54,7 @@ export const useSource = (opts: { src: string | string[]; onLoad?: () => void; o
         if (state.src !== action.sources[0]) {
           state = {
             ...state,
-            sources: action.sources,
+            sources: [...action.sources],
             loading: true,
             loaded: false,
             errored: false,
@@ -69,7 +69,7 @@ export const useSource = (opts: { src: string | string[]; onLoad?: () => void; o
       if (action.type === "errored") {
         // on error, try the next source if available
         state.src = state.sources?.shift();
-        state.loading = false;
+        state.loading = !!state.src;
         state.errored = !state.src;
         state.errorCode = action.code;
       }
@@ -91,14 +91,16 @@ export const useSource = (opts: { src: string | string[]; onLoad?: () => void; o
       }
       return { ...state };
     },
-    {
-      loading: true,
-      loaded: false,
-      errored: false,
-      transparent: false,
-      colorScheme: "auto",
-      colorset: "",
-    },
+    {},
+    () =>
+      ({
+        loading: true,
+        loaded: false,
+        errored: false,
+        transparent: false,
+        colorScheme: "auto",
+        colorset: "",
+      }) as SourceState,
   );
 
   useEffect(() => {

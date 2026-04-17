@@ -74,16 +74,18 @@ export const useAudioState = (ref: RefObject<HTMLAudioElement | null>) => {
       }
       return { ...state };
     },
-    {
-      isPlaying: false,
-      currentTime: 0,
-      duration: 0,
-      volume: 1,
-      lastVolume: 1,
-      isMuted: false,
-      isLooping: false,
-      playbackRate: 1,
-    } as AudioState,
+    {},
+    () =>
+      ({
+        isPlaying: false,
+        currentTime: 0,
+        duration: 0,
+        volume: 1,
+        lastVolume: 1,
+        isMuted: false,
+        isLooping: false,
+        playbackRate: 1,
+      }) as AudioState,
   );
 
   useEffect(() => {
@@ -96,14 +98,10 @@ export const useAudioState = (ref: RefObject<HTMLAudioElement | null>) => {
 
     const onPlay = () => dispatch({ type: "play" });
     const onPause = () => dispatch({ type: "pause" });
-    const onTimeUpdate = () =>
-      dispatch({ type: "timeChange", time: audio.currentTime });
-    const onDurationChange = () =>
-      dispatch({ type: "durationChange", duration: audio.duration });
-    const onVolumeChange = () =>
-      dispatch({ type: "volumeChange", volume: audio.volume });
-    const onRateChange = () =>
-      dispatch({ type: "rateChange", rate: audio.playbackRate });
+    const onTimeUpdate = () => dispatch({ type: "timeChange", time: audio.currentTime });
+    const onDurationChange = () => dispatch({ type: "durationChange", duration: audio.duration });
+    const onVolumeChange = () => dispatch({ type: "volumeChange", volume: audio.volume });
+    const onRateChange = () => dispatch({ type: "rateChange", rate: audio.playbackRate });
 
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);

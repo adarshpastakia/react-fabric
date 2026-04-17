@@ -66,15 +66,17 @@ export const useOverlayState = (src?: string) => {
       }
       return { ...state };
     },
-    {
-      src: "",
-      hasOverlay: false,
-      errored: false,
-      loading: false,
-      opacity: 1,
-      orientation: "horizontal",
-      size: "50%",
-    },
+    {},
+    () =>
+      ({
+        src: "",
+        hasOverlay: false,
+        errored: false,
+        loading: false,
+        opacity: 1,
+        orientation: "horizontal",
+        size: "50%",
+      }) as OverlayState,
   );
 
   useEffect(() => {

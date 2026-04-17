@@ -111,18 +111,20 @@ export const useVideoState = (
       }
       return { ...state };
     },
-    {
-      isPlaying: false,
-      currentTime: 0,
-      duration: 0,
-      volume: 1,
-      lastVolume: 1,
-      isMuted: false,
-      isLooping: false,
-      playbackRate: 1,
-      annotations: {},
-      showVtt: false,
-    } as VideoState,
+    {},
+    () =>
+      ({
+        isPlaying: false,
+        currentTime: 0,
+        duration: 0,
+        volume: 1,
+        lastVolume: 1,
+        isMuted: false,
+        isLooping: false,
+        playbackRate: 1,
+        annotations: {},
+        showVtt: false,
+      }) as VideoState,
   );
 
   useEffect(() => {

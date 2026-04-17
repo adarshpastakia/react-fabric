@@ -22,23 +22,8 @@
  */
 
 import { useDebounce } from "@react-fabric/core";
-import {
-  compareValues,
-  dedupe,
-  EMPTY_ARRAY,
-  groupBy,
-  isArray,
-  isString,
-  matchString,
-} from "@react-fabric/utilities";
-import {
-  useCallback,
-  useDeferredValue,
-  useEffect,
-  useMemo,
-  useReducer,
-  useRef,
-} from "react";
+import { compareValues, dedupe, EMPTY_ARRAY, groupBy, isArray, isString, matchString } from "@react-fabric/utilities";
+import { useCallback, useDeferredValue, useEffect, useMemo, useReducer, useRef } from "react";
 import { getSelectedValue, makeOption } from "./helpers";
 
 type StateActions =
@@ -121,10 +106,7 @@ export const useSelect = ({
 
   const macthOption = useCallback(
     (item: AnyObject, query: string) => {
-      return (
-        matcher?.(item, query) ??
-        matchString(item[labelProperty] ?? item, query)
-      );
+      return matcher?.(item, query) ?? matchString(item[labelProperty] ?? item, query);
     },
     [matcher],
   );
@@ -142,9 +124,7 @@ export const useSelect = ({
   const [state, dispatch] = useReducer(
     (state: State, action: StateActions) => {
       if (action.type === "open") {
-        const index = state.items.indexOf(
-          state.multiple ? state.value[0] : state.value,
-        );
+        const index = state.items.indexOf(state.multiple ? state.value[0] : state.value);
         return {
           ...state,
           open: true,
@@ -155,8 +135,7 @@ export const useSelect = ({
         return { ...state, activeIndex: null, activeItem: null, open: false };
       }
       if (action.type === "active" && state.open) {
-        if (autoComplete && action.index !== null)
-          state.query = state.items[action.index];
+        if (autoComplete && action.index !== null) state.query = state.items[action.index];
         return {
           ...state,
           activeIndex: action.index,
@@ -167,9 +146,7 @@ export const useSelect = ({
         return {
           ...state,
           value: action.value,
-          selectedIndex: state.items.indexOf(
-            state.multiple ? action.value[0] : action.value,
-          ),
+          selectedIndex: state.items.indexOf(state.multiple ? action.value[0] : action.value),
         };
       }
       if (action.type === "changeValue") {
@@ -178,17 +155,12 @@ export const useSelect = ({
           value: state.emptyValue,
           activeIndex: null,
           activeItem: null,
-          selectedIndex: autoComplete
-            ? state.multiple
-              ? action.value?.length
-              : 0
-            : state.items.indexOf(action.value),
+          selectedIndex: autoComplete ? (state.multiple ? action.value?.length : 0) : state.items.indexOf(action.value),
         };
         if (action.value !== undefined) {
           if (multiple) {
             const values = [];
-            if (isString(action.value))
-              values.push(...action.value.split(/,\s?/));
+            if (isString(action.value)) values.push(...action.value.split(/,\s?/));
             else values.push(action.value);
             newState.value = [...state.value];
             values.forEach((value: AnyObject) => {
@@ -236,8 +208,7 @@ export const useSelect = ({
         if (autoComplete && action.query !== undefined) {
           optionList = dedupe([action.query, ...optionList]);
         }
-        if (sortProperty)
-          optionList = optionList.sort(compareValues("asc", sortProperty));
+        if (sortProperty) optionList = optionList.sort(compareValues("asc", sortProperty));
         const grouped = groupBy(optionList, groupProperty, "");
         if (action.open) newState.open = true;
         newState.items = [];
@@ -254,9 +225,7 @@ export const useSelect = ({
           newState.items.push(...list);
         });
         if (action.setActive) {
-          const index = newState.items.findIndex(
-            (opt: AnyObject) => !opt.___group___,
-          );
+          const index = newState.items.findIndex((opt: AnyObject) => !opt.___group___);
           newState.activeIndex = index >= 0 ? index : null;
         } else {
           newState.activeIndex = null;
@@ -266,7 +235,8 @@ export const useSelect = ({
       }
       return state;
     },
-    {
+    {},
+    () => ({
       multiple,
       emptyValue,
       open: alwaysOpen || defaultOpen,
@@ -279,18 +249,13 @@ export const useSelect = ({
       query: undefined,
       // dropdown items
       items: [],
-    },
+    }),
   );
 
   useEffect(() => {
     if (!multiple) {
-      const newOption =
-        (allowCreate || autoComplete) && deferred
-          ? createOption(deferred)
-          : undefined;
-      const hasValue = options.find(
-        (opt: AnyObject) => (opt[valueProperty] ?? opt) === deferred,
-      );
+      const newOption = (allowCreate || autoComplete) && deferred ? createOption(deferred) : undefined;
+      const hasValue = options.find((opt: AnyObject) => (opt[valueProperty] ?? opt) === deferred);
       optionsRef.current = options;
       // if current value missing in list inject it
       if (!hasValue && newOption) {
@@ -304,21 +269,14 @@ export const useSelect = ({
     }
     if (multiple) {
       optionsRef.current = [];
-      const value = (isArray(deferred) ? deferred : []).map(
-        (item: AnyObject) => {
-          const newOption =
-            (allowCreate || autoComplete) && item
-              ? createOption(item)
-              : undefined;
-          const hasValue = options.find(
-            (opt: AnyObject) => (opt[valueProperty] ?? opt) === item,
-          );
-          if (!hasValue && newOption) {
-            optionsRef.current.push(newOption);
-          }
-          return hasValue ?? newOption ?? item;
-        },
-      );
+      const value = (isArray(deferred) ? deferred : []).map((item: AnyObject) => {
+        const newOption = (allowCreate || autoComplete) && item ? createOption(item) : undefined;
+        const hasValue = options.find((opt: AnyObject) => (opt[valueProperty] ?? opt) === item);
+        if (!hasValue && newOption) {
+          optionsRef.current.push(newOption);
+        }
+        return hasValue ?? newOption ?? item;
+      });
       optionsRef.current = [...optionsRef.current, ...(options ?? [])];
       dispatch({ type: "options", options: optionsRef.current });
       dispatch({
@@ -394,10 +352,7 @@ export const useSelect = ({
       optionsRef.current = [...optionsRef.current, ...val.map(createOption)];
     }
     if (autoComplete) {
-      optionsRef.current = dedupe([
-        ...(isArray(values) ? values : [values]),
-        ...optionsRef.current,
-      ]);
+      optionsRef.current = dedupe([...(isArray(values) ? values : [values]), ...optionsRef.current]);
     }
     dispatch({ type: "options", options: optionsRef.current });
   }, []);
