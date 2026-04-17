@@ -321,12 +321,8 @@
   fill: var(--bg-color-invert);
 }
 
-@utility gap-* {
-  :where(.fabric-row) {
-    --gutter: calc(var(--spacing) * --value(integer));
-
-    gap: 0 !important;
-  }
+@utility gutter-* {
+  --gutter: calc(var(--spacing) * --value(integer));
 }
 
 @utility span-* {
