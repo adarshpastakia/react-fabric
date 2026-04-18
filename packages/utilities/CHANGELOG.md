@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.63](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.62...v1.0.0-beta.63) (2026-04-18)
+
+### Bug Fixes
+
+- **ImageColorset:** imageColorset utiltity ([d6a9581](https://github.com/adarshpastakia/react-fabric/commit/d6a95813de6cd48de89205ea2dd3d5a2de278791))
+
 # [1.0.0-beta.62](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.61...v1.0.0-beta.62) (2026-03-07)
 
 ### Bug Fixes

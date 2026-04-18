@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.63](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.62...v1.0.0-beta.63) (2026-04-18)
+
+### Bug Fixes
+
+- **Media:** updated media components ([9d08f65](https://github.com/adarshpastakia/react-ui-framework/commit/9d08f654fe80b8d86106b8f7477ffc0a407aabf8))
+- reducer init ([c4298ee](https://github.com/adarshpastakia/react-ui-framework/commit/c4298ee5f1b0d05b279ed814ad8ceda7704c5a82))
+- update document scan annotator using `konva` ([a4454ec](https://github.com/adarshpastakia/react-ui-framework/commit/a4454ec7920be3c39542acb723f8b08c3a320593))
+
 # [1.0.0-beta.62](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.61...v1.0.0-beta.62) (2026-03-07)
 
 **Note:** Version bump only for package @react-fabric/media

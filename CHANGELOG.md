@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.63](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.62...v1.0.0-beta.63) (2026-04-18)
+
+### Bug Fixes
+
+- **ArrayInput:** accept Promise for add/update response ([98975a8](https://github.com/adarshpastakia/react-fabric/commit/98975a86db7a2ba519d211d902dc1a05ae584f92))
+- **Callout:** add legendClassName prop ([28be3fe](https://github.com/adarshpastakia/react-fabric/commit/28be3fe7593f1f211076fbb2ab61e9aef7a445fc))
+- **ColorPicker:** add picker option `default | swatches` ([91510e6](https://github.com/adarshpastakia/react-fabric/commit/91510e68b92cb787ad3145f75dbac895859a4957))
+- **ContextMenu:** add useContextMenu hook to be used instead of ContextMenu wrapper ([1d29a84](https://github.com/adarshpastakia/react-fabric/commit/1d29a843c22dd9a5644ef727a4636e2de9755e98))
+- floating focus manager ([0c0a43b](https://github.com/adarshpastakia/react-fabric/commit/0c0a43bef63ad9b0b00492714b56b2ce805e1555))
+- **HotKey:** use KeyCode plus/minus ([850cc8c](https://github.com/adarshpastakia/react-fabric/commit/850cc8c23969cf45af21af047046da7a13ea434e))
+- **ImageColorset:** imageColorset utiltity ([d6a9581](https://github.com/adarshpastakia/react-fabric/commit/d6a95813de6cd48de89205ea2dd3d5a2de278791))
+- **Media:** updated media components ([9d08f65](https://github.com/adarshpastakia/react-fabric/commit/9d08f654fe80b8d86106b8f7477ffc0a407aabf8))
+- reducer init ([c4298ee](https://github.com/adarshpastakia/react-fabric/commit/c4298ee5f1b0d05b279ed814ad8ceda7704c5a82))
+- **Select:** use getByPath util method ([5b08960](https://github.com/adarshpastakia/react-fabric/commit/5b0896025335c228a7011856da55734139919b94))
+- update document scan annotator using `konva` ([a4454ec](https://github.com/adarshpastakia/react-fabric/commit/a4454ec7920be3c39542acb723f8b08c3a320593))
+
 # [1.0.0-beta.62](https://github.com/adarshpastakia/react-fabric/compare/v1.0.0-beta.61...v1.0.0-beta.62) (2026-03-07)
 
 ### Bug Fixes

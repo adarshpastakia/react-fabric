@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.63](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.62...v1.0.0-beta.63) (2026-04-18)
+
+### Bug Fixes
+
+- **ArrayInput:** accept Promise for add/update response ([98975a8](https://github.com/adarshpastakia/react-ui-framework/commit/98975a86db7a2ba519d211d902dc1a05ae584f92))
+- **ColorPicker:** add picker option `default | swatches` ([91510e6](https://github.com/adarshpastakia/react-ui-framework/commit/91510e68b92cb787ad3145f75dbac895859a4957))
+- floating focus manager ([0c0a43b](https://github.com/adarshpastakia/react-ui-framework/commit/0c0a43bef63ad9b0b00492714b56b2ce805e1555))
+- reducer init ([c4298ee](https://github.com/adarshpastakia/react-ui-framework/commit/c4298ee5f1b0d05b279ed814ad8ceda7704c5a82))
+- **Select:** use getByPath util method ([5b08960](https://github.com/adarshpastakia/react-ui-framework/commit/5b0896025335c228a7011856da55734139919b94))
+
 # [1.0.0-beta.62](https://github.com/adarshpastakia/react-ui-framework/compare/v1.0.0-beta.61...v1.0.0-beta.62) (2026-03-07)
 
 ### Bug Fixes

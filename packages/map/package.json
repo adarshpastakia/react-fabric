@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/map",
-  "version": "1.0.0-beta.62",
+  "version": "1.0.0-beta.63",
   "description": "RUF: ArcGIS Map Component for React",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -38,8 +38,8 @@
     "@arcgis/core": "~5.0.10",
     "@arcgis/map-components-react": "~4.34.5",
     "@esri/calcite-components-react": "~3.3.3",
-    "@react-fabric/core": "^1.0.0-beta.62",
-    "@react-fabric/utilities": "^1.0.0-beta.62",
+    "@react-fabric/core": "^1.0.0-beta.63",
+    "@react-fabric/utilities": "^1.0.0-beta.63",
     "chroma-js": "~3.2.0",
     "dom-to-image": "~2.6.0"
   },

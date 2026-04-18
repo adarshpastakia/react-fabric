@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/superdate",
-  "version": "1.0.0-beta.62",
+  "version": "1.0.0-beta.63",
   "description": "RUF: Superdate package for relative dates",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -37,10 +37,10 @@
   "dependencies": {
     "@floating-ui/react": "~0.27.19",
     "@hookform/resolvers": "~5.2.2",
-    "@react-fabric/core": "^1.0.0-beta.62",
-    "@react-fabric/date": "^1.0.0-beta.62",
-    "@react-fabric/form": "^1.0.0-beta.62",
-    "@react-fabric/utilities": "^1.0.0-beta.62",
+    "@react-fabric/core": "^1.0.0-beta.63",
+    "@react-fabric/date": "^1.0.0-beta.63",
+    "@react-fabric/form": "^1.0.0-beta.63",
+    "@react-fabric/utilities": "^1.0.0-beta.63",
     "classnames": "~2.5.1",
     "react-hook-form": "~7.71.2"
   },
