@@ -1,4 +1,4 @@
-import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{C as i,_ as a,b as o,c as s,h as c,i as l,l as u,m as d,r as f,t as p,tt as m}from"./iframe-Du5FrOxJ.js";import{r as h}from"./react2.js";import{t as g}from"./mdx-react-shim.js";import{o as _,t as v}from"./src2.js";import{Sankey as y,TreeMap as b,n as x,t as S}from"./GenericChart.stories.js";function C(e){return(0,T.jsxs)(T.Fragment,{children:[(0,T.jsx)(d,{of:S}),`
+import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{C as i,_ as a,b as o,c as s,h as c,i as l,l as u,m as d,r as f,t as p,tt as m}from"./iframe-BBjx9o_X.js";import{r as h}from"./react2.js";import{t as g}from"./mdx-react-shim.js";import{o as _,t as v}from"./src2.js";import{Sankey as y,TreeMap as b,n as x,t as S}from"./GenericChart.stories.js";function C(e){return(0,T.jsxs)(T.Fragment,{children:[(0,T.jsx)(d,{of:S}),`
 `,(0,T.jsx)(a,{children:`Generic Chart`}),`
 `,(0,T.jsx)(p,{storyId:`animations`,children:(0,T.jsx)(`div`,{className:`hidden-anchor`,children:(0,T.jsx)(c,{children:`Tree Map / Sunburst`})})}),`
 `,(0,T.jsx)(u,{of:_}),`

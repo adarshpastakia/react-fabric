@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{t}from"./jsx-runtime.js";import{_ as n,b as r,h as i,m as a,v as o,y as s}from"./iframe-Du5FrOxJ.js";import{r as c}from"./react2.js";import{t as l}from"./mdx-react-shim.js";import{n as u,r as d,t as f}from"./dist28.js";function p(e){let t={p:`p`,strong:`strong`,...c(),...e.components};return(0,h.jsxs)(h.Fragment,{children:[(0,h.jsx)(a,{title:`Typography`}),`
+import{n as e}from"./chunk.js";import{t}from"./jsx-runtime.js";import{_ as n,b as r,h as i,m as a,v as o,y as s}from"./iframe-BBjx9o_X.js";import{r as c}from"./react2.js";import{t as l}from"./mdx-react-shim.js";import{n as u,r as d,t as f}from"./dist28.js";function p(e){let t={p:`p`,strong:`strong`,...c(),...e.components};return(0,h.jsxs)(h.Fragment,{children:[(0,h.jsx)(a,{title:`Typography`}),`
 `,(0,h.jsx)(n,{children:`Typography`}),`
 `,(0,h.jsx)(i,{children:`Font Family`}),`
 `,(0,h.jsxs)(t.p,{children:[(0,h.jsx)(t.strong,{children:`Font:`}),` Noto Sans`]}),`

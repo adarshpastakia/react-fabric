@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{t}from"./jsx-runtime.js";import{_ as n,b as r,h as i,m as a}from"./iframe-Du5FrOxJ.js";import{r as o}from"./react2.js";import{t as s}from"./mdx-react-shim.js";function c(e){let t={code:`code`,li:`li`,pre:`pre`,ul:`ul`,...o(),...e.components};return(0,u.jsxs)(u.Fragment,{children:[(0,u.jsx)(a,{title:`Using the library`}),`
+import{n as e}from"./chunk.js";import{t}from"./jsx-runtime.js";import{_ as n,b as r,h as i,m as a}from"./iframe-BBjx9o_X.js";import{r as o}from"./react2.js";import{t as s}from"./mdx-react-shim.js";function c(e){let t={code:`code`,li:`li`,pre:`pre`,ul:`ul`,...o(),...e.components};return(0,u.jsxs)(u.Fragment,{children:[(0,u.jsx)(a,{title:`Using the library`}),`
 `,(0,u.jsx)(n,{children:`Using the library`}),`
 `,(0,u.jsx)(i,{children:`Installing`}),`
 `,(0,u.jsx)(t.pre,{children:(0,u.jsx)(t.code,{className:`language-bash`,children:`# core components
