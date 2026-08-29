@@ -43,7 +43,7 @@ import { Pin as _Pin } from "./markers/Pin";
 import { useHeatmapRenderer } from "./renderers/Heatmap";
 import { useSimpleRenderer } from "./renderers/Simple";
 
-esriConfig.assetsPath = "/assets/@arcgis";
+esriConfig.assetsPath = "./assets/@arcgis";
 export const setArcgisAssetsPath = (path: string) => {
   esriConfig.assetsPath = path;
 };
