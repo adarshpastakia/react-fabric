@@ -1,0 +1,284 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+/* stylelint-disable custom-property-pattern */
+
+@layer utilities {
+  [dir="rtl"] .fabric-lexicalEditor * {
+    text-align: start;
+  }
+
+  .fabric-lexicalEditor,
+  .fabric-lexicalToolbar {
+    width: 21cm;
+    margin: 0 auto;
+
+    .fabric-inputWrapper {
+      outline: none;
+
+      button > div {
+        outline: 1px solid var(--border-color-soft);
+      }
+    }
+  }
+
+  .fabric-lexicalEditor {
+    .editor-cover {
+      position: relative;
+      break-after: page;
+
+      &::after {
+        content: "page break";
+
+        position: absolute;
+        inset-inline: 0;
+        bottom: 0;
+
+        border-bottom: 1px dashed #ccc;
+
+        font-size: 11px;
+        line-height: 0;
+        color: #ccc;
+        text-align: center;
+      }
+    }
+
+    .editor-container.editor-container.editor-container {
+      font-family: "Noto Sans Kufi Arabic", "Noto Sans", Arial, sans-serif;
+      font-size: 18px;
+      color: #0f172a;
+      background-color: #fff;
+    }
+
+    .editor-heading-h1 {
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
+      padding: 0 4px;
+
+      font-size: 1.5em;
+      font-weight: 600;
+      line-height: 1.5;
+      text-transform: capitalize;
+    }
+
+    .editor-heading-h2 {
+      margin-top: 1.5em;
+      margin-bottom: 1em;
+      padding: 0 4px;
+
+      font-size: 1.25em;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .editor-heading-h6 {
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
+
+      font-size: 0.875em;
+      font-weight: 600;
+      line-height: 1.25;
+      color: #b45309;
+    }
+
+    .editor-paragraph {
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
+      font-size: 1em;
+      line-height: 1.5;
+    }
+
+    .editor-quote {
+      display: block;
+
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
+      padding-inline-start: 1em;
+      border-color: #64748b;
+      border-inline-start-width: 4px;
+
+      font-size: 1.125em;
+      line-height: 1.5;
+      color: #1e293b;
+    }
+
+    .editor-code {
+      display: block;
+
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
+      padding: 1em;
+      border-inline-start-width: 4px;
+
+      font-size: 1.125em;
+      line-height: 1.5;
+      color: #1e293b;
+
+      background-color: #e2e8f0;
+    }
+
+    .editor-textUnderline {
+      text-decoration: underline;
+    }
+
+    .editor-textStrikethrough {
+      text-decoration: line-through;
+    }
+
+    .editor-textUnderlineStrikethrough {
+      text-decoration: underline line-through;
+    }
+
+    .editor-page-break {
+      break-after: always;
+    }
+
+    .editor-no-break {
+      break-inside: avoid;
+    }
+
+    .editor-textSmall {
+      font-size: 0.875em;
+    }
+
+    .editor-textBold {
+      font-weight: 600;
+    }
+
+    .editor-textItalic {
+      font-style: italic;
+    }
+
+    .editor-textMuted {
+      color: #4b5563;
+    }
+
+    .editor-list-ul {
+      padding-inline-start: 0.5em;
+      list-style: disc;
+    }
+
+    .editor-list-ol {
+      padding-inline-start: 0.5em;
+      list-style: decimal;
+    }
+
+    .editor-listItem {
+      margin-inline-start: 1em;
+      text-align: start;
+    }
+
+    .editor-comment {
+      width: 100%;
+      padding: 0.25em 0.5em;
+      border: 2px solid var(--color-marigold-200);
+
+      font-size: 0.825rem;
+      font-weight: initial;
+      font-style: initial;
+
+      background-color: --alpha(var(--color-marigold-100) / 50%);
+    }
+
+    .editor-comment-hilight {
+      outline: 2px solid var(--color-marigold-300);
+      outline-offset: 8px;
+      transition: outline-offset ease 2s;
+    }
+
+    .editor-has-comment::before {
+      cursor: pointer;
+      content: " ";
+
+      position: absolute;
+      inset-inline-start: 1.5cm;
+
+      display: inline-block;
+
+      width: 1rem;
+      height: 1rem;
+      border-radius: 1rem;
+
+      opacity: 0.5;
+      background-color: var(--color-marigold-700);
+
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3C!-- Icon from Material Design Icons by Pictogrammers - https://github.com/Templarian/MaterialDesign/blob/master/LICENSE --%3E%3Cpath fill='currentColor' d='M9 22a1 1 0 0 1-1-1v-3H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6.1l-3.7 3.71c-.2.19-.45.29-.7.29zm1-6v3.08L13.08 16H20V4H4v12zM6 7h12v2H6zm0 4h9v2H6z'/%3E%3C/svg%3E");
+    }
+
+    @media print {
+      html,
+      body {
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      div,
+      p,
+      span,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        box-sizing: border-box;
+      }
+
+      body.report-template {
+        min-height: 100vh;
+        background-size: 0;
+      }
+
+      body::after {
+        content: "";
+
+        position: fixed;
+        z-index: 10;
+        inset: 0;
+
+        width: 100vw;
+        max-width: 21cm;
+        height: 100vh;
+        margin: 0 auto;
+
+        background-image: inherit;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .sticky__container,
+      .editor-page-break > div {
+        display: none;
+      }
+
+      .editor-container {
+        position: relative;
+      }
+
+      .editor-editor {
+        box-sizing: border-box;
+        padding: 0 2cm;
+      }
+    }
+  }
+}

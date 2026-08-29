@@ -1,0 +1,124 @@
+import { Collapsable } from "@/core/src";
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Meta,
+  Story,
+  Subheading,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import * as ProgressBarStories from "./ProgressBar.stories";
+import * as ProgressCircleStories from "./ProgressCircle.stories";
+
+<Meta of={ProgressBarStories} />
+
+<Title>Progress</Title>
+
+<Anchor storyId="progressbar">
+  <Subheading>Linear Progress</Subheading>
+</Anchor>
+
+<Description of={ProgressBarStories} />
+
+<Canvas withToolbar of={ProgressBarStories._ProgressBar} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ProgressBarStories._ProgressBar} />
+</Collapsable>
+
+<Anchor storyId="sizes">
+  <Subheading>Sizes</Subheading>
+</Anchor>
+
+<Canvas withToolbar of={ProgressBarStories.BarSizes} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ProgressBarStories.BarSizes} />
+</Collapsable>
+
+<Anchor storyId="colors">
+  <Subheading>Colors</Subheading>
+</Anchor>
+
+<Canvas withToolbar of={ProgressBarStories.BarColors} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ProgressBarStories.BarColors} />
+</Collapsable>
+
+<Anchor storyId="animated">
+  <Subheading>Animated</Subheading>
+</Anchor>
+
+<Canvas withToolbar of={ProgressBarStories.BarAnimated} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ProgressBarStories.BarAnimated} />
+</Collapsable>
+
+<Anchor storyId="labels">
+  <Subheading>Labels</Subheading>
+</Anchor>
+
+<Canvas withToolbar of={ProgressBarStories.BarLabels} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ProgressBarStories.BarLabels} />
+</Collapsable>
+
+<hr />
+
+<Subtitle>Circle Progress Bar</Subtitle>
+
+<Anchor storyId="progresscircle">
+  <Subheading>Circular Progress</Subheading>
+</Anchor>
+
+<Description of={ProgressCircleStories} />
+
+<Canvas withToolbar of={ProgressCircleStories._ProgressCircle} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ProgressCircleStories._ProgressCircle} />
+</Collapsable>
+
+<Anchor storyId="sizes">
+  <Subheading>Sizes</Subheading>
+</Anchor>
+
+<Canvas withToolbar of={ProgressCircleStories.CircleSizes} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ProgressCircleStories.CircleSizes} />
+</Collapsable>
+
+<Anchor storyId="colors">
+  <Subheading>Colors</Subheading>
+</Anchor>
+
+<Canvas withToolbar of={ProgressCircleStories.CircleColors} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ProgressCircleStories.CircleColors} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />

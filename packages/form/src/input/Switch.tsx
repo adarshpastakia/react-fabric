@@ -1,0 +1,188 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+import { useControlledValue } from "@react-fabric/core";
+import type { ColorUnion, RefProp } from "@react-fabric/core/dist/types/types";
+import { cn } from "@react-fabric/utilities";
+import { Fragment, useCallback } from "react";
+import { ErrorIcon } from "../internal/ErrorIcon";
+import { getBgClass, getColor, getColorClass } from "../utils";
+
+export interface SwitchProps extends RefProp<HTMLInputElement> {
+  /**
+   * Switch label
+   */
+  label?: React.ReactElement | string;
+  /**
+   * checked
+   */
+  checked?: boolean;
+  /**
+   * on checked change
+   */
+  onChange?: (checked: boolean) => void;
+
+  /**
+   * disabled input
+   */
+  disabled?: boolean;
+  /**
+   * invalid value input
+   */
+  invalid?: boolean;
+  /**
+   * error message
+   */
+  error?: string;
+
+  /**
+   * field width
+   */
+  width?: number | string;
+
+  /**
+   * cutom Switch icon
+   */
+  color?: ColorUnion;
+  /**
+   * cutom Switch icon
+   */
+  defaultColor?: ColorUnion;
+
+  name?: string;
+
+  onLabel?: string;
+  onLabelColor?: ColorUnion;
+
+  offLabel?: string;
+  offLabelColor?: ColorUnion;
+}
+
+/**
+ * Switch input component with custom labels and colors.
+ * This component renders a switch input with optional labels for the "on" and "off" states,
+ * and allows for custom colors for the switch background and labels.
+ * It supports disabled and invalid states, and handles change events.
+ */
+export function Switch({
+  ref,
+  label,
+  checked,
+  invalid,
+  disabled,
+  error,
+  width,
+  color,
+  name,
+  onLabel,
+  offLabel,
+  onLabelColor,
+  offLabelColor,
+  defaultColor,
+  onChange,
+  ...rest
+}: SwitchProps) {
+  const { currentValue, updateValue } = useControlledValue(!!checked, false);
+
+  const handleChange = useCallback(
+    (e?: React.ChangeEvent<HTMLInputElement>) => {
+      updateValue(e?.target.checked ?? false);
+      onChange?.(e?.target.checked ?? false);
+    },
+    [onChange, updateValue],
+  );
+
+  return (
+    <label
+      className={cn(
+        invalid ? "ring-danger-500" : "ring-primary-500",
+        disabled ? "opacity-50 cursor-not-allowed" : "opacity-85 hover:opacity-100 cursor-pointer",
+        "inline-flex gap-1 py-1 items-center relative rounded ring-offset-2 has-focus-visible:ring-1",
+      )}
+      style={{ width }}
+    >
+      <div
+        className={cn(
+          currentValue && getBgClass(color ? `${color}-500` : "primary-500"),
+          !currentValue && (defaultColor ? getBgClass(`${defaultColor}-500`) : "bg-tint-200"),
+          "relative grid grid-cols-2 items-center h-[1.5em] min-w-[2.5em] rounded-full p-[0.25em] transition-colors duration-200 ease-in-out",
+        )}
+        style={{
+          backgroundColor: currentValue ? getColor(color) : getColor(defaultColor),
+        }}
+      >
+        <input
+          className={cn(
+            "appearance-none absolute opacity-0 inset-0 bg-transparent border-none cursor-[inherit] outline-none ring-0",
+          )}
+          aria-invalid={invalid}
+          aria-disabled={disabled}
+          disabled={disabled}
+          aria-errormessage={error}
+          type="checkbox"
+          name={name}
+          ref={ref}
+          size={1}
+          tabIndex={0}
+          autoComplete="off"
+          checked={!!currentValue}
+          onChange={handleChange}
+          {...rest}
+        />
+        <span
+          aria-hidden="true"
+          className={cn(
+            !disabled && "shadow-sm",
+            currentValue ? "translate-x-full" : "translate-x-0",
+            "pointer-events-none inline-block h-[1em] inset-s-[0.25em] absolute rounded-full bg-white ring-0 transition duration-200 ease-in-out",
+          )}
+          style={{
+            width: "calc(50% - 0.25em)",
+          }}
+        />
+        {(!!onLabel || !!offLabel) && (
+          <Fragment>
+            <span
+              className={`whitespace-nowrap text-xs px-1 ${getColorClass(onLabelColor ?? "white")}`}
+              style={{
+                color: getColor(onLabelColor),
+              }}
+            >
+              {onLabel ?? " "}
+            </span>
+            <span
+              className={`whitespace-nowrap text-xs px-1 ${getColorClass(offLabelColor ?? "base")}`}
+              style={{
+                color: getColor(offLabelColor),
+              }}
+            >
+              {offLabel ?? " "}
+            </span>
+          </Fragment>
+        )}
+      </div>
+      <ErrorIcon invalid={invalid} error={error} />
+      {label && <span className="flex-initial leading-tight truncate">{label}</span>}
+    </label>
+  );
+}

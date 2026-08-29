@@ -1,0 +1,227 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+import type { BadgeType } from "@/core/dist/types/components/badge/Badge";
+import { type IconProps } from "@react-fabric/core/dist/types/components/icon/Icon";
+import { type ChildProp, type CssProp, type RefProp, type TestProps } from "@react-fabric/core/dist/types/types";
+
+interface TreeBaseNode<T> extends CssProp, TestProps {
+  id: string;
+  /**
+   * display label
+   */
+  label: React.ReactNode;
+  /**
+   * icon path or props
+   */
+  icon?: IconProps;
+  /**
+   * full text to be used for querying purposes
+   */
+  queryable?: string;
+  /**
+   * element badge
+   */
+  badge?: string | number | BadgeType;
+  /**
+   * is element `node` or `leaf`
+   */
+  leaf?: boolean;
+  /**
+   * disable selection
+   */
+  disabled?: boolean;
+  data: T;
+}
+
+export type TreeNodeType<T extends KeyValue = KeyValue> = TreeBaseNode<T> &
+  (
+    | { leaf: true; children?: never }
+    | {
+        leaf?: boolean;
+        children?: Array<TreeNodeType<T>>;
+        open?: boolean;
+        iconOpen?: string;
+      }
+  );
+
+export interface InternalNode<T> extends CssProp, TestProps {
+  id: string;
+  label: React.ReactNode;
+  queryable?: string;
+  badge?: string | number | BadgeType;
+  disabled?: boolean;
+  leaf: boolean;
+  open: boolean;
+  children?: InternalNode<T>[];
+  level: number;
+  loading: boolean;
+  filtered: boolean;
+  childFiltered?: boolean;
+  parentFiltered?: boolean;
+  loaded: boolean;
+  parent?: string;
+  empty?: boolean;
+  icon?: IconProps;
+  errored?: string;
+  selected?: true;
+  childSelected?: true;
+  checked: 0 | 1 | 2;
+  data: T;
+  last?: boolean;
+  lines: Array<0 | 1 | 2 | 3>;
+}
+
+export interface TreeNodeProps<T> extends ChildProp {
+  node: InternalNode<T>;
+  expanders: [string, string];
+  defaultNodeIcon?: string | React.ReactElement;
+  defaultLeafIcon?: string | React.ReactElement;
+  noLines?: boolean;
+  selectable?: true | "leafOnly";
+  checkable?: true | "leafOnly";
+  leafClassName?: string;
+  nodeClassName?: string;
+  onToggle: (id: string) => void;
+  onSelect: (id: string, shiftKey?: boolean) => void;
+  onChecked: (id: string) => void;
+  onClick?: (id: string, node: T) => void;
+}
+
+export interface TreeRef {
+  select: (id: string) => void;
+  open: (id: string) => void;
+  openAndLoad: (list: string[]) => void;
+}
+
+export type TreePanelProps<T extends KeyValue = KeyValue> = BaseTreePanelProps<T> &
+  (
+    | {
+        /**
+         * enable multi select
+         */
+        multiple?: false;
+        /**
+         * selected item id
+         */
+        selected?: string;
+        /**
+         * callback on selection of tree node
+         */
+        onSelect?: (id: string, data: T) => void;
+      }
+    | {
+        /**
+         * enable multi select
+         */
+        multiple?: true;
+        /**
+         * selected item id
+         */
+        selected?: string[];
+        /**
+         * callback on selection of tree node
+         */
+        onSelect?: (id: string[], data: T) => void;
+      }
+  );
+
+export interface BaseTreePanelProps<T extends KeyValue = KeyValue> extends TestProps, RefProp<TreeRef> {
+  items?: Array<TreeNodeType<T>>;
+  /**
+   * make tree searchable
+   */
+  searchable?: boolean;
+  /**
+   * filter input placeholder
+   */
+  filterPlaceholder?: string;
+  /**
+   * enable select
+   */
+  selectable?: true | "leafOnly";
+  /**
+   * enable multi select
+   */
+  multiple?: boolean;
+  /**
+   * enable checkable
+   */
+  checkable?: true | "leafOnly";
+  /**
+   * checked items
+   */
+  checked?: string[];
+  selected?: string | string[];
+  /**
+   * default node icon
+   */
+  defaultNodeIcon?: string;
+  /**
+   * default leaf icon
+   */
+  defaultLeafIcon?: string;
+  /**
+   * hide level indicator lines
+   */
+  noLines?: boolean;
+  /**
+   * expander icons
+   */
+  expander?: "box" | "caret" | "chevron" | "folder";
+  /**
+   * callback for lazy loading tree items
+   */
+  onLoad?: (id: string) => Promise<Array<TreeNodeType<T>> | undefined> | Array<TreeNodeType<T>> | undefined;
+  /**
+   * callback to load tree using search query
+   */
+  onQuery?: (query: string) => void;
+  /**
+   * callback on click of tree node
+   */
+  onClick?: (id: string, data: T) => void;
+  /**
+   * callback on change of checked list
+   * @param leafs - list of checked leaf nodes
+   * @param nodes - list of checked nodes
+   * @param partials - list of partially checked nodes
+   */
+  onChecked?: (leafs: string[], nodes: string[], partials: string[]) => void;
+  /**
+   * item filter matcher
+   */
+  matcher?: (data: T, query: string) => boolean;
+
+  onSelect?: (id: string | string[], data: T) => void;
+
+  sorter?: false | ((a: TreeNodeType<T>, b: TreeNodeType<T>) => number);
+  makeLabel?: (node: T) => React.ReactNode;
+  makeIcon?: (node: T) => React.ReactElement;
+
+  defaultExpanded?: string[];
+  onExpandToggle?: (id: string[]) => void;
+
+  leafClassName?: string;
+  nodeClassName?: string;
+}

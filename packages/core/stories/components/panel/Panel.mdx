@@ -1,0 +1,77 @@
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import { Collapsable, Panel } from "../../../src";
+import * as PanelStories from "./Panel.stories";
+import * as PanelGroupStories from "./PanelGroup.stories";
+
+<Meta of={PanelStories} />
+
+<Title>Panel</Title>
+
+<Anchor storyId="panel">
+  <div className="hidden-anchor">
+    <Subheading>Panel</Subheading>
+  </div>
+</Anchor>
+
+<Description of={Panel} />
+
+<Canvas withToolbar of={PanelStories._Panel} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={PanelStories._Panel} />
+</Collapsable>
+
+<Anchor storyId="controls">
+  <Subheading>With Controls</Subheading>
+</Anchor>
+<Description of={PanelStories.PanelControls} />
+<Canvas withToolbar of={PanelStories.PanelControls} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={PanelStories.PanelControls} />
+</Collapsable>
+
+<Anchor storyId="panelgroup">
+  <Subheading>Panel Group</Subheading>
+</Anchor>
+<Description of={PanelGroupStories._PanelGroup} />
+<Canvas withToolbar of={PanelGroupStories._PanelGroup} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={PanelGroupStories._PanelGroup} />
+</Collapsable>
+
+<Anchor storyId="asidecontent">
+  <Subheading>Aside Content</Subheading>
+</Anchor>
+<Description of={PanelGroupStories.AsideContent} />
+<Canvas withToolbar of={PanelGroupStories.AsideContent} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={PanelGroupStories.AsideContent} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>

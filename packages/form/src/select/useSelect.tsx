@@ -1,0 +1,403 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
+import { useDebounce } from "@react-fabric/core";
+import { compareValues, dedupe, EMPTY_ARRAY, groupBy, isArray, isString, matchString } from "@react-fabric/utilities";
+import { useCallback, useDeferredValue, useEffect, useMemo, useReducer, useRef } from "react";
+import type { SelectProps } from "../types";
+import { getSelectedValue, makeOption } from "./helpers";
+
+type StateActions =
+  | {
+      type: "open";
+    }
+  | { type: "close" }
+  | {
+      type: "options";
+      options: AnyObject[];
+      query?: string;
+      open?: boolean;
+      setActive?: true;
+    }
+  | { type: "startQuery"; query: string }
+  | { type: "setValue"; value: AnyObject }
+  | { type: "changeValue"; value: AnyObject }
+  | { type: "removeItem"; index?: number }
+  | { type: "active"; index: number | null };
+
+interface State {
+  multiple: boolean;
+  emptyValue: AnyObject;
+  open: boolean;
+  loading: boolean;
+  activeIndex: number | null;
+  activeItem: AnyObject;
+  selectedIndex: number | null;
+  value: AnyObject;
+  // filter
+  query?: string;
+  // dropdown items
+  items: AnyObject[];
+}
+
+export function useSelect(
+  props: Omit<SelectProps<AnyObject>, "multiple"> & { multiple?: boolean; autoComplete?: boolean; alwaysOpen?: boolean },
+) {
+  const {
+    options = EMPTY_ARRAY,
+    value,
+    autoComplete,
+    alwaysOpen = false,
+    defaultOpen = false,
+    multiple = false,
+    allowCreate = false,
+    groupProperty = "",
+    valueProperty = "value",
+    labelProperty = "label",
+    sortProperty,
+    createOption = makeOption,
+    matcher,
+    onQuery,
+    onChange,
+    onSelect,
+  } = props;
+
+  // value state
+  const emptyValue = useMemo(() => (multiple ? ([] as string[]) : ""), [multiple]);
+  const deferred = useDeferredValue(value ?? emptyValue);
+
+  // list items
+  const listRef = useRef<HTMLElement[]>([]);
+  const focusableRef = useRef<HTMLElement>(null);
+  const listContentRef = useRef<AnyObject[]>([]);
+  const optionsRef = useRef<AnyObject[]>([]);
+
+  const matchOption = useCallback(
+    (item: AnyObject, query: string) => {
+      return matcher?.(item, query) ?? matchString(item[labelProperty] ?? item, query);
+    },
+    [labelProperty, matcher],
+  );
+
+  const fireChange = useCallback(
+    (value: AnyObject) => {
+      setTimeout(() => {
+        onSelect?.(value ?? emptyValue);
+        // @ts-expect-error ignore
+        onChange?.(getSelectedValue(value, emptyValue, valueProperty));
+      }, 50);
+    },
+    [onSelect, emptyValue, onChange, valueProperty],
+  );
+
+  const [state, dispatch] = useReducer(
+    (state: State, action: StateActions) => {
+      if (action.type === "open") {
+        const index = state.items.indexOf(state.multiple ? state.value[0] : state.value);
+        return {
+          ...state,
+          open: true,
+          activeIndex: index > -1 ? index : null,
+        };
+      }
+      if (action.type === "close") {
+        return { ...state, activeIndex: null, activeItem: null, open: false };
+      }
+      if (action.type === "active" && state.open) {
+        if (autoComplete && action.index !== null) state.query = state.items[action.index];
+        return {
+          ...state,
+          activeIndex: action.index,
+          activeItem: action.index !== null ? state.items[action.index] : null,
+        };
+      }
+      if (action.type === "setValue") {
+        return {
+          ...state,
+          value: action.value,
+          selectedIndex: state.items.indexOf(state.multiple ? action.value[0] : action.value),
+        };
+      }
+      if (action.type === "changeValue") {
+        const newState = {
+          ...state,
+          value: state.emptyValue,
+          activeIndex: null,
+          activeItem: null,
+          selectedIndex: autoComplete
+            ? state.multiple
+              ? (action.value?.length as number)
+              : 0
+            : state.items.indexOf(action.value),
+        };
+        if (action.value !== undefined) {
+          if (multiple) {
+            const values = [];
+            if (isString(action.value)) values.push(...action.value.split(/,\s?/));
+            else values.push(action.value);
+            newState.value = [...state.value];
+            values.forEach((value: AnyObject) => {
+              newState.value = newState.value.includes?.(value)
+                ? newState.value.filter((item: AnyObject) => item !== value)
+                : [...newState.value, value];
+            });
+          } else {
+            newState.value = action.value;
+          }
+        }
+        if (!state.multiple) newState.open = alwaysOpen;
+        fireChange(newState.value);
+        return newState;
+      }
+      if (action.type === "removeItem") {
+        let newValue = state.value;
+
+        if (state.multiple) {
+          newValue = [...newValue];
+          newValue.splice(action.index ?? -1, 1);
+        } else {
+          newValue = "";
+        }
+        fireChange(newValue);
+        return {
+          ...state,
+          value: newValue,
+        };
+      }
+      if (action.type === "startQuery") {
+        return {
+          ...state,
+          loading: true,
+          query: action.query,
+        };
+      }
+      if (action.type === "options") {
+        const newState = {
+          ...state,
+          loading: false,
+          query: action.query,
+        };
+        let optionList = [...action.options];
+        if (autoComplete && action.query !== undefined) {
+          optionList = dedupe([action.query, ...optionList]);
+        }
+        if (sortProperty) optionList = optionList.sort(compareValues("asc", sortProperty !== true ? sortProperty : undefined));
+        const grouped = groupBy(optionList, groupProperty, "");
+        if (action.open) newState.open = true;
+        newState.items = [];
+        // add new item if allowCreate
+        if (allowCreate && action.query)
+          newState.items.push({
+            ___create___: true,
+            value: action.query,
+          });
+        Object.entries(grouped).forEach(([key, list]) => {
+          if (key) {
+            newState.items.push({ ___group___: true, label: key });
+          }
+          newState.items.push(...list);
+        });
+        if (action.setActive) {
+          const index = newState.items.findIndex((opt: AnyObject) => !opt.___group___);
+          newState.activeIndex = index >= 0 ? index : null;
+          newState.activeItem = index >= 0 ? newState.items[index] : null;
+        } else {
+          newState.activeIndex = null;
+          newState.activeItem = null;
+        }
+        listContentRef.current = newState.items;
+        return newState;
+      }
+      return state;
+    },
+    {},
+    () => ({
+      multiple,
+      emptyValue,
+      open: alwaysOpen || defaultOpen,
+      loading: false,
+      activeIndex: null,
+      activeItem: null,
+      selectedIndex: null,
+      value: emptyValue,
+      // filter
+      query: undefined,
+      // dropdown items
+      items: [],
+    }),
+  );
+
+  useEffect(() => {
+    if (!multiple) {
+      // @ts-expect-error ignore
+      const newOption = (allowCreate || autoComplete) && deferred ? createOption(deferred) : undefined;
+      const hasValue = options.find((opt: AnyObject) => (opt[valueProperty] ?? opt) === deferred);
+      optionsRef.current = options;
+      // if current value missing in list inject it
+      if (!hasValue && newOption) {
+        optionsRef.current = [newOption, ...(options ?? [])];
+      }
+      dispatch({ type: "options", options: optionsRef.current });
+      dispatch({
+        type: "setValue",
+        value: hasValue ?? newOption ?? deferred,
+      });
+    }
+    if (multiple) {
+      optionsRef.current = [];
+      const value = (isArray(deferred) ? deferred : []).map((item: AnyObject) => {
+        const newOption = (allowCreate || autoComplete) && item ? createOption(item) : undefined;
+        const hasValue = options.find((opt: AnyObject) => (opt[valueProperty] ?? opt) === item);
+        if (!hasValue && newOption) {
+          optionsRef.current.push(newOption);
+        }
+        return hasValue ?? newOption ?? item;
+      });
+      optionsRef.current = [...optionsRef.current, ...(options ?? [])];
+      dispatch({ type: "options", options: optionsRef.current });
+      dispatch({
+        type: "setValue",
+        value,
+      });
+    }
+  }, [deferred, options, multiple, allowCreate, autoComplete, createOption, valueProperty]);
+
+  const fireQuery = useDebounce(
+    (query: string) => {
+      void Promise.resolve(onQuery?.(query)).then((options) => {
+        // @ts-expect-error ignore
+        const newOptions = [...options];
+        // if autocomplete inject other filtered options from history
+        if (autoComplete) {
+          newOptions.push(
+            ...optionsRef.current.filter((opt: AnyObject) => {
+              return matchOption?.(opt, query);
+            }),
+          );
+        }
+        dispatch({
+          type: "options",
+          query,
+          options: newOptions,
+          open: true,
+          setActive: true,
+        });
+      });
+    },
+    [onQuery],
+    300,
+  );
+
+  // handlers
+  const handleQuery = useCallback(
+    (query: string) => {
+      if (!query) {
+        dispatch({ type: "options", query: "", options: optionsRef.current });
+      } else {
+        if (onQuery) {
+          dispatch({ type: "startQuery", query });
+          return fireQuery(query);
+        }
+        dispatch({
+          type: "options",
+          query,
+          open: true,
+          setActive: true,
+          options: optionsRef.current.filter((opt: AnyObject) => {
+            return matchOption?.(opt, query);
+          }),
+        });
+      }
+    },
+    [fireQuery, matchOption, onQuery],
+  );
+
+  const handleChange = useCallback(
+    (value?: AnyObject) => {
+      let values = value;
+      if (autoComplete && multiple && value) {
+        values = value.split(/,\s?/);
+      }
+      dispatch({
+        type: "changeValue",
+        value: value?.___create___ ? value.value : value,
+      });
+      if (value?.___create___) {
+        let val = [value.value];
+        if (multiple) {
+          val = value.value.split(/,\s?/);
+        }
+        optionsRef.current = [...optionsRef.current, ...val.map(createOption)];
+      }
+      if (autoComplete) {
+        optionsRef.current = dedupe([...(isArray(values) ? values : [values]), ...optionsRef.current]);
+      }
+      dispatch({ type: "options", options: optionsRef.current });
+    },
+    [autoComplete, createOption, multiple],
+  );
+
+  const handleRemove = useCallback((index?: number) => {
+    dispatch({ type: "removeItem", index });
+  }, []);
+
+  const setOpen = useCallback((open: boolean) => {
+    dispatch({ type: open ? "open" : "close" });
+    dispatch({
+      type: "options",
+      query: undefined,
+      options: optionsRef.current,
+    });
+  }, []);
+
+  const setActiveIndex = useCallback((index: number | null) => {
+    if (index && index > -1) dispatch({ type: "active", index });
+  }, []);
+
+  const clearActiveIndex = useCallback(() => {
+    dispatch({ type: "active", index: null });
+  }, []);
+
+  return {
+    state,
+    listRef,
+    focusableRef,
+    listContentRef,
+    handleChange,
+    handleRemove,
+    handleQuery,
+    clearActiveIndex,
+    macthOption: matchOption,
+    setActiveIndex,
+    setOpen,
+    setItemRef: (index: number, node: HTMLElement) => {
+      listRef.current[index] = node;
+    },
+  };
+}

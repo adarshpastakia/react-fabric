@@ -1,0 +1,193 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+import { Avatar, Icon, ProgressBar } from "@react-fabric/core";
+import type { AvatarProps } from "@react-fabric/core/dist/types/components/avatar/Avatar";
+import type { RefProp } from "@react-fabric/core/dist/types/types";
+import { cn } from "@react-fabric/utilities";
+import { useEffect, useState } from "react";
+import type { UploadHandler } from "../hooks/useFileUploader";
+import { useFileUploader } from "../hooks/useFileUploader";
+import { HiddenInput } from "./Hidden";
+
+export interface Props extends RefProp {
+  /**
+   * field name
+   */
+  name?: string;
+  /**
+   * actual avatar storage path
+   */
+  value?: string;
+  /**
+   * default avatar image
+   */
+  defaultValue?: string;
+  /**
+   * avatar name
+   */
+  avatarName?: string;
+  rounded?: boolean;
+  variant?: AvatarProps["variant"];
+  fallbackIcon?: AvatarProps["fallbackIcon"];
+  avatarClassName?: AvatarProps["className"];
+  size?: string | number;
+  /**
+   * upload handler to store file in temp storage
+   */
+  uploadHandler: UploadHandler;
+  /**
+   * file stream path
+   */
+  fileUrl?: (path: string) => string;
+  /**
+   * change handler
+   *
+   * @param file
+   * @param base64
+   * @returns storage path
+   */
+  onChange?: (path: string | null) => void;
+}
+
+/**
+ * Avatar input component for uploading and displaying user avatars.
+ * It allows users to select an image file, upload it, and display the avatar.
+ * It also provides a way to remove the uploaded file and shows upload progress.
+ */
+export const AvatarInput = ({
+  size = "6rem",
+  avatarName,
+  avatarClassName,
+  value,
+  rounded,
+  defaultValue,
+  fallbackIcon,
+  variant,
+  fileUrl,
+  uploadHandler,
+  onChange,
+  ...rest
+}: Props): React.ReactElement => {
+  const { files, upload, remove } = useFileUploader(
+    async (data, config) => await uploadHandler?.(data, config),
+    value ?? defaultValue,
+    {
+      multiple: false,
+      onChange: (files) => onChange?.(files?.path ?? null),
+    },
+  );
+
+  const [base64, setBase64] = useState("");
+  useEffect(() => {
+    if (files?.length) {
+      const file = files?.[0]?.file;
+      void (
+        file &&
+        new Response(file).blob().then((blob) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            setBase64(reader.result as string);
+          };
+          reader.onerror = (e) => {
+            console.error("ERROR", e);
+          };
+          reader.readAsDataURL(blob);
+        })
+      );
+    } else {
+      // eslint-disable-next-line @eslint-react/set-state-in-effect
+      setBase64(fileUrl?.(defaultValue ?? "") ?? defaultValue ?? "");
+    }
+  }, [files, defaultValue, fileUrl]);
+
+  useEffect(() => {
+    // eslint-disable-next-line @eslint-react/set-state-in-effect
+    if (!value && defaultValue) setBase64(fileUrl?.(defaultValue) ?? defaultValue);
+    // eslint-disable-next-line @eslint-react/set-state-in-effect
+    if (value) setBase64(fileUrl?.(value) ?? value);
+  }, [value, defaultValue, fileUrl]);
+
+  return (
+    <div className="flex flex-nowrap items-end overflow-hidden p-px">
+      <div
+        className={cn(
+          "inline-block leading-none relative outline overflow-hidden",
+          rounded && "rounded-full",
+          !rounded && "rounded",
+        )}
+      >
+        <Avatar
+          name={avatarName ?? "temp"}
+          size={size}
+          avatar={base64}
+          rounded={rounded}
+          variant={variant}
+          fallbackIcon={fallbackIcon}
+          className={avatarClassName}
+        />
+        <div className="absolute inset-x-0 bottom-0 cursor-pointer opacity-50 bg-black/50 hover:opacity-90 text-white text-xs text-center py-1">
+          <span>Edit</span>
+          <input
+            type="file"
+            accept="image/*"
+            className="absolute inset-0 opacity-0 z-5 cursor-pointer"
+            onChange={(e) => [upload(e.target.files), (e.target.value = "")]}
+          />
+        </div>
+      </div>
+      <HiddenInput hiddenValue={files?.[0]?.path} {...rest} />
+      {files.map((file, idx) => (
+        // eslint-disable-next-line @eslint-react/no-array-index-key
+        <div key={idx} className="px-2 py-1 flex-1 overflow-hidden">
+          <div className="flex flex-nowrap gap-1 items-center">
+            {file.error && (
+              <div className="flex-1 truncate px-2">
+                <span className="text-danger-600">{file.error}</span>
+              </div>
+            )}
+            {file.progress && (
+              <button
+                type="button"
+                className={cn("size-fit flex-content leading-0 cursor-pointer")}
+                onClick={() => file.abort?.()}
+              >
+                <Icon icon="icon-[mdi--stop]" bg="danger" color="white" size="sm" className="p-0.5" aria-label="abort" />
+              </button>
+            )}
+            {!file.progress && (
+              <button
+                type="button"
+                className={cn("size-fit flex-content leading-0 cursor-pointer")}
+                onClick={() => remove(file.key)}
+              >
+                <Icon icon="icon-[mdi--trash-can-outline]" color="danger" size="sm" aria-label="remove" />
+              </button>
+            )}
+          </div>
+          {file.progress && <ProgressBar animate value={file.progress * 100} size="xxs" />}
+        </div>
+      ))}
+    </div>
+  );
+};

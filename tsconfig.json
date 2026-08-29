@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "jsx": "react-jsx",
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "noEmit": true,
+    "types": ["node"],
+    "paths": {
+      "@/*": ["./packages/*"]
+    },
+    "typeRoots": ["node_modules/@types", "packages/core/src/types"]
+  },
+  "include": ["**/*.ts", "**/*.tsx", ".storybook/**/*.ts", ".storybook/**/*.tsx", "jest.config.mjs"],
+  "exclude": ["skeleton-project", "dist"],
+  "files": ["./packages/core/src/types/global.d.ts"]
+}

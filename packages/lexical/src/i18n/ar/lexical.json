@@ -1,0 +1,18 @@
+{
+  "addComment": "أضف تعليقا",
+  "reply": "رد",
+  "tool": {
+    "alignCenter": "محاذاة المركز",
+    "alignEnd": "محاذاة النهاية",
+    "alignJustify": "محاذاة وضبط",
+    "alignStart": "محاذاة البداية",
+    "bold": "عريض",
+    "clear": "مسح التنسيق",
+    "hilight": "تسليط الضوء",
+    "indentIn": "المسافة البادئة في",
+    "indentOut": "مسافة بادئة للخارج",
+    "italic": "مائل",
+    "strikethrough": "يتوسطه خط",
+    "underline": "تسطير"
+  }
+}

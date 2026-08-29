@@ -1,0 +1,413 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+import { RestrictToVerticalAxis } from "@dnd-kit/abstract/modifiers";
+import { DragDropProvider, type DragEndEvent } from "@dnd-kit/react";
+import { useSortable } from "@dnd-kit/react/sortable";
+import { Button, cloneChildren, Icon, Tooltip } from "@react-fabric/core";
+import { cn, isFalse, isObject, isString } from "@react-fabric/utilities";
+import {
+  cloneElement,
+  isValidElement,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useState,
+  type PropsWithChildren,
+  type Ref,
+} from "react";
+import { useFieldArray, useFormContext } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+import { FieldWrapper } from "../internal/FieldWrapper";
+
+interface ErrorObject {
+  key: string;
+  values: Record<string, string>;
+}
+
+export interface ArrayInputProps<T extends AnyObject = string> {
+  /**
+   * input label
+   */
+  label?: string;
+  /**
+   * append to label end
+   */
+  appendLabel?: React.ReactElement | string | number | boolean;
+  /**
+   * info label at bottom
+   */
+  info?: string;
+  /**
+   * required
+   */
+  required?: boolean;
+  /**
+   * disabled input
+   */
+  disabled?: boolean;
+  /**
+   * read-only input
+   */
+  readOnly?: boolean;
+
+  /**
+   * field name
+   */
+  name: string;
+  /**
+   * minimum required length
+   */
+  minItems?: number;
+  /**
+   * maximum length
+   */
+  maxItems?: number;
+  /**
+   * field name to focus on add
+   */
+  focusName?: string;
+  /**
+   * enable drag-n-drop sorting
+   */
+  enableSorting?: boolean;
+  children:
+    | React.ReactNode
+    | ((props: { index: number; name: string; item: T; onChange: (val: false | undefined | T) => void }) => React.ReactNode);
+  /**
+   * add item button label
+   */
+  addLabel?: string;
+  buttonPosition?: "top" | "bottom" | "both";
+  arrayRef?: Ref<{
+    addItem: (item: false | undefined | T | Promise<false | undefined | T>) => void;
+    removeItem: (idx: number) => void;
+  }>;
+  /**
+   * add new item
+   */
+  onAdd?: () => false | undefined | T | Promise<false | undefined | T>;
+  /**
+   * on item remove
+   */
+  onRemove?: (item: T, idx: number) => void;
+  /**
+   * before item remove
+   */
+  onBeforeRemove?: (item: T, idx: number) => Promise<boolean> | boolean;
+  /**
+   * can remove item
+   */
+  canRemove?: false | "newonly" | ((props: { item: T; index: number; lastItem: boolean }) => boolean);
+
+  /**
+   * field width
+   */
+  width?: number | string;
+  /**
+   * inline label and input
+   */
+  inline?: boolean;
+  /**
+   * label width for inline
+   */
+  labelWidth?: string;
+}
+
+function SortableItem({
+  id,
+  index,
+  children,
+  className,
+  enableSorting,
+}: PropsWithChildren<{ id: string; index: number; className: string; enableSorting?: boolean }>) {
+  const { ref, handleRef, isDragging } = useSortable({ id, index, disabled: !enableSorting });
+  if (enableSorting) {
+    return (
+      <div className={className} ref={ref}>
+        <Icon ref={handleRef} className={isDragging ? "cursor-grabbing" : "cursor-grab"} icon="icon-[mdi--drag-vertical]" />
+        {children}
+      </div>
+    );
+  }
+
+  return <div className={className}>{children}</div>;
+}
+
+function Wrapper({
+  children,
+  fields,
+  enableSorting,
+  onMove,
+}: {
+  children: React.ReactNode;
+  enableSorting?: boolean;
+  fields: KeyValue[];
+  onMove: (active: number, end: number) => void;
+}) {
+  if (enableSorting) {
+    // pass id list to dnd context
+    const idMap = fields.map((item) => item.__ID__ as string);
+    const handleDragEnd = (e: DragEndEvent) => {
+      if (e.operation.source?.id !== e.operation.target?.id) {
+        // find index of item and drop over
+        const active = idMap.indexOf(`${e.operation.source?.id}`);
+        const end = idMap.indexOf(`${e.operation.target?.id}`);
+        onMove(active, end);
+      }
+    };
+    return (
+      <DragDropProvider onDragEnd={handleDragEnd} modifiers={[RestrictToVerticalAxis]}>
+        {children}
+      </DragDropProvider>
+    );
+  }
+
+  return children;
+}
+
+/**
+ * ArrayInput component for managing an array of items in a form.
+ * It allows adding, removing, and sorting items within the array.
+ * It integrates with react-hook-form for form state management and validation.
+ * It supports fixed-length lists, custom add/remove handlers, and can display validation errors.
+ * It also provides options for inline display and custom button positioning.
+ *
+ * It uses the `useFieldArray` hook from `react-hook-form` to manage the array state and provides a simple interface for adding and removing items.
+ *
+ * It also supports drag-and-drop sorting using `@dnd-kit/core` and `@dnd-kit/sortable` for a better user experience when reordering items.
+ *
+ * @example
+ * ```jsx
+ * <ArrayInput
+ *   name="items"
+ *   label="Items"
+ *   addLabel="Add Item"
+ *   onAdd={() => ({ name: "", value: "" })}
+ *   onRemove={(item, index) => console.log("Removed item:", item, "at index:", index)}
+ *   onBeforeRemove={(item, index) => confirm(`Are you sure you want to remove item at index ${index}?`)}
+ *   canRemove={({ item, index, lastItem }) => !lastItem} // Prevent removing the last item
+ * >
+ *   {({ index, name }) => (
+ *     <Input
+ *       name={name}
+ *       label={`Item ${index + 1}`}
+ *       placeholder="Enter item value"
+ *       required={index === 0} // Make the first item required
+ *     />
+ *   )}
+ * </ArrayInput>
+ * ```
+ *
+ * @see {@link https://react-hook-form.com/api/usefieldarray} for more details on `useFieldArray`.
+ * @see {@link https://react-dnd.github.io/react-dnd/about} for more details on DnD context and sorting.
+ */
+export function ArrayInput<T extends AnyObject = string>({
+  name,
+  children,
+  addLabel,
+  focusName = "",
+  buttonPosition = "bottom",
+  onAdd,
+  onRemove,
+  onBeforeRemove,
+  canRemove,
+  arrayRef,
+  enableSorting,
+  disabled = false,
+  readOnly = false,
+  minItems = 0,
+  maxItems = Number.MAX_SAFE_INTEGER,
+  ...rest
+}: ArrayInputProps<T>) {
+  const { t } = useTranslation("form");
+  const form = useFormContext();
+
+  if (!form?.control) throw new Error("ArrayInput must be contained within a Form element");
+
+  const { fields, append, remove, move } = useFieldArray({
+    name,
+    keyName: "__ID__",
+    control: form.control,
+  });
+
+  const [initialList, setInitialList] = useState<string[]>(() => []);
+  useEffect(() => {
+    // eslint-disable-next-line @eslint-react/set-state-in-effect
+    setInitialList(fields.map((f) => f.__ID__));
+  }, [fields]);
+
+  const error = useMemo(
+    () => form.formState.errors[name]?.message ?? form.formState.errors[name]?.root?.message,
+    [form.formState.errors, name],
+  );
+
+  const removeCheck = useCallback(
+    (item: T, index: number) => {
+      if (canRemove === false) return false;
+      if (canRemove === "newonly") {
+        return !initialList.includes((item as KeyValue).__ID__ as string);
+      }
+      if (typeof canRemove === "function") {
+        return canRemove({
+          item,
+          index,
+          lastItem: index + 1 === fields.length,
+        });
+      }
+      return true;
+    },
+    [canRemove, initialList, fields],
+  );
+
+  const handleAdd = useCallback(
+    async (item?: Promise<false | undefined | T>) => {
+      if (!item) return;
+      append(await item);
+      setTimeout(() => {
+        form.setFocus(`${name}.${fields.length}${focusName ? "." + focusName : ""}`);
+      }, 100);
+    },
+    [append, form, name, fields.length, focusName],
+  );
+
+  const handleRemove = useCallback(
+    (item: T, index: number) => {
+      const ret = onBeforeRemove?.(item, index);
+      void Promise.resolve(ret).then((b) => {
+        if (!isFalse(b)) {
+          remove(index);
+          onRemove?.(item, index);
+        }
+      });
+    },
+    [remove, onRemove, onBeforeRemove],
+  );
+
+  useImperativeHandle(arrayRef, () => ({
+    addItem: (t) => handleAdd(Promise.resolve(t)),
+    removeItem: remove,
+  }));
+
+  const addButton = useMemo(
+    () => (
+      <div className="flex justify-end">
+        <Tooltip
+          color="danger"
+          content={
+            isObject<ErrorObject>(error)
+              ? t(
+                  error.key,
+                  isObject(error.values)
+                    ? {
+                        ...error.values,
+                        label: t(error.values.label ?? "form:badkey", error.values.path),
+                      }
+                    : {},
+                )
+              : isString(error)
+                ? error
+                : ""
+          }
+        >
+          <Button
+            size="sm"
+            aria-label="Add item"
+            icon="icon-[mdi--plus-circle-outline]"
+            onClick={() => handleAdd(Promise.resolve(onAdd?.()))}
+            data-invalid={!!error}
+            disabled={!!disabled || readOnly || fields.length > maxItems}
+            className={cn("fabric-addButton", canRemove !== false && "me-10")}
+          >
+            {addLabel ?? t("form:addArray")}
+          </Button>
+        </Tooltip>
+      </div>
+    ),
+    [error, t, disabled, readOnly, fields.length, maxItems, canRemove, addLabel, handleAdd, onAdd],
+  );
+
+  return (
+    <div className={"fabric-arrayInput"}>
+      <FieldWrapper {...rest} appendLabel={<div className="-me-2">{onAdd && buttonPosition !== "bottom" && addButton}</div>}>
+        <Wrapper onMove={move} enableSorting={enableSorting} fields={fields}>
+          {fields.map((item, index) => (
+            <SortableItem
+              key={item.__ID__}
+              id={item.__ID__}
+              index={index}
+              enableSorting={enableSorting}
+              className="flex items-center flex-nowrap gap-2 mb-1"
+            >
+              {typeof children === "function"
+                ? children({
+                    index,
+                    item: item as T,
+                    name: `${name}.${index}`,
+                    onChange: (val) => {
+                      void Promise.resolve(val).then((result) => {
+                        if (result) form.setValue(`${name}.${index}`, result);
+                      });
+                    },
+                  })
+                : cloneChildren(children)?.map((child) => {
+                    if (isValidElement(child)) {
+                      const childEl = child as React.ReactElement<{ name: string }>;
+                      return cloneElement(
+                        childEl,
+                        Object.assign(
+                          {
+                            disabled,
+                            readOnly,
+                            "data-inner": true,
+                            name: `${name}.${index}${childEl.props.name ? "." + childEl.props.name : ""}`,
+                          },
+                          index > 0 && {
+                            label: undefined,
+                            required: undefined,
+                            appendLabel: undefined,
+                          },
+                        ),
+                      );
+                    }
+                  })}
+              {canRemove !== false && (
+                <Button
+                  aria-label="Remove item"
+                  icon="icon-[mdi--minus-circle-outline]"
+                  color="danger"
+                  variant="link"
+                  className="self-end"
+                  disabled={disabled || readOnly || fields.length <= minItems || !removeCheck(item as T, index)}
+                  onClick={() => handleRemove(item as T, index)}
+                />
+              )}
+            </SortableItem>
+          ))}
+        </Wrapper>
+      </FieldWrapper>
+      {onAdd && buttonPosition !== "top" && addButton}
+    </div>
+  );
+}

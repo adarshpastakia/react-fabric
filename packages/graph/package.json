@@ -1,0 +1,58 @@
+{
+  "name": "@react-fabric/graph",
+  "version": "1.0.0-beta.63",
+  "description": "RUF: SigmaJS link analysis graph",
+  "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
+  "license": "MIT",
+  "repository": "https://github.com/adarshpastakia/react-fabric/tree/main/packages/graph",
+  "source": "src/index.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "directories": {
+    "src": "src",
+    "styles": "css",
+    "test": "tests"
+  },
+  "files": [
+    "css",
+    "src",
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "makelink": "yarn link",
+    "removelink": "yarn unlink",
+    "prebuild": "rm -rf ./dist",
+    "build:dts": "tsc -p ./tsconfig.build.json",
+    "build:rollup": "rollup -c ../../rollup.config.mjs",
+    "build": "npm-run-all -p build:rollup build:dts",
+    "watch:dts": "tsc -w -p ./tsconfig.build.json",
+    "watch:rollup": "rollup -w -c ../../rollup.config.mjs",
+    "watch": "npm-run-all -p watch:rollup watch:dts"
+  },
+  "dependencies": {
+    "@floating-ui/react": "~0.27.20",
+    "@react-fabric/core": "^1.0.0-beta.63",
+    "@react-fabric/utilities": "^1.0.0-beta.63",
+    "dom-to-image": "~2.6.0",
+    "graphology": "~0.26.0",
+    "graphology-canvas": "~0.4.3",
+    "graphology-shortest-path": "~2.1.0",
+    "graphology-types": "~0.24.8",
+    "react-force-graph": "~1.48.2"
+  },
+  "peerDependencies": {
+    "i18next": "~26.3.6",
+    "react": "~19.2.8",
+    "react-dom": "~19.2.8",
+    "react-i18next": "~17.0.11"
+  },
+  "engines": {
+    "node": ">=24.0.0",
+    "npm": ">=11.0.0"
+  }
+}

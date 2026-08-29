@@ -1,0 +1,52 @@
+import { MapSeries } from "@/charts/src";
+import { Collapsable } from "@/core/src";
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import * as MapSeriesStories from "./MapSeries.stories";
+
+<Meta of={MapSeriesStories} />
+
+<Title>Map Series</Title>
+
+<Anchor storyId="animations">
+  <div className="hidden-anchor">
+    <Subheading>Map Series</Subheading>
+  </div>
+</Anchor>
+
+<Description of={MapSeries} />
+
+<Canvas withToolbar of={MapSeriesStories.Example} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={MapSeriesStories.Example} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="data">
+  <Subheading>Data Format</Subheading>
+</Anchor>
+
+```ts
+// List of country codes with count
+[{ id: "iso-2 country code", label, count },...];
+```

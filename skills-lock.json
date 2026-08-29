@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "grill-me": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/grill-me/SKILL.md",
+      "computedHash": "9cdbb4b8f7a3aeaef82e6230c9e823500d4a8a1214c726cf342cf9829d34fc7d"
+    },
+    "typescript-docs": {
+      "source": "giuseppe-trisciuoglio/developer-kit",
+      "sourceType": "github",
+      "skillPath": "plugins/developer-kit-typescript/skills/typescript-docs/SKILL.md",
+      "computedHash": "9e2c39b8a9ea569feb0c90080b10a71371e2d2d8ffb35de4fc5f7afe2a442f67"
+    },
+    "typescript-react-reviewer": {
+      "source": "dotneet/claude-code-marketplace",
+      "sourceType": "github",
+      "skillPath": "review-tool/skills/typescript-react-reviewer/SKILL.md",
+      "computedHash": "7f86cd28e11d2b4b120b635d18814b82cd655a2b9d9ba8a105b3ee06c478cf38"
+    }
+  }
+}

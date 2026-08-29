@@ -1,0 +1,71 @@
+import { Collapsable } from "@/core/src";
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import * as CardStories from "./Card.stories";
+import * as CardCoverStories from "./CardCover.stories";
+
+<Meta of={CardStories} />
+
+<Title>Card</Title>
+
+<Anchor storyId="card">
+  <Subheading>Basic</Subheading>
+</Anchor>
+
+<Description of={CardStories} />
+
+<Canvas withToolbar of={CardStories._Card} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CardStories._Card} />
+</Collapsable>
+
+<Anchor storyId="clickable-card">
+  <Subheading>Clickable Card</Subheading>
+</Anchor>
+<Description of={CardStories} />
+<Canvas withToolbar of={CardStories.ClickableCard} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CardStories.ClickableCard} />
+</Collapsable>
+
+<Anchor storyId="flip-content">
+  <Subheading>Flip Content</Subheading>
+</Anchor>
+<Description of={CardStories} />
+<Canvas withToolbar of={CardStories.FlipCard} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CardStories.FlipCard} />
+</Collapsable>
+
+<Anchor storyId="card-cover">
+  <Subheading>Card Cover</Subheading>
+</Anchor>
+<Description of={CardCoverStories} />
+<Canvas withToolbar of={CardCoverStories._CardCover} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={CardCoverStories._CardCover} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />

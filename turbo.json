@@ -1,0 +1,20 @@
+{
+  "$schema": "https://turbo.build",
+  "concurrency": "18",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "watch": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "cache": false,
+      "persistent": true
+    },
+    "build:dts": {
+      "dependsOn": ["^build:dts"],
+      "outputs": ["dist/**"]
+    }
+  }
+}

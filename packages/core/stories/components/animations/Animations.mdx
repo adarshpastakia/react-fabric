@@ -1,0 +1,74 @@
+import { Collapsable } from "@/core/src";
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import * as AnimationsStories from "./Animations.stories";
+import * as IndicatorStories from "./Indicator.stories";
+import * as BarsStories from "./LoadingBars.stories";
+import * as SpinnerStories from "./LoadingSpinner.stories";
+import * as SkeletonStories from "./Skeleton.stories";
+
+<Meta of={AnimationsStories} />
+
+<Title>Animations</Title>
+
+<Anchor storyId="indicators">
+  <Subheading>Indicators</Subheading>
+</Anchor>
+
+<Description of={IndicatorStories} />
+
+<Canvas withToolbar of={IndicatorStories.Indicators} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={IndicatorStories.Indicators} />
+</Collapsable>
+
+<Anchor storyId="bars">
+  <Subheading>Bars</Subheading>
+</Anchor>
+<Description of={BarsStories} />
+<Canvas withToolbar of={BarsStories._LoadingBars} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={BarsStories._LoadingBars} />
+</Collapsable>
+
+<Anchor storyId="spinner">
+  <Subheading>Spinner</Subheading>
+</Anchor>
+<Description of={SpinnerStories} />
+<Canvas withToolbar of={SpinnerStories._LoadingSpinner} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={SpinnerStories._LoadingSpinner} />
+</Collapsable>
+
+<Anchor storyId="skeleton">
+  <Subheading>Skeleton</Subheading>
+</Anchor>
+<Description of={SkeletonStories} />
+<Canvas withToolbar of={SkeletonStories._Skeleton} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={SkeletonStories._Skeleton} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />

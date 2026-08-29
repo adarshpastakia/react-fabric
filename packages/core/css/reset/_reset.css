@@ -1,0 +1,239 @@
+/**
+ * React Fabric
+ * @version 1.0.0
+ * @license MIT
+ * @copyright 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+@layer base {
+  html,
+  body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    font-family: var(--font-sans);
+    vertical-align: baseline;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :root {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  p,
+  div,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  input,
+  textarea,
+  fieldset,
+  section,
+  aside,
+  header,
+  footer,
+  nav,
+  menu,
+  dialog {
+    margin: 0;
+    padding: 0;
+  }
+
+  fieldset {
+    min-inline-size: unset;
+  }
+
+  [class^="container"] {
+    margin-inline: auto;
+  }
+
+  [class*="outline"] {
+    --tw-outline-style: solid;
+
+    outline-color: var(--border-color-default);
+  }
+
+  [class*="border"] {
+    --tw-border-style: solid;
+
+    border-color: var(--border-color-default);
+  }
+
+  [class*="divide"] > :not(:last-child) {
+    border-color: var(--border-color-default);
+  }
+
+  [class*="shadow"] {
+    --tw-shadow-color: var(--fabric-shadow);
+  }
+
+  [class*="ring"] {
+    --tw-ring-offset-color: var(--bg-color-dimmed);
+    --tw-ring-color: var(--color-primary-500);
+  }
+
+  [data-clickable="true"] {
+    cursor: pointer;
+  }
+
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+    text-underline-offset: 0.25em;
+  }
+
+  * {
+    &:hover,
+    &:focus-within {
+      visibility: visible;
+
+      &::-webkit-scrollbar-thumb,
+      &::-webkit-scrollbar-track {
+        visibility: visible;
+      }
+    }
+  }
+
+  body {
+    a,
+    label,
+    button {
+      user-select: none;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-corner {
+    visibility: hidden;
+    background-color: var(--fabric-bg);
+  }
+
+  ::-webkit-scrollbar-track {
+    visibility: hidden;
+    background-color: color-mix(in oklab, var(--fabric-bg) 85%, var(--color-tint));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    visibility: hidden;
+    background-color: color-mix(in oklab, var(--fabric-bg) 35%, var(--color-tint));
+  }
+
+  :active::-webkit-scrollbar-thumb {
+    background-color: color-mix(in oklab, var(--fabric-bg) 50%, var(--color-tint));
+  }
+
+  input:not(:disabled)::-webkit-file-upload-button {
+    cursor: pointer;
+  }
+
+  ::placeholder {
+    color: var(--color-tint-400);
+  }
+
+  ::selection {
+    background-color: rgb(from var(--color-secondary) r g b / 30%);
+  }
+
+  img,
+  svg {
+    display: inline-block;
+    fill: currentcolor;
+  }
+
+  hr {
+    --start-opacity: 20%;
+    --end-opacity: 100%;
+
+    transform: scaleY(0.5);
+
+    height: auto;
+    margin: 0.25rem 0;
+    border: 0;
+    border-top: 2px solid rgb(from #000 r g b / var(--start-opacity));
+    border-bottom: 1px solid rgb(from #fff r g b / var(--end-opacity));
+
+    background: none;
+
+    &.vertical {
+      transform: scaleX(0.5);
+
+      display: inline-block;
+      align-self: stretch;
+
+      margin: 0.25rem;
+      border: 0;
+      border-inline-start: 2px solid rgb(from #000 r g b / var(--start-opacity));
+      border-inline-end: 1px solid rgb(from #fff r g b / var(--end-opacity));
+    }
+
+    @variant dark {
+      --start-opacity: 100%;
+      --end-opacity: 50%;
+    }
+  }
+
+  label {
+    cursor: inherit;
+  }
+
+  .outline {
+    outline-width: 1px;
+  }
+
+  .container {
+    margin-inline: auto;
+  }
+
+  .overflow-auto,
+  .overflow-scroll {
+    scrollbar-gutter: stable;
+  }
+
+  p,
+  pre,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .mixed-lang {
+    unicode-bidi: plaintext;
+  }
+
+  .fabric-style-effect ~ * {
+    z-index: 1;
+  }
+}

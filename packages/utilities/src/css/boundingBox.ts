@@ -1,0 +1,80 @@
+/**
+ * React Fabric
+ * @version 1.0.0
+ * @license MIT
+ * @copyright 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+import { isEmpty } from "../matchers/isEmpty";
+
+function _getBox(box: string | [number, number, number, number]): [number, number, number, number] {
+  let boundingBox: [number, number, number, number];
+  if (isEmpty(box)) return [0, 0, 0, 0];
+  if (typeof box === "string") {
+    boundingBox = box.split(",").map((b: unknown) => parseInt(b as string, 10)) as [number, number, number, number];
+  } else {
+    boundingBox = box;
+  }
+  return boundingBox;
+}
+
+/**
+ * Get box dimensions from a string or array.
+ * The box can be in the format "x,y,w,h" or [x,y,w,h].
+ * The box is adjusted to ensure that x and y are non-negative.
+ * The width and height are adjusted accordingly.
+ *
+ * @param box "x,y,w,h" | [x,y,w,h]
+ * @returns canvas box [x,y,w,h]
+ */
+export function getBox(box: string | [number, number, number, number] = "0,0,0,0") {
+  const boundingBox = _getBox(box);
+
+  let [x, y, w, h] = boundingBox;
+  w = x < 0 ? w + x : w;
+  h = y < 0 ? h + y : h;
+  x = x > 0 ? x : 0;
+  y = y > 0 ? y : 0;
+  return [x, y, w, h] as [number, number, number, number];
+}
+
+/**
+ * Get bounding box dimensions from a string or array.
+ * The box can be in the format "x1,y1,x2,y2" or [x1,y1,x2,y2].
+ * The box is adjusted to ensure that x1 and y1 are non-negative.
+ * The width and height are calculated as x2 - x1 and y2 - y1 respectively.
+ * If x1 or y1 are negative, they are set to 0 and the width and height are adjusted accordingly.
+ * This is useful for ensuring that the bounding box is always within the canvas area.
+ *
+ * @param box "x1,y1,x2,y2" | [x1,y1,x2,y2]
+ * @returns canvas box [x,y,w,h]
+ */
+export function getBoundingBox(box: string | [number, number, number, number] = "0,0,0,0") {
+  const boundingBox = _getBox(box);
+
+  // eslint-disable-next-line prefer-const
+  let [x1, y1, x2, y2] = boundingBox;
+  const w = x2 - x1;
+  const h = y2 - y1;
+  x1 = x1 > 0 ? x1 : 0;
+  y1 = y1 > 0 ? y1 : 0;
+  return [x1, y1, w, h] as [number, number, number, number];
+}

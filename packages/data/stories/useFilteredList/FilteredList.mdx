@@ -1,0 +1,77 @@
+import { Collapsable } from "@/core/src";
+import { useFilteredList } from "@/data/src";
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import * as FilteredListStories from "./FilteredList.stories";
+
+<Meta of={FilteredListStories} />
+
+<Title>useFilteredList</Title>
+
+<Anchor storyId="animations">
+  <div className="hidden-anchor">
+    <Subheading>useFilteredList</Subheading>
+  </div>
+</Anchor>
+
+<Description of={useFilteredList} />
+
+<Canvas withToolbar of={FilteredListStories._FilteredList} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={FilteredListStories.FilteredList} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Usage</Subheading>
+</Anchor>
+
+```ts
+useFilteredList<P, Q>(
+    recordList: P[],
+    matcher: (item:P, query:Q) => boolean
+) => {
+    filteredList:P[],
+    query:Q,
+    searching: boolean,
+    onSearch: (query:Q)=>void,
+}
+```
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>
+
+```tsx
+import { useFilteredList } from "@react-fabric/data";
+import { Search } from "@react-fabric/form";
+
+export const Example = () => {
+  const { filteredList, isSearching, onSearch, search } = useFilteredList(recordList, (item, query) =>
+    matchString(item.name, query),
+  );
+
+  return (
+    <div>
+      <Search value={query} onSearch={onSearch} searching={isSearching} />
+      {filteredList.map((item) => (
+        <span key={item.id}>{item.name}</span>
+      ))}
+    </div>
+  );
+};
+```

@@ -1,0 +1,51 @@
+{
+  "name": "@react-fabric/utilities",
+  "version": "1.0.0-beta.63",
+  "description": "RUF: Utility package",
+  "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
+  "license": "MIT",
+  "source": "src/index.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "directories": {
+    "src": "src",
+    "test": "tests"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "makelink": "yarn link",
+    "removelink": "yarn unlink",
+    "prebuild": "rm -rf ./dist",
+    "build:dts": "tsc -p ./tsconfig.build.json",
+    "build:rollup": "rollup -c ../../rollup.config.mjs",
+    "build": "npm-run-all -p build:rollup build:dts",
+    "watch:dts": "tsc -w -p ./tsconfig.build.json",
+    "watch:rollup": "rollup -w -c ../../rollup.config.mjs",
+    "watch": "npm-run-all -p watch:rollup watch:dts"
+  },
+  "dependencies": {
+    "chroma-js": "~3.2.0",
+    "clsx": "~2.1.1",
+    "date-fns": "~4.4.0",
+    "libphonenumber-js": "~1.13.10",
+    "numeral": "~2.0.6",
+    "world-countries": "~5.1.0",
+    "tailwind-merge": "~3.6.0",
+    "yup": "~1.7.1"
+  },
+  "devDependencies": {
+    "@types/numeral": "~2.0.5"
+  },
+  "engines": {
+    "node": ">=24.0.0",
+    "npm": ">=11.0.0"
+  }
+}

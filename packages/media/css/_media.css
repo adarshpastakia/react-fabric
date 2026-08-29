@@ -1,0 +1,112 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2026 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@keyframes fade-out {
+  to {
+    transform: scale(5);
+    opacity: 0;
+  }
+}
+
+@layer components {
+  .fabric-media-container {
+    padding: 8px;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: transparent;
+    }
+
+    &:hover {
+      &::-webkit-scrollbar-track {
+        background-color: var(--color-tint-200);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--color-tint-400);
+      }
+    }
+
+    img,
+    video {
+      filter: brightness(var(--brightness, 1)) contrast(var(--contrast, 1)) saturate(var(--saturate, 1)) hue-rotate(var(--hue))
+        invert(var(--invert, 0));
+    }
+
+    video::cue {
+      font-size: 1rem;
+      color: #dff9fb;
+      background-image: linear-gradient(to bottom, #000a, #0006, #000a);
+      outline: 1px solid #000;
+    }
+
+    .animate-fade-out {
+      animation: fade-out 500ms linear forwards;
+    }
+
+    .fabric-wavesurfer {
+      div::part(scroll) {
+        scrollbar-color: var(--color-primary-300);
+        scrollbar-width: thin;
+        position: relative;
+        height: 200px;
+      }
+
+      div::part(wrapper) {
+        height: 180px;
+      }
+
+      div::part(progress) {
+        background-color: rgb(0 0 0 / 20%);
+      }
+
+      div::part(cursor) {
+        backdrop-filter: blur(4px);
+      }
+
+      div::part(timeline-wrapper) {
+        position: absolute;
+        bottom: -20px;
+        inset-inline: 0;
+      }
+
+      div::part(timeline) {
+        background-color: var(--bg-color-content);
+      }
+
+      div::part(region-handle-left),
+      div::part(region-handle-right) {
+        border-color: #c6c5b660 !important;
+        border-width: 0 2px !important;
+      }
+    }
+  }
+}

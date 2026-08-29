@@ -1,0 +1,186 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+import { Button, EmptyContent, Title, useIsDark, useResizeObserver } from "@react-fabric/core";
+import { type SizeObject } from "@react-fabric/core/dist/types/types";
+import { cn } from "@react-fabric/utilities";
+import { type EChartsOption, type EChartsType } from "echarts";
+import { Fragment, memo, useCallback, useEffect, useImperativeHandle, useMemo, useState, type Ref } from "react";
+import { type Theme } from "../types";
+import echarts from "../types/charts";
+import { ChartToolbar } from "./ChartToolbar";
+
+const defaultOptions = {
+  grid: {
+    top: 32,
+    left: 64,
+    right: 32,
+    bottom: 72,
+  },
+  tooltip: {
+    trigger: "item",
+    appendToBody: true,
+  },
+  legend: {
+    type: "scroll",
+    bottom: 0,
+  },
+};
+const toolboxOptions = (renderer?: KeyValue) => ({
+  show: true,
+  feature: {
+    dataView: {
+      show: true,
+      readOnly: true,
+      textareaBorderColor: "transparent",
+      backgroundColor: "var(--fabric-bg)",
+      textareaColor: "var(--fabric-bg)",
+      textColor: "inherit",
+      optionToContent: renderer,
+    },
+  },
+});
+
+export const ChartContainer = memo(
+  ({
+    theme = "default",
+    title,
+    options,
+    children,
+    onResize,
+    onClick,
+    onExport,
+    isEmpty,
+    emptyIcon,
+    chartRef: _ref,
+    dataTableRenderer,
+  }: {
+    title?: string;
+    theme?: Theme;
+    isEmpty?: boolean;
+    emptyIcon?: string;
+    options: EChartsOption;
+    children?: AnyObject;
+    chartRef?: Ref<EChartsType>;
+    onClick?: (event: echarts.ECElementEvent) => void;
+    onExport?: (event: AnyObject) => void;
+    dataTableRenderer?: (opt: KeyValue) => string;
+    onResize?: (size: { width: number; height: number }) => void;
+  }) => {
+    const [chartRef, setChartRef] = useState<EChartsType>();
+    const isDark = useIsDark();
+
+    const handleResize = useCallback(
+      (size: SizeObject) => {
+        onResize?.(size);
+        if (chartRef && !chartRef.isDisposed()) chartRef?.resize(size);
+      },
+      // eslint-disable-next-line @eslint-react/exhaustive-deps
+      [chartRef],
+    );
+    const containerRef = useResizeObserver(handleResize);
+
+    useImperativeHandle<EChartsType | undefined, EChartsType | undefined>(_ref, () => chartRef, [chartRef]);
+
+    const chartTheme = useMemo(() => {
+      return isDark ? `${theme}_dark` : theme;
+    }, [theme, isDark]);
+
+    useEffect(() => {
+      if (containerRef.current) {
+        const { offsetWidth: width, offsetHeight: height } = containerRef.current;
+        const chartRef = echarts.init(containerRef.current, chartTheme);
+        chartRef.resize({ width, height });
+        onResize?.({ width, height });
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
+        setChartRef(chartRef);
+
+        return () => {
+          chartRef.dispose();
+        };
+      }
+      // eslint-disable-next-line @eslint-react/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+      if (chartRef && !chartRef.isDisposed()) chartRef?.setTheme(chartTheme);
+      // eslint-disable-next-line @eslint-react/exhaustive-deps
+    }, [chartTheme]);
+
+    useEffect(() => {
+      const chart = chartRef;
+      if (chart && !chart.isDisposed()) {
+        if (onClick != null) chart.on("click", onClick);
+        return () => {
+          if (!chart.isDisposed()) chart.off("click");
+        };
+      }
+    }, [chartRef, onClick]);
+
+    const toolbox = useMemo(() => toolboxOptions(dataTableRenderer), [dataTableRenderer]);
+
+    useEffect(() => {
+      if (chartRef && !chartRef.isDisposed())
+        chartRef?.setOption(
+          {
+            ...defaultOptions,
+            toolbox,
+            ...options,
+            tooltip: {
+              ...defaultOptions.tooltip,
+              ...options.tooltip,
+            },
+          },
+          true,
+        );
+      // eslint-disable-next-line @eslint-react/exhaustive-deps
+    }, [options, chartRef]);
+
+    const handleExport = useCallback(() => {
+      const image = chartRef?.getDataURL({
+        type: "png",
+        excludeComponents: ["toolbox"],
+      });
+      onExport?.({ image, title });
+    }, [chartRef, onExport, title]);
+
+    return (
+      <Fragment>
+        <ChartToolbar>
+          {title && <Title className="flex-1 px-2 py-1 text-dimmed">{title}</Title>}
+          {children}
+          {onExport && (
+            <Button size="sm" variant="link" icon="icon-[mdi--export-variant]" onClick={handleExport} aria-label="export" />
+          )}
+        </ChartToolbar>
+        <div ref={containerRef} className={cn("fabric-chartContainer", "overflow-hidden area-content")} />
+        {isEmpty && (
+          <div className="absolute inset-0 bg-default grid place-content-center">
+            <EmptyContent icon={emptyIcon ?? "icon-[mdi--chart-line]"} message="Empty chart" />
+          </div>
+        )}
+      </Fragment>
+    );
+  },
+);
+ChartContainer.displayName = "ChartContainer";

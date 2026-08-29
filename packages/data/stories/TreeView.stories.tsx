@@ -1,0 +1,142 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+import { DropdownTool, Menu, MenuItem } from "@/core/src";
+import { TreePanel } from "@/data/src";
+import { Countries, groupBy } from "@/utilities/src";
+import type { Meta, StoryObj } from "@storybook/react";
+import { useCallback, useMemo } from "react";
+import { fn } from "storybook/test";
+
+const meta: Meta = {
+  component: TreePanel,
+  title: "@data/Tree Panel",
+  parameters: {
+    controls: { exclude: /^(children|as)/ },
+  },
+  decorators: [
+    (Story) => (
+      <div
+        className="w-96 h-96 outline bg-default overflow-hidden"
+        style={{
+          display: "grid",
+          gridTemplate: `"head" auto "content" 1fr / 1fr`,
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export default meta;
+type Story = StoryObj<typeof TreePanel>;
+
+const treeItems = Object.entries(groupBy(Countries.list, "region")).map(([key, children]) => ({
+  id: key,
+  label: key,
+  leaf: false,
+  children: Object.entries(groupBy(children, "cca2")).map(([alp, list]) => ({
+    id: `${key}-${alp}`,
+    label: alp,
+    leaf: false,
+    data: {
+      label: alp,
+      type: "group",
+    },
+    children: list.map((ctr) => ({
+      id: ctr.cca2,
+      icon: `iconify-color circle-flags--${ctr.iconCode}`,
+      label: `${ctr.name}`,
+      badge: ctr.cca3,
+      leaf: true,
+      data: ctr,
+    })),
+  })),
+}));
+
+export const _TreePanel: Story = {
+  render: (args) => {
+    const initialTree = useMemo(() => treeItems.map(({ children, ...item }) => item), []);
+    const loadTreeNodes = useCallback((id: string) => {
+      return new Promise<any>((resolve) => {
+        setTimeout(() => {
+          const node = treeItems.find((i) => i.id === id.split("-")[0]);
+          if (node && id.includes("-")) {
+            return resolve(node.children.find((c) => c.id === id)?.children);
+          }
+          return resolve(node?.children.map(({ children, ...item }) => item));
+        }, 1000);
+      });
+    }, []);
+    return (
+      <TreePanel
+        {...args}
+        items={initialTree as AnyObject}
+        onLoad={loadTreeNodes}
+        defaultExpanded={["Asia", "Asia-B"]}
+        makeLabel={(data) => {
+          if (data.type == "group") {
+            return (
+              <div>
+                <div className="flex items-center gap-1 overflow-hidden">
+                  <div className="flex-initial truncate">{data.label}</div>
+                  <DropdownTool groupHover>
+                    <Menu>
+                      <MenuItem label="Show in map" />
+                      <MenuItem label="Major cities" />
+                      <MenuItem label="History..." />
+                    </Menu>
+                  </DropdownTool>
+                </div>
+                <div className="text-sm text-muted">Something extra</div>
+              </div>
+            );
+          }
+          return (
+            <div>
+              <div className="flex items-center gap-1 overflow-hidden">
+                <div className="flex-initial truncate">{data.name}</div>
+                <DropdownTool groupHover>
+                  <Menu>
+                    <MenuItem label="Show in map" />
+                    <MenuItem label="Major cities" />
+                    <MenuItem label="History..." />
+                  </Menu>
+                </DropdownTool>
+              </div>
+              <div className="text-sm text-muted">{data.fullname}</div>
+            </div>
+          );
+        }}
+      />
+    );
+  },
+  args: {
+    selectable: true,
+    searchable: true,
+    checkable: true,
+    onSelect: fn(),
+    filterPlaceholder: "Search country...",
+  },
+};

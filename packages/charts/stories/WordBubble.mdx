@@ -1,0 +1,52 @@
+import { WordBubble } from "@/charts/src";
+import { Collapsable } from "@/core/src";
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import * as WordBubbleStories from "./WordBubble.stories";
+
+<Meta of={WordBubbleStories} />
+
+<Title>Word Bubble</Title>
+
+<Anchor storyId="animations">
+  <div className="hidden-anchor">
+    <Subheading>Word Bubble</Subheading>
+  </div>
+</Anchor>
+
+<Description of={WordBubble} />
+
+<Canvas withToolbar of={WordBubbleStories.Example} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={WordBubbleStories.Example} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="data">
+  <Subheading>Data Format</Subheading>
+</Anchor>
+
+```ts
+// List of words
+[{ id, label, count },...];
+```

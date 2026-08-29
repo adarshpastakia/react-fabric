@@ -1,0 +1,71 @@
+import { ActivityMap } from "@/charts/src";
+import { Collapsable } from "@/core/src";
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import * as ActivityMapStories from "./ActivityMap.stories";
+
+<Meta of={ActivityMapStories} />
+
+<Title>Activity Map</Title>
+
+<Anchor storyId="animations">
+  <div className="hidden-anchor">
+    <Subheading>Activity Map</Subheading>
+  </div>
+</Anchor>
+
+<Description of={ActivityMap} />
+
+<Canvas withToolbar of={ActivityMapStories.Example} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ActivityMapStories.Example} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="data">
+  <Subheading>Data Format</Subheading>
+</Anchor>
+
+```ts
+// Hours of day
+{
+    time: "day-hour",
+    data:[
+        // day 1
+        [[hour, day, count],...],
+        // day 2
+        [[hour, day, count],...]
+    ]
+}
+
+// Days of month
+{
+    time: "month-day",
+    data:[
+        // month 1
+        [[day, month, count],...],
+        // month 2
+        [[day, month, count],...]
+    ]
+}
+```

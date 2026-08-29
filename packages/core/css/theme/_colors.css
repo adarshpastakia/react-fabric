@@ -1,0 +1,445 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2025 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+@theme static {
+  --mix-space: srgb;
+  --color-black: #151515;
+  --color-white: #fefefe;
+
+  /* ==========================================
+     16-COLOR CHROMATIC PALETTE
+     ========================================== */
+  --color-scarlet: hsl(4.11deg 89.62% 58.43%);
+  --color-pumpkin: hsl(27.76deg 100% 50%);
+  --color-marigold: hsl(38deg 100% 51.37%);
+  --color-amber: hsl(42.88deg 100% 61.57%);
+  --color-lime: hsl(65.52deg 69.96% 54.31%);
+  --color-jade: hsl(87.77deg 50.21% 52.75%);
+  --color-avocado: hsl(122.42deg 39.44% 49.22%);
+  --color-teal: hsl(174.4deg 100% 29.41%);
+  --color-azure: hsl(192.67deg 97.57% 48.43%);
+  --color-denim: hsl(206.57deg 89.74% 54.12%);
+  --color-iris: hsl(230.85deg 48.36% 47.84%);
+  --color-lilac: hsl(261.6deg 51.87% 47.25%);
+  --color-orchid: hsl(291.24deg 63.72% 42.16%);
+  --color-coral: hsl(339.61deg 82.19% 51.57%);
+  --color-wood: hsl(28deg 35% 47%);
+  --color-terracotta: hsl(8deg 44% 50%);
+
+  /* ==========================================
+     NEUTRAL & MUTED ANCHORS
+     ========================================== */
+  --color-silver: #989da5;
+  --color-steel: #636f8e;
+  --color-olive: #677c6e;
+  --color-sand: #7a7566;
+  --color-slate: #666a6d;
+  --color-blush: #79697b;
+
+  /* ==========================================
+     FEEDBACK CONTROL PALETTE
+     ========================================== */
+  --color-info: #34ace0;
+  --color-danger: #ff5252;
+  --color-success: #1abc9c;
+  --color-warning: #ffb142;
+}
+
+@theme static {
+  /* primary */
+  --color-primary-50: ;
+  --color-primary-100: ;
+  --color-primary-200: ;
+  --color-primary-300: ;
+  --color-primary-400: ;
+  --color-primary-500: ;
+  --color-primary-600: ;
+  --color-primary-700: ;
+  --color-primary-800: ;
+  --color-primary-900: ;
+  --color-primary-950: ;
+
+  /* secondary */
+  --color-secondary-50: ;
+  --color-secondary-100: ;
+  --color-secondary-200: ;
+  --color-secondary-300: ;
+  --color-secondary-400: ;
+  --color-secondary-500: ;
+  --color-secondary-600: ;
+  --color-secondary-700: ;
+  --color-secondary-800: ;
+  --color-secondary-900: ;
+  --color-secondary-950: ;
+
+  /* tint */
+  --color-tint-50: ;
+  --color-tint-100: ;
+  --color-tint-200: ;
+  --color-tint-300: ;
+  --color-tint-400: ;
+  --color-tint-500: ;
+  --color-tint-600: ;
+  --color-tint-700: ;
+  --color-tint-800: ;
+  --color-tint-900: ;
+  --color-tint-950: ;
+
+  /* silver */
+  --color-silver-50: ;
+  --color-silver-100: ;
+  --color-silver-200: ;
+  --color-silver-300: ;
+  --color-silver-400: ;
+  --color-silver-500: ;
+  --color-silver-600: ;
+  --color-silver-700: ;
+  --color-silver-800: ;
+  --color-silver-900: ;
+  --color-silver-950: ;
+
+  /* steel */
+  --color-steel-50: ;
+  --color-steel-100: ;
+  --color-steel-200: ;
+  --color-steel-300: ;
+  --color-steel-400: ;
+  --color-steel-500: ;
+  --color-steel-600: ;
+  --color-steel-700: ;
+  --color-steel-800: ;
+  --color-steel-900: ;
+  --color-steel-950: ;
+
+  /* olive */
+  --color-olive-50: ;
+  --color-olive-100: ;
+  --color-olive-200: ;
+  --color-olive-300: ;
+  --color-olive-400: ;
+  --color-olive-500: ;
+  --color-olive-600: ;
+  --color-olive-700: ;
+  --color-olive-800: ;
+  --color-olive-900: ;
+  --color-olive-950: ;
+
+  /* sand */
+  --color-sand-50: ;
+  --color-sand-100: ;
+  --color-sand-200: ;
+  --color-sand-300: ;
+  --color-sand-400: ;
+  --color-sand-500: ;
+  --color-sand-600: ;
+  --color-sand-700: ;
+  --color-sand-800: ;
+  --color-sand-900: ;
+  --color-sand-950: ;
+
+  /* slate */
+  --color-slate-50: ;
+  --color-slate-100: ;
+  --color-slate-200: ;
+  --color-slate-300: ;
+  --color-slate-400: ;
+  --color-slate-500: ;
+  --color-slate-600: ;
+  --color-slate-700: ;
+  --color-slate-800: ;
+  --color-slate-900: ;
+  --color-slate-950: ;
+
+  /* blush */
+  --color-blush-50: ;
+  --color-blush-100: ;
+  --color-blush-200: ;
+  --color-blush-300: ;
+  --color-blush-400: ;
+  --color-blush-500: ;
+  --color-blush-600: ;
+  --color-blush-700: ;
+  --color-blush-800: ;
+  --color-blush-900: ;
+  --color-blush-950: ;
+
+  /* info */
+  --color-info-50: ;
+  --color-info-100: ;
+  --color-info-200: ;
+  --color-info-300: ;
+  --color-info-400: ;
+  --color-info-500: ;
+  --color-info-600: ;
+  --color-info-700: ;
+  --color-info-800: ;
+  --color-info-900: ;
+  --color-info-950: ;
+
+  /* danger */
+  --color-danger-50: ;
+  --color-danger-100: ;
+  --color-danger-200: ;
+  --color-danger-300: ;
+  --color-danger-400: ;
+  --color-danger-500: ;
+  --color-danger-600: ;
+  --color-danger-700: ;
+  --color-danger-800: ;
+  --color-danger-900: ;
+  --color-danger-950: ;
+
+  /* success */
+  --color-success-50: ;
+  --color-success-100: ;
+  --color-success-200: ;
+  --color-success-300: ;
+  --color-success-400: ;
+  --color-success-500: ;
+  --color-success-600: ;
+  --color-success-700: ;
+  --color-success-800: ;
+  --color-success-900: ;
+  --color-success-950: ;
+
+  /* warning */
+  --color-warning-50: ;
+  --color-warning-100: ;
+  --color-warning-200: ;
+  --color-warning-300: ;
+  --color-warning-400: ;
+  --color-warning-500: ;
+  --color-warning-600: ;
+  --color-warning-700: ;
+  --color-warning-800: ;
+  --color-warning-900: ;
+  --color-warning-950: ;
+
+  /* scarlet */
+  --color-scarlet-50: ;
+  --color-scarlet-100: ;
+  --color-scarlet-200: ;
+  --color-scarlet-300: ;
+  --color-scarlet-400: ;
+  --color-scarlet-500: ;
+  --color-scarlet-600: ;
+  --color-scarlet-700: ;
+  --color-scarlet-800: ;
+  --color-scarlet-900: ;
+  --color-scarlet-950: ;
+
+  /* pumpkin */
+  --color-pumpkin-50: ;
+  --color-pumpkin-100: ;
+  --color-pumpkin-200: ;
+  --color-pumpkin-300: ;
+  --color-pumpkin-400: ;
+  --color-pumpkin-500: ;
+  --color-pumpkin-600: ;
+  --color-pumpkin-700: ;
+  --color-pumpkin-800: ;
+  --color-pumpkin-900: ;
+  --color-pumpkin-950: ;
+
+  /* marigold */
+  --color-marigold-50: ;
+  --color-marigold-100: ;
+  --color-marigold-200: ;
+  --color-marigold-300: ;
+  --color-marigold-400: ;
+  --color-marigold-500: ;
+  --color-marigold-600: ;
+  --color-marigold-700: ;
+  --color-marigold-800: ;
+  --color-marigold-900: ;
+  --color-marigold-950: ;
+
+  /* amber */
+  --color-amber-50: ;
+  --color-amber-100: ;
+  --color-amber-200: ;
+  --color-amber-300: ;
+  --color-amber-400: ;
+  --color-amber-500: ;
+  --color-amber-600: ;
+  --color-amber-700: ;
+  --color-amber-800: ;
+  --color-amber-900: ;
+  --color-amber-950: ;
+
+  /* lime */
+  --color-lime-50: ;
+  --color-lime-100: ;
+  --color-lime-200: ;
+  --color-lime-300: ;
+  --color-lime-400: ;
+  --color-lime-500: ;
+  --color-lime-600: ;
+  --color-lime-700: ;
+  --color-lime-800: ;
+  --color-lime-900: ;
+  --color-lime-950: ;
+
+  /* jade */
+  --color-jade-50: ;
+  --color-jade-100: ;
+  --color-jade-200: ;
+  --color-jade-300: ;
+  --color-jade-400: ;
+  --color-jade-500: ;
+  --color-jade-600: ;
+  --color-jade-700: ;
+  --color-jade-800: ;
+  --color-jade-900: ;
+  --color-jade-950: ;
+
+  /* avocado */
+  --color-avocado-50: ;
+  --color-avocado-100: ;
+  --color-avocado-200: ;
+  --color-avocado-300: ;
+  --color-avocado-400: ;
+  --color-avocado-500: ;
+  --color-avocado-600: ;
+  --color-avocado-700: ;
+  --color-avocado-800: ;
+  --color-avocado-900: ;
+  --color-avocado-950: ;
+
+  /* teal */
+  --color-teal-50: ;
+  --color-teal-100: ;
+  --color-teal-200: ;
+  --color-teal-300: ;
+  --color-teal-400: ;
+  --color-teal-500: ;
+  --color-teal-600: ;
+  --color-teal-700: ;
+  --color-teal-800: ;
+  --color-teal-900: ;
+  --color-teal-950: ;
+
+  /* azure */
+  --color-azure-50: ;
+  --color-azure-100: ;
+  --color-azure-200: ;
+  --color-azure-300: ;
+  --color-azure-400: ;
+  --color-azure-500: ;
+  --color-azure-600: ;
+  --color-azure-700: ;
+  --color-azure-800: ;
+  --color-azure-900: ;
+  --color-azure-950: ;
+
+  /* denim */
+  --color-denim-50: ;
+  --color-denim-100: ;
+  --color-denim-200: ;
+  --color-denim-300: ;
+  --color-denim-400: ;
+  --color-denim-500: ;
+  --color-denim-600: ;
+  --color-denim-700: ;
+  --color-denim-800: ;
+  --color-denim-900: ;
+  --color-denim-950: ;
+
+  /* iris */
+  --color-iris-50: ;
+  --color-iris-100: ;
+  --color-iris-200: ;
+  --color-iris-300: ;
+  --color-iris-400: ;
+  --color-iris-500: ;
+  --color-iris-600: ;
+  --color-iris-700: ;
+  --color-iris-800: ;
+  --color-iris-900: ;
+  --color-iris-950: ;
+
+  /* lilac */
+  --color-lilac-50: ;
+  --color-lilac-100: ;
+  --color-lilac-200: ;
+  --color-lilac-300: ;
+  --color-lilac-400: ;
+  --color-lilac-500: ;
+  --color-lilac-600: ;
+  --color-lilac-700: ;
+  --color-lilac-800: ;
+  --color-lilac-900: ;
+  --color-lilac-950: ;
+
+  /* orchid */
+  --color-orchid-50: ;
+  --color-orchid-100: ;
+  --color-orchid-200: ;
+  --color-orchid-300: ;
+  --color-orchid-400: ;
+  --color-orchid-500: ;
+  --color-orchid-600: ;
+  --color-orchid-700: ;
+  --color-orchid-800: ;
+  --color-orchid-900: ;
+  --color-orchid-950: ;
+
+  /* coral */
+  --color-coral-50: ;
+  --color-coral-100: ;
+  --color-coral-200: ;
+  --color-coral-300: ;
+  --color-coral-400: ;
+  --color-coral-500: ;
+  --color-coral-600: ;
+  --color-coral-700: ;
+  --color-coral-800: ;
+  --color-coral-900: ;
+  --color-coral-950: ;
+
+  /* wood */
+  --color-wood-50: ;
+  --color-wood-100: ;
+  --color-wood-200: ;
+  --color-wood-300: ;
+  --color-wood-400: ;
+  --color-wood-500: ;
+  --color-wood-600: ;
+  --color-wood-700: ;
+  --color-wood-800: ;
+  --color-wood-900: ;
+  --color-wood-950: ;
+
+  /* terracotta */
+  --color-terracotta-50: ;
+  --color-terracotta-100: ;
+  --color-terracotta-200: ;
+  --color-terracotta-300: ;
+  --color-terracotta-400: ;
+  --color-terracotta-500: ;
+  --color-terracotta-600: ;
+  --color-terracotta-700: ;
+  --color-terracotta-800: ;
+  --color-terracotta-900: ;
+  --color-terracotta-950: ;
+}

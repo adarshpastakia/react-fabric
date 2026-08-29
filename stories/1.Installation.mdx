@@ -1,0 +1,86 @@
+import { Anchor, Meta, Story, Subheading, Subtitle, Title } from "@storybook/addon-docs/blocks";
+import { Translation } from "react-i18next";
+
+<Meta title="Using the library" />
+
+<Title>Using the library</Title>
+
+<Subheading>Installing</Subheading>
+
+```bash
+# core components
+yarn add @react-fabric/core @react-fabric/utilities
+
+# data components
+yarn add @react-fabric/data
+
+# form components
+yarn add @react-fabric/form
+
+# advanced media viewers
+yarn add @react-fabric/media
+
+# comprehensive searchbar for data tools
+yarn add @react-fabric/searchbar
+
+# relative date selector with event calendar
+yarn add @react-fabric/superdate
+
+# eCharts wrappers
+yarn add @react-fabric/chart
+
+# lexical editor
+yarn add @react-fabric/lexical
+
+# whietboard drawing canvas
+yarn add @react-fabric/draw
+
+# mdx editor for markdown editor and renderer
+yarn add @react-fabric/markdown
+
+# monaco editor
+yarn add @react-fabric/monaco
+
+```
+
+<Subheading>Setup</Subheading>
+
+- Setup postcss for processing `TailwindCss`
+
+```js
+// .postcssrc.js
+module.exports = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+```
+
+- Include `TailwindCss` and `React Fabric` styles in main stylesheet
+
+```css
+/* main.css */
+@import url("tailwindcss");
+@import url("@react-fabric/core/css/styles.css");
+@import url("@react-fabric/data/css/styles.css");
+@import url("@react-fabric/date/css/styles.css");
+@import url("@react-fabric/draw/css/styles.css");
+@import url("@react-fabric/form/css/styles.css");
+@import url("@react-fabric/lexical/css/styles.css");
+@import url("@react-fabric/markdown/css/styles.css");
+@import url("@react-fabric/media/css/styles.css");
+@import url("@react-fabric/monaco/css/styles.css");
+@import url("@react-fabric/superdate/css/styles.css");
+```
+
+- Include `main.css` in react root file
+
+```tsx
+// main.tsx
+import "./main.css";
+
+import { createRoot } from "react-dom/client";
+import { App } from "./App.tsx";
+
+createRoot(document.getElementById("root")!).render(<App />);
+```

@@ -1,0 +1,139 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+import { Badge, Button, Icon, ProgressBar, Tooltip } from "@react-fabric/core";
+import { FileUtil, Format, isObject, isString } from "@react-fabric/utilities";
+import { Fragment } from "react";
+import { useTranslation } from "react-i18next";
+import { useFileUploader, type UploadHandler } from "../hooks/useFileUploader";
+import { Field } from "../input/Field";
+import { HiddenInput } from "../input/Hidden";
+import { type FileSchema, type ValueType } from "../types/schema";
+
+interface ErrorObject {
+  key: string;
+  values: Record<string, string>;
+}
+
+export function FileField({
+  uploadHandler,
+  inline,
+  label,
+  accept,
+  value,
+  onChange,
+  multiple,
+  error,
+  invalid,
+  ...rest
+}: Partial<FileSchema & ValueType> & {
+  value?: never;
+  inline?: boolean;
+  invalid?: boolean;
+  error?: AnyObject;
+  onChange?: (value: AnyObject) => void;
+  fileUrl?: (path: string) => string;
+  uploadHandler: UploadHandler;
+}) {
+  const { t } = useTranslation();
+  const { pending, files, upload, remove } = useFileUploader(
+    async (data, config) => await uploadHandler?.(data, config),
+    value,
+    { multiple, onChange },
+  );
+
+  return (
+    <Fragment>
+      <Field plain inline={inline} label={label}>
+        <HiddenInput hiddenValue={multiple ? files : files?.[0]} {...rest} />
+      </Field>
+      <Tooltip
+        color="danger"
+        content={
+          isObject<ErrorObject>(error)
+            ? t(
+                error.key,
+                isObject(error.values)
+                  ? {
+                      ...error.values,
+                      label: t(error.values.label ?? "form:badkey", error.values.path),
+                    }
+                  : {},
+              )
+            : isString(error)
+              ? error
+              : ""
+        }
+        disabled={!error}
+      >
+        <Button
+          altIcon={pending > 0 ? <Badge inline>{pending}</Badge> : undefined}
+          color={invalid ? "danger" : undefined}
+          variant={invalid ? "soft" : undefined}
+          data-ref="filebtn"
+        >
+          <Fragment>
+            <span>Add file</span>
+            <input
+              type="file"
+              accept={accept}
+              multiple={multiple}
+              className="absolute inset-0 opacity-0 z-5"
+              onChange={(e) => [upload(e.target.files), (e.target.value = "")]}
+            />
+          </Fragment>
+        </Button>
+      </Tooltip>
+      <br />
+      <div className="bg-alternate">
+        {files.map((file, idx) => (
+          // eslint-disable-next-line @eslint-react/no-array-index-key
+          <div key={idx} className="px-2 py-1">
+            <div className="flex flex-nowrap gap-1 items-start">
+              <div className="flex-1 truncate pe-2">
+                {file.filename}
+                <br />
+                <span className="text-xs">{FileUtil.mime(file.mime)}</span>
+                <span className="text-xs px-1">{Format.bytes(file.size)}</span>
+              </div>
+              <div className="flex-initial truncate px-2">
+                {file.error && <span className="text-danger-600">{file.error}</span>}
+              </div>
+              {file.progress && (
+                <button type="button" className="size-fit leading-0 cursor-pointer" onClick={() => file.abort?.()}>
+                  <Icon icon="icon-[mdi--stop]" bg="danger" color="white" size="sm" className="p-0.5" aria-label="abort" />
+                </button>
+              )}
+              {!file.progress && (
+                <button type="button" className="size-fit leading-0 cursor-pointer" onClick={() => remove(file.key)}>
+                  <Icon icon="icon-[mdi--trash-can-outline]" color="danger" size="sm" aria-label="remove" />
+                </button>
+              )}
+            </div>
+            {file.progress && <ProgressBar animate value={file.progress * 100} size="xxs" />}
+          </div>
+        ))}
+      </div>
+    </Fragment>
+  );
+}

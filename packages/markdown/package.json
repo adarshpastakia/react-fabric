@@ -1,0 +1,78 @@
+{
+  "name": "@react-fabric/markdown",
+  "version": "1.0.0-beta.63",
+  "description": "RUF: Markdown display and editor",
+  "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
+  "license": "MIT",
+  "repository": "https://github.com/adarshpastakia/react-fabric/tree/main/packages/markdown",
+  "source": "src/index.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "directories": {
+    "src": "src",
+    "styles": "css",
+    "test": "tests"
+  },
+  "files": [
+    "css",
+    "src",
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "makelink": "yarn link",
+    "removelink": "yarn unlink",
+    "prebuild": "rm -rf ./dist",
+    "build:dts": "tsc -p ./tsconfig.build.json",
+    "build:rollup": "rollup -c ../../rollup.config.mjs",
+    "build": "npm-run-all -p build:rollup build:dts",
+    "watch:dts": "tsc -w -p ./tsconfig.build.json",
+    "watch:rollup": "rollup -w -c ../../rollup.config.mjs",
+    "watch": "npm-run-all -p watch:rollup watch:dts"
+  },
+  "resolutions": {
+    "@lexical/clipboard": "0.49.0",
+    "@lexical/link": "0.49.0",
+    "@lexical/list": "0.49.0",
+    "@lexical/markdown": "0.49.0",
+    "@lexical/plain-text": "0.49.0",
+    "@lexical/react": "0.49.0",
+    "@lexical/rich-text": "0.49.0",
+    "@lexical/selection": "0.49.0",
+    "@lexical/utils": "0.49.0",
+    "jackspeak": "2.1.1",
+    "lexical": "0.49.0"
+  },
+  "dependencies": {
+    "@react-fabric/core": "^1.0.0-beta.63",
+    "@react-fabric/utilities": "^1.0.0-beta.63",
+    "emojilib": "~4.0.3",
+    "emoticon": "~4.1.0",
+    "highlight.js": "~11.12.0",
+    "markdown-it": "~15.0.1",
+    "markdown-it-abbr": "~2.0.0",
+    "markdown-it-container": "~4.0.0",
+    "markdown-it-deflist": "~4.0.0",
+    "markdown-it-emoji": "~3.1.0",
+    "markdown-it-footnote": "~4.0.0",
+    "markdown-it-ins": "~4.0.0",
+    "markdown-it-mark": "~4.0.0",
+    "markdown-it-sub": "~2.0.0",
+    "markdown-it-sup": "~2.0.0",
+    "markdown-it-task-lists": "~2.1.1"
+  },
+  "peerDependencies": {
+    "i18next": "~26.3.6",
+    "react": "~19.2.8",
+    "react-dom": "~19.2.8",
+    "react-i18next": "~17.0.11"
+  },
+  "engines": {
+    "node": ">=24.0.0",
+    "npm": ">=11.0.0"
+  }
+}

@@ -1,0 +1,254 @@
+/**
+ * React Fabric
+ * @version 1.0.0
+ * @license MIT
+ * @copyright 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+import { cn, getImageColorset } from "@react-fabric/utilities";
+import { Fragment, useRef, useState } from "react";
+import { usePropWatcher } from "../../hooks/usePropState";
+import type { CssProp, TestProps } from "../../types";
+import { Button } from "../button/Button";
+import { Icon } from "../icon/Icon";
+
+export interface BaseProps extends CssProp, TestProps {
+  /**
+   * media source
+   */
+  src: string;
+  /**
+   * show media reel decoration
+   */
+  reel?: boolean;
+  /**
+   * media content fit
+   */
+  fit?: "cover" | "contain" | "fill";
+}
+
+const cover = {
+  fill: "object-fill",
+  cover: "object-cover",
+  contain: "object-contain",
+};
+
+export interface ImageProps extends BaseProps {
+  /**
+   * image alt text
+   */
+  alt?: string;
+}
+
+export interface VideoProps extends BaseProps {
+  /**
+   * video poster
+   */
+  poster?: string;
+  /**
+   * auto play video
+   */
+  autoPlay?: boolean;
+  /**
+   * play on mouse over
+   */
+  playOnHover?: boolean;
+}
+
+const loadIndicator = (
+  <div
+    className={cn(
+      "fabric-mediaPlaceholder",
+      "absolute z-1 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-gray",
+    )}
+  >
+    <i className="icon-[svg-spinners--pulse-rings-2]" />
+  </div>
+);
+
+/**
+ * Component for displaying images with optional reel decoration.
+ * A versatile media component that supports images and videos with various display options.
+ * It can display images with a reel decoration, handle loading states, and show error icons if the media fails to load.
+ * This component is useful for displaying images in a visually appealing way, with support for lazy loading and error handling.
+ * It automatically adjusts the display based on the provided fit property, allowing for different styles such as cover, contain, or fill.
+ *
+ * @example
+ * ```jsx
+ * <Image
+ *   src="image.jpg"
+ *   alt="Example Image"
+ *   reel={true}
+ *   fit="cover"
+ *   className="custom-class"
+ * />
+ * // Renders an image with reel decoration, cover fit, and a custom class name.
+ * ```
+ */
+export function Image({ src, alt, reel, fit = "cover", className, ...aria }: ImageProps) {
+  const [colorSet, setColorSet] = useState("light");
+  const [loaded, setLoaded] = usePropWatcher(false, src);
+  const [errored, setErrored] = usePropWatcher(false, src);
+
+  return (
+    <div
+      data-ref="image"
+      className={cn("fabric-mediaContainer", "relative overflow-hidden inline-block", reel && "fabric-mediaReel", className)}
+      data-colorset={colorSet}
+      {...aria}
+    >
+      {!loaded && !errored && loadIndicator}
+      {!errored && (
+        <img
+          alt={alt ?? src}
+          src={src}
+          loading="lazy"
+          crossOrigin="anonymous"
+          className={cn("fabric-media", "pointer-events-none w-full h-full", cover[fit])}
+          onLoad={(e) => {
+            setLoaded(true);
+            setColorSet(getImageColorset(e.currentTarget));
+          }}
+          onError={() => setErrored(true)}
+        />
+      )}
+      {errored && (
+        <Icon
+          size="2rem"
+          className="absolute text-tint-300 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          icon="icon-[mdi--image-off-outline]"
+        />
+      )}
+    </div>
+  );
+}
+
+/**
+ * Component for displaying videos with optional controls and reel decoration.
+ * A versatile video component that supports autoplay, hover play, and various display options.
+ * It can display videos with a reel decoration, handle loading states, and show error icons if the video fails to load.
+ * This component is useful for displaying videos in a visually appealing way, with support for controls, autoplay, and error handling.
+ * It automatically adjusts the display based on the provided fit property, allowing for different styles such as cover, contain, or fill.
+ * It also includes controls for play/pause and volume, enhancing user interaction with the video content.
+ * This component is ideal for media-rich applications where video content needs to be displayed with user-friendly controls and visual effects.
+ * It supports features like autoplay, play on hover, and custom fit options for the video display.
+ * It also includes a reel decoration for a more engaging visual presentation.
+ *
+ * @example
+ * ```jsx
+ * <Video
+ *   src="video.mp4"
+ *   poster="poster.jpg"
+ *   reel={true}
+ *   autoPlay={true}
+ *   playOnHover={true}
+ *   fit="cover"
+ *   className="custom-class"
+ * />
+ * // Renders a video with reel decoration, autoplay, play on hover, cover fit, and a custom class name.
+ * ```
+ */
+export function Video({ src, poster, reel, autoPlay, playOnHover, fit = "cover", className, ...aria }: VideoProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [loaded, setLoaded] = usePropWatcher(false, src);
+  const [errored, setErrored] = usePropWatcher(false, src);
+
+  const [state, setState] = useState(true);
+  const [volume, setVolume] = useState(false);
+
+  return (
+    <div
+      data-ref="video"
+      className={cn("fabric-mediaContainer", "relative overflow-hidden inline-block", reel && "fabric-mediaReel", className)}
+      onMouseEnter={() => {
+        if (playOnHover) void videoRef.current?.play();
+      }}
+      onMouseLeave={() => {
+        if (playOnHover) videoRef.current?.pause();
+      }}
+      {...aria}
+    >
+      {!loaded && !errored && loadIndicator}
+      {!errored && (
+        <Fragment>
+          <video
+            loop
+            ref={videoRef}
+            controls={false}
+            poster={poster}
+            autoPlay={autoPlay}
+            className={cn("fabric-media", "pointer-events-none w-full h-full", fit && `object-${fit}`)}
+            onPlay={() => setState(true)}
+            onPause={() => setState(false)}
+            onVolumeChange={(e) => setVolume(!!e.currentTarget.volume)}
+            onLoadedData={(e) => {
+              e.currentTarget.volume = 0;
+              setLoaded(true);
+            }}
+            onError={() => setErrored(true)}
+          >
+            <source src={src} />
+            <track kind="captions" />
+          </video>
+          <div
+            data-inner-clickable
+            className={cn("fabric-mediaControls", "absolute bottom-6 inset-e-6 rounded-full flex flex-col")}
+          >
+            <Button
+              rounded
+              variant="link"
+              className={"fabric-mediaControlPlaceholder"}
+              icon="icon-[mdi--dots-vertical]"
+              aria-label="controls"
+            />
+            <Button
+              rounded
+              variant="link"
+              aria-label="controls"
+              className={"fabric-mediaControlAction"}
+              onClick={() => {
+                if (videoRef.current) videoRef.current.volume = videoRef.current.volume ? 0 : 1;
+              }}
+              icon={volume ? "icon-[mdi--volume]" : "icon-[mdi--volume-mute]"}
+            />
+            <Button
+              rounded
+              variant="link"
+              aria-label="controls"
+              className={"fabric-mediaControlAction"}
+              onClick={() => {
+                void (videoRef.current?.paused ? videoRef.current?.play() : videoRef.current?.pause());
+              }}
+              icon={state ? "icon-[mdi--pause]" : "icon-[mdi--play]"}
+            />
+          </div>
+        </Fragment>
+      )}
+      {errored && (
+        <Icon
+          size="2rem"
+          className="absolute text-tint-300 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          icon="icon-[mdi--video-off-outline]"
+        />
+      )}
+    </div>
+  );
+}

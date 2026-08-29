@@ -1,0 +1,156 @@
+/**
+ * React Fabric
+ * @version 1.0.0
+ * @license MIT
+ * @copyright 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+import { cn, isEmpty, isString, tokenize } from "@react-fabric/utilities";
+import { Fragment, useCallback, useMemo } from "react";
+import { Tooltip } from "../components/tooltip/Tooltip";
+import { useMemoDebugger } from "../hooks/useEffectDebugger";
+import type { ChildProp, CssProp, CustomColors } from "../types";
+import { getColor, getTooltipProps } from "../utils";
+
+interface AbbrTextProps {
+  children: string;
+  color?: string;
+  tooltip?: string;
+  content?: string;
+}
+
+function AbbrText({ color, children, tooltip, content }: AbbrTextProps) {
+  const TooltipWrapper = tooltip ? Tooltip : Fragment;
+  const tooltipProps = useMemo(() => {
+    return tooltip ? { ...getTooltipProps(tooltip), copyContent: content } : {};
+  }, [tooltip, content]);
+
+  return (
+    <TooltipWrapper {...tooltipProps}>
+      <abbr
+        className={cn("fabric-abbr whitespace-nowrap")}
+        style={color ? ({ "--abbr-color": getColor(color) } as React.CSSProperties) : undefined}
+      >
+        {children}
+      </abbr>
+    </TooltipWrapper>
+  );
+}
+
+export interface AbbrProps extends ChildProp<string>, CssProp {
+  /**
+   * content to copy using the tooltip copy action
+   */
+  copyContent?: "text" | "tooltip";
+  /**
+   * texts to match and abbreviate within
+   *
+   * [textPart, tooltip, color (class name or color string)]
+   */
+  abbr: Array<[textPart: string, tooltip: string, color?: CustomColors]>;
+  /**
+   * renderer callback
+   */
+  renderer?: (part: string[]) => React.ReactElement;
+}
+
+/**
+ * A component that renders abbreviated text with tooltips for additional information.
+ * It allows you to define a list of abbreviations, each with a tooltip and optional color.
+ * The component will tokenize the children text and replace matching parts with the abbreviated version.
+ * It supports a copy action that can either copy the text or the tooltip content.
+ * This component is useful for displaying technical terms or acronyms in a user-friendly way,
+ * while providing additional context through tooltips.
+ *
+ * @example
+ * ```jsx
+ * <Abbr
+ * abbr={[
+ *   ["HTML", "HyperText Markup Language", "primary"],
+ *   ["CSS", "Cascading Style Sheets", "secondary"],
+ *   ["JS", "JavaScript", "success"],
+ * ]}
+ * className="text-sm"
+ * copyContent="tooltip"
+ * >
+ *   Learn more about HTML, CSS, and JS.
+ * </Abbr>
+ * // Renders the text with abbreviations for HTML, CSS, and JS,
+ * // each with a tooltip showing the full form and colored according to the specified color.
+ * ```
+ */
+export function Abbr({ children, abbr, className, renderer, copyContent = "text" }: AbbrProps) {
+  /** ***************** abbr text renderer *******************/
+  const abbrRender = useCallback(
+    (text: string, tooltip: string, color = "") => {
+      return (
+        <AbbrText color={color} tooltip={tooltip} content={copyContent === "tooltip" ? tooltip : text}>
+          {(renderer?.([text, tooltip, color]) ?? text) as string}
+        </AbbrText>
+      );
+    },
+    [renderer, copyContent],
+  );
+
+  /** ***************** tokenize text with abbr list *******************/
+  const inner = useMemoDebugger(
+    () => {
+      if (isString(children)) {
+        if (!isEmpty(abbr)) {
+          const tokens = tokenize(
+            children,
+            abbr.map(([keyword]) => keyword),
+          );
+          const titles = abbr.reduce<KeyValue<{ tooltip: string; color: string }>>(
+            (t, [a, tooltip = "", color = ""]) => ({
+              ...t,
+              [a.toLowerCase()]: {
+                tooltip,
+                color,
+              },
+            }),
+            {},
+          );
+          return (
+            <Fragment>
+              {tokens.map(([start, text], i) => {
+                const { tooltip = "", color = "" } = titles[text.toLowerCase()] ?? {};
+                return (
+                  // eslint-disable-next-line @eslint-react/no-array-index-key
+                  <Fragment key={`${text}-${i}`}>
+                    {start}
+                    {text ? abbrRender(text, tooltip, color) : null}
+                  </Fragment>
+                );
+              })}
+            </Fragment>
+          );
+        }
+      }
+      return children;
+    },
+    [children, abbr, abbrRender],
+    "TextAbbr inner",
+  );
+
+  /** ***************** component *******************/
+  return <span className={cn(className, "mixed-lang whitespace-pre-wrap")}>{inner}</span>;
+}

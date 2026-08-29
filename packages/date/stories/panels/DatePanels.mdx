@@ -1,0 +1,58 @@
+import { Collapsable } from "@/core/src";
+import { DatePanel, RangePanel } from "@/date/src";
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import * as DatePanelStories from "./DatePanel.stories";
+import * as RangePanelStories from "./RangePanel.stories";
+
+<Meta of={DatePanelStories} />
+
+<Title>Date Panels</Title>
+
+<Anchor storyId="datepanel">
+  <div className="hidden-anchor">
+    <Subheading>Date Panel</Subheading>
+  </div>
+</Anchor>
+
+<Description of={DatePanel} />
+
+<Canvas withToolbar of={DatePanelStories._DatePanel} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={DatePanelStories._DatePanel} />
+</Collapsable>
+
+<Anchor storyId="rangepanel">
+  <Subheading>Range Panel</Subheading>
+</Anchor>
+<Description of={RangePanel} />
+<Canvas withToolbar of={RangePanelStories._RangePanel} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={RangePanelStories._RangePanel} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>

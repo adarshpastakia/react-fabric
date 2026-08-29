@@ -1,0 +1,52 @@
+import { TimeSlider } from "@/charts/src";
+import { Collapsable } from "@/core/src";
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import * as TimeSliderStories from "./TimeSlider.stories";
+
+<Meta of={TimeSliderStories} />
+
+<Title>Time Slider</Title>
+
+<Anchor storyId="animations">
+  <div className="hidden-anchor">
+    <Subheading>Time Slider</Subheading>
+  </div>
+</Anchor>
+
+<Description of={TimeSlider} />
+
+<Canvas withToolbar of={TimeSliderStories.Example} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={TimeSliderStories.Example} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="data">
+  <Subheading>Data Format</Subheading>
+</Anchor>
+
+```ts
+// List of time values for single series
+[[ date, count ], ...]
+```

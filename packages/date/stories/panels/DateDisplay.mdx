@@ -1,0 +1,58 @@
+import { Collapsable } from "@/core/src";
+import { DateDisplay, DateDuration, DatePanel } from "@/date/src";
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import * as DateDisplayStories from "./DateDisplay.stories";
+import * as DateDurationStories from "./DateDuration.stories";
+
+<Meta of={DateDisplayStories} />
+
+<Title>Date Display</Title>
+
+<Anchor storyId="datepanel">
+  <div className="hidden-anchor">
+    <Subheading>Date Display</Subheading>
+  </div>
+</Anchor>
+
+<Description of={DateDisplay} />
+
+<Canvas withToolbar of={DateDisplayStories._DateDisplay} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={DateDisplayStories._DateDisplay} />
+</Collapsable>
+
+<Anchor storyId="rangepanel">
+  <Subheading>Date Distance</Subheading>
+</Anchor>
+<Description of={DateDuration} />
+<Canvas withToolbar of={DateDurationStories._DateDuration} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={DateDurationStories._DateDuration} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>

@@ -1,0 +1,262 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+import { CodeHighlightNode, CodeNode } from "@lexical/code";
+import { ListItemNode, ListNode } from "@lexical/list";
+import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
+import { CheckListPlugin } from "@lexical/react/LexicalCheckListPlugin";
+import { LexicalComposer } from "@lexical/react/LexicalComposer";
+import { ContentEditable } from "@lexical/react/LexicalContentEditable";
+import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
+import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
+import { ListPlugin } from "@lexical/react/LexicalListPlugin";
+import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
+import { TablePlugin } from "@lexical/react/LexicalTablePlugin";
+import { HeadingNode, QuoteNode } from "@lexical/rich-text";
+import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
+import { ErrorBoundary, Header, ThemeProvider } from "@react-fabric/core";
+import { cn, debounce, EMPTY_ARRAY } from "@react-fabric/utilities";
+import type { SerializedEditorState, SerializedLexicalNode, UpdateListenerPayload } from "lexical";
+import { type Klass, type LexicalNode, type LexicalNodeReplacement, type LexicalEditor as LXE } from "lexical";
+import type { PropsWithChildren } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { CommentPlugin } from "../plugins/CommentPlugin";
+import { DraggableBlockPlugin } from "../plugins/DraggableBlockPlugin";
+import { ToolbarPlugin } from "../plugins/ToolbarPlugin";
+import { LexicalTheme } from "./theme";
+
+export interface EditorProps {
+  value?: string | SerializedEditorState<SerializedLexicalNode>;
+
+  isRtl?: boolean;
+
+  readOnly?: boolean;
+  /**
+   * publish mode removes all wrapping and renders plain lexical view for exporting to pdf using puppeteer
+   */
+  publishMode?: boolean;
+
+  header?: React.ReactElement;
+  footer?: React.ReactElement;
+  coverPage?: React.ReactElement;
+
+  /**
+   * Username is used for comment plugin to identify the comment author. It can be used to conditionally render delete option for comments.
+   */
+  username?: string;
+
+  nodes?: ReadonlyArray<Klass<LexicalNode> | LexicalNodeReplacement>;
+
+  onChange?: (value: KeyValue) => void;
+  onDirty?: (isDirty: boolean) => void;
+}
+
+function Wrapper({
+  children,
+  publishMode = false,
+  readOnly = false,
+}: PropsWithChildren<{ publishMode?: boolean; readOnly?: boolean }>) {
+  return !publishMode ? (
+    <div className="lexical-scroller area-content overflow-auto">
+      {!readOnly && (
+        <div className={cn("fabric-lexicalToolbar", "sticky top-0 z-1")}>
+          <Header className="bg-default">
+            <ToolbarPlugin />
+          </Header>
+        </div>
+      )}
+      {children}
+    </div>
+  ) : (
+    children
+  );
+}
+
+/**
+ * LexicalEditor component is a rich text editor built using Lexical.
+ * It supports various features such as code highlighting, lists, tables, and sticky notes.
+ * It provides a customizable toolbar and handles editor state changes.
+ * It also supports drag-and-drop functionality for blocks.
+ * It can be used in both read-only and editable modes, and supports publishing mode for exporting content.
+ * It uses a custom theme and provides error handling for Lexical updates.
+ *
+ * @example
+ * ```jsx
+ * <LexicalEditor
+ *   value={initialValue}
+ *   readOnly={false}
+ *   publishMode={false}
+ *   onChange={(value) => console.log("Editor value changed:", value)}
+ *   onDirty={(isDirty) => console.log("Editor is dirty:", isDirty)}
+ * />
+ * ```
+ * @see {@link https://lexical.dev/docs/}
+ */
+export function LexicalEditor({
+  value,
+  readOnly,
+  publishMode,
+  header,
+  footer,
+  coverPage,
+  isRtl,
+  username = "Guest",
+  nodes = EMPTY_ARRAY,
+  onChange,
+  onDirty,
+}: EditorProps) {
+  const editorRef = useRef<LXE>(null);
+  const [editorContainer, setEditorContainer] = useState<HTMLDivElement | null>(null);
+
+  // Catch any errors that occur during Lexical updates and log them
+  // or throw them as needed. If you don't throw them, Lexical will
+  // try to recover gracefully without losing user data.
+  const onError = (error: AnyObject) => {
+    console.error("ERROR", error);
+  };
+
+  const initEditor = useCallback((editor: LXE) => {
+    editorRef.current = editor;
+    const handler = debounce(({ editorState, dirtyElements }: UpdateListenerPayload) => {
+      editorState.read(() => {
+        if (dirtyElements.size > 0) {
+          onDirty?.(true);
+        }
+        onChange?.(editorState.toJSON());
+      });
+    }, 500);
+    const handle = editor.registerUpdateListener(handler);
+
+    // const cb = mergeRegister(
+    //   editor.registerCommand<DragEvent>(
+    //     DRAGOVER_COMMAND,
+    //     (event) => {
+    //       return onDragover(event);
+    //     },
+    //     COMMAND_PRIORITY_LOW,
+    //   ),
+    //   editor.registerCommand<DragEvent>(
+    //     DROP_COMMAND,
+    //     (event) => {
+    //       return onDrop(event, editor);
+    //     },
+    //     COMMAND_PRIORITY_HIGH,
+    //   ),
+    // );
+    return () => {
+      handle?.();
+      // cb?.();
+    };
+    // eslint-disable-next-line @eslint-react/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    editorRef.current?.setEditorState(editorRef.current?.parseEditorState(value ?? ""));
+  }, [value]);
+
+  useEffect(() => {
+    editorRef.current?.registerRootListener((rootElement) => {
+      if (rootElement) {
+        const tmr = setTimeout(() => (rootElement.contentEditable = `${!readOnly && !publishMode}`), 100);
+
+        return () => {
+          clearTimeout(tmr);
+        };
+      }
+    });
+  }, [readOnly, publishMode]);
+
+  const initialConfig = useMemo(
+    () => ({
+      editorState: initEditor,
+      namespace: "MyEditor",
+      editable: !readOnly && !publishMode,
+      theme: LexicalTheme,
+      nodes: [
+        QuoteNode,
+        HeadingNode,
+        CodeHighlightNode,
+        CodeNode,
+        ListItemNode,
+        ListNode,
+        TableCellNode,
+        TableNode,
+        TableRowNode,
+        ...nodes,
+      ],
+      onError,
+    }),
+    // eslint-disable-next-line @eslint-react/exhaustive-deps
+    [],
+  );
+
+  return (
+    <ErrorBoundary>
+      <LexicalComposer initialConfig={initialConfig}>
+        <Wrapper>
+          <ThemeProvider colorScheme="light">
+            <div
+              role="none"
+              className={cn(
+                "fabric-lexicalEditor",
+                "lexical-container relative bg-white min-h-full mx-auto shadow-md print:shadow-none",
+              )}
+              dir={isRtl ? "rtl" : "ltr"}
+              onDragOver={(e) => e.stopPropagation()}
+              onKeyDown={(e) => e.stopPropagation()}
+              ref={setEditorContainer}
+            >
+              {!publishMode && header && <div className="editor-header">{header}</div>}
+              {coverPage && <div className="editor-cover px-[2cm] py-[1cm]">{coverPage}</div>}
+              <RichTextPlugin
+                contentEditable={
+                  <ContentEditable
+                    readOnly={!!readOnly || publishMode}
+                    className="lexical-editor min-h-screen px-[2cm] py-[1cm]"
+                  />
+                }
+                placeholder={
+                  <div className="text-muted overflow-hidden absolute mt-6 top-[1cm] left-[2cm] select-none pointer-events-none">
+                    Enter some text...
+                  </div>
+                }
+                ErrorBoundary={LexicalErrorBoundary}
+              />
+              <ListPlugin />
+              <CheckListPlugin />
+              <TablePlugin />
+              <HistoryPlugin />
+              <AutoFocusPlugin defaultSelection="rootStart" />
+              {/** Custom plugins **/}
+              {editorContainer && <DraggableBlockPlugin anchorElem={editorContainer} isEditable={!readOnly && !publishMode} />}
+              {editorContainer && (
+                <CommentPlugin username={username} anchorElem={editorContainer} isPublishMode={!!publishMode} />
+              )}
+              {!publishMode && footer && <div className="editor-footer">{footer}</div>}
+            </div>
+          </ThemeProvider>
+        </Wrapper>
+      </LexicalComposer>
+    </ErrorBoundary>
+  );
+}

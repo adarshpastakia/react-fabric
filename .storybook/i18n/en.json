@@ -1,0 +1,9 @@
+{
+  "app": {
+    "appTitle": "React UI Framework",
+    "appDescription": "React UI framework for business applications"
+  },
+  "login": {
+    "demo": "Login credential for demo [demo/pass]"
+  }
+}

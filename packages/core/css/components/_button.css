@@ -1,0 +1,218 @@
+/**
+ * React Fabric
+ * @version 1.0.0
+ * @license MIT
+ * @copyright 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+@layer components {
+  .fabric-buttonWrapper {
+    .fabric-button {
+      color: var(--button-text);
+      background: var(--button-gradient), linear-gradient(var(--button-bg));
+      background-clip: padding-box, padding-box;
+      outline-color: var(--button-border);
+
+      &::after {
+        position: absolute;
+        inset: 0;
+      }
+
+      &:hover {
+        color: var(--button-hover-text, var(--button-text));
+        background: var(--button-gradient), linear-gradient(var(--button-hover-bg, var(--button-bg)));
+        outline-color: var(--button-hover-border, var(--button-border));
+      }
+
+      &:active {
+        color: var(--button-click-text, var(--button-text));
+        background: var(--button-click-gradient), linear-gradient(var(--button-click-bg, var(--button-bg)));
+        outline-color: var(--button-click-border, var(--button-border));
+
+        > * {
+          transform: translateY(1px);
+        }
+      }
+    }
+
+    &[data-active="true"] .fabric-button,
+    & .fabric-button[data-dropdown-open="true"] {
+      color: var(--button-active-text, var(--button-text));
+      background: var(--button-click-gradient), linear-gradient(var(--button-active-bg, var(--button-bg)));
+      background-color: var(--button-active-bg, var(--button-bg));
+      outline-color: var(--button-active-border, var(--button-border));
+    }
+
+    &[data-loading="true"] {
+      .fabric-button {
+        &::after {
+          background-image: var(--progress-gradient);
+          background-size: 1em 1em;
+        }
+      }
+    }
+
+    /**
+     * sizes
+     */
+    &[data-size="xs"] {
+      font-size: 0.75rem;
+    }
+
+    &[data-size="sm"] {
+      font-size: 0.875rem;
+    }
+
+    &[data-size="md"] {
+      font-size: 1.125rem;
+    }
+
+    &[data-size="lg"] {
+      font-size: 1.25rem;
+    }
+
+    &[data-size="xl"] {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@layer utilities {
+  .fabric-buttonWrapper {
+    --button-click-gradient: var(--active-gradient);
+
+    &[data-color="primary"] {
+      --button-color: var(--color-primary-500);
+    }
+
+    &[data-color="secondary"] {
+      --button-color: var(--color-secondary-500);
+    }
+
+    &[data-color="info"] {
+      --button-color: var(--color-info-500);
+    }
+
+    &[data-color="danger"] {
+      --button-color: var(--color-danger-500);
+    }
+
+    &[data-color="success"] {
+      --button-color: var(--color-success-500);
+    }
+
+    &[data-color="warning"] {
+      --button-color: var(--color-warning-500);
+    }
+
+    &[data-color="muted"] {
+      --button-color: var(--color-tint-600);
+    }
+
+    .fabric-buttonDoneOverlay {
+      color: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 75%, var(--fabric-text));
+      background-color: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 50%, var(--fabric-bg));
+      outline-color: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 65%, var(--fabric-bg));
+    }
+
+    .fabric-button {
+      --button-bg: color-mix(in oklab, var(--color-tint-500) 9%, var(--fabric-bg));
+      --button-text: color-mix(in oklab, var(--button-color, var(--color-tint-800)) 90%, var(--fabric-text));
+      --button-border: color-mix(in oklab, var(--color-tint-500) 35%, var(--fabric-bg));
+      --button-hover-bg: color-mix(in oklab, var(--button-color, var(--color-tint-50)) 20%, var(--fabric-bg));
+      --button-hover-text: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 99%, var(--fabric-text));
+      --button-click-bg: color-mix(in oklab, var(--button-color, var(--color-tint-500)) 18%, var(--fabric-bg));
+      --button-click-text: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 99%, var(--fabric-text));
+      --button-active-bg: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 15%, var(--fabric-bg));
+      --button-active-text: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 99%, var(--fabric-text));
+    }
+
+    &[data-variant="soft"] {
+      .fabric-button {
+        --button-bg: color-mix(in oklab, var(--button-color, var(--color-tint-500)) 20%, var(--fabric-bg));
+        --button-text: color-mix(in oklab, var(--button-color, var(--color-tint-700)) 75%, var(--fabric-text));
+        --button-border: color-mix(in oklab, var(--button-color, var(--color-tint-500)) 25%, var(--fabric-bg));
+        --button-hover-bg: color-mix(in oklab, var(--button-color, var(--color-tint-500)) 25%, var(--fabric-bg));
+        --button-hover-text: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 85%, var(--fabric-text));
+        --button-click-bg: color-mix(in oklab, var(--button-color, var(--color-tint-500)) 18%, var(--fabric-bg));
+        --button-click-text: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 75%, var(--fabric-text));
+        --button-active-bg: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 25%, var(--fabric-bg));
+      }
+    }
+
+    &[data-variant="solid"] {
+      .fabric-button {
+        --button-bg: color-mix(in oklab, var(--button-color, var(--color-tint-900)) 95%, var(--color-black));
+        --button-text: var(--color-white);
+        --button-border: color-mix(in oklab, var(--button-color, var(--color-tint-500)) 85%, var(--fabric-bg));
+        --button-hover-bg: color-mix(in oklab, var(--button-color, var(--color-tint-900)) 90%, var(--color-white));
+        --button-hover-text: var(--color-white);
+        --button-click-bg: color-mix(in oklab, var(--button-color, var(--color-tint-900)) 75%, var(--color-black));
+        --button-click-text: var(--color-white);
+        --button-active-bg: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 75%, var(--color-black));
+        --button-active-text: var(--color-white);
+
+        & kbd {
+          color: --alpha(var(--color-white) / 95%);
+          background-color: --alpha(var(--color-tint-500) / 50%);
+        }
+      }
+    }
+
+    &[data-color="default"][data-variant="solid"] .fabric-button {
+      --button-text: color-mix(in oklab, var(--button-color, var(--color-tint-100)) 95%, var(--color-white));
+      --button-hover-text: color-mix(in oklab, var(--button-color, var(--color-tint-100)) 95%, var(--color-white));
+      --button-click-text: color-mix(in oklab, var(--button-color, var(--color-tint-100)) 95%, var(--color-white));
+    }
+
+    &[data-variant="outlined"] {
+      .fabric-button {
+        --button-border: color-mix(in oklab, var(--button-color, var(--color-tint-500)) 90%, var(--fabric-bg));
+        --button-hover-border: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 90%, var(--fabric-bg));
+      }
+    }
+
+    &[data-variant="dashed"] {
+      .fabric-button {
+        --button-border: color-mix(in oklab, var(--button-color, var(--color-tint-500)) 90%, var(--fabric-bg));
+        --button-hover-border: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 90%, var(--fabric-bg));
+
+        outline-style: dashed;
+      }
+    }
+
+    &[data-variant="link"] {
+      .fabric-button {
+        --button-border: transparent;
+        --button-bg: transparent;
+        --button-gradient: transparent;
+        --button-click-gradient: transparent;
+        --button-text: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 90%, var(--fabric-text));
+        --button-active-bg: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 25%, var(--fabric-bg));
+
+        &:hover {
+          text-decoration: underline solid 1px;
+          text-underline-offset: 4px;
+        }
+      }
+    }
+  }
+}

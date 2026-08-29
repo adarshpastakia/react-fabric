@@ -1,0 +1,167 @@
+/**
+ * React Fabric
+ * @version 1.0.0
+ * @license MIT
+ * @copyright 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+@layer components {
+  .fabric-card {
+    display: grid;
+    grid-template: "title" auto "body" 1fr / 1fr;
+    background-color: var(--fabric-bg);
+    outline: 1px solid var(--border-color-soft);
+
+    &:has(.fabric-style-effect) {
+      background-color: --alpha(var(--fabric-bg) / 75%);
+      backdrop-filter: blur(1rem);
+    }
+
+    &.selected-ribbon {
+      @variant is-selected {
+        &::before {
+          content: "";
+
+          position: absolute;
+          z-index: 5;
+          inset-inline-end: -2px;
+          top: -2px;
+
+          border-top: 1rem solid var(--color-primary-500);
+          border-bottom: 1rem solid transparent;
+          border-inline-start: 1rem solid transparent;
+          border-inline-end: 1rem solid var(--color-primary-500);
+          border-radius: var(--rounding-cap);
+        }
+
+        &::after {
+          content: "✓";
+
+          position: absolute;
+          z-index: 5;
+          inset-inline-end: -2px;
+          top: -2px;
+
+          padding: 4px;
+
+          font-family: monospace;
+          line-height: 0.5;
+          color: var(--color-white);
+        }
+      }
+    }
+
+    & .fabric-cardCover {
+      & > .fabric-cardCoverContent {
+        color: var(--color-white);
+        text-shadow: 0 0 2px var(--color-black);
+        background-image: linear-gradient(to bottom, #0000 0, #0006 100%);
+      }
+    }
+
+    & .fabric-cardBody {
+      grid-area: body;
+      grid-template: "loader" auto "header" auto "content" 1fr "footer" auto / 1fr;
+    }
+
+    @variant is-clickable {
+      --tw-shadow-color: var(--border-color-soft);
+
+      outline-color: var(--border-color-bright);
+      box-shadow: 0 1px 2px 0 var(--fabric-shadow);
+      transition: box-shadow transform 0ms;
+
+      &:has(.fabric-cardBody:hover):not(:has([data-clickable="true"]:hover)) {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 16px 0 color-mix(in lab, var(--fabric-shadow) 35%, #0000);
+        transition-delay: 250ms;
+      }
+
+      &:has(.fabric-cardBody:active):not(:has([data-clickable="true"]:hover)) {
+        box-shadow: 0 0 0 1px var(--tw-shadow-color);
+        transition-delay: 0ms;
+      }
+
+      & .fabric-cardBody {
+        cursor: pointer;
+
+        &::after {
+          pointer-events: none;
+          content: "";
+
+          position: absolute;
+          z-index: 5;
+          inset: 0;
+
+          background-image: linear-gradient(
+            175deg,
+            rgb(255 255 255 / 5%) 0%,
+            transparent 18%,
+            transparent 72%,
+            rgb(0 0 0 / 5%) 100%
+          );
+        }
+      }
+    }
+  }
+}
+
+@layer utilities {
+  .fabric-card {
+    & .fabric-cardCover {
+      & > [data-ref="image"],
+      & > [data-ref="video"] {
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+      }
+
+      & .fabric-cardCoverContent {
+        & > * {
+          flex: 0 0 auto;
+        }
+      }
+    }
+  }
+
+  .fabric-flipCard {
+    [data-card-flip-face="front"] {
+      position: relative;
+      backface-visibility: hidden;
+    }
+
+    [data-card-flip-face="back"] {
+      position: absolute;
+      inset: 0;
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+    }
+
+    &[data-card-flip] {
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+    }
+
+    &[data-card-flip="true"] {
+      transform: rotateY(180deg);
+    }
+  }
+}

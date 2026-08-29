@@ -1,0 +1,528 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2025 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the Software), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+/* stylelint-disable nesting-selector-no-missing-scoping-root */
+
+@keyframes bgfade {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes sizepulse {
+  50% {
+    transform: scale(1.5);
+  }
+}
+
+@keyframes cardpulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes bgprogress {
+  0% {
+    background-position-x: 0;
+  }
+
+  100% {
+    background-position-x: 1rem;
+  }
+}
+
+@utility area-* {
+  grid-area: --value([*]);
+}
+
+@utility area-content {
+  grid-area: content;
+}
+
+@utility area-header {
+  z-index: 2;
+  grid-area: header;
+}
+
+@utility area-footer {
+  z-index: 2;
+  grid-area: footer;
+}
+
+@utility area-body {
+  z-index: 1;
+  grid-area: body;
+}
+
+@utility area-loader {
+  z-index: 1;
+  grid-area: loader;
+}
+
+@utility area-breadcrumbs {
+  z-index: 1;
+  grid-area: breadcrumbs;
+}
+
+@utility area-start {
+  z-index: 0;
+  grid-area: start;
+}
+
+@utility area-end {
+  z-index: 0;
+  grid-area: end;
+}
+
+@utility area-actions-start {
+  z-index: 0;
+  grid-area: actions-start;
+}
+
+@utility area-actions-end {
+  z-index: 0;
+  grid-area: actions-end;
+}
+
+@utility overflow-wrap {
+  text-wrap: wrap;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+@utility scroll-hide {
+  &::-webkit-scrollbar,
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
+@utility scroll-thin {
+  &::-webkit-scrollbar,
+  ::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+}
+
+@utility paper {
+  margin: 4px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px 1px rgb(0 0 0 / 15%);
+}
+
+@utility fixed-numbers {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility mixed-lang {
+  unicode-bidi: plaintext;
+}
+
+@utility flex-content {
+  flex: 0 0 auto;
+}
+
+@utility flex-full {
+  flex: 1 1 100%;
+}
+
+@utility contrast {
+  filter: invert(1) grayscale(1) brightness(1.3) contrast(9000);
+  mix-blend-mode: luminosity;
+}
+
+@utility font-smallcaps {
+  font-variant: small-caps;
+}
+
+@utility sectioned {
+  overflow: hidden;
+  display: grid;
+  grid-template: "header header header header header" auto ". . loader . ." auto "start actions-start breadcrumbs actions-end end" auto "start actions-start content actions-end end" 1fr "footer footer footer footer footer" auto / auto auto 1fr auto auto;
+}
+
+@utility scroll-snap-start {
+  scroll-snap-type: both proximity;
+
+  > * {
+    scroll-snap-align: start;
+  }
+}
+
+@utility scroll-snap-center {
+  scroll-snap-type: both proximity;
+
+  > * {
+    scroll-snap-align: center;
+  }
+}
+
+@utility scroll-snap-end {
+  scroll-snap-type: both proximity;
+
+  > * {
+    scroll-snap-align: end;
+  }
+}
+
+@utility break-words {
+  word-break: word-break;
+}
+
+@utility outline-thin {
+  outline-width: 0.5px;
+}
+
+@utility link {
+  cursor: pointer;
+  user-select: none;
+
+  font-weight: 500;
+  color: var(--color-secondary-600);
+  text-decoration: 1px underline dotted;
+
+  @variant hover {
+    text-decoration: 1px underline solid;
+  }
+}
+
+@utility bg-odd {
+  background-color: color-mix(in oklab, var(--fabric-bg) 99%, var(--color-tint));
+}
+
+@utility bg-even {
+  background-color: color-mix(in oklab, var(--fabric-bg) 92%, var(--color-tint));
+}
+
+@utility bg-alternate {
+  > :nth-child(even) {
+    background-color: color-mix(in oklab, var(--fabric-bg) 92%, var(--color-tint));
+  }
+
+  > :nth-child(odd) {
+    background-color: color-mix(in oklab, var(--fabric-bg) 99%, var(--color-tint));
+  }
+
+  > dt:nth-of-type(odd),
+  > dd:nth-of-type(odd) {
+    background-color: color-mix(in oklab, var(--fabric-bg) 92%, var(--color-tint));
+  }
+
+  > dt:nth-of-type(even),
+  > dd:nth-of-type(even) {
+    background-color: color-mix(in oklab, var(--fabric-bg) 99%, var(--color-tint));
+  }
+}
+
+@utility bg-default {
+  background-color: var(--bg-color-default);
+}
+
+@utility bg-content {
+  background-color: var(--bg-color-content);
+}
+
+@utility bg-dimmed {
+  background-color: var(--bg-color-dimmed);
+}
+
+@utility bg-muted {
+  background-color: var(--bg-color-muted);
+}
+
+@utility bg-gray {
+  background-color: var(--bg-color-gray);
+}
+
+@utility bg-dark {
+  background-color: var(--bg-color-dark);
+}
+
+@utility bg-light {
+  background-color: var(--bg-color-light);
+}
+
+@utility bg-invert {
+  background-color: var(--bg-color-invert);
+}
+
+@utility text-default {
+  color: var(--text-color-default);
+}
+
+@utility text-dimmed {
+  color: var(--text-color-dimmed);
+}
+
+@utility text-muted {
+  color: var(--text-color-muted);
+}
+
+@utility text-gray {
+  color: var(--text-color-gray);
+}
+
+@utility text-dark {
+  color: var(--text-color-dark);
+}
+
+@utility text-light {
+  color: var(--text-color-light);
+}
+
+@utility text-invert {
+  color: var(--text-color-invert);
+}
+
+@utility border-default {
+  border-color: var(--border-color-default);
+}
+
+@utility border-bright {
+  border-color: var(--border-color-bright);
+}
+
+@utility border-soft {
+  border-color: var(--border-color-soft);
+}
+
+@utility border-gray {
+  border-color: var(--border-color-gray);
+}
+
+@utility border-dark {
+  border-color: var(--border-color-dark);
+}
+
+@utility border-light {
+  border-color: var(--border-color-light);
+}
+
+@utility outline-default {
+  outline-color: var(--border-color-default);
+}
+
+@utility outline-bright {
+  outline-color: var(--border-color-bright);
+}
+
+@utility outline-soft {
+  outline-color: var(--border-color-soft);
+}
+
+@utility outline-gray {
+  outline-color: var(--color-tint);
+}
+
+@utility outline-dark {
+  outline-color: var(--border-color-dark);
+}
+
+@utility outline-light {
+  outline-color: var(--border-color-light);
+}
+
+@utility stroke-default {
+  stroke: var(--border-color-default);
+}
+
+@utility stroke-bright {
+  stroke: var(--border-color-bright);
+}
+
+@utility stroke-soft {
+  stroke: var(--border-color-soft);
+}
+
+@utility stroke-gray {
+  stroke: var(--color-tint);
+}
+
+@utility stroke-dark {
+  stroke: var(--border-color-dark);
+}
+
+@utility stroke-light {
+  stroke: var(--border-color-light);
+}
+
+@utility fill-default {
+  fill: var(--bg-color-default);
+}
+
+@utility fill-dimmed {
+  fill: var(--bg-color-dimmed);
+}
+
+@utility fill-muted {
+  fill: var(--bg-color-muted);
+}
+
+@utility fill-gray {
+  fill: var(--bg-color-gray);
+}
+
+@utility fill-dark {
+  fill: var(--bg-color-dark);
+}
+
+@utility fill-light {
+  fill: var(--bg-color-light);
+}
+
+@utility fill-invert {
+  fill: var(--bg-color-invert);
+}
+
+@utility gutter-* {
+  --gutter: calc(var(--spacing) * --value(integer));
+
+  :is([class*="fabric-row"]) {
+    margin: calc(var(--gutter, 0px) / -2);
+  }
+
+  :is([class*="fabric-col"]) {
+    margin: calc(var(--gutter, 0px) / 2);
+  }
+}
+
+@utility span-* {
+  flex: 0 1 calc((--value(integer) / 12) * 100% - var(--gutter, 0px));
+  margin: calc(var(--gutter, 0) / 2);
+}
+
+@utility grid-cols-repeat-* {
+  grid-template-columns: repeat(auto-fill, minmax(min(--value([*]), 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(calc(var(--spacing) * --value(integer)), 100%), 1fr));
+}
+
+@utility container-inner {
+  width: 100%;
+
+  @apply @xs:max-w-xs @sm:max-w-sm @md:max-w-md @lg:max-w-lg @xl:max-w-xl @2xl:max-w-2xl @3xl:max-w-3xl @4xl:max-w-4xl @5xl:max-w-5xl @6xl:max-w-6xl;
+}
+
+@property --animated-border-angle {
+  inherits: false;
+  initial-value: 0deg;
+  syntax: "<angle>";
+}
+
+@property --animated-border-start {
+  inherits: false;
+  initial-value: 40%;
+  syntax: "<percentage>";
+}
+
+@property --animated-border-end {
+  inherits: false;
+  initial-value: 60%;
+  syntax: "<percentage>";
+}
+
+@keyframes border-animate {
+  0% {
+    --animated-border-angle: 0deg;
+    --animated-border-start: 20%;
+    --animated-border-end: 80%;
+  }
+
+  50% {
+    --animated-border-start: 45%;
+    --animated-border-end: 55%;
+  }
+
+  100% {
+    --animated-border-angle: 360deg;
+    --animated-border-start: 20%;
+    --animated-border-end: 80%;
+  }
+}
+
+@utility animated-border {
+  position: relative;
+
+  &::before {
+    pointer-events: none; /* Prevents interference with clicks/selections */
+    content: "";
+
+    position: absolute;
+    inset: 0; /* Spans the exact dimensions of the box */
+
+    overflow: hidden;
+
+    /* 2. Control border thickness here */
+    padding: 2px;
+
+    /* 1. Inherit the parent border radius so the outer edge matches */
+    border-radius: inherit;
+
+    /* 3. Render the dynamic conic gradient */
+    background: conic-gradient(
+      from var(--animated-border-angle),
+      var(--border-color-bright) var(--animated-border-start),
+      var(--animated-border-color, var(--color-primary-500)),
+      var(--border-color-bright) var(--animated-border-end)
+    );
+
+    /* 4. Magic trick: Mask out the inner content area */
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+
+    /* 5. Exclude the content area from the full border area */
+    mask-composite: xor;
+    mask-composite: exclude;
+
+    /* 6. Run the custom property animation */
+    animation: border-animate 2s linear infinite;
+  }
+}
+
+@utility animated-border-rainbow {
+  &::before {
+    background: conic-gradient(
+      from var(--animated-border-angle),
+      var(--color-scarlet),
+      var(--color-lilac),
+      var(--color-iris),
+      var(--color-denim),
+      var(--color-avocado),
+      var(--color-amber),
+      var(--color-pumpkin),
+      var(--color-scarlet)
+    );
+  }
+}
+
+@property --animated-border-opacity {
+  inherits: false;
+  initial-value: 100%;
+  syntax: "<percentage>";
+}
+
+@utility animated-border-* {
+  --animated-border-color: --alpha(--value(--color-*) / calc(--modifier(integer, --default(100)) * 1%));
+}

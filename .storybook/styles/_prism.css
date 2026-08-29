@@ -1,0 +1,129 @@
+/*
+ * React Fabric
+ * @version   : 1.0.0
+ * @copyright : 2024
+ * @author    : Adarsh Pastakia
+ */
+
+.prismjs.prismjs.prismjs {
+  color: var(--text-color-dimmed);
+  background: var(--fabric-bg);
+}
+
+.prismjs > code {
+  user-select: text;
+
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 1em;
+  line-height: 1.5;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  overflow-wrap: normal;
+  white-space: pre;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  overflow: hidden;
+  margin: 0.5em 0;
+  padding: 0;
+
+  & > code {
+    overflow: auto;
+    padding: 1rem;
+  }
+}
+
+/* Inline code */
+*:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  & .token.important,
+  & .token.bold {
+    font-weight: 600;
+  }
+
+  & .token.italic {
+    font-style: italic;
+  }
+
+  & .token.entity {
+    cursor: help;
+  }
+}
+
+.prismjs {
+  position: relative;
+}
+
+.prismjs > div {
+  white-space: pre-wrap !important;
+
+  &::after {
+    position: absolute;
+    inset-inline-end: 0;
+    top: 0;
+
+    padding: 0.25em 0.5em;
+    border-end-start-radius: 8px;
+
+    font-size: 0.75rem;
+
+    opacity: 0.7;
+  }
+
+  &.language-jsx::after,
+  &.language-tsx::after {
+    content: "React";
+    color: #000;
+    background-color: #61dafb;
+  }
+
+  &.language-js::after {
+    content: "JS";
+    color: #000;
+    background-color: #f7df1e;
+  }
+
+  &.language-ts::after {
+    content: "TS";
+    color: #fff;
+    background-color: #3178c6;
+  }
+
+  &.language-css::after {
+    content: "CSS";
+    color: #fff;
+    background-color: #1572b6;
+  }
+
+  &.language-html::after {
+    content: "HTML";
+    color: #fff;
+    background-color: #e34f26;
+  }
+
+  &.language-bash::after {
+    content: "Bash";
+    color: #fff;
+    background-color: #64748b;
+  }
+
+  &.language-json::after {
+    content: "JSON";
+    color: #fff;
+    background-color: #000;
+  }
+
+  &.language-yaml::after {
+    content: "YAML";
+    color: #fff;
+    background-color: #cb171e;
+  }
+}

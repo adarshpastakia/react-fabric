@@ -1,0 +1,138 @@
+import { faker, fakerAR } from "@faker-js/faker";
+import {
+  Anchor,
+  IconGallery,
+  IconItem,
+  Meta,
+  Story,
+  Subheading,
+  Subtitle,
+  Title,
+  Typeset,
+  Unstyled,
+} from "@storybook/addon-docs/blocks";
+import { Translation } from "react-i18next";
+
+export const typography = {
+  type: {
+    primary: "var(--font-sans)",
+    title: "var(--font-title)",
+    mono: "var(--font-mono)",
+  },
+  weight: {
+    light: "300",
+    regular: "400",
+    medium: "500",
+    semibold: "600",
+    bold: "700",
+    extrabold: "800",
+    black: "900",
+  },
+  size: {
+    s1: 12,
+    s2: 14,
+    s3: 16,
+    m1: 20,
+    m2: 24,
+    d1: 24,
+    d2: 28,
+    d3: 32,
+    d4: 40,
+  },
+};
+
+export const SampleText = "😀 🚀 🇦🇪 Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+
+export const SampleTextAR = "😀 🚀 🇦🇪 لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار";
+
+<Meta title="Typography" />
+
+<Title>Typography</Title>
+
+<Subheading>Font Family</Subheading>
+
+**Weights:** 300(light), 400(regular), 500(medium), 600(semibold), 700(bold), 800(extrabold), 900(black)
+
+### Regular Fonts
+
+**Font:** Noto Sans
+
+<Typeset
+  fontSizes={[
+    Number(typography.size.s1),
+    Number(typography.size.s2),
+    Number(typography.size.s3),
+    Number(typography.size.m1),
+    Number(typography.size.m2),
+  ]}
+  fontWeight={typography.weight.regular}
+  sampleText={SampleText}
+  fontFamily={typography.type.primary}
+/>
+
+**Font:** Noto Sans Kufi Arabic
+
+<Typeset
+  fontSizes={[
+    Number(typography.size.s1),
+    Number(typography.size.s2),
+    Number(typography.size.s3),
+    Number(typography.size.m1),
+    Number(typography.size.m2),
+  ]}
+  fontWeight={typography.weight.regular}
+  sampleText={SampleTextAR}
+  fontFamily={typography.type.primary}
+/>
+
+### Title Fonts
+
+**Font:** Merriweather
+
+<Typeset
+  fontSizes={[Number(typography.size.d1), Number(typography.size.d2), Number(typography.size.d3), Number(typography.size.d4)]}
+  fontWeight={typography.weight.regular}
+  sampleText={SampleText}
+  fontFamily={typography.type.title}
+/>
+
+**Font:** Alexandria
+
+<Typeset
+  fontSizes={[Number(typography.size.d1), Number(typography.size.d2), Number(typography.size.d3), Number(typography.size.d4)]}
+  fontWeight={typography.weight.regular}
+  sampleText={SampleTextAR}
+  fontFamily={typography.type.title}
+/>
+
+### Input Fonts
+
+**Font:** Noto Sans Mono
+
+<Typeset
+  fontSizes={[
+    Number(typography.size.s1),
+    Number(typography.size.s2),
+    Number(typography.size.s3),
+    Number(typography.size.m1),
+    Number(typography.size.m2),
+  ]}
+  fontWeight={typography.weight.regular}
+  sampleText={SampleText}
+  fontFamily={typography.type.mono}
+/>
+
+<Subheading>Headings</Subheading>
+<Unstyled>
+  <h1>Heading 1</h1>
+  <h2>Heading 2</h2>
+  <h4 className="text-[1.75rem]">Heading 3</h4>
+  <h4>Heading 4</h4>
+  <h5>Heading 5</h5>
+  <h6>Heading 6</h6>
+</Unstyled>
+
+<Subheading>Paragraphs</Subheading>
+<Unstyled>
+  <p className="whitespace-pre-wrap">{faker.lorem.sentences(10) + "\n\n" + fakerAR.lorem.sentences(10)}</p>
+</Unstyled>

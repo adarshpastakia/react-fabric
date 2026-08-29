@@ -1,0 +1,58 @@
+import { Collapsable } from "@/core/src";
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import { ArrayInput, Form } from "../../src";
+import * as ArrayInputStories from "./ArrayInput.stories";
+import * as FormStories from "./Form.stories";
+
+<Meta of={FormStories} />
+
+<Title>Form</Title>
+
+<Anchor storyId="form">
+  <div className="hidden-anchor">
+    <Subheading>Form</Subheading>
+  </div>
+</Anchor>
+
+<Description of={Form} />
+
+<Canvas withToolbar of={FormStories._Form} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={FormStories._Form} />
+</Collapsable>
+
+<Anchor storyId="array">
+  <Subheading>Array Input</Subheading>
+</Anchor>
+<Description of={ArrayInput} />
+<Canvas withToolbar of={ArrayInputStories._ArrayInput} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={ArrayInputStories._ArrayInput} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>

@@ -1,0 +1,185 @@
+/*
+ * React Fabric
+ * @version: 1.0.0
+ *
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+import { Avatar, Icon, Layout, MenuItem, Title, Viewport } from "@/core/src";
+import { Table, TableColumn } from "@/data/src";
+import { Countries, Country } from "@/utilities/src";
+import { faker } from "@faker-js/faker";
+import type { Meta, StoryObj } from "@storybook/react";
+import { Fragment, useState } from "react";
+import { fn } from "storybook/test";
+
+import africa from "./images/africa.svg";
+import asia from "./images/asia.svg";
+import europe from "./images/europe.svg";
+import namerica from "./images/north-america.svg";
+import oceania from "./images/oceania.svg";
+import samerica from "./images/south-america.svg";
+
+const meta: Meta = {
+  component: Table,
+  title: "@data/Table",
+  parameters: {
+    layout: "fullscreen",
+    controls: { exclude: /^(children|as)/ },
+  },
+  decorators: [
+    (Story) => (
+      <div className="min-h-150">
+        <Viewport>
+          <Layout>
+            <Story />
+          </Layout>
+        </Viewport>
+      </div>
+    ),
+  ],
+};
+
+export default meta;
+type Story = StoryObj<typeof Table>;
+
+const columns: TableColumn<Country>[] = [
+  {
+    id: "flag",
+    width: "3rem",
+    align: "center",
+    locked: "start",
+    hideable: false,
+    renderer(_: string, data: Country) {
+      console.log(data);
+      return <Icon icon={`iconify-color circle-flags--${data?.iconCode}`} />;
+    },
+  },
+  {
+    id: "cca2",
+    width: "3rem",
+    locked: "start",
+    hideable: false,
+  },
+  {
+    id: "name.common",
+    label: "Name",
+    locked: "start",
+    width: "32rem",
+    sortable: true,
+    hideable: false,
+    resizable: true,
+    filterable: true,
+    dataType: "string",
+    actions: [<MenuItem label="Sort down" />, <MenuItem label="Sort up" />],
+  },
+  {
+    id: "region",
+    label: "Continent",
+    width: "12rem",
+    hidden: false,
+    resizable: true,
+    filterable: true,
+    filter: ["Asia", "Europe"],
+    filterOptions: ["Asia", "Africa", "Europe", "North America", "South America", "Oceania"],
+  },
+  {
+    id: "name.official",
+    label: "Fullname",
+    width: "48rem",
+    hidden: true,
+    resizable: true,
+    renderer(v: string) {
+      return (
+        <div>
+          <div>{v}</div>
+          <div className="text-muted">{faker.lorem.paragraphs(2)}</div>
+        </div>
+      );
+    },
+  },
+  {
+    id: "capital",
+    label: "Capital",
+    width: "48rem",
+    hidden: true,
+  },
+  {
+    id: "currency.code",
+    label: "Currency",
+    width: "8rem",
+    hidden: true,
+  },
+  {
+    id: "phone",
+    label: "Phone",
+    width: "8rem",
+    hidden: true,
+  },
+  {
+    id: "tld",
+    label: "Domain",
+    width: "8rem",
+    hidden: true,
+  },
+];
+
+export const _Table: Story = {
+  render: (args) => {
+    const [sort, setSort] = useState<AnyObject>();
+    return (
+      <Table<Country>
+        {...(args as any)}
+        data={Countries.list}
+        keyProperty="cca2"
+        groupProperty="region"
+        groupRenderer={(grp) => (
+          <Fragment>
+            {grp.key === "Asia" && <img src={asia} />}
+            {grp.key === "Africa" && <img src={africa} />}
+            {grp.key === "Europe" && <img src={europe} />}
+            {grp.key === "Oceania" && <img src={oceania} />}
+            {grp.key === "North America" && <img src={namerica} />}
+            {grp.key === "South America" && <img src={samerica} />}
+            <span className="text-xl">{grp.key}</span>
+            <span className="text-sm font-medium inline-block bg-tint-100 rounded-full px-1 border">{grp.itemCount}</span>
+          </Fragment>
+        )}
+        onSort={(o) => (setSort(o), fn()(o))}
+        onFilter={fn()}
+        sort={sort}
+        columns={columns}
+        children={(data: Country) => {
+          return (
+            <div className="flex flex-nowrap p-4 gap-2">
+              <Avatar size="2rem" name="" fallbackIcon={`iconify-color circle-flags--${data.cca2.toLowerCase()}`} />
+              <div className="flex-1">
+                <Title>{data.name.official}</Title>
+              </div>
+            </div>
+          );
+        }}
+      />
+    );
+  },
+  args: {
+    initialScroll: 18,
+    canExpand: () => true,
+  },
+};

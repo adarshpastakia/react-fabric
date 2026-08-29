@@ -1,0 +1,496 @@
+/**
+ * React Fabric
+ * @version 1.0.0
+ * @license MIT
+ * @copyright 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+@layer theme {
+  :root {
+    /* app default primary */
+    --color-primary: var(--color-denim);
+    --color-secondary: var(--color-jade);
+    --color-tint: var(--color-silver);
+
+    /* default rounding */
+    --rounding: 0.25rem;
+    --rounding-cap: 0.25rem;
+    --gutter: 0.5rem;
+
+    /* z levels */
+    --z-overlay-mask: 25;
+    --z-overlay: 30;
+    --z-popover-mask: 45;
+    --z-popover: 50;
+    --z-tooltip: 60;
+    --z-notifications: 60;
+  }
+}
+
+[data-rounding="sm"] {
+  /* default rounding */
+  --radius: 2px;
+  --rounding-cap: 2px;
+}
+
+[data-rounding="md"] {
+  /* default rounding */
+  --radius: 0.5rem;
+  --rounding-cap: 0.5rem;
+}
+
+[data-rounding="full"] {
+  /* default rounding */
+  --radius: 9999px;
+  --rounding-cap: 1rem;
+}
+
+[data-color-scheme="light"] {
+  --fabric-bg: var(--color-white);
+  --fabric-text: var(--color-black);
+  --fabric-input: #fdfdfd;
+  --fabric-input-focus: #fff;
+  --fabric-shadow: #8ba0b0;
+
+  color-scheme: light;
+}
+
+[data-color-scheme="dark"] {
+  --fabric-bg: var(--color-black);
+  --fabric-text: var(--color-white);
+  --fabric-input: #141a1f;
+  --fabric-input-focus: #0a1218;
+  --fabric-shadow: #010101;
+
+  color-scheme: dark;
+}
+
+@layer base {
+  [data-color-scheme] {
+    /* bg */
+    --bg-color-content: color-mix(in oklab, var(--fabric-bg) 99%, var(--color-tint));
+    --bg-color-default: color-mix(in oklab, var(--fabric-bg) 97%, var(--color-tint));
+    --bg-color-dimmed: color-mix(in oklab, var(--fabric-bg) 92%, var(--color-tint));
+    --bg-color-muted: color-mix(in oklab, var(--fabric-bg) 85%, var(--color-tint));
+    --bg-color-dark: color-mix(in oklab, var(--color-black) 92%, var(--fabric-text));
+    --bg-color-light: color-mix(in oklab, var(--color-white) 92%, var(--fabric-text));
+    --bg-color-gray: color-mix(in oklab, var(--fabric-bg) 75%, var(--fabric-text));
+    --bg-color-invert: color-mix(in oklab, var(--fabric-bg) 5%, var(--fabric-text));
+
+    /* text */
+    --text-color-default: color-mix(in oklab, var(--fabric-text) 95%, var(--color-tint));
+    --text-color-dimmed: color-mix(in oklab, var(--fabric-text) 65%, var(--color-tint));
+    --text-color-muted: color-mix(in oklab, var(--fabric-text) 55%, var(--fabric-bg));
+    --text-color-dark: color-mix(in oklab, var(--color-black) 92%, var(--fabric-bg));
+    --text-color-light: color-mix(in oklab, var(--color-white) 92%, var(--fabric-bg));
+    --text-color-gray: color-mix(in oklab, var(--fabric-text) 45%, var(--fabric-bg));
+    --text-color-invert: color-mix(in oklab, var(--fabric-text) 5%, var(--fabric-bg));
+
+    /* borders */
+    --border-color-default: color-mix(in oklab, var(--fabric-bg) 65%, var(--color-tint));
+    --border-color-bright: color-mix(in oklab, var(--fabric-bg) 50%, var(--color-tint));
+    --border-color-soft: color-mix(in oklab, var(--fabric-bg) 75%, var(--color-tint));
+    --border-color-gray: color-mix(in oklab, var(--fabric-bg) 45%, var(--color-tint));
+    --border-color-dark: color-mix(in oklab, var(--color-black) 85%, var(--color-tint));
+    --border-color-light: color-mix(in oklab, var(--color-white) 85%, var(--color-tint));
+    --border-color-invert: color-mix(in oklab, var(--fabric-text) 75%, var(--fabric-bg));
+
+    /* primary */
+    --color-primary-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-primary));
+    --color-primary-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-primary));
+    --color-primary-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-primary));
+    --color-primary-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-primary));
+    --color-primary-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-primary));
+    --color-primary-500: var(--color-primary);
+    --color-primary-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-primary));
+    --color-primary-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-primary));
+    --color-primary-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-primary));
+    --color-primary-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-primary));
+    --color-primary-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-primary));
+
+    /* secondary */
+    --color-secondary-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-secondary));
+    --color-secondary-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-secondary));
+    --color-secondary-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-secondary));
+    --color-secondary-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-secondary));
+    --color-secondary-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-secondary));
+    --color-secondary-500: var(--color-secondary);
+    --color-secondary-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-secondary));
+    --color-secondary-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-secondary));
+    --color-secondary-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-secondary));
+    --color-secondary-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-secondary));
+    --color-secondary-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-secondary));
+
+    /* tint */
+    --color-tint-50: color-mix(in var(--mix-space), var(--fabric-bg) 96%, var(--color-tint));
+    --color-tint-100: color-mix(in var(--mix-space), var(--fabric-bg) 92%, var(--color-tint));
+    --color-tint-200: color-mix(in var(--mix-space), var(--fabric-bg) 80%, var(--color-tint));
+    --color-tint-300: color-mix(in var(--mix-space), var(--fabric-bg) 56%, var(--color-tint));
+    --color-tint-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-tint));
+    --color-tint-500: var(--color-tint);
+    --color-tint-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-tint));
+    --color-tint-700: color-mix(in var(--mix-space), var(--fabric-text) 56%, var(--color-tint));
+    --color-tint-800: color-mix(in var(--mix-space), var(--fabric-text) 80%, var(--color-tint));
+    --color-tint-900: color-mix(in var(--mix-space), var(--fabric-text) 92%, var(--color-tint));
+    --color-tint-950: color-mix(in var(--mix-space), var(--fabric-text) 96%, var(--color-tint));
+
+    /* silver */
+    --color-silver-50: color-mix(in var(--mix-space), var(--fabric-bg) 96%, var(--color-silver));
+    --color-silver-100: color-mix(in var(--mix-space), var(--fabric-bg) 92%, var(--color-silver));
+    --color-silver-200: color-mix(in var(--mix-space), var(--fabric-bg) 80%, var(--color-silver));
+    --color-silver-300: color-mix(in var(--mix-space), var(--fabric-bg) 56%, var(--color-silver));
+    --color-silver-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-silver));
+    --color-silver-500: var(--color-silver);
+    --color-silver-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-silver));
+    --color-silver-700: color-mix(in var(--mix-space), var(--fabric-text) 56%, var(--color-silver));
+    --color-silver-800: color-mix(in var(--mix-space), var(--fabric-text) 80%, var(--color-silver));
+    --color-silver-900: color-mix(in var(--mix-space), var(--fabric-text) 92%, var(--color-silver));
+    --color-silver-950: color-mix(in var(--mix-space), var(--fabric-text) 96%, var(--color-silver));
+
+    /* steel */
+    --color-steel-50: color-mix(in var(--mix-space), var(--fabric-bg) 96%, var(--color-steel));
+    --color-steel-100: color-mix(in var(--mix-space), var(--fabric-bg) 92%, var(--color-steel));
+    --color-steel-200: color-mix(in var(--mix-space), var(--fabric-bg) 80%, var(--color-steel));
+    --color-steel-300: color-mix(in var(--mix-space), var(--fabric-bg) 56%, var(--color-steel));
+    --color-steel-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-steel));
+    --color-steel-500: var(--color-steel);
+    --color-steel-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-steel));
+    --color-steel-700: color-mix(in var(--mix-space), var(--fabric-text) 56%, var(--color-steel));
+    --color-steel-800: color-mix(in var(--mix-space), var(--fabric-text) 80%, var(--color-steel));
+    --color-steel-900: color-mix(in var(--mix-space), var(--fabric-text) 92%, var(--color-steel));
+    --color-steel-950: color-mix(in var(--mix-space), var(--fabric-text) 96%, var(--color-steel));
+
+    /* olive */
+    --color-olive-50: color-mix(in var(--mix-space), var(--fabric-bg) 96%, var(--color-olive));
+    --color-olive-100: color-mix(in var(--mix-space), var(--fabric-bg) 92%, var(--color-olive));
+    --color-olive-200: color-mix(in var(--mix-space), var(--fabric-bg) 80%, var(--color-olive));
+    --color-olive-300: color-mix(in var(--mix-space), var(--fabric-bg) 56%, var(--color-olive));
+    --color-olive-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-olive));
+    --color-olive-500: var(--color-olive);
+    --color-olive-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-olive));
+    --color-olive-700: color-mix(in var(--mix-space), var(--fabric-text) 56%, var(--color-olive));
+    --color-olive-800: color-mix(in var(--mix-space), var(--fabric-text) 80%, var(--color-olive));
+    --color-olive-900: color-mix(in var(--mix-space), var(--fabric-text) 92%, var(--color-olive));
+    --color-olive-950: color-mix(in var(--mix-space), var(--fabric-text) 96%, var(--color-olive));
+
+    /* blush */
+    --color-blush-50: color-mix(in var(--mix-space), var(--fabric-bg) 96%, var(--color-blush));
+    --color-blush-100: color-mix(in var(--mix-space), var(--fabric-bg) 92%, var(--color-blush));
+    --color-blush-200: color-mix(in var(--mix-space), var(--fabric-bg) 80%, var(--color-blush));
+    --color-blush-300: color-mix(in var(--mix-space), var(--fabric-bg) 56%, var(--color-blush));
+    --color-blush-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-blush));
+    --color-blush-500: var(--color-blush);
+    --color-blush-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-blush));
+    --color-blush-700: color-mix(in var(--mix-space), var(--fabric-text) 56%, var(--color-blush));
+    --color-blush-800: color-mix(in var(--mix-space), var(--fabric-text) 80%, var(--color-blush));
+    --color-blush-900: color-mix(in var(--mix-space), var(--fabric-text) 92%, var(--color-blush));
+    --color-blush-950: color-mix(in var(--mix-space), var(--fabric-text) 96%, var(--color-blush));
+
+    /* sand */
+    --color-sand-50: color-mix(in var(--mix-space), var(--fabric-bg) 96%, var(--color-sand));
+    --color-sand-100: color-mix(in var(--mix-space), var(--fabric-bg) 92%, var(--color-sand));
+    --color-sand-200: color-mix(in var(--mix-space), var(--fabric-bg) 80%, var(--color-sand));
+    --color-sand-300: color-mix(in var(--mix-space), var(--fabric-bg) 56%, var(--color-sand));
+    --color-sand-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-sand));
+    --color-sand-500: var(--color-sand);
+    --color-sand-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-sand));
+    --color-sand-700: color-mix(in var(--mix-space), var(--fabric-text) 56%, var(--color-sand));
+    --color-sand-800: color-mix(in var(--mix-space), var(--fabric-text) 80%, var(--color-sand));
+    --color-sand-900: color-mix(in var(--mix-space), var(--fabric-text) 92%, var(--color-sand));
+    --color-sand-950: color-mix(in var(--mix-space), var(--fabric-text) 96%, var(--color-sand));
+
+    /* slate */
+    --color-slate-50: color-mix(in var(--mix-space), var(--fabric-bg) 96%, var(--color-slate));
+    --color-slate-100: color-mix(in var(--mix-space), var(--fabric-bg) 92%, var(--color-slate));
+    --color-slate-200: color-mix(in var(--mix-space), var(--fabric-bg) 80%, var(--color-slate));
+    --color-slate-300: color-mix(in var(--mix-space), var(--fabric-bg) 56%, var(--color-slate));
+    --color-slate-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-slate));
+    --color-slate-500: var(--color-slate);
+    --color-slate-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-slate));
+    --color-slate-700: color-mix(in var(--mix-space), var(--fabric-text) 56%, var(--color-slate));
+    --color-slate-800: color-mix(in var(--mix-space), var(--fabric-text) 80%, var(--color-slate));
+    --color-slate-900: color-mix(in var(--mix-space), var(--fabric-text) 92%, var(--color-slate));
+    --color-slate-950: color-mix(in var(--mix-space), var(--fabric-text) 96%, var(--color-slate));
+
+    /* info */
+    --color-info-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-info));
+    --color-info-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-info));
+    --color-info-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-info));
+    --color-info-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-info));
+    --color-info-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-info));
+    --color-info-500: var(--color-info);
+    --color-info-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-info));
+    --color-info-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-info));
+    --color-info-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-info));
+    --color-info-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-info));
+    --color-info-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-info));
+
+    /* danger */
+    --color-danger-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-danger));
+    --color-danger-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-danger));
+    --color-danger-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-danger));
+    --color-danger-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-danger));
+    --color-danger-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-danger));
+    --color-danger-500: var(--color-danger);
+    --color-danger-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-danger));
+    --color-danger-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-danger));
+    --color-danger-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-danger));
+    --color-danger-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-danger));
+    --color-danger-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-danger));
+
+    /* success */
+    --color-success-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-success));
+    --color-success-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-success));
+    --color-success-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-success));
+    --color-success-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-success));
+    --color-success-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-success));
+    --color-success-500: var(--color-success);
+    --color-success-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-success));
+    --color-success-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-success));
+    --color-success-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-success));
+    --color-success-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-success));
+    --color-success-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-success));
+
+    /* warning */
+    --color-warning-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-warning));
+    --color-warning-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-warning));
+    --color-warning-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-warning));
+    --color-warning-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-warning));
+    --color-warning-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-warning));
+    --color-warning-500: var(--color-warning);
+    --color-warning-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-warning));
+    --color-warning-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-warning));
+    --color-warning-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-warning));
+    --color-warning-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-warning));
+    --color-warning-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-warning));
+
+    /* scarlet */
+    --color-scarlet-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-scarlet));
+    --color-scarlet-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-scarlet));
+    --color-scarlet-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-scarlet));
+    --color-scarlet-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-scarlet));
+    --color-scarlet-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-scarlet));
+    --color-scarlet-500: var(--color-scarlet);
+    --color-scarlet-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-scarlet));
+    --color-scarlet-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-scarlet));
+    --color-scarlet-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-scarlet));
+    --color-scarlet-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-scarlet));
+    --color-scarlet-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-scarlet));
+
+    /* pumpkin */
+    --color-pumpkin-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-pumpkin));
+    --color-pumpkin-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-pumpkin));
+    --color-pumpkin-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-pumpkin));
+    --color-pumpkin-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-pumpkin));
+    --color-pumpkin-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-pumpkin));
+    --color-pumpkin-500: var(--color-pumpkin);
+    --color-pumpkin-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-pumpkin));
+    --color-pumpkin-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-pumpkin));
+    --color-pumpkin-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-pumpkin));
+    --color-pumpkin-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-pumpkin));
+    --color-pumpkin-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-pumpkin));
+
+    /* marigold */
+    --color-marigold-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-marigold));
+    --color-marigold-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-marigold));
+    --color-marigold-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-marigold));
+    --color-marigold-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-marigold));
+    --color-marigold-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-marigold));
+    --color-marigold-500: var(--color-marigold);
+    --color-marigold-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-marigold));
+    --color-marigold-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-marigold));
+    --color-marigold-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-marigold));
+    --color-marigold-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-marigold));
+    --color-marigold-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-marigold));
+
+    /* amber */
+    --color-amber-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-amber));
+    --color-amber-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-amber));
+    --color-amber-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-amber));
+    --color-amber-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-amber));
+    --color-amber-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-amber));
+    --color-amber-500: var(--color-amber);
+    --color-amber-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-amber));
+    --color-amber-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-amber));
+    --color-amber-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-amber));
+    --color-amber-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-amber));
+    --color-amber-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-amber));
+
+    /* lime */
+    --color-lime-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-lime));
+    --color-lime-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-lime));
+    --color-lime-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-lime));
+    --color-lime-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-lime));
+    --color-lime-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-lime));
+    --color-lime-500: var(--color-lime);
+    --color-lime-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-lime));
+    --color-lime-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-lime));
+    --color-lime-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-lime));
+    --color-lime-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-lime));
+    --color-lime-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-lime));
+
+    /* jade */
+    --color-jade-50: color-mix(in oklab, var(--color-jade) 15%, var(--fabric-bg));
+    --color-jade-100: color-mix(in oklab, var(--color-jade) 32%, var(--fabric-bg));
+    --color-jade-200: color-mix(in oklab, var(--color-jade) 50%, var(--fabric-bg));
+    --color-jade-300: color-mix(in oklab, var(--color-jade) 68%, var(--fabric-bg));
+    --color-jade-400: color-mix(in oklab, var(--color-jade) 85%, var(--fabric-bg));
+    --color-jade-500: var(--color-jade);
+    --color-jade-600: color-mix(in oklab, var(--color-jade) 85%, var(--fabric-text));
+    --color-jade-700: color-mix(in oklab, var(--color-jade) 68%, var(--fabric-text));
+    --color-jade-800: color-mix(in oklab, var(--color-jade) 50%, var(--fabric-text));
+    --color-jade-900: color-mix(in oklab, var(--color-jade) 32%, var(--fabric-text));
+    --color-jade-950: color-mix(in oklab, var(--color-jade) 15%, var(--fabric-text));
+
+    /* avocado */
+    --color-avocado-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-avocado));
+    --color-avocado-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-avocado));
+    --color-avocado-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-avocado));
+    --color-avocado-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-avocado));
+    --color-avocado-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-avocado));
+    --color-avocado-500: var(--color-avocado);
+    --color-avocado-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-avocado));
+    --color-avocado-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-avocado));
+    --color-avocado-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-avocado));
+    --color-avocado-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-avocado));
+    --color-avocado-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-avocado));
+
+    /* teal */
+    --color-teal-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-teal));
+    --color-teal-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-teal));
+    --color-teal-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-teal));
+    --color-teal-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-teal));
+    --color-teal-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-teal));
+    --color-teal-500: var(--color-teal);
+    --color-teal-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-teal));
+    --color-teal-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-teal));
+    --color-teal-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-teal));
+    --color-teal-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-teal));
+    --color-teal-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-teal));
+
+    /* axure */
+    --color-azure-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-azure));
+    --color-azure-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-azure));
+    --color-azure-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-azure));
+    --color-azure-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-azure));
+    --color-azure-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-azure));
+    --color-azure-500: var(--color-azure);
+    --color-azure-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-azure));
+    --color-azure-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-azure));
+    --color-azure-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-azure));
+    --color-azure-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-azure));
+    --color-azure-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-azure));
+
+    /* denim */
+    --color-denim-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-denim));
+    --color-denim-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-denim));
+    --color-denim-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-denim));
+    --color-denim-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-denim));
+    --color-denim-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-denim));
+    --color-denim-500: var(--color-denim);
+    --color-denim-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-denim));
+    --color-denim-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-denim));
+    --color-denim-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-denim));
+    --color-denim-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-denim));
+    --color-denim-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-denim));
+
+    /* iris */
+    --color-iris-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-iris));
+    --color-iris-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-iris));
+    --color-iris-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-iris));
+    --color-iris-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-iris));
+    --color-iris-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-iris));
+    --color-iris-500: var(--color-iris);
+    --color-iris-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-iris));
+    --color-iris-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-iris));
+    --color-iris-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-iris));
+    --color-iris-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-iris));
+    --color-iris-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-iris));
+
+    /* lilac */
+    --color-lilac-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-lilac));
+    --color-lilac-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-lilac));
+    --color-lilac-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-lilac));
+    --color-lilac-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-lilac));
+    --color-lilac-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-lilac));
+    --color-lilac-500: var(--color-lilac);
+    --color-lilac-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-lilac));
+    --color-lilac-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-lilac));
+    --color-lilac-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-lilac));
+    --color-lilac-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-lilac));
+    --color-lilac-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-lilac));
+
+    /* orchid */
+    --color-orchid-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-orchid));
+    --color-orchid-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-orchid));
+    --color-orchid-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-orchid));
+    --color-orchid-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-orchid));
+    --color-orchid-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-orchid));
+    --color-orchid-500: var(--color-orchid);
+    --color-orchid-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-orchid));
+    --color-orchid-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-orchid));
+    --color-orchid-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-orchid));
+    --color-orchid-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-orchid));
+    --color-orchid-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-orchid));
+
+    /* coral */
+    --color-coral-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-coral));
+    --color-coral-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-coral));
+    --color-coral-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-coral));
+    --color-coral-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-coral));
+    --color-coral-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-coral));
+    --color-coral-500: var(--color-coral);
+    --color-coral-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-coral));
+    --color-coral-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-coral));
+    --color-coral-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-coral));
+    --color-coral-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-coral));
+    --color-coral-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-coral));
+
+    /* wood */
+    --color-wood-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-wood));
+    --color-wood-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-wood));
+    --color-wood-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-wood));
+    --color-wood-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-wood));
+    --color-wood-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-wood));
+    --color-wood-500: var(--color-wood);
+    --color-wood-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-wood));
+    --color-wood-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-wood));
+    --color-wood-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-wood));
+    --color-wood-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-wood));
+    --color-wood-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-wood));
+
+    /* terracotta */
+    --color-terracotta-50: color-mix(in var(--mix-space), var(--fabric-bg) 85%, var(--color-terracotta));
+    --color-terracotta-100: color-mix(in var(--mix-space), var(--fabric-bg) 72%, var(--color-terracotta));
+    --color-terracotta-200: color-mix(in var(--mix-space), var(--fabric-bg) 54%, var(--color-terracotta));
+    --color-terracotta-300: color-mix(in var(--mix-space), var(--fabric-bg) 36%, var(--color-terracotta));
+    --color-terracotta-400: color-mix(in var(--mix-space), var(--fabric-bg) 24%, var(--color-terracotta));
+    --color-terracotta-500: var(--color-terracotta);
+    --color-terracotta-600: color-mix(in var(--mix-space), var(--fabric-text) 24%, var(--color-terracotta));
+    --color-terracotta-700: color-mix(in var(--mix-space), var(--fabric-text) 36%, var(--color-terracotta));
+    --color-terracotta-800: color-mix(in var(--mix-space), var(--fabric-text) 54%, var(--color-terracotta));
+    --color-terracotta-900: color-mix(in var(--mix-space), var(--fabric-text) 72%, var(--color-terracotta));
+    --color-terracotta-950: color-mix(in var(--mix-space), var(--fabric-text) 85%, var(--color-terracotta));
+
+    color: color-mix(in lab, var(--fabric-text) 95%, var(--color-tint));
+    background-color: color-mix(in lab, var(--fabric-bg) 95%, var(--color-tint));
+  }
+}

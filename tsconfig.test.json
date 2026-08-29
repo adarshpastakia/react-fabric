@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig",
+  "include": ["./packages/**/*.test.ts", "./packages/**/*.test.tsx"],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "moduleResolution": "nodenext"
+  }
+}

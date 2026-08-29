@@ -1,0 +1,67 @@
+{
+  "name": "@react-fabric/core",
+  "version": "1.0.0-beta.63",
+  "description": "RUF: Core package",
+  "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
+  "license": "MIT",
+  "repository": "https://github.com/adarshpastakia/react-fabric/tree/main/packages/core",
+  "source": "src/index.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "directories": {
+    "src": "src",
+    "styles": "css",
+    "test": "tests"
+  },
+  "files": [
+    "css",
+    "src",
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "prebuild": "rm -rf ./dist",
+    "build:dts": "tsc -p ./tsconfig.build.json",
+    "build:rollup": "rollup -c ../../rollup.config.mjs",
+    "build": "npm-run-all -p build:rollup build:dts",
+    "watch:dts": "tsc -w -p ./tsconfig.build.json",
+    "watch:rollup": "rollup -w -c ../../rollup.config.mjs",
+    "watch": "npm-run-all -p watch:rollup watch:dts"
+  },
+  "dependencies": {
+    "@floating-ui/react": "~0.27.20",
+    "@fontsource/noto-color-emoji": "~5.3.0",
+    "@fontsource-variable/alexandria": "~5.3.0",
+    "@fontsource-variable/merriweather": "~5.3.0",
+    "@fontsource-variable/noto-kufi-arabic": "~5.3.0",
+    "@fontsource-variable/noto-sans": "~5.3.0",
+    "@fontsource-variable/noto-sans-mono": "~5.3.0",
+    "@iconify-json/mdi": "~1.2.3",
+    "@iconify-json/mdi-light": "~1.2.2",
+    "@iconify-json/svg-spinners": "~1.2.4",
+    "@iconify-react/line-md": "~1.0.2",
+    "@iconify/tailwind4": "~1.2.3",
+    "@react-fabric/utilities": "^1.0.0-beta.63",
+    "@tailwindcss/postcss": "~4.3.3",
+    "@tanstack/react-hotkeys": "~0.10.0",
+    "boring-avatars": "~2.0.4",
+    "iconify-icon": "~3.0.2",
+    "resize-observer-polyfill": "~1.5.1",
+    "sonner": "~2.0.7",
+    "tailwindcss": "~4.3.3"
+  },
+  "peerDependencies": {
+    "i18next": "~26.3.6",
+    "react": "~19.2.8",
+    "react-dom": "~19.2.8",
+    "react-i18next": "~17.0.11"
+  },
+  "engines": {
+    "node": ">=24.0.0",
+    "npm": ">=11.0.0"
+  }
+}

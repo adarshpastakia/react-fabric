@@ -1,0 +1,57 @@
+import { Collapsable } from "@react-fabric/core";
+import {
+  Anchor,
+  ArgTypes,
+  Canvas,
+  Controls,
+  Description,
+  Meta,
+  Primary,
+  Story,
+  Subheading,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { Fragment } from "react";
+import { SuperDate } from "../../src";
+import * as SuperdateStories from "./Superdate.stories";
+
+<Meta of={SuperdateStories} />
+
+<Title>Superdate</Title>
+
+<Anchor storyId="datepanel">
+  <div className="hidden-anchor">
+    <Subheading>Superdate</Subheading>
+  </div>
+</Anchor>
+
+<Description of={SuperDate} />
+
+<Canvas withToolbar of={SuperdateStories._Superdate} />
+
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={SuperdateStories._Superdate} />
+</Collapsable>
+
+<Anchor storyId="playground">
+  <Subheading>Playground</Subheading>
+</Anchor>
+<Description of={SuperdateStories.Playground} />
+<Canvas withToolbar of={SuperdateStories.Playground} />
+<Collapsable className="control-panel">
+  <div>Controls</div>
+  <Controls of={SuperdateStories.Playground} />
+</Collapsable>
+
+<hr />
+
+<Anchor storyId="props">
+  <Subheading>Props</Subheading>
+</Anchor>
+
+<ArgTypes sort="requiredFirst" />
+
+<Anchor storyId="sample">
+  <Subheading>Example</Subheading>
+</Anchor>

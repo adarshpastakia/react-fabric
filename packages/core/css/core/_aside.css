@@ -1,0 +1,190 @@
+/**
+ * React Fabric
+ * @version 1.0.0
+ * @license MIT
+ * @copyright 2024 Adarsh Pastakia
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+@layer components {
+  .fabric-aside {
+    --aside-bg: var(--bg-color-default);
+    --aside-border: var(--border-color-soft);
+    --aside-margin: 0;
+
+    margin: var(--aside-margin);
+
+    &[data-align="start"] {
+      grid-area: start;
+
+      & .fabric-asideContainer {
+        grid-template: "title title" auto "content resizer" 1fr "pin pin" auto / 1fr auto;
+        border-inline-end: 1px solid var(--aside-border);
+      }
+    }
+
+    &[data-align="end"] {
+      grid-area: end;
+
+      & .fabric-asideContainer {
+        grid-template: "title title" auto "resizer content" 1fr "pin pin" auto / auto 1fr;
+        border-inline-start: 1px solid var(--aside-border);
+      }
+    }
+
+    & .fabric-asideContainer {
+      min-width: 0;
+      min-height: 0;
+      background-color: var(--aside-bg);
+    }
+
+    & .fabric-asideTitle {
+      grid-area: title;
+    }
+
+    & .fabric-asideIcon {
+      grid-area: icon;
+    }
+
+    & .fabric-asidePlaceholder {
+      z-index: 1;
+
+      display: grid;
+      grid-template: "icon" auto "title" auto "." 1fr "pin" auto / 1fr;
+      place-content: start;
+
+      border: inherit;
+
+      font-weight: 500;
+      color: var(--text-color-dimmed);
+
+      background-color: var(--aside-bg);
+    }
+
+    & .fabric-asideResizer {
+      cursor: col-resize;
+      grid-area: resizer;
+      width: 0.25rem;
+
+      &::before {
+        height: 32px;
+        border: 1px solid var(--color-tint-500);
+        border-width: 0 1.5px;
+      }
+
+      &:hover::before,
+      &:active::before {
+        height: 100%;
+        border-color: var(--bg-color-default);
+        border-width: 0 1.25px;
+        background-color: var(--color-primary-300);
+      }
+    }
+  }
+}
+
+@layer utilities {
+  .fabric-asideHeader {
+    width: unset;
+    height: unset;
+    margin: unset;
+  }
+
+  .fabric-asideContainer {
+    > .fabric-panelGroup > .fabric-panel {
+      border-radius: 0;
+      outline: 0;
+    }
+  }
+
+  .fabric-aside[data-collapsed="true"] {
+    position: relative;
+
+    & .fabric-asideContainer {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      transition: transform cubic-bezier(0.4, 0, 0.2, 1) 150ms;
+
+      &:has(.fabric-style-effect) {
+        background-color: --alpha(var(--aside-bg) / 75%);
+        backdrop-filter: blur(1rem);
+      }
+    }
+  }
+
+  [dir="ltr"] .fabric-aside[data-align="start"][data-collapsed="true"],
+  [dir="rtl"] .fabric-aside[data-align="end"][data-collapsed="true"] {
+    & .fabric-asideContainer {
+      right: unset;
+      transform: translateX(calc(-100% - var(--aside-margin)));
+      grid-area: unset;
+    }
+
+    & .fabric-asidePlaceholder {
+      & .fabric-asideIcon {
+        rotate: -90deg;
+      }
+
+      & .fabric-asideTitle {
+        writing-mode: sideways-lr;
+      }
+    }
+
+    &:not([data-flyout="true"]) {
+      margin-inline-start: 0;
+    }
+
+    &[data-peek="true"] .fabric-asideContainer {
+      transform: translateX(0);
+      border: 1px solid var(--border-color-soft);
+      box-shadow: 0 0 4rem 1px var(--fabric-shadow);
+    }
+  }
+
+  [dir="ltr"] .fabric-aside[data-align="end"][data-collapsed="true"],
+  [dir="rtl"] .fabric-aside[data-align="start"][data-collapsed="true"] {
+    & .fabric-asideContainer {
+      left: unset;
+      transform: translateX(calc(100% + var(--aside-margin)));
+      grid-area: unset;
+    }
+
+    & .fabric-asidePlaceholder {
+      & .fabric-asideIcon {
+        rotate: 90deg;
+      }
+
+      & .fabric-asideTitle {
+        writing-mode: sideways-rl;
+      }
+    }
+
+    &:not([data-flyout="true"]) {
+      margin-inline-end: 0;
+    }
+
+    &[data-peek="true"] .fabric-asideContainer {
+      transform: translateX(0);
+      border: 1px solid var(--border-color-soft);
+      box-shadow: 0 0 4rem 1px var(--fabric-shadow);
+    }
+  }
+}
