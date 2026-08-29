@@ -64,7 +64,7 @@
     & textarea {
       width: 4rem;
       max-width: 100%;
-      line-height: 1.25;
+      line-height: 1.5;
     }
 
     & > input[type="number"] + .inputClear {
