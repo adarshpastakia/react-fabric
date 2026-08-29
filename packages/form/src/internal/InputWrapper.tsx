@@ -108,7 +108,7 @@ export function InputWrapper(props: InputWrapperProps) {
           !borderless && "outline",
           textarea ? "rounded-capped" : "rounded",
           className,
-          "flex flex-1 flex-nowrap items-center bg-(--fabric-input) overflow-hidden",
+          "flex flex-1 flex-nowrap items-center bg-(--fabric-input)",
           isExpanded ? "fixed inset-4 z-99" : floatingExpand ? "absolute inset-x-0" : "relative",
           focusRing
             ? "focus-within:ring ring-primary-500"
