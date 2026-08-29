@@ -1,30 +1,21 @@
-import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{_ as i,b as a,c as o,h as s,i as c,l,m as u,r as d,t as f}from"./iframe-BBjx9o_X.js";import{r as p}from"./react2.js";import{t as m}from"./mdx-react-shim.js";import{R as h,ct as g,t as _}from"./src3.js";import{_Animations as v,n as y,t as b}from"./Animations.stories.js";import{_Bars as x,t as S}from"./Bars.stories.js";import{_Skeleton as C,t as w}from"./Skeleton.stories.js";import{_Spinner as T,t as E}from"./Spinner.stories.js";function D(e){let t={code:`code`,pre:`pre`,...p(),...e.components};return(0,k.jsxs)(k.Fragment,{children:[(0,k.jsx)(u,{of:b}),`
-`,(0,k.jsx)(i,{children:`Animations`}),`
-`,(0,k.jsx)(f,{storyId:`animations`,children:(0,k.jsx)(`div`,{className:`hidden-anchor`,children:(0,k.jsx)(s,{children:`Indicators`})})}),`
-`,(0,k.jsx)(l,{of:g}),`
-`,(0,k.jsx)(c,{withToolbar:!0,of:v}),`
-`,(0,k.jsxs)(h,{className:`control-panel`,children:[(0,k.jsx)(`div`,{children:`Controls`}),(0,k.jsx)(o,{of:v})]}),`
-`,(0,k.jsx)(f,{storyId:`bars`,children:(0,k.jsx)(s,{children:`Bars`})}),`
-`,(0,k.jsx)(l,{of:x}),`
-`,(0,k.jsx)(c,{withToolbar:!0,of:x}),`
-`,(0,k.jsxs)(h,{className:`control-panel`,children:[(0,k.jsx)(`div`,{children:`Controls`}),(0,k.jsx)(o,{of:x})]}),`
-`,(0,k.jsx)(f,{storyId:`spinner`,children:(0,k.jsx)(s,{children:`Spinner`})}),`
-`,(0,k.jsx)(l,{of:T}),`
-`,(0,k.jsx)(c,{withToolbar:!0,of:T}),`
-`,(0,k.jsxs)(h,{className:`control-panel`,children:[(0,k.jsx)(`div`,{children:`Controls`}),(0,k.jsx)(o,{of:T})]}),`
-`,(0,k.jsx)(f,{storyId:`skeleton`,children:(0,k.jsx)(s,{children:`Skeleton`})}),`
-`,(0,k.jsx)(l,{of:C}),`
-`,(0,k.jsx)(c,{withToolbar:!0,of:C}),`
-`,(0,k.jsx)(`hr`,{}),`
-`,(0,k.jsx)(f,{storyId:`props`,children:(0,k.jsx)(s,{children:`Props`})}),`
-`,(0,k.jsx)(d,{sort:`requiredFirst`}),`
-`,(0,k.jsx)(f,{storyId:`sample`,children:(0,k.jsx)(s,{children:`Example`})}),`
-`,(0,k.jsx)(t.pre,{children:(0,k.jsx)(t.code,{className:`language-tsx`,children:`import { AnimationCheck, LoadingBars } from "@react-fabric/core";
-
-export const Example = () => {
-  return (
-    <AnimationCheck/>
-    <LoadingBars/>
-  );
-};
-`})})]})}function O(e={}){let{wrapper:t}={...p(),...e.components};return t?(0,k.jsx)(t,{...e,children:(0,k.jsx)(D,{...e})}):D(e)}var k;t((()=>{k=r(),m(),a(),e(n()),_(),y(),S(),w(),E()}))();export{O as default};
+import{n as e}from"./rolldown-runtime.js";import{t}from"./react.js";import{S as n,_ as r,c as i,g as a,i as o,l as s,r as c,t as l,y as u}from"./blocks.js";import{R as d,t as f}from"./src2.js";import{t as p}from"./jsx-runtime.js";import{i as m,r as h}from"./react2.js";import{n as g,t as _}from"./Animations.stories.js";import{n as v,r as y,t as b}from"./Indicator.stories.js";import{n as x,r as S,t as C}from"./LoadingBars.stories.js";import{n as w,r as T,t as E}from"./LoadingSpinner.stories.js";import{n as D,r as O,t as k}from"./Skeleton.stories.js";function A(e){return(0,M.jsxs)(M.Fragment,{children:[(0,M.jsx)(a,{of:_}),`
+`,(0,M.jsx)(u,{children:`Animations`}),`
+`,(0,M.jsx)(l,{storyId:`indicators`,children:(0,M.jsx)(r,{children:`Indicators`})}),`
+`,(0,M.jsx)(s,{of:b}),`
+`,(0,M.jsx)(o,{withToolbar:!0,of:v}),`
+`,(0,M.jsxs)(d,{className:`control-panel`,children:[(0,M.jsx)(`div`,{children:`Controls`}),(0,M.jsx)(i,{of:v})]}),`
+`,(0,M.jsx)(l,{storyId:`bars`,children:(0,M.jsx)(r,{children:`Bars`})}),`
+`,(0,M.jsx)(s,{of:C}),`
+`,(0,M.jsx)(o,{withToolbar:!0,of:x}),`
+`,(0,M.jsxs)(d,{className:`control-panel`,children:[(0,M.jsx)(`div`,{children:`Controls`}),(0,M.jsx)(i,{of:x})]}),`
+`,(0,M.jsx)(l,{storyId:`spinner`,children:(0,M.jsx)(r,{children:`Spinner`})}),`
+`,(0,M.jsx)(s,{of:E}),`
+`,(0,M.jsx)(o,{withToolbar:!0,of:w}),`
+`,(0,M.jsxs)(d,{className:`control-panel`,children:[(0,M.jsx)(`div`,{children:`Controls`}),(0,M.jsx)(i,{of:w})]}),`
+`,(0,M.jsx)(l,{storyId:`skeleton`,children:(0,M.jsx)(r,{children:`Skeleton`})}),`
+`,(0,M.jsx)(s,{of:k}),`
+`,(0,M.jsx)(o,{withToolbar:!0,of:D}),`
+`,(0,M.jsxs)(d,{className:`control-panel`,children:[(0,M.jsx)(`div`,{children:`Controls`}),(0,M.jsx)(i,{of:D})]}),`
+`,(0,M.jsx)(`hr`,{}),`
+`,(0,M.jsx)(l,{storyId:`props`,children:(0,M.jsx)(r,{children:`Props`})}),`
+`,(0,M.jsx)(c,{sort:`requiredFirst`})]})}function j(e={}){let{wrapper:t}={...m(),...e.components};return t?(0,M.jsx)(t,{...e,children:(0,M.jsx)(A,{...e})}):A(e)}var M;function N(){return(N=e((()=>{M=p(),h(),f(),n(),t(),g(),y(),S(),T(),O()})))()}N();export{j as default};

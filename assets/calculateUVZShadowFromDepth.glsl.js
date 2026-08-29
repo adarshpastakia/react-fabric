@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{n as t,t as n}from"./mat4f64.js";import{C as r,S as i,w as a}from"./mat4.js";import{r as o,t as s}from"./glsl.js";import{n as c,t as l}from"./Matrix4BindUniform.js";import{n as u,t as d}from"./ReadDepth.glsl.js";import{n as f,t as p}from"./CameraSpace.glsl.js";import{a as m,o as h}from"./Texture2DShadowBindUniform.js";function g(e){e.include(m),_(e)}function _(e){e.fragment.include(d),e.include(p),e.fragment.uniforms.add(new c(`inverseViewMatrix`,({camera:e})=>i(v,r(v,e.viewMatrix,e.center)))).code.add(o`vec3 calculateUVZShadowAndPixelPosFromDepth(
+import{n as e}from"./rolldown-runtime.js";import{n as t,t as n}from"./mat4f64.js";import{C as r,S as i,w as a}from"./mat4.js";import{r as o,t as s}from"./glsl.js";import{n as c,t as l}from"./Matrix4BindUniform.js";import{r as u,t as d}from"./ReadDepth.glsl.js";import{n as f,t as p}from"./CameraSpace.glsl.js";import{a as m,s as h}from"./Texture2DShadowBindUniform.js";function g(e){e.fragment.include(m),_(e)}function _(e){e.fragment.include(d),e.include(p),e.fragment.uniforms.add(new c(`inverseViewMatrix`,({camera:e})=>i(v,r(v,e.viewMatrix,e.center)))).code.add(o`vec3 calculateUVZShadowAndPixelPosFromDepth(
 in vec2 _uv,
 ivec2 shadowMapSize,
 in sampler2D _depthMap,
@@ -21,4 +21,4 @@ in sampler2D _depthMap
 ) {
 vec4 currentPixelPos;
 return calculateUVZShadowAndPixelPosFromDepth(_uv, shadowMapSize, _depthMap, currentPixelPos);
-}`)}var v,y=e((()=>{a(),t(),u(),h(),f(),s(),l(),v=n()}));export{g as n,y as t};
+}`)}var v;function y(){return(y=e((()=>{a(),t(),u(),h(),f(),s(),l(),v=n()})))()}export{g as n,y as t};

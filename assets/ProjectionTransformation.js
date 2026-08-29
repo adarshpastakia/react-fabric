@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{Ct as t,hn as n}from"./Point2D.js";import{t as r}from"./Envelope2D2.js";import{Vt as i,mt as a}from"./SpatialReference2.js";e((()=>{r(),n(),a(),t()}))();export{i as queryTransformationList};
+import{n as e}from"./rolldown-runtime.js";import{St as t,vn as n}from"./Point2D.js";import{Dt as r,lt as i}from"./SpatialReference2.js";function a(){return(a=e((()=>{n(),t(),i()})))()}a();export{r as queryTransformationList};

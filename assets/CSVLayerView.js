@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{n as t,t as n}from"./FeatureLikeLayerView.js";var r,i=e((()=>{t(),r=class extends n{constructor(){super(...arguments),this.layer=null}}}));export{r as n,i as t};
+import{n as e}from"./rolldown-runtime.js";import{n as t,t as n}from"./FeatureLikeLayerView.js";var r;function i(){return(i=e((()=>{t(),r=class extends n{constructor(){super(...arguments),this.layer=null}}})))()}export{r as n,i as t};

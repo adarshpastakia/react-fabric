@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";function t(e,t){let n=0;for(let r of t){let t=r.attributes?.[e];typeof t==`number`&&isFinite(t)&&(n=Math.max(n,t))}return n}var n=e((()=>{}));export{t as n,n as t};
+import{n as e}from"./rolldown-runtime.js";function t(e,t){let n=0;for(let r of t){let t=r.attributes?.[e];typeof t==`number`&&isFinite(t)&&(n=Math.max(n,t))}return n}function n(){return(n=e((()=>{})))()}export{t as n,n as t};

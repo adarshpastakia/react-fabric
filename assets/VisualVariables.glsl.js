@@ -1,11 +1,11 @@
-import{n as e}from"./chunk.js";import{r as t,t as n}from"./glsl.js";import{n as r,t as i}from"./Float3PassUniform.js";import{n as a,r as o,t as s}from"./Float4sPassUniform.js";import{n as c,t as l}from"./Float4PassUniform.js";import{n as u,t as d}from"./FloatsPassUniform.js";import{n as f,t as p}from"./Matrix3PassUniform.js";function m(e){e.code.add(t`struct MaskedColor {
+import{n as e}from"./rolldown-runtime.js";import{r as t,t as n}from"./glsl.js";import{n as r,r as i}from"./VisualVariablePassParameters.js";import{n as a,t as o}from"./Float3PassUniform.js";import{n as s,t as c}from"./Float4PassUniform.js";import{n as l,t as u}from"./Float4sPassUniform.js";import{n as d,t as f}from"./FloatsPassUniform.js";import{n as p,t as m}from"./Matrix3PassUniform.js";function h(e){e.code.add(t`struct MaskedColor {
 vec4 color;
 bvec4 mask;
-};`)}function h(e){e.include(m),e.code.add(t`
+};`)}function g(e){e.include(h),e.code.add(t`
     MaskedColor createMaskedFromUInt8NaNColor(vec4 color) {
       return MaskedColor(color * ${t.float(1/254)}, equal(color, vec4(255)));
     }
-  `)}function g(e){e.include(m),e.code.add(t`vec4 maskedColorSelectOrOne(MaskedColor color) {
+  `)}function _(e){e.include(h),e.code.add(t`vec4 maskedColorSelectOrOne(MaskedColor color) {
 return vec4(
 color.mask.r ? 1.0 : color.color.r,
 color.mask.g ? 1.0 : color.color.g,
@@ -17,9 +17,9 @@ MaskedColor multiplyMaskedColors(MaskedColor color1, MaskedColor color2) {
 vec4 masked1 = maskedColorSelectOrOne(color1);
 vec4 masked2 = maskedColorSelectOrOne(color2);
 return MaskedColor(masked1 * masked2, bvec4(ivec4(color1.mask) & ivec4(color2.mask)));
-}`)}function _(e){e.include(m),e.code.add(t`MaskedColor createMaskedFromNaNColor(vec4 color) {
+}`)}function v(e){e.include(h),e.code.add(t`MaskedColor createMaskedFromNaNColor(vec4 color) {
 return MaskedColor(color, isnan(color));
-}`)}var v=e((()=>{n()}));function y(e,n){let{vertex:r,attributes:a}=e;n.hasVVInstancing&&(n.hasVVSize||n.hasVVColor)&&a.add(`instanceFeatureAttribute`,`vec4`),n.hasVVSize?(r.uniforms.add(new i(`vvSizeMinSize`,e=>e.vvSize.minSize)),r.uniforms.add(new i(`vvSizeMaxSize`,e=>e.vvSize.maxSize)),r.uniforms.add(new i(`vvSizeOffset`,e=>e.vvSize.offset)),r.uniforms.add(new i(`vvSizeFactor`,e=>e.vvSize.factor)),r.uniforms.add(new i(`vvSizeFallback`,e=>e.vvSize.fallback)),r.uniforms.add(new f(`vvSymbolRotationMatrix`,e=>e.vvSymbolRotationMatrix)),r.uniforms.add(new i(`vvSymbolAnchor`,e=>e.vvSymbolAnchor)),r.code.add(t`vec3 vvScale(vec4 _featureAttribute) {
+}`)}function y(){return(y=e((()=>{n()})))()}function b(e,n){let{vertex:r,attributes:a}=e;n.hasVVInstancing&&(n.hasVVSize||n.hasVVColor)&&a.add(`instanceFeatureAttribute`,`vec4`),n.hasVVSize?(r.uniforms.add(new o(`vvSizeMinSize`,e=>e.vvSize.minSize)),r.uniforms.add(new o(`vvSizeMaxSize`,e=>e.vvSize.maxSize)),r.uniforms.add(new o(`vvSizeOffset`,e=>e.vvSize.offset)),r.uniforms.add(new o(`vvSizeFactor`,e=>e.vvSize.factor)),r.uniforms.add(new o(`vvSizeFallback`,e=>e.vvSize.fallback)),r.uniforms.add(new p(`vvSymbolRotationMatrix`,e=>e.vvSize.symbolRotationMatrix)),r.uniforms.add(new o(`vvSymbolAnchor`,e=>e.vvSize.symbolAnchor)),r.code.add(t`vec3 vvScale(vec4 _featureAttribute) {
 if (isnan(_featureAttribute.x)) {
 return vvSizeFallback;
 }
@@ -40,10 +40,12 @@ return vec4(vvSymbolRotationMatrix * ( vvScale(_featureAttribute) * (position + 
       }
 
       vec4 localPosition() {
-        return vvTransformPosition(position, instanceFeatureAttribute);
+        return vvTransformPosition(${r.inputs.get(`position`)}, instanceFeatureAttribute);
       }`:``}
-    `)):r.code.add(t`vec4 localPosition() { return vec4(position, 1.0); }
-vec4 vvLocalNormal(vec3 _normal) { return vec4(_normal, 1.0); }`),e.vertex.include(m),n.hasVVColor?(r.constants.add(`vvColorNumber`,`int`,8),r.uniforms.add(new u(`vvColorValues`,8,e=>e.vvColor.values),new s(`vvColorColors`,8,e=>e.vvColor.colors),new l(`vvColorFallback`,e=>e.vvColor.fallback,{supportsNaN:!0})),n.hasVVInstancing&&(e.vertex.include(g),e.vertex.include(_)),r.code.add(t`
+    `)):r.code.add(t`
+      vec4 localPosition() { return vec4(${r.inputs.get(`position`)}, 1.0); }
+      vec4 vvLocalNormal(vec3 _normal) { return vec4(_normal, 1.0); }
+    `),e.vertex.include(h),n.hasVVColor?(r.constants.add(`vvColorNumber`,`int`,i),r.uniforms.add(new d(`vvColorValues`,i,e=>e.vvColor.values),new u(`vvColorColors`,i,e=>e.vvColor.colors),new c(`vvColorFallback`,e=>e.vvColor.fallback,{supportsNaN:!0})),n.hasVVInstancing&&(e.vertex.include(_),e.vertex.include(v)),r.code.add(t`
       vec4 interpolateVVColor(float value) {
         if (isnan(value)) {
           return vvColorFallback;
@@ -88,4 +90,4 @@ return vec4(1.0);
 }
 MaskedColor applyVVColor(MaskedColor color) {
 return color;
-}`)}var b=e((()=>{v(),r(),c(),a(),d(),n(),p(),o()}));export{v as a,h as i,y as n,_ as o,g as r,m as s,b as t};
+}`)}function x(){return(x=e((()=>{y(),a(),s(),l(),f(),n(),m(),r()})))()}export{y as a,g as i,b as n,v as o,_ as r,h as s,x as t};

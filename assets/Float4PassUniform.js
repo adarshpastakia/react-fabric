@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{n as t,t as n}from"./Uniform.js";var r,i=e((()=>{t(),r=class extends n{constructor(e,t,n){super(e,`vec4`,1,(r,i,a)=>r.setUniform4fv(e,t(i,a),n))}}}));export{i as n,r as t};
+import{n as e}from"./rolldown-runtime.js";import{n as t,t as n}from"./Uniform.js";var r;function i(){return(i=e((()=>{t(),r=class extends n{constructor(e,t,n){super(e,`vec4`,1,(r,i,a)=>r.setUniform4fv(e,t(i,a),n))}}})))()}export{i as n,r as t};

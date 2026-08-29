@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{n as t,r as n,t as r}from"./glsl.js";import{n as i,t as a}from"./Texture2DPassUniform.js";import{n as o,t as s}from"./ShaderBuilder.js";import{n as c,r as l}from"./Slice.glsl.js";import{n as u,t as d}from"./Float4PassUniform.js";import{n as f,t as p}from"./FloatBindUniform.js";import{n as m,t as h}from"./Matrix4BindUniform.js";import{a as g,i as _,n as v,r as y}from"./View.glsl.js";import{a as b,d as x,f as S,h as C,m as w,n as T,p as E,t as D}from"./MarkerSizing.glsl.js";import{n as O,t as k}from"./ColorConversion.glsl.js";import{n as A,t as j}from"./PositionOutsideClipSpace.js";import{n as M,t as N}from"./Float2BindUniform.js";import{n as P,t as F}from"./TerrainDepthTest.glsl.js";import{n as I,t as L}from"./Float4BindUniform.js";import{n as R,t as z}from"./OutputHighlight.glsl.js";import{n as B,t as V}from"./OutputColorHighlightOLID.glsl.js";function H(e){let r=new o,{space:i,anchor:s,hasTip:l,hasScreenSizePerspective:u}=e,p=i===2,h=i===1;r.include(w,e),r.include(D,e),r.include(F,e);let{vertex:y,fragment:b,varyings:C}=r;v(y,e),r.attributes.add(`position`,`vec3`),r.attributes.add(`previousDelta`,`vec4`),r.attributes.add(`uv0`,`vec2`),C.add(`vColor`,`vec4`),C.add(`vpos`,`vec3`,{invariant:!0}),C.add(`vUV`,`vec2`),C.add(`vSize`,`float`),l&&C.add(`vLineWidth`,`float`),y.uniforms.add(new N(`nearFar`,({camera:e})=>e.nearFar),new L(`viewport`,({camera:e})=>e.fullViewport)).code.add(n`vec4 projectAndScale(vec4 pos) {
+import{n as e}from"./rolldown-runtime.js";import{n as t,r as n,t as r}from"./glsl.js";import{n as i,t as a}from"./ShaderBuilder.js";import{n as o,t as s}from"./Texture2DPassUniform.js";import{a as c,i as l}from"./Slice.glsl.js";import{n as u,t as d}from"./Float4PassUniform.js";import{n as f,t as p}from"./FloatBindUniform.js";import{n as m,t as h}from"./Matrix4BindUniform.js";import{a as g,i as _,n as v,r as y}from"./View.glsl.js";import{a as b,d as x,f as S,h as C,m as w,n as T,t as E}from"./MarkerSizing.glsl.js";import{n as D,t as O}from"./ColorConversion.glsl.js";import{n as k,t as A}from"./PositionOutsideClipSpace.js";import{n as j,t as M}from"./Float2BindUniform.js";import{n as N,t as P}from"./Float4BindUniform.js";import{n as F,t as I}from"./OutputHighlight.glsl.js";import{n as L,t as R}from"./OutputColorHighlightOLID.glsl.js";function z(e){let r=new i,{space:a,anchor:o,hasTip:c,hasScreenSizePerspective:u}=e,p=a===2,h=a===1;r.attributes.add(`position`,`vec3`),r.vertex.inputs.add(`position`,()=>`position`),r.include(w,e),r.include(E,e);let{vertex:y,fragment:b,varyings:C}=r;v(y,e),r.attributes.add(`previousDelta`,`vec4`),r.attributes.add(`uv0`,`vec2`),C.add(`vColor`,`vec4`),C.add(`vpos`,`vec3`,{invariant:!0}),C.add(`vUV`,`vec2`),C.add(`vSize`,`float`),c&&C.add(`vLineWidth`,`float`),y.uniforms.add(new M(`nearFar`,({camera:e})=>e.nearFar),new P(`viewport`,({camera:e})=>e.fullViewport)).code.add(n`vec4 projectAndScale(vec4 pos) {
 vec4 posNdc = proj * pos;
 posNdc.xy *= viewport.zw / posNdc.w;
 return posNdc;
@@ -31,7 +31,7 @@ return vec2(v.y, -v.x);
         ${T} displacementDirU = perpendicular(segment);
         ${T} displacementDirV = segment;
 
-        ${s===1?`pos -= 0.5 * displacementLen * displacementDirV;`:``}
+        ${o===1?`pos -= 0.5 * displacementLen * displacementDirV;`:``}
 
         return pos + displacementLen * (uv0.x * displacementDirU + uv0.y * displacementDirV);
       }
@@ -81,7 +81,7 @@ return abs(cos) > 0.001 && t > 0.0;
     // project outside of clip space.
     if (uv0.y == 0.0) {
       // Project out of clip space
-      gl_Position = ${A};
+      gl_Position = ${k};
     }
     else {
       vec4 pos  = view * vec4(position, 1.0);
@@ -94,7 +94,7 @@ return abs(cos) > 0.001 && t > 0.0;
 
       ${p?n`${t(e.hideOnShortSegments,n`
                 if (areWorldMarkersHidden(pos.xyz, prev.xyz)) {
-                  gl_Position = ${A};
+                  gl_Position = ${k};
                   return;
                 }`)}
             pos.xyz = displace(pos.xyz, prev.xyz, getWorldMarkerSize(pos.xyz));
@@ -114,14 +114,13 @@ return abs(cos) > 0.001 && t > 0.0;
 
                 pos = toFront(displacedPosScreen, lineLeft, lineRight, prev.xyz, lineWidth);
                 displacedPosScreen = projectAndScale(pos);`)}`}
-      forwardViewPosDepth(pos.xyz);
       // Convert back into NDC
       displacedPosScreen.xy = (displacedPosScreen.xy / viewport.zw) * displacedPosScreen.w;
 
       // Convert texture coordinate into [0,1]
       vUV = (uv0 + 1.0) / 2.0;
       ${t(!p,`vUV = noPerspectiveWrite(vUV, displacedPosScreen.w);`)}
-      ${t(l,`vLineWidth = noPerspectiveWrite(lineWidth, displacedPosScreen.w);`)}
+      ${t(c,`vLineWidth = noPerspectiveWrite(lineWidth, displacedPosScreen.w);`)}
 
       vSize = screenMarkerSize;
       vColor = getColor();
@@ -130,13 +129,13 @@ return abs(cos) > 0.001 && t > 0.0;
       vpos = pos.xyz;
 
       gl_Position = displacedPosScreen;
-    }`),b.include(c,e),r.include(V,e),b.include(k),b.uniforms.add(new d(`intrinsicColor`,({color:e})=>e),new a(`tex`,({markerTexture:e})=>e)).constants.add(`texelSize`,`float`,1/64).code.add(n`float markerAlpha(vec2 samplePos) {
+    }`),b.include(l,e),r.include(L,e),b.include(O),b.uniforms.add(new d(`intrinsicColor`,({color:e})=>e),new s(`tex`,({markerTexture:e})=>e)).constants.add(`texelSize`,`float`,1/64).code.add(n`float markerAlpha(vec2 samplePos) {
 samplePos += vec2(0.5, -0.5) * texelSize;
 float sdf = texture(tex, samplePos).r;
 float pixelDistance = sdf * vSize;
 pixelDistance -= 0.5;
 return clamp(0.5 - pixelDistance, 0.0, 1.0);
-}`),l&&(r.include(x),b.constants.add(`relativeMarkerSize`,`float`,32/64).constants.add(`relativeTipLineWidth`,`float`,.25).code.add(n`
+}`),c&&(r.include(x),b.constants.add(`relativeMarkerSize`,`float`,32/64).constants.add(`relativeTipLineWidth`,`float`,.25).code.add(n`
     float tipAlpha(vec2 samplePos) {
       // Convert coordinates s.t. they are in pixels and relative to the tip of an arrow marker
       samplePos -= vec2(0.5, 0.5 + 0.5 * relativeMarkerSize);
@@ -150,13 +149,12 @@ return clamp(0.5 - pixelDistance, 0.0, 1.0);
       float distance = max(abs(samplePos.x) - halfMarkerSize, abs(samplePos.y) - halfTipLineWidth);
       return clamp(0.5 - distance, 0.0, 1.0);
     }
-  `)),r.include(z,e),r.include(x),b.main.add(n`
+  `)),r.include(I,e),r.include(x),b.main.add(n`
     discardBySlice(vpos);
-    discardByTerrainDepth();
 
     vec4 finalColor = intrinsicColor * vColor;
 
     // Cancel out perspective correct interpolation if in screen space or draped
     vec2 samplePos = ${t(!p,`noPerspectiveRead(vUV)`,`vUV`)};
-    finalColor.a *= ${l?`max(markerAlpha(samplePos), tipAlpha(samplePos))`:`markerAlpha(samplePos)`};
-    outputColorHighlightOLID(applySlice(finalColor, vpos), finalColor.rgb);`),r}var U,W=e((()=>{b(),l(),C(),R(),T(),j(),P(),O(),E(),y(),M(),I(),u(),p(),r(),h(),i(),B(),s(),U=Object.freeze(Object.defineProperty({__proto__:null,build:H},Symbol.toStringTag,{value:`Module`}))}));export{W as n,H as r,U as t};
+    finalColor.a *= ${c?`max(markerAlpha(samplePos), tipAlpha(samplePos))`:`markerAlpha(samplePos)`};
+    outputColorHighlightOLID(applySlice(finalColor, vpos), finalColor.rgb);`),r}var B;function V(){return(V=e((()=>{b(),c(),C(),F(),T(),A(),D(),y(),j(),N(),u(),p(),r(),h(),o(),R(),a(),B=Object.freeze(Object.defineProperty({__proto__:null,build:z},Symbol.toStringTag,{value:`Module`}))})))()}export{B as n,z as r,V as t};

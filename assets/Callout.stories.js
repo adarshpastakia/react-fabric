@@ -1,85 +1,63 @@
-import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";import{n as r,r as i,t as a}from"./dist28.js";import{Y as o,a as s,f as c,m as l,t as u}from"./src3.js";var d=t({Colors:()=>_,Tester:()=>v,WithLegend:()=>g,_Callout:()=>h,__namedExportsOrder:()=>y,default:()=>m}),f,p,m,h,g,_,v,y,b=e((()=>{a(),f=n(),u(),p=n(),m={component:o,title:`@core/components/Callout`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/callout/Callout.test.tsx`]},decorators:[e=>(0,p.jsx)(`div`,{className:`max-w-2xl p-4`,children:(0,p.jsx)(e,{})})]},h={render:e=>(0,p.jsxs)(f.Fragment,{children:[(0,p.jsx)(o,{...e,children:(0,p.jsx)(s,{clamp:4,children:i.lorem.sentences(2)})}),(0,p.jsx)(o,{...e,title:r.commerce.productName(),children:(0,p.jsx)(s,{clamp:4,children:r.lorem.sentences(2)})})]}),args:{title:i.commerce.productName(),icon:`mdi mdi-react`}},g={render:e=>(0,p.jsx)(f.Fragment,{children:(0,p.jsx)(o,{...e,children:(0,p.jsx)(s,{clamp:4,children:i.lorem.sentences(2)})})}),args:{title:i.commerce.productName(),legend:i.animal.cat(),icon:`mdi mdi-react`,border:`dashed`,color:`info`}},_={render:e=>(0,p.jsxs)(l,{children:[(0,p.jsx)(c,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`default`,title:`Default`,icon:`mdi mdi-react`,children:(0,p.jsx)(s,{clamp:4,children:i.lorem.sentences(2)})})}),(0,p.jsx)(c,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`dimmed`,title:`Dimmed`,icon:`mdi mdi-react`,children:(0,p.jsx)(s,{clamp:4,children:i.lorem.sentences(2)})})}),(0,p.jsx)(c,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`muted`,title:`Muted`,icon:`mdi mdi-react`,children:(0,p.jsx)(s,{clamp:4,children:i.lorem.sentences(2)})})}),(0,p.jsx)(c,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`primary`,title:`Primary`,icon:`mdi mdi-react`,children:(0,p.jsx)(s,{clamp:4,children:i.lorem.sentences(2)})})}),(0,p.jsx)(c,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`accent`,title:`Accent`,icon:`mdi mdi-react`,children:(0,p.jsx)(s,{clamp:4,children:i.lorem.sentences(2)})})}),(0,p.jsx)(c,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`info`,title:`Info`,icon:`mdi mdi-information-outline`,children:(0,p.jsx)(s,{clamp:4,children:i.lorem.sentences(2)})})}),(0,p.jsx)(c,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`danger`,title:`Danger`,icon:`mdi mdi-close-circle-outline`,children:(0,p.jsx)(s,{clamp:4,children:i.lorem.sentences(2)})})}),(0,p.jsx)(c,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`success`,title:`Sucess`,icon:`mdi mdi-check-circle-outline`,children:(0,p.jsx)(s,{clamp:4,children:i.lorem.sentences(2)})})}),(0,p.jsx)(c,{className:`span-12`,stretchContent:!0,children:(0,p.jsx)(o,{...e,color:`warning`,title:`Warning`,icon:`mdi mdi-alert-outline`,children:(0,p.jsx)(s,{clamp:4,children:i.lorem.sentences(2)})})})]}),args:{}},v={render:e=>(0,p.jsx)(o,{...e}),args:{}},h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
+import{n as e}from"./rolldown-runtime.js";import{J as t,t as n}from"./src2.js";import{t as r}from"./jsx-runtime.js";var i,a,o,s,c,l,u,d,f;function p(){return(p=e((()=>{n(),i=r(),a=r(),{fn:o}=__STORYBOOK_MODULE_TEST__,s={component:t,tags:[`autodocs`],title:`@core/components/Callout`,parameters:{layout:`centered`,jest:[`core/tests/components/Callout.test.tsx`]},decorators:[e=>(0,a.jsx)(`div`,{className:`w-full max-w-2xl p-4 flex flex-col gap-2`,children:(0,a.jsx)(e,{})})]},c={render:e=>(0,a.jsxs)(i.Fragment,{children:[(0,a.jsx)(t,{...e,children:`This is a basic callout with some content.`}),(0,a.jsx)(t,{...e,legend:`Important`,title:`With Legend and Title`,icon:`icon-[mdi--info]`,children:`This callout includes a legend, title, and icon.`}),(0,a.jsx)(t,{...e,icon:`icon-[mdi--alert]`,children:`This callout has an icon but no legend or title.`}),(0,a.jsx)(t,{...e,onClose:o(),children:`This callout has a close button.`})]}),args:{}},l={render:e=>(0,a.jsxs)(i.Fragment,{children:[(0,a.jsx)(t,{...e,color:`default`,children:`Default`}),(0,a.jsx)(t,{...e,color:`primary`,children:`Primary`}),(0,a.jsx)(t,{...e,color:`secondary`,children:`Secondary`}),(0,a.jsx)(t,{...e,color:`info`,children:`Info`}),(0,a.jsx)(t,{...e,color:`success`,children:`Success`}),(0,a.jsx)(t,{...e,color:`warning`,children:`Warning`}),(0,a.jsx)(t,{...e,color:`danger`,children:`Danger`})]}),args:{}},u={render:e=>(0,a.jsxs)(i.Fragment,{children:[(0,a.jsx)(t,{...e,border:`solid`,children:`Solid Border`}),(0,a.jsx)(t,{...e,border:`dotted`,children:`Dotted Border`}),(0,a.jsx)(t,{...e,border:`dashed`,children:`Dashed Border`})]}),args:{}},d={tags:[`!autodocs`],render:e=>(0,a.jsx)(t,{...e}),args:{}},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Fragment>
-        <Callout {...args}>
-          <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
+        <Callout {...args}>This is a basic callout with some content.</Callout>
+        <Callout {...args} legend="Important" title="With Legend and Title" icon="icon-[mdi--info]">
+          This callout includes a legend, title, and icon.
         </Callout>
-        <Callout {...args} title={fakerAR.commerce.productName()}>
-          <Text clamp={4}>{fakerAR.lorem.sentences(2)}</Text>
+        <Callout {...args} icon="icon-[mdi--alert]">
+          This callout has an icon but no legend or title.
         </Callout>
-      </Fragment>;
-  },
-  args: {
-    title: faker.commerce.productName(),
-    icon: "mdi mdi-react"
-  }
-}`,...h.parameters?.docs?.source}}},g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:`{
-  render: args => {
-    return <Fragment>
-        <Callout {...args}>
-          <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
+        <Callout {...args} onClose={fn()}>
+          This callout has a close button.
         </Callout>
       </Fragment>;
-  },
-  args: {
-    title: faker.commerce.productName(),
-    legend: faker.animal.cat(),
-    icon: "mdi mdi-react",
-    border: "dashed",
-    color: "info"
-  }
-}`,...g.parameters?.docs?.source}}},_.parameters={..._.parameters,docs:{..._.parameters?.docs,source:{originalSource:`{
-  render: args => {
-    return <Row>
-        <Col className="span-12" stretchContent>
-          <Callout {...args} color="default" title="Default" icon="mdi mdi-react">
-            <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
-          </Callout>
-        </Col>
-        <Col className="span-12" stretchContent>
-          <Callout {...args} color="dimmed" title="Dimmed" icon="mdi mdi-react">
-            <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
-          </Callout>
-        </Col>
-        <Col className="span-12" stretchContent>
-          <Callout {...args} color="muted" title="Muted" icon="mdi mdi-react">
-            <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
-          </Callout>
-        </Col>
-        <Col className="span-12" stretchContent>
-          <Callout {...args} color="primary" title="Primary" icon="mdi mdi-react">
-            <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
-          </Callout>
-        </Col>
-        <Col className="span-12" stretchContent>
-          <Callout {...args} color="accent" title="Accent" icon="mdi mdi-react">
-            <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
-          </Callout>
-        </Col>
-        <Col className="span-12" stretchContent>
-          <Callout {...args} color="info" title="Info" icon="mdi mdi-information-outline">
-            <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
-          </Callout>
-        </Col>
-        <Col className="span-12" stretchContent>
-          <Callout {...args} color="danger" title="Danger" icon="mdi mdi-close-circle-outline">
-            <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
-          </Callout>
-        </Col>
-        <Col className="span-12" stretchContent>
-          <Callout {...args} color="success" title="Sucess" icon="mdi mdi-check-circle-outline">
-            <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
-          </Callout>
-        </Col>
-        <Col className="span-12" stretchContent>
-          <Callout {...args} color="warning" title="Warning" icon="mdi mdi-alert-outline">
-            <Text clamp={4}>{faker.lorem.sentences(2)}</Text>
-          </Callout>
-        </Col>
-      </Row>;
   },
   args: {}
-}`,..._.parameters?.docs?.source}}},v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
+}`,...c.parameters?.docs?.source}}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
+  render: args => {
+    return <Fragment>
+        <Callout {...args} color="default">
+          Default
+        </Callout>
+        <Callout {...args} color="primary">
+          Primary
+        </Callout>
+        <Callout {...args} color="secondary">
+          Secondary
+        </Callout>
+        <Callout {...args} color="info">
+          Info
+        </Callout>
+        <Callout {...args} color="success">
+          Success
+        </Callout>
+        <Callout {...args} color="warning">
+          Warning
+        </Callout>
+        <Callout {...args} color="danger">
+          Danger
+        </Callout>
+      </Fragment>;
+  },
+  args: {}
+}`,...l.parameters?.docs?.source}}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
+  render: args => {
+    return <Fragment>
+        <Callout {...args} border="solid">
+          Solid Border
+        </Callout>
+        <Callout {...args} border="dotted">
+          Dotted Border
+        </Callout>
+        <Callout {...args} border="dashed">
+          Dashed Border
+        </Callout>
+      </Fragment>;
+  },
+  args: {}
+}`,...u.parameters?.docs?.source}}},d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
+  tags: ["!autodocs"],
   render: args => <Callout {...args} />,
   args: {}
-}`,...v.parameters?.docs?.source}}},y=[`_Callout`,`WithLegend`,`Colors`,`Tester`]}));b();export{_ as Colors,v as Tester,g as WithLegend,h as _Callout,y as __namedExportsOrder,m as default,b as n,d as t};
+}`,...d.parameters?.docs?.source}}},f=[`_Callout`,`Colors`,`Borders`,`Tester`]})))()}p();export{u as Borders,l as Colors,d as Tester,c as _Callout,f as __namedExportsOrder,s as default};

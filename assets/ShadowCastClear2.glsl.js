@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{t}from"./glsl.js";import{t as n}from"./ShaderBuilder.js";import{t as r}from"./ScreenSpacePass.glsl.js";import{n as i,t as a}from"./ShadowCastClear.glsl.js";e((()=>{r(),t(),n(),a()}))();export{i as build};
+import{n as e}from"./rolldown-runtime.js";import{t}from"./glsl.js";import{t as n}from"./ScreenSpacePass.glsl.js";import{t as r}from"./ShaderBuilder.js";import{n as i,t as a}from"./ShadowCastClear.glsl.js";function o(){return(o=e((()=>{n(),t(),r(),a()})))()}o();export{i as build};

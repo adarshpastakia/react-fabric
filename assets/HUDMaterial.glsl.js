@@ -1,21 +1,19 @@
-import{n as e}from"./chunk.js";import{C as t,b as n,h as r}from"./vec2.js";import{a as i,n as a}from"./vec4f64.js";import{a as o,r as s}from"./vec2f64.js";import{n as c,r as l,t as u}from"./glsl.js";import{n as d,t as f}from"./FloatPassUniform.js";import{n as p,t as m}from"./Texture2DPassUniform.js";import{n as h,t as g}from"./ShaderBuilder.js";import{o as ee,r as _}from"./Slice.glsl.js";import{n as v,t as te}from"./ObjectAndLayerIdColor.glsl.js";import{n as ne,t as y}from"./VisualVariables.glsl.js";import{n as b,t as x}from"./Float4PassUniform.js";import{i as S,n as C,r as re,t as ie}from"./ScreenSizePerspective.glsl.js";import{a as ae,r as w}from"./View.glsl.js";import{n as T,t as E}from"./ColorConversion.glsl.js";import{n as oe,t as D}from"./PositionOutsideClipSpace.js";import{n as O,t as se}from"./ReadDepth.glsl.js";import{n as k,t as A}from"./Texture2DBindUniform.js";import{n as j,t as M}from"./TerrainDepthTest.glsl.js";import{n as N,t as ce}from"./Float4BindUniform.js";import{n as P,t as F}from"./Float2PassUniform.js";import{n as I,t as L}from"./OutputHighlight.glsl.js";import{n as R,t as z}from"./AlphaCutoff.js";import{a as B,i as V,n as H,o as U,r as W,t as le}from"./HUDVisibility.glsl.js";function ue(e,t){let{vertex:n,fragment:r}=e;e.include(M,t),n.include(V),n.main.add(l`vec4 posProjCenter;
-if (dot(position, position) > 0.0) {
-ProjectHUDAux projectAux;
-vec4 posProj = projectPositionHUD(projectAux);
-posProjCenter = alignToPixelCenter(posProj, viewport.zw);
-forwardViewPosDepth(projectAux.posView);
-vec3 vpos = projectAux.posModel;
-if (rejectBySlice(vpos)) {
-posProjCenter = vec4(1e038, 1e038, 1e038, 1.0);
-}
-} else {
-posProjCenter = vec4(1e038, 1e038, 1e038, 1.0);
-}
-gl_Position = posProjCenter;
-gl_PointSize = 1.0;`),r.main.add(l`fragColor = vec4(1);
-if(discardByTerrainDepth()) {
-fragColor.g = 0.5;
-}`)}var G=e((()=>{W(),j(),u()}));function K(e){let t=new h;if(t.include(B,e),t.vertex.include(ee,e),e.occlusionPass)return t.include(ue,e),t;let{output:r,oitPass:i,hasOcclusionTexture:o,signedDistanceFieldEnabled:s,useVisibilityPixel:u,pixelSnappingEnabled:f,hasEmission:p,hasScreenSizePerspective:g,debugDrawLabelBorder:_,hasVVSize:v,hasVVColor:y,hasRotation:b,occludedFragmentFade:C,sampleSignedDistanceFieldTexelCenter:w}=e;t.include(re),t.include(ne,e),t.include(te,e),u&&t.include(H);let{vertex:T,fragment:D}=t;D.include(E),t.varyings.add(`vcolor`,`vec4`),t.varyings.add(`vtc`,`vec2`),t.varyings.add(`vsize`,`vec2`);let O=r===8,k=O&&u;k&&t.varyings.add(`voccluded`,`float`),T.uniforms.add(new ce(`viewport`,e=>e.camera.fullViewport),new F(`screenOffset`,(e,t)=>n(Y,2*e.screenOffset[0]*t.camera.pixelRatio,2*e.screenOffset[1]*t.camera.pixelRatio)),new F(`anchorPosition`,e=>J(e)),new x(`materialColor`,({color:e})=>e),new d(`materialRotation`,e=>e.rotation),new m(`tex`,e=>e.texture)),ae(T),s&&(T.uniforms.add(new x(`outlineColor`,e=>e.outlineColor)),D.uniforms.add(new x(`outlineColor`,e=>q(e)?e.outlineColor:a),new d(`outlineSize`,e=>q(e)?e.outlineSize:0))),f&&T.include(V),g&&(S(T),ie(T)),_&&t.varyings.add(`debugBorderCoords`,`vec4`),t.attributes.add(`uv0`,`vec2`),t.attributes.add(`uvi`,`vec4`),t.attributes.add(`color`,`vec4`),t.attributes.add(`size`,`vec2`),t.attributes.add(`rotation`,`float`),(v||y)&&t.attributes.add(`featureAttribute`,`vec4`),T.main.add(l`
+import{n as e}from"./rolldown-runtime.js";import{O as t,T as n,x as r}from"./vec2.js";import{o as i,r as ee}from"./vec4f64.js";import{o as a,s as o}from"./vec2f64.js";import{n as s,r as c,t as l}from"./glsl.js";import{n as te,t as u}from"./IntegerPassUniform.js";import{n as d,t as f}from"./ShaderBuilder.js";import{n as p,t as m}from"./FloatPassUniform.js";import{n as h,t as g}from"./Texture2DPassUniform.js";import{p as _}from"./ShaderOutput.js";import{a as v,n as ne}from"./Slice.glsl.js";import{n as y,t as b}from"./ObjectAndLayerIdColor.glsl.js";import{n as re,t as x}from"./VisualVariables.glsl.js";import{n as S,t as C}from"./Float4PassUniform.js";import{i as ie,n as w,r as T,t as E}from"./ScreenSizePerspective.glsl.js";import{a as D,r as O}from"./View.glsl.js";import{n as k,t as ae}from"./ColorConversion.glsl.js";import{n as oe,t as A}from"./PositionOutsideClipSpace.js";import{n as j,t as se}from"./Float4BindUniform.js";import{n as M,t as ce}from"./alphaCutoff.glsl.js";import{n as N,t as P}from"./Float2PassUniform.js";import{n as F,t as I}from"./OutputHighlight.glsl.js";import{n as L,t as R}from"./Texture2DBindUniform.js";import{n as z,t as B}from"./OutputColorHighlightOLID.glsl.js";import{n as V,r as H}from"./FocusAreaColorNode.js";import{r as U,t as W}from"./ReadDepth.glsl.js";import{i as G,n as le,r as ue,t as de}from"./AlignPixel.glsl.js";function K(e){let n=new d;n.include(ue,e),n.vertex.include(ne,e);let{output:r,hasOcclusionTexture:i,signedDistanceFieldEnabled:a,pixelSnappingEnabled:o,hasEmission:l,hasScreenSizePerspective:u,debugDrawLabelBorder:f,hasVVSize:m,hasVVColor:h,hasRotation:v,occludedFragmentFade:y,sampleSignedDistanceFieldTexelCenter:x,hasVertexColor:S,hasVertexSize:w,hasVertexRotation:O,hasVertexUVi:k}=e;n.include(T),n.include(re,e),n.include(b,e),n.include(z,e);let{vertex:A,fragment:j}=n;j.include(ae),j.code.add(c`
+    vec4 applyFocusAreaStyle(vec4 color, int style) {
+      const float factor = 0.46;
+      const float factorBright = 0.32;
+
+      if (style == ${c.int(0)}) {
+        float luma = (color.r + color.g + color.b) / 3.0;
+        float bright = luma * (1.0 - 0.6 * factorBright) + 0.6 * factorBright * color.a;
+        float brightScaled = bright * factorBright;
+        return vec4(brightScaled, brightScaled, brightScaled, color.a * factorBright);
+      }
+
+      float darkScaled = factor * factor;
+      return vec4(color.rgb * darkScaled, color.a * factor);
+    }
+  `),n.varyings.add(`vcolor`,`vec4`),n.varyings.add(`vtc`,`vec2`),n.varyings.add(`vsize`,`vec2`);let M=r===10;A.uniforms.add(new se(`viewport`,e=>e.camera.fullViewport),new P(`screenOffset`,(e,n)=>t(X,2*e.screenOffset[0]*n.camera.pixelRatio,2*e.screenOffset[1]*n.camera.pixelRatio)),new P(`anchorPosition`,e=>J(e)),new C(`materialColor`,({color:e})=>e),new p(`materialRotation`,e=>e.rotation),new P(`materialSize`,e=>e.size),new g(`tex`,e=>e.texture)),D(A),a&&(A.uniforms.add(new C(`outlineColor`,e=>e.outlineColor)),j.uniforms.add(new C(`outlineColor`,e=>q(e)?e.outlineColor:ee),new p(`outlineSize`,e=>q(e)?e.outlineSize:0))),o&&A.include(le),u&&(ie(A),E(A)),f&&n.varyings.add(`debugBorderCoords`,`vec4`),n.attributes.add(`uv0`,`vec2`),k&&n.attributes.add(`uvi`,`vec4`),S&&n.attributes.add(`color`,`vec4`),w&&n.attributes.add(`size`,`vec2`),O&&n.attributes.add(`rotation`,`float`),(m||h)&&n.attributes.add(`featureAttribute`,`vec4`),A.main.add(c`
     ProjectHUDAux projectAux;
     vec4 posProj = projectPositionHUD(projectAux);
     forwardObjectAndLayerIdColor();
@@ -25,34 +23,29 @@ fragColor.g = 0.5;
       return;
     }
 
+    vec2 vertexSize = materialSize${s(w,` * size`)};
     vec2 inputSize;
-    ${c(g,l`
-        inputSize = screenSizePerspectiveScaleVec2(size, projectAux.absCosAngle, projectAux.distanceToCamera, screenSizePerspective);
-        vec2 screenOffsetScaled = screenSizePerspectiveScaleVec2(screenOffset, projectAux.absCosAngle, projectAux.distanceToCamera, screenSizePerspectiveAlignment);`,l`
-        inputSize = size;
+    ${s(u,c`
+        inputSize = screenSizePerspectiveScaleVec2(vertexSize, projectAux.absCosAngle, projectAux.distanceToCamera, screenSizePerspective);
+        vec2 screenOffsetScaled = screenSizePerspectiveScaleVec2(screenOffset, projectAux.absCosAngle, projectAux.distanceToCamera, screenSizePerspectiveAlignment);`,c`
+        inputSize = vertexSize;
         vec2 screenOffsetScaled = screenOffset;`)}
-    ${c(v,l`inputSize *= vvScale(featureAttribute).xx;`)}
+    ${s(m,c`inputSize *= vvScale(featureAttribute).xx;`)}
 
     vec2 combinedSize = inputSize * pixelRatio;
     vec4 quadOffset = vec4(0.0);
-
-    ${c(u,l`
-        bool visible = testHUDVisibility(posProj);
-        if (!visible) {
-          vtc = vec2(0.0);
-          ${c(_,`debugBorderCoords = vec4(0.5, 0.5, 1.5 / combinedSize);`)}
-          return;
-        }
-      `)}
-    ${c(k,l`voccluded = visible ? 0.0 : 1.0;`)}
-  `);let j=l`
-    vec2 uv = mix(uvi.xy, uvi.zw, bvec2(uv0));
+  `);let N=c`
+  ${s(k,c`
     vec2 texSize = vec2(textureSize(tex, 0));
-    uv = mix(vec2(1.0), uv / texSize, lessThan(uv, vec2(${Q})));
+    vec2 uv = mix(uvi.xy, uvi.zw, bvec2(uv0)) / texSize;
+    `,c`
+    vec2 uv = mix(vec2(0.), vec2(1.), bvec2(uv0));
+    `)}
+
     quadOffset.xy = (uv0 - anchorPosition) * 2.0 * combinedSize;
 
-    ${c(b,l`
-        float angle = radians(materialRotation + rotation);
+    ${s(v,c`
+        float angle = radians(materialRotation${s(O,` + rotation`)});
         float cosAngle = cos(angle);
         float sinAngle = sin(angle);
         mat2 rotate = mat2(cosAngle, -sinAngle, sinAngle,  cosAngle);
@@ -61,44 +54,38 @@ fragColor.g = 0.5;
       `)}
 
     quadOffset.xy = (quadOffset.xy + screenOffsetScaled) / viewport.zw * posProj.w;
-  `,M=f?s?l`posProj = alignToPixelOrigin(posProj, viewport.zw) + quadOffset;`:l`posProj += quadOffset;
-if (inputSize.x == size.x) {
+  `,F=o?a?c`posProj = alignToPixelOrigin(posProj, viewport.zw) + quadOffset;`:c`posProj += quadOffset;
+if (inputSize.x == vertexSize.x) {
 posProj = alignToPixelOrigin(posProj, viewport.zw);
-}`:l`posProj += quadOffset;`;T.main.add(l`
-    ${j}
-    ${y?`vcolor = interpolateVVColor(featureAttribute.y) * materialColor;`:`vcolor = color * materialColor;`}
+}`:c`posProj += quadOffset;`;A.include(ce),A.main.add(c`
+    ${N}
+    ${h?`vcolor = interpolateVVColor(featureAttribute.y) * materialColor;`:S?`vcolor = color * materialColor;`:`vcolor = materialColor;`}
 
-    ${c(r===9,l`vcolor.a = 1.0;`)}
+    ${s(r===11,c`vcolor.a = 1.0;`)}
 
-    bool alphaDiscard = vcolor.a < ${l.float(R)};
-    ${c(s,`alphaDiscard = alphaDiscard && outlineColor.a < ${l.float(R)};`)}
+    bool alphaDiscard = vcolor.a < alphaCutoff;
+    ${s(a,`alphaDiscard = alphaDiscard && outlineColor.a < alphaCutoff;`)}
     if (alphaDiscard) {
       // "early discard" if both symbol color (= fill) and outline color (if applicable) are transparent
       gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
       return;
     } else {
-      ${M}
+      ${F}
       gl_Position = posProj;
     }
 
     vtc = uv;
 
-    ${c(_,l`debugBorderCoords = vec4(uv0, 1.5 / combinedSize);`)}
+    ${s(f,c`debugBorderCoords = vec4(uv0, 1.5 / combinedSize);`)}
     vsize = inputSize;
-  `),D.uniforms.add(new m(`tex`,e=>e.texture)),C&&!O&&(D.include(se),D.uniforms.add(new A(`depthMap`,e=>e.mainDepth),new d(`occludedOpacity`,e=>e.occludedFragmentOpacity?.value??1))),o&&D.uniforms.add(new A(`texOcclusion`,e=>e.hudOcclusion?.attachment));let N=_?l`(isBorder > 0.0 ? 0.0 : ${l.float(R)})`:l.float(R),P=l`
-    ${c(_,l`float isBorder = float(any(lessThan(debugBorderCoords.xy, debugBorderCoords.zw)) || any(greaterThan(debugBorderCoords.xy, 1.0 - debugBorderCoords.zw)));`)}
-
-    vec2 samplePos = vtc;
-
-    ${c(w,l`
-      float txSize = float(textureSize(tex, 0).x);
-      float texelSize = 1.0 / txSize;
-
-      // Calculate how much we have to add/subtract to/from each texel to reach the size of an onscreen pixel
-      vec2 scaleFactor = (vsize - txSize) * texelSize;
-      samplePos += (vec2(1.0, -1.0) * texelSize) * scaleFactor;`)}
-
-    ${s?l`
+  `);let L=_(r)&&e.hasFocusAreaStyle&&!e.draped;switch(j.uniforms.add(new g(`tex`,e=>e.texture)),L&&j.uniforms.add(new te(`focusAreaStyle`,e=>Y(e.focusAreaStyle))),y&&!M&&(j.include(W),j.uniforms.add(new R(`depthMap`,e=>e.mainDepth),new p(`occludedOpacity`,e=>e.occludedFragmentOpacity?.value??1))),i&&j.uniforms.add(new R(`texOcclusion`,e=>e.hudOcclusion?.attachment)),f?j.main.add(`
+        float isBorder = float(any(lessThan(debugBorderCoords.xy, debugBorderCoords.zw)) || any(greaterThan(debugBorderCoords.xy, 1.0 - debugBorderCoords.zw)));
+        // don't discard fragments on debug border
+        float textureAlphaCutoff = isBorder > 0.0 ? 0.0 : alphaCutoff;
+      `):j.main.add(`float textureAlphaCutoff = alphaCutoff;`),j.main.add(`vec2 samplePos = vtc;`),x&&j.main.add(c`float txSize = float(textureSize(tex, 0).x);
+float texelSize = 1.0 / txSize;
+vec2 scaleFactor = (vsize - txSize) * texelSize;
+samplePos += (vec2(1.0, -1.0) * texelSize) * scaleFactor;`),a?j.main.add(c`
       vec4 fillPixelColor = vcolor;
 
       // Get distance in output units (i.e. pixels)
@@ -119,8 +106,8 @@ posProj = alignToPixelOrigin(posProj, viewport.zw);
         outlinePixelColor.a *= outlineAlphaFactor;
 
         if (
-          outlineAlphaFactor + fillAlphaFactor < ${N} ||
-          fillPixelColor.a + outlinePixelColor.a < ${l.float(R)}
+          outlineAlphaFactor + fillAlphaFactor < textureAlphaCutoff ||
+          fillPixelColor.a + outlinePixelColor.a < alphaCutoff
         ) {
           discard;
         }
@@ -130,48 +117,32 @@ posProj = alignToPixelOrigin(posProj, viewport.zw);
         vec3 compositeColor = vec3(outlinePixelColor) * outlinePixelColor.a +
                               vec3(fillPixelColor) * fillPixelColor.a * (1.0 - outlinePixelColor.a);
 
-        ${c(!O,l`fragColor = vec4(compositeColor, compositeAlpha);`)}
+        ${s(!M,c`fragColor = vec4(compositeColor, compositeAlpha);`)}
       } else {
-        if (fillAlphaFactor < ${N}) {
+        if (fillAlphaFactor < textureAlphaCutoff) {
           discard;
         }
 
-        ${c(!O,l`fragColor = premultiplyAlpha(fillPixelColor);`)}
+        ${s(!M,c`fragColor = premultiplyAlpha(fillPixelColor);`)}
       }
 
       // visualize SDF:
       // fragColor = vec4(clamp(-pixelDistance/vsize.x*2.0, 0.0, 1.0), clamp(pixelDistance/vsize.x*2.0, 0.0, 1.0), 0.0, 1.0);
-      `:l`
-          vec4 texColor = texture(tex, samplePos, -0.5);
-          if (texColor.a < ${N}) {
-            discard;
-          }
-          ${c(!O,l`fragColor = texColor * premultiplyAlpha(vcolor);`)}
-          `}
-
-    ${c(C&&!O,l`
+      `):j.main.add(c`
+        vec4 texColor = texture(tex, samplePos, -0.5);
+        if (texColor.a < textureAlphaCutoff) {
+          discard;
+        }
+        ${s(!M,c`fragColor = texColor * premultiplyAlpha(vcolor);`)}
+      `),y&&!M&&j.main.add(c`
         float zSample = -linearizeDepth(texelFetch(depthMap, ivec2(gl_FragCoord.xy), 0).x);
         float zFragment = -linearizeDepth(gl_FragCoord.z);
-        if (zSample < ${l.float(1-X)} * zFragment) {
+        if (zSample < ${c.float(1-Z)} * zFragment) {
           fragColor *= occludedOpacity;
         }
-      `)}
-    ${c(o,l`fragColor *= texelFetch(texOcclusion, ivec2(gl_FragCoord.xy), 0).r;`)}
-
-    ${c(!O&&_,l`fragColor = mix(fragColor, vec4(1.0, 0.0, 1.0, 1.0), isBorder * 0.5);`)}
-
-    ${c(i===2,l`
-    if (fragColor.a < ${l.float(R)}) {
-      discard;
-    }`)}
-  `;switch(r){case 0:t.outputs.add(`fragColor`,`vec4`,0),p&&t.outputs.add(`fragEmission`,`vec4`,1),i===1&&t.outputs.add(`fragAlpha`,`float`,p?2:1),D.main.add(l`
-        ${P}
-        // Unlike other materials, the fragment shader outputs premultiplied colors.
-        // Disable this for front face rendering for correct OIT compositing.
-        ${c(i===2,l`fragColor.rgb /= fragColor.a;`)}
-        ${c(p,l`fragEmission = vec4(0.0);`)}
-        ${c(i===1,l`fragAlpha = fragColor.a;`)}`);break;case 9:D.main.add(l`
-        ${P}
-        outputObjectAndLayerIdColor();`);break;case 8:t.include(L,e),D.main.add(l`
-        ${P}
-        outputHighlight(${c(k,l`voccluded == 1.0`,l`false`)});`)}return t}function q(e){return e.outlineColor[3]>0&&e.outlineSize>0}function J(e){return e.textureIsSignedDistanceField?de(e.anchorPosition,e.distanceFieldBoundingBox,Y):t(Y,e.anchorPosition),Y}function de(e,t,r){n(r,e[0]*(t[2]-t[0])+t[0],e[1]*(t[3]-t[1])+t[1])}var Y,X,Z,Q,$,fe=e((()=>{r(),s(),i(),_(),v(),W(),U(),G(),le(),I(),O(),D(),y(),T(),C(),w(),P(),N(),b(),f(),u(),k(),p(),g(),z(),Y=o(),X=.08,Z=32e3,Q=l.float(Z),$=Object.freeze(Object.defineProperty({__proto__:null,build:K,calculateAnchorPosition:J,fullUV:Z},Symbol.toStringTag,{value:`Module`}))}));export{fe as a,Z as i,$ as n,G as o,K as r,J as t};
+      `),i&&j.main.add(`fragColor *= texelFetch(texOcclusion, ivec2(gl_FragCoord.xy), 0).r;`),!M&&f&&j.main.add(`fragColor = mix(fragColor, vec4(1.0, 0.0, 1.0, 1.0), isBorder * 0.5);`),r===2&&j.main.add(c`if (fragColor.a < alphaCutoff) {
+discard;
+}`),L&&j.main.add(c`fragColor = applyFocusAreaStyle(fragColor, focusAreaStyle);`),_(r)&&l&&j.main.add(`fragEmission = vec4(0.0);`),r){case 1:j.main.add(`
+        fragColor = vec4(fragColor.rgb * floatBlendOutputScale, fragColor.a);
+        fragAlpha = fragColor.a * floatBlendOutputScale;
+      `);break;case 2:j.main.add(`fragColor.rgb /= fragColor.a;`);break;case 11:j.main.add(`outputObjectAndLayerIdColor();`);break;case 10:n.include(I,e),j.main.add(`outputHighlight(false);`)}return n}function q(e){return e.outlineColor[3]>0&&e.outlineSize>0}function J(e){return e.textureIsSignedDistanceField?fe(e.anchorPosition,e.distanceFieldBoundingBox,X):n(X,e.anchorPosition),X}function fe(e,n,r){t(r,e[0]*(n[2]-n[0])+n[0],e[1]*(n[3]-n[1])+n[1])}var Y,X,Z,Q;function $(){return($=e((()=>{r(),a(),i(),v(),y(),de(),G(),F(),U(),A(),x(),k(),w(),O(),N(),j(),S(),m(),l(),u(),L(),h(),H(),M(),B(),f(),Y=e=>e?V[e]:0,X=o(),Z=.08,Q=Object.freeze(Object.defineProperty({__proto__:null,anchorPosition:J,build:K},Symbol.toStringTag,{value:`Module`}))})))()}export{$ as i,J as n,Q as r,K as t};

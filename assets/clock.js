@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime.js";import{i as t,n}from"./handleUtils.js";function r(e){return{setTimeout:(t,r)=>{let i=e.setTimeout(t,r);return n(()=>e.clearTimeout(i))}}}var i;function a(){return(a=e((()=>{t(),i=r(globalThis)})))()}export{i as n,a as t};

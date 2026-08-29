@@ -1,1 +1,0 @@
-import{n as e}from"./chunk.js";var t,n=e((()=>{t={type:String,json:{read:{source:`token`},write:{target:`token`}}}}));export{t as n,n as t};

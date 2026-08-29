@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{r as t,t as n}from"./glsl.js";function r(e){e.code.add(t`
+import{n as e}from"./rolldown-runtime.js";import{r as t,t as n}from"./glsl.js";function r(e){e.code.add(t`
     float lineFactorAtPosition(float value) {
       float pos = value * ${t.float(257)};
       if(pos < 0.5 || pos > ${t.float(256.5)}) {
@@ -25,4 +25,4 @@ import{n as e}from"./chunk.js";import{r as t,t as n}from"./glsl.js";function r(e
     vec3 gridColor(vec2 uv) {
       float line = lineFactor(uv) * 0.1 + 0.9;
       return vec3(1.0, 0.972, 0.918) * line;
-    }`)}var i=e((()=>{n()}));export{r as n,i as t};
+    }`)}function i(){return(i=e((()=>{n()})))()}export{r as n,i as t};

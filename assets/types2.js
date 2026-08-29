@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";var t,n=e((()=>{t={AboveCoordinates:-1e3,Coordinates:-100,Middle:0,BelowMiddle:100,ShapeMeasurements:1e3}}));export{n,t};
+import{n as e}from"./rolldown-runtime.js";var t,n,r;function i(){return(i=e((()=>{t=Symbol.for(`esri-plugin-setting-freehand-snapping-enabled`),n=Symbol.for(`esri-plugin-setting-bezier-enable-spline-behavior`),r={AboveCoordinates:-1e3,Coordinates:-100,Middle:0,BelowMiddle:100,ShapeMeasurements:1e3}})))()}export{r as i,n,i as r,t};

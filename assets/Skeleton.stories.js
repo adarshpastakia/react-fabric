@@ -1,9 +1,8 @@
-import{n as e}from"./chunk.js";import{t}from"./jsx-runtime.js";import{dt as n,t as r}from"./src3.js";var i,a,o,s,c,l=e((()=>{i=t(),r(),a=t(),o={component:n,title:`@core/components/Animations`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/animations/Animations.test.tsx`]},decorators:[e=>(0,a.jsx)(`div`,{className:`h-48 w-96 relative p-4 overflow-hidden outline rounded`,children:(0,a.jsx)(e,{})})]},s={render:()=>(0,a.jsxs)(i.Fragment,{children:[(0,a.jsx)(n,{}),(0,a.jsx)(n,{})]}),args:{}},s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`{
-  render: () => {
-    return <Fragment>
-        <Skeleton />
-        <Skeleton />
-      </Fragment>;
+import{n as e,r as t}from"./rolldown-runtime.js";import{it as n,t as r}from"./src2.js";import{t as i}from"./jsx-runtime.js";var a=t({_Skeleton:()=>c,__namedExportsOrder:()=>l,default:()=>s}),o,s,c,l;function u(){return(u=e((()=>{r(),o=i(),s={component:n,title:`@core/components/Animations`,parameters:{layout:`centered`,jest:[`core/tests/components/Animations.test.tsx`]},decorators:[e=>(0,o.jsx)(`div`,{className:`flex gap-2 items-center p-4`,children:(0,o.jsx)(e,{})})]},c={render:e=>(0,o.jsx)(`div`,{className:`w-64`,children:(0,o.jsx)(n,{...e})}),args:{}},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
+  render: args => {
+    return <div className="w-64">
+        <Skeleton {...args} />
+      </div>;
   },
   args: {}
-}`,...s.parameters?.docs?.source}}},c=[`_Skeleton`]}));l();export{s as _Skeleton,c as __namedExportsOrder,o as default,l as t};
+}`,...c.parameters?.docs?.source}}},l=[`_Skeleton`]})))()}export{c as n,u as r,a as t};

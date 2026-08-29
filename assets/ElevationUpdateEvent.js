@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{l as t,w as n}from"./aaBoundingRect.js";var r,i=e((()=>{n(),r=class{constructor(e=`scene`){this.context=e,this.extent=t(),this.spatialReference=null}}}));export{i as n,r as t};
+import{n as e}from"./rolldown-runtime.js";import{E as t,d as n}from"./aaBoundingRect.js";var r;function i(){return(i=e((()=>{t(),r=class{constructor(e=`scene`){this.context=e,this.extent=n(),this.spatialReference=null}}})))()}export{i as n,r as t};

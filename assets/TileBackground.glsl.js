@@ -1,6 +1,6 @@
-import{n as e}from"./chunk.js";import{o as t}from"./vec3f64.js";import{i as n,r}from"./vec2f64.js";import{n as i,r as a,t as o}from"./glsl.js";import{n as s,t as c}from"./Float3PassUniform.js";import{n as l,t as u}from"./FloatPassUniform.js";import{n as d,t as f}from"./Texture2DPassUniform.js";import{r as p,t as m}from"./NoParameters.js";import{n as h,t as g}from"./Float2PassUniform.js";import{n as _,t as v}from"./BackgroundGrid.glsl.js";function y(e){e.attributes.add(`position`,`vec2`),e.attributes.add(`uv0`,`vec2`),e.varyings.add(`uv`,`vec2`),e.varyings.add(`vuv`,`vec2`),e.vertex.uniforms.add(new l(`scale`,e=>e.scale),new g(`offset`,e=>e.offset)).main.add(a`gl_Position = vec4(position, 0.0, 1.0);
+import{n as e}from"./rolldown-runtime.js";import{o as t}from"./vec3f64.js";import{i as n,o as r}from"./vec2f64.js";import{n as i,r as a,t as o}from"./glsl.js";import{r as s,t as c}from"./NoParameters.js";import{n as l,t as u}from"./FloatPassUniform.js";import{n as d,t as f}from"./Texture2DPassUniform.js";import{n as p,t as m}from"./Float3PassUniform.js";import{n as h,t as g}from"./Float2PassUniform.js";import{n as _,t as v}from"./BackgroundGrid.glsl.js";function y(e){e.attributes.add(`position`,`vec2`),e.attributes.add(`uv0`,`vec2`),e.varyings.add(`uv`,`vec2`),e.varyings.add(`vuv`,`vec2`),e.vertex.uniforms.add(new l(`scale`,e=>e.scale),new g(`offset`,e=>e.offset)).main.add(a`gl_Position = vec4(position, 0.0, 1.0);
 uv = uv0 * scale + offset;
-vuv = uv0;`)}var b,x=e((()=>{r(),h(),u(),o(),p(),b=class extends m{constructor(){super(...arguments),this.scale=1,this.offset=n}}}));function S(e,t){let n=t.blendMode;switch(n){case 0:return;case 30:e.code.add(a`float reflectBlend(in float cb, in float cl) {
+vuv = uv0;`)}var b;function x(){return(x=e((()=>{r(),h(),u(),o(),s(),b=class extends c{constructor(){super(...arguments),this.scale=1,this.offset=n}}})))()}function S(e,t){let n=t.blendMode;switch(n){case 0:return;case 30:e.code.add(a`float reflectBlend(in float cb, in float cl) {
 return (cl == 1.0) ? cl : min(cb * cb / (1.0 - cl), 1.0);
 }`);break;case 6:case 9:case 13:e.code.add(a`float colorDodge(in float cb, in float cl) {
 return (cb == 0.0) ? 0.0 : (cl == 1.0) ? 1.0 : min(1.0, cb / (1.0 - cl));
@@ -83,19 +83,19 @@ return setLum(sbase > 0.0 ? (cbase - minbase) * ssat / sbase : vec3(0.0), clum);
           vec3 f = vec3(hardLight(cb.r, cl.r), hardLight(cb.g, cl.g), hardLight(cb.b, cl.b));
           return vec4(f * ol * ob + cl * ol * (1.0 - ob) + cb * ob * (1.0 - ol), mix(ob, 1.0, ol));`;case 13:return`
           vec3 f = vec3(vividLight(cb.r, cl.r), vividLight(cb.g, cl.g), vividLight(cb.b, cl.b));
-          return vec4(f * ol * ob + cl * ol * (1.0 - ob) + cb * ob * (1.0 - ol), mix(ob, 1.0, ol));`}return`return cl * ol + cb * ob`}var w=e((()=>{o()}));function T(e,t){let{output:n,blendMode:r,applyBaseOpacity:o,premultipliedAlphaSource:s}=t,u=e.fragment;o&&u.uniforms.add(new l(`baseOpacity`,e=>e.baseOpacity));let d=r!==0,p=!d&&!s&&(n===1&&!o||n===4);u.include(S,t);let m=``;switch(n){case 4:case 0:m=a`vec4(0.0)`;break;case 2:u.uniforms.add(new c(`backgroundColor`,e=>e.backgroundColor)),m=a`vec4(backgroundColor, 1.0)`;break;case 3:u.include(_),m=a`vec4(gridColor(uv), 1.0)`;break;case 1:u.uniforms.add(new f(`fboColor`,e=>e.fboTexture)),m=a`texelFetch(fboColor, ivec2(gl_FragCoord.xy), 0)`}u.code.add(a`
+          return vec4(f * ol * ob + cl * ol * (1.0 - ob) + cb * ob * (1.0 - ol), mix(ob, 1.0, ol));`}return`return cl * ol + cb * ob`}function w(){return(w=e((()=>{o()})))()}function T(e,t){let{output:n,blendMode:r,applyBaseOpacity:o,premultipliedAlphaSource:s}=t,c=e.fragment;o&&c.uniforms.add(new l(`baseOpacity`,e=>e.baseOpacity));let u=r!==0,d=!u&&!s&&(n===1&&!o||n===4);c.include(S,t);let p=``;switch(n){case 4:case 0:p=a`vec4(0.0)`;break;case 2:c.uniforms.add(new m(`backgroundColor`,e=>e.backgroundColor)),p=a`vec4(backgroundColor, 1.0)`;break;case 3:c.include(_),p=a`vec4(gridColor(uv), 1.0)`;break;case 1:c.uniforms.add(new f(`fboColor`,e=>e.fboTexture)),p=a`texelFetch(fboColor, ivec2(gl_FragCoord.xy), 0)`}c.code.add(a`
     vec4 getBackground(vec2 uv) {
-      return ${i(o,a`baseOpacity *`)} ${m};
-    }`),d?u.code.add(a`vec4 blendLayers(vec2 bgUV, vec4 colorLayer, float opacity) {
+      return ${i(o,a`baseOpacity *`)} ${p};
+    }`),u?c.code.add(a`vec4 blendLayers(vec2 bgUV, vec4 colorLayer, float opacity) {
 vec3 cl = colorLayer.a == 0.0 ? colorLayer.rgb : colorLayer.rgb / colorLayer.a;
 vec4 bgColor = getBackground(bgUV);
 vec3 cb = bgColor.a == 0.0 ? bgColor.rgb : bgColor.rgb / bgColor.a;
 return applyBlendMode(clamp(cl, vec3(0.0), vec3(1.0)), colorLayer.a * opacity, cb, bgColor.a);
-}`):u.code.add(a`
+}`):c.code.add(a`
       vec4 blendLayers(vec2 bgUV, vec4 colorLayer, float opacity) {
         float composeAlpha = colorLayer.a * opacity;
-        ${i(p,a`return colorLayer * opacity;`,a`
+        ${i(d,a`return colorLayer * opacity;`,a`
             vec4 bgColor = getBackground(bgUV);
             return bgColor * (1.0 - composeAlpha) + colorLayer * opacity;
           `)}
-      }`)}var E=e((()=>{t(),v(),w(),s(),u(),o(),d(),p()}));export{x as a,y as i,E as n,b as r,T as t};
+      }`)}function E(){return(E=e((()=>{t(),v(),w(),p(),u(),o(),d(),s()})))()}export{x as a,y as i,E as n,b as r,T as t};

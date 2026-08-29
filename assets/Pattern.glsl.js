@@ -1,14 +1,14 @@
-import{n as e}from"./chunk.js";import{i as t,l as n}from"./tslib.es6.js";import{n as r,r as i,t as a}from"./glsl.js";import{n as o,t as s}from"./ShaderBuilder.js";import{n as c,t as l}from"./olidUtils.js";import{n as u,r as d}from"./ShaderTechniqueConfiguration.js";import{n as f,r as p}from"./Slice.glsl.js";import{n as m,t as h}from"./DefaultTechniqueConfiguration.js";import{n as ee,t as g}from"./ObjectAndLayerIdColor.glsl.js";import{n as _,t as v}from"./VisualVariables.glsl.js";import{n as y,t as b}from"./Float4PassUniform.js";import{n as x,t as te}from"./FloatBindUniform.js";import{n as S,r as ne,t as re}from"./View.glsl.js";import{n as ie,t as ae}from"./ColorConversion.glsl.js";import{n as oe,t as se}from"./TerrainDepthTest.glsl.js";import{n as ce,t as le}from"./OutputColorHighlightOLID.glsl.js";import{i as ue,n as de}from"./InterleavedLayout.js";import{n as fe,t as C}from"./TextureBackedBufferLayout.js";import{n as w,t as T}from"./Transform.glsl.js";import{n as E,t as D}from"./VertexColor.glsl.js";import{i as O,n as k,r as A,t as j}from"./Texture2DUintDrawUniform.js";function M(e,t,n,r){return e.draped?null:e.hasVVColor?r:e.hasVertexColors?n:t}var N,P=e((()=>{n(),d(),h(),N=class extends m{constructor(){super(...arguments),this.cullFace=0,this.style=0,this.hasVertexColors=!1,this.polygonOffset=!1,this.hasOccludees=!1,this.enableOffset=!0,this.terrainDepthTest=!1,this.cullAboveTerrain=!1,this.hasVVColor=!1,this.draped=!1,this.textureCoordinateType=0,this.emissionSource=0,this.discardInvisibleFragments=!0,this.writeDepth=!0,this.occlusionPass=!1,this.hasVVInstancing=!1,this.hasVVSize=!1,this.hasVVOpacity=!1,this.overlayEnabled=!1,this.snowCover=!1}},t([u({count:3})],N.prototype,`cullFace`,void 0),t([u({count:6})],N.prototype,`style`,void 0),t([u()],N.prototype,`hasVertexColors`,void 0),t([u()],N.prototype,`polygonOffset`,void 0),t([u()],N.prototype,`hasOccludees`,void 0),t([u()],N.prototype,`enableOffset`,void 0),t([u()],N.prototype,`terrainDepthTest`,void 0),t([u()],N.prototype,`cullAboveTerrain`,void 0),t([u()],N.prototype,`hasVVColor`,void 0),t([u()],N.prototype,`draped`,void 0)}));function F(e){let t=de().vec3f(`position`).vec4f(`uvMapSpace`);return e.draped?e.hasVVColor?t.f32(`colorFeatureAttribute`):e.hasVertexColors&&t.vec4u8(`color`,{glNormalized:!0}):t.u32(`textureElementIndex`,{integer:!0}),l()&&t.vec4u8(`olidColor`),t.freeze()}function I(e){return M(e,R,z,B)}var L,R,z,B,V=e((()=>{ue(),c(),fe(),P(),L=[{type:`mat3f32`,name:`boundingRect`}],R=new C(L),z=new C([...L,{type:`vec4unorm8`,name:`color`}]),B=new C([...L,{type:`f32`,name:`colorFeatureAttribute`}])}));function pe(e){return M(e,U,W,G)}var H,U,W,G,K=e((()=>{A(),k(),V(),P(),H=new j(`componentTextureBuffer`,e=>e.textureBuffer),U=new O({layout:R,itemIndexAttribute:`textureElementIndex`,bufferUniform:H}),W=new O({layout:z,itemIndexAttribute:`textureElementIndex`,bufferUniform:H}),G=new O({layout:B,itemIndexAttribute:`textureElementIndex`,bufferUniform:H,enableNaNSupport:!0})}));function q(e){let t=pe(e),n=t!=null,a=new o;n&&a.include(t.TextureBackedBufferModule,e);let{vertex:s,fragment:c,attributes:l,varyings:u}=a,d=e.output===8;S(s,e),a.include(w);let p=``;n?(e.hasVVColor&&(p=t.getTextureAttribute(`colorFeatureAttribute`)),e.hasVertexColors?(a.varyings.add(`vColor`,`vec4`),a.vertex.code.add(i`void forwardVertexColor() { vColor = ${t.getTextureAttribute(`color`)}; }`)):a.vertex.code.add(i`void forwardVertexColor() {}`),l.add(`textureElementIndex`,`uint`)):(a.include(E,e),e.hasVVColor&&(l.add(`colorFeatureAttribute`,`float`),p=`colorFeatureAttribute`)),a.include(_,e),a.include(g,e),a.fragment.include(f,e),a.include(le,e),a.include(se,e),e.draped&&s.uniforms.add(new x(`worldToScreenRatio`,e=>1/e.screenToPCSRatio)),l.add(`position`,`vec3`),l.add(`uvMapSpace`,`vec4`),e.hasVertexColors||u.add(`vColor`,`vec4`),u.add(`vpos`,`vec3`,{invariant:!0}),u.add(`vuv`,`vec2`),s.uniforms.add(new b(`uColor`,e=>e.color));let m=e.style===3||e.style===4||e.style===5;return m&&s.code.add(i`
-      const mat2 rotate45 = mat2(${i.float(J)}, ${i.float(-Y)},
-                                 ${i.float(Y)}, ${i.float(J)});
-    `),!e.draped&&n&&(re(s,e),s.uniforms.add(new x(`worldToScreenPerDistanceRatio`,e=>1/e.camera.perScreenPixelRatio)),s.code.add(i`vec3 projectPointToLineSegment(vec3 center, vec3 halfVector, vec3 point) {
+import{n as e}from"./rolldown-runtime.js";import{o as t,r as n}from"./tslib.es6.js";import{n as r,t as i}from"./olidUtils.js";import{n as a,r as o,t as s}from"./glsl.js";import{n as ee,t as c}from"./ShaderBuilder.js";import{n as l,r as u}from"./ShaderTechniqueConfiguration.js";import{a as d,i as f}from"./Slice.glsl.js";import{n as p,t as m}from"./ObjectAndLayerIdColor.glsl.js";import{n as h,t as g}from"./VisualVariables.glsl.js";import{n as _,t as v}from"./Float4PassUniform.js";import{n as y,t as b}from"./FloatBindUniform.js";import{n as x,r as te,t as ne}from"./View.glsl.js";import{n as re,t as ie}from"./ColorConversion.glsl.js";import{n as ae,t as S}from"./OutputColorHighlightOLID.glsl.js";import{i as C,n as w}from"./InterleavedLayout.js";import{n as oe,t as se}from"./TriangleTechniqueConfiguration.js";import{n as ce,t as T}from"./TextureBackedBufferLayout.js";import{n as le,t as ue}from"./Transform.glsl.js";import{n as de,t as fe}from"./VertexColor.glsl.js";import{i as E,n as D,r as O,t as k}from"./Texture2DUintDrawUniform.js";function A(e,t,n,r){return e.draped?null:e.hasVVColor?r:e.hasVertexColors?n:t}var j;function M(){return(M=e((()=>{t(),u(),se(),j=class extends oe{constructor(){super(...arguments),this.cullFace=0,this.style=0,this.emissionSource=0,this.hasVertexColors=!1,this.hasOccludees=!1,this.hasVVColor=!1,this.draped=!1,this.textureCoordinateType=0,this.discardInvisibleFragments=!0,this.writeDepth=!0,this.hasVVInstancing=!1,this.hasVVSize=!1,this.hasVVOpacity=!1,this.overlayEnabled=!1,this.snowCover=!1}},n([l({count:3})],j.prototype,`cullFace`,void 0),n([l({count:6})],j.prototype,`style`,void 0),n([l({count:8})],j.prototype,`emissionSource`,void 0),n([l()],j.prototype,`hasVertexColors`,void 0),n([l()],j.prototype,`hasOccludees`,void 0),n([l()],j.prototype,`hasVVColor`,void 0),n([l()],j.prototype,`draped`,void 0)})))()}function N(e){let t=w().vec3f(`position`).vec4f(`uvMapSpace`);return e.draped?e.hasVVColor?t.f32(`colorFeatureAttribute`):e.hasVertexColors&&t.vec4u8(`color`,{glNormalized:!0}):t.u32(`textureElementIndex`,{integer:!0}),i()&&t.vec4u8(`olidColor`),t.freeze()}function P(e){return A(e,I,L,R)}var F,I,L,R;function z(){return(z=e((()=>{C(),r(),ce(),M(),F=[{type:`mat3f32`,name:`boundingRect`}],I=new T(F),L=new T([...F,{type:`vec4unorm8`,name:`color`}]),R=new T([...F,{type:`f32`,name:`colorFeatureAttribute`}])})))()}function B(e){return A(e,H,U,W)}var V,H,U,W;function G(){return(G=e((()=>{E(),D(),z(),M(),V=new k(`componentTextureBuffer`,e=>e.textureBuffer),H=new O({layout:I,itemIndexAttribute:`textureElementIndex`,bufferUniform:V}),U=new O({layout:L,itemIndexAttribute:`textureElementIndex`,bufferUniform:V}),W=new O({layout:R,itemIndexAttribute:`textureElementIndex`,bufferUniform:V,enableNaNSupport:!0})})))()}function K(e){let t=B(e),n=t!=null,r=new ee;n&&r.include(t.TextureBackedBufferModule,e);let{vertex:i,fragment:s,attributes:c,varyings:l}=r,u=e.output===10;x(i,e),r.include(le);let d=``;n?(e.hasVVColor&&(d=t.getTextureAttribute(`colorFeatureAttribute`)),e.hasVertexColors?(r.varyings.add(`vColor`,`vec4`),r.vertex.code.add(o`void forwardVertexColor() { vColor = ${t.getTextureAttribute(`color`)}; }`)):r.vertex.code.add(o`void forwardVertexColor() {}`),c.add(`textureElementIndex`,`uint`)):(r.include(de,e),e.hasVVColor&&(c.add(`colorFeatureAttribute`,`float`),d=`colorFeatureAttribute`)),c.add(`position`,`vec3`),i.inputs.add(`position`,()=>`position`),r.include(h,e),r.include(m,e),s.include(f,e),r.include(ae,e),e.draped&&i.uniforms.add(new y(`worldToScreenRatio`,e=>1/e.screenToPCSRatio)),c.add(`uvMapSpace`,`vec4`),e.hasVertexColors||l.add(`vColor`,`vec4`),l.add(`vpos`,`vec3`,{invariant:!0}),l.add(`vuv`,`vec2`),i.uniforms.add(new v(`uColor`,e=>e.color));let p=e.style===3||e.style===4||e.style===5;return p&&i.code.add(o`
+      const mat2 rotate45 = mat2(${o.float(q)}, ${o.float(-.70710678118)},
+                                 ${o.float(J)}, ${o.float(q)});
+    `),!e.draped&&n&&(ne(i,e),i.uniforms.add(new y(`worldToScreenPerDistanceRatio`,e=>1/e.camera.perScreenPixelRatio)),i.code.add(o`vec3 projectPointToLineSegment(vec3 center, vec3 halfVector, vec3 point) {
 float projectedLength = dot(halfVector, point - center) / dot(halfVector, halfVector);
 return center + halfVector * clamp(projectedLength, -1.0, 1.0);
-}`),s.code.add(i`vec3 intersectRayPlane(vec3 rayDir, vec3 rayOrigin, vec3 planeNormal, vec3 planePoint) {
+}`),i.code.add(o`vec3 intersectRayPlane(vec3 rayDir, vec3 rayOrigin, vec3 planeNormal, vec3 planePoint) {
 float d = dot(planeNormal, planePoint);
 float t = (d - dot(planeNormal, rayOrigin)) / dot(planeNormal, rayDir);
 return rayOrigin + t * rayDir;
-}`),s.code.add(i`
+}`),i.code.add(o`
       float boundingRectDistanceToCamera() {
         vec3 center = ${t.getTextureAttribute(`boundingRect`)}[0];
         vec3 halfU = ${t.getTextureAttribute(`boundingRect`)}[1];
@@ -18,7 +18,7 @@ return rayOrigin + t * rayDir;
         vec3 viewDir = - vec3(view[0][2], view[1][2], view[2][2]);
 
         float viewAngle = dot(viewDir, n);
-        float minViewAngle = ${i.float(X)};
+        float minViewAngle = ${o.float(Y)};
 
         if (abs(viewAngle) < minViewAngle) {
           // view direction is (almost) parallel to plane -> clamp it to min angle
@@ -38,12 +38,12 @@ return rayOrigin + t * rayDir;
 
         return length(closestPoint - cameraPosition);
       }
-    `)),s.code.add(i`
+    `)),i.code.add(o`
     vec2 scaledUV() {
-      vec2 uv = uvMapSpace.xy ${r(m,` * rotate45`)};
-      vec2 uvCellOrigin = uvMapSpace.zw ${r(m,` * rotate45`)};
+      vec2 uv = uvMapSpace.xy ${a(p,` * rotate45`)};
+      vec2 uvCellOrigin = uvMapSpace.zw ${a(p,` * rotate45`)};
 
-      ${r(!e.draped,i`float distanceToCamera = boundingRectDistanceToCamera();
+      ${a(!e.draped,o`float distanceToCamera = boundingRectDistanceToCamera();
                float worldToScreenRatio = worldToScreenPerDistanceRatio / distanceToCamera;`)}
 
       // Logarithmically discretize ratio to avoid jittering
@@ -52,21 +52,20 @@ return rayOrigin + t * rayDir;
       discreteWorldToScreenRatio = ceil(discreteWorldToScreenRatio / step) * step;
       discreteWorldToScreenRatio = exp(discreteWorldToScreenRatio);
 
-      vec2 uvOffset = mod(uvCellOrigin * discreteWorldToScreenRatio, ${i.float(Z)});
+      vec2 uvOffset = mod(uvCellOrigin * discreteWorldToScreenRatio, ${o.float(X)});
       return uvOffset + (uv * discreteWorldToScreenRatio);
     }
-  `),s.main.add(i`
+  `),i.main.add(o`
     vuv = scaledUV();
     vpos = position;
-    forwardViewPosDepth((view * vec4(vpos, 1.0)).xyz);
     forwardVertexColor();
     forwardObjectAndLayerIdColor();
-    ${e.hasVertexColors?`vColor *= uColor;`:e.hasVVColor?i`vColor = uColor * interpolateVVColor(${p});`:`vColor = uColor;`}
+    ${e.hasVertexColors?`vColor *= uColor;`:e.hasVVColor?o`vColor = uColor * interpolateVVColor(${d});`:`vColor = uColor;`}
     gl_Position = transformPosition(proj, view, vpos);
-  `),c.include(ae),e.draped&&c.uniforms.add(new x(`texelSize`,e=>1/e.camera.pixelRatio)),d||(c.code.add(i`
-      const float lineWidth = ${i.float(Q)};
-      const float spacing = ${i.float(Z)};
-      const float spacingINV = ${i.float(1/Z)};
+  `),s.include(ie),e.draped&&s.uniforms.add(new y(`texelSize`,e=>1/e.camera.pixelRatio)),u||(s.code.add(o`
+      const float lineWidth = ${o.float(Z)};
+      const float spacing = ${o.float(X)};
+      const float spacingINV = ${o.float(1/X)};
 
       float coverage(float p, float txlSize) {
         p = mod(p, spacing);
@@ -82,7 +81,7 @@ return rayOrigin + t * rayDir;
 
         return coverage / txlSize;
       }
-    `),e.draped||c.code.add(i`const int maxSamples = 5;
+    `),e.draped||s.code.add(o`const int maxSamples = 5;
 float sampleAA(float p) {
 vec2 dxdy = abs(vec2(dFdx(p), dFdy(p)));
 float fwidth = dxdy.x + dxdy.y;
@@ -103,10 +102,9 @@ accumulator += coverage(p + step.x * dxdy.x + step.y * dxdy.y, fwidth);
 }
 accumulator /= float(samples.x * samples.y);
 return accumulator;
-}`)),c.main.add(i`
+}`)),s.main.add(o`
     discardBySlice(vpos);
-    discardByTerrainDepth();
     vec4 color = vColor;
-    ${r(!d,i`color.a *= ${me(e)};`)}
+    ${a(!u,o`color.a *= ${pe(e)};`)}
     outputColorHighlightOLID(applySlice(color, vpos), color.rgb);
-  `),a}function me(e){function t(t){return e.draped?i`coverage(vuv.${t}, texelSize)`:i`sampleAA(vuv.${t})`}switch(e.style){case 3:case 0:return t(`y`);case 4:case 1:return t(`x`);case 5:case 2:return i`1.0 - (1.0 - ${t(`x`)}) * (1.0 - ${t(`y`)})`;default:return`0.0`}}var J,Y,X,Z,Q,$,he=e((()=>{p(),T(),ee(),D(),oe(),v(),ie(),ne(),y(),te(),a(),ce(),K(),s(),J=.70710678118,Y=J,X=.08715574274,Z=10,Q=1,$=Object.freeze(Object.defineProperty({__proto__:null,build:q},Symbol.toStringTag,{value:`Module`}))}));export{I as a,P as c,K as i,N as l,$ as n,V as o,q as r,F as s,he as t};
+  `),r}function pe(e){function t(t){return e.draped?o`coverage(vuv.${t}, texelSize)`:o`sampleAA(vuv.${t})`}switch(e.style){case 3:case 0:return t(`y`);case 4:case 1:return t(`x`);case 5:case 2:return o`1.0 - (1.0 - ${t(`x`)}) * (1.0 - ${t(`y`)})`;default:return`0.0`}}var q,J,Y,X,Z,Q;function $(){return($=e((()=>{d(),ue(),p(),fe(),g(),re(),te(),_(),b(),s(),S(),G(),c(),q=.70710678118,J=q,Y=.08715574274,X=10,Z=1,Q=Object.freeze(Object.defineProperty({__proto__:null,build:K},Symbol.toStringTag,{value:`Module`}))})))()}export{P as a,M as c,G as i,j as l,$ as n,z as o,K as r,N as s,Q as t};

@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";var t,n=e((()=>{t={geodesic:0,loxodrome:1,"great-elliptic":2,"normal-section":3,"shape-preserving":4}}));export{n,t};
+import{n as e}from"./rolldown-runtime.js";var t;function n(){return(n=e((()=>{t={geodesic:0,loxodrome:1,"great-elliptic":2,"normal-section":3,"shape-preserving":4}})))()}export{n,t};

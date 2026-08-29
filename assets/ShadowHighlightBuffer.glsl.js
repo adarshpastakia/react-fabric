@@ -1,0 +1,5 @@
+import{n as e}from"./rolldown-runtime.js";import{r as t,t as n}from"./glsl.js";import{n as r,t as i}from"./ScreenSpacePass.glsl.js";import{n as a,t as o}from"./ShaderBuilder.js";import{n as s,t as c}from"./Texture2DBindUniform.js";import{i as l,n as u,r as d,t as f}from"./Texture2DShadowBindUniform.js";import{n as p,t as m}from"./calculateUVZShadowFromDepth.glsl.js";function h(){let e=new a;return e.include(r),e.include(p),e.fragment.include(l),e.outputs.add(`fragShadow`,`float`),e.fragment.uniforms.add(new f(`shadowMapHighlight`,({shadowMap:e})=>e.getOutput(6)),new c(`depthMap`,e=>e.depth?.attachment)).main.add(t`fragShadow = 0.0;
+vec3 uvzShadow = calculateUVZShadowFromDepth(uv, textureSize(shadowMapHighlight, 0), depthMap);
+if (uvzShadow.z >= 0.0) {
+fragShadow = readShadowMapUVZ(uvzShadow, shadowMapHighlight);
+}`),e}var g;function _(){return(_=e((()=>{i(),m(),d(),n(),s(),u(),o(),g=Object.freeze(Object.defineProperty({__proto__:null,build:h},Symbol.toStringTag,{value:`Module`}))})))()}export{g as n,h as r,_ as t};

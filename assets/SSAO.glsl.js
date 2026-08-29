@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{b as t,h as n}from"./vec2.js";import{a as r,r as i}from"./vec2f64.js";import{r as a,t as o}from"./glsl.js";import{n as s,t as c}from"./Gamma.glsl.js";import{n as l,t as u}from"./FloatPassUniform.js";import{n as d,t as f}from"./Texture2DPassUniform.js";import{n as p,t as m}from"./ShaderBuilder.js";import{n as h,t as g}from"./ScreenSpacePass.glsl.js";import{n as _,t as v}from"./FloatBindUniform.js";import{n as y,t as b}from"./Float2BindUniform.js";import{n as x,t as S}from"./ReadDepth.glsl.js";import{n as C,t as w}from"./Float2PassUniform.js";import{n as T,t as E}from"./CameraSpace.glsl.js";function D(){let e=new p,n=e.fragment;return e.include(h),e.include(E),n.include(S),n.include(s),n.uniforms.add(new _(`radius`,e=>O(e.camera))).code.add(a`vec3 sphere[16] = vec3[16](
+import{n as e}from"./rolldown-runtime.js";import{O as t,x as n}from"./vec2.js";import{o as r,s as i}from"./vec2f64.js";import{r as a,t as o}from"./glsl.js";import{n as s,t as c}from"./ScreenSpacePass.glsl.js";import{n as l,t as u}from"./ShaderBuilder.js";import{n as d,t as f}from"./FloatPassUniform.js";import{n as p,t as m}from"./Texture2DPassUniform.js";import{n as h,t as g}from"./FloatBindUniform.js";import{n as _,t as v}from"./Float2BindUniform.js";import{n as y,t as b}from"./Float2PassUniform.js";import{n as x,t as S}from"./Gamma.glsl.js";import{r as C,t as w}from"./ReadDepth.glsl.js";import{n as T,t as E}from"./CameraSpace.glsl.js";function D(){let e=new l,n=e.fragment;return e.include(s),e.include(E),n.include(w),n.include(S),n.uniforms.add(new h(`radius`,e=>O(e.camera))).code.add(a`vec3 sphere[16] = vec3[16](
 vec3(0.186937, 0.0, 0.0),
 vec3(0.700542, 0.0, 0.0),
 vec3(-0.864858, -0.481795, -0.111713),
@@ -24,7 +24,7 @@ vec3 v = Q - C;
 float vv = dot(v, v);
 float vn = dot(normalize(v), n_C);
 return fallOffFunction(vv, vn, 0.1);
-}`),e.outputs.add(`fragOcclusion`,`float`),n.uniforms.add(new f(`normalMap`,e=>e.normalTexture),new f(`depthMap`,e=>e.depthTexture),new l(`projScale`,e=>e.projScale),new f(`rnm`,e=>e.noiseTexture),new w(`rnmScale`,(e,n)=>t(A,n.camera.fullWidth/e.noiseTexture.descriptor.width,n.camera.fullHeight/e.noiseTexture.descriptor.height)),new l(`intensity`,e=>e.intensity),new b(`screenSize`,e=>t(A,e.camera.fullWidth,e.camera.fullHeight))).main.add(a`
+}`),e.outputs.add(`fragOcclusion`,`float`),n.uniforms.add(new m(`normalMap`,e=>e.normalTexture),new m(`depthMap`,e=>e.depthTexture),new d(`projScale`,e=>e.projScale),new m(`rnm`,e=>e.noiseTexture),new b(`rnmScale`,(e,n)=>t(A,n.camera.fullWidth/e.noiseTexture.descriptor.width,n.camera.fullHeight/e.noiseTexture.descriptor.height)),new d(`intensity`,e=>e.intensity),new v(`screenSize`,e=>t(A,e.camera.fullWidth,e.camera.fullHeight))).main.add(a`
     float depth = depthFromTexture(depthMap, uv);
 
     // Early out if depth is out of range, such as in the sky
@@ -80,4 +80,4 @@ return fallOffFunction(vv, vn, 0.1);
     A = (pow(A, 0.2) + 1.2 * pow(A, 4.0)) * INV_GAMMA;
 
     fragOcclusion = A;
-  `),e}function O(e){return Math.max(10,20*e.computeScreenPixelSizeAtDist(Math.abs(4*e.relativeElevation)))}var k,A,j,M=e((()=>{n(),i(),g(),x(),c(),T(),y(),C(),v(),u(),o(),d(),m(),k=16,A=r(),j=Object.freeze(Object.defineProperty({__proto__:null,build:D,getRadius:O},Symbol.toStringTag,{value:`Module`}))}));export{D as i,M as n,O as r,j as t};
+  `),e}function O(e){return Math.max(10,20*e.computeScreenPixelSizeAtDist(Math.abs(4*e.relativeElevation)))}var k,A,j;function M(){return(M=e((()=>{n(),r(),c(),C(),x(),T(),_(),y(),g(),f(),o(),p(),u(),k=16,A=i(),j=Object.freeze(Object.defineProperty({__proto__:null,build:D,getRadius:O},Symbol.toStringTag,{value:`Module`}))})))()}export{D as i,M as n,O as r,j as t};

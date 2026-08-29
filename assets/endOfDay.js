@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime.js";import{B as t,z as n}from"./index.esm.js";function r(e,n){let r=t(e,n?.in);return r.setHours(23,59,59,999),r}function i(){return(i=e((()=>{n()})))()}export{i as n,r as t};

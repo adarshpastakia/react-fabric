@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{r as t,t as n}from"./Intersector4.js";function r(e){let n=new t(e);return n.options.store=0,n.options.excludeLabels=!0,n}var i=e((()=>{n()}));export{r as n,i as t};
+import{n as e}from"./rolldown-runtime.js";import{r as t,t as n}from"./Intersector.js";function r(e){let n=new t(e);return n.options.store=0,n.options.excludeLabels=!0,n}function i(){return(i=e((()=>{n()})))()}export{r as n,i as t};

@@ -1,13 +1,13 @@
-import{n as e}from"./chunk.js";import{a as t,s as n}from"./ShaderOutput.js";import{n as r,r as i,t as a}from"./glsl.js";import{n as o,t as s}from"./Emissions.glsl.js";import{n as c,t as l}from"./ColorConversion.glsl.js";import{n as u,t as d}from"./OutputHighlight.glsl.js";import{n as f,t as p}from"./AlphaCutoff.js";function m(e,t){e.include(d,t),e.include(s,t),e.fragment.include(l);let{output:a,oitPass:o,hasEmission:c,discardInvisibleFragments:u,oitPremultipliedAlpha:p,snowCover:m}=t,h=a===9,g=n(a)&&o===1,_=n(a)&&o===2,v=n(a)&&o!==1,y=0;(v||g)&&e.outputs.add(`fragColor`,`vec4`,y++),c&&e.outputs.add(`fragEmission`,`vec4`,y++),g&&e.outputs.add(`fragAlpha`,`float`,y++),e.fragment.code.add(i`
-    void outputColorHighlightOLID(vec4 finalColor, vec3 emissiveSymbolColor ${r(m,`, float snow`)}) {
-      ${r(h,`finalColor.a = 1.0;`)}
-      ${r(u,`if (finalColor.a < ${i.float(f)}) { discard; }`)}
+import{n as e}from"./rolldown-runtime.js";import{n as t,r as n,t as r}from"./glsl.js";import{o as i,p as a,r as o}from"./ShaderOutput.js";import{n as s,t as c}from"./ColorConversion.glsl.js";import{n as l,t as u}from"./alphaCutoff.glsl.js";import{n as d,t as f}from"./Emissions.glsl.js";import{r as p,t as m}from"./oitResolution.glsl.js";import{n as h,t as g}from"./OutputHighlight.glsl.js";import{n as _,t as v}from"./EmissionDimming.glsl.js";import{n as y}from"./ditherNoise.glsl.js";function b(e,r){e.include(g,r),e.include(f,r);let{fragment:s,outputs:l}=e,{output:d,hasEmission:m,discardInvisibleFragments:h,oitPremultipliedAlpha:v,snowCover:b,useFloatBlend:x,emissionDimmingPass:S}=r,C=d===11,w=o(d),T=i(d),E=a(d)&&!w,D=0;(E||w)&&l.add(`fragColor`,`vec4`,D++),w&&l.add(`fragAlpha`,`float`,D++),m&&l.add(`fragEmission`,`vec4`,D++),s.include(c),s.include(u),s.include(p,r),s.include(y,r),S&&s.include(_,r),s.code.add(n`
+    void outputColorHighlightOLID(vec4 finalColor, vec3 emissiveSymbolColor ${t(b,`, float snow`)}) {
+      ${t(C,`finalColor.a = 1.0;`)}
+      ${t(h,`if (finalColor.a < alphaCutoff) { discard; }`)}
 
-      ${r(g,`${r(p,`fragColor = finalColor;`,`fragColor = premultiplyAlpha(finalColor);`)}\n           fragAlpha = finalColor.a;`)}
-      ${r(_&&p&&u,`finalColor.rgb /= finalColor.a;`)}
-      ${r(v,`fragColor = finalColor;`)}
-      ${r(c,`fragEmission = ${r(m,`mix(finalColor.a * getEmissions(emissiveSymbolColor), vec4(0.0), snow);`,`finalColor.a * getEmissions(emissiveSymbolColor);`)}`)}
+      ${t(w,`float noise = ditherNoise(finalColor);\n         fragColor = ${t(v,`finalColor`,`premultiplyAlpha(finalColor)`)};\n         fragColor = vec4(fragColor.rgb * floatBlendOutputScale + noise, fragColor.a);\n         float scaledAlpha = finalColor.a * floatBlendOutputScale;\n         fragAlpha = scaledAlpha + noise;\n         ${t(!x,`fragAlpha = fragAlpha < alphaCutoff ? scaledAlpha : fragAlpha;`)}`)}
+      ${t(T&&v&&h,`finalColor.rgb /= finalColor.a;`)}
+      ${t(E,`fragColor = finalColor;`)}
+      ${t(m,S?`fragEmission = vec4(emissionDimming(premultiplyAlpha(finalColor).rgb, finalColor.a), 0.0);`:`fragEmission = ${t(b,`mix(finalColor.a * getEmissions(emissiveSymbolColor), vec4(0.0), snow);`,`finalColor.a * getEmissions(emissiveSymbolColor);`)}\n            float emissionNoise = ditherNoise(fragEmission);\n            fragEmission.rgb = fragEmission.rgb * floatBlendOutputScale + emissionNoise;\n            fragEmission.a = finalColor.a;\n            fragEmission = premultiplyAlpha(fragEmission);\n            `)}
       calculateOcclusionAndOutputHighlight();
-      ${r(h,`outputObjectAndLayerIdColor();`)}
+      ${t(C,`outputObjectAndLayerIdColor();`)}
     }
-  `)}var h=e((()=>{t(),o(),u(),c(),a(),p()}));export{h as n,m as t};
+  `)}function x(){return(x=e((()=>{d(),h(),s(),v(),r(),l(),m()})))()}export{b as n,x as t};

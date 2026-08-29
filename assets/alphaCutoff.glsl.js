@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime.js";import{n as t,r as n,t as r}from"./AlphaCutoff.js";function i(e){e.constants.add(`alphaCutoff`,`float`,t),e.constants.add(`opacityCutoff`,`float`,n)}function a(){return(a=e((()=>{r()})))()}export{a as n,i as t};

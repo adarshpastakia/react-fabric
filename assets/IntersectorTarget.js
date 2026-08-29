@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";var t,n,r=e((()=>{t=class{constructor(e){this.layerViewUid=e}},n=class extends t{constructor(e,t){super(e),this.graphicUid=t}}}));export{n,t as r,r as t};
+import{n as e}from"./rolldown-runtime.js";var t,n;function r(){return(r=e((()=>{t=class{constructor(e){this.layerViewUid=e}},n=class extends t{constructor(e,t){super(e),this.graphicUid=t}}})))()}export{n,t as r,r as t};

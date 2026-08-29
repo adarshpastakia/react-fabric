@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";var t,n,r,i,a,o,s,c,l=e((()=>{t=3.14159265359/180,n=3.14159265359/128,r=1.1,i=1e-5,a=.05,o=1e-30,s=16777216,c=1.1}));export{a,n as c,i,r as l,c as n,l as o,t as r,o as s,s as t};
+import{n as e}from"./rolldown-runtime.js";import{n as t,t as n}from"./defaultCIMValues.js";var r,i,a;function o(){return(o=e((()=>{n(),r=15.5,i=1024,a={outlineWidth:.75,referenceWidth:.75,cap:t.CIMSolidStroke.capstyle,join:t.CIMSolidStroke.joinstyle,miterLimit:t.CIMSolidStroke.miterlimit}})))()}export{i,o as n,a as r,r as t};

@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{d as t}from"./apiConverter2.js";import{t as n}from"./operatorUnion.js";import{a as r,i,r as a,t as o}from"./unionOperator.js";e((()=>{n(),t(),a()}))();export{r as execute,i as executeMany,o as supportsCurves};
+import{n as e}from"./rolldown-runtime.js";import{l as t}from"./apiConverter.js";import{t as n}from"./operatorUnion.js";import{a as r,i,r as a,t as o}from"./unionOperator.js";function s(){return(s=e((()=>{n(),t(),a()})))()}s();export{r as execute,i as executeMany,o as supportsCurves};

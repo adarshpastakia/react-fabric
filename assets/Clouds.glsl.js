@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{L as t,R as n}from"./Error.js";import{S as r,v as i}from"./mathUtils.js";import{b as a,h as o}from"./vec2.js";import{n as s,t as c}from"./mat3f64.js";import{a as l,r as u}from"./vec2f64.js";import{r as d,t as f}from"./glsl.js";import{n as p,t as m}from"./FloatPassUniform.js";import{n as h,t as g}from"./Texture2DPassUniform.js";import{n as _,t as v}from"./ShaderBuilder.js";import{n as y,t as b}from"./ScreenSpacePass.glsl.js";import{r as x,t as S}from"./NoParameters.js";import{n as C,t as w}from"./Matrix3PassUniform.js";import{n as T,t as E}from"./Float2PassUniform.js";import{n as D,t as O}from"./SphereIntersect.glsl.js";import{a as k,i as A,n as j,r as M,s as N,t as P}from"./NoiseTextureAtlasDimensions.js";import{n as F,t as I}from"./BooleanPassUniform.js";function L(e){let t=new _;t.include(y,!1);let n=t.fragment;return n.include(O),n.uniforms.add(new p(`cloudRadius`,e=>e.cloudRadius),new p(`power`,e=>r(35,120,e.absorption)),new p(`sigmaE`,e=>1+e.absorption),new p(`density`,e=>r(0,.3,e.density)),new p(`cloudSize`,e=>r(0,.02,Math.max(.01,1-e.cloudSize))),new p(`detailSize`,e=>r(0,.2,Math.max(.01,1-e.detailSize))),new p(`smoothness`,e=>r(0,.5,1-e.smoothness)),new p(`cloudHeight`,e=>r(0,1500,e.cloudHeight)),new p(`coverage`,e=>e.coverage),new C(`view`,e=>e.viewMatrix),new g(`cloudShapeTexture`,e=>e.noiseTexture==null?null:e.noiseTexture.textureAtlas),new E(`cloudVariables`,e=>a(B,e.coverage,e.absorption)),new F(`lastSlice`,e=>e.lastSlice)),n.constants.add(`halfCubeMapSize`,`float`,.5*z),n.code.add(d`
+import{n as e}from"./rolldown-runtime.js";import{R as t,z as n}from"./Error.js";import{f as r,y as i}from"./mathUtils.js";import{O as a,x as o}from"./vec2.js";import{n as s,t as c}from"./mat3f64.js";import{o as l,s as u}from"./vec2f64.js";import{r as d,t as f}from"./glsl.js";import{n as p,t as m}from"./ScreenSpacePass.glsl.js";import{r as h,t as g}from"./NoParameters.js";import{n as _,t as v}from"./ShaderBuilder.js";import{n as y,t as b}from"./FloatPassUniform.js";import{n as x,t as S}from"./Texture2DPassUniform.js";import{n as C,t as w}from"./Matrix3PassUniform.js";import{n as T,t as E}from"./Float2PassUniform.js";import{n as D,t as O}from"./BooleanPassUniform.js";import{n as k,t as A}from"./SphereIntersect.glsl.js";import{a as j,i as M,n as N,r as P,s as F,t as I}from"./NoiseTextureAtlasDimensions.js";function L(e){let t=new _;t.include(p,!1);let n=t.fragment;return n.include(A),n.uniforms.add(new y(`cloudRadius`,e=>e.cloudRadius),new y(`power`,e=>r(35,120,e.absorption)),new y(`sigmaE`,e=>1+e.absorption),new y(`density`,e=>r(0,.3,e.density)),new y(`cloudSize`,e=>r(0,.02,Math.max(.01,1-e.cloudSize))),new y(`detailSize`,e=>r(0,.2,Math.max(.01,1-e.detailSize))),new y(`smoothness`,e=>r(0,.5,1-e.smoothness)),new y(`cloudHeight`,e=>r(0,1500,e.cloudHeight)),new y(`coverage`,e=>e.coverage),new C(`view`,e=>e.viewMatrix),new S(`cloudShapeTexture`,e=>e.noiseTexture?.textureAtlas),new E(`cloudVariables`,e=>a(B,e.coverage,e.absorption)),new D(`lastSlice`,e=>e.lastSlice)),n.constants.add(`halfCubeMapSize`,`float`,.5*z),n.code.add(d`
     const int STEPS = ${e.steps===0?d`16`:e.steps===1?d`100`:d`200`};
     const int STEPS_LIGHT = 6;
     const float stepL = 300.0 / float(STEPS_LIGHT);
@@ -20,13 +20,13 @@ import{n as e}from"./chunk.js";import{L as t,R as n}from"./Error.js";import{S as
       return clamp(x, 0.0, 1.0);
     }`),n.code.add(d`
     float getCloudShape(vec3 pos, float pOffset) {
-      const float textureWidth = ${d.float(N)};
-      const float dataWidth = ${d.float(N)};
-      const float tileRows = ${d.float(k)};
-      const vec3 atlasDimensions = vec3(${d.float(j)}, ${d.float(j)}, tileRows * tileRows);
+      const float textureWidth = ${d.float(F)};
+      const float dataWidth = ${d.float(F)};
+      const float tileRows = ${d.float(j)};
+      const vec3 atlasDimensions = vec3(${d.float(N)}, ${d.float(N)}, tileRows * tileRows);
 
       //Change from Y being height to Z being height
-      vec3 p = float(${d.float(A)}) * pos.xzy;
+      vec3 p = float(${d.float(M)}) * pos.xzy;
 
       //Pixel coordinates of point in the 3D data
       vec3 coord = vec3(mod(p - pOffset * atlasDimensions, atlasDimensions));
@@ -45,7 +45,7 @@ import{n as e}from"./chunk.js";import{L as t,R as n}from"./Error.js";import{S as
 
     float getCloudMap(vec2 p){
       // Shift the texture center to origin to avoid seam artifacts
-      vec2 uv = (${d.float(P)} * p) / ${d.float(N)} + 0.5;
+      vec2 uv = (${d.float(I)} * p) / ${d.float(F)} + 0.5;
 
       return texture(cloudShapeTexture, uv).a;
     }
@@ -146,4 +146,4 @@ vec3 sunDirection = normalize(vec3(0, 0, 1));
 shading = 0.5 * mainRay(viewPos, rayDir, sunDirection, distToStart, totalDistance, totalTransmittance);
 shading = mix(clamp(1.0 - cloudVariables.y, 0.6, 1.0), shading, hazeFactor);
 totalTransmittance = mix(0.0, totalTransmittance, hazeFactor);
-fragColor = vec4(shading, totalTransmittance, shading, totalTransmittance);`),t}var R,z,B,V,H=e((()=>{n(),i(),s(),o(),u(),M(),b(),I(),T(),m(),f(),w(),h(),D(),x(),v(),R=class extends S{constructor(){super(...arguments),this.cloudRadius=0,this.cloudSize=0,this.detailSize=0,this.absorption=0,this.density=0,this.smoothness=0,this.cloudHeight=0,this.coverage=0,this.lastSlice=!1,this.viewMatrix=c()}},z=t(`esri-mobile`)?1024:2048,B=l(),V=Object.freeze(Object.defineProperty({__proto__:null,CloudsPassParameters:R,build:L,cubeMapSize:z},Symbol.toStringTag,{value:`Module`}))}));export{L as a,R as i,V as n,H as r,z as t};
+fragColor = vec4(shading, totalTransmittance, shading, totalTransmittance);`),t}var R,z,B,V;function H(){return(H=e((()=>{n(),i(),s(),o(),l(),m(),O(),T(),b(),f(),w(),x(),P(),k(),h(),v(),R=class extends g{constructor(){super(...arguments),this.cloudRadius=0,this.cloudSize=0,this.detailSize=0,this.absorption=0,this.density=0,this.smoothness=0,this.cloudHeight=0,this.coverage=0,this.lastSlice=!1,this.viewMatrix=c()}},z=t(`esri-mobile`)?1024:2048,B=u(),V=Object.freeze(Object.defineProperty({__proto__:null,CloudsPassParameters:R,build:L,cubeMapSize:z},Symbol.toStringTag,{value:`Module`}))})))()}export{L as a,R as i,V as n,H as r,z as t};

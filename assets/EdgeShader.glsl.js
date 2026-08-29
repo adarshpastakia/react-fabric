@@ -1,11 +1,11 @@
-import{n as e}from"./chunk.js";import{b as t,h as n}from"./vec2.js";import{a as r,r as i,s as a}from"./vec2f64.js";import{n as o,r as s,t as c}from"./glsl.js";import{n as l,t as u}from"./Uniform.js";import{n as ee,t as d}from"./Float3DrawUniform.js";import{n as te,t as f}from"./Float3PassUniform.js";import{n as p,t as m}from"./FloatDrawUniform.js";import{n as ne,t as h}from"./FloatPassUniform.js";import{n as g,t as _}from"./Texture2DDrawUniform.js";import{n as re,t as v}from"./ShaderBuilder.js";import{r as ie}from"./NoParameters.js";import{n as ae,r as oe}from"./Slice.glsl.js";import{n as y,t as b}from"./Matrix3PassUniform.js";import{n as x,t as se}from"./FloatBindUniform.js";import{n as S,t as C}from"./Matrix4BindUniform.js";import{n as w,t as T}from"./Float2BindUniform.js";import{n as ce,t as le}from"./TerrainDepthTest.glsl.js";import{n as ue,t as de}from"./Float4BindUniform.js";import{i as fe,n as E,r as D,t as O}from"./Matrix3DrawUniform.js";import{n as k,t as A}from"./NormalAttribute.glsl.js";import{i as j,n as M,r as N,t as P}from"./Texture2DUintDrawUniform.js";import{a as F,n as I}from"./bufferLayouts2.js";function L(e){let t=s`bool isNaN( float val )
+import{n as e}from"./rolldown-runtime.js";import{O as t,x as n}from"./vec2.js";import{a as r,o as i,s as a}from"./vec2f64.js";import{n as o,r as s,t as c}from"./glsl.js";import{n as l,t as u}from"./Uniform.js";import{r as ee}from"./NoParameters.js";import{n as d,t as te}from"./ShaderBuilder.js";import{n as f,t as p}from"./FloatPassUniform.js";import{n as m,t as h}from"./Texture2DPassUniform.js";import{a as g,i as _}from"./Slice.glsl.js";import{n as v,t as y}from"./Float3PassUniform.js";import{n as b,t as x}from"./Matrix3PassUniform.js";import{n as S,t as C}from"./FloatBindUniform.js";import{n as w,t as T}from"./Matrix4BindUniform.js";import{n as E,t as D}from"./Float2BindUniform.js";import{n as O,t as ne}from"./Float4BindUniform.js";import{n as re,t as ie}from"./DoublePrecision.glsl.js";import{n as ae,t as oe}from"./NormalAttribute.glsl.js";import{i as se,n as ce,r as le,t as k}from"./Texture2DUintDrawUniform.js";import{o as A,r as j}from"./bufferLayouts.js";function M(e){let t=s`bool isNaN( float val )
 {
 return ( val < 0.0 || 0.0 < val || val == 0.0 ) ? false : true;
-}`;e.code.add(t)}var R=e((()=>{c()}));function z(e,t){let n=e.vertex;n.include(L),n.constants.add(`depthBias`,`vec2`,B),n.uniforms.add(new T(`inverseViewport`,e=>e.inverseViewport)),t.legacy?(n.uniforms.add(new S(`proj`,e=>e.camera.projectionMatrix)),n.code.add(s`vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {
+}`;e.code.add(t)}function N(){return(N=e((()=>{c()})))()}function P(e,t){let n=e.vertex;n.include(M),n.constants.add(`depthBias`,`vec2`,F),n.uniforms.add(new D(`inverseViewport`,e=>e.inverseViewport)),t.legacy?(n.uniforms.add(new w(`proj`,e=>e.camera.projectionMatrix)),n.code.add(s`vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {
 float offsetXY = depthBias.x;
 vec4 projNormal = proj * localView * vec4(globalNormal, 0.0);
 return offsetXY * projPos.w * 2.0 * inverseViewport * normalize(projNormal.xyz).xy;
-}`)):(n.uniforms.add(new y(`transformNormalViewFromGlobal`,e=>e.transformNormalViewFromGlobal),new S(`transformProjFromView`,e=>e.camera.projectionMatrix)),n.code.add(s`vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {
+}`)):(n.uniforms.add(new b(`transformNormalViewFromGlobal`,e=>e.transformNormalViewFromGlobal),new w(`transformProjFromView`,e=>e.camera.projectionMatrix)),n.code.add(s`vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {
 float offsetXY = depthBias.x;
 vec4 projNormal = transformProjFromView * vec4(transformNormalViewFromGlobal * globalNormal, 0.0);
 return offsetXY * projPos.w * 2.0 * inverseViewport * normalize(projNormal.xyz).xy;
@@ -20,7 +20,7 @@ projPos.xy += offsetXY;
 }
 projPos.z += _calculateProjectedBiasZ(projPos);
 return projPos;
-}`)}var B,V=e((()=>{i(),R(),w(),c(),b(),C(),B=a(.5,-4e-4)}));function pe(e,t){let n=e.vertex;t.silhouette?(n.code.add(s`bool isSilhouetteEdge(vec3 viewDir, vec3 normalA, vec3 normalB) {
+}`)}var F;function I(){return(I=e((()=>{i(),N(),E(),c(),x(),T(),F=r(.5,-4e-4)})))()}function L(e,t){let n=e.vertex;t.silhouette?(n.code.add(s`bool isSilhouetteEdge(vec3 viewDir, vec3 normalA, vec3 normalB) {
 float faceAVisible = dot(viewDir, normalA);
 float faceBVisible = dot(viewDir, normalB);
 return faceAVisible * faceBVisible < 0.0;
@@ -44,9 +44,7 @@ gl_Position = vec4(10.0, 10.0, 10.0, 1.0);
 return true;
 }`)):n.code.add(s`bool discardNonSilhouetteEdges(vec3 viewPos, vec3 worldPos, ComponentData data) {
 return false;
-}`)}var H=e((()=>{c()}));function me(e){let t=e.vertex;t.uniforms.add(new ne(`distanceFalloffFactor`,e=>e.distanceFalloffFactor)),t.code.add(s`float distanceBasedPerspectiveFactor(float distance) {
-return clamp(sqrt(distanceFalloffFactor / distance), 0.0, 1.0);
-}`)}var U=e((()=>{h(),c()}));function he(e,t){let{vertex:n}=e;e.include(k,t);let{silhouette:r,legacy:i,spherical:a,hasModelRotationScale:c}=t;e.attributes.add(`componentIndex`,`uint`);let{getTextureAttribute:l,TextureBackedBufferModule:u}=W;e.include(u),n.constants.add(`lineWidthFractionFactor`,`float`,8),n.constants.add(`extensionLengthOffset`,`float`,128),n.code.add(s`
+}`)}function R(){return(R=e((()=>{c()})))()}function z(e,t){let{vertex:n}=e;e.include(ae,t);let{silhouette:r,legacy:i,spherical:a}=t;e.attributes.add(`componentIndex`,`uint`);let{getTextureAttribute:o,TextureBackedBufferModule:c}=V;e.include(c),n.constants.add(`lineWidthFractionFactor`,`float`,8),n.constants.add(`extensionLengthOffset`,`float`,128),n.code.add(s`
     struct ComponentData {
       vec4 color;
       vec3 normal;
@@ -61,14 +59,14 @@ return clamp(sqrt(distanceFalloffFactor / distance), 0.0, 1.0);
       vec3 normal = normalModel();
       vec3 normal2 = ${r?s`decompressNormal(normal2Compressed)`:s`normal`};
 
-      vec4 colorValue = ${l(`color`)};
-      float lineWidth = float(${l(`lineWidth`)}) / lineWidthFractionFactor;
-      float extensionLength = float(${l(`extensionLength`)}) - extensionLengthOffset;
+      vec4 colorValue = ${o(`color`)};
+      float lineWidth = float(${o(`lineWidth`)}) / lineWidthFractionFactor;
+      float extensionLength = float(${o(`extensionLength`)}) - extensionLengthOffset;
       // SOLID (=0/255) needs to be > 0.0, SKETCHY (=1/255) needs to be <= 0;
-      float type = -(float(${l(`materialType`)})) + 0.5;
-      float opacity = ${l(`opacity`)};
+      float type = -(float(${o(`materialType`)})) + 0.5;
+      float opacity = ${o(`opacity`)};
 
-      float verticalOffset = ${l(`elevationOffset`)};
+      float verticalOffset = ${o(`elevationOffset`)};
 
       return ComponentData(
         vec4(colorValue.rgb, colorValue.a * opacity),
@@ -84,22 +82,18 @@ return (model * vec4(normal, 0.0)).xyz;
 }
 vec3 _modelToViewNormal(vec3 normal) {
 return (localView * model * vec4(normal, 0.0)).xyz;
-}`):(c&&n.uniforms.add(new E(`transformNormalGlobalFromModel`,e=>e.transformNormalGlobalFromModel)),n.code.add(s`
-      vec3 _modelToWorldNormal(vec3 normal) {
-        return ${o(c,s`transformNormalGlobalFromModel * `)}normal;
-      }
-    `)),r?(e.attributes.add(`normal2Compressed`,`vec2`),n.code.add(s`vec3 worldNormal(ComponentData data) {
+}`):n.uniforms.add(new H(`transformNormalGlobalFromModel`)).code.add(s`vec3 _modelToWorldNormal(vec3 normal) {
+return transformNormalGlobalFromModel * normal;
+}`),r?(e.attributes.add(`normal2Compressed`,`vec2`),n.code.add(s`vec3 worldNormal(ComponentData data) {
 return _modelToWorldNormal(normalize(data.normal + data.normal2));
 }`)):n.code.add(s`vec3 worldNormal(ComponentData data) {
 return _modelToWorldNormal(data.normal);
 }`),i?n.code.add(s`void worldAndViewFromModelPosition(vec3 modelPos, float verticalOffset, out vec3 worldPos, out vec3 viewPos) {
 worldPos = (model * vec4(modelPos, 1.0)).xyz;
 viewPos = (localView * vec4(worldPos, 1.0)).xyz;
-}`):(n.include(D,t),n.uniforms.add(new y(`transformViewFromCameraRelativeRS`,e=>e.transformViewFromCameraRelativeRS),new d(`transformWorldFromModelTL`,e=>e.transformWorldFromModelTL),new d(`transformWorldFromModelTH`,e=>e.transformWorldFromModelTH),new f(`transformWorldFromViewTL`,e=>e.transformWorldFromViewTL),new f(`transformWorldFromViewTH`,e=>e.transformWorldFromViewTH)),c&&n.uniforms.add(new E(`transformWorldFromModelRS`,e=>e.transformWorldFromModelRS)),n.code.add(s`
+}`):(n.include(ie),n.uniforms.add(new U(`transformWorldFromModelTL`),new U(`transformWorldFromModelTH`),new H(`transformWorldFromModelRS`),new b(`transformViewFromCameraRelativeRS`,e=>e.transformViewFromCameraRelativeRS),new y(`transformWorldFromViewTL`,e=>e.transformWorldFromViewTL),new y(`transformWorldFromViewTH`,e=>e.transformWorldFromViewTH)).code.add(s`
       void worldAndViewFromModelPosition(vec3 modelPos, float verticalOffset, out vec3 worldPos, out vec3 viewPos) {
-
-        vec3 rotatedModelPosition = ${o(c,s`transformWorldFromModelRS * `)}modelPos;
-
+        vec3 rotatedModelPosition = transformWorldFromModelRS * modelPos;
         vec3 transformCameraRelativeFromModel = dpAdd(
           transformWorldFromModelTL,
           transformWorldFromModelTH,
@@ -116,11 +110,11 @@ viewPos = (localView * vec4(worldPos, 1.0)).xyz;
 
         viewPos = transformViewFromCameraRelativeRS * worldPos;
       }
-    `)),n.uniforms.add(new S(`transformProjFromView`,e=>e.camera.projectionMatrix)).code.add(s`vec4 projFromViewPosition(vec3 position) {
+    `)),n.uniforms.add(new w(`transformProjFromView`,e=>e.camera.projectionMatrix)).code.add(s`vec4 projFromViewPosition(vec3 position) {
 return transformProjFromView * vec4(position, 1.0);
 }`),n.code.add(s`float calculateExtensionLength(float extensionLength, float lineLength) {
 return extensionLength / (log2(max(1.0, 256.0 / lineLength)) * 0.2 + 1.0);
-}`)}function ge(e){return e===1||e===2}var W,G=e((()=>{N(),A(),fe(),ee(),te(),c(),O(),b(),C(),M(),F(),W=new j({layout:I,itemIndexAttribute:`componentIndex`,bufferUniform:new P(`componentTextureBuffer`,e=>e.componentDataTextureBuffer?.texture)})}));function K(e,t){let n=t.type===2,r=t.type===0;e.attributes.add(`sideness`,`vec2`),e.vertex.code.add(s`
+}`)}function B(e){return e===1||e===2}var V,H,U;function W(){return(W=e((()=>{se(),oe(),re(),v(),c(),x(),T(),ce(),A(),l(),V=new le({layout:j,itemIndexAttribute:`componentIndex`,bufferUniform:new k(`componentTextureBuffer`,e=>e.componentDataTextureBuffer?.texture)}),H=class extends u{constructor(e){super(e,`mat3`)}},U=class extends u{constructor(e){super(e,`vec3`)}}})))()}function G(e,t){let n=t.type===2,r=t.type===0;e.attributes.add(`sideness`,`vec2`),e.vertex.code.add(s`
     struct UnpackedAttributes {
       vec2 sideness;
       vec2 sidenessNorm;
@@ -139,22 +133,22 @@ return extensionLength / (log2(max(1.0, 256.0 / lineLength)) * 0.2 + 1.0);
       ${o(n,`}`)}
       return UnpackedAttributes(sideness, sidenessNorm, lineWidth, extensionLengthPixels ${o(n,`, component.type`)});
     }
-  `)}var q=e((()=>{c()}));function _e(e,t){let n=e.vertex;switch(e.include(K,t),t.type){case 0:n.code.add(s`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
+  `)}function K(){return(K=e((()=>{c()})))()}function ue(e,t){let n=e.vertex;switch(e.include(G,t),t.type){case 0:n.code.add(s`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
 return 0.0;
-}`);break;case 1:n.uniforms.add(new p(`strokesAmplitude`,e=>e.strokesTexture.amplitude)).code.add(s`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
+}`);break;case 1:n.uniforms.add(new f(`strokesAmplitude`,e=>e.strokesTexture.amplitude)).code.add(s`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
 return strokesAmplitude;
-}`);break;case 2:n.uniforms.add(new p(`strokesAmplitude`,e=>e.strokesTexture.amplitude)).code.add(s`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
+}`);break;case 2:n.uniforms.add(new f(`strokesAmplitude`,e=>e.strokesTexture.amplitude)).code.add(s`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
 float type = unpackedAttributes.type;
 if (type <= 0.0) {
 return strokesAmplitude;
 }
 return 0.0;
-}`);break;case 3:break;default:t.type}}var J=e((()=>{m(),c(),q()}));function ve(e,t){e.include(K,t);let{vertex:n,fragment:r}=e;switch(ge(t.type)&&(e.varyings.add(`vStrokeUV`,`vec2`),n.uniforms.add(new _(`strokesTexture`,e=>e.strokesTexture.texture),new p(`strokesLog2Resolution`,e=>Math.log2(e.strokesTexture.resolution)),new p(`strokeVariants`,e=>e.strokesTexture.variants)).code.add(s`void calculateStyleOutputsSketch(float lineLength, UnpackedAttributes unpackedAttributes) {
+}`);break;case 3:break;default:t.type}}function q(){return(q=e((()=>{p(),c(),K()})))()}function de(e,t){e.include(G,t);let{vertex:n,fragment:r}=e;switch(B(t.type)&&(e.varyings.add(`vStrokeUV`,`vec2`),n.uniforms.add(new h(`strokesTexture`,e=>e.strokesTexture.texture),new f(`strokesLog2Resolution`,e=>Math.log2(e.strokesTexture.resolution)),new f(`strokeVariants`,e=>e.strokesTexture.variants)).code.add(s`void calculateStyleOutputsSketch(float lineLength, UnpackedAttributes unpackedAttributes) {
 vec2 sidenessNorm = unpackedAttributes.sidenessNorm;
 float lineIndex = clamp(ceil(log2(lineLength)), 0.0, strokesLog2Resolution);
 vStrokeUV = vec2(exp2(lineIndex) * sidenessNorm.y, lineIndex * strokeVariants + variantStroke + 0.5) / vec2(textureSize(strokesTexture, 0));
 vStrokeUV.x += variantOffset;
-}`),r.uniforms.add(new _(`strokesTexture`,e=>e.strokesTexture.texture)).code.add(s`float calculateLineOffsetSketch() {
+}`),r.uniforms.add(new h(`strokesTexture`,e=>e.strokesTexture.texture)).code.add(s`float calculateLineOffsetSketch() {
 return texture(strokesTexture, vStrokeUV).r;
 }
 float calculateLinePressureSketch() {
@@ -193,7 +187,11 @@ return calculateLinePressureSketch();
 else {
 return 1.0;
 }
-}`);break;case 3:break;default:t.type}}var Y=e((()=>{m(),c(),g(),G(),q(),ie()}));function X(e){let n=new re,{vertex:r,fragment:i,varyings:a,attributes:c}=n;e.legacy&&r.uniforms.add(new Q(`model`),new Q(`localView`)),n.include(z,e),n.include(he,e),n.include(_e,e),n.include(K,e),n.include(ve,e),i.include(ae,e),n.include(pe,e),n.include(le,e),n.include(me,e),a.add(`vColor`,`vec4`),a.add(`vRadius`,`float`),a.add(`vPosition`,`vec3`,{invariant:!0}),a.add(`vWorldPosition`,`vec3`,{invariant:!0}),a.add(`vLineLengthPixels`,`float`),a.add(`vSizeFalloffFactor`,`float`),r.uniforms.add(new T(`pixelToNDC`,({camera:e})=>t(Z,2/e.fullViewport[2],2/e.fullViewport[3])),new de(`viewport`,e=>e.camera.fullViewport),new x(`pixelRatio`,e=>e.camera.pixelRatio)),c.add(`position0`,`vec3`),c.add(`position1`,`vec3`),c.add(`variantOffset`,`float`),c.add(`variantStroke`,`float`),c.add(`variantExtension`,`float`);let l=e.type===1,u=e.type===2;return r.code.add(s`
+}`);break;case 3:break;default:t.type}}function J(){return(J=e((()=>{p(),c(),m(),W(),K(),ee()})))()}function Y(e){let n=new d,{vertex:r,fragment:i,varyings:a,attributes:c}=n;e.legacy&&r.uniforms.add(new Z(`model`),new Z(`localView`)),n.include(P,e),n.include(z,e),n.include(ue,e),n.include(G,e),n.include(de,e),i.include(_,e),n.include(L,e),a.add(`vColor`,`vec4`),a.add(`vRadius`,`float`),a.add(`vPosition`,`vec3`,{invariant:!0}),a.add(`vWorldPosition`,`vec3`,{invariant:!0}),a.add(`vLineLengthPixels`,`float`),a.add(`vSizeFalloffFactor`,`float`),r.uniforms.add(new D(`pixelToNDC`,({camera:e})=>t(X,2/e.fullViewport[2],2/e.fullViewport[3])),new ne(`viewport`,e=>e.camera.fullViewport),new S(`pixelRatio`,e=>e.camera.pixelRatio)),c.add(`position0`,`vec3`),c.add(`position1`,`vec3`),c.add(`variantOffset`,`float`),c.add(`variantStroke`,`float`),c.add(`variantExtension`,`float`);let l=e.type===1,u=e.type===2;return r.uniforms.add(new f(`distanceFalloffFactor`,e=>e.distanceFalloffFactor)).code.add(s`
+    float distanceBasedPerspectiveFactor(float distance) {
+      return clamp(sqrt(distanceFalloffFactor / distance), 0.0, 1.0);
+    }
+
     void calculateGeometricOutputs(vec3 viewPosV0, vec3 viewPosV1, vec3 worldPosV0, vec3 worldPosV1, vec3 worldNormal, UnpackedAttributes unpackedAttributes) {
       vec2 sideness = unpackedAttributes.sideness;
       vec2 sidenessNorm = unpackedAttributes.sidenessNorm;
@@ -201,7 +199,6 @@ return 1.0;
       vWorldPosition = mix(worldPosV0, worldPosV1, sidenessNorm.y).xyz;
 
       vec3 viewPos = mix(viewPosV0, viewPosV1, sidenessNorm.y);
-      forwardViewPosDepth(viewPos);
 
       vec4 projPosV0 = projFromViewPosition(viewPosV0);
       vec4 projPosV1 = projFromViewPosition(viewPosV1);
@@ -305,9 +302,8 @@ else {
 float positionOnCap = position.y - clamp(position.y, 0.0, lineLength);
 return length(vec2(positionX, positionOnCap)) - radius;
 }
-}`),i.main.add(s`discardByTerrainDepth();
-float radius = vRadius * calculateLinePressure();
+}`),i.main.add(s`float radius = vRadius * calculateLinePressure();
 float distance = lineWithCapsDistance(radius, vPosition.xy, vLineLengthPixels);
 float coverage = clamp(0.5 - distance, 0.0, 1.0);
 discardBySlice(vWorldPosition);
-fragColor = vec4(vColor.rgb, vColor.a * coverage);`),n}var Z,Q,$,ye=e((()=>{n(),i(),oe(),ce(),w(),ue(),se(),c(),V(),H(),U(),G(),J(),Y(),q(),v(),l(),Z=r(),Q=class extends u{constructor(e){super(e,`mat4`)}},$=Object.freeze(Object.defineProperty({__proto__:null,build:X},Symbol.toStringTag,{value:`Module`}))}));export{J as a,U as c,Y as i,H as l,ye as n,q as o,X as r,G as s,$ as t,V as u};
+fragColor = vec4(vColor.rgb, vColor.a * coverage);`),n}var X,Z,Q;function $(){return($=e((()=>{n(),i(),g(),E(),O(),C(),p(),c(),I(),R(),W(),q(),J(),K(),te(),l(),X=a(),Z=class extends u{constructor(e){super(e,`mat4`)}},Q=Object.freeze(Object.defineProperty({__proto__:null,build:Y},Symbol.toStringTag,{value:`Module`}))})))()}export{q as a,R as c,J as i,I as l,$ as n,K as o,Y as r,W as s,Q as t};

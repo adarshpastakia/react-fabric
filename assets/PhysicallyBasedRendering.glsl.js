@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{r as t,t as n}from"./glsl.js";import{n as r,t as i}from"./PiUtils.glsl.js";var a,o,s=e((()=>{a=3e5,o=5e5}));function c(e){e.code.add(t`vec3 evaluateDiffuseIlluminationHemisphere(vec3 ambientGround, vec3 ambientSky, float NdotNG) {
+import{n as e}from"./rolldown-runtime.js";import{r as t,t as n}from"./glsl.js";import{n as r}from"./PiUtils.glsl.js";import{n as i,t as a}from"./Gamma.glsl.js";var o,s;function c(){return(c=e((()=>{o=3e5,s=5e5})))()}function l(e){e.code.add(t`vec3 evaluateDiffuseIlluminationHemisphere(vec3 ambientGround, vec3 ambientSky, float NdotNG) {
 return ((1.0 - NdotNG) * ambientGround + (1.0 + NdotNG) * ambientSky) * 0.5;
 }`),e.code.add(t`float integratedRadiance(float cosTheta2, float roughness) {
 return (cosTheta2 - 1.0) / (cosTheta2 * (1.0 - roughness * roughness) - 1.0);
@@ -8,7 +8,7 @@ float intRadTheta = integratedRadiance(cosTheta2, roughness);
 float ground = RdotNG < 0.0 ? 1.0 - intRadTheta : 1.0 + intRadTheta;
 float sky = 2.0 - ground;
 return (ground * ambientGround + sky * ambientSky) * 0.5;
-}`)}var l=e((()=>{n()}));function u(e,n){e.include(r),n.pbrMode!==1&&n.pbrMode!==2&&n.pbrMode!==5&&n.pbrMode!==6||(e.code.add(t`float normalDistribution(float NdotH, float roughness)
+}`)}function u(){return(u=e((()=>{n()})))()}function d(e,n){e.include(a),e.include(r),n.pbrMode!==1&&n.pbrMode!==2&&n.pbrMode!==5&&n.pbrMode!==6||(e.code.add(t`float normalDistribution(float NdotH, float roughness)
 {
 float a = NdotH * roughness;
 float b = roughness / (1.0 - NdotH * NdotH + a * a);
@@ -20,42 +20,66 @@ vec2 prefilteredDFGAnalytical(float roughness, float NdotV) {
 vec4 r = roughness * c0 + c1;
 float a004 = min(r.x * r.x, exp2(-9.28 * NdotV)) * r.x + r.y;
 return c2 * a004 + r.zw;
-}`)),n.pbrMode!==1&&n.pbrMode!==2||(e.include(c),e.code.add(t`struct PBRShadingInfo
+}`),e.code.add(t`struct PBRShadingInfo
 {
 float NdotV;
+float NdotL;
 float LdotH;
-float NdotNG;
-float RdotNG;
+float NdotUP;
+float RdotUP;
 float NdotAmbDir;
 float NdotH_Horizon;
+float NdotH;
 vec3 skyRadianceToSurface;
 vec3 groundRadianceToSurface;
 vec3 skyIrradianceToSurface;
 vec3 groundIrradianceToSurface;
+vec3 reflectedView;
 float averageAmbientRadiance;
-float ssao;
 vec3 albedoLinear;
 vec3 f0;
 vec3 f90;
 vec3 diffuseColor;
 float metalness;
 float roughness;
-};`),e.code.add(t`vec3 evaluateEnvironmentIllumination(PBRShadingInfo inputs) {
-vec3 indirectDiffuse = evaluateDiffuseIlluminationHemisphere(inputs.groundIrradianceToSurface, inputs.skyIrradianceToSurface, inputs.NdotNG);
-vec3 indirectSpecular = evaluateSpecularIlluminationHemisphere(inputs.groundRadianceToSurface, inputs.skyRadianceToSurface, inputs.RdotNG, inputs.roughness);
+};`),e.code.add(t`void calculateCommonInputs(out PBRShadingInfo inputs, vec3 normal, vec3 viewDirection, vec3 upDirection, vec3 albedo) {
+vec3 h = normalize(mainLightDirection - viewDirection);
+inputs.NdotV = clamp(abs(dot(normal, -viewDirection)), 0.001, 1.0);
+inputs.NdotUP = clamp(dot(normal, upDirection), -1.0, 1.0);
+inputs.reflectedView = normalize(reflect(-viewDirection, normal));
+inputs.RdotUP = clamp(dot(inputs.reflectedView, upDirection), -1.0, 1.0);
+inputs.albedoLinear = linearizeGamma(albedo);
+inputs.NdotH = clamp(dot(normal, h), 0.0, 1.0);
+inputs.NdotL = clamp(dot(normal, mainLightDirection), 0.001, 1.0);
+}`)),n.pbrMode!==1&&n.pbrMode!==2||(e.include(l),e.code.add(t`vec3 evaluateEnvironmentIllumination(PBRShadingInfo inputs) {
+vec3 indirectDiffuse = evaluateDiffuseIlluminationHemisphere(inputs.groundIrradianceToSurface, inputs.skyIrradianceToSurface, inputs.NdotUP);
+vec3 indirectSpecular = evaluateSpecularIlluminationHemisphere(inputs.groundRadianceToSurface, inputs.skyRadianceToSurface, inputs.RdotUP, inputs.roughness);
 vec3 diffuseComponent = inputs.diffuseColor * indirectDiffuse * INV_PI;
 vec2 dfg = prefilteredDFGAnalytical(inputs.roughness, inputs.NdotV);
 vec3 specularColor = inputs.f0 * dfg.x + inputs.f90 * dfg.y;
 vec3 specularComponent = specularColor * indirectSpecular;
 return (diffuseComponent + specularComponent);
-}`))}function d(e,n){e.include(r),e.code.add(t`
+}`),e.code.add(t`void calculatePBRInputs(out PBRShadingInfo inputs, vec3 normal, vec3 viewDirection, vec3 upDirection, vec3 albedo, vec3 mrr) {
+calculateCommonInputs(inputs, normal, viewDirection, upDirection, albedo);
+inputs.metalness = mrr[0];
+inputs.roughness = clamp(mrr[1] * mrr[1], 0.001, 0.99);
+inputs.f0 = (0.16 * mrr[2] * mrr[2]) * (1.0 - inputs.metalness) + inputs.albedoLinear * inputs.metalness;
+inputs.f90 = vec3(clamp(dot(inputs.f0, vec3(50.0 * 0.33)), 0.0, 1.0));
+inputs.diffuseColor = inputs.albedoLinear * (vec3(1.0) - inputs.f0) * (1.0 - inputs.metalness);
+}`)),n.pbrMode!==5&&n.pbrMode!==6||e.code.add(t`const vec3 fresnelReflectionSimplified = vec3(0.04);
+void calculateSimplifiedInputs(out PBRShadingInfo inputs, vec3 normal, vec3 viewDirection, vec3 upDirection, vec3 albedo) {
+calculateCommonInputs(inputs, normal, viewDirection, upDirection, albedo);
+float lightness = 0.3 * inputs.albedoLinear[0] + 0.5 * inputs.albedoLinear[1] + 0.2 * inputs.albedoLinear[2];
+inputs.f0 = (0.85 * lightness + 0.15) * fresnelReflectionSimplified;
+inputs.f90 =  vec3(clamp(dot(inputs.f0, vec3(50.0 * 0.33)), 0.0, 1.0));
+}`)}function f(e,n){e.include(r),e.code.add(t`
     struct PBRShadingWater {
-        float NdotL;   // cos angle between normal and light direction
-        float NdotV;   // cos angle between normal and view direction
-        float NdotH;   // cos angle between normal and half vector
-        float VdotH;   // cos angle between view direction and half vector
-        float LdotH;   // cos angle between light direction and half vector
-        float VdotN;   // cos angle between view direction and normal vector
+      float NdotL;   // cos angle between normal and light direction
+      float NdotV;   // cos angle between normal and view direction
+      float NdotH;   // cos angle between normal and half vector
+      float VdotH;   // cos angle between view direction and half vector
+      float LdotH;   // cos angle between light direction and half vector
+      float VdotN;   // cos angle between view direction and normal vector
     };
 
     float dtrExponent = ${n.useCustomDTRExponentForWater?`2.2`:`2.0`};
@@ -76,4 +100,4 @@ float diffusionSunHaze = mix(roughness + 0.045, roughness + 0.385, 1.0 - props.V
 float strengthSunHaze  = 1.2;
 float dSunHaze = normalDistributionWater(props.NdotH, diffusionSunHaze) * strengthSunHaze;
 return ((dSun + dSunHaze) * V) * F;
-}`)}var f=e((()=>{l(),i(),n()}));export{s as a,a as i,f as n,o,u as r,d as t};
+}`)}function p(){return(p=e((()=>{u(),i(),n()})))()}export{c as a,o as i,f as n,s as o,p as r,d as t};

@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime.js";function t(e){return typeof e==`object`&&!!e&&n in e}var n;function r(){return(r=e((()=>{n=Symbol(`PopupTemplateInstance`)})))()}export{n,t as r,r as t};

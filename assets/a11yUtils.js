@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{S as t,x as n}from"./Error.js";var r,i=e((()=>{n(),r=()=>t.respectPrefersReducedMotion&&window.matchMedia(`(prefers-reduced-motion: reduce)`).matches}));export{r as n,i as t};
+import{n as e}from"./rolldown-runtime.js";import{C as t,S as n}from"./Error.js";var r;function i(){return(i=e((()=>{n(),r=()=>t.respectPrefersReducedMotion&&window.matchMedia(`(prefers-reduced-motion: reduce)`).matches})))()}export{r as n,i as t};

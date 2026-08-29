@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{L as t,R as n}from"./promiseUtils.js";function r(e,n){return new Promise((r,i)=>{e.readyState>=HTMLMediaElement.HAVE_CURRENT_DATA?r():(n(t(e,`canplay`,r)),n(t(e,`error`,i)))})}var i=e((()=>{n()}));export{r as n,i as t};
+import{n as e}from"./rolldown-runtime.js";import{L as t,R as n}from"./promiseUtils.js";function r(e,n){return new Promise((r,i)=>{e.readyState>=HTMLMediaElement.HAVE_CURRENT_DATA?r():(n(t(e,`canplay`,r)),n(t(e,`error`,i)))})}function i(){return(i=e((()=>{n()})))()}export{r as n,i as t};

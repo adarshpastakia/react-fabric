@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";function t(e){return!!e&&n in e}var n,r=e((()=>{n=Symbol(`isImageryGraphicOrigin`)}));export{r as n,t as r,n as t};
+import{n as e}from"./rolldown-runtime.js";function t(e){return!!e&&n in e}var n;function r(){return(r=e((()=>{n=Symbol(`isImageryGraphicOrigin`)})))()}export{r as n,t as r,n as t};

@@ -1,12 +1,12 @@
-import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";import{C as r,D as i,E as a,G as o,Q as s,S as c,W as l,a as u,g as d,nt as f,t as p,tt as m}from"./src3.js";var h=t({CardContent:()=>b,NestedDropdown:()=>S,PanelContent:()=>x,_Dropdown:()=>y,__namedExportsOrder:()=>C,default:()=>v}),g,_,v,y,b,x,S,C,w=e((()=>{p(),g=n(),{fn:_}=__STORYBOOK_MODULE_TEST__,v={component:m,title:`@core/components/Dropdown`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/Dropdown.test.tsx`]},decorators:[e=>(0,g.jsx)(`div`,{className:`flex gap-2 items-center p-4`,children:(0,g.jsx)(e,{})})]},y={render:e=>(0,g.jsxs)(m,{...e,children:[(0,g.jsx)(s,{altIcon:`icon-[mdi--chevron-down]`,children:`Dropdown Menu`}),(0,g.jsxs)(a,{onClick:_(),className:`overflow-auto scroll-thin`,children:[(0,g.jsx)(i,{id:`1`,label:`Item One`}),(0,g.jsx)(i,{id:`2`,label:`Item Two`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`}),(0,g.jsx)(i,{id:`3`,label:`Item Three`})]})]}),args:{onClose:_(),onOpen:_()}},b={render:e=>(0,g.jsxs)(m,{...e,children:[(0,g.jsx)(s,{altIcon:`icon-[mdi--chevron-down]`,children:`Dropdown Card`}),(0,g.jsxs)(l,{children:[(0,g.jsx)(u,{children:`Some content`}),(0,g.jsx)(o,{className:`p-2`,flex:!0,justify:`end`,children:(0,g.jsx)(f,{children:(0,g.jsx)(s,{onClick:_(),children:`Close`})})})]})]}),args:{onClose:_(),onOpen:_()}},x={render:e=>(0,g.jsxs)(m,{...e,children:[(0,g.jsx)(s,{altIcon:`icon-[mdi--chevron-down]`,children:`Dropdown Panel`}),(0,g.jsxs)(c,{children:[(0,g.jsxs)(r,{title:`Some panel`,children:[(0,g.jsx)(d,{children:(0,g.jsx)(u,{children:`Some content`})}),(0,g.jsx)(o,{className:`p-2`,flex:!0,justify:`end`,children:(0,g.jsx)(f,{children:(0,g.jsx)(s,{children:`Close`})})})]}),(0,g.jsxs)(r,{title:`Some panel`,children:[(0,g.jsx)(d,{children:(0,g.jsx)(u,{children:`Some content`})}),(0,g.jsx)(o,{className:`p-2`,flex:!0,justify:`end`,children:(0,g.jsx)(f,{children:(0,g.jsx)(s,{children:`Close`})})})]})]})]}),args:{onClose:_(),onOpen:_()}},S={render:e=>(0,g.jsxs)(m,{...e,children:[(0,g.jsx)(s,{altIcon:`icon-[mdi--chevron-down]`,children:`Dropdown Panel`}),(0,g.jsxs)(l,{children:[(0,g.jsx)(d,{children:`Nested dropdowns`}),(0,g.jsxs)(o,{flex:!0,justify:`end`,children:[(0,g.jsx)(f,{children:(0,g.jsx)(s,{children:`Dismiss Parent`})}),(0,g.jsxs)(m,{children:[(0,g.jsx)(s,{children:`Child`}),(0,g.jsx)(l,{children:(0,g.jsx)(f,{children:(0,g.jsx)(s,{children:`Dismiss Child`})})})]})]})]})]}),args:{onClose:_(),onOpen:_()}},y.parameters={...y.parameters,docs:{...y.parameters?.docs,source:{originalSource:`{
+import{n as e}from"./rolldown-runtime.js";import{r as t}from"./EmptyContent.js";import{It as n,K as r,N as i,P as a,S as o,f as s,gt as c,m as l,t as u,w as d,zt as f}from"./src2.js";import{t as p}from"./jsx-runtime.js";var m,h,g,_,v,y,b,x;function S(){return(S=e((()=>{u(),m=p(),{fn:h}=__STORYBOOK_MODULE_TEST__,g={component:i,tags:[`autodocs`],title:`@core/components/Dropdown`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/Dropdown.test.tsx`]},decorators:[e=>(0,m.jsx)(`div`,{className:`flex gap-2 items-center p-4`,children:(0,m.jsx)(e,{})})]},_={render:e=>(0,m.jsxs)(i,{...e,className:`overflow-auto`,children:[(0,m.jsx)(t,{altIcon:`icon-[mdi--chevron-down]`,children:`Dropdown Menu`}),(0,m.jsxs)(o,{onClick:h(),className:`overflow-auto scroll-thin`,children:[(0,m.jsx)(d,{id:`1`,label:`Item One`}),(0,m.jsx)(d,{id:`2`,label:`Item Two`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`,active:!0}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`}),(0,m.jsx)(d,{id:`3`,label:`Item Three`})]})]}),args:{onClose:h(),onOpen:h()}},v={render:e=>(0,m.jsxs)(i,{...e,children:[(0,m.jsx)(t,{altIcon:`icon-[mdi--chevron-down]`,children:`Dropdown Card`}),(0,m.jsxs)(r,{children:[(0,m.jsx)(f,{children:(0,m.jsx)(c,{children:`Some content`})}),(0,m.jsx)(n,{className:`p-2`,flex:!0,justify:`end`,children:(0,m.jsx)(a,{children:(0,m.jsx)(t,{onClick:h(),children:`Close`})})})]})]}),args:{onClose:h(),onOpen:h()}},y={render:e=>(0,m.jsxs)(i,{...e,children:[(0,m.jsx)(t,{altIcon:`icon-[mdi--chevron-down]`,children:`Dropdown Panel`}),(0,m.jsxs)(s,{children:[(0,m.jsxs)(l,{title:`Some panel`,children:[(0,m.jsx)(f,{children:(0,m.jsx)(c,{children:`Some content`})}),(0,m.jsx)(n,{className:`p-2`,flex:!0,justify:`end`,children:(0,m.jsx)(a,{children:(0,m.jsx)(t,{children:`Close`})})})]}),(0,m.jsxs)(l,{title:`Some panel`,children:[(0,m.jsx)(f,{children:(0,m.jsx)(c,{children:`Some content`})}),(0,m.jsx)(n,{className:`p-2`,flex:!0,justify:`end`,children:(0,m.jsx)(a,{children:(0,m.jsx)(t,{children:`Close`})})})]}),(0,m.jsxs)(l,{title:`Some panel`,children:[(0,m.jsx)(f,{children:(0,m.jsx)(c,{children:`Some content`})}),(0,m.jsx)(n,{className:`p-2`,flex:!0,justify:`end`,children:(0,m.jsx)(a,{children:(0,m.jsx)(t,{children:`Close`})})})]})]})]}),args:{onClose:h(),onOpen:h()}},b={render:e=>(0,m.jsxs)(i,{...e,children:[(0,m.jsx)(t,{altIcon:`icon-[mdi--chevron-down]`,children:`Dropdown Panel`}),(0,m.jsxs)(r,{children:[(0,m.jsx)(f,{children:`Nested dropdowns`}),(0,m.jsxs)(n,{flex:!0,justify:`end`,children:[(0,m.jsx)(a,{children:(0,m.jsx)(t,{children:`Dismiss Parent`})}),(0,m.jsxs)(i,{children:[(0,m.jsx)(t,{children:`Child`}),(0,m.jsx)(r,{children:(0,m.jsx)(n,{children:(0,m.jsx)(a,{children:(0,m.jsx)(t,{children:`Dismiss Child`})})})})]})]})]})]}),args:{onClose:h(),onOpen:h()}},_.parameters={..._.parameters,docs:{..._.parameters?.docs,source:{originalSource:`{
   render: args => {
-    return <Dropdown {...args}>
+    return <Dropdown {...args} className="overflow-auto">
         <Button altIcon="icon-[mdi--chevron-down]">Dropdown Menu</Button>
         <Menu onClick={fn()} className="overflow-auto scroll-thin">
           <MenuItem id="1" label="Item One" />
           <MenuItem id="2" label="Item Two" />
           <MenuItem id="3" label="Item Three" />
-          <MenuItem id="3" label="Item Three" />
+          <MenuItem id="3" label="Item Three" active />
           <MenuItem id="3" label="Item Three" />
           <MenuItem id="3" label="Item Three" />
           <MenuItem id="3" label="Item Three" />
@@ -38,12 +38,14 @@ import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";impor
     onClose: fn(),
     onOpen: fn()
   }
-}`,...y.parameters?.docs?.source}}},b.parameters={...b.parameters,docs:{...b.parameters?.docs,source:{originalSource:`{
+}`,..._.parameters?.docs?.source}}},v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Dropdown {...args}>
         <Button altIcon="icon-[mdi--chevron-down]">Dropdown Card</Button>
         <Card>
-          <Text>Some content</Text>
+          <Content>
+            <Text>Some content</Text>
+          </Content>
           <Footer className="p-2" flex justify="end">
             <DropdownDismiss>
               <Button onClick={fn()}>Close</Button>
@@ -56,11 +58,21 @@ import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";impor
     onClose: fn(),
     onOpen: fn()
   }
-}`,...b.parameters?.docs?.source}}},x.parameters={...x.parameters,docs:{...x.parameters?.docs,source:{originalSource:`{
+}`,...v.parameters?.docs?.source}}},y.parameters={...y.parameters,docs:{...y.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Dropdown {...args}>
         <Button altIcon="icon-[mdi--chevron-down]">Dropdown Panel</Button>
         <PanelGroup>
+          <Panel title="Some panel">
+            <Content>
+              <Text>Some content</Text>
+            </Content>
+            <Footer className="p-2" flex justify="end">
+              <DropdownDismiss>
+                <Button>Close</Button>
+              </DropdownDismiss>
+            </Footer>
+          </Panel>
           <Panel title="Some panel">
             <Content>
               <Text>Some content</Text>
@@ -88,7 +100,7 @@ import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";impor
     onClose: fn(),
     onOpen: fn()
   }
-}`,...x.parameters?.docs?.source}}},S.parameters={...S.parameters,docs:{...S.parameters?.docs,source:{originalSource:`{
+}`,...y.parameters?.docs?.source}}},b.parameters={...b.parameters,docs:{...b.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Dropdown {...args}>
         <Button altIcon="icon-[mdi--chevron-down]">Dropdown Panel</Button>
@@ -101,9 +113,11 @@ import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";impor
             <Dropdown>
               <Button>Child</Button>
               <Card>
-                <DropdownDismiss>
-                  <Button>Dismiss Child</Button>
-                </DropdownDismiss>
+                <Footer>
+                  <DropdownDismiss>
+                    <Button>Dismiss Child</Button>
+                  </DropdownDismiss>
+                </Footer>
               </Card>
             </Dropdown>
           </Footer>
@@ -114,4 +128,4 @@ import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";impor
     onClose: fn(),
     onOpen: fn()
   }
-}`,...S.parameters?.docs?.source}}},C=[`_Dropdown`,`CardContent`,`PanelContent`,`NestedDropdown`]}));w();export{b as CardContent,S as NestedDropdown,x as PanelContent,y as _Dropdown,C as __namedExportsOrder,v as default,w as n,h as t};
+}`,...b.parameters?.docs?.source}}},x=[`_Dropdown`,`CardContent`,`PanelContent`,`NestedDropdown`]})))()}S();export{v as CardContent,b as NestedDropdown,y as PanelContent,_ as _Dropdown,x as __namedExportsOrder,g as default};

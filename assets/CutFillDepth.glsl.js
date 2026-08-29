@@ -1,6 +1,6 @@
-import{n as e}from"./chunk.js";import{n as t,r as n,t as r}from"./glsl.js";import{n as i,t as a}from"./Texture2DPassUniform.js";import{n as o,t as s}from"./ShaderBuilder.js";import{n as c,t as l}from"./ScreenSpacePass.glsl.js";import{r as u,t as d}from"./NoParameters.js";import{n as f,t as p}from"./ReadDepth.glsl.js";function m(e){let{preparePass:r}=e,i=new o;return i.include(c),i.fragment.include(p),i.fragment.uniforms.add(new a(`cutFillReferenceDepthTexture`,e=>e.referenceDepthTexture),new a(`cutFillTargetDepthTexture`,e=>e.targetDepthTexture)),i.fragment.code.add(n`bool outsideFar(float depth) {
+import{n as e}from"./rolldown-runtime.js";import{n as t,r as n,t as r}from"./glsl.js";import{n as i,t as a}from"./ScreenSpacePass.glsl.js";import{r as o,t as s}from"./NoParameters.js";import{n as c,t as l}from"./ShaderBuilder.js";import{n as u,t as d}from"./Texture2DPassUniform.js";import{r as f,t as p}from"./ReadDepth.glsl.js";function m(e){let{preparePass:r}=e,a=new c;return a.include(i),a.fragment.include(p),a.fragment.uniforms.add(new d(`cutFillReferenceDepthTexture`,e=>e.referenceDepthTexture),new d(`cutFillTargetDepthTexture`,e=>e.targetDepthTexture)),a.fragment.code.add(n`bool outsideFar(float depth) {
 return depth >= 1.0;
-}`),i.fragment.main.add(n`
+}`),a.fragment.main.add(n`
     float referenceDepth = depthFromTexture(cutFillReferenceDepthTexture, uv);
     float targetDepth = depthFromTexture(cutFillTargetDepthTexture, uv);
 
@@ -20,4 +20,4 @@ return depth >= 1.0;
 
         fragColor = vec4(referenceDepth, packedCoords, 0.0, 0.0);
     `)}
-  `),i}var h,g,_=e((()=>{l(),f(),r(),i(),u(),s(),h=class extends d{},g=Object.freeze(Object.defineProperty({__proto__:null,CutFillDepthParameters:h,build:m},Symbol.toStringTag,{value:`Module`}))}));export{h as i,g as n,_ as r,m as t};
+  `),a}var h,g;function _(){return(_=e((()=>{a(),f(),r(),u(),o(),l(),h=class extends s{},g=Object.freeze(Object.defineProperty({__proto__:null,CutFillDepthParameters:h,build:m},Symbol.toStringTag,{value:`Module`}))})))()}export{h as i,g as n,_ as r,m as t};

@@ -1,18 +1,18 @@
-import{n as e}from"./chunk.js";import{i as t,t as n}from"./time.js";import{n as r,t as i}from"./uid.js";import{b as a,h as o}from"./vec2.js";import{n as s,r as c}from"./uuid.js";import{o as l,u}from"./vec4.js";import{a as d,n as f,o as p}from"./vec4f64.js";import{a as ee,r as m}from"./vec2f64.js";import{g as h,i as g,s as _}from"./enums.js";import{n as v,r as y,t as b}from"./glsl.js";import{n as x,t as S}from"./FloatPassUniform.js";import{n as C,t as w}from"./Texture2DPassUniform.js";import{l as T,n as te,t as E,u as ne}from"./Texture.js";import{n as re,t as ie}from"./ShaderBuilder.js";import{n as ae,r as oe}from"./Slice.glsl.js";import{n as se,t as ce}from"./ObjectAndLayerIdColor.glsl.js";import{n as D,t as O}from"./Float4PassUniform.js";import{n as k,t as A}from"./FloatBindUniform.js";import{n as le,t as ue}from"./Matrix4BindUniform.js";import{a as j,n as de,r as M,t as fe}from"./View.glsl.js";import{d as N,f as pe,h as me,m as he,n as ge,p as P,t as _e}from"./MarkerSizing.glsl.js";import{n as ve,t as ye}from"./ColorConversion.glsl.js";import{n as be,t as xe}from"./MixExternalColor.glsl.js";import{n as Se,t as Ce}from"./PiUtils.glsl.js";import{n as we,t as Te}from"./PositionOutsideClipSpace.js";import{n as Ee,t as De}from"./Float2BindUniform.js";import{n as Oe,t as ke}from"./TerrainDepthTest.glsl.js";import{n as Ae,t as je}from"./Float4BindUniform.js";import{n as Me,t as Ne}from"./Float2PassUniform.js";import{n as Pe,t as Fe}from"./AlphaCutoff.js";import{n as Ie,t as Le}from"./OutputColorHighlightOLID.glsl.js";function F(e){return e!=null&&`image`in e}function Re(e,t){return e==null?e:{pattern:e.slice(),pixelRatio:t}}function ze(e){return{pattern:[e,e],pixelRatio:2}}function Be(e){switch(e?.type){case`style`:return Ve(e.style);case`image`:return new z(e.image,e.width,e.length);case void 0:case null:return null}return null}function Ve(e){return e==null?null:Re(L[e],R)}var I,L,R,z,B=e((()=>{s(),I={dash:[4,3],dot:[1,3],"long-dash":[8,3],"short-dash":[4,1],"short-dot":[1,1]},L={dash:I.dash,"dash-dot":[...I.dash,...I.dot],dot:I.dot,"long-dash":I[`long-dash`],"long-dash-dot":[...I[`long-dash`],...I.dot],"long-dash-dot-dot":[...I[`long-dash`],...I.dot,...I.dot],none:null,"short-dash":I[`short-dash`],"short-dash-dot":[...I[`short-dash`],...I[`short-dot`]],"short-dash-dot-dot":[...I[`short-dash`],...I[`short-dot`],...I[`short-dot`]],"short-dot":I[`short-dot`],solid:null},R=8,z=class{constructor(e,t,n){this.image=e,this.width=t,this.length=n,this.uuid=c()}}})),V,H,U=e((()=>{r(),V=class{constructor(e,t,n){this._createTexture=e,this._parametersKey=t,this._repository=new Map,this._orphanCache=n.newCache(`procedural-texture-repository:${i()}`,e=>e.dispose())}destroy(){for(let{texture:e}of this._repository.values())e.dispose();this._repository.clear(),this._orphanCache.destroy()}swap(e,t=null){let n=this._acquire(e);return this.release(t),n}release(e){if(e==null)return;let t=this._parametersKey(e),n=this._repository.get(t);if(n&&(n.refCount--,n.refCount===0)){this._repository.delete(t);let{texture:e}=n;this._orphanCache.put(t,e)}}_acquire(e){if(e==null)return null;let t=this._parametersKey(e),n=this._repository.get(t);if(n)return n.refCount++,n.texture;let r=this._orphanCache.pop(t)??this._createTexture(e),i=new H(r);return this._repository.set(t,i),r}},H=class{constructor(e){this.texture=e,this.refCount=1}}}));function He(e,t){return new V(t=>{if(F(t))return We(e,t.image);let{data:n,textureSize:r}=Ue(t),i=new T(r,1);return i.dataType=_.FLOAT,i.pixelFormat=6403,i.internalFormat=g.R16F,i.wrapMode=10497,new E(e,i,n)},e=>F(e)?`image-${e.uuid}`:`${e.pattern.join(`,`)}-r${e.pixelRatio}`,t)}function Ue(e){let t=W(e),n=1/e.pixelRatio,r=G(e),i=[],a=1;for(let e of t){for(let t=0;t<e;t++){let r=a*(Math.min(t,e-1-t)+.5)*n;i.push(r)}a=-a}let o=Math.round(t[0]/2);return{data:new Float32Array([...i.slice(o),...i.slice(0,o)]),textureSize:r}}function W(e){return e.pattern.map(t=>Math.round(t*e.pixelRatio))}function G(e){if(e==null)return 1;let t=W(e);return Math.floor(t.reduce((e,t)=>e+t))}function We(e,t){let{data:n,width:r,height:i}=t,a=new T(r,i);return a.dataType=_.UNSIGNED_BYTE,a.pixelFormat=6408,a.internalFormat=g.RGBA8,a.wrapMode={s:10497,t:33071},a.hasMipmap=!0,a.samplingMode=9987,new E(e,a,n)}var K=e((()=>{B(),U(),h(),te(),ne()}));function Ge(e){return e==null?f:e.length===4?e:u(q,e[0],e[1],e[2],1)}var q,Ke=e((()=>{l(),d(),q=p()}));function qe(e,t){if(!t.stippleEnabled)return void e.fragment.code.add(y`float getStippleAlpha(float lineWidth) { return 1.0; }
+import{n as e}from"./rolldown-runtime.js";import{a as t}from"./time.js";import{n,t as r}from"./uid.js";import{O as i,x as a}from"./vec2.js";import{n as o,r as s}from"./uuid.js";import{o as c,u as l}from"./vec4.js";import{o as u,r as d,s as f}from"./vec4f64.js";import{o as p,s as m}from"./vec2f64.js";import{g as ee,i as h,s as g}from"./enums.js";import{d as _,n as v,t as y,u as b}from"./Texture.js";import{n as x,r as S,t as C}from"./glsl.js";import{n as te,t as w}from"./ShaderBuilder.js";import{n as T,t as E}from"./FloatPassUniform.js";import{n as ne,t as re}from"./Texture2DPassUniform.js";import{a as ie,i as ae}from"./Slice.glsl.js";import{n as oe,t as se}from"./ObjectAndLayerIdColor.glsl.js";import{n as ce,t as D}from"./Float4PassUniform.js";import{n as le,t as O}from"./FloatBindUniform.js";import{n as ue,t as de}from"./Matrix4BindUniform.js";import{a as k,n as fe,r as A,t as pe}from"./View.glsl.js";import{d as j,f as me,h as he,m as ge,n as _e,t as ve}from"./MarkerSizing.glsl.js";import{n as ye,t as be}from"./ColorConversion.glsl.js";import{n as xe,t as Se}from"./MixExternalColor.glsl.js";import{n as Ce}from"./PiUtils.glsl.js";import{n as we,t as Te}from"./PositionOutsideClipSpace.js";import{n as Ee,t as De}from"./Float2BindUniform.js";import{n as Oe,t as ke}from"./Float4BindUniform.js";import{n as Ae,t as je}from"./alphaCutoff.glsl.js";import{n as Me,t as Ne}from"./Float2PassUniform.js";import{n as Pe,t as Fe}from"./OutputColorHighlightOLID.glsl.js";function M(e){return e!=null&&`image`in e}function Ie(e,t){return e==null?e:{pattern:e.slice(),pixelRatio:t}}function Le(e){return{pattern:[e,e],pixelRatio:2}}function Re(e){switch(e?.type){case`style`:return ze(e.style);case`image`:return new F(e.image,e.width,e.length);case void 0:case null:return null}return null}function ze(e){return e==null?null:Ie(Be[e],P)}var N,Be,P,F;function I(){return(I=e((()=>{o(),N={dash:[4,3],dot:[1,3],"long-dash":[8,3],"short-dash":[4,1],"short-dot":[1,1]},Be={dash:N.dash,"dash-dot":[...N.dash,...N.dot],dot:N.dot,"long-dash":N[`long-dash`],"long-dash-dot":[...N[`long-dash`],...N.dot],"long-dash-dot-dot":[...N[`long-dash`],...N.dot,...N.dot],none:null,"short-dash":N[`short-dash`],"short-dash-dot":[...N[`short-dash`],...N[`short-dot`]],"short-dash-dot-dot":[...N[`short-dash`],...N[`short-dot`],...N[`short-dot`]],"short-dot":N[`short-dot`],solid:null},P=8,F=class{constructor(e,t,n){this.image=e,this.width=t,this.length=n,this.uuid=s()}}})))()}var L,R;function z(){return(z=e((()=>{n(),L=class{constructor(e,t,n){this._createTexture=e,this._parametersKey=t,this._repository=new Map,this._orphanCache=n.newCache(`procedural-texture-repository:${r()}`,e=>e.dispose())}destroy(){for(let{texture:e}of this._repository.values())e.dispose();this._repository.clear(),this._orphanCache.destroy()}swap(e,t=null){let n=this._acquire(e);return this.release(t),n}release(e){if(e==null)return;let t=this._parametersKey(e),n=this._repository.get(t);if(n&&(n.refCount--,n.refCount===0)){this._repository.delete(t);let{texture:e}=n;this._orphanCache.put(t,e)}}_acquire(e){if(e==null)return null;let t=this._parametersKey(e),n=this._repository.get(t);if(n)return n.refCount++,n.texture;let r=this._orphanCache.pop(t)??this._createTexture(e),i=new R(r);return this._repository.set(t,i),r}},R=class{constructor(e){this.texture=e,this.refCount=1}}})))()}function Ve(e,t){return new L(t=>{if(M(t))return Ue(e,t.image);let{data:n,textureSize:r}=He(t),i=new b(r,1);return i.dataType=g.FLOAT,i.pixelFormat=6403,i.internalFormat=h.R16F,i.wrapMode=10497,new v(e,i,n)},e=>M(e)?`image-${e.uuid}`:`${e.pattern.join(`,`)}-r${e.pixelRatio}`,t)}function He(e){let t=B(e),n=1/e.pixelRatio,r=V(e),i=[],a=1;for(let e of t){for(let t=0;t<e;t++){let r=a*(Math.min(t,e-1-t)+.5)*n;i.push(r)}a=-a}let o=Math.round(t[0]/2);return{data:new Float32Array([...i.slice(o),...i.slice(0,o)]),textureSize:r}}function B(e){return e.pattern.map(t=>Math.round(t*e.pixelRatio))}function V(e){if(e==null)return 1;let t=B(e);return Math.floor(t.reduce((e,t)=>e+t))}function Ue(e,t){let{data:n,width:r,height:i}=t,a=new b(r,i);return a.dataType=g.UNSIGNED_BYTE,a.pixelFormat=6408,a.internalFormat=h.RGBA8,a.wrapMode={s:10497,t:33071},a.hasMipmap=!0,a.samplingMode=9987,new v(e,a,n)}function H(){return(H=e((()=>{I(),z(),ee(),y(),_()})))()}function We(e){return e==null?d:e.length===4?e:l(U,e[0],e[1],e[2],1)}var U;function W(){return(W=e((()=>{c(),u(),U=f()})))()}function Ge(e,t){if(!t.stippleEnabled)return void e.fragment.code.add(S`float getStippleAlpha(float lineWidth) { return 1.0; }
 void discardByStippleAlpha(float stippleAlpha, float threshold) {}
-vec4 blendStipple(vec4 color, float stippleAlpha) { return color; }`);let n=!(t.draped&&t.stipplePreferContinuous),{vertex:r,fragment:i}=e;t.draped||(fe(r,t),r.uniforms.add(new k(`worldToScreenPerDistanceRatio`,({camera:e})=>1/e.perScreenPixelRatio)).code.add(y`float computeWorldToScreenRatio(vec3 segmentCenter) {
+vec4 blendStipple(vec4 color, float stippleAlpha) { return color; }`);let n=!(t.draped&&t.stipplePreferContinuous),{vertex:r,fragment:i}=e;t.draped||(pe(r,t),r.uniforms.add(new le(`worldToScreenPerDistanceRatio`,({camera:e})=>1/e.perScreenPixelRatio)).code.add(S`float computeWorldToScreenRatio(vec3 segmentCenter) {
 float segmentDistanceToCamera = length(segmentCenter - cameraPosition);
 return worldToScreenPerDistanceRatio / segmentDistanceToCamera;
-}`)),e.varyings.add(`vStippleDistance`,`float`),e.varyings.add(`vStippleDistanceLimits`,`vec2`),e.varyings.add(`vStipplePatternStretch`,`float`),r.code.add(y`
+}`)),e.varyings.add(`vStippleDistance`,`float`),e.varyings.add(`vStippleDistanceLimits`,`vec2`),e.varyings.add(`vStipplePatternStretch`,`float`),r.code.add(S`
     float discretizeWorldToScreenRatio(float worldToScreenRatio) {
-      float step = ${y.float(Y)};
+      float step = ${S.float(K)};
 
       float discreteWorldToScreenRatio = log(worldToScreenRatio);
       discreteWorldToScreenRatio = ceil(discreteWorldToScreenRatio / step) * step;
       discreteWorldToScreenRatio = exp(discreteWorldToScreenRatio);
       return discreteWorldToScreenRatio;
     }
-  `),j(r),r.code.add(y`
+  `),k(r),r.code.add(S`
     vec2 computeStippleDistanceLimits(float startPseudoScreen, float segmentLengthPseudoScreen, float segmentLengthScreen, float patternLength) {
 
       // First check if the segment is long enough to support fully screen space patterns.
@@ -34,7 +34,7 @@ return worldToScreenPerDistanceRatio / segmentDistanceToCamera;
       }
       return vec2(startPseudoScreen, startPseudoScreen + segmentLengthPseudoScreen);
     }
-  `),i.uniforms.add(new w(`stipplePatternTexture`,e=>e.stippleTexture),new x(`stipplePatternPixelSizeInv`,e=>1/J(e))),t.stippleOffColorEnabled&&i.uniforms.add(new O(`stippleOffColor`,e=>Ge(e.stippleOffColor))),e.include(N),t.worldSizedImagePattern?(e.varyings.add(`vStippleV`,`float`),e.fragment.include(xe),i.code.add(y`vec4 getStippleColor(out bool isClamped) {
+  `),i.uniforms.add(new re(`stipplePatternTexture`,e=>e.stippleTexture),new T(`stipplePatternPixelSizeInv`,e=>1/G(e))),t.stippleOffColorEnabled&&i.uniforms.add(new D(`stippleOffColor`,e=>We(e.stippleOffColor))),e.include(j),t.worldSizedImagePattern?(e.varyings.add(`vStippleV`,`float`),e.fragment.include(xe),i.code.add(S`vec4 getStippleColor(out bool isClamped) {
 vec2 aaCorrectedLimits = vStippleDistanceLimits + vec2(1.0, -1.0) / gl_FragCoord.w;
 isClamped = vStippleDistance < aaCorrectedLimits.x || vStippleDistance > aaCorrectedLimits.y;
 float u = vStippleDistance * stipplePatternPixelSizeInv;
@@ -58,7 +58,7 @@ int mixMode  = 1;
 vec3 col = mixExternalColor(color.rgb, vec3(1.0), stippleColor.rgb, mixMode);
 float opacity = mixExternalOpacity(color.a, 1.0, stippleColor.a, mixMode);
 return vec4(col, opacity);
-}`)):i.code.add(y`
+}`)):i.code.add(S`
     float getStippleSDF(out bool isClamped) {
       float stippleDistanceClamped = noPerspectiveRead(clamp(vStippleDistance, vStippleDistanceLimits.x, vStippleDistanceLimits.y));
       float lineSizeInv = noPerspectiveRead(vLineSizeInv);
@@ -89,21 +89,21 @@ return vec4(col, opacity);
     vec4 blendStipple(vec4 color, float stippleAlpha) {
       return ${t.stippleOffColorEnabled?`mix(color, stippleOffColor, stippleAlpha)`:`vec4(color.rgb, color.a * stippleAlpha)`};
     }
-  `),i.code.add(y`
+  `),i.code.add(S`
     void discardByStippleAlpha(float stippleAlpha, float threshold) {
-     ${v(!t.stippleOffColorEnabled,`if (stippleAlpha < threshold) { discard; }`)}
+     ${x(!t.stippleOffColorEnabled,`if (stippleAlpha < threshold) { discard; }`)}
     }
-  `)}function J(e){let t=e.stipplePattern;return F(t)?t.length:t?G(t)/t.pixelRatio:1}var Y,X=e((()=>{be(),P(),M(),D(),A(),S(),b(),C(),B(),K(),Ke(),Y=.4})),Je,Z,Q,Ye,Xe,Ze=e((()=>{n(),Je=.1,Z=t(1),Q=t(1),Ye=1e3,Xe=27e6}));function Qe(e,t){let{hasAnimation:n,animation:r}=t;if(!n)return;let{attributes:i,varyings:o,vertex:s,fragment:c}=e;i.add(`timeStamps`,`vec4`),o.add(`vTimeStamp`,`float`),o.add(`vFirstTime`,`float`),o.add(`vLastTime`,`float`),o.add(`vTransitionType`,`float`),s.main.add(y`vTimeStamp = timeStamps.x;
+  `)}function G(e){let t=e.stipplePattern;return M(t)?t.length:t?V(t)/t.pixelRatio:1}var K;function q(){return(q=e((()=>{Se(),A(),ce(),O(),E(),C(),ne(),I(),H(),W(),K=.4})))()}var Ke,J,Y,qe,X;function Z(){return(Z=e((()=>{Ke=.1,J=t(1),Y=t(1),qe=1e3,X=27e6})))()}function Je(e,t){let{hasAnimation:n,animation:r}=t;if(!n)return;let{attributes:a,varyings:o,vertex:s,fragment:c}=e;a.add(`timeStamps`,`vec4`),o.add(`vTimeStamp`,`float`),o.add(`vFirstTime`,`float`),o.add(`vLastTime`,`float`),o.add(`vTransitionType`,`float`),s.main.add(S`vTimeStamp = timeStamps.x;
 vFirstTime = timeStamps.y;
 vLastTime = timeStamps.z;
-vTransitionType = timeStamps.w;`),r===3&&c.constants.add(`decayRate`,`float`,2.3),c.code.add(y`
+vTransitionType = timeStamps.w;`),r===3&&c.constants.add(`decayRate`,`float`,2.3),c.code.add(S`
     float getTrailOpacity(float x) {
       if (x < 0.0) {
         return 0.0;
       }
 
-      ${$e(r)}
-    }`),c.uniforms.add(new x(`timeElapsed`,e=>e.timeElapsed),new x(`trailLength`,e=>e.trailLength),new x(`speed`,e=>e.animationSpeed),new Ne(`startEndTime`,e=>a(et,e.startTime,e.endTime))),c.constants.add(`fadeInTime`,`float`,Q),c.constants.add(`fadeOutTime`,`float`,Z),c.constants.add(`incomingTransition`,`int`,0),c.constants.add(`outgoingTransition`,`int`,2),c.code.add(y`float fadeIn(float x) {
+      ${Ye(r)}
+    }`),c.uniforms.add(new T(`timeElapsed`,e=>e.timeElapsed),new T(`trailLength`,e=>e.trailLength),new T(`speed`,e=>e.animationSpeed),new Ne(`startEndTime`,e=>i(Xe,e.startTime,e.endTime))),c.constants.add(`fadeInTime`,`float`,Y),c.constants.add(`fadeOutTime`,`float`,J),c.constants.add(`incomingTransition`,`int`,0),c.constants.add(`outgoingTransition`,`int`,2),c.code.add(S`float fadeIn(float x) {
 return smoothstep(0.0, fadeInTime, x);
 }
 float fadeOut(float x) {
@@ -147,23 +147,24 @@ updateAlphaIf(alpha, headRelativeToFirst > fadeOutStartTime, fadeOut((headRelati
 alpha *= fadeIn(vTimeStamp - vFirstTime);
 animatedColor.a *= alpha;
 return animatedColor;
-}`)}function $e(e){switch(e){case 2:return`return x >= 0.0 && x <= 1.0 ? 1.0 : 0.0;`;case 3:return`float cutOff = exp(-decayRate);
-        return (exp(-decayRate * x) - cutOff) / (1.0 - cutOff);`;default:return`return 1.0;`}}var et,tt=e((()=>{o(),m(),Ze(),Me(),S(),b(),et=ee()}));function nt(e){let t=new re,{attributes:n,varyings:r,vertex:i,fragment:a}=t,{applyMarkerOffset:o,draped:s,output:c,capType:l,stippleEnabled:u,falloffEnabled:d,roundJoins:f,wireframe:p,innerColorEnabled:ee,hasAnimation:m,hasScreenSizePerspective:h,worldSizedImagePattern:g}=e;a.include(Se),t.include(he,e),t.include(qe,e),t.include(ce,e),t.include(ke,e),t.include(Qe,e);let _=o&&!s;_&&(i.uniforms.add(new x(`markerScale`,e=>e.markerScale)),t.include(_e,{space:2,hasScreenSizePerspective:h})),de(i,e),i.uniforms.add(new le(`inverseProjectionMatrix`,e=>e.camera.inverseProjectionMatrix),new De(`nearFar`,e=>e.camera.nearFar),new x(`miterLimit`,e=>e.join===`miter`?e.miterLimit:0),new je(`viewport`,e=>e.camera.fullViewport)),i.constants.add(`LARGE_HALF_FLOAT`,`float`,65500),n.add(`position`,`vec3`),n.add(`previousDelta`,`vec4`),n.add(`nextDelta`,`vec4`),n.add(`lineParameters`,`vec2`),n.add(`u0`,`float`),r.add(`vColor`,`vec4`),r.add(`vpos`,`vec3`,{invariant:!0}),r.add(`vLineDistance`,`float`),r.add(`vLineWidth`,`float`);let b=u;b&&r.add(`vLineSizeInv`,`float`);let S=l===2,C=u&&S,w=d||C;w&&r.add(`vLineDistanceNorm`,`float`),S&&(r.add(`vSegmentSDF`,`float`),r.add(`vReverseSegmentSDF`,`float`)),i.code.add(y`vec2 perpendicular(vec2 v) {
-return vec2(v.y, -v.x);
+}`)}function Ye(e){switch(e){case 2:return`return x >= 0.0 && x <= 1.0 ? 1.0 : 0.0;`;case 3:return`float cutOff = exp(-decayRate);
+        return (exp(-decayRate * x) - cutOff) / (1.0 - cutOff);`;default:return`return 1.0;`}}var Xe;function Q(){return(Q=e((()=>{a(),p(),Z(),Me(),E(),C(),Xe=m()})))()}function Ze(e){let t=new te,{attributes:n,varyings:r,vertex:i,fragment:a}=t,{applyMarkerOffset:o,draped:s,output:c,capType:l,stippleEnabled:u,falloffEnabled:d,roundJoins:f,wireframe:p,innerColorEnabled:m,hasAnimation:ee,hasScreenSizePerspective:h,worldSizedImagePattern:g}=e;i.inputs.add(`position`,()=>`position`),a.include(Ce),t.include(ge,e),t.include(Ge,e),t.include(se,e),t.include(Je,e);let _=o&&!s;_&&(i.uniforms.add(new T(`markerScale`,e=>e.markerScale)),t.include(ve,{space:2,hasScreenSizePerspective:h})),fe(i,e),i.uniforms.add(new ue(`inverseProjectionMatrix`,e=>e.camera.inverseProjectionMatrix),new De(`nearFar`,e=>e.camera.nearFar),new T(`miterLimit`,e=>e.join===`miter`?e.miterLimit:0),new ke(`viewport`,e=>e.camera.fullViewport)),i.constants.add(`LARGE_HALF_FLOAT`,`float`,65500),i.constants.add(`EPS`,`float`,.001),i.constants.add(`NUM_JOIN_SUBDIVISIONS`,`float`,e.numJoinSubdivisions),n.add(`position`,`vec3`),n.add(`previousDelta`,`vec4`),n.add(`nextDelta`,`vec4`),n.add(`lineParameters`,`vec2`),n.add(`u0`,`float`),r.add(`vColor`,`vec4`),r.add(`vpos`,`vec3`,{invariant:!0}),r.add(`vLineDistance`,`float`),r.add(`vLineWidth`,`float`),u||(r.add(`vIsInsideJoin`,`int`),r.add(`vStretchFactor`,`float`),r.add(`vJoinCenterLineSDFs`,`vec2`),r.add(`vSubdivisionFactor`,`float`));let v=u;v&&r.add(`vLineSizeInv`,`float`);let y=l===2,b=u&&y,C=d||b;C&&r.add(`vLineDistanceNorm`,`float`),y&&(r.add(`vSegmentSDF`,`float`),r.add(`vReverseSegmentSDF`,`float`)),i.code.add(S`vec3 perpendicular(vec3 v) {
+return vec3(v.y, -v.x, 0.0);
 }
 float interp(float ncp, vec4 a, vec4 b) {
 return (-ncp - a.z) / (b.z - a.z);
 }
-vec2 rotate(vec2 v, float a) {
+vec3 rotateZ(vec3 v, float a) {
 float s = sin(a);
 float c = cos(a);
 mat2 m = mat2(c, -s, s, c);
-return m * v;
-}`),i.code.add(y`vec4 projectAndScale(vec4 pos) {
+return vec3(m * v.xy, v.z);
+}`),i.code.add(S`vec4 projectAndScale(vec4 pos) {
 vec4 posNdc = proj * pos;
 posNdc.xy *= viewport.zw / posNdc.w;
+posNdc.z /= posNdc.w;
 return posNdc;
-}`),i.code.add(y`void clip(
+}`),i.code.add(S`void clip(
 inout vec4 pos,
 inout vec4 prev,
 inout vec4 next,
@@ -194,7 +195,7 @@ if (next.z > -nearFar[0]) {
 next = mix(next, pos, interp(vnp, next, pos));
 }
 }
-}`),j(i),i.constants.add(`aaWidth`,`float`,u?0:1).main.add(y`
+}`),k(i),i.constants.add(`aaWidth`,`float`,+!u).main.add(S`
     // unpack values from vertex type
     bool isStartVertex = abs(abs(lineParameters.y) - 3.0) == 1.0;
     vec3 prevPosition = position + previousDelta.xyz * previousDelta.w;
@@ -213,40 +214,38 @@ next = mix(next, pos, interp(vnp, next, pos));
       vec4 next = view * vec4(nextPosition, 1.0);
 
       bool isJoin = abs(lineParameters.y) < 3.0;
-  `),_&&i.main.add(y`vec4 other = isStartVertex ? next : prev;
+  `),_&&i.main.add(S`vec4 other = isStartVertex ? next : prev;
 bool markersHidden = areWorldMarkersHidden(pos.xyz, other.xyz);
 if (!isJoin && !markersHidden) {
 pos.xyz += normalize(other.xyz - pos.xyz) * getWorldMarkerSize(pos.xyz) * 0.5;
-}`),t.include(pe),i.main.add(y`
+}`),t.include(me),i.main.add(S`
       clip(pos, prev, next, isStartVertex);
 
       vec3 clippedPos = pos.xyz;
       vec3 clippedCenter = mix(pos.xyz, isStartVertex ? next.xyz : prev.xyz, 0.5);
 
-      forwardViewPosDepth(pos.xyz);
-
       pos = projectAndScale(pos);
       next = projectAndScale(next);
       prev = projectAndScale(prev);
 
-      vec2 left = (pos.xy - prev.xy);
-      vec2 right = (next.xy - pos.xy);
+      vec3 left = (pos.xyz - prev.xyz);
+      vec3 right = (next.xyz - pos.xyz);
 
       float leftLen = length(left);
       float rightLen = length(right);
 
-      float lineSize = getSize(${v(h,`clippedPos`)});
-      ${v(u&&h,`float patternLineSize = getSize(clippedCenter);`)}
-      ${v(u&&!h,`float patternLineSize = lineSize;`)}
+      float lineSize = getSize(${x(h,`clippedPos`)});
+      ${x(u&&h,`float patternLineSize = getSize(clippedCenter);`)}
+      ${x(u&&!h,`float patternLineSize = lineSize;`)}
 
-      ${v(g,y`
+      ${x(g,S`
           lineSize += aaWidth;
           float lineWidth = lineSize * pixelRatio * worldToScreenRatio;
           if (lineWidth < 1.0) {
             coverage = lineWidth;
             lineWidth = 1.0;
           }
-        `,y`
+        `,S`
           if (lineSize < 1.0) {
             coverage = lineSize; // convert sub-pixel coverage to alpha
             lineSize = 1.0;
@@ -257,50 +256,72 @@ pos.xyz += normalize(other.xyz - pos.xyz) * getWorldMarkerSize(pos.xyz) * 0.5;
         `)}
 
       vLineWidth = noPerspectiveWrite(lineWidth, pos.w);
-      ${b?y`vLineSizeInv = noPerspectiveWrite(1.0 / lineSize, pos.w);`:``}
-  `),(u||S)&&i.main.add(y`
+      ${v?S`vLineSizeInv = noPerspectiveWrite(1.0 / lineSize, pos.w);`:``}
+  `),(u||y)&&i.main.add(S`
       float isEndVertex = float(!isStartVertex);
-      vec2 segmentOrigin = mix(pos.xy, prev.xy, isEndVertex);
-      vec2 segment = mix(right, left, isEndVertex);
-      ${S?y`vec2 segmentEnd = mix(next.xy, pos.xy, isEndVertex);`:``}
-    `),i.main.add(y`left = (leftLen > 0.001) ? left/leftLen : vec2(0.0, 0.0);
-right = (rightLen > 0.001) ? right/rightLen : vec2(0.0, 0.0);
-vec2 capDisplacementDir = vec2(0, 0);
-vec2 joinDisplacementDir = vec2(0, 0);
+      vec3 segmentOrigin = mix(pos.xyz, prev.xyz, isEndVertex);
+      vec3 segment = mix(right, left, isEndVertex);
+      ${y?S`vec3 segmentEnd = mix(next.xyz, pos.xyz, isEndVertex);`:``}
+    `),i.main.add(S`left = (leftLen > EPS) ? left/leftLen : vec3(0.0, 0.0, 0.0);
+right = (rightLen > EPS) ? right/rightLen : vec3(0.0, 0.0, 0.0);
+vec3 segmentDirection = isStartVertex ? right : left;
+vec3 capDisplacementDir = vec3(0.0, 0.0, 0.0);
+vec3 joinDisplacementDir = vec3(0.0, 0.0, 0.0);
 float displacementLen = lineWidth;
+float miterDisplacementLen = lineWidth;
+float innerDisplacementLen = lineWidth;`),u||i.main.add(S`vIsInsideJoin = 0;
+vStretchFactor = 1.0;
+vSubdivisionFactor = 0.0;
+vJoinCenterLineSDFs = vec2(LARGE_HALF_FLOAT);`),i.main.add(S`float subdivisionFactor = 0.0;
+bool isOutside = false;
 if (isJoin) {
-bool isOutside = (left.x * right.y - left.y * right.x) * lineParameters.y > 0.0;
-joinDisplacementDir = normalize(left + right);
-joinDisplacementDir = perpendicular(joinDisplacementDir);
-if (leftLen > 0.001 && rightLen > 0.001) {
+isOutside = (left.x * right.y - left.y * right.x) * lineParameters.y > 0.0;
+vec3 joinDirection = normalize(left + right);
+joinDisplacementDir = perpendicular(joinDirection);
+if (leftLen > EPS && rightLen > EPS) {
 float nDotSeg = dot(joinDisplacementDir, left);
 displacementLen /= length(nDotSeg * left - joinDisplacementDir);
+miterDisplacementLen = displacementLen;
+innerDisplacementLen = min(displacementLen, min(leftLen, rightLen)/abs(nDotSeg));
 if (!isOutside) {
-displacementLen = min(displacementLen, min(leftLen, rightLen)/abs(nDotSeg));
+displacementLen = innerDisplacementLen;
 }
 }
-float subdivisionFactor = lineParameters.x;
-if (isOutside && (displacementLen > miterLimit * lineWidth)) {`),f?i.main.add(y`
-        vec2 startDir = leftLen < 0.001 ? right : left;
+subdivisionFactor = lineParameters.x;`),u||i.main.add(S`if(subdivisionFactor > 0.0) {
+vIsInsideJoin = 1;
+}
+vSubdivisionFactor = isOutside ? subdivisionFactor : 0.5;
+if (miterDisplacementLen > miterLimit * lineWidth) {
+vec2 leftScreenDir = left.xy;
+vec2 rightScreenDir = right.xy;
+float leftScreenLen = length(leftScreenDir);
+float rightScreenLen = length(rightScreenDir);
+if (leftScreenLen > EPS && rightScreenLen > EPS) {
+leftScreenDir /= leftScreenLen;
+rightScreenDir /= rightScreenLen;
+float theta = acos(clamp(dot(leftScreenDir, rightScreenDir), -1.0, 1.0));
+float subdividedTriangleHeight = (innerDisplacementLen + lineWidth) * cos(theta / (2.0 + 2.0 * NUM_JOIN_SUBDIVISIONS));
+float bevelTriangleHeight = innerDisplacementLen + lineWidth * cos(theta * 0.5);
+float triangleHeight = NUM_JOIN_SUBDIVISIONS > 0.0 ? subdividedTriangleHeight : bevelTriangleHeight;
+vStretchFactor = noPerspectiveWrite(max(triangleHeight / (2.0 * lineWidth), 1.0), pos.w);
+}
+}`),i.main.add(S`if (isOutside && (displacementLen > miterLimit * lineWidth)) {`),f?i.main.add(S`
+        vec3 startDir = leftLen < EPS ? right : left;
         startDir = perpendicular(startDir);
 
-        vec2 endDir = rightLen < 0.001 ? left : right;
+        vec3 endDir = rightLen < EPS ? left : right;
         endDir = perpendicular(endDir);
 
-        float factor = ${u?y`min(1.0, subdivisionFactor * ${y.float(3/2)})`:y`subdivisionFactor`};
+        float factor = ${u?S`min(1.0, subdivisionFactor * ((NUM_JOIN_SUBDIVISIONS + 1.0) / NUM_JOIN_SUBDIVISIONS))`:S`subdivisionFactor`};
 
-        float rotationAngle = acos(clamp(dot(startDir, endDir), -1.0, 1.0));
-        joinDisplacementDir = rotate(startDir, -sign(lineParameters.y) * factor * rotationAngle);
-      `):i.main.add(y`if (leftLen < 0.001) {
-joinDisplacementDir = right;
-}
-else if (rightLen < 0.001) {
-joinDisplacementDir = left;
-}
-else {
-joinDisplacementDir = (isStartVertex || subdivisionFactor > 0.0) ? right : left;
-}
-joinDisplacementDir = perpendicular(joinDisplacementDir);`);let T=l!==0;return i.main.add(y`
+        float rotationAngle = acos(clamp(dot(startDir.xy, endDir.xy), -1.0, 1.0));
+        joinDisplacementDir = rotateZ(startDir, -sign(lineParameters.y) * factor * rotationAngle);
+      `):i.main.add(S`
+        vec3 startDir = perpendicular(leftLen < EPS ? right : left);
+        vec3 endDir = perpendicular(rightLen < EPS ? left : right);
+
+        ${x(u,S`joinDisplacementDir = (isStartVertex || subdivisionFactor > 0.0) ? endDir : startDir;`,S`joinDisplacementDir = mix(startDir, endDir, subdivisionFactor);`)}
+  `);let w=l!==0;return i.main.add(S`
         displacementLen = lineWidth;
       }
     } else {
@@ -308,30 +329,55 @@ joinDisplacementDir = perpendicular(joinDisplacementDir);`);let T=l!==0;return i
       joinDisplacementDir = isStartVertex ? right : left;
       joinDisplacementDir = perpendicular(joinDisplacementDir);
 
-      ${T?y`capDisplacementDir = isStartVertex ? -right : left;`:``}
+      ${w?S`capDisplacementDir = vec3((isStartVertex ? -right : left).xy, 0.0);`:``}
     }
-  `),i.main.add(y`
+  `),i.main.add(S`
     // Displacement (in pixels) caused by join/or cap
-    vec2 dpos = joinDisplacementDir * sign(lineParameters.y) * displacementLen + capDisplacementDir * displacementLen;
+    vec2 dposXY = (joinDisplacementDir.xy * sign(lineParameters.y) + capDisplacementDir.xy) * displacementLen;
+
+    /**
+     * To prevent z-fighting between layers, we also adjust the z value.
+     * We want to ensure that the orientation of the final triangles is the same, regardless of the line width.
+     * To do so, the below formula projects the xy displacement onto the original segment direction
+     * to find the z-offset necessary so the triangle orientation is independent of the width.
+     */
+    float dposZ = dot(dposXY, segmentDirection.xy) / dot(segmentDirection.xy, segmentDirection.xy) * segmentDirection.z;
+    vec3 dpos = vec3(dposXY, dposZ);
+
     float lineDistNorm = noPerspectiveWrite(sign(lineParameters.y), pos.w);
 
     vLineDistance = lineWidth * lineDistNorm;
-    ${w?y`vLineDistanceNorm = lineDistNorm;`:``}
+    ${C?S`vLineDistanceNorm = lineDistNorm;`:``}
 
-    pos.xy += dpos;
-  `),S&&i.main.add(y`vec2 segmentDir = normalize(segment);
-vSegmentSDF = noPerspectiveWrite((isJoin && isStartVertex) ? LARGE_HALF_FLOAT : (dot(pos.xy - segmentOrigin, segmentDir)), pos.w);
-vReverseSegmentSDF = noPerspectiveWrite((isJoin && !isStartVertex) ? LARGE_HALF_FLOAT : (dot(pos.xy - segmentEnd, -segmentDir)), pos.w);`),u&&(s?i.uniforms.add(new k(`worldToScreenRatio`,e=>1/e.screenToPCSRatio)):i.main.add(y`vec3 segmentCenter = mix((nextPosition + position) * 0.5, (position + prevPosition) * 0.5, isEndVertex);
-float worldToScreenRatio = computeWorldToScreenRatio(segmentCenter);`),i.main.add(y`float segmentLengthScreenDouble = length(segment);
+    pos.xyz += dpos;
+  `),u||i.main.add(S`if (isJoin) {
+vec2 joinCenterToVertex = dposXY;
+vec2 leftCenterlineDir = left.xy;
+vec2 rightCenterlineDir = right.xy;
+float leftCenterlineLen = length(leftCenterlineDir);
+float rightCenterlineLen = length(rightCenterlineDir);
+leftCenterlineDir = leftCenterlineLen > EPS ? leftCenterlineDir / leftCenterlineLen : vec2(1.0, 0.0);
+rightCenterlineDir = rightCenterlineLen > EPS ? rightCenterlineDir / rightCenterlineLen : leftCenterlineDir;
+vJoinCenterLineSDFs = noPerspectiveWrite(
+vec2(
+dot(vec2(rightCenterlineDir.y, -rightCenterlineDir.x), joinCenterToVertex),
+dot(vec2(leftCenterlineDir.y, -leftCenterlineDir.x), joinCenterToVertex)
+),
+pos.w
+);
+}`),y&&i.main.add(S`vec2 segmentDir = normalize(segment.xy);
+vSegmentSDF = noPerspectiveWrite((isJoin && isStartVertex) ? LARGE_HALF_FLOAT : (dot(pos.xy - segmentOrigin.xy, segmentDir)), pos.w);
+vReverseSegmentSDF = noPerspectiveWrite((isJoin && !isStartVertex) ? LARGE_HALF_FLOAT : (dot(pos.xy - segmentEnd.xy, -segmentDir)), pos.w);`),u&&(s?i.uniforms.add(new le(`worldToScreenRatio`,e=>1/e.screenToPCSRatio)):i.main.add(S`vec3 segmentCenter = mix((nextPosition + position) * 0.5, (position + prevPosition) * 0.5, isEndVertex);
+float worldToScreenRatio = computeWorldToScreenRatio(segmentCenter);`),i.main.add(S`float segmentLengthScreenDouble = length(segment.xy);
 float segmentLengthScreen = segmentLengthScreenDouble * 0.5;
 float discreteWorldToScreenRatio = discretizeWorldToScreenRatio(worldToScreenRatio);
 float segmentLengthRender = length(mix(nextPosition - position, position - prevPosition, isEndVertex));
-vStipplePatternStretch = worldToScreenRatio / discreteWorldToScreenRatio;`),s?i.main.add(y`float segmentLengthPseudoScreen = segmentLengthScreen / pixelRatio * discreteWorldToScreenRatio / worldToScreenRatio;
-float startPseudoScreen = u0 * discreteWorldToScreenRatio - mix(0.0, segmentLengthPseudoScreen, isEndVertex);`):i.main.add(y`float startPseudoScreen = mix(u0, u0 - segmentLengthRender, isEndVertex) * discreteWorldToScreenRatio;
-float segmentLengthPseudoScreen = segmentLengthRender * discreteWorldToScreenRatio;`),i.uniforms.add(new x(`stipplePatternPixelSize`,e=>J(e))),i.main.add(y`
+vStipplePatternStretch = worldToScreenRatio / discreteWorldToScreenRatio;`),s?i.main.add(S`float segmentLengthPseudoScreen = segmentLengthScreen / pixelRatio * discreteWorldToScreenRatio / worldToScreenRatio;
+float startPseudoScreen = u0 * discreteWorldToScreenRatio - mix(0.0, segmentLengthPseudoScreen, isEndVertex);`):i.main.add(S`float startPseudoScreen = mix(u0, u0 - segmentLengthRender, isEndVertex) * discreteWorldToScreenRatio;
+float segmentLengthPseudoScreen = segmentLengthRender * discreteWorldToScreenRatio;`),i.uniforms.add(new T(`stipplePatternPixelSize`,e=>G(e))),i.main.add(S`
       float patternLength = patternLineSize * stipplePatternPixelSize;
 
-      ${v(g,y`
+      ${x(g,S`
           float uu = mix(u0, u0 - segmentLengthRender, isEndVertex);
           vStippleDistanceLimits = vec2(uu, uu + segmentLengthRender);
           vStipplePatternStretch = 1.0;
@@ -339,7 +385,7 @@ float segmentLengthPseudoScreen = segmentLengthRender * discreteWorldToScreenRat
           // The v-coordinate used in case of an image pattern.
           bool isLeft = sign(lineParameters.y) < 0.0;
           vStippleV = isLeft ? 0.0 : 1.0;
-        `,y`
+        `,S`
           // Compute the coordinates at both start and end of the line segment, because we need both to clamp to in the
           // fragment shader
           vStippleDistanceLimits = computeStippleDistanceLimits(startPseudoScreen, segmentLengthPseudoScreen, segmentLengthScreen, patternLength);
@@ -349,11 +395,11 @@ float segmentLengthPseudoScreen = segmentLengthRender * discreteWorldToScreenRat
 
       // Adjust the coordinate to the displaced position (the pattern is shortened/overextended on the in/outside of
       // joins)
-      if (segmentLengthScreenDouble >= 0.001) {
+      if (segmentLengthScreenDouble >= EPS) {
         // Project the actual vertex position onto the line segment. Note that the resulting factor is within [0..1]
         // at the original vertex positions, and slightly outside of that range at the displaced positions
-        vec2 stippleDisplacement = pos.xy - segmentOrigin;
-        float stippleDisplacementFactor = dot(segment, stippleDisplacement) / (segmentLengthScreenDouble * segmentLengthScreenDouble);
+        vec3 stippleDisplacement = pos.xyz - segmentOrigin;
+        float stippleDisplacementFactor = dot(segment.xy, stippleDisplacement.xy) / (segmentLengthScreenDouble * segmentLengthScreenDouble);
 
         // Apply this offset to the actual vertex coordinate (can be screen or pseudo-screen space)
         vStippleDistance += (stippleDisplacementFactor - isEndVertex) * (vStippleDistanceLimits.y - vStippleDistanceLimits.x);
@@ -370,56 +416,57 @@ float segmentLengthPseudoScreen = segmentLengthRender * discreteWorldToScreenRat
                                  isStartVertex ?
                                   vec2(-1e34, vStippleDistanceLimits.y) :
                                   vec2(vStippleDistanceLimits.x, 1e34);
-    `)),i.main.add(y`
+    `)),i.main.add(S`
       // Convert back into NDC
       pos.xy = (pos.xy / viewport.zw) * pos.w;
+      pos.z = pos.z * pos.w;
 
       vColor = getColor();
       vColor.a = noPerspectiveWrite(vColor.a * coverage, pos.w);
 
-      ${p&&!s?`pos.z -= 0.001 * pos.w;`:``}
+      ${p&&!s?`pos.z -= EPS * pos.w;`:``}
 
       // transform final position to camera space for slicing
       vpos = (inverseProjectionMatrix * pos).xyz;
       gl_Position = pos;
       forwardObjectAndLayerIdColor();
-    }`),t.fragment.include(ae,e),t.include(Le,e),a.include(ye),a.main.add(y`discardBySlice(vpos);
-discardByTerrainDepth();`),t.include(N),a.main.add(y`
+    }`),t.fragment.include(ae,e),t.include(Pe,e),a.include(be),a.main.add(S`discardBySlice(vpos);`),t.include(j),a.include(je),a.main.add(S`
     float lineWidth = noPerspectiveRead(vLineWidth);
     float lineDistance = noPerspectiveRead(vLineDistance);
-    ${v(w,y`float lineDistanceNorm = noPerspectiveRead(vLineDistanceNorm);`)}
-  `),p?a.main.add(y`vec4 finalColor = vec4(1.0, 0.0, 1.0, 1.0);`):(S&&a.main.add(y`
-        float sdf = noPerspectiveRead(min(vSegmentSDF, vReverseSegmentSDF));
-        vec2 fragmentPosition = vec2(min(sdf, 0.0), lineDistance);
-
-        float fragmentRadius = length(fragmentPosition);
-        float fragmentCapSDF = (fragmentRadius - lineWidth) * 0.5; // Divide by 2 to transform from double pixel scale
-        float capCoverage = clamp(0.5 - fragmentCapSDF, 0.0, 1.0);
-
-        if (capCoverage < ${y.float(.003913894324853229)}) {
-          discard;
-        }
-      `),C?a.main.add(y`
-      vec2 stipplePosition = vec2(
-        min(getStippleSDF() * 2.0 - 1.0, 0.0),
-        lineDistanceNorm
-      );
-      float stippleRadius = length(stipplePosition * lineWidth);
-      float stippleCapSDF = (stippleRadius - lineWidth) * 0.5; // Divide by 2 to transform from double pixel scale
-      float stippleCoverage = clamp(0.5 - stippleCapSDF, 0.0, 1.0);
-      float stippleAlpha = step(${y.float(Pe)}, stippleCoverage);
-      `):a.main.add(y`float stippleAlpha = getStippleAlpha(lineWidth);`),c!==9&&a.main.add(y`discardByStippleAlpha(stippleAlpha, ${y.float(.003913894324853229)});`),t.include(N),a.uniforms.add(new O(`intrinsicColor`,e=>e.color)).main.add(y`vec4 color = intrinsicColor * vColor;
-color.a = noPerspectiveRead(color.a);`),ee&&a.uniforms.add(new O(`innerColor`,e=>e.innerColor??e.color),new x(`innerWidth`,(e,t)=>e.innerWidth*t.camera.pixelRatio)).main.add(y`float distToInner = abs(lineDistance) - innerWidth;
+    ${x(C,S`float lineDistanceNorm = noPerspectiveRead(vLineDistanceNorm);`)}
+  `),p?a.main.add(S`vec4 finalColor = vec4(1.0, 0.0, 1.0, 1.0);`):(y&&a.main.add(S`float sdf = noPerspectiveRead(min(vSegmentSDF, vReverseSegmentSDF));
+vec2 fragmentPosition = vec2(min(sdf, 0.0), lineDistance);
+float fragmentRadius = length(fragmentPosition);
+float fragmentCapSDF = (fragmentRadius - lineWidth) * 0.5;
+float capCoverage = clamp(0.5 - fragmentCapSDF, 0.0, 1.0);
+if (capCoverage < alphaCutoff) {
+discard;
+}`),b?a.main.add(S`vec2 stipplePosition = vec2(
+min(getStippleSDF() * 2.0 - 1.0, 0.0),
+lineDistanceNorm
+);
+float stippleRadius = length(stipplePosition * lineWidth);
+float stippleCapSDF = (stippleRadius - lineWidth) * 0.5;
+float stippleCoverage = clamp(0.5 - stippleCapSDF, 0.0, 1.0);
+float stippleAlpha = step(alphaCutoff, stippleCoverage);`):a.main.add(S`float stippleAlpha = getStippleAlpha(lineWidth);`),c!==11&&a.main.add(S`discardByStippleAlpha(stippleAlpha, alphaCutoff);`),t.include(j),a.uniforms.add(new D(`intrinsicColor`,e=>e.color)).main.add(S`vec4 color = intrinsicColor * vColor;
+color.a = noPerspectiveRead(color.a);`),m&&a.uniforms.add(new D(`innerColor`,e=>e.innerColor??e.color),new T(`innerWidth`,(e,t)=>e.innerWidth*t.camera.pixelRatio)).main.add(S`float distToInner = abs(lineDistance) - innerWidth;
 float innerAA = clamp(0.5 - distToInner, 0.0, 1.0);
 float innerAlpha = innerColor.a + color.a * (1.0 - innerColor.a);
-color = mix(color, vec4(innerColor.rgb, innerAlpha), innerAA);`),a.main.add(y`vec4 finalColor = blendStipple(color, stippleAlpha);`),d&&(a.uniforms.add(new x(`falloff`,e=>e.falloff)),a.main.add(y`finalColor.a *= pow(max(0.0, 1.0 - abs(lineDistanceNorm)), falloff);`)),u||a.main.add(y`float featherStartDistance = max(lineWidth - 2.0, 0.0);
+color = mix(color, vec4(innerColor.rgb, innerAlpha), innerAA);`),a.main.add(S`vec4 finalColor = blendStipple(color, stippleAlpha);`),d&&(a.uniforms.add(new T(`falloff`,e=>e.falloff)),a.main.add(S`finalColor.a *= pow(max(0.0, 1.0 - abs(lineDistanceNorm)), falloff);`)),u||a.main.add(S`float stretchFactor = vIsInsideJoin == 1 ? noPerspectiveRead(vStretchFactor) : 1.0;
+float featherWidth = 2.0;
+float featherStartDistance = max(lineWidth - featherWidth / stretchFactor, 0.0);
+float straightFeatherStartDistance = max(lineWidth - featherWidth, 0.0);
 float value = abs(lineDistance);
 float feather = (value - featherStartDistance) / (lineWidth - featherStartDistance);
-finalColor.a *= 1.0 - clamp(feather, 0.0, 1.0);`),m&&a.main.add(y`
+vec2 joinCenterSDFs = noPerspectiveRead(vJoinCenterLineSDFs);
+float joinCenterDistance = abs(vSubdivisionFactor > 0.5 ? joinCenterSDFs.x : joinCenterSDFs.y);
+float straightFeather = (joinCenterDistance - straightFeatherStartDistance) / (lineWidth - straightFeatherStartDistance);
+feather = vIsInsideJoin == 1 ? max(feather, straightFeather) : feather;
+finalColor.a *= 1.0 - clamp(feather, 0.0, 1.0);`),ee&&a.main.add(S`
         finalColor = animate(finalColor);
 
-        ${v(c!==9,y`
-            if (finalColor.a <= ${y.float(.003913894324853229)}) {
+        ${x(c!==11,S`
+            if (finalColor.a <= alphaCutoff) {
               discard;
             }`)}
-      `)),a.main.add(y`outputColorHighlightOLID(applySlice(finalColor, vpos), finalColor.rgb);`),t}var rt,$,it=e((()=>{oe(),se(),me(),X(),ge(),Ce(),Te(),Oe(),ve(),P(),M(),Ee(),Ae(),D(),A(),S(),b(),ue(),tt(),Ie(),ie(),Fe(),rt=1,$=Object.freeze(Object.defineProperty({__proto__:null,build:nt,ribbonlineNumRoundJoinSubdivisions:1},Symbol.toStringTag,{value:`Module`}))}));export{Be as _,tt as a,ze as b,Je as c,Q as d,X as f,V as g,U as h,nt as i,Z as l,K as m,it as n,Ze as o,He as p,rt as r,Ye as s,$ as t,Xe as u,F as v,B as y};
+      `)),a.main.add(S`outputColorHighlightOLID(applySlice(finalColor, vpos), finalColor.rgb);`),t}var Qe,$e;function $(){return($=e((()=>{ie(),oe(),he(),q(),_e(),Te(),ye(),A(),Ee(),Oe(),ce(),O(),E(),C(),de(),Ae(),Q(),Fe(),w(),Qe=1,$e=Object.freeze(Object.defineProperty({__proto__:null,build:Ze,ribbonlineNumRoundJoinSubdivisions:1},Symbol.toStringTag,{value:`Module`}))})))()}export{Re as _,Q as a,Le as b,Ke as c,Y as d,q as f,L as g,z as h,$e as i,J as l,H as m,Qe as n,Z as o,Ve as p,$ as r,qe as s,Ze as t,X as u,M as v,I as y};

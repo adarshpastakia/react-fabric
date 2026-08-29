@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{d as t}from"./apiConverter2.js";import{t as n}from"./OperatorIntersects.js";import{i as r,n as i,r as a,t as o}from"./intersectsOperator.js";e((()=>{n(),t(),a()}))();export{o as accelerateGeometry,r as execute,i as supportsCurves};
+import{n as e}from"./rolldown-runtime.js";import{l as t}from"./apiConverter.js";import{t as n}from"./OperatorIntersects.js";import{i as r,n as i,r as a,t as o}from"./intersectsOperator.js";function s(){return(s=e((()=>{n(),t(),a()})))()}s();export{o as accelerateGeometry,r as execute,i as supportsCurves};

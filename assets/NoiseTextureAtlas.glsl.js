@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{r as t,s as n}from"./vec2f64.js";import{r,t as i}from"./glsl.js";import{n as a,t as o}from"./ShaderBuilder.js";import{n as s,t as c}from"./ScreenSpacePass.glsl.js";import{r as l,t as u}from"./NoParameters.js";import{n as d,t as f}from"./Float2PassUniform.js";import{a as p,n as m,o as h,r as g,s as _}from"./NoiseTextureAtlasDimensions.js";function v(e){let t=new a;return t.include(s,!1),t.fragment.code.add(r`float remap(float x, float low1, float high1, float low2, float high2) {
+import{n as e}from"./rolldown-runtime.js";import{a as t,o as n}from"./vec2f64.js";import{r,t as i}from"./glsl.js";import{n as a,t as o}from"./ScreenSpacePass.glsl.js";import{r as s,t as c}from"./NoParameters.js";import{n as l,t as u}from"./ShaderBuilder.js";import{n as d,t as f}from"./Float2PassUniform.js";import{a as p,n as m,o as h,r as g,s as _}from"./NoiseTextureAtlasDimensions.js";function v(e){let t=new l;return t.include(a,!1),t.fragment.code.add(r`float remap(float x, float low1, float high1, float low2, float high2) {
 return low2 + (x - low1) * (high2 - low2) / (high1 - low1);
 }`),e.mode===0&&(t.fragment.code.add(r`float saturate(float x) {
 return clamp(x, 0.0, 1.0);
@@ -234,4 +234,4 @@ return (t * t * t) * (t * (t * 6.0 - 15.0) + 10.0);
       float map = abs(gradientNoise(mapUV));
       map = remap(map, 0.25 * (1.0 - worley(8.0 * mapUV)), 1.0, 0.0, 1.0);
       fragColor = vec4(map);
-    `),t}var y,b,x=e((()=>{t(),g(),c(),d(),i(),l(),o(),y=class extends u{constructor(){super(...arguments),this.weatherTile=n(0,0)}},b=Object.freeze(Object.defineProperty({__proto__:null,NoiseTextureAtlasPassParameters:y,build:v},Symbol.toStringTag,{value:`Module`}))}));export{b as i,x as n,v as r,y as t};
+    `),t}var y,b;function x(){return(x=e((()=>{n(),o(),d(),i(),g(),s(),u(),y=class extends c{constructor(){super(...arguments),this.weatherTile=t(0,0)}},b=Object.freeze(Object.defineProperty({__proto__:null,NoiseTextureAtlasPassParameters:y,build:v},Symbol.toStringTag,{value:`Module`}))})))()}export{b as i,y as n,v as r,x as t};

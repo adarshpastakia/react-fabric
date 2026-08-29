@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime.js";import{n as t,t as n}from"./ascii.js";function r(e,t,r=!1){let i=n(e).toLowerCase(),a=n(t).toLowerCase();return r===!0?i===a:r===`start`?i.startsWith(a):i.includes(a)}function i(){return(i=e((()=>{t()})))()}export{r as n,i as t};

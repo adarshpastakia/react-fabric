@@ -1,84 +1,95 @@
-import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";import{it as r,t as i,z as a}from"./src3.js";var o=t({Colors:()=>f,Sizes:()=>p,States:()=>h,Styles:()=>m,Tester:()=>g,_Chip:()=>d,__namedExportsOrder:()=>_,default:()=>u}),s,c,l,u,d,f,p,m,h,g,_,v=e((()=>{s=n(),i(),c=n(),{fn:l}=__STORYBOOK_MODULE_TEST__,u={component:a,title:`@core/components/Chip`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/chip/Chip.test.tsx`]},decorators:[e=>(0,c.jsx)(`div`,{className:`flex gap-2 items-center p-4`,children:(0,c.jsx)(e,{})})]},d={render:e=>(0,c.jsxs)(s.Fragment,{children:[(0,c.jsx)(a,{...e,icon:`mdi mdi-react`}),(0,c.jsx)(a,{...e,children:`Tag Label`}),(0,c.jsx)(a,{...e,icon:`mdi mdi-react`,children:`Tag Label`}),(0,c.jsx)(r,{value:99,placement:`top-end`,children:(0,c.jsx)(a,{...e,children:`Tag Label`})})]}),args:{}},f={render:e=>(0,c.jsxs)(s.Fragment,{children:[(0,c.jsx)(a,{...e,color:`primary`}),(0,c.jsx)(a,{...e,color:`accent`}),(0,c.jsx)(a,{...e,color:`info`}),(0,c.jsx)(a,{...e,color:`danger`}),(0,c.jsx)(a,{...e,color:`success`}),(0,c.jsx)(a,{...e,color:`warning`}),(0,c.jsx)(a,{...e,color:`#9c88ff`})]}),args:{children:`Tag Label`,icon:`mdi mdi-react`}},p={render:e=>(0,c.jsxs)(s.Fragment,{children:[(0,c.jsx)(a,{...e,size:`xs`}),(0,c.jsx)(a,{...e,size:`sm`}),(0,c.jsx)(a,{...e}),(0,c.jsx)(a,{...e,size:`md`}),(0,c.jsx)(a,{...e,size:`lg`}),(0,c.jsx)(a,{...e,size:`xl`})]}),args:{children:`Tag Label`,icon:`mdi mdi-react`}},m={render:e=>(0,c.jsxs)(s.Fragment,{children:[(0,c.jsx)(a,{...e,variant:void 0}),(0,c.jsx)(a,{...e,variant:`outline`}),(0,c.jsx)(a,{...e,variant:`solid`})]}),args:{children:`Tag Label`,icon:`mdi mdi-react`}},h={render:e=>(0,c.jsxs)(s.Fragment,{children:[(0,c.jsx)(a,{...e,disabled:!0,onRemove:void 0,children:`Disabled`}),(0,c.jsx)(a,{...e,onClick:void 0,onRemove:void 0,children:`Normal`}),(0,c.jsx)(a,{...e,onRemove:void 0,children:`Clickable`}),(0,c.jsx)(a,{...e,onClick:void 0,children:`Removable`})]}),args:{children:`Click Me!`,icon:`mdi mdi-react`,onClick:l(),onRemove:l()}},g={render:e=>(0,c.jsx)(a,{...e}),args:{}},d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
-  render: args => {
+import{n as e}from"./rolldown-runtime.js";import{B as t,t as n}from"./src2.js";import{t as r}from"./jsx-runtime.js";var i,a,o,s,c,l,u,d,f,p;function m(){return(m=e((()=>{n(),i=r(),a=r(),{fn:o}=__STORYBOOK_MODULE_TEST__,s={component:t,tags:[`autodocs`],title:`@core/components/Chip`,parameters:{layout:`centered`,jest:[`core/tests/components/Chip.test.tsx`]},decorators:[e=>(0,a.jsx)(`div`,{className:`flex gap-2 items-center p-4`,children:(0,a.jsx)(e,{})})]},c={render:({onClick:e,onRemove:n,...r})=>(0,a.jsxs)(i.Fragment,{children:[(0,a.jsx)(t,{...r,children:`Label`}),(0,a.jsx)(t,{...r,icon:`icon-[mdi--react]`,children:`Label with icon`}),(0,a.jsx)(t,{...r,icon:`icon-[mdi--react]`}),(0,a.jsx)(t,{...r,icon:`icon-[mdi--react]`,onClick:e,children:`Clickable`}),(0,a.jsx)(t,{...r,icon:`icon-[mdi--react]`,onRemove:n,children:`Remove Me`})]}),args:{onClick:o(),onRemove:o()}},l={render:e=>(0,a.jsxs)(i.Fragment,{children:[(0,a.jsx)(t,{...e,children:`Default`}),(0,a.jsx)(t,{...e,variant:`outlined`,children:`Outlined`}),(0,a.jsx)(t,{...e,color:`primary`,variant:`soft`,children:`Soft`}),(0,a.jsx)(t,{...e,color:`primary`,variant:`solid`,children:`Solid`})]}),args:{}},u={render:e=>(0,a.jsxs)(i.Fragment,{children:[(0,a.jsx)(t,{...e,color:`primary`,children:`Primary`}),(0,a.jsx)(t,{...e,color:`secondary`,children:`Secondary`}),(0,a.jsx)(t,{...e,color:`scarlet`,children:`Scarlet`}),(0,a.jsx)(t,{...e,color:`pumpkin`,children:`Pumpkin`}),(0,a.jsx)(t,{...e,color:`#148B69`,children:`#148B69`}),(0,a.jsx)(t,{...e,color:`#A7207F`,children:`#A7207F`})]}),args:{}},d={render:e=>(0,a.jsxs)(i.Fragment,{children:[(0,a.jsx)(t,{...e,color:`primary`,children:`Primary`}),(0,a.jsx)(t,{...e,color:`secondary`,children:`Secondary`}),(0,a.jsx)(t,{...e,color:`info`,children:`Info`}),(0,a.jsx)(t,{...e,color:`danger`,children:`Danger`}),(0,a.jsx)(t,{...e,color:`success`,children:`Success`}),(0,a.jsx)(t,{...e,color:`warning`,children:`Warning`})]}),args:{value:99}},f={tags:[`!autodocs`],render:e=>(0,a.jsx)(t,{...e}),args:{}},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
+  render: ({
+    onClick,
+    onRemove,
+    ...args
+  }) => {
     return <Fragment>
-        <Chip {...args} icon="mdi mdi-react" />
-        <Chip {...args}>Tag Label</Chip>
-        <Chip {...args} icon="mdi mdi-react">
-          Tag Label
+        <Chip {...args}>Label</Chip>
+        <Chip {...args} icon="icon-[mdi--react]">
+          Label with icon
         </Chip>
-        <Badge value={99} placement="top-end">
-          <Chip {...args}>Tag Label</Chip>
-        </Badge>
-      </Fragment>;
-  },
-  args: {}
-}`,...d.parameters?.docs?.source}}},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
-  render: args => {
-    return <Fragment>
-        <Chip {...args} color="primary" />
-        <Chip {...args} color="accent" />
-        <Chip {...args} color="info" />
-        <Chip {...args} color="danger" />
-        <Chip {...args} color="success" />
-        <Chip {...args} color="warning" />
-        <Chip {...args} color="#9c88ff" />
-      </Fragment>;
-  },
-  args: {
-    children: "Tag Label",
-    icon: "mdi mdi-react"
-  }
-}`,...f.parameters?.docs?.source}}},p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`{
-  render: args => {
-    return <Fragment>
-        <Chip {...args} size="xs" />
-        <Chip {...args} size="sm" />
-        <Chip {...args} />
-        <Chip {...args} size="md" />
-        <Chip {...args} size="lg" />
-        <Chip {...args} size="xl" />
-      </Fragment>;
-  },
-  args: {
-    children: "Tag Label",
-    icon: "mdi mdi-react"
-  }
-}`,...p.parameters?.docs?.source}}},m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
-  render: args => {
-    return <Fragment>
-        <Chip {...args} variant={undefined} />
-        <Chip {...args} variant="outline" />
-        <Chip {...args} variant="solid" />
-      </Fragment>;
-  },
-  args: {
-    children: "Tag Label",
-    icon: "mdi mdi-react"
-  }
-}`,...m.parameters?.docs?.source}}},h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
-  render: args => {
-    return <Fragment>
-        <Chip {...args} disabled onRemove={undefined}>
-          Disabled
-        </Chip>
-        <Chip {...args} onClick={undefined} onRemove={undefined}>
-          Normal
-        </Chip>
-        <Chip {...args} onRemove={undefined}>
+        <Chip {...args} icon="icon-[mdi--react]" />
+        <Chip {...args} icon="icon-[mdi--react]" onClick={onClick}>
           Clickable
         </Chip>
-        <Chip {...args} onClick={undefined}>
-          Removable
+        <Chip {...args} icon="icon-[mdi--react]" onRemove={onRemove}>
+          Remove Me
         </Chip>
       </Fragment>;
   },
   args: {
-    children: "Click Me!",
-    icon: "mdi mdi-react",
     onClick: fn(),
     onRemove: fn()
   }
-}`,...h.parameters?.docs?.source}}},g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:`{
+}`,...c.parameters?.docs?.source}}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
+  render: args => {
+    return <Fragment>
+        <Chip {...args}>Default</Chip>
+        <Chip {...args} variant="outlined">
+          Outlined
+        </Chip>
+        <Chip {...args} color="primary" variant="soft">
+          Soft
+        </Chip>
+        <Chip {...args} color="primary" variant="solid">
+          Solid
+        </Chip>
+      </Fragment>;
+  },
+  args: {}
+}`,...l.parameters?.docs?.source}}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
+  render: args => {
+    return <Fragment>
+        <Chip {...args} color="primary">
+          Primary
+        </Chip>
+        <Chip {...args} color="secondary">
+          Secondary
+        </Chip>
+        <Chip {...args} color="scarlet">
+          Scarlet
+        </Chip>
+        <Chip {...args} color="pumpkin">
+          Pumpkin
+        </Chip>
+        <Chip {...args} color="#148B69">
+          #148B69
+        </Chip>
+        <Chip {...args} color="#A7207F">
+          #A7207F
+        </Chip>
+      </Fragment>;
+  },
+  args: {}
+}`,...u.parameters?.docs?.source}}},d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
+  render: args => {
+    return <Fragment>
+        <Chip {...args} color="primary">
+          Primary
+        </Chip>
+        <Chip {...args} color="secondary">
+          Secondary
+        </Chip>
+        <Chip {...args} color="info">
+          Info
+        </Chip>
+        <Chip {...args} color="danger">
+          Danger
+        </Chip>
+        <Chip {...args} color="success">
+          Success
+        </Chip>
+        <Chip {...args} color="warning">
+          Warning
+        </Chip>
+      </Fragment>;
+  },
+  args: {
+    value: 99
+  }
+}`,...d.parameters?.docs?.source}}},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
+  tags: ["!autodocs"],
   render: args => <Chip {...args} />,
   args: {}
-}`,...g.parameters?.docs?.source}}},_=[`_Chip`,`Colors`,`Sizes`,`Styles`,`States`,`Tester`]}));v();export{f as Colors,p as Sizes,h as States,m as Styles,g as Tester,d as _Chip,_ as __namedExportsOrder,u as default,v as n,o as t};
+}`,...f.parameters?.docs?.source}}},p=[`_Chip`,`Variants`,`Colors`,`SegmentValue`,`Tester`]})))()}m();export{u as Colors,d as SegmentValue,f as Tester,l as Variants,c as _Chip,p as __namedExportsOrder,s as default};

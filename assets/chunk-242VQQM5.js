@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";function t(e,t){if(e==null)return{};var n={};for(var r in e)if({}.hasOwnProperty.call(e,r)){if(t.indexOf(r)!==-1)continue;n[r]=e[r]}return n}var n=e((()=>{}));export{n,t};
+import{n as e}from"./rolldown-runtime.js";function t(e,t){if(e==null)return{};var n={};for(var r in e)if({}.hasOwnProperty.call(e,r)){if(t.indexOf(r)!==-1)continue;n[r]=e[r]}return n}function n(){return(n=e((()=>{})))()}export{n,t};

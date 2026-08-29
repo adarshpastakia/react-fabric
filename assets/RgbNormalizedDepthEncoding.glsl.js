@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{r as t,t as n}from"./glsl.js";function r(e){e.code.add(t`vec3 encodeNormalizedDepthToRGB(float normalizedDepth) {
+import{n as e}from"./rolldown-runtime.js";import{r as t,t as n}from"./glsl.js";function r(e){e.code.add(t`vec3 encodeNormalizedDepthToRGB(float normalizedDepth) {
 float depth24 = normalizedDepth * 16777215.0;
 float high = floor(depth24 / 65536.0);
 depth24 -= high * 65536.0;
@@ -10,4 +10,4 @@ rgb *= 255.0;
 float depth = rgb.r * 65536.0 + rgb.g * 256.0 + rgb.b;
 depth /= 16777215.0;
 return depth;
-}`)}var i=e((()=>{n()}));export{r as n,i as t};
+}`)}function i(){return(i=e((()=>{n()})))()}export{r as n,i as t};

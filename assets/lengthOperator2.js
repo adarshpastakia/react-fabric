@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{E as t,u as n}from"./units.js";import{c as r,r as i,t as a}from"./jsonConverter.js";function o(e,t={}){let{unit:r}=t,o=i(e).calculateLength2D(),s=a(e);return o&&r&&s&&(o=n(o,s,r)),o}e((()=>{t(),r()}))();export{o as execute};
+import{n as e}from"./rolldown-runtime.js";import{D as t,d as n}from"./units.js";import{r,s as i,t as a}from"./jsonConverter.js";function o(e,t={}){let{unit:i}=t,o=r(e).calculateLength2D(),s=a(e);return o&&i&&s&&(o=n(o,s,i)),o}function s(){return(s=e((()=>{t(),i()})))()}s();export{o as execute};

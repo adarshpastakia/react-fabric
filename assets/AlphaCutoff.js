@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";var t,n=e((()=>{t=1/255.5}));export{t as n,n as t};
+import{n as e}from"./rolldown-runtime.js";var t,n;function r(){return(r=e((()=>{t=1/255.5,n=.9960861056751468})))()}export{t as n,n as r,r as t};

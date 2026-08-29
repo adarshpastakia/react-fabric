@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{a as t,c as n,i as r}from"./jsonConverter.js";import{n as i,t as a}from"./operatorUnion.js";function o(e){let[n,a]=t(e);return r(i(n,a),a)}e((()=>{a(),n()}))();export{o as executeMany};
+import{n as e}from"./rolldown-runtime.js";import{a as t,i as n,s as r}from"./jsonConverter.js";import{i,t as a}from"./operatorUnion.js";function o(e){let[r,a]=t(e);return n(i(r,a),a)}function s(){return(s=e((()=>{a(),r()})))()}s();export{o as executeMany};

@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime.js";function t(e){return typeof e==`object`&&!!e&&e.type===`2d`&&e.view2dType===`linkchart`}function n(){return(n=e((()=>{})))()}export{n,t};

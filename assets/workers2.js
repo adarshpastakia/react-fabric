@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{r as t,t as n}from"./workers.js";var r,i=e((()=>{n(),r=t}));export{r as n,i as t};
+import{n as e}from"./rolldown-runtime.js";import{n as t,t as n}from"./workers.js";var r;function i(){return(i=e((()=>{t(),r=n})))()}export{r as n,i as t};

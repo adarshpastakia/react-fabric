@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime.js";function t(e){return n in e}var n;function r(){return(r=e((()=>{n=Symbol(`hasTransparencyModeSymbol`)})))()}function i(e){let t=0;return e.some(({emissions:e})=>e===3||e===2&&t===1||e===1&&t===2?(t=3,!0):(e!==0&&t===0&&(t=e),!1)),t}function a(){return(a=e((()=>{})))()}export{t as a,n as i,a as n,r,i as t};

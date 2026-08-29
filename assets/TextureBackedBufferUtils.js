@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime.js";function t(e,t){let n=e.parameters.maxTextureSize,{texelStride:r}=t;return Math.floor(n/r)*n}function n(e,n){return t(e,n)*n.byteStride}function r(e){let t=Math.ceil(Math.sqrt(e)),n=Math.ceil(e/t);return{itemCount:t*n,itemWidth:t,itemHeight:n}}function i(){return(i=e((()=>{})))()}export{t as i,i as n,r,n as t};

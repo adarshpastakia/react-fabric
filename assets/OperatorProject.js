@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{hn as t}from"./Point2D.js";import{mt as n,wt as r}from"./SpatialReference2.js";e((()=>{t(),n()}))();export{r as OperatorProject};
+import{n as e}from"./rolldown-runtime.js";import{vn as t}from"./Point2D.js";import{_t as n,lt as r}from"./SpatialReference2.js";function i(){return(i=e((()=>{t(),r()})))()}i();export{n as OperatorProject};

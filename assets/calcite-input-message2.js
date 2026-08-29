@@ -1,1 +1,0 @@
-import{n as e,t}from"./calcite-input-message.js";t();export{e as InputMessage};

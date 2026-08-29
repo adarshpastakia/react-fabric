@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime.js";function t(e){let t=e.getExtension(`WEBGL_debug_renderer_info`);return t?new n(()=>e.getParameter(t.UNMASKED_RENDERER_WEBGL)):null}var n;function r(){return(r=e((()=>{n=class{constructor(e){this.getUnmaskedRenderer=e}}})))()}export{t as n,r as t};

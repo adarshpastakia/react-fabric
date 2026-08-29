@@ -1,47 +1,19 @@
-import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";import{$ as r,Q as i,it as a,pt as o,t as s,tt as c,w as l}from"./src3.js";var u=t({SplitButton:()=>h,StretchButtons:()=>g,Tester:()=>_,_ButtonGroup:()=>m,__namedExportsOrder:()=>v,default:()=>p}),d,f,p,m,h,g,_,v,y=e((()=>{d=n(),s(),f=n(),p={component:o,subcomponents:{Navigator:l},title:`@core/components/ButtonGroup`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/buttons/ButtonGroup.test.tsx`]},decorators:[e=>(0,f.jsx)(`div`,{className:`flex gap-2 items-center p-4`,children:(0,f.jsx)(e,{})})]},m={render:e=>(0,f.jsx)(d.Fragment,{children:(0,f.jsxs)(o,{...e,children:[(0,f.jsx)(r,{content:`Tester`,children:(0,f.jsx)(i,{children:`First`})}),(0,f.jsx)(i,{children:`Second`}),(0,f.jsx)(i,{children:`Third`}),e.className===`red`&&(0,f.jsx)(i,{children:`Four`})]})}),args:{}},h={render:e=>(0,f.jsx)(d.Fragment,{children:(0,f.jsxs)(o,{...e,children:[(0,f.jsx)(a,{ping:!0,children:(0,f.jsx)(i,{children:`Action`})}),(0,f.jsxs)(c,{fitToParent:!0,showArrow:!0,placement:`bottom-end`,children:[(0,f.jsx)(r,{content:`Tooltip`,children:(0,f.jsx)(i,{icon:`mdi mdi-chevron-down`,"aria-label":`Extra`})}),(0,f.jsx)(`div`,{className:`p-2`,children:`Dropdown`})]})]})}),args:{}},g={render:e=>(0,f.jsx)(d.Fragment,{children:(0,f.jsxs)(o,{...e,className:`w-[420px]`,children:[(0,f.jsx)(i,{className:`flex-1`,children:`First`}),(0,f.jsx)(i,{className:`flex-1`,children:`Second`}),(0,f.jsx)(i,{className:`flex-1`,children:`Third`}),(0,f.jsx)(i,{icon:`mdi mdi-react`,"aria-label":`Sample`})]})}),args:{}},_={render:e=>(0,f.jsx)(o,{...e}),args:{}},m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
+import{n as e}from"./rolldown-runtime.js";import{r as t}from"./EmptyContent.js";import{mt as n,t as r}from"./src2.js";import{t as i}from"./jsx-runtime.js";var a,o,s,c,l,u,d;function f(){return(f=e((()=>{r(),a=i(),o=i(),{fn:s}=__STORYBOOK_MODULE_TEST__,c={component:n,tags:[`autodocs`],title:`@core/components/ButtonGroup`,parameters:{layout:`centered`,jest:[`core/tests/components/ButtonGroup.test.tsx`]},decorators:[e=>(0,o.jsx)(`div`,{className:`flex gap-2 items-center p-4`,children:(0,o.jsx)(e,{})})]},l={render:e=>(0,o.jsx)(a.Fragment,{children:(0,o.jsxs)(n,{...e,children:[(0,o.jsx)(t,{value:`left`,children:`Left`}),(0,o.jsx)(t,{value:`center`,children:`Center`}),(0,o.jsx)(t,{value:`right`,children:`Right`}),(0,o.jsx)(t,{value:`justify`,children:`Justify`})]})}),args:{onClick:s()}},u={tags:[`!autodocs`],render:e=>(0,o.jsx)(n,{...e}),args:{}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Fragment>
         <ButtonGroup {...args}>
-          <Tooltip content="Tester">
-            <Button>First</Button>
-          </Tooltip>
-          <Button>Second</Button>
-          <Button>Third</Button>
-          {args.className === "red" && <Button>Four</Button>}
+          <Button value="left">Left</Button>
+          <Button value="center">Center</Button>
+          <Button value="right">Right</Button>
+          <Button value="justify">Justify</Button>
         </ButtonGroup>
       </Fragment>;
   },
-  args: {}
-}`,...m.parameters?.docs?.source}}},h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
-  render: args => {
-    return <Fragment>
-        <ButtonGroup {...args}>
-          <Badge ping>
-            <Button>Action</Button>
-          </Badge>
-          <Dropdown fitToParent showArrow placement="bottom-end">
-            <Tooltip content="Tooltip">
-              <Button icon="mdi mdi-chevron-down" aria-label="Extra" />
-            </Tooltip>
-            <div className="p-2">Dropdown</div>
-          </Dropdown>
-        </ButtonGroup>
-      </Fragment>;
-  },
-  args: {}
-}`,...h.parameters?.docs?.source}}},g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:`{
-  render: args => {
-    return <Fragment>
-        <ButtonGroup {...args} className="w-[420px]">
-          <Button className="flex-1">First</Button>
-          <Button className="flex-1">Second</Button>
-          <Button className="flex-1">Third</Button>
-          <Button icon="mdi mdi-react" aria-label="Sample" />
-        </ButtonGroup>
-      </Fragment>;
-  },
-  args: {}
-}`,...g.parameters?.docs?.source}}},_.parameters={..._.parameters,docs:{..._.parameters?.docs,source:{originalSource:`{
+  args: {
+    onClick: fn()
+  }
+}`,...l.parameters?.docs?.source}}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
+  tags: ["!autodocs"],
   render: args => <ButtonGroup {...args} />,
   args: {}
-}`,..._.parameters?.docs?.source}}},v=[`_ButtonGroup`,`SplitButton`,`StretchButtons`,`Tester`]}));y();export{h as SplitButton,g as StretchButtons,_ as Tester,m as _ButtonGroup,v as __namedExportsOrder,p as default,y as n,u as t};
+}`,...u.parameters?.docs?.source}}},d=[`_ButtonGroup`,`Tester`]})))()}f();export{u as Tester,l as _ButtonGroup,d as __namedExportsOrder,c as default};

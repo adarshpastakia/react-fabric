@@ -1,4 +1,4 @@
-import{n as e,r as t}from"./chunk.js";import{R as n,st as r}from"./ResizeObserver.es.js";import{t as i}from"./jsx-runtime.js";import{C as a,w as o}from"./iframe-BBjx9o_X.js";import{i as s,t as c}from"./src6.js";var l=t({Multiple:()=>m,WithHistory:()=>h,_AutoComplete:()=>p,__namedExportsOrder:()=>g,default:()=>f}),u,d,f,p,m,h,g,_=e((()=>{a(),n(),c(),u=i(),{fn:d}=__STORYBOOK_MODULE_TEST__,f={component:s,title:`@form/AutoComplete`,parameters:{layout:`centered`,jest:[`form/tests/AutoComplete.test.tsx`]},decorators:[e=>(0,u.jsx)(`div`,{className:`max-w-[32rem] w-screen`,children:(0,u.jsx)(e,{})})]},p={render:e=>(0,u.jsx)(s,{...e,multiple:!1}),args:{label:`AutoComplete`,placeholder:`AutoComplete...`,allowClear:!0,onEnterPressed:d(),onChange:d(),history:[`anchor`,`tester`,`arkwright`]}},m={render:e=>(0,u.jsx)(s,{...e,multiple:!0}),args:{label:`AutoComplete`,placeholder:`AutoComplete...`,allowClear:!0,onEnterPressed:d(),onChange:d(),history:[`anchor`,`tester`,`arkwright`,`granville`,`lister`,`smeghead`,`kryten`]}},h={render:e=>{let[t,n]=o(`autocomplete:history`,e.history??[]),i=(e=[])=>{n(r([e,...t].flat()).slice(0,50))};return(0,u.jsx)(s,{...e,multiple:!0,history:t,onSelect:i})},args:{label:`AutoComplete`,placeholder:`AutoComplete...`,allowClear:!0,onEnterPressed:d(),onChange:d(),history:[`anchor`,`tester`,`arkwright`,`granville`,`lister`,`smeghead`,`kryten`]}},p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`{
+import{n as e,r as t}from"./rolldown-runtime.js";import{c as n,t as r}from"./src.js";import{Wt as i,t as a}from"./src2.js";import{t as o}from"./jsx-runtime.js";import{c as s,l as c,t as l}from"./src6.js";function u(e,t){let n=e.filter(e=>!c(e));return t?Array.from(new Map(n.map(e=>[e[t],e])).values()):Array.from(new Set(n).values())}function d(){return(d=e((()=>{s()})))()}var f=t({Multiple:()=>_,WithHistory:()=>v,_AutoComplete:()=>g,__namedExportsOrder:()=>y,default:()=>h}),p,m,h,g,_,v,y;function b(){return(b=e((()=>{a(),r(),l(),p=o(),{fn:m}=__STORYBOOK_MODULE_TEST__,h={component:n,title:`@form/AutoComplete`,parameters:{layout:`centered`,jest:[`form/tests/AutoComplete.test.tsx`]},decorators:[e=>(0,p.jsx)(`div`,{className:`max-w-lg w-screen`,children:(0,p.jsx)(e,{})})]},g={render:e=>(0,p.jsx)(n,{...e,multiple:!1}),args:{label:`AutoComplete`,placeholder:`AutoComplete...`,allowClear:!0,onEnterPressed:m(),onChange:m(),history:[`anchor`,`tester`,`arkwright`]}},_={render:e=>(0,p.jsx)(n,{...e,multiple:!0}),args:{label:`AutoComplete`,placeholder:`AutoComplete...`,allowClear:!0,onEnterPressed:m(),onChange:m(),history:[`anchor`,`tester`,`arkwright`,`granville`,`lister`,`smeghead`,`kryten`]}},v={render:e=>{let[t,r]=i(`autocomplete:history`,e.history??[]),a=(e=[])=>{r(u([e,...t].flat()).slice(0,50))};return(0,p.jsx)(n,{...e,multiple:!0,history:t,onSelect:a})},args:{label:`AutoComplete`,placeholder:`AutoComplete...`,allowClear:!0,onEnterPressed:m(),onChange:m(),history:[`anchor`,`tester`,`arkwright`,`granville`,`lister`,`smeghead`,`kryten`]}},g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <AutoComplete {...args} multiple={false} />;
   },
@@ -10,7 +10,7 @@ import{n as e,r as t}from"./chunk.js";import{R as n,st as r}from"./ResizeObserve
     onChange: fn(),
     history: ["anchor", "tester", "arkwright"]
   }
-}`,...p.parameters?.docs?.source}}},m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
+}`,...g.parameters?.docs?.source}}},_.parameters={..._.parameters,docs:{..._.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <AutoComplete {...args} multiple />;
   },
@@ -22,7 +22,7 @@ import{n as e,r as t}from"./chunk.js";import{R as n,st as r}from"./ResizeObserve
     onChange: fn(),
     history: ["anchor", "tester", "arkwright", "granville", "lister", "smeghead", "kryten"]
   }
-}`,...m.parameters?.docs?.source}}},h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
+}`,..._.parameters?.docs?.source}}},v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
   render: args => {
     const [history, setHistory] = useLocalStorage<string[]>("autocomplete:history", args.history ?? []);
     const updateHistory = (values: string[] = []) => {
@@ -38,4 +38,4 @@ import{n as e,r as t}from"./chunk.js";import{R as n,st as r}from"./ResizeObserve
     onChange: fn(),
     history: ["anchor", "tester", "arkwright", "granville", "lister", "smeghead", "kryten"]
   }
-}`,...h.parameters?.docs?.source}}},g=[`_AutoComplete`,`Multiple`,`WithHistory`]}));_();export{m as Multiple,h as WithHistory,p as _AutoComplete,g as __namedExportsOrder,f as default,_ as n,l as t};
+}`,...v.parameters?.docs?.source}}},y=[`_AutoComplete`,`Multiple`,`WithHistory`]})))()}export{d as a,b as i,_ as n,g as r,f as t};

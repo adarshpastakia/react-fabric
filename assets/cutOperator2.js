@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{z as t}from"./typedArrayUtil.js";import{d as n}from"./apiConverter2.js";import{a as r,i,r as a,t as o}from"./cutOperator.js";e((()=>{t(),r(),n(),a()}))();export{i as execute,o as supportsCurves};
+import{n as e}from"./rolldown-runtime.js";import{x as t}from"./arrayUtils.js";import{l as n}from"./apiConverter.js";import{a as r,i,r as a,t as o}from"./cutOperator.js";function s(){return(s=e((()=>{t(),r(),n(),a()})))()}s();export{i as execute,o as supportsCurves};

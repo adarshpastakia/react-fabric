@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime.js";import{h as t,o as n,t as r}from"./spatialReferenceUtils.js";function i(e){return r(e)||n(e)?0:1}var a;function o(){return(o=e((()=>{t(),a=1e5})))()}export{i as n,a as r,o as t};

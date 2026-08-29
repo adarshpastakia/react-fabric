@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{n as t,t as n}from"./Program.js";function r(e,n,r,i=``){return new t(e,i+n.vertexShader,i+n.fragmentShader,r)}var i=e((()=>{n()}));export{i as n,r as t};
+import{n as e}from"./rolldown-runtime.js";import{l as t,u as n}from"./FramebufferObject.js";function r(e,n,r,i=``){return new t(e,i+n.vertexShader,i+n.fragmentShader,r)}function i(){return(i=e((()=>{n()})))()}export{i as n,r as t};

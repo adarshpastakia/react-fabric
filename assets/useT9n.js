@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{i as t,o as n}from"./runtime.js";import{i as r,t as i}from"./controllers.js";var a,o=e((()=>{i(),n(),a=r(t)}));export{a as n,o as t};
+import{n as e}from"./rolldown-runtime.js";import{i as t,o as n}from"./runtime.js";import{i as r,t as i}from"./controllers.js";var a;function o(){return(o=e((()=>{i(),n(),a=r(t)})))()}export{a as n,o as t};

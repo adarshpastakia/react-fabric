@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{r as t,t as n}from"./glsl.js";import{n as r,t as i}from"./Texture2DPassUniform.js";import{n as a,t as o}from"./ShaderBuilder.js";import{n as s,t as c}from"./ScreenSpacePass.glsl.js";function l(){let e=new a;return e.include(s),e.fragment.uniforms.add(new i(`edgesTexture`,e=>e.inputTexture),new i(`areaTexture`,e=>e.areaTexture),new i(`searchTexture`,e=>e.searchTexture)),e.fragment.constants.add(`smaaAreaTexPixelSize`,`vec2`,[1/160,1/560]),e.fragment.code.add(t`
+import{n as e}from"./rolldown-runtime.js";import{r as t,t as n}from"./glsl.js";import{n as r,t as i}from"./ScreenSpacePass.glsl.js";import{n as a,t as o}from"./ShaderBuilder.js";import{n as s,t as c}from"./Texture2DPassUniform.js";function l(){let e=new a;return e.include(r),e.fragment.uniforms.add(new c(`edgesTexture`,e=>e.inputTexture),new c(`areaTexture`,e=>e.areaTexture),new c(`searchTexture`,e=>e.searchTexture)),e.fragment.constants.add(`smaaAreaTexPixelSize`,`vec2`,[1/160,1/560]),e.fragment.code.add(t`
     vec4 sampleLevelZeroOffset(vec2 coord, vec2 offset, vec2 resolution) {
       return texture(edgesTexture, coord + offset.x * resolution);
     }
@@ -115,4 +115,4 @@ import{n as e}from"./chunk.js";import{r as t,t as n}from"./glsl.js";import{n as 
       weights.rg = getArea(areaTexture, sqrt_d, e1, e2, float(subsampleIndices.y));
     }
     fragColor = weights;
-  `),e}var u,d,f,p=e((()=>{c(),n(),r(),o(),u=8,d=16,f=Object.freeze(Object.defineProperty({__proto__:null,build:l},Symbol.toStringTag,{value:`Module`}))}));export{p as n,l as r,f as t};
+  `),e}var u,d,f;function p(){return(p=e((()=>{i(),n(),s(),o(),u=8,d=16,f=Object.freeze(Object.defineProperty({__proto__:null,build:l},Symbol.toStringTag,{value:`Module`}))})))()}export{p as n,l as r,f as t};

@@ -1,13 +1,13 @@
-import{a as e,n as t}from"./chunk.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{C as i,_ as a,b as o,c as s,h as c,i as l,l as u,m as d,r as f,t as p,tt as m}from"./iframe-BBjx9o_X.js";import{r as h}from"./react2.js";import{t as g}from"./mdx-react-shim.js";import{o as _,t as v}from"./src2.js";import{Sankey as y,TreeMap as b,n as x,t as S}from"./GenericChart.stories.js";function C(e){return(0,T.jsxs)(T.Fragment,{children:[(0,T.jsx)(d,{of:S}),`
-`,(0,T.jsx)(a,{children:`Generic Chart`}),`
-`,(0,T.jsx)(p,{storyId:`animations`,children:(0,T.jsx)(`div`,{className:`hidden-anchor`,children:(0,T.jsx)(c,{children:`Tree Map / Sunburst`})})}),`
-`,(0,T.jsx)(u,{of:_}),`
-`,(0,T.jsx)(l,{withToolbar:!0,of:b}),`
-`,(0,T.jsxs)(m,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(s,{of:b})]}),`
-`,(0,T.jsx)(p,{storyId:`sankey`,children:(0,T.jsx)(c,{children:`Sankey`})}),`
-`,(0,T.jsx)(u,{of:y}),`
-`,(0,T.jsx)(l,{withToolbar:!0,of:y}),`
-`,(0,T.jsxs)(m,{className:`control-panel`,children:[(0,T.jsx)(`div`,{children:`Controls`}),(0,T.jsx)(s,{of:y})]}),`
-`,(0,T.jsx)(`hr`,{}),`
-`,(0,T.jsx)(p,{storyId:`props`,children:(0,T.jsx)(c,{children:`Props`})}),`
-`,(0,T.jsx)(f,{sort:`requiredFirst`})]})}function w(e={}){let{wrapper:t}={...h(),...e.components};return t?(0,T.jsx)(t,{...e,children:(0,T.jsx)(C,{...e})}):C(e)}var T;t((()=>{T=r(),g(),i(),o(),e(n()),v(),x()}))();export{w as default};
+import{n as e}from"./rolldown-runtime.js";import{t}from"./react.js";import{S as n,_ as r,c as i,g as a,i as o,l as s,r as c,t as l,y as u}from"./blocks.js";import{R as d,t as f}from"./src2.js";import{t as p}from"./jsx-runtime.js";import{i as m,r as h}from"./react2.js";import{t as g,u as _}from"./src4.js";import{i as v,n as y,r as b,t as x}from"./GenericChart.stories.js";function S(e){return(0,w.jsxs)(w.Fragment,{children:[(0,w.jsx)(a,{of:x}),`
+`,(0,w.jsx)(u,{children:`Generic Chart`}),`
+`,(0,w.jsx)(l,{storyId:`animations`,children:(0,w.jsx)(`div`,{className:`hidden-anchor`,children:(0,w.jsx)(r,{children:`Tree Map / Sunburst`})})}),`
+`,(0,w.jsx)(s,{of:_}),`
+`,(0,w.jsx)(o,{withToolbar:!0,of:b}),`
+`,(0,w.jsxs)(d,{className:`control-panel`,children:[(0,w.jsx)(`div`,{children:`Controls`}),(0,w.jsx)(i,{of:b})]}),`
+`,(0,w.jsx)(l,{storyId:`sankey`,children:(0,w.jsx)(r,{children:`Sankey`})}),`
+`,(0,w.jsx)(s,{of:y}),`
+`,(0,w.jsx)(o,{withToolbar:!0,of:y}),`
+`,(0,w.jsxs)(d,{className:`control-panel`,children:[(0,w.jsx)(`div`,{children:`Controls`}),(0,w.jsx)(i,{of:y})]}),`
+`,(0,w.jsx)(`hr`,{}),`
+`,(0,w.jsx)(l,{storyId:`props`,children:(0,w.jsx)(r,{children:`Props`})}),`
+`,(0,w.jsx)(c,{sort:`requiredFirst`})]})}function C(e={}){let{wrapper:t}={...m(),...e.components};return t?(0,w.jsx)(t,{...e,children:(0,w.jsx)(S,{...e})}):S(e)}var w;function T(){return(T=e((()=>{w=p(),h(),g(),f(),n(),t(),v()})))()}T();export{C as default};

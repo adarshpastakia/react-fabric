@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{mt as t}from"./SpatialReference2.js";import{d as n}from"./apiConverter2.js";import{i as r,n as i,r as a,t as o}from"./containsOperator.js";e((()=>{t(),n(),a()}))();export{o as accelerateGeometry,r as execute,i as supportsCurves};
+import{n as e}from"./rolldown-runtime.js";import{lt as t}from"./SpatialReference2.js";import{l as n}from"./apiConverter.js";import{i as r,n as i,r as a,t as o}from"./containsOperator.js";function s(){return(s=e((()=>{t(),n(),a()})))()}s();export{o as accelerateGeometry,r as execute,i as supportsCurves};

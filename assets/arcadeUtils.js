@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";function t(e,{timeZone:t,timeExtent:n}){return{$view:{scale:e,timeZone:t,timeProperties:{currentStart:n?.start,currentEnd:n?.end}}}}var n=e((()=>{}));export{n,t};
+import{n as e}from"./rolldown-runtime.js";function t(e,{timeZone:t,timeExtent:n}){return{$view:{scale:e,timeZone:t,timeProperties:{currentStart:n?.start,currentEnd:n?.end}}}}function n(){return(n=e((()=>{})))()}export{n,t};

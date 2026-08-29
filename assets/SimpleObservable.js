@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{n as t,t as n}from"./ObservableBase.js";var r,i=e((()=>{n(),r=class extends t{notify(){let e=this._observers;if(e&&e.length>0){let t=e.slice();for(let e of t)e.onInvalidated(),e.onCommitted()}}}}));export{r as n,i as t};
+import{n as e}from"./rolldown-runtime.js";import{n as t,t as n}from"./ObservableBase.js";var r;function i(){return(i=e((()=>{n(),r=class extends t{notify(){let e=this._observers;if(e&&e.length>0){let t=e.slice();for(let e of t)e.onInvalidated(),e.onCommitted()}}}})))()}export{r as n,i as t};

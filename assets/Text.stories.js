@@ -1,20 +1,32 @@
-import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";import{n as r,r as i,t as a}from"./dist28.js";import{P as o,a as s,c,o as l,rt as u,s as d,t as f}from"./src3.js";var p=t({Clamped:()=>y,_Text:()=>v,__namedExportsOrder:()=>b,default:()=>h}),m,h,g,_,v,y,b,x=e((()=>{a(),f(),m=n(),h={component:s,subcomponents:{Title:o,Abbr:c,Mark:l,Anchor:u,Copy:d},title:`@core/Typography`,parameters:{controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/Text.test.tsx`]},decorators:[e=>(0,m.jsx)(`div`,{className:`max-w-2xl p-4`,children:(0,m.jsx)(e,{})})]},g=i.lorem.sentences(5)+`
-
-`+r.lorem.sentences(5),_=i.lorem.sentences(10)+`
-
-`+r.lorem.sentences(10),v={render:e=>(0,m.jsx)(s,{...e,children:g}),args:{className:`mixed-lang`}},y={render:e=>(0,m.jsx)(s,{...e,children:_}),args:{clamp:5,className:`mixed-lang`}},v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
-  render: args => {
-    return <Text {...args}>{para}</Text>;
+import{n as e}from"./rolldown-runtime.js";import{Yt as t,gt as n,t as r}from"./src2.js";import{t as i}from"./jsx-runtime.js";import{n as a,t as o}from"./chunk-NAVWDHVN.js";var s,c,l,u,d,f,p;function m(){return(m=e((()=>{r(),a(),s=i(),c=i(),l={component:n,tags:[`autodocs`],title:`@core/typography/Text`,parameters:{layout:`centered`,jest:[`core/tests/typography/Text.test.tsx`]},decorators:[e=>(0,c.jsx)(`div`,{className:`max-w-lg`,children:(0,c.jsx)(e,{})})]},u={render(e){return(0,c.jsxs)(s.Fragment,{children:[(0,c.jsx)(t,{children:`San Serif`}),(0,c.jsx)(n,{...e,className:`font-sans`}),(0,c.jsx)(t,{children:`Serif`}),(0,c.jsx)(n,{...e,className:`font-serif`}),(0,c.jsx)(t,{children:`Mono`}),(0,c.jsx)(n,{...e,className:`font-mono`})]})},args:{children:`${o.lorem.sentence()}
+${o.helpers.uniqueArray(()=>o.internet.emoji({types:[`food`,`object`]}),9).join(` `)}
+${o.lorem.paragraph()}`}},d={render(e){return(0,c.jsx)(n,{...e,clamp:2})},args:{children:o.lorem.paragraphs()}},f={tags:[`!autodocs`],render:e=>(0,c.jsx)(n,{...e}),args:{}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
+  render(args) {
+    return <Fragment>
+        <Title>San Serif</Title>
+        <Text {...args} className="font-sans" />
+        <Title>Serif</Title>
+        <Text {...args} className="font-serif" />
+        <Title>Mono</Title>
+        <Text {...args} className="font-mono" />
+      </Fragment>;
   },
   args: {
-    className: "mixed-lang"
+    children: \`\${faker.lorem.sentence()}
+\${faker.helpers.uniqueArray(() => faker.internet.emoji({
+      types: ["food", "object"]
+    }), 9).join(" ")}
+\${faker.lorem.paragraph()}\`
   }
-}`,...v.parameters?.docs?.source}}},y.parameters={...y.parameters,docs:{...y.parameters?.docs,source:{originalSource:`{
-  render: args => {
-    return <Text {...args}>{paras}</Text>;
+}`,...u.parameters?.docs?.source}}},d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
+  render(args) {
+    return <Text {...args} clamp={2} />;
   },
   args: {
-    clamp: 5,
-    className: "mixed-lang"
+    children: faker.lorem.paragraphs()
   }
-}`,...y.parameters?.docs?.source}}},b=[`_Text`,`Clamped`]}));x();export{y as Clamped,v as _Text,b as __namedExportsOrder,h as default,x as n,p as t};
+}`,...d.parameters?.docs?.source}}},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
+  tags: ["!autodocs"],
+  render: args => <Text {...args} />,
+  args: {}
+}`,...f.parameters?.docs?.source}}},p=[`_Text`,`Clamped`,`Tester`]})))()}m();export{d as Clamped,f as Tester,u as _Text,p as __namedExportsOrder,l as default};

@@ -1,6 +1,6 @@
-import{n as e}from"./chunk.js";import{t}from"./jsx-runtime.js";import{r as n,t as r}from"./dist28.js";import{C as i,G as a,Q as o,S as s,_ as c,d as l,g as u,t as d}from"./src3.js";var f,p,m,h,g,_,v=e((()=>{r(),d(),f=t(),{fn:p}=__STORYBOOK_MODULE_TEST__,m={component:s,title:`@core/components/Panel`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/Panel.test.tsx`]}},h={render:e=>(0,f.jsx)(`div`,{className:`max-w-96`,children:(0,f.jsxs)(s,{...e,children:[(0,f.jsxs)(i,{title:n.animal.cat(),children:[(0,f.jsx)(u,{children:n.lorem.paragraphs(2)}),(0,f.jsxs)(a,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,f.jsx)(o,{variant:`link`,children:`Cancel`}),(0,f.jsx)(o,{variant:`solid`,children:`OK`})]})]}),(0,f.jsxs)(i,{title:n.animal.cat(),children:[(0,f.jsx)(u,{children:n.lorem.paragraphs(2)}),(0,f.jsxs)(a,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,f.jsx)(o,{variant:`link`,children:`Cancel`}),(0,f.jsx)(o,{variant:`solid`,children:`OK`})]})]}),(0,f.jsxs)(i,{title:n.animal.cat(),children:[(0,f.jsx)(u,{children:n.lorem.paragraphs(2)}),(0,f.jsxs)(a,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,f.jsx)(o,{variant:`link`,children:`Cancel`}),(0,f.jsx)(o,{variant:`solid`,children:`OK`})]})]})]})}),args:{onActiveChange:p()}},g={render:e=>(0,f.jsx)(`div`,{className:`max-w-2xl w-screen h-screen max-h-96 grid outline`,style:{gridTemplate:`"content" 1fr / 1fr`},children:(0,f.jsx)(l,{children:(0,f.jsx)(c,{width:`24rem`,title:`Aside Panel Group`,collapsable:!0,flyout:!0,children:(0,f.jsxs)(s,{...e,children:[(0,f.jsxs)(i,{title:n.animal.cat(),headerClassName:`border-b border-b-info-500`,children:[(0,f.jsx)(u,{children:n.lorem.paragraphs(2)}),(0,f.jsxs)(a,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,f.jsx)(o,{variant:`link`,children:`Cancel`}),(0,f.jsx)(o,{variant:`solid`,children:`OK`})]})]}),(0,f.jsxs)(i,{title:n.animal.cat(),headerClassName:`border-b border-b-success-500`,children:[(0,f.jsx)(u,{children:n.lorem.paragraphs(2)}),(0,f.jsxs)(a,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,f.jsx)(o,{variant:`link`,children:`Cancel`}),(0,f.jsx)(o,{variant:`solid`,children:`OK`})]})]}),(0,f.jsxs)(i,{title:n.animal.cat(),headerClassName:`border-b border-b-danger-500`,children:[(0,f.jsx)(u,{children:n.lorem.paragraphs(2)}),(0,f.jsxs)(a,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,f.jsx)(o,{variant:`link`,children:`Cancel`}),(0,f.jsx)(o,{variant:`solid`,children:`OK`})]})]}),(0,f.jsxs)(i,{title:n.animal.cat(),headerClassName:`border-b border-b-warning-500`,children:[(0,f.jsx)(u,{children:n.lorem.paragraphs(2)}),(0,f.jsxs)(a,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,f.jsx)(o,{variant:`link`,children:`Cancel`}),(0,f.jsx)(o,{variant:`solid`,children:`OK`})]})]})]})})})}),args:{onActiveChange:p()}},h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
+import{n as e,r as t}from"./rolldown-runtime.js";import{r as n}from"./EmptyContent.js";import{It as r,Pt as i,Vt as a,f as o,m as s,t as c,zt as l}from"./src2.js";import{t as u}from"./jsx-runtime.js";import{n as d,t as f}from"./chunk-NAVWDHVN.js";var p=t({AsideContent:()=>v,_PanelGroup:()=>_,__namedExportsOrder:()=>y,default:()=>g}),m,h,g,_,v,y;function b(){return(b=e((()=>{c(),d(),m=u(),{fn:h}=__STORYBOOK_MODULE_TEST__,g={component:o,title:`@core/components/Panel`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/Panel.test.tsx`]}},_={render:e=>(0,m.jsx)(`div`,{className:`w-96 max-w-full`,children:(0,m.jsxs)(o,{...e,children:[(0,m.jsxs)(s,{title:f.animal.cat(),children:[(0,m.jsx)(l,{children:f.lorem.paragraphs(2)}),(0,m.jsxs)(r,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,m.jsx)(n,{variant:`link`,children:`Cancel`}),(0,m.jsx)(n,{variant:`solid`,children:`OK`})]})]}),(0,m.jsxs)(s,{title:f.animal.cat(),children:[(0,m.jsx)(l,{children:f.lorem.paragraphs(2)}),(0,m.jsxs)(r,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,m.jsx)(n,{variant:`link`,children:`Cancel`}),(0,m.jsx)(n,{variant:`solid`,children:`OK`})]})]}),(0,m.jsxs)(s,{title:f.animal.cat(),children:[(0,m.jsx)(l,{children:f.lorem.paragraphs(2)}),(0,m.jsxs)(r,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,m.jsx)(n,{variant:`link`,children:`Cancel`}),(0,m.jsx)(n,{variant:`solid`,children:`OK`})]})]})]})}),args:{onActiveChange:h()}},v={render:e=>(0,m.jsx)(`div`,{className:`max-w-2xl w-screen h-screen max-h-128 grid outline`,style:{gridTemplate:`"content" 1fr / 1fr`},children:(0,m.jsx)(i,{children:(0,m.jsx)(a,{width:`24rem`,title:`Aside Panel Group`,collapsable:!0,enableFlyout:!0,children:(0,m.jsxs)(o,{...e,children:[(0,m.jsxs)(s,{title:f.animal.cat(),classNames:{titlebar:`border-b border-b-info-500`},children:[(0,m.jsx)(l,{children:f.lorem.paragraphs(2)}),(0,m.jsxs)(r,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,m.jsx)(n,{variant:`link`,children:`Cancel`}),(0,m.jsx)(n,{variant:`solid`,children:`OK`})]})]}),(0,m.jsxs)(s,{title:f.animal.cat(),classNames:{titlebar:`border-b border-b-success-500`},children:[(0,m.jsx)(l,{children:f.lorem.paragraphs(2)}),(0,m.jsxs)(r,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,m.jsx)(n,{variant:`link`,children:`Cancel`}),(0,m.jsx)(n,{variant:`solid`,children:`OK`})]})]}),(0,m.jsxs)(s,{title:f.animal.cat(),classNames:{titlebar:`border-b border-b-danger-500`},children:[(0,m.jsx)(l,{children:f.lorem.paragraphs(2)}),(0,m.jsxs)(r,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,m.jsx)(n,{variant:`link`,children:`Cancel`}),(0,m.jsx)(n,{variant:`solid`,children:`OK`})]})]}),(0,m.jsxs)(s,{title:f.animal.cat(),classNames:{titlebar:`border-b border-b-warning-500`},children:[(0,m.jsx)(l,{children:f.lorem.paragraphs(2)}),(0,m.jsxs)(r,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,m.jsx)(n,{variant:`link`,children:`Cancel`}),(0,m.jsx)(n,{variant:`solid`,children:`OK`})]})]})]})})})}),args:{onActiveChange:h()}},_.parameters={..._.parameters,docs:{..._.parameters?.docs,source:{originalSource:`{
   render: args => {
-    return <div className="max-w-96">
+    return <div className="w-96 max-w-full">
         <PanelGroup {...args}>
           <Panel title={faker.animal.cat()}>
             <Content>{faker.lorem.paragraphs(2)}</Content>
@@ -29,36 +29,44 @@ import{n as e}from"./chunk.js";import{t}from"./jsx-runtime.js";import{r as n,t a
   args: {
     onActiveChange: fn()
   }
-}`,...h.parameters?.docs?.source}}},g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:`{
+}`,..._.parameters?.docs?.source}}},v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
   render: args => {
-    return <div className="max-w-2xl w-screen h-screen max-h-96 grid outline" style={{
+    return <div className="max-w-2xl w-screen h-screen max-h-128 grid outline" style={{
       gridTemplate: '"content" 1fr / 1fr'
     }}>
-        <Section>
-          <Aside width="24rem" title="Aside Panel Group" collapsable flyout>
+        <Layout>
+          <Aside width="24rem" title="Aside Panel Group" collapsable enableFlyout>
             <PanelGroup {...args}>
-              <Panel title={faker.animal.cat()} headerClassName="border-b border-b-info-500">
+              <Panel title={faker.animal.cat()} classNames={{
+              titlebar: "border-b border-b-info-500"
+            }}>
                 <Content>{faker.lorem.paragraphs(2)}</Content>
                 <Footer flex justify="end" className="px-2 py-1">
                   <Button variant="link">Cancel</Button>
                   <Button variant="solid">OK</Button>
                 </Footer>
               </Panel>
-              <Panel title={faker.animal.cat()} headerClassName="border-b border-b-success-500">
+              <Panel title={faker.animal.cat()} classNames={{
+              titlebar: "border-b border-b-success-500"
+            }}>
                 <Content>{faker.lorem.paragraphs(2)}</Content>
                 <Footer flex justify="end" className="px-2 py-1">
                   <Button variant="link">Cancel</Button>
                   <Button variant="solid">OK</Button>
                 </Footer>
               </Panel>
-              <Panel title={faker.animal.cat()} headerClassName="border-b border-b-danger-500">
+              <Panel title={faker.animal.cat()} classNames={{
+              titlebar: "border-b border-b-danger-500"
+            }}>
                 <Content>{faker.lorem.paragraphs(2)}</Content>
                 <Footer flex justify="end" className="px-2 py-1">
                   <Button variant="link">Cancel</Button>
                   <Button variant="solid">OK</Button>
                 </Footer>
               </Panel>
-              <Panel title={faker.animal.cat()} headerClassName="border-b border-b-warning-500">
+              <Panel title={faker.animal.cat()} classNames={{
+              titlebar: "border-b border-b-warning-500"
+            }}>
                 <Content>{faker.lorem.paragraphs(2)}</Content>
                 <Footer flex justify="end" className="px-2 py-1">
                   <Button variant="link">Cancel</Button>
@@ -67,10 +75,10 @@ import{n as e}from"./chunk.js";import{t}from"./jsx-runtime.js";import{r as n,t a
               </Panel>
             </PanelGroup>
           </Aside>
-        </Section>
+        </Layout>
       </div>;
   },
   args: {
     onActiveChange: fn()
   }
-}`,...g.parameters?.docs?.source}}},_=[`_PanelGroup`,`AsideContent`]}));v();export{g as AsideContent,h as _PanelGroup,_ as __namedExportsOrder,m as default,v as t};
+}`,...v.parameters?.docs?.source}}},y=[`_PanelGroup`,`AsideContent`]})))()}export{b as i,p as n,_ as r,v as t};

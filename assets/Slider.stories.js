@@ -1,4 +1,4 @@
-import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";import{a as r,m as i,t as a}from"./src6.js";var o=t({_Slider:()=>u,__namedExportsOrder:()=>d,default:()=>l}),s,c,l,u,d,f=e((()=>{a(),s=n(),{fn:c}=__STORYBOOK_MODULE_TEST__,l={component:r,subcomponents:{RangeSlider:i},title:`@form/Slider`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`form/tests/Slider.test.tsx`]},decorators:[e=>(0,s.jsx)(`div`,{className:`max-w-[32rem] w-screen`,children:(0,s.jsx)(e,{})})]},u={render:e=>(0,s.jsx)(r,{...e}),args:{label:`Slider input`,min:-99,max:99,value:0,showValue:!0,showLabels:!0,onChange:c(),onEnterPressed:c()}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
+import{n as e}from"./rolldown-runtime.js";import{I as t,t as n,u as r}from"./src.js";import{t as i}from"./jsx-runtime.js";var a,o,s,c,l;function u(){return(u=e((()=>{n(),a=i(),{fn:o}=__STORYBOOK_MODULE_TEST__,s={component:r,subcomponents:{RangeSlider:t},title:`@form/Inputs`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`form/tests/Slider.test.tsx`]},decorators:[e=>(0,a.jsx)(`div`,{className:`max-w-lg w-screen`,children:(0,a.jsx)(e,{})})]},c={render:e=>(0,a.jsx)(r,{...e}),args:{label:`Slider input`,min:-99,max:99,value:0,showValue:!0,showLabels:!0,onChange:o(),onEnterPressed:o()}},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Slider {...args} />;
   },
@@ -12,4 +12,4 @@ import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";impor
     onChange: fn(),
     onEnterPressed: fn()
   }
-}`,...u.parameters?.docs?.source}}},d=[`_Slider`]}));f();export{u as _Slider,d as __namedExportsOrder,l as default,f as n,o as t};
+}`,...c.parameters?.docs?.source}}},l=[`_Slider`]})))()}u();export{c as _Slider,l as __namedExportsOrder,s as default};

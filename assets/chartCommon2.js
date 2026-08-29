@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{s as t}from"./Animation.js";import{t as n}from"./amcharts52.js";var r;e((()=>{n(),r=[`#2888B8`,`#EB7028`,`#48A375`,`#9370B1`,`#e55035`,`#3d9ccc`,`#DC7B04`,`#b87bb0`,`#3fa681`,`#EE6386`].map(e=>t(e))}))();export{r as esriChartColorSet};
+import{n as e}from"./rolldown-runtime.js";import{s as t}from"./Animation.js";import{n}from"./amcharts5.js";var r;function i(){return(i=e((()=>{n(),r=[`#2888B8`,`#EB7028`,`#48A375`,`#9370B1`,`#e55035`,`#3d9ccc`,`#DC7B04`,`#b87bb0`,`#3fa681`,`#EE6386`].map(e=>t(e))})))()}i();export{r as esriChartColorSet};

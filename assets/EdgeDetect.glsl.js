@@ -1,7 +1,7 @@
-import{n as e}from"./chunk.js";import{r as t,t as n}from"./glsl.js";import{n as r,t as i}from"./Texture2DPassUniform.js";import{n as a,t as o}from"./ShaderBuilder.js";import{n as s,t as c}from"./ScreenSpacePass.glsl.js";function l(){let e=new a;return e.include(s),e.outputs.add(`fragEdges`,`vec2`),e.fragment.code.add(t`float absMax3(vec3 v) {
+import{n as e}from"./rolldown-runtime.js";import{r as t,t as n}from"./glsl.js";import{n as r,t as i}from"./ScreenSpacePass.glsl.js";import{n as a,t as o}from"./ShaderBuilder.js";import{n as s,t as c}from"./Texture2DPassUniform.js";function l(){let e=new a;return e.include(r),e.outputs.add(`fragEdges`,`vec2`),e.fragment.code.add(t`float absMax3(vec3 v) {
 vec3 t = abs(v);
 return max(max(t.r, t.g), t.b);
-}`),e.fragment.uniforms.add(new i(`colorTexture`,e=>e.color)).main.add(t`
+}`),e.fragment.uniforms.add(new c(`colorTexture`,e=>e.color)).main.add(t`
     vec2 resolution = 1.0 / vec2(textureSize(colorTexture, 0));
     vec4 offsets[3];
     offsets[0] = vec4(uv.x - resolution.x, uv.y, uv.x, uv.y + resolution.y);
@@ -43,4 +43,4 @@ return max(max(t.r, t.g), t.b);
       // Local contrast adaptation in action:
       fragEdges = edges * step(maxDelta, float(${t.float(d)}) * delta);
     }
-  `),e}var u,d,f,p=e((()=>{c(),n(),r(),o(),u=.05,d=2,f=Object.freeze(Object.defineProperty({__proto__:null,build:l},Symbol.toStringTag,{value:`Module`}))}));export{p as n,l as r,f as t};
+  `),e}var u,d,f;function p(){return(p=e((()=>{i(),n(),s(),o(),u=.05,d=2,f=Object.freeze(Object.defineProperty({__proto__:null,build:l},Symbol.toStringTag,{value:`Module`}))})))()}export{p as n,l as r,f as t};

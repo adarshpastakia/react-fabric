@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{r as t,t as n}from"./glsl.js";function r(e){e.code.add(t`vec4 premultiplyAlpha(vec4 v) {
+import{n as e}from"./rolldown-runtime.js";import{r as t,t as n}from"./glsl.js";function r(e){e.code.add(t`vec4 premultiplyAlpha(vec4 v) {
 return vec4(v.rgb * v.a, v.a);
 }
 vec3 rgb2hsv(vec3 c) {
@@ -16,4 +16,4 @@ return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
 }
 float rgb2v(vec3 c) {
 return max(c.x, max(c.y, c.z));
-}`)}var i=e((()=>{n()}));export{i as n,r as t};
+}`)}function i(){return(i=e((()=>{n()})))()}export{i as n,r as t};

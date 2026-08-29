@@ -1,32 +1,75 @@
-import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";import{T as r,t as i}from"./src3.js";var a=t({Colors:()=>u,Sizes:()=>d,_Meter:()=>l,__namedExportsOrder:()=>f,default:()=>c}),o,s,c,l,u,d,f,p=e((()=>{o=n(),i(),s=n(),c={component:r,title:`@core/components/Meter`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/Meter.test.tsx`]},decorators:[e=>(0,s.jsx)(`div`,{className:`w-screen max-w-sm p-4 flex flex-col gap-2`,children:(0,s.jsx)(e,{})})]},l={render:e=>(0,s.jsx)(o.Fragment,{children:(0,s.jsx)(r,{...e})}),args:{value:94.2}},u={render:e=>(0,s.jsxs)(o.Fragment,{children:[(0,s.jsx)(r,{...e,className:`text-primary-600`}),(0,s.jsx)(r,{...e,className:`text-accent-600`}),(0,s.jsx)(r,{...e,className:`text-danger-600`})]}),args:{value:94.2}},d={render:e=>(0,s.jsxs)(o.Fragment,{children:[(0,s.jsx)(r,{...e,className:`text-xs`}),(0,s.jsx)(r,{...e,className:`text-md`}),(0,s.jsx)(r,{...e,className:`text-2xl`})]}),args:{value:94.2}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
+import{n as e}from"./rolldown-runtime.js";import{b as t,t as n}from"./src2.js";import{t as r}from"./jsx-runtime.js";var i,a,o,s,c,l,u,d,f,p;function m(){return(m=e((()=>{n(),i=r(),a=r(),o={component:t,tags:[`autodocs`],title:`@core/components/Meter`,parameters:{layout:`centered`,jest:[`core/tests/components/Meter.test.tsx`]},decorators:[e=>(0,a.jsx)(`div`,{className:`w-2xs max-w-full p-4`,children:(0,a.jsx)(e,{})})]},s={render:e=>(0,a.jsx)(t,{...e}),args:{value:60}},c={render:()=>(0,a.jsxs)(i.Fragment,{children:[(0,a.jsx)(`div`,{className:`mb-2`,children:(0,a.jsx)(t,{value:0})}),(0,a.jsx)(`div`,{className:`mb-2`,children:(0,a.jsx)(t,{value:16.67})}),(0,a.jsx)(`div`,{className:`mb-2`,children:(0,a.jsx)(t,{value:33.34})}),(0,a.jsx)(`div`,{className:`mb-2`,children:(0,a.jsx)(t,{value:50,className:`text-2xl`})}),(0,a.jsx)(`div`,{className:`mb-2`,children:(0,a.jsx)(t,{value:66.68})}),(0,a.jsx)(`div`,{className:`mb-2`,children:(0,a.jsx)(t,{value:83.35})}),(0,a.jsx)(`div`,{className:`mb-2`,children:(0,a.jsx)(t,{value:100})})]})},l={render:()=>(0,a.jsxs)(i.Fragment,{children:[(0,a.jsx)(`div`,{className:`mb-2`,children:(0,a.jsx)(t,{value:95,color:`jade-600`})}),(0,a.jsx)(`div`,{className:`mb-2`,children:(0,a.jsx)(t,{value:95,color:`danger-600`})}),(0,a.jsx)(`div`,{className:`mb-2`,children:(0,a.jsx)(t,{value:95,color:`warning-600`})}),(0,a.jsx)(`div`,{className:`mb-2`,children:(0,a.jsx)(t,{value:95,color:`primary-600`})})]})},u={render:e=>(0,a.jsx)(t,{...e,hideLabel:!0}),args:{value:75}},d={render:()=>(0,a.jsxs)(i.Fragment,{children:[(0,a.jsx)(`div`,{className:`mb-2`,children:(0,a.jsx)(t,{value:-10})}),(0,a.jsx)(`div`,{className:`mb-2`,children:(0,a.jsx)(t,{value:150})})]})},f={tags:[`!autodocs`],render:e=>(0,a.jsx)(t,{...e}),args:{value:50}},s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`{
   render: args => {
-    return <Fragment>
-        <Meter {...args} />
-      </Fragment>;
+    return <Meter {...args} />;
   },
   args: {
-    value: 94.2
+    value: 60
+  }
+}`,...s.parameters?.docs?.source}}},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
+  render: () => {
+    return <Fragment>
+        <div className="mb-2">
+          <Meter value={0} />
+        </div>
+        <div className="mb-2">
+          <Meter value={16.67} />
+        </div>
+        <div className="mb-2">
+          <Meter value={33.34} />
+        </div>
+        <div className="mb-2">
+          <Meter value={50} className="text-2xl" />
+        </div>
+        <div className="mb-2">
+          <Meter value={66.68} />
+        </div>
+        <div className="mb-2">
+          <Meter value={83.35} />
+        </div>
+        <div className="mb-2">
+          <Meter value={100} />
+        </div>
+      </Fragment>;
+  }
+}`,...c.parameters?.docs?.source}}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
+  render: () => {
+    return <Fragment>
+        <div className="mb-2">
+          <Meter value={95} color="jade-600" />
+        </div>
+        <div className="mb-2">
+          <Meter value={95} color="danger-600" />
+        </div>
+        <div className="mb-2">
+          <Meter value={95} color="warning-600" />
+        </div>
+        <div className="mb-2">
+          <Meter value={95} color="primary-600" />
+        </div>
+      </Fragment>;
   }
 }`,...l.parameters?.docs?.source}}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
   render: args => {
-    return <Fragment>
-        <Meter {...args} className="text-primary-600" />
-        <Meter {...args} className="text-accent-600" />
-        <Meter {...args} className="text-danger-600" />
-      </Fragment>;
+    return <Meter {...args} hideLabel />;
   },
   args: {
-    value: 94.2
+    value: 75
   }
 }`,...u.parameters?.docs?.source}}},d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
-  render: args => {
+  render: () => {
     return <Fragment>
-        <Meter {...args} className="text-xs" />
-        <Meter {...args} className="text-md" />
-        <Meter {...args} className="text-2xl" />
+        <div className="mb-2">
+          <Meter value={-10} />
+        </div>
+        <div className="mb-2">
+          <Meter value={150} />
+        </div>
       </Fragment>;
-  },
-  args: {
-    value: 94.2
   }
-}`,...d.parameters?.docs?.source}}},f=[`_Meter`,`Colors`,`Sizes`]}));p();export{u as Colors,d as Sizes,l as _Meter,f as __namedExportsOrder,c as default,p as n,a as t};
+}`,...d.parameters?.docs?.source}}},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
+  tags: ["!autodocs"],
+  render: args => <Meter {...args} />,
+  args: {
+    value: 50
+  }
+}`,...f.parameters?.docs?.source}}},p=[`_Meter`,`AllStates`,`Colors`,`WithoutLabel`,`EdgeCases`,`Tester`]})))()}m();export{c as AllStates,l as Colors,d as EdgeCases,f as Tester,u as WithoutLabel,s as _Meter,p as __namedExportsOrder,o as default};

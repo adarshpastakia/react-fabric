@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{r as t,t as n}from"./controllers.js";var r,i=e((()=>{n(),r=()=>t((e,t)=>{let n=new Set;return t.onDisconnected(()=>{n.forEach(e=>e.cancel())}),{add:e=>{[e].flat().forEach(e=>n.add(e))},resources:n}})}));export{r as n,i as t};
+import{n as e}from"./rolldown-runtime.js";import{r as t,t as n}from"./controllers.js";var r;function i(){return(i=e((()=>{n(),r=()=>t((e,t)=>{let n=new Set;return t.onDisconnected(()=>{n.forEach(e=>e.cancel())}),{add:e=>{[e].flat().forEach(e=>n.add(e))},resources:n}})})))()}export{r as n,i as t};

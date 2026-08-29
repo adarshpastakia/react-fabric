@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{i as t,l as n}from"./tslib.es6.js";import{i as r,n as i,r as a,t as o}from"./Ellipsoid.js";import{X as s,Y as c}from"./units.js";import{r as l,v as u}from"./mathUtils.js";import{b as d,h as f}from"./vec2.js";import{D as p,E as m}from"./vec3.js";import{a as h,r as g}from"./vec2f64.js";import{a as _,o as ee,s as v}from"./ShaderOutput.js";import{n as y,r as b,t as x}from"./glsl.js";import{a as te,i as S,o as C,r as w}from"./Emissions.glsl.js";import{n as T,t as E}from"./Uniform.js";import{n as D,t as O}from"./FloatDrawUniform.js";import{n as ne,t as k}from"./Texture2DDrawUniform.js";import{n as re,t as ie}from"./ShaderBuilder.js";import{n as ae,t as oe}from"./olidUtils.js";import{n as se,r as ce,t as le}from"./ShaderTechniqueConfiguration.js";import{a as ue,r as de}from"./Slice.glsl.js";import{n as fe,t as pe}from"./Float3BindUniform.js";import{n as me,t as he}from"./MixExternalColor.glsl.js";import{n as ge,t as _e}from"./PiUtils.glsl.js";import{n as ve,t as ye}from"./Float2BindUniform.js";import{n as be,t as xe}from"./ReadDepth.glsl.js";import{n as Se,t as Ce}from"./Texture2DBindUniform.js";import{n as we,t as Te}from"./TerrainDepthTest.glsl.js";import{n as Ee,t as De}from"./OutputHighlight.glsl.js";import{n as Oe,t as ke}from"./AlphaCutoff.js";import{n as Ae,t as je}from"./OutputColorHighlightOLID.glsl.js";import{h as Me,i as Ne,o as Pe}from"./DefaultLayouts.js";import{i as Fe,r as Ie}from"./ForwardLinearDepthToWriteShadowMap.glsl.js";import{n as A,r as j}from"./VertexPosition.glsl.js";import{n as M,t as N}from"./VertexColor.glsl.js";import{n as Le,t as Re}from"./OutputDepth.glsl.js";import{a as P,n as ze,o as F,r as Be}from"./DiscardOrAdjustAlpha.glsl.js";import{n as Ve,t as He}from"./ComputeNormalTexture.glsl.js";import{i as I,n as Ue,t as L}from"./EvaluateSceneLighting.glsl.js";import{i as We,n as Ge,r as Ke}from"./MainLighting.glsl.js";import{i as qe,n as Je,r as Ye,t as Xe}from"./SnowCover.glsl.js";import{i as Ze,n as Qe}from"./ReadShadowMap.glsl.js";import{n as $e,t as et}from"./SphereIntersect.glsl.js";import{i as R,n as tt,r as nt,t as rt}from"./Texture2DUintDrawUniform.js";import{a as it,c as z,i as at,o as ot,s as B,t as st}from"./Overlay.glsl.js";function ct(e){e.vertex.code.add(b`
+import{n as e}from"./rolldown-runtime.js";import{o as t,r as n}from"./tslib.es6.js";import{i as r,n as i,r as a,t as o}from"./Ellipsoid.js";import{Q as s,Z as c}from"./units.js";import{E as l,l as u,y as d}from"./mathUtils.js";import{O as f,x as ee}from"./vec2.js";import{D as p,O as m}from"./vec3.js";import{o as h,s as g}from"./vec2f64.js";import{n as _,t as v}from"./olidUtils.js";import{n as y,r as b,t as x}from"./glsl.js";import{n as S,t as C}from"./Uniform.js";import{n as te,t as w}from"./ShaderBuilder.js";import{n as T,t as E}from"./Texture2DDrawUniform.js";import{d as ne,p as D}from"./ShaderOutput.js";import{n as O,r as k,t as re}from"./ShaderTechniqueConfiguration.js";import{a as ie,o as ae}from"./Slice.glsl.js";import{n as oe,t as se}from"./Float3BindUniform.js";import{n as ce,t as le}from"./FloatBindUniform.js";import{n as ue,t as de}from"./MixExternalColor.glsl.js";import{n as fe}from"./PiUtils.glsl.js";import{n as pe,t as me}from"./Float2BindUniform.js";import{n as he,t as A}from"./alphaCutoff.glsl.js";import{a as ge,c as _e,i as j,o as ve,r as M,s as ye}from"./Emissions.glsl.js";import{r as be,t as xe}from"./oitResolution.glsl.js";import{n as Se,t as Ce}from"./OutputHighlight.glsl.js";import{n as we,t as Te}from"./Texture2DBindUniform.js";import{n as Ee,t as De}from"./OutputColorHighlightOLID.glsl.js";import{r as Oe,t as ke}from"./ReadDepth.glsl.js";import{h as Ae,i as je,o as Me}from"./DefaultLayouts.js";import{a as Ne,n as N,o as Pe,r as Fe}from"./VertexPosition.glsl.js";import{i as Ie,r as Le}from"./ForwardLinearDepthToWriteShadowMap.glsl.js";import{n as Re,t as ze}from"./VertexColor.glsl.js";import{n as Be,t as Ve}from"./OutputDepth.glsl.js";import{n as He,o as Ue,r as We,s as Ge}from"./DiscardOrAdjustAlpha.glsl.js";import{n as Ke,t as qe}from"./ComputeNormalTexture.glsl.js";import{i as P,r as Je,t as F}from"./EvaluateSceneLighting.glsl.js";import{i as Ye,n as Xe,r as Ze}from"./MainLighting.glsl.js";import{i as Qe,n as $e,r as et,t as tt}from"./SnowCover.glsl.js";import{n as nt,t as rt}from"./ReadShadowMap.glsl.js";import{i as it,n as at,r as I,t as ot}from"./Texture2DUintDrawUniform.js";import{a as st,c as L,i as ct,o as lt,s as R,t as ut}from"./Overlay.glsl.js";import{n as dt,t as ft}from"./SphereIntersect.glsl.js";function pt(e){e.vertex.code.add(b`
     vec4 decodeSymbolColor(vec4 symbolColor, out int colorMixMode) {
       float symbolAlpha = 0.0;
 
@@ -22,13 +22,13 @@ import{n as e}from"./chunk.js";import{i as t,l as n}from"./tslib.es6.js";import{
 
       return vec4(symbolColor.r, symbolColor.g, symbolColor.b, symbolAlpha);
     }
-  `)}var lt=e((()=>{x()})),V,ut=e((()=>{T(),V=class extends E{constructor(e,t){super(e,`int`,2,(n,r,i)=>n.setUniform1i(e,t(r,i)))}}}));function dt(e,t){switch(t.componentDataType){case 1:return pt(e,t);case 0:return mt(e,t);case 2:return;default:t.componentDataType}}function ft(){return oe()?G:W}function pt(e,t){let{vertex:n,fragment:r}=e,{output:i,hasEmission:a}=t,o=i===9,{getTextureAttribute:s,TextureBackedBufferModule:c}=ft();e.include(c,t),e.attributes.add(`componentIndex`,`uint`),e.varyings.add(`vExternalColorMixMode`,`mediump float`),e.varyings.add(`vExternalColor`,`vec4`),o&&e.varyings.add(`vObjectAndLayerIdColor`,`vec4`),a&&(e.varyings.add(`emissiveStrength`,`float`),e.varyings.add(`emissiveSource`,`int`)),e.include(ct),n.code.add(b`
+  `)}function z(){return(z=e((()=>{x()})))()}function mt(e,t){switch(t.componentDataType){case 1:return gt(e,t);case 0:return _t(e,t);case 2:return;default:t.componentDataType}}function ht(){return v()?U:H}function gt(e,t){let{vertex:n,fragment:r}=e,{output:i,hasEmission:a}=t,o=i===11,{getTextureAttribute:s,TextureBackedBufferModule:c}=ht();e.include(c,t),e.attributes.add(`componentIndex`,`uint`),e.varyings.add(`vExternalColorMixMode`,`mediump float`),e.varyings.add(`vExternalColor`,`vec4`),o&&e.varyings.add(`vObjectAndLayerIdColor`,`vec4`),a&&(e.varyings.add(`emissiveStrength`,`float`),e.varyings.add(`emissiveSource`,`int`)),e.include(pt),n.include(be,t),n.code.add(b`
   float readElevationOffset() {
     return ${s(`elevationOffset`)};
   }
 
   void forwardEmissiveStrength() {
-    ${y(a,b`emissiveStrength = ${s(`emissiveStrength`)};
+    ${y(a,b`emissiveStrength = clamp(${s(`emissiveStrength`)}, 0.0, maxEmissiveStrength);
            emissiveSource = ${s(`emissiveSourceMode`)} == 0u ? 0 : 1;`)}
   }
 
@@ -62,7 +62,7 @@ import{n as e}from"./chunk.js";import{i as t,l as n}from"./tslib.es6.js";import{
   void outputObjectAndLayerIdColor() {
      ${o?b`fragColor = vObjectAndLayerIdColor;`:``}
   }
-`)}function mt(e,t){let{vertex:n,fragment:r}=e;e.varyings.add(`vExternalColor`,`vec4`),r.uniforms.add(new D(`emissiveStrength`,e=>e.componentParameters.emissiveStrength)),n.uniforms.add(new B(`externalColor`,e=>e.componentParameters.externalColor)).code.add(b`float readElevationOffset() {
+`)}function _t(e,t){let{vertex:n,fragment:r}=e;e.varyings.add(`vExternalColor`,`vec4`),r.uniforms.add(new j(`emissiveStrength`,e=>e.componentParameters.emissiveStrength)),n.uniforms.add(new R(`externalColor`,e=>e.componentParameters.externalColor)).code.add(b`float readElevationOffset() {
 return 0.0;
 }
 void forwardObjectAndLayerIdColor() {}
@@ -71,7 +71,7 @@ vec4 forwardExternalColor(out bool castShadows) {
 vExternalColor = externalColor;
 castShadows = true;
 return externalColor;
-}`);let i=t.output===9;r.uniforms.add(new V(`externalColorMixMode`,e=>e.componentParameters.externalColorMixMode)).code.add(b`
+}`);let i=t.output===11;r.uniforms.add(new Pe(`externalColorMixMode`,e=>e.componentParameters.externalColorMixMode)).code.add(b`
     void readExternalColor(out vec4 color, out int colorMixMode) {
       color = vExternalColor;
       colorMixMode = externalColorMixMode;
@@ -80,15 +80,21 @@ return externalColor;
     void outputObjectAndLayerIdColor() {
       ${y(i,`fragColor = vec4(0, 0, 0, 0);`)}
     }
-  `)}var H,U,W,G,K=e((()=>{lt(),nt(),z(),O(),x(),ut(),tt(),ae(),Pe(),H=(e,t)=>e===`emissiveSourceMode`||e===`emissiveStrength`?t.hasEmission:e!==`olidColor`||t.output===9,U=new rt(`componentTextureBuffer`,e=>e.textureBackedBuffer?.texture),W=new R({layout:Me,itemIndexAttribute:`componentIndex`,bufferUniform:U,fieldFilter:H}),G=new R({layout:Ne,itemIndexAttribute:`componentIndex`,bufferUniform:U,fieldFilter:H})}));function q(e,t){let n=e.fragment;switch(t.doubleSidedMode){case 0:n.code.add(b`vec3 _adjustDoublesided(vec3 normal) {
+  `)}var B,V,H,U;function W(){return(W=e((()=>{z(),it(),L(),M(),x(),Ne(),at(),_(),Me(),xe(),B=(e,t)=>e===`emissiveSourceMode`||e===`emissiveStrength`?t.hasEmission:e!==`olidColor`||t.output===11,V=new ot(`componentTextureBuffer`,e=>e.textureBackedBuffer?.texture),H=new I({layout:Ae,itemIndexAttribute:`componentIndex`,bufferUniform:V,fieldFilter:B}),U=new I({layout:je,itemIndexAttribute:`componentIndex`,bufferUniform:V,fieldFilter:B})})))()}function G(e,t){let n=e.fragment;switch(t.doubleSidedMode){case 0:n.code.add(b`vec3 _adjustDoublesided(vec3 normal) {
 return normal;
-}`);break;case 1:e.include(A,t),n.code.add(b`vec3 _adjustDoublesided(vec3 normal) {
+}`);break;case 1:e.include(N,t),n.code.add(b`vec3 _adjustDoublesided(vec3 normal) {
 return dot(normal, vPositionWorldCameraRelative) > 0.0 ? -normal : normal;
 }`);break;case 2:n.code.add(b`vec3 _adjustDoublesided(vec3 normal) {
 return gl_FrontFacing ? normal : -normal;
-}`);break;default:t.doubleSidedMode;case 3:}switch(t.normalType){case 0:case 1:e.include(P,t),n.main.add(b`vec3 fragmentFaceNormal = _adjustDoublesided(normalize(vNormalWorld));
-vec3 fragmentFaceNormalView = gl_FrontFacing ? normalize(vNormalView) : -normalize(vNormalView);`);break;case 2:e.include(A,t),n.main.add(b`vec3 fragmentFaceNormal = normalize(cross(dFdx(vPositionWorldCameraRelative), dFdy(vPositionWorldCameraRelative)));
-vec3 fragmentFaceNormalView = normalize(cross(dFdx(vPosition_view), dFdy(vPosition_view)));`)}t.shadeNormals?n.main.add(b`vec3 fragmentShadingNormal = fragmentFaceNormal;`):t.spherical?(e.include(A,t),n.main.add(b`vec3 fragmentShadingNormal = normalize(positionWorld());`)):n.main.add(b`vec3 fragmentShadingNormal = vec3(0.0, 0.0, 1.0);`)}var J=e((()=>{F(),j(),x()}));function ht(e,t){e.include(M,t),e.fragment.include(he);let n=e.fragment;n.uniforms.add(new B(`baseColor`,e=>e.baseColor)),n.uniforms.add(new D(`objectOpacity`,e=>e.opacity)),t.hasVertexColors?n.code.add(b`vec3 _baseColor() {
+}`);break;default:t.doubleSidedMode;case 3:}switch(t.normalType){case 0:case 1:e.include(Ge,t),n.main.add(b`vec3 fragmentFaceNormal = _adjustDoublesided(normalize(vNormalWorld));
+vec3 fragmentFaceNormalView = gl_FrontFacing ? normalize(vNormalView) : -normalize(vNormalView);`);break;case 2:e.include(N,t),n.main.add(b`vec3 fragmentFaceNormal = normalize(cross(dFdx(vPositionWorldCameraRelative), dFdy(vPositionWorldCameraRelative)));
+vec3 fragmentFaceNormalView = normalize(cross(dFdx(vPosition_view), dFdy(vPosition_view)));`)}switch(t.shadeNormals){case 3:case 1:n.main.add(b`vec3 fragmentShadingNormal = fragmentFaceNormal;`);break;case 2:e.include(N,t),n.uniforms.add(new ce(`worldUpShading`,e=>l(20*(e.lighting.noonFactor-.9),0,1))).main.add(b`
+            vec3 fragmentShadingNormal = fragmentFaceNormal;
+            if (worldUpShading > 0.0){
+              vec3 worldUpNormal = ${y(t.spherical,`normalize(positionWorld())`,`vec3(0.0, 0.0, 1.0)`)};
+              fragmentShadingNormal = mix(fragmentShadingNormal, worldUpNormal, worldUpShading);
+            }
+          `);break;case 0:t.spherical?(e.include(N,t),n.main.add(b`vec3 fragmentShadingNormal = normalize(positionWorld());`)):n.main.add(b`vec3 fragmentShadingNormal = vec3(0.0, 0.0, 1.0);`);break;default:t.shadeNormals}}function K(){return(K=e((()=>{d(),Ue(),Fe(),le(),x()})))()}function vt(e,t){e.include(Re,t),e.fragment.include(ue);let n=e.fragment;n.uniforms.add(new R(`baseColor`,e=>e.baseColor)),n.uniforms.add(new j(`objectOpacity`,e=>e.opacity)),t.hasVertexColors?n.code.add(b`vec3 _baseColor() {
 return baseColor.rgb * vColor.rgb;
 }
 float _baseOpacity() {
@@ -114,12 +120,7 @@ externalColor.a,
 externalColorMixMode
 );
 return vec4(color, opacity);
-}`)}var Y=e((()=>{N(),me(),z(),O(),x()}));function gt(e,t){let n=t.hasColorTexture&&(v(t.output)||t.alphaDiscardMode!==1);n&&(e.include(S,t),e.fragment.uniforms.add(new k(`baseColorTexture`,e=>e.texture))),e.fragment.code.add(b`
-    vec4 readBaseColorTexture() {
-      return ${n?`textureLookup(baseColorTexture, vuv0)`:`vec4(1.0)`};
-    }
-  `)}var X=e((()=>{_(),w(),x(),ne()})),Z,_t=e((()=>{T(),Z=class extends E{constructor(e,t){super(e,`bool`,2,(n,r,i)=>n.setUniform1b(e,t(r,i)))}}}));function vt(e,t){e.fragment.uniforms.add(new ye(`cameraHeights`,e=>{let n=e.camera,r=p(n.eye),i=Math.sqrt(r),a=yt(t)*c,o=r-a*a,s=l(4e6,5e6,i-a);return s=Math.min(s,.98),d(bt,s,o)}),new pe(`cameraPosition`,e=>e.camera.eye)),e.fragment.include(et),e.fragment.code.add(b`float sphereFade() {return cameraHeights[0];}
-float sphereDepthInterpolate(vec3 worldRay, vec3 viewRay, float currentLinearDepth) {
+}`)}function q(){return(q=e((()=>{ze(),de(),L(),M(),x()})))()}function yt(e,t){t.hasColorTexture&&(D(t.output)||t.alphaDiscardMode!==1)?(e.include(ve,t),e.fragment.uniforms.add(new E(`baseColorTexture`,e=>e.texture,e=>e.textureSampler)).code.add(b`vec4 readBaseColorTexture() { return textureLookup(baseColorTexture, vuv0); }`)):e.fragment.code.add(b`vec4 readBaseColorTexture() { return vec4(1.0); }`)}function J(){return(J=e((()=>{ge(),x(),T()})))()}var Y;function bt(){return(bt=e((()=>{S(),Y=class extends C{constructor(e,t){super(e,`bool`,2,(n,r,i)=>n.setUniform1b(e,t(r,i)))}}})))()}function xt(e,t){e.fragment.uniforms.add(new me(`cameraHeights`,e=>{let n=e.camera,r=m(n.eye),i=Math.sqrt(r),a=X(t)*c,o=r-a*a,s=u(Q,wt,i-a);return s=Math.min(s,.98),f(Ct,s,o)}),new se(`cameraPosition`,e=>e.camera.eye)),e.fragment.include(ft),e.fragment.code.add(b`float sphereDepthInterpolate(vec3 worldRay, vec3 viewRay, float currentLinearDepth) {
 vec2 rayPlanetIntersect = sphereIntersect(cameraPosition, worldRay, cameraHeights[1]);
 bool hitsPlanet = (rayPlanetIntersect.x <= rayPlanetIntersect.y) && rayPlanetIntersect.x > 0.0;
 if (hitsPlanet) {
@@ -130,15 +131,14 @@ float sphereFade = cameraHeights[0];
 return (-linearDepth) * sphereFade + currentLinearDepth * (1.0 - sphereFade);
 }
 return currentLinearDepth;
-}`)}function yt({ellipsoidMode:e}){switch(e){case 4:case 1:return r.radius;case 2:return o.radius;case 3:return a.radius}}var Q,bt,xt=e((()=>{n(),u(),f(),g(),m(),s(),i(),ve(),fe(),x(),ce(),$e(),Q=class extends le{constructor(){super(...arguments),this.ellipsoidMode=1}},t([se({count:4})],Q.prototype,`ellipsoidMode`,void 0),bt=h()}));function St(e){let t=new re,{vertex:n,fragment:r}=t;t.include(A,e),t.include(P,e),t.include(M,e),t.include(te,e),t.include(dt,e),t.include(Be,e),r.include(ue,e),t.include(gt,e),t.include(Te,e);let{output:i,pbrMode:a,hasNormalTexture:o,snowCover:s,receiveShadows:c,shadeNormals:l,spherical:u,sphericalSR:d,overlayEnabled:f,componentDataType:p,vertexDiscardMode:m,renderOccluded:h,isGroundSlice:g}=e,_=a===1||a===2;_&&(t.include(qe,e),o&&t.include(He,e));let x=ee(i),S=x&&p===1,C=yt(e);f&&(r.include(I,e),t.include(at,e),n.include(ge),n.uniforms.add(new Z(`useENUForGlobalOverlayUV`,e=>e.useENUForGlobalOverlayUV)),r.uniforms.add(new Z(`useENUForGlobalOverlayUV`,e=>e.useENUForGlobalOverlayUV)),n.constants.add(`invRadius`,`float`,1/C).code.add(`vec2 projectOverlay(vec3 pos) { return pos.xy ${y(u,`/ (1.0 + invRadius * pos.z)`)}; }`));let w=f&&v(i)&&a===4;w&&(t.varyings.add(`tbnTangent`,`vec3`),t.varyings.add(`tbnBiTangent`,`vec3`),t.varyings.add(`groundNormal`,`vec3`));let T=m===0,E=m===2;if(t.include(Ze,e),t.include(Fe,e),n.main.add(b`
+}`)}function X({ellipsoidMode:e}){switch(e){case 4:case 1:return r.radius;case 2:return o.radius;case 3:return a.radius}}function St(e,t){let{eye:n}=e;return Math.sqrt(n[0]*n[0]+n[1]*n[1]+n[2]*n[2])-X(t)*c>Q}var Z,Ct,Q,wt;function $(){return($=e((()=>{t(),d(),ee(),h(),p(),s(),i(),pe(),oe(),x(),k(),dt(),Z=class extends re{constructor(){super(...arguments),this.ellipsoidMode=1}},n([O({count:4})],Z.prototype,`ellipsoidMode`,void 0),Ct=g(),Q=4e6,wt=5e6})))()}function Tt(e){let t=new te,{vertex:n,fragment:r}=t;t.include(N,e),t.include(Ge,e),t.include(Re,e),t.include(ye,e),t.include(mt,e),t.include(We,e),r.include(ae,e),t.include(yt,e);let{output:i,pbrMode:a,hasNormalTexture:o,snowCover:s,receiveShadows:c,shadeNormals:l,spherical:u,sphericalSR:d,overlayEnabled:f,componentDataType:ee,vertexDiscardMode:p,renderOccluded:m,isGroundSlice:h}=e,g=a===1||a===2;g&&(t.include(Qe,e),o&&t.include(qe,e));let _=ne(i),v=i===11,x=_&&ee===1,S=X(e);f&&(r.include(P,e),t.include(ct,e),n.include(fe),n.uniforms.add(new Y(`useENUForGlobalOverlayUV`,e=>e.useENUForGlobalOverlayUV)),r.uniforms.add(new Y(`useENUForGlobalOverlayUV`,e=>e.useENUForGlobalOverlayUV)),n.constants.add(`invRadius`,`float`,1/S).code.add(`vec2 projectOverlay(vec3 pos) { return pos.xy ${y(u,`/ (1.0 + invRadius * pos.z)`)}; }`));let C=f&&D(i)&&a===4;C&&(t.varyings.add(`tbnTangent`,`vec3`),t.varyings.add(`tbnBiTangent`,`vec3`),t.varyings.add(`groundNormal`,`vec3`));let w=p===0,T=p===2;if(t.include(rt,e),t.include(Ie,e),n.include(A),n.main.add(b`
     bool castShadows;
     vec4 externalColor = forwardExternalColor(castShadows);
-    ${y(S,`if(!castShadows) { gl_Position = vec4(vec3(1e38), 1.0); return; }`)}
-    ${y(!T,`{ if (externalColor.a ${E?`>`:`<=`} ${b.float(1-1/255)}) { gl_Position = vec4(vec3(1e38), 1.0); return; } }`)}
-    ${y(i===9,`externalColor.a = 1.0;`)}
+    ${y(x,`if(!castShadows) { gl_Position = vec4(vec3(1e38), 1.0); return; }`)}
+    ${y(!w,`if (externalColor.a ${T?`>`:`<=`} opacityCutoff) {\n         gl_Position = vec4(vec3(1e38), 1.0); return;\n       }`)}
+    ${y(v,`externalColor.a = 1.0;`)}
 
     forwardPosition(readElevationOffset());
-    forwardViewPosDepth(vPosition_view);
     forwardNormal();
     forwardTextureCoordinates();
     forwardVertexColor();
@@ -146,7 +146,7 @@ return currentLinearDepth;
     forwardLinearDepthToWriteShadowMap();
     forwardEmissiveStrength();
     forwardObjectAndLayerIdColor();
-    ${y(w,u?b`
+    ${y(C,u?b`
             groundNormal = normalize(positionWorld());
             tbnTangent = normalize(cross(vec3(0.0, 0.0, 1.0), groundNormal));
             tbnBiTangent = normalize(cross(groundNormal, tbnTangent));`:b`
@@ -155,24 +155,23 @@ return currentLinearDepth;
             tbnBiTangent = vec3(0.0, 1.0, 0.0);`)}
     ${y(f,y(u,`
         if (useENUForGlobalOverlayUV) {
-          setOverlayVTC(projectOverlay(position));
+          setOverlayVTC(projectOverlay(positionForDraping()));
         } else {
           vtcOverlay = vec4(0.0); // Definite assignment
         }
-      `,`setOverlayVTC(projectOverlay(position));`))}
+      `,`setOverlayVTC(projectOverlay(positionForDraping()));`))}
 
-    if (externalColor.a < ${b.float(.003913894324853229)}) {
+    if (externalColor.a < alphaCutoff) {
       // Discard this vertex
       gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
       return;
     }
-  `),v(i))return t.include(ht,e),t.include(q,e),r.include(I,e),t.include(je,e),r.include(Xe,e),r.constants.add(`pRadius`,`float`,C).code.add(b`
+  `),D(i))return t.include(vt,e),t.include(G,e),t.include(Ee,e),r.include(P,e),r.include(tt,e),r.include(A),r.constants.add(`pRadius`,`float`,S).code.add(b`
       float evaluateShadow() {
         return ${c?`readShadowMap(vPositionWorldCameraRelative, linearDepth)`:`0.0`};
       }
     `).main.add(b`
-      ${y(!g,`discardBySlice(vPositionWorldCameraRelative);`)}
-      discardByTerrainDepth();
+      ${y(!h,`discardBySlice(vPositionWorldCameraRelative);`)}
 
       vec4 textureColor = readBaseColorTexture();
       discardOrAdjustAlpha(textureColor);
@@ -180,7 +179,7 @@ return currentLinearDepth;
       // When rendering the occluded overlay, we still need to read the base color texture because we need to use the
       // same discard logic. However after that to render only the draped overlay, we simply set the base texture color
       // to zero.
-      ${y(h,b`textureColor = vec4(0);`)}
+      ${y(m,b`textureColor = vec4(0);`)}
 
       ${y(f,b`
         ${y(u,b`
@@ -216,7 +215,7 @@ return currentLinearDepth;
         vec4 overlayColor = getOverlayColor(ovColorTex, overlayUVs);
 
         /* Early discard to only emit when we have overlay */
-        ${y(h,b`if (overlayColor.a < ${b.float(Oe)}) { discard; }`)}
+        ${y(m,b`if (overlayColor.a < alphaCutoff) { discard; }`)}
         `)}
 
       vec4 externalColor;
@@ -224,7 +223,7 @@ return currentLinearDepth;
       readExternalColor(externalColor, externalColorMixMode);
 
       vec4 materialColor = computeMaterialColor(textureColor, externalColor, externalColorMixMode);
-    `),_?(Ke(r),u&&L(r),r.main.add(b`
+    `),g?(Ze(r),u&&F(r),r.main.add(b`
         applyPBRFactors();
         ${y(a===1,b`if (externalColorMixMode == 3) {
               mrr = vec3(0.0, 0.6, 0.2);
@@ -246,11 +245,11 @@ return currentLinearDepth;
         ${y(u,`float additionalAmbientScale = additionalDirectedAmbientLight(positionWorld());`)}
         ${u?b`float shadow = max(lightingGlobalFactor * (1.0 - additionalAmbientScale), evaluateShadow());`:`float shadow = evaluateShadow();`}
         vec4 shadedColor = vec4(evaluateSceneLightingPBR(shadingNormal, materialColor.rgb, shadow, ssao, additionalLight, viewDir, groundNormal, mrr, additionalIrradiance), materialColor.a);
-        `)):(We(r),u&&L(r),w&&r.uniforms.add(new Ce(`ovNormalTex`,e=>e.overlay?.getTexture(3))),r.main.add(b`
+        `)):(Ye(r),u&&F(r),C&&r.uniforms.add(new Te(`ovNormalTex`,e=>e.overlay?.getTexture(3))),r.main.add(b`
         ${y(u,`float additionalAmbientScale = additionalDirectedAmbientLight(positionWorld());`)}
         float shadow = ${c?u?`max(lightingGlobalFactor * (1.0 - additionalAmbientScale), evaluateShadow())`:`evaluateShadow()`:u?`lightingGlobalFactor * (1.0 - additionalAmbientScale)`:`0.0`};
 
-        ${y(c&&!l,b`
+        ${y(c&&l!==1,b`
             float dotFL = dot(fragmentFaceNormal, mainLightDirection);
             if( dotFL <= 0.0) shadow = 1.0;
         `)}
@@ -264,7 +263,7 @@ return currentLinearDepth;
         ${y(f,`materialColor = materialColor * (1.0 - overlayColor.a) + overlayColor;`)}
 
         vec4 shadedColor = vec4(evaluateSceneLighting(fragmentShadingNormal, materialColor.rgb, shadow, ssao, additionalLight), materialColor.a);
-        ${y(w,b`vec4 overlayWaterMask = getOverlayColor(ovNormalTex, vtcOverlay);
+        ${y(C,b`vec4 overlayWaterMask = getOverlayColor(ovNormalTex, overlayUVs);
                  float waterNormalLength = length(overlayWaterMask);
                  if (waterNormalLength > 0.95) {
                    mat3 tbnMatrix = mat3(tbnTangent, tbnBiTangent, groundNormal);
@@ -273,19 +272,15 @@ return currentLinearDepth;
                    // un-gamma the ground color to mix in linear space
                    shadedColor = mix(shadedColor, waterColorNonLinear, waterColorLinear.w);
                  }`)}
-      `)),r.main.add(`\n      ${y(g,`if(rejectBySlice(vPositionWorldCameraRelative)) shadedColor.a *= groundSliceOpacity;`)}\n\n      outputColorHighlightOLID(applySlice(shadedColor, vPositionWorldCameraRelative), materialColor.rgb ${y(s,`, snow`)});\n    `),e.sphereDepthInterpolate&&(t.include(vt,e),t.fragment.include(xe),r.main.add(b`if (sphereFade()>0.0) {
-vec3 worldRay = normalize(vPositionWorldCameraRelative);
+      `)),r.main.add(`\n      ${y(h,`if(rejectBySlice(vPositionWorldCameraRelative)) shadedColor.a *= groundSliceOpacity;`)}\n\n      outputColorHighlightOLID(applySlice(shadedColor, vPositionWorldCameraRelative), materialColor.rgb ${y(s,`, snow`)});\n    `),e.sphereDepthInterpolate&&(t.include(xt,e),t.fragment.include(ke),r.main.add(b`vec3 worldRay = normalize(vPositionWorldCameraRelative);
 vec3 viewRay = normalize(vPosition_view);
-gl_FragDepth = delinearizeDepth(sphereDepthInterpolate(worldRay, viewRay, linearizeDepth(gl_FragCoord.z)));
-} else {
-gl_FragDepth = gl_FragCoord.z;
-}`)),t;let D=i===2,O=i===9,ne=i===8,k=x||i===6||i===7;return k&&t.include(Re,e),D&&t.include(q,e),f&&t.include(ot,e),t.include(De,e),r.main.add(b`
-    ${y(!g,`discardBySlice(vPositionWorldCameraRelative);`)}
+gl_FragDepth = delinearizeDepth(sphereDepthInterpolate(worldRay, viewRay, linearizeDepth(gl_FragCoord.z)));`)),t;let E=i===4,O=i===10,k=_||i===8||i===9;return k&&t.include(Ve,e),E&&t.include(G,e),f&&t.include(lt,e),t.include(Ce,e),r.main.add(b`
+    ${y(!h,`discardBySlice(vPositionWorldCameraRelative);`)}
 
     vec4 textureColor = readBaseColorTexture();
     discardOrAdjustAlpha(textureColor);
 
     ${y(k,`outputDepth(linearDepth);`)}
-    ${y(D,b`fragColor = vec4(vec3(0.5) + 0.5 * fragmentFaceNormalView, 1.0);`)}
-    ${y(O,f?`fragColor = getOverlayColorTexel();`:`outputObjectAndLayerIdColor();`)}
-    ${y(ne,y(f,b`calculateOcclusionAndOutputHighlight(getAllOverlayHighlightValuesEncoded());`,b`calculateOcclusionAndOutputHighlight();`))}`),t}var $,Ct=e((()=>{K(),Ie(),_(),de(),C(),N(),F(),j(),Le(),Ee(),it(),be(),J(),Y(),Ve(),Ue(),Ge(),Ye(),_e(),X(),Qe(),we(),st(),ze(),_t(),x(),Se(),Je(),Ae(),xt(),ie(),ke(),$=Object.freeze(Object.defineProperty({__proto__:null,build:St},Symbol.toStringTag,{value:`Module`}))}));export{Q as a,J as c,xt as i,K as l,$ as n,X as o,Ct as r,Y as s,St as t};
+    ${y(E,b`fragColor = vec4(vec3(0.5) + 0.5 * fragmentFaceNormalView, 1.0);`)}
+    ${y(v,f?`fragColor = getOverlayColorTexel();`:`outputObjectAndLayerIdColor();`)}
+    ${y(O,y(f,b`calculateOcclusionAndOutputHighlight(getAllOverlayHighlightValuesEncoded());`,b`calculateOcclusionAndOutputHighlight();`))}`),t}var Et;function Dt(){return(Dt=e((()=>{W(),Le(),ie(),_e(),ze(),Ue(),Fe(),Be(),Se(),st(),Oe(),K(),q(),Ke(),Je(),Xe(),et(),J(),nt(),ut(),He(),bt(),x(),we(),$e(),he(),De(),$(),w(),Et=Object.freeze(Object.defineProperty({__proto__:null,build:Tt},Symbol.toStringTag,{value:`Module`}))})))()}export{Z as a,q as c,$ as i,K as l,Tt as n,St as o,Dt as r,J as s,Et as t,W as u};

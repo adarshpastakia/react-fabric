@@ -1,6 +1,6 @@
-import{n as e}from"./chunk.js";import{r as t,t as n}from"./glsl.js";import{n as r,t as i}from"./Float3PassUniform.js";import{n as a,t as o}from"./FloatPassUniform.js";import{n as s,t as c}from"./Texture2DPassUniform.js";import{n as l,t as u}from"./ReadDepth.glsl.js";import{n as d,t as f}from"./Texture2DBindUniform.js";import{n as p,t as m}from"./BlendColorsPremultiplied.glsl.js";import{n as h,t as g}from"./CameraSpace.glsl.js";function _(e,n){let r=e.fragment;r.include(u),e.include(g),r.include(m),r.uniforms.add(new a(`globalAlpha`,e=>e.globalAlpha),new i(`glowColor`,e=>e.glowColor),new a(`glowWidth`,(e,t)=>e.glowWidth*t.camera.pixelRatio),new a(`glowFalloff`,e=>e.glowFalloff),new i(`innerColor`,e=>e.innerColor),new a(`innerWidth`,(e,t)=>e.innerWidth*t.camera.pixelRatio),new f(`depthMap`,e=>e.depth?.attachment),new c(`normalMap`,e=>e.normals)),r.code.add(t`vec4 premultipliedColor(vec3 rgb, float alpha) {
+import{n as e}from"./rolldown-runtime.js";import{r as t,t as n}from"./glsl.js";import{n as r,t as i}from"./FloatPassUniform.js";import{n as a,t as o}from"./Texture2DPassUniform.js";import{n as s,t as c}from"./Float3PassUniform.js";import{n as l,t as u}from"./Texture2DBindUniform.js";import{r as d,t as f}from"./ReadDepth.glsl.js";import{t as p}from"./BlendColorsPremultiplied.glsl.js";import{n as m,t as h}from"./CameraSpace.glsl.js";function g(e,n){let i=e.fragment;i.include(f),e.include(h),i.include(p),i.uniforms.add(new r(`globalAlpha`,e=>e.globalAlpha),new c(`glowColor`,e=>e.glowColor),new r(`glowWidth`,(e,t)=>e.glowWidth*t.camera.pixelRatio),new r(`glowFalloff`,e=>e.glowFalloff),new c(`innerColor`,e=>e.innerColor),new r(`innerWidth`,(e,t)=>e.innerWidth*t.camera.pixelRatio),new u(`depthMap`,e=>e.depth?.attachment),new o(`normalMap`,e=>e.normals)),i.code.add(t`vec4 premultipliedColor(vec3 rgb, float alpha) {
 return vec4(rgb * alpha, alpha);
-}`),r.code.add(t`vec4 laserlineProfile(float dist) {
+}`),i.code.add(t`vec4 laserlineProfile(float dist) {
 if (dist > glowWidth) {
 return vec4(0.0);
 }
@@ -10,7 +10,7 @@ return blendColorsPremultiplied(
 premultipliedColor(innerColor, innerAlpha),
 premultipliedColor(glowColor, glowAlpha)
 );
-}`),r.code.add(t`bool laserlineReconstructFromDepth(out vec3 pos, out vec3 normal, out float angleCutoffAdjust, out float depthDiscontinuityAlpha) {
+}`),i.code.add(t`bool laserlineReconstructFromDepth(out vec3 pos, out vec3 normal, out float angleCutoffAdjust, out float depthDiscontinuityAlpha) {
 float depth = depthFromTexture(depthMap, uv);
 if (depth == 1.0) {
 return false;
@@ -29,13 +29,13 @@ angleCutoffAdjust = mix(0.0, 0.004, blendFactor);
 float ddepth = fwidth(linearDepth);
 depthDiscontinuityAlpha = 1.0 - smoothstep(0.0, 0.01, -ddepth / linearDepth);
 return true;
-}`),n.contrastControlEnabled?r.uniforms.add(new c(`frameColor`,(e,t)=>e.colors),new a(`globalAlphaContrastBoost`,e=>e.globalAlphaContrastBoost)).code.add(t`float rgbToLuminance(vec3 color) {
+}`),n.contrastControlEnabled?i.uniforms.add(new o(`frameColor`,(e,t)=>e.colors),new r(`globalAlphaContrastBoost`,e=>e.globalAlphaContrastBoost)).code.add(t`float rgbToLuminance(vec3 color) {
 return dot(vec3(0.2126, 0.7152, 0.0722), color);
 }
 vec4 laserlineOutput(vec4 color) {
 float backgroundLuminance = rgbToLuminance(texture(frameColor, uv).rgb);
 float alpha = clamp(globalAlpha * max(backgroundLuminance * globalAlphaContrastBoost, 1.0), 0.0, 1.0);
 return color * alpha;
-}`):r.code.add(t`vec4 laserlineOutput(vec4 color) {
+}`):i.code.add(t`vec4 laserlineOutput(vec4 color) {
 return color * globalAlpha;
-}`)}var v=e((()=>{l(),p(),h(),r(),o(),n(),d(),s()}));export{_ as n,v as t};
+}`)}function _(){return(_=e((()=>{d(),m(),s(),i(),n(),l(),a()})))()}export{g as n,_ as t};

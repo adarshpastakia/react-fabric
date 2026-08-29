@@ -1,21 +1,5 @@
-import{n as e}from"./chunk.js";import{l as t,o as n}from"./vec3f64.js";import{o as r,u as i}from"./vec4.js";import{a,o}from"./vec4f64.js";import{E as s,P as c}from"./vec3.js";import{r as l,t as u}from"./glsl.js";import{n as d,t as f}from"./Float3BindUniform.js";import{n as p,t as m}from"./Float4BindUniform.js";function h(e,t){let n=t.lightingSphericalHarmonicsOrder===void 0?2:t.lightingSphericalHarmonicsOrder;n===0?(e.uniforms.add(new f(`lightingAmbientSH0`,({lighting:e})=>c(g,e.sh.r[0],e.sh.g[0],e.sh.b[0]))),e.code.add(l`vec3 calculateAmbientIrradiance(vec3 normal, float ambientOcclusion) {
-vec3 ambientLight = 0.282095 * lightingAmbientSH0;
-return ambientLight * (1.0 - ambientOcclusion);
-}`)):n===1?(e.uniforms.add(new m(`lightingAmbientSH_R`,({lighting:e})=>i(_,e.sh.r[0],e.sh.r[1],e.sh.r[2],e.sh.r[3])),new m(`lightingAmbientSH_G`,({lighting:e})=>i(_,e.sh.g[0],e.sh.g[1],e.sh.g[2],e.sh.g[3])),new m(`lightingAmbientSH_B`,({lighting:e})=>i(_,e.sh.b[0],e.sh.b[1],e.sh.b[2],e.sh.b[3]))),e.code.add(l`vec3 calculateAmbientIrradiance(vec3 normal, float ambientOcclusion) {
-vec4 sh0 = vec4(
-0.282095,
-0.488603 * normal.x,
-0.488603 * normal.z,
-0.488603 * normal.y
-);
-vec3 ambientLight = vec3(
-dot(lightingAmbientSH_R, sh0),
-dot(lightingAmbientSH_G, sh0),
-dot(lightingAmbientSH_B, sh0)
-);
-return ambientLight * (1.0 - ambientOcclusion);
-}`)):n===2&&(e.uniforms.add(new f(`lightingAmbientSH0`,({lighting:e})=>c(g,e.sh.r[0],e.sh.g[0],e.sh.b[0])),new m(`lightingAmbientSH_R1`,({lighting:e})=>i(_,e.sh.r[1],e.sh.r[2],e.sh.r[3],e.sh.r[4])),new m(`lightingAmbientSH_G1`,({lighting:e})=>i(_,e.sh.g[1],e.sh.g[2],e.sh.g[3],e.sh.g[4])),new m(`lightingAmbientSH_B1`,({lighting:e})=>i(_,e.sh.b[1],e.sh.b[2],e.sh.b[3],e.sh.b[4])),new m(`lightingAmbientSH_R2`,({lighting:e})=>i(_,e.sh.r[5],e.sh.r[6],e.sh.r[7],e.sh.r[8])),new m(`lightingAmbientSH_G2`,({lighting:e})=>i(_,e.sh.g[5],e.sh.g[6],e.sh.g[7],e.sh.g[8])),new m(`lightingAmbientSH_B2`,({lighting:e})=>i(_,e.sh.b[5],e.sh.b[6],e.sh.b[7],e.sh.b[8]))),e.code.add(l`vec3 calculateAmbientIrradiance(vec3 normal, float ambientOcclusion) {
-vec3 ambientLight = 0.282095 * lightingAmbientSH0;
+import{n as e}from"./rolldown-runtime.js";import{r as t,t as n}from"./glsl.js";import{n as r,t as i}from"./Uniform.js";var a;function o(){return(o=e((()=>{r(),a=class extends i{constructor(e,t,n,r){super(e,`float`,0,(t,i)=>t.setUniform1fv(e,n(i),r),t)}}})))()}function s(e,n){e.uniforms.add(new a(`shR`,9,({lighting:e})=>e.sh.r),new a(`shG`,9,({lighting:e})=>e.sh.g),new a(`shB`,9,({lighting:e})=>e.sh.b)),e.code.add(t`vec3 calculateAmbientIrradiance(vec3 normal) {
+vec3 ambientLight = 0.282095 * vec3(shR[0], shG[0], shB[0]);
 vec4 sh1 = vec4(
 0.488603 * normal.x,
 0.488603 * normal.z,
@@ -28,20 +12,26 @@ vec4 sh2 = vec4(
 1.092548 * normal.x * normal.z,
 0.546274 * (normal.x * normal.x - normal.y * normal.y)
 );
+vec4 lightingAmbientSH_R1 = vec4(shR[1], shR[2], shR[3], shR[4]);
+vec4 lightingAmbientSH_G1 = vec4(shG[1], shG[2], shG[3], shG[4]);
+vec4 lightingAmbientSH_B1 = vec4(shB[1], shB[2], shB[3], shB[4]);
 ambientLight += vec3(
 dot(lightingAmbientSH_R1, sh1),
 dot(lightingAmbientSH_G1, sh1),
 dot(lightingAmbientSH_B1, sh1)
 );
+vec4 lightingAmbientSH_R2 = vec4(shR[5], shR[6], shR[7], shR[8]);
+vec4 lightingAmbientSH_G2 = vec4(shG[5], shG[6], shG[7], shG[8]);
+vec4 lightingAmbientSH_B2 = vec4(shB[5], shB[6], shB[7], shB[8]);
 ambientLight += vec3(
 dot(lightingAmbientSH_R2, sh2),
 dot(lightingAmbientSH_G2, sh2),
 dot(lightingAmbientSH_B2, sh2)
 );
-return ambientLight * (1.0 - ambientOcclusion);
-}`),t.pbrMode!==1&&t.pbrMode!==2||e.code.add(l`const vec3 skyTransmittance = vec3(0.9, 0.9, 1.0);
-vec3 calculateAmbientRadiance(float ambientOcclusion)
+return ambientLight;
+}`),n.pbrMode!==1&&n.pbrMode!==2||e.code.add(t`const vec3 skyTransmittance = vec3(0.9, 0.9, 1.0);
+vec3 calculateAmbientRadiance()
 {
-vec3 ambientLight = 1.2 * (0.282095 * lightingAmbientSH0) - 0.2;
-return ambientLight *= (1.0 - ambientOcclusion) * skyTransmittance;
-}`))}var g,_,v=e((()=>{s(),n(),r(),a(),d(),p(),u(),g=t(),_=o()}));export{h as n,v as t};
+vec3 ambientLight = 1.2 * (0.282095 * vec3(shR[0], shG[0], shB[0])) - 0.2;
+return ambientLight *= skyTransmittance;
+}`)}function c(){return(c=e((()=>{o(),n()})))()}export{c as n,s as t};

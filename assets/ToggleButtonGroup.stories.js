@@ -1,54 +1,39 @@
-import{n as e,r as t}from"./chunk.js";import{t as n}from"./jsx-runtime.js";import{L as r,Q as i,X as a,t as o}from"./src3.js";var s=t({EditorToolbar:()=>m,SingleSelection:()=>p,Tester:()=>h,_ToggleButtonGroup:()=>f,__namedExportsOrder:()=>g,default:()=>d}),c,l,u,d,f,p,m,h,g,_=e((()=>{c=n(),o(),l=n(),{fn:u}=__STORYBOOK_MODULE_TEST__,d={component:a,title:`@core/components/ToggleButtonGroup`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/buttons/ToggleButtonGroup.test.tsx`]},decorators:[e=>(0,l.jsx)(`div`,{className:`flex gap-2 items-center p-4`,children:(0,l.jsx)(e,{})})]},f={render:e=>(0,l.jsx)(c.Fragment,{children:(0,l.jsxs)(a,{...e,children:[(0,l.jsx)(i,{value:1,children:`First`}),(0,l.jsx)(i,{value:2,children:`Second`}),(0,l.jsx)(i,{value:3,children:`Third`})]})}),args:{value:[1,2],onChange:u()}},p={render:e=>(0,l.jsx)(c.Fragment,{children:(0,l.jsxs)(a,{...e,children:[(0,l.jsx)(i,{value:1,children:`First`}),(0,l.jsx)(i,{value:2,children:`Second`}),(0,l.jsx)(i,{value:3,children:`Third`})]})}),args:{value:1,onChange:u()}},m={render:e=>(0,l.jsx)(c.Fragment,{children:(0,l.jsxs)(`div`,{className:`border border-soft p-1 flex gap-2 rounded`,children:[(0,l.jsxs)(a,{value:`left`,variant:`link`,onChange:e.onChange,children:[(0,l.jsx)(i,{icon:`mdi mdi-format-align-left`,value:`left`,"aria-label":`left`}),(0,l.jsx)(i,{icon:`mdi mdi-format-align-center`,value:`center`,"aria-label":`center`}),(0,l.jsx)(i,{icon:`mdi mdi-format-align-right`,value:`right`,"aria-label":`right`}),(0,l.jsx)(i,{icon:`mdi mdi-format-align-justify`,value:`justify`,"aria-label":`justify`})]}),(0,l.jsx)(r,{vertical:!0}),(0,l.jsxs)(a,{value:[],variant:`link`,onChange:e.onChange,children:[(0,l.jsx)(i,{icon:`mdi mdi-format-bold`,value:`bold`,"aria-label":`bold`}),(0,l.jsx)(i,{icon:`mdi mdi-format-italic`,value:`italic`,"aria-label":`italic`}),(0,l.jsx)(i,{icon:`mdi mdi-format-underline`,value:`undeline`,"aria-label":`undeline`})]})]})}),args:{onChange:u()}},h={render:e=>(0,l.jsx)(a,{...e}),args:{}},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
+import{n as e}from"./rolldown-runtime.js";import{r as t}from"./EmptyContent.js";import{X as n,t as r}from"./src2.js";import{t as i}from"./jsx-runtime.js";var a,o,s,c,l,u,d;function f(){return(f=e((()=>{r(),a=i(),{fn:o}=__STORYBOOK_MODULE_TEST__,s={component:n,tags:[`autodocs`],title:`@core/components/ToggleButtonGroup`,parameters:{layout:`centered`,jest:[`core/tests/components/ToggleButtonGroup.test.tsx`]},decorators:[e=>(0,a.jsx)(`div`,{className:`flex gap-2 items-center p-4`,children:(0,a.jsx)(e,{})})]},c={render:e=>(0,a.jsxs)(n,{...e,children:[(0,a.jsx)(t,{hotKey:`1`,value:`left`,children:`Left`}),(0,a.jsx)(t,{hotKey:`2`,value:`center`,children:`Center`}),(0,a.jsx)(t,{hotKey:`3`,value:`right`,children:`Right`}),(0,a.jsx)(t,{hotKey:`4`,value:`justify`,children:`Justify`})]}),args:{value:`center`,onChange:o()}},l={render:e=>(0,a.jsxs)(n,{...e,children:[(0,a.jsx)(t,{hotKey:`ctrl+b`,hideHotKeyLabel:!0,value:`bold`,icon:`icon-[mdi--format-bold]`,"aria-label":`bold`}),(0,a.jsx)(t,{hotKey:`ctrl+i`,hideHotKeyLabel:!0,value:`italic`,icon:`icon-[mdi--format-italic]`,"aria-label":`italic`}),(0,a.jsx)(t,{hotKey:`ctrl+u`,hideHotKeyLabel:!0,value:`underline`,icon:`icon-[mdi--format-underline]`,"aria-label":`underline`}),(0,a.jsx)(t,{hotKey:`ctrl+s`,hideHotKeyLabel:!0,value:`strikethrough`,icon:`icon-[mdi--format-strikethrough]`,"aria-label":`strikethrough`})]}),args:{value:[`bold`],onChange:o()}},u={tags:[`!autodocs`],render:e=>(0,a.jsx)(n,{...e}),args:{}},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
   render: args => {
-    return <Fragment>
-        <ToggleButtonGroup {...args}>
-          <Button value={1}>First</Button>
-          <Button value={2}>Second</Button>
-          <Button value={3}>Third</Button>
-        </ToggleButtonGroup>
-      </Fragment>;
+    return <ToggleButtonGroup {...args}>
+        <Button hotKey="1" value="left">
+          Left
+        </Button>
+        <Button hotKey="2" value="center">
+          Center
+        </Button>
+        <Button hotKey="3" value="right">
+          Right
+        </Button>
+        <Button hotKey="4" value="justify">
+          Justify
+        </Button>
+      </ToggleButtonGroup>;
   },
   args: {
-    value: [1, 2],
-    onChange: fn<any>()
+    value: "center",
+    onChange: fn()
   }
-}`,...f.parameters?.docs?.source}}},p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`{
+}`,...c.parameters?.docs?.source}}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
   render: args => {
-    return <Fragment>
-        <ToggleButtonGroup {...args}>
-          <Button value={1}>First</Button>
-          <Button value={2}>Second</Button>
-          <Button value={3}>Third</Button>
-        </ToggleButtonGroup>
-      </Fragment>;
+    return <ToggleButtonGroup {...args}>
+        <Button hotKey="ctrl+b" hideHotKeyLabel value="bold" icon="icon-[mdi--format-bold]" aria-label="bold" />
+        <Button hotKey="ctrl+i" hideHotKeyLabel value="italic" icon="icon-[mdi--format-italic]" aria-label="italic" />
+        <Button hotKey="ctrl+u" hideHotKeyLabel value="underline" icon="icon-[mdi--format-underline]" aria-label="underline" />
+        <Button hotKey="ctrl+s" hideHotKeyLabel value="strikethrough" icon="icon-[mdi--format-strikethrough]" aria-label="strikethrough" />
+      </ToggleButtonGroup>;
   },
   args: {
-    value: 1,
-    onChange: fn<any>()
+    value: ["bold"],
+    onChange: fn()
   }
-}`,...p.parameters?.docs?.source}}},m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
-  render: args => {
-    return <Fragment>
-        <div className="border border-soft p-1 flex gap-2 rounded">
-          <ToggleButtonGroup value="left" variant="link" onChange={args.onChange as any}>
-            <Button icon="mdi mdi-format-align-left" value="left" aria-label="left" />
-            <Button icon="mdi mdi-format-align-center" value="center" aria-label="center" />
-            <Button icon="mdi mdi-format-align-right" value="right" aria-label="right" />
-            <Button icon="mdi mdi-format-align-justify" value="justify" aria-label="justify" />
-          </ToggleButtonGroup>
-          <Divider vertical />
-          <ToggleButtonGroup value={[]} variant="link" onChange={args.onChange}>
-            <Button icon="mdi mdi-format-bold" value="bold" aria-label="bold" />
-            <Button icon="mdi mdi-format-italic" value="italic" aria-label="italic" />
-            <Button icon="mdi mdi-format-underline" value="undeline" aria-label="undeline" />
-          </ToggleButtonGroup>
-        </div>
-      </Fragment>;
-  },
-  args: {
-    onChange: fn<any>()
-  }
-}`,...m.parameters?.docs?.source}}},h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
+}`,...l.parameters?.docs?.source}}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
+  tags: ["!autodocs"],
   render: args => <ToggleButtonGroup {...args} />,
   args: {}
-}`,...h.parameters?.docs?.source}}},g=[`_ToggleButtonGroup`,`SingleSelection`,`EditorToolbar`,`Tester`]}));_();export{m as EditorToolbar,p as SingleSelection,h as Tester,f as _ToggleButtonGroup,g as __namedExportsOrder,d as default,_ as n,s as t};
+}`,...u.parameters?.docs?.source}}},d=[`Single`,`Multiple`,`Tester`]})))()}f();export{l as Multiple,c as Single,u as Tester,d as __namedExportsOrder,s as default};

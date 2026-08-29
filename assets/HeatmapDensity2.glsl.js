@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";import{t}from"./glsl.js";import{t as n}from"./ShaderBuilder.js";import{r}from"./View.glsl.js";import{n as i,r as a}from"./HeatmapDensity.glsl.js";e((()=>{r(),t(),n(),i()}))();export{a as build};
+import{n as e}from"./rolldown-runtime.js";import{t}from"./glsl.js";import{t as n}from"./ShaderBuilder.js";import{r}from"./View.glsl.js";import{n as i,r as a}from"./HeatmapDensity.glsl.js";function o(){return(o=e((()=>{r(),t(),n(),i()})))()}o();export{a as build};

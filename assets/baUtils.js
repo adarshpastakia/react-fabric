@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime.js";import{R as t,z as n}from"./Error.js";import{n as r}from"./uuid.js";import{n as i}from"./number2.js";import{_ as a}from"./colorUtils2.js";import{a as o}from"./easing.js";function s(e){return t(e)}function c(){return(c=e((()=>{a(),n(),i(),r(),o()})))()}export{c as n,s as t};

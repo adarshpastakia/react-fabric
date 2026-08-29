@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{r as t,t as n}from"./glsl.js";function r(e,n){n.spherical?e.vertex.code.add(t`vec3 getLocalUp(in vec3 pos, in vec3 origin) {
+import{n as e}from"./rolldown-runtime.js";import{r as t,t as n}from"./glsl.js";function r(e,n){n.spherical?e.vertex.code.add(t`vec3 getLocalUp(in vec3 pos, in vec3 origin) {
 return normalize(pos + origin);
 }`):e.vertex.code.add(t`vec3 getLocalUp(in vec3 pos, in vec3 origin) {
 return vec3(0.0, 0.0, 1.0);
@@ -10,4 +10,4 @@ return mat3(t, b, n);
 vec3 t = vec3(1.0, 0.0, 0.0);
 vec3 b = normalize(cross(n, t));
 return mat3(t, b, n);
-}`)}var i=e((()=>{n()}));export{r as n,i as t};
+}`)}function i(){return(i=e((()=>{n()})))()}export{r as n,i as t};

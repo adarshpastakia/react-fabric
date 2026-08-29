@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{i as t,n}from"./Ellipsoid.js";import{d as r,o as i}from"./vec3f64.js";import{r as a,t as o}from"./glsl.js";import{n as s,t as c}from"./Uniform.js";import{n as l,t as u}from"./Float3BindUniform.js";import{n as d,t as f}from"./FloatBindUniform.js";import{n as p,t as m}from"./Matrix4BindUniform.js";import{n as h,t as g}from"./weather.js";import{n as _,t as v}from"./BooleanBindUniform.js";import{i as y,n as b,r as x}from"./MainLighting.glsl.js";function S(e){e.fragment.uniforms.add(new d(`cloudAbsorption`,e=>e.clouds.absorption),new d(`cloudCoverage`,e=>e.clouds.coverage)).code.add(a`vec4 lookupCloudsFromTextureArray(sampler2DArray cubeMap, vec3 rayDir) {
+import{n as e}from"./rolldown-runtime.js";import{i as t,n}from"./Ellipsoid.js";import{d as r,o as i}from"./vec3f64.js";import{r as a,t as o}from"./glsl.js";import{n as s,t as c}from"./Uniform.js";import{n as l,t as u}from"./Float3BindUniform.js";import{n as d,t as f}from"./FloatBindUniform.js";import{n as p,t as m}from"./Matrix4BindUniform.js";import{n as h,t as g}from"./weather.js";import{n as _,t as v}from"./BooleanBindUniform.js";import{i as y,n as b,r as x}from"./MainLighting.glsl.js";function S(e){e.fragment.uniforms.add(new d(`cloudAbsorption`,e=>e.clouds.absorption),new d(`cloudCoverage`,e=>e.clouds.coverage)).code.add(a`vec4 lookupCloudsFromTextureArray(sampler2DArray cubeMap, vec3 rayDir) {
 int faceIndex;
 vec2 uv;
 if(rayDir.z <= 0.0) {
@@ -44,7 +44,7 @@ uv.y = uv.y - 0.5;
 uv.y = uv.y * 2.0;
 vec4 s = texture(cubeMap, vec3(uv, float(faceIndex)));
 return s;
-}`)}var C=e((()=>{f(),o()})),w,T=e((()=>{s(),w=class extends c{constructor(e,t){super(e,`sampler2DArray`,0,(n,r)=>n.bindTexture(e,t(r)))}}}));function E(e){let t=e.fragment;t.constants.add(`radiusCloudsSquared`,`float`,D).code.add(a`vec3 intersectWithCloudLayer(vec3 dir, vec3 cameraPosition, vec3 spherePos) {
+}`)}function C(){return(C=e((()=>{f(),o()})))()}var w;function T(){return(T=e((()=>{s(),w=class extends c{constructor(e,t){super(e,`sampler2DArray`,0,(n,r)=>n.bindTexture(e,t(r)))}}})))()}function E(e){let t=e.fragment;t.constants.add(`radiusCloudsSquared`,`float`,D).code.add(a`vec3 intersectWithCloudLayer(vec3 dir, vec3 cameraPosition, vec3 spherePos) {
 float B = 2.0 * dot(cameraPosition, dir);
 float C = dot(cameraPosition, cameraPosition) - radiusCloudsSquared;
 float det = B * B - 4.0 * C;
@@ -59,7 +59,7 @@ return (rotMat * vec4(inVec, 0.0)).xyz;
 float upDotLight = dot(cameraPosition, mainLightDirection);
 float dirDotLight = max(dot(worldSpaceRay, mainLightDirection), 0.0);
 float sunsetTransition = clamp(pow(max(upDotLight, 0.0), sunsetTransitionFactor), 0.0, 1.0);
-vec3 ambientLight = calculateAmbientIrradiance(cameraPosition,  0.0);
+vec3 ambientLight = calculateAmbientIrradiance(cameraPosition);
 vec3 combinedLight = clamp((mainLightIntensity + ambientLight )/PI, vec3(0.0), vec3(1.0));
 vec3 baseCloudColor = pow(combinedLight * pow(clouds.xyz, vec3(GAMMA)), vec3(INV_GAMMA));
 float scatteringMod = max(clouds.a < 0.5 ? clouds.a / 0.5 : - clouds.a / 0.5 + 2.0, 0.0);
@@ -91,4 +91,4 @@ float totalTransmittance = length(cloudColor.rgb) == 0.0 ?
 1.0 :
 clamp(cloudColor.a * cloudsOpacity + (1.0 - cloudsOpacity), 0.0 , 1.0);
 return vec4(cloudColor.rgb, totalTransmittance);
-}`)}var D,O=e((()=>{i(),n(),h(),b(),C(),v(),l(),f(),o(),m(),T(),D=(t.radius+g)**2}));export{E as n,O as t};
+}`)}var D;function O(){return(O=e((()=>{i(),n(),h(),b(),C(),v(),l(),f(),o(),m(),T(),D=(t.radius+g)**2})))()}export{E as n,O as t};

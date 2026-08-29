@@ -1,1 +1,1 @@
-import{n as e}from"./chunk.js";function*t(e){switch(e.type){case`object-id`:case`unique-id-simple`:yield e.fieldName;return;case`unique-id-composite`:yield*e.fieldNames;return}}var n=e((()=>{}));export{n,t};
+import{n as e}from"./rolldown-runtime.js";function*t(e){switch(e.type){case`object-id`:case`unique-id-simple`:yield e.fieldName;return;case`unique-id-composite`:yield*e.fieldNames;return}}function n(){return(n=e((()=>{})))()}export{n,t};

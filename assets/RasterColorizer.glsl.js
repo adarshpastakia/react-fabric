@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{o as t,r as n}from"./vec3f64.js";import{r,t as i}from"./glsl.js";import{n as a,t as o}from"./Float3PassUniform.js";import{n as s,t as c}from"./FloatPassUniform.js";import{n as l,t as u}from"./Texture2DPassUniform.js";import{n as d,t as f}from"./ShaderBuilder.js";import{n as p,t as m}from"./IntegerPassUniform.js";import{n as h,t as g}from"./FloatsPassUniform.js";import{n as _,t as v}from"./ColorConversion.glsl.js";import{n as y,t as b}from"./Float2PassUniform.js";import{n as x,t as S}from"./BooleanPassUniform.js";import{a as C,i as w,n as T,r as E,t as D}from"./TileBackground.glsl.js";function O(e){e.fragment.uniforms.add(new u(`u_colormap`,e=>e.u_colormap),new s(`u_colormapOffset`,e=>e.colormap.u_colormapOffset),new s(`u_colormapMaxIndex`,e=>e.colormap.u_colormapMaxIndex),new s(`u_opacity`,e=>e.common.u_opacity)),e.fragment.code.add(r`vec4 colormap(vec4 currentPixel, bool isFloat) {
+import{n as e}from"./rolldown-runtime.js";import{o as t,r as n}from"./vec3f64.js";import{r,t as i}from"./glsl.js";import{n as a,t as o}from"./IntegerPassUniform.js";import{n as s,t as c}from"./ShaderBuilder.js";import{n as l,t as u}from"./FloatPassUniform.js";import{n as d,t as f}from"./Texture2DPassUniform.js";import{n as p,t as m}from"./Float3PassUniform.js";import{n as h,t as g}from"./FloatsPassUniform.js";import{n as _,t as v}from"./ColorConversion.glsl.js";import{n as y,t as b}from"./Float2PassUniform.js";import{a as x,i as S,n as C,r as w,t as T}from"./TileBackground.glsl.js";import{n as E,t as D}from"./BooleanPassUniform.js";function O(e){e.fragment.uniforms.add(new f(`u_colormap`,e=>e.u_colormap),new l(`u_colormapOffset`,e=>e.colormap.u_colormapOffset),new l(`u_colormapMaxIndex`,e=>e.colormap.u_colormapMaxIndex),new l(`u_opacity`,e=>e.common.u_opacity)),e.fragment.code.add(r`vec4 colormap(vec4 currentPixel, bool isFloat) {
 float colorIndex = isFloat ? currentPixel.r - u_colormapOffset : currentPixel.r * 255.0 - u_colormapOffset;
 vec4 result;
 if (currentPixel.a == 0.0 || colorIndex > u_colormapMaxIndex) {
@@ -8,7 +8,7 @@ vec2 texelCoordinates = vec2((colorIndex + 0.5), 0.5);
 result = texelFetch(u_colormap, ivec2(texelCoordinates), 0);
 }
 return result;
-}`)}var k=e((()=>{c(),i(),l()}));function A(e){e.fragment.uniforms.add(new u(`u_transformGrid`,e=>e.u_transformGrid),new b(`u_transformSpacing`,e=>e.common.u_transformSpacing),new b(`u_targetImageSize`,e=>e.common.u_targetImageSize)),e.fragment.code.add(r`vec2 projectPixelLocation(vec2 coords) {
+}`)}function k(){return(k=e((()=>{u(),i(),d()})))()}function A(e){e.fragment.uniforms.add(new f(`u_transformGrid`,e=>e.u_transformGrid),new b(`u_transformSpacing`,e=>e.common.u_transformSpacing),new b(`u_targetImageSize`,e=>e.common.u_targetImageSize)),e.fragment.code.add(r`vec2 projectPixelLocation(vec2 coords) {
 vec2 index_image = floor(coords * u_targetImageSize);
 vec2 oneTransformPixel = vec2(4.0, 1.0);
 vec2 index_transform = floor(index_image / u_transformSpacing) * oneTransformPixel;
@@ -27,7 +27,7 @@ srcLocation.s = dot(ur_abc, vec3(pos, 1.0));
 srcLocation.t = dot(ur_def, vec3(pos, 1.0));
 }
 return srcLocation;
-}`)}var j=e((()=>{y(),i(),l()}));function M(e,t){e.include(A),e.fragment.uniforms.add(new u(`u_image`,e=>e.u_image),new x(`u_flipY`,e=>e.common.u_flipY),new x(`u_applyTransform`,e=>e.common.u_applyTransform));let{requireBilinearWithNN:n}=t;n&&e.fragment.uniforms.add(new b(`u_srcImageSize`,e=>e.common.u_srcImageSize)),e.fragment.code.add(r`vec2 getPixelLocation(vec2 coords) {
+}`)}function j(){return(j=e((()=>{y(),i(),d()})))()}function M(e,t){e.include(A),e.fragment.uniforms.add(new f(`u_image`,e=>e.u_image),new E(`u_flipY`,e=>e.common.u_flipY),new E(`u_applyTransform`,e=>e.common.u_applyTransform));let{requireBilinearWithNN:n}=t;n&&e.fragment.uniforms.add(new b(`u_srcImageSize`,e=>e.common.u_srcImageSize)),e.fragment.code.add(r`vec2 getPixelLocation(vec2 coords) {
 vec2 targetLocation = u_flipY ? vec2(coords.s, 1.0 - coords.t) : coords;
 if (!u_applyTransform) {
 return targetLocation;
@@ -62,7 +62,7 @@ vec4 getPixel(vec2 pixelLocation) {
 return sampleBilinear(u_image, pixelLocation, u_srcImageSize);
 }`):e.fragment.code.add(r`vec4 getPixel(vec2 pixelLocation) {
 return texture(u_image, pixelLocation);
-}`)}var N,P=e((()=>{j(),C(),S(),y(),i(),l(),N=class extends E{constructor(e,t,n){super(),this.common=e,this.u_image=t,this.u_transformGrid=n}}}));function F(e){let t=new d;return t.include(w),t.include(M,e),t.include(O,e),t.include(D,e),t.fragment.code.add(r`vec4 applyBackgroundBlend(vec4 layerColor) {
+}`)}var N;function P(){return(P=e((()=>{j(),x(),D(),y(),i(),d(),N=class extends w{constructor(e,t,n){super(),this.common=e,this.u_image=t,this.u_transformGrid=n}}})))()}function F(e){let t=new s;return t.include(S),t.include(M,e),t.include(O,e),t.include(T,e),t.fragment.code.add(r`vec4 applyBackgroundBlend(vec4 layerColor) {
 return blendLayers(vuv, layerColor, u_opacity);
 }`),e.colorizerType===0?L(t,e):e.colorizerType===1?I(t):e.colorizerType===2&&R(t,e),t}function I(e){e.fragment.main.add(r`vec2 pixelLocation = getPixelLocation(uv);
 if (isOutside(pixelLocation)) {
@@ -70,7 +70,7 @@ fragColor = applyBackgroundBlend(vec4(0.0, 0.0, 0.0, 0.0));
 return;
 }
 vec4 currentPixel = getPixel(pixelLocation);
-fragColor = applyBackgroundBlend(colormap(currentPixel, true));`)}function L(e,t){e.fragment.uniforms.add(new p(`u_bandCount`,e=>e.symbolizer.u_bandCount),new o(`u_minCutOff`,e=>e.symbolizer.u_minCutOff),new o(`u_maxCutOff`,e=>e.symbolizer.u_maxCutOff),new o(`u_factor`,e=>e.symbolizer.u_factor),new s(`u_minOutput`,e=>e.symbolizer.u_minOutput),new s(`u_maxOutput`,e=>e.symbolizer.u_maxOutput),new x(`u_useGamma`,e=>e.symbolizer.u_useGamma),new o(`u_gamma`,e=>e.symbolizer.u_gamma),new o(`u_gammaCorrection`,e=>e.symbolizer.u_gammaCorrection),new s(`u_opacity`,e=>e.common.u_opacity)),e.fragment.code.add(r`float stretchOneValue(float val, float minCutOff, float maxCutOff, float minOutput, float maxOutput, float factor, bool useGamma, float gamma, float gammaCorrection) {
+fragColor = applyBackgroundBlend(colormap(currentPixel, true));`)}function L(e,t){e.fragment.uniforms.add(new a(`u_bandCount`,e=>e.symbolizer.u_bandCount),new m(`u_minCutOff`,e=>e.symbolizer.u_minCutOff),new m(`u_maxCutOff`,e=>e.symbolizer.u_maxCutOff),new m(`u_factor`,e=>e.symbolizer.u_factor),new l(`u_minOutput`,e=>e.symbolizer.u_minOutput),new l(`u_maxOutput`,e=>e.symbolizer.u_maxOutput),new E(`u_useGamma`,e=>e.symbolizer.u_useGamma),new m(`u_gamma`,e=>e.symbolizer.u_gamma),new m(`u_gammaCorrection`,e=>e.symbolizer.u_gammaCorrection),new l(`u_opacity`,e=>e.common.u_opacity)),e.fragment.code.add(r`float stretchOneValue(float val, float minCutOff, float maxCutOff, float minOutput, float maxOutput, float factor, bool useGamma, float gamma, float gammaCorrection) {
 if (val >= maxCutOff) {
 return maxOutput;
 } else if (val <= minCutOff) {
@@ -110,7 +110,7 @@ return stretchedVal;
       float greenVal = stretchOneValue(currentPixel.g, u_minCutOff[1], u_maxCutOff[1], u_minOutput, u_maxOutput, u_factor[1], u_useGamma, u_gamma[1], u_gammaCorrection[1]);
       float blueVal = stretchOneValue(currentPixel.b, u_minCutOff[2], u_maxCutOff[2], u_minOutput, u_maxOutput, u_factor[2], u_useGamma, u_gamma[2], u_gammaCorrection[2]);
       fragColor = applyBackgroundBlend(vec4(redVal, greenVal, blueVal, currentPixel.a));
-    }`}`)}function R(e,t){let n=e.fragment;n.uniforms.add(new u(`u_image`,e=>e.u_image),new p(`u_hillshadeType`,e=>e.symbolizer.u_hillshadeType),new h(`u_sinZcosAs`,6,e=>e.symbolizer.u_sinZcosAs),new h(`u_sinZsinAs`,6,e=>e.symbolizer.u_sinZsinAs),new h(`u_cosZs`,6,e=>e.symbolizer.u_cosZs),new h(`u_weights`,6,e=>e.symbolizer.u_weights),new b(`u_factor`,e=>e.symbolizer.u_factor),new s(`u_minValue`,e=>e.symbolizer.u_minValue),new s(`u_maxValue`,e=>e.symbolizer.u_maxValue),new b(`u_srcImageSize`,e=>e.common.u_srcImageSize)),n.include(v),n.code.add(r`vec4 overlay(float val, float minValue, float maxValue, float hillshade, float alpha) {
+    }`}`)}function R(e,t){let n=e.fragment;n.uniforms.add(new f(`u_image`,e=>e.u_image),new a(`u_hillshadeType`,e=>e.symbolizer.u_hillshadeType),new h(`u_sinZcosAs`,6,e=>e.symbolizer.u_sinZcosAs),new h(`u_sinZsinAs`,6,e=>e.symbolizer.u_sinZsinAs),new h(`u_cosZs`,6,e=>e.symbolizer.u_cosZs),new h(`u_weights`,6,e=>e.symbolizer.u_weights),new b(`u_factor`,e=>e.symbolizer.u_factor),new l(`u_minValue`,e=>e.symbolizer.u_minValue),new l(`u_maxValue`,e=>e.symbolizer.u_maxValue),new b(`u_srcImageSize`,e=>e.common.u_srcImageSize)),n.include(v),n.code.add(r`vec4 overlay(float val, float minValue, float maxValue, float hillshade, float alpha) {
 val = clamp((val - minValue) / (maxValue - minValue), 0.0, 1.0);
 vec4 color = colormap(vec4(val, val, val, 1.0), false);
 vec3 hsv = rgb2hsv(color.rgb);
@@ -204,4 +204,4 @@ fragColor = applyBackgroundBlend(vec4(hillshade, hillshade, hillshade, alpha));`
       // set color
       float alpha = getNeighborHoodAlpha(va.a, vb.a, vc.a, vd.a, ve.a, vf.a, vg.a, vh.a, vi.a);
       alpha *= u_opacity;
-      ${i}`)}var z,B,V,H,U=e((()=>{t(),k(),P(),T(),C(),_(),S(),y(),a(),c(),g(),i(),m(),l(),f(),z=class extends N{constructor(e,t,r,i,a,o){super(e,i,a),this.colormap=t,this.symbolizer=r,this.u_colormap=o,this.backgroundColor=n,this.fboTexture=null,this.baseOpacity=1}},B=class extends z{},V=class extends z{},H=Object.freeze(Object.defineProperty({__proto__:null,ColorizerHillshadeUniforms:V,ColorizerStretchUniforms:B,ColorizerUniforms:z,build:F},Symbol.toStringTag,{value:`Module`}))}));export{H as a,k as c,B as i,U as n,F as o,z as r,P as s,V as t};
+      ${i}`)}var z,B,V,H;function U(){return(U=e((()=>{t(),k(),P(),C(),x(),_(),D(),y(),p(),u(),g(),i(),o(),d(),c(),z=class extends N{constructor(e,t,r,i,a,o){super(e,i,a),this.colormap=t,this.symbolizer=r,this.u_colormap=o,this.backgroundColor=n,this.fboTexture=null,this.baseOpacity=1}},B=class extends z{},V=class extends z{},H=Object.freeze(Object.defineProperty({__proto__:null,ColorizerHillshadeUniforms:V,ColorizerStretchUniforms:B,ColorizerUniforms:z,build:F},Symbol.toStringTag,{value:`Module`}))})))()}export{H as a,k as c,B as i,U as n,F as o,z as r,P as s,V as t};

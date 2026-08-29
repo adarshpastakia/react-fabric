@@ -1,4 +1,4 @@
-import{n as e}from"./chunk.js";import{b as t,h as n}from"./vec2.js";import{o as r,u as i}from"./vec4.js";import{a,o}from"./vec4f64.js";import{a as s,r as c}from"./vec2f64.js";import{a as l,s as u}from"./ShaderOutput.js";import{r as d,t as f}from"./glsl.js";import{n as p,t as ee}from"./FloatPassUniform.js";import{n as m,t as h}from"./Texture2DPassUniform.js";import{n as te,t as g}from"./ShaderBuilder.js";import{n as _,r as ne}from"./Slice.glsl.js";import{n as re,t as ie}from"./ObjectAndLayerIdColor.glsl.js";import{n as v,t as y}from"./Float4PassUniform.js";import{n as ae,r as b,t as x}from"./View.glsl.js";import{n as S,t as C}from"./ColorConversion.glsl.js";import{n as w,t as T}from"./TerrainDepthTest.glsl.js";import{n as E,t as D}from"./Float2PassUniform.js";import{n as O,t as k}from"./OutputHighlight.glsl.js";import{n as A,t as j}from"./AlphaCutoff.js";import{n as M,t as N}from"./OutputColorHighlightOLID.glsl.js";import{n as P,t as F}from"./Transform.glsl.js";import{n as oe,t as I}from"./EvaluateAmbientLighting.glsl.js";import{i as L,n as R,r as z}from"./MainLighting.glsl.js";import{n as B,t as V}from"./ReadShadowMap.glsl.js";import{n as H,t as U}from"./NormalUtils.glsl.js";import{i as W,n as G,r as K,t as q}from"./WaterColor.glsl.js";function J(e){e.fragment.uniforms.add(new h(`texWaveNormal`,e=>e.waveNormal),new h(`texWavePerturbation`,e=>e.wavePerturbation),new y(`waveParams`,e=>i(Y,e.waveStrength,e.waveTextureRepeat,e.flowStrength,e.flowOffset)),new D(`waveDirection`,e=>t(X,e.waveDirection[0]*e.waveVelocity,e.waveDirection[1]*e.waveVelocity))),e.fragment.include(W),e.fragment.code.add(d`const vec2  FLOW_JUMP = vec2(6.0/25.0, 5.0/24.0);
+import{n as e}from"./rolldown-runtime.js";import{n as t,t as n}from"./Error.js";import{O as r,x as i}from"./vec2.js";import{o as a,u as o}from"./vec4.js";import{o as s,s as c}from"./vec4f64.js";import{o as l,s as ee}from"./vec2f64.js";import{r as u,t as d}from"./glsl.js";import{n as f,t as p}from"./ShaderBuilder.js";import{n as m,t as te}from"./FloatPassUniform.js";import{n as h,t as g}from"./Texture2DPassUniform.js";import{p as _}from"./ShaderOutput.js";import{a as v,i as y}from"./Slice.glsl.js";import{n as ne,t as re}from"./ObjectAndLayerIdColor.glsl.js";import{n as b,t as x}from"./Float4PassUniform.js";import{n as ie,r as ae,t as S}from"./View.glsl.js";import{n as C,t as w}from"./ColorConversion.glsl.js";import{n as T,t as E}from"./AlphaCutoff.js";import{n as D,t as O}from"./Float2PassUniform.js";import{n as k,t as A}from"./OutputHighlight.glsl.js";import{n as j,t as M}from"./OutputColorHighlightOLID.glsl.js";import{n as N,t as P}from"./Transform.glsl.js";import{n as F,t as I}from"./EvaluateAmbientLighting.glsl.js";import{i as oe,n as L,r as R}from"./MainLighting.glsl.js";import{n as z,r as B}from"./ReadShadowMap.glsl.js";import{n as V,t as H}from"./NormalUtils.glsl.js";import{i as U,n as W,r as G,t as K}from"./WaterColor.glsl.js";function q(e){e.fragment.uniforms.add(new g(`texWaveNormal`,e=>e.waveNormal),new g(`texWavePerturbation`,e=>e.wavePerturbation),new x(`waveParams`,e=>o(J,e.waveStrength,e.waveTextureRepeat,e.flowStrength,e.flowOffset)),new O(`waveDirection`,e=>r(Y,e.waveDirection[0]*e.waveVelocity,e.waveDirection[1]*e.waveVelocity))),e.fragment.include(U),e.fragment.code.add(u`const vec2  FLOW_JUMP = vec2(6.0/25.0, 5.0/24.0);
 vec2 textureDenormalized2D(sampler2D _tex, vec2 _uv) {
 return 2.0 * texture(_tex, _uv).rg - 1.0;
 }
@@ -47,16 +47,16 @@ float waveTextureRepeat = waveParams[1];
 vec3 normal = getWaveLayer(texWaveNormal, texWavePerturbation, _uv * waveTextureRepeat, waveDirection, _time);
 float foam  = normals2FoamIntensity(normal, waveParams[0]);
 return vec4(normal, foam);
-}`)}var Y,X,Z=e((()=>{n(),c(),r(),a(),K(),B(),E(),v(),f(),m(),Y=o(),X=s()}));function Q(e){let t=new te,{vertex:n,fragment:r,varyings:i}=t,{output:a,draped:o,receiveShadows:s}=e;ae(n,e),t.include(P),t.attributes.add(`position`,`vec3`),t.attributes.add(`uv0`,`vec2`);let c=new y(`waterColor`,e=>e.color);if(i.add(`vpos`,`vec3`,{invariant:!0}),n.uniforms.add(c),u(a)){if(o)return n.main.add(d`
-      if (waterColor.a < ${d.float(A)}) {
+}`)}var J,Y;function X(){return(X=e((()=>{i(),l(),a(),s(),G(),z(),D(),b(),d(),h(),J=c(),Y=ee()})))()}function Z(e){let n=new f,{vertex:r,fragment:i,varyings:a}=n,{output:o,draped:s,receiveShadows:c}=e;ie(r,e),n.include(N),n.attributes.add(`position`,`vec3`),n.attributes.add(`uv0`,`vec2`);let l=new x(`waterColor`,e=>e.color);if(a.add(`vpos`,`vec3`,{invariant:!0}),r.uniforms.add(l),_(o)){if(s)return r.main.add(u`
+      if (waterColor.a < ${u.float(T)}) {
         // Discard this vertex
         gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
         return;
       }
 
       vpos = position;
-      gl_Position = transformPosition(proj, view, vpos);`),r.uniforms.add(c),r.main.add(d`fragColor = waterColor;`),t;t.include(H,e),i.add(`vuv`,`vec2`),i.add(`vnormal`,`vec3`),i.add(`vtbnMatrix`,`mat3`),n.main.add(d`
-      if (waterColor.a < ${d.float(A)}) {
+      gl_Position = transformPosition(proj, view, vpos);`),i.uniforms.add(l),i.main.add(u`fragColor = waterColor;`),n;n.include(V,e),a.add(`vuv`,`vec2`),a.add(`vnormal`,`vec3`),a.add(`vtbnMatrix`,`mat3`),r.main.add(u`
+      if (waterColor.a < ${u.float(T)}) {
         // Discard this vertex
         gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
         return;
@@ -67,12 +67,10 @@ return vec4(normal, foam);
 
       vnormal = getLocalUp(vpos, localOrigin);
       vtbnMatrix = getTBNMatrix(vnormal);
-      forwardViewPosDepth((view * vec4(vpos, 1.0)).xyz);
 
       gl_Position = transformPosition(proj, view, vpos);
-      forwardLinearDepthToReadShadowMap();`)}switch(t.include(V,e),t.include(T,e),a){case 0:r.include(oe,{pbrMode:0,lightingSphericalHarmonicsOrder:2}),t.include(J),t.include(G,e),r.include(_,e),t.include(N,e),r.include(C),x(r,e),L(r),z(r),r.uniforms.add(c,new p(`timeElapsed`,({timeElapsed:e})=>e),n.uniforms.get(`view`),n.uniforms.get(`localOrigin`)).main.add(d`
+      forwardLinearDepthToReadShadowMap();`)}switch(n.include(B,e),o){case 0:case 1:case 2:i.include(I,{pbrMode:0}),n.include(q),n.include(W,e),i.include(y,e),n.include(j,e),i.include(w),S(i,e),oe(i),R(i),i.uniforms.add(l,new m(`timeElapsed`,({timeElapsed:e})=>e),r.uniforms.get(`view`),r.uniforms.get(`localOrigin`)).main.add(u`
         discardBySlice(vpos);
-        discardByTerrainDepth();
         vec3 localUp = vnormal;
         // the created normal is in tangent space
         vec4 tangentNormalFoam = getSurfaceNormalAndFoam(vuv, timeElapsed);
@@ -80,13 +78,13 @@ return vec4(normal, foam);
         // we rotate the normal according to the tangent-bitangent-normal-Matrix
         vec3 n = normalize(vtbnMatrix * tangentNormalFoam.xyz);
         vec3 v = -normalize(vpos - cameraPosition);
-        float shadow = ${s?d`1.0 - readShadowMap(vpos, linearDepth)`:`1.0`};
+        float shadow = ${c?u`1.0 - readShadowMap(vpos, linearDepth)`:`1.0`};
         vec4 vPosView = view * vec4(vpos, 1.0);
         vec4 final = vec4(getWaterColor(n, v, mainLightDirection, waterColor.rgb, mainLightIntensity, localUp, shadow, tangentNormalFoam.w, vPosView.xyz, vpos + localOrigin), waterColor.w);
 
         fragColor = delinearizeGamma(final);
-        outputColorHighlightOLID(applySlice(fragColor, vpos), final.rgb);`);break;case 2:t.include(H,e),t.include(J,e),r.include(_,e),i.add(`vuv`,`vec2`),n.main.add(d`
-        if (waterColor.a < ${d.float(A)}) {
+        outputColorHighlightOLID(applySlice(fragColor, vpos), final.rgb);`);break;case 4:n.include(V,e),n.include(q,e),i.include(y,e),a.add(`vuv`,`vec2`),r.main.add(u`
+        if (waterColor.a < ${u.float(T)}) {
           // Discard this vertex
           gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
           return;
@@ -95,20 +93,28 @@ return vec4(normal, foam);
         vuv = uv0;
         vpos = position;
 
-        gl_Position = transformPosition(proj, view, vpos);`),r.uniforms.add(new p(`timeElapsed`,({timeElapsed:e})=>e)).main.add(d`discardBySlice(vpos);
+        gl_Position = transformPosition(proj, view, vpos);`),i.uniforms.add(new m(`timeElapsed`,({timeElapsed:e})=>e)).main.add(u`discardBySlice(vpos);
 vec4 tangentNormalFoam = getSurfaceNormalAndFoam(vuv, timeElapsed);
 tangentNormalFoam.xyz = normalize(tangentNormalFoam.xyz);
-fragColor = vec4((tangentNormalFoam.xyz + vec3(1.0)) * 0.5, tangentNormalFoam.w);`);break;case 8:t.include(k,e),n.main.add(d`
-        if (waterColor.a < ${d.float(A)}) {
+fragColor = vec4((tangentNormalFoam.xyz + vec3(1.0)) * 0.5, tangentNormalFoam.w);`);break;case 3:r.main.add(u`
+        if (waterColor.a < ${u.float(T)}) {
           // Discard this vertex
           gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
           return;
         }
 
         vpos = position;
-        gl_Position = transformPosition(proj, view, vpos);`),r.include(_,e),r.main.add(d`discardBySlice(vpos);
-calculateOcclusionAndOutputHighlight();`);break;case 9:t.include(ie,e),n.main.add(d`
-        if (waterColor.a < ${d.float(A)}) {
+        gl_Position = transformPosition(proj, view, vpos);`),i.include(y,e),i.main.add(`discardBySlice(vpos);`);break;case 10:n.include(A,e),r.main.add(u`
+        if (waterColor.a < ${u.float(T)}) {
+          // Discard this vertex
+          gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
+          return;
+        }
+
+        vpos = position;
+        gl_Position = transformPosition(proj, view, vpos);`),i.include(y,e),i.main.add(u`discardBySlice(vpos);
+calculateOcclusionAndOutputHighlight();`);break;case 11:n.include(re,e),r.main.add(u`
+        if (waterColor.a < ${u.float(T)}) {
           // Discard this vertex
           gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
           return;
@@ -116,5 +122,5 @@ calculateOcclusionAndOutputHighlight();`);break;case 9:t.include(ie,e),n.main.ad
 
         vpos = position;
         gl_Position = transformPosition(proj, view, vpos);
-        forwardObjectAndLayerIdColor();`),r.include(_,e),r.main.add(d`discardBySlice(vpos);
-outputObjectAndLayerIdColor();`)}return t}var $,se=e((()=>{l(),ne(),F(),re(),O(),I(),R(),U(),B(),w(),q(),Z(),S(),b(),v(),ee(),f(),M(),g(),j(),$=Object.freeze(Object.defineProperty({__proto__:null,build:Q},Symbol.toStringTag,{value:`Module`}))}));export{Z as i,Q as n,se as r,$ as t};
+        forwardObjectAndLayerIdColor();`),i.include(y,e),i.main.add(u`discardBySlice(vpos);
+outputObjectAndLayerIdColor();`);break;default:throw new t(`shaderbuilder:missing-output`,`Unimplemented shader output ${o} for WaterTechnique`)}return n}var Q;function $(){return($=e((()=>{n(),v(),P(),ne(),k(),F(),L(),H(),z(),K(),X(),C(),ae(),b(),te(),d(),M(),p(),E(),Q=Object.freeze(Object.defineProperty({__proto__:null,build:Z},Symbol.toStringTag,{value:`Module`}))})))()}export{X as i,Q as n,$ as r,Z as t};

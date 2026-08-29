@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime.js";function t(e,t,n){let r=e===`block`?t:n;return r==null?void 0:`${r}`}function n(e){return(!!e).toString()}function r(){return(r=e((()=>{})))()}export{r as n,n as r,t};
