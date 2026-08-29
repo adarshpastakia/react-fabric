@@ -291,7 +291,7 @@ export const Equalizers = memo(() => {
   );
 
   return showEqs ? (
-    <div className="flex flex-row h-48 justify-center overflow-x-auto">
+    <div className="flex flex-row h-48 justify-center overflow-x-auto p-1">
       {channelGains != null && (
         <Fragment>
           {channelGains.map((gainNode, idx) => (

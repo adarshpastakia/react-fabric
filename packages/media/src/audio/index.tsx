@@ -21,7 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Header, HotKey, Icon, ThemeProvider } from "@react-fabric/core";
+import { HotKey, Icon, ThemeProvider } from "@react-fabric/core";
 import { debounce } from "@react-fabric/utilities";
 import type { RefObject } from "react";
 import { useEffect, useImperativeHandle, useLayoutEffect, useRef, useState } from "react";
@@ -190,7 +190,7 @@ export function AudioPlayer({
           setShowEqs,
         }}
       >
-        <Header className="relative bg-dimmed" dir="ltr">
+        <div className="relative bg-dimmed area-header" dir="ltr">
           <HotKey
             keys="Space"
             handler={() => {
@@ -224,7 +224,7 @@ export function AudioPlayer({
                 <track kind="captions" default />
               </video>
             </div>
-            <div className="overflow-hidden relative flex-1 px-1 bg-content">
+            <div className="overflow-hidden relative flex-1 px-1 bg-content z-0">
               <div ref={containerRef} className="fabric-wavesurfer" />
               {editable &&
                 regionOver &&
@@ -268,7 +268,7 @@ export function AudioPlayer({
             </div>
           )}
           {source.state.loading && <Loading />}
-        </Header>
+        </div>
       </AudioContext>
     </ThemeProvider>
   );
