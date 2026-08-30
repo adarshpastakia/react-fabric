@@ -81,7 +81,7 @@ export function FloatingSlider({ icon, value, className, onClick, onChange, min 
             e.stopPropagation();
             return false;
           }}
-          className={cn("fabric-media-slider", "w-24 absolute -bottom-2 left-4 origin-left -rotate-90")}
+          className={cn("fabric-media-slider", "w-24 absolute -bottom-2 left-3 origin-left -rotate-90")}
         />
       </div>
     </Dropdown>
