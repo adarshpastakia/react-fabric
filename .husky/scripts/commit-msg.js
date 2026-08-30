@@ -1,4 +1,4 @@
-const fs = require("fs");
+import fs from "node:fs";
 
 // Get the commit message file path from Git argument
 const commitMsgFile = process.argv[2];
