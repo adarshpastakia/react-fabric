@@ -39,7 +39,7 @@
     "@fontsource-variable/merriweather": "~5.3.0",
     "@fontsource-variable/noto-kufi-arabic": "~5.3.0",
     "@fontsource-variable/noto-sans": "~5.3.0",
-    "@fontsource-variable/noto-sans-mono": "~5.3.0",
+    "@fontsource-variable/inconsolata": "~5.3.0",
     "@iconify-json/mdi": "~1.2.3",
     "@iconify-json/mdi-light": "~1.2.2",
     "@iconify-json/svg-spinners": "~1.2.4",

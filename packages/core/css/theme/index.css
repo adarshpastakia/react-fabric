@@ -32,15 +32,14 @@
 @import "@fontsource-variable/merriweather";
 @import "@fontsource-variable/noto-kufi-arabic";
 @import "@fontsource-variable/noto-sans";
-@import "@fontsource-variable/noto-sans-mono";
+@import "@fontsource-variable/inconsolata";
 
 @theme static {
   --font-sans:
     "Noto Sans Kufi Arabic Variable", "Noto Sans Variable", "Noto Color Emoji", -apple-system, BlinkMacSystemFont, system-ui,
     "Ubuntu", "Fira Sans", sans-serif;
   --font-title: "Alexandria Variable", "Merriweather Variable", "Noto Color Emoji", Georgia, Times, serif;
-  --font-mono:
-    "Noto Sans Kufi Arabic Variable", "Noto Sans Mono Variable", "Noto Color Emoji", Menlo, Monaco, Consolas, monospace;
+  --font-mono: "Noto Sans Kufi Arabic Variable", "Inconsolata Variable", "Noto Color Emoji", Menlo, Monaco, Consolas, monospace;
 }
 
 @theme static {

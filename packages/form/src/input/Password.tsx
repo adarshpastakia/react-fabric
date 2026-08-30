@@ -24,6 +24,7 @@
 import { Button, Tooltip, useControlledValue } from "@react-fabric/core";
 import type { RefProp } from "@react-fabric/core/dist/types/types";
 import { cn } from "@react-fabric/utilities";
+import type { InputHTMLAttributes } from "react";
 import { useCallback, useId, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { InputWrapper } from "../internal/InputWrapper";
@@ -39,6 +40,8 @@ export interface PasswordProps extends InputProps, WrapperProps, RefProp<HTMLInp
    * password strength meter (0-1)
    */
   strength?: number;
+
+  autoComplete?: InputHTMLAttributes<HTMLInputElement>["autoComplete"];
 }
 
 /**
@@ -61,6 +64,7 @@ export function Password(props: PasswordProps) {
     name,
     autoFocus,
     allowClear,
+    autoComplete = "off",
     ref,
   } = props;
 
@@ -118,7 +122,7 @@ export function Password(props: PasswordProps) {
         size={1}
         type={show ? "text" : "password"}
         ref={ref}
-        autoComplete="off"
+        autoComplete={autoComplete}
         {...{ autoFocus }}
         value={currentValue ?? ""}
         onBlur={onBlur}

@@ -24,6 +24,7 @@
 import { useControlledValue } from "@react-fabric/core";
 import type { RefProp } from "@react-fabric/core/dist/types/types";
 import { cn } from "@react-fabric/utilities";
+import type { InputHTMLAttributes } from "react";
 import { useCallback, useId } from "react";
 import { InputWrapper } from "../internal/InputWrapper";
 import type { InputProps, WrapperProps } from "../types";
@@ -34,6 +35,8 @@ export interface TextInputProps extends InputProps, WrapperProps, RefProp<HTMLIn
    * input type
    */
   type?: "email" | "file" | "search" | "tel" | "text" | "url";
+
+  autoComplete?: InputHTMLAttributes<HTMLInputElement>["autoComplete"];
 }
 
 /**
@@ -58,6 +61,7 @@ export function Input(props: TextInputProps) {
     type,
     autoFocus,
     allowClear,
+    autoComplete = "off",
     ref,
   } = props;
 
@@ -99,7 +103,7 @@ export function Input(props: TextInputProps) {
         size={1}
         type={type}
         ref={ref}
-        autoComplete="off"
+        autoComplete={autoComplete}
         {...{ autoFocus }}
         value={currentValue ?? ""}
         onBlur={onBlur}

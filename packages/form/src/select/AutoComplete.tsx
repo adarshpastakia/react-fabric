@@ -295,6 +295,7 @@ export function AutoComplete(props: AutoCompleteProps) {
           data-testid={name}
           name={name}
           ref={ref}
+          autoComplete="off"
           onInput={(e) => onInput?.(e.currentTarget.value)}
           {...{ autoFocus }}
           rows={!multiple && expandOnEdit && state.open ? 5 : 1}

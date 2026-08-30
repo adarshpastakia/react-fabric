@@ -280,6 +280,7 @@ export function List<T extends AnyObject = string>(
             name={name}
             size={1}
             ref={ref}
+            autoComplete="off"
             {...{ autoFocus }}
             className={cn(
               "appearance-none bg-transparent outline-none border-none ring-0 flex-1 min-w-24",

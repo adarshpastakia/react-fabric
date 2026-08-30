@@ -289,6 +289,28 @@ export function Select<T extends AnyObject = string>(props: SelectProps<T>) {
         state.open && (placement === "top" ? "rounded-t-none" : "rounded-b-none"),
       )}
       {...getWrapperProps(props)}
+      actionButton={
+        <>
+          {!state.loading && !hideHandle && (
+            <button type="button" className="size-fit leading-0 cursor-pointer" onClick={() => !disabled && openDropdown()}>
+              <Icon
+                className={cn(
+                  "flex-content py-2 z-0 order-9 text-muted cursor-pointer self-stretch flex items-center h-auto",
+                  state.open && "-scale-y-100 pointer-events-none",
+                  disabled && "pointer-events-none",
+                )}
+                icon="icon-[mdi--chevron-down]"
+              />
+            </button>
+          )}
+          {state.loading && (
+            <Icon
+              className={cn("flex-content p-2 z-0 order-9 text-muted pointer-events-none")}
+              icon="icon-[svg-spinners--eclipse]"
+            />
+          )}
+        </>
+      }
     >
       <div
         role="none"
@@ -310,6 +332,7 @@ export function Select<T extends AnyObject = string>(props: SelectProps<T>) {
           name={name}
           size={1}
           ref={ref}
+          autoComplete="off"
           {...{ autoFocus }}
           className={cn(
             "appearance-none bg-transparent outline-none border-none ring-0 flex-1 peer",
@@ -320,24 +343,6 @@ export function Select<T extends AnyObject = string>(props: SelectProps<T>) {
           onChange={(evt) => handleQuery(evt.target.value)}
         />
       </div>
-      {!state.loading && !hideHandle && (
-        <button type="button" className="size-fit leading-0 cursor-pointer" onClick={() => !disabled && openDropdown()}>
-          <Icon
-            className={cn(
-              "flex-content py-2 z-0 order-9 text-muted cursor-pointer self-stretch flex items-center h-auto",
-              state.open && "-scale-y-100 pointer-events-none",
-              disabled && "pointer-events-none",
-            )}
-            icon="icon-[mdi--chevron-down]"
-          />
-        </button>
-      )}
-      {state.loading && (
-        <Icon
-          className={cn("flex-content p-2 z-0 order-9 text-muted pointer-events-none")}
-          icon="icon-[svg-spinners--eclipse]"
-        />
-      )}
       {state.open && !state.loading && (
         <FloatingPortal root={refs.domReference.current?.closest<HTMLElement>(".theme-base") ?? undefined}>
           <FloatingFocusManager context={context} initialFocus={-1} visuallyHiddenDismiss closeOnFocusOut>

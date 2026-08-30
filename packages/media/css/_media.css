@@ -94,8 +94,8 @@
 
       div::part(timeline-wrapper) {
         position: absolute;
-        bottom: -20px;
         inset-inline: 0;
+        bottom: -20px;
       }
 
       div::part(timeline) {

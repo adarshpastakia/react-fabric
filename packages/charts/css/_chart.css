@@ -23,11 +23,11 @@
 
 .fabric-chartContainer {
   & > div:last-child:not(:first-child) > :last-child {
+    inset-inline-end: 0 !important;
     top: 0;
     right: unset !important;
     bottom: unset !important;
     left: unset !important;
-    inset-inline-end: 0 !important;
 
     padding: 0.5rem;
 
@@ -84,8 +84,7 @@
     &&::-webkit-slider-runnable-track {
       height: 1rem;
       border-radius: 99px;
-      background: linear-gradient(var(--color-tint-100) 0 0) scroll no-repeat
-        center / 100% 0.25rem;
+      background: linear-gradient(var(--color-tint-100) 0 0) scroll no-repeat center / 100% 0.25rem;
     }
   }
 }

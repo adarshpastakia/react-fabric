@@ -159,11 +159,17 @@
   }
 
   ::placeholder {
+    font-family: var(--font-sans);
     color: var(--color-tint-400);
   }
 
   ::selection {
     background-color: rgb(from var(--color-secondary) r g b / 30%);
+  }
+
+  input,
+  textarea {
+    font-family: var(--font-mono);
   }
 
   img,
