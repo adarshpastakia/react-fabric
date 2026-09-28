@@ -25,3 +25,8 @@
 
 export const GRAPH_PACKAGE = "@react-fabric/graph";
 export const GRAPH_VERSION = "1.0.0";
+
+export { Graph } from "./graph";
+export type { EdgeAttributes, InternalEdge, InternalNode, NodeAttributes, PublicEdge, PublicNode, RawGraph } from "./types";
+
+export { GraphViewer } from "./viewer/Graph";

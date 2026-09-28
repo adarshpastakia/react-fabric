@@ -18,13 +18,13 @@
 [![Maintainability](https://qlty.sh/badges/6e1b5fbc-a45d-44b3-a7ec-63f00fb29acc/maintainability.svg)](https://qlty.sh/gh/adarshpastakia/projects/react-fabric)
 [![Code Coverage](https://qlty.sh/badges/6e1b5fbc-a45d-44b3-a7ec-63f00fb29acc/test_coverage.svg)](https://qlty.sh/gh/adarshpastakia/projects/react-fabric)
 
-[![lerna](https://img.shields.io/badge/lerna-677ef8.svg?style=flat-square&labelColor=333&logo=lerna)](https://lerna.js.org/)
-[![yarn](https://img.shields.io/badge/yarn-2C8EBB.svg?style=flat-square&labelColor=333&logo=yarn)](https://yarnpkg.com/)
 [![react](https://img.shields.io/badge/react-61DAFB.svg?style=flat-square&labelColor=333&logo=react)](http://reactjs.org/)
 [![ts](https://img.shields.io/badge/typescript-3178C6.svg?style=flat-square&labelColor=333&logo=typescript)](https://typescriptlang.org/)
-[![emotion](https://img.shields.io/badge/tailwindcss-06B6D4.svg?style=flat-square&labelColor=333&logo=tailwindcss)](https://tailwindcss.com/)
+[![tailwindcss](https://img.shields.io/badge/tailwindcss-06B6D4.svg?style=flat-square&labelColor=333&logo=tailwindcss)](https://tailwindcss.com/)
+[![npm](https://img.shields.io/badge/npm-CB3837.svg?style=flat-square&labelColor=333&logo=npm)](https://npmjs.com/)
+[![turborepo](https://img.shields.io/badge/turborepo-FF1E56.svg?style=flat-square&labelColor=333&logo=turborepo)](https://turborepo.dev/)
 [![prettier](https://img.shields.io/badge/prettier-EA4C89.svg?style=flat-square&labelColor=333&logo=prettier)](https://prettier.io/)
-[![codeclimate](https://img.shields.io/badge/code%20climate-272425.svg?style=flat-square&labelColor=333&logo=code%20climate)](http://codeclimate.com/)
+[![qlty](https://img.shields.io/badge/qlty-66FAEC.svg?style=flat-square&labelColor=333&logo=qlty)](https://qlty.sh/)
 
 ---
 
@@ -46,34 +46,34 @@ Overall, this UI framework provides a robust set of components that cater to a w
 
 ```bash
 # core components
-yarn add @react-fabric/core @react-fabric/utilities
+npm install @react-fabric/core @react-fabric/utilities
 
 # data components
-yarn add @react-fabric/data
+npm install @react-fabric/data
 
 # form components
-yarn add @react-fabric/form
+npm install @react-fabric/form
 
 # advanced media viewers
-yarn add @react-fabric/media
+npm install @react-fabric/media
 
 # comprehensive searchbar for data tools
-yarn add @react-fabric/searchbar
+npm install @react-fabric/searchbar
 
 # relative date selector with event calendar
-yarn add @react-fabric/superdate
+npm install @react-fabric/superdate
 
 # eCharts wrappers
-yarn add @react-fabric/chart
+npm install @react-fabric/chart
 
 # lexical editor
-yarn add @react-fabric/lexical
+npm install @react-fabric/lexical
 
 # mdx editor for markdown input
-yarn add @react-fabric/mdx
+npm install @react-fabric/mdx
 
 # monaco editor
-yarn add @react-fabric/monaco
+npm install @react-fabric/monaco
 
 ```
 
@@ -127,15 +127,21 @@ createRoot(document.getElementById("root")!).render(<App />);
 ```bash
 
 # build library
-yarn dist
+npm run dist
 
 # watch changes
-yarn watch
+npm run watch
 
 # run tests
-yarn test
+npm run test
 
 # run storybook
-yarn storybook
+npm run storybook
 
 ```
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for the development workflow — the per-component
+lifecycle, a command cheatsheet, the husky git gates, and the cross-cutting guards. For the
+deep architecture and build internals, see [CLAUDE.md](./CLAUDE.md).
