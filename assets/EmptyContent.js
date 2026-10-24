@@ -73,7 +73,7 @@ polymorphic to render as different HTML elements or custom components.
 </Button>
 
 // Icon button with loading state
-<Button icon="icon-[mdi--save]" loading={saving}>
+<Button icon="icon-[mdi--floppy]" loading={saving}>
   Save
 </Button>
 

@@ -1,10 +1,14 @@
-import{n as e,r as t}from"./rolldown-runtime.js";import{t as n}from"./jsx-runtime.js";import{i as r,t as i}from"./src3.js";var a=t({_Dictation:()=>l,__namedExportsOrder:()=>u,default:()=>c}),o,s,c,l,u;function d(){return(d=e((()=>{i(),o=n(),{fn:s}=__STORYBOOK_MODULE_TEST__,c={component:r,title:`@media/Dictation`,parameters:{layout:`centered`,jest:[`media/tests/Dictation.test.tsx`]}},l={render:e=>(0,o.jsx)(`div`,{className:`w-48 flex justify-end`,children:(0,o.jsx)(r,{...e})}),args:{onRecord:s()}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
+import{n as e,r as t}from"./rolldown-runtime.js";import{t as n}from"./react.js";import{t as r}from"./jsx-runtime.js";import{i,t as a}from"./src3.js";var o=t({_Dictation:()=>d,__namedExportsOrder:()=>f,default:()=>u}),s,c,l,u,d,f;function p(){return(p=e((()=>{a(),s=n(),c=r(),{fn:l}=__STORYBOOK_MODULE_TEST__,u={component:i,title:`@media/Dictation`,parameters:{layout:`centered`,jest:[`media/tests/Dictation.test.tsx`]},decorators:[e=>(0,c.jsx)(`div`,{className:`flex gap-2 items-center p-4`,children:(0,c.jsx)(e,{})})]},d={render:e=>{let[t,n]=(0,s.useState)(``);return(0,c.jsxs)(`div`,{className:`w-xl`,children:[(0,c.jsx)(`div`,{className:`flex justify-center`,children:(0,c.jsx)(i,{...e,onTranscribe:n})}),(0,c.jsx)(`div`,{className:`py-4`,children:t})]})},args:{onRecord:l()}},d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
   render: args => {
-    return <div className="w-48 flex justify-end">
-        <Dictation {...args} />
+    const [transcription, setTranscription] = useState("");
+    return <div className="w-xl">
+        <div className="flex justify-center">
+          <Dictation {...args} onTranscribe={setTranscription} />
+        </div>
+        <div className="py-4">{transcription}</div>
       </div>;
   },
   args: {
     onRecord: fn()
   }
-}`,...l.parameters?.docs?.source}}},u=[`_Dictation`]})))()}export{l as n,d as r,a as t};
+}`,...d.parameters?.docs?.source}}},f=[`_Dictation`]})))()}export{d as n,p as r,o as t};

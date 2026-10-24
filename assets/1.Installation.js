@@ -2,37 +2,37 @@ import{n as e}from"./rolldown-runtime.js";import{S as t,_ as n,g as r,y as i}fro
 `,(0,u.jsx)(i,{children:`Using the library`}),`
 `,(0,u.jsx)(n,{children:`Installing`}),`
 `,(0,u.jsx)(t.pre,{children:(0,u.jsx)(t.code,{className:`language-bash`,children:`# core components
-yarn add @react-fabric/core @react-fabric/utilities
+npm install @react-fabric/core @react-fabric/utilities
 
 # data components
-yarn add @react-fabric/data
+npm install @react-fabric/data
 
 # form components
-yarn add @react-fabric/form
+npm install @react-fabric/form
 
 # advanced media viewers
-yarn add @react-fabric/media
+npm install @react-fabric/media
 
 # comprehensive searchbar for data tools
-yarn add @react-fabric/searchbar
+npm install @react-fabric/searchbar
 
 # relative date selector with event calendar
-yarn add @react-fabric/superdate
+npm install @react-fabric/superdate
 
 # eCharts wrappers
-yarn add @react-fabric/chart
+npm install @react-fabric/chart
 
 # lexical editor
-yarn add @react-fabric/lexical
+npm install @react-fabric/lexical
 
 # whietboard drawing canvas
-yarn add @react-fabric/draw
+npm install @react-fabric/draw
 
 # mdx editor for markdown editor and renderer
-yarn add @react-fabric/markdown
+npm install @react-fabric/markdown
 
 # monaco editor
-yarn add @react-fabric/monaco
+npm install @react-fabric/monaco
 
 `})}),`
 `,(0,u.jsx)(n,{children:`Setup`}),`
