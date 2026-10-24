@@ -23,7 +23,7 @@
     "test": "npm run jest",
     "dist": "turbo run build",
     "watch": "turbo watch watch",
-    "release": "npm version --conventional-commits --yes --preid=beta -m \"chore(release): %v\"",
+    "release": "lerna version --conventional-commits --yes --preid=beta -m \"chore(release): %v\"",
     "prepare": "husky"
   },
   "dependencies": {
