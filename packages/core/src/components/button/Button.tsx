@@ -23,16 +23,7 @@ import { cn, EMPTY_ARRAY } from "@react-fabric/utilities";
 import type { Hotkey } from "@tanstack/react-hotkeys";
 import { useHotkeySequence } from "@tanstack/react-hotkeys";
 import { useEffect, useReducer } from "react";
-import type {
-  ChildProp,
-  CssPropWithMap,
-  CSSSizeType,
-  HtmlEvents,
-  PolymorphicProps,
-  RefProp,
-  SizeType,
-  TestProps,
-} from "../../types";
+import type { ChildProp, CssPropWithMap, CSSSizeType, HtmlEvents, PolymorphicProps, RefProp, SizeType, TestProps } from "../../types";
 import { Kbd } from "../../typography/Kbd";
 import { getIconProps } from "../../utils";
 import { AnimationIndicator } from "../animations/Indicator";
@@ -63,11 +54,7 @@ export interface SharedButtonProps extends HtmlEvents {
 }
 
 interface BaseButtonProps
-  extends
-    CssPropWithMap<{ root: string; button: string; label: string; icon: string }>,
-    RefProp<HTMLButtonElement>,
-    TestProps,
-    SharedButtonProps {
+  extends CssPropWithMap<{ root: string; button: string; label: string; icon: string }>, RefProp<HTMLButtonElement>, TestProps, SharedButtonProps {
   "aria-label"?: string;
 
   /**
@@ -140,7 +127,7 @@ export type ButtonProps<Tag extends React.ElementType = "button"> = BaseButtonPr
  * </Button>
  *
  * // Icon button with loading state
- * <Button icon="icon-[mdi--save]" loading={saving}>
+ * <Button icon="icon-[mdi--floppy]" loading={saving}>
  *   Save
  * </Button>
  *
@@ -248,12 +235,7 @@ export function Button<Tag extends React.ElementType = "button">({
   const E = as ?? "button";
   return (
     <div
-      className={cn(
-        "fabric-buttonWrapper",
-        "inline-flex relative is-disabled:cursor-not-allowed is-loading:cursor-wait",
-        className,
-        classNames?.root,
-      )}
+      className={cn("fabric-buttonWrapper", "inline-flex relative is-disabled:cursor-not-allowed is-loading:cursor-wait", className, classNames?.root)}
       data-loading={loading || state.isActionRunning}
       data-disabled={disabled}
       data-rounded={rounded}
@@ -309,22 +291,11 @@ export function Button<Tag extends React.ElementType = "button">({
           />
         )}
         {children && (
-          <div
-            className={cn(
-              "fabric-buttonLabel",
-              classNames?.label,
-              "m-[0.25em] truncate flex-[0_1_auto] leading-tight pointer-events-none",
-            )}
-          >
-            {children}
-          </div>
+          <div className={cn("fabric-buttonLabel", classNames?.label, "m-[0.25em] truncate flex-[0_1_auto] leading-tight pointer-events-none")}>{children}</div>
         )}
         {!hideHotKeyLabel && hotKey && <Kbd keys={hotKey} />}
         {altIcon && (
-          <Icon
-            className={cn("fabric-buttonAltIcon", "my-[0.25em] size-fit inline-block flex-content pointer-events-none")}
-            {...getIconProps(altIcon)}
-          />
+          <Icon className={cn("fabric-buttonAltIcon", "my-[0.25em] size-fit inline-block flex-content pointer-events-none")} {...getIconProps(altIcon)} />
         )}
       </E>
       {state.showActionDone && (

@@ -22,20 +22,11 @@
  */
 
 import MonacoEditor from "@monaco-editor/react";
-import { Layout, useDebounce, useResizeObserver } from "@react-fabric/core";
+import { Layout, useApplicationContext, useDebounce, useResizeObserver } from "@react-fabric/core";
 import { type RefProp } from "@react-fabric/core/dist/types/types";
 import { cn, isEmpty, isString } from "@react-fabric/utilities";
 import * as monacoEditor from "monaco-editor";
-import {
-  useCallback,
-  useDeferredValue,
-  useEffect,
-  useImperativeHandle,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useDeferredValue, useEffect, useImperativeHandle, useLayoutEffect, useMemo, useRef, useState } from "react";
 
 export interface MonacoEditorRef {
   focus: () => void;
@@ -115,16 +106,14 @@ export function CodeEditor({
 }: BaseEditorProps & RefProp<MonacoEditorRef>) {
   const [editorRef, setEditorRef] = useState<monacoEditor.editor.IStandaloneCodeEditor>();
   const monacoRef = useRef<typeof monacoEditor>(null);
+  const { isDark } = useApplicationContext();
 
   /** ***************** watch theme change *******************/
   const [theme, setTheme] = useState("");
   useLayoutEffect(() => {
-    if (editorRef) {
-      const isDark = document.documentElement.dataset.colorScheme === "dark";
-      // eslint-disable-next-line @eslint-react/set-state-in-effect
-      setTheme(isDark ? "my-dark" : "my-light");
-    }
-  }, [editorRef]);
+    // eslint-disable-next-line @eslint-react/set-state-in-effect
+    setTheme(isDark ? "my-dark" : "my-light");
+  }, [isDark]);
 
   /** ***************** watch editor container resize *******************/
   const resizeHandler = useCallback((size: monacoEditor.editor.IDimension) => editorRef?.layout(size), [editorRef]);
@@ -132,10 +121,7 @@ export function CodeEditor({
 
   /** ***************** defer value and pass to editor as defaultValue *******************/
   const deferredValue = useDeferredValue(value);
-  const codeValue = useMemo(
-    () => (isString(deferredValue) ? deferredValue : JSON.stringify(deferredValue, null, 4)),
-    [deferredValue],
-  );
+  const codeValue = useMemo(() => (isString(deferredValue) ? deferredValue : JSON.stringify(deferredValue, null, 4)), [deferredValue]);
 
   const handleChange = useDebounce(
     (value: string) => {
@@ -255,12 +241,13 @@ export function CodeEditor({
         <MonacoEditor
           onMount={(e, m) => [!!e && setEditorRef(e), !!m && (monacoRef.current = m as typeof monacoEditor)]}
           beforeMount={schemaUri}
+          theme={theme}
           value={codeValue}
           language={language}
           onChange={handleChange}
-          theme={theme}
           className={"fabric-editor"}
           options={{
+            theme,
             readOnly,
             minimap: {
               enabled: !minimal,

@@ -23,6 +23,7 @@
 
 import { Dictation } from "@/media/src";
 import type { Meta, StoryObj } from "@storybook/react";
+import { useState } from "react";
 import { fn } from "storybook/test";
 
 const meta: Meta = {
@@ -32,6 +33,13 @@ const meta: Meta = {
     layout: "centered",
     jest: ["media/tests/Dictation.test.tsx"],
   },
+  decorators: [
+    (Story) => (
+      <div className="flex gap-2 items-center p-4">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
@@ -39,9 +47,13 @@ type DictationStory = StoryObj<typeof Dictation>;
 
 export const _Dictation: DictationStory = {
   render: (args) => {
+    const [transcription, setTranscription] = useState("");
     return (
-      <div className="w-48 flex justify-end">
-        <Dictation {...args} />
+      <div className="w-xl">
+        <div className="flex justify-center">
+          <Dictation {...args} onTranscribe={setTranscription} />
+        </div>
+        <div className="py-4">{transcription}</div>
       </div>
     );
   },

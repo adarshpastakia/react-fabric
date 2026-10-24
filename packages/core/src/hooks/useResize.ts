@@ -97,6 +97,7 @@ export function useResize<T extends HTMLElement = HTMLDivElement>(
   /** ***************** attach handlers on mousedown *******************/
   const onResizeStart = useCallback(
     (e: React.MouseEvent) => {
+      if (e.button !== 0) return;
       e.preventDefault();
       e.stopPropagation();
       document.body.style.userSelect = "none";

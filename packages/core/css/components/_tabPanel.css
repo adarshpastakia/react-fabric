@@ -232,7 +232,7 @@
     &[data-variant="pills"] {
       .fabric-tabList > .fabric-tabButton {
         margin: 2px;
-        border-radius: var(--radius);
+        border-radius: var(--rounding);
         box-shadow: 0 0 2px var(--active-color) inset;
       }
     }

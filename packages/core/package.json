@@ -56,8 +56,8 @@
   },
   "peerDependencies": {
     "i18next": "~26.3.6",
-    "react": "~19.2.8",
-    "react-dom": "~19.2.8",
+    "react": "~19.3.0",
+    "react-dom": "~19.3.0",
     "react-i18next": "~17.0.11"
   },
   "engines": {

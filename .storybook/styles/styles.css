@@ -30,4 +30,5 @@
   prefixes: circle-flags;
 }
 
-@source "../../";
+@source "../**/*.tsx";
+@source "../../packages/**/*.tsx";

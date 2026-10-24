@@ -75,12 +75,7 @@ export function AudioPlayer({
 
   /** ***************** initialize wavesurfer *******************/
   useEffect(() => {
-    const surfer = Wavesurfer(
-      containerRef.current as HTMLElement,
-      audioRef.current as unknown as HTMLMediaElement,
-      source.onLoad,
-      source.onError,
-    );
+    const surfer = Wavesurfer(containerRef.current as HTMLElement, audioRef.current as unknown as HTMLMediaElement, source.onLoad, source.onError);
     setWavesurfer(surfer);
     return () => {
       surfer.destroy();
@@ -97,7 +92,7 @@ export function AudioPlayer({
     const handler = (e: number) => {
       onTimeChange?.(e);
     };
-    return wavesurfer?.instance.currentTimeSignal.subscribe(handler);
+    wavesurfer?.instance.on("timeupdate", handler);
   }, [onTimeChange, wavesurfer]);
 
   /** ***************** colors change *******************/
@@ -205,9 +200,7 @@ export function AudioPlayer({
             <div
               role="none"
               className={
-                showVideo
-                  ? "relative aspect-video h-[calc(200px)] after:absolute after:inset-0 after:shadow-[0_0_10px_2px_rgba(0,0,0,0.5)_inset]"
-                  : "hidden"
+                showVideo ? "relative aspect-video h-[calc(200px)] after:absolute after:inset-0 after:shadow-[0_0_10px_2px_rgba(0,0,0,0.5)_inset]" : "hidden"
               }
               onClickCapture={() => {
                 void wavesurfer?.instance.playPause();

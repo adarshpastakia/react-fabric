@@ -254,16 +254,8 @@ export function Aside({
           className={cn("fabric-asidePlaceholder", classNames?.root, classNames?.body, "overflow-hidden")}
         >
           <StyleEffect />
-          {icon && (
-            <Icon
-              className={cn("fabric-asideIcon", classNames?.icon, "p-1 text-lg select-none pointer-events-none")}
-              {...getIconProps(icon)}
-            />
-          )}
-          <div
-            data-ref="aside-title"
-            className={cn("fabric-asideTitle", classNames?.title, "truncate py-0.5 px-1 select-none pointer-events-none")}
-          >
+          {icon && <Icon className={cn("fabric-asideIcon", classNames?.icon, "p-1 text-lg select-none pointer-events-none")} {...getIconProps(icon)} />}
+          <div data-ref="aside-title" className={cn("fabric-asideTitle", classNames?.title, "truncate py-0.5 px-1 select-none pointer-events-none")}>
             {title}
           </div>
           <div
@@ -277,12 +269,7 @@ export function Aside({
           </div>
         </div>
       )}
-      <div
-        data-ref="aside-container"
-        className={cn("fabric-asideContainer", classNames?.root, "overflow-hidden grid")}
-        ref={elementRef}
-        style={widthStyles}
-      >
+      <div data-ref="aside-container" className={cn("fabric-asideContainer", classNames?.root, "overflow-hidden grid")} ref={elementRef} style={widthStyles}>
         <StyleEffect />
         <Titlebar title={title} icon={icon} actions={actions} className={classNames?.titlebar} />
         <Activity mode={peek || !collapsed ? "visible" : "hidden"}>
@@ -307,13 +294,13 @@ export function Aside({
           data-ref="resize-handle"
           onMouseDown={onMouseDown}
           className={cn(
-            "fabric-asideResizer relative",
-            "after:absolute after:transform-[height] after:border-dotted after:border-s-2 after:h-0 after:m-auto after:inset-y-0 after:border-s-tint-500",
+            "fabric-asideResizer",
+            resizeable && "before:absolute before:top-1/2 before:-translate-y-1/2 before:content-['⋮'] before:leading-0",
+            "after:absolute after:transform-[height] after:border-solid after:border-s-2 after:h-0 after:m-auto after:inset-y-0 after:border-s-primary-500",
             resizeable && "hover:after:duration-500 hover:after:h-full",
+            align === "start" ? "before:-inset-e-px" : "before:-inset-s-px",
             isResizing && "after:h-full",
-            resizeable
-              ? "w-1 cursor-col-resize bg-tint-50 border-x border-tint-300/50 -mx-px"
-              : "w-0 border-0 pointer-events-none",
+            resizeable ? "w-1 cursor-col-resize bg-tint-50 border-x border-tint-300/50 -mx-px" : "w-0 border-0 pointer-events-none",
           )}
         />
       </div>
@@ -332,9 +319,7 @@ export function Aside({
           <i
             className={
               "-ms-1 inline-block rtl:-scale-100 " +
-              ((collapsed && align === "start") || (!collapsed && align === "end")
-                ? "icon-[mdi--chevron-right]"
-                : "icon-[mdi--chevron-left]")
+              ((collapsed && align === "start") || (!collapsed && align === "end") ? "icon-[mdi--chevron-right]" : "icon-[mdi--chevron-left]")
             }
           />
         </div>

@@ -128,19 +128,11 @@ function HeadFoot({
     <E
       {...props}
       aria-roledescription={E === "header" ? "header-pane" : "footer-pane"}
-      className={cn(
-        "fabric-headfoot relative flex z-1",
-        E === "header" ? "area-header flex-col" : "area-footer flex-col-reverse",
-      )}
+      className={cn("fabric-headfoot relative flex z-1", E === "header" ? "area-header flex-col" : "area-footer flex-col-reverse")}
     >
       <Activity mode={collapsed ? "hidden" : "visible"}>
         <div
-          className={cn(
-            className,
-            flex && "flex flex-nowrap",
-            align && `${ALIGN_MAP[align]}`,
-            justify && `${JUSTIFY_MAP[justify]}`,
-          )}
+          className={cn(className, flex && "flex flex-nowrap", align && `${ALIGN_MAP[align]}`, justify && `${JUSTIFY_MAP[justify]}`)}
           style={{
             height: height ?? ht,
             minHeight,
@@ -156,13 +148,12 @@ function HeadFoot({
           onMouseDown={onMouseDown}
           className={cn(
             "relative",
-            "after:absolute after:transform-[width] after:border-dotted after:border-t-2 after:w-0 after:m-auto after:inset-0 after:border-t-tint-500",
+            resizeable && "before:absolute before:block before:top-0 before:left-1/2 before:-translate-x-1/2 before:content-['⋯'] before:leading-0",
+            "after:absolute after:transform-[width] after:border-solid after:border-t-2 after:w-0 after:m-auto after:inset-0 after:border-t-primary-500",
             resizeable && "hover:after:duration-500 hover:after:w-full",
             isResizing && "after:w-full",
             collapsed && "pointer-events-none",
-            resizeable
-              ? "h-1 cursor-row-resize bg-tint-50 border-y border-tint-300/50 -my-px"
-              : "h-0 border-0 pointer-events-none",
+            resizeable ? "h-1 cursor-row-resize bg-tint-50 border-y border-tint-300/50 -my-px" : "h-0 border-0 pointer-events-none",
           )}
         />
       </Activity>
@@ -180,10 +171,7 @@ function HeadFoot({
         >
           <i
             className={
-              "-mt-1 inline-block " +
-              ((collapsed && E === "header") || (!collapsed && E === "footer")
-                ? "icon-[mdi--chevron-down]"
-                : "icon-[mdi--chevron-up]")
+              "-mt-1 inline-block " + ((collapsed && E === "header") || (!collapsed && E === "footer") ? "icon-[mdi--chevron-down]" : "icon-[mdi--chevron-up]")
             }
           />
         </div>

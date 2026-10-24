@@ -25,7 +25,8 @@
 
 import i18next from "i18next";
 import type { PropsWithChildren } from "react";
-import { useCallback, useEffect, useEffectEvent, useLayoutEffect, useState } from "react";
+import { useCallback, useEffect, useEffectEvent, useLayoutEffect, useMemo, useState } from "react";
+import { flushSync } from "react-dom";
 import { Toaster } from "sonner";
 import { AnimationIndicator } from "../components/animations/Indicator";
 import { Icon } from "../components/icon/Icon";
@@ -59,8 +60,7 @@ const systemCalendar = () => {
 const systemColorScheme = () => {
   const theme: AnyObject =
     typeof window !== "undefined"
-      ? ((localStorage.getItem(KEY_COLOR_SCHEME) as State["colorScheme"]) ??
-        (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"))
+      ? ((localStorage.getItem(KEY_COLOR_SCHEME) as State["colorScheme"]) ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"))
       : "light";
   return theme as "light" | "dark";
 };
@@ -77,14 +77,7 @@ const systemColorScheme = () => {
  * </ApplicationProvider>
  * ```
  */
-export function ApplicationProvider({
-  children,
-  errorElement,
-  defaultLocale,
-  defaultCalendar,
-  defaultColorScheme,
-  styleEffect,
-}: GlobalProps) {
+export function ApplicationProvider({ children, errorElement, defaultLocale, defaultCalendar, defaultColorScheme, styleEffect }: GlobalProps) {
   const [colorScheme, setColorScheme] = useState<State["colorScheme"]>(() => defaultColorScheme ?? systemColorScheme());
   const [calendar, setCalendar] = useState<State["calendar"]>(() => defaultCalendar ?? systemCalendar());
   const [locale, setLocale] = useState<State["locale"]>(() => defaultLocale ?? systemLocale());
@@ -118,9 +111,20 @@ export function ApplicationProvider({
   const toggleColorScheme = useCallback(
     (forceTheme?: State["colorScheme"]) => {
       const newTheme = forceTheme ?? (colorScheme === "dark" ? "light" : "dark");
-      setColorScheme(newTheme);
-      localStorage.setItem(KEY_COLOR_SCHEME, newTheme);
-      document.documentElement.dataset.colorScheme = newTheme;
+      if (!document.activeViewTransition)
+        document.startViewTransition(() => {
+          // eslint-disable-next-line @eslint-react/dom-no-flush-sync
+          flushSync(() => {
+            setColorScheme(newTheme);
+            localStorage.setItem(KEY_COLOR_SCHEME, newTheme);
+            document.documentElement.dataset.colorScheme = newTheme;
+          });
+        });
+      else {
+        setColorScheme(newTheme);
+        localStorage.setItem(KEY_COLOR_SCHEME, newTheme);
+        document.documentElement.dataset.colorScheme = newTheme;
+      }
       return newTheme;
     },
     [colorScheme],
@@ -178,6 +182,8 @@ export function ApplicationProvider({
     setAlert(alert);
   }, []);
 
+  const isDark = useMemo(() => colorScheme === "dark", [colorScheme]);
+
   /** ***************** context provider *******************/
   return (
     <GlobalContext
@@ -191,7 +197,7 @@ export function ApplicationProvider({
         changeLocale,
         changeCalendar,
         toggleColorScheme,
-        isDark: colorScheme === "dark",
+        isDark,
         currentLocale: locale,
         currentCalendar: calendar,
         currentColorScheme: colorScheme,

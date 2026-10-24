@@ -24,7 +24,6 @@ export const StoryWrapper = (
     document.documentElement.style.setProperty("--color-primary", `var(--color-${primary})`);
     document.documentElement.style.setProperty("--color-secondary", `var(--color-${secondary})`);
     document.documentElement.style.setProperty("--color-tint", `var(--color-${globals.tint ?? "silver"})`);
-    document.documentElement.dataset.colorScheme = globals.scheme;
     document.documentElement.dataset.rounding = globals.round;
   }, [globals]);
 

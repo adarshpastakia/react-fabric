@@ -29,7 +29,7 @@ import { getColor } from "../../utils";
 
 export interface AnimationLoaderProps {
   /**
-   * CSS class name for the icon to display (e.g., an iconify icon class like `"icon-[mdi--spinner]"`).
+   * CSS class name for the icon to display (e.g., an iconify icon class like `"icon-[mdi--loading]"`).
    */
   icon: string;
 
@@ -63,11 +63,11 @@ export interface AnimationLoaderProps {
  * // Loading overlay with medium blur
  * <div style={{ position: "relative" }}>
  *     <p>Page content</p>
- *     <AnimationLoader icon="icon-[mdi--spinner]" maskBlur="md" />
+ *     <AnimationLoader icon="icon-[mdi--loading]" maskBlur="md" />
  * </div>
  *
  * // Custom color and size
- * <AnimationLoader icon="icon-[mdi--loader]" color="primary-500" size="3rem" />
+ * <AnimationLoader icon="icon-[mdi--loading]" color="primary-500" size="3rem" />
  * ```
  */
 export function AnimationLoader({ color = "tint-500", size = "2rem", icon, maskBlur }: AnimationLoaderProps) {
@@ -81,10 +81,7 @@ export function AnimationLoader({ color = "tint-500", size = "2rem", icon, maskB
         maskBlur === "lg" && "backdrop-blur-lg",
       )}
     >
-      <div
-        data-ref="loader"
-        className="outline outline-tint-300/50 p-4 bg-white/50 dark:bg-black/50 backdrop-blur-xs leading-0 rounded"
-      >
+      <div data-ref="loader" className="outline outline-tint-300/50 p-4 bg-white/50 dark:bg-black/50 backdrop-blur-xs leading-0 rounded">
         <div className={cn(icon, "aspect-square")} style={{ fontSize: size, color: getColor(color) }} />
       </div>
     </div>

@@ -24,10 +24,10 @@
 import { debounce, getLogger } from "@react-fabric/utilities";
 import chroma from "chroma-js";
 import WaveSurfer from "wavesurfer.js";
-import HoverPlugin from "wavesurfer.js/dist/plugins/hover";
-import type { Region } from "wavesurfer.js/dist/plugins/regions";
-import RegionsPlugin from "wavesurfer.js/dist/plugins/regions";
-import TimelinePlugin from "wavesurfer.js/dist/plugins/timeline";
+import HoverPlugin from "wavesurfer.js/dist/plugins/hover.js";
+import type { Region } from "wavesurfer.js/dist/plugins/regions.js";
+import RegionsPlugin from "wavesurfer.js/dist/plugins/regions.js";
+import TimelinePlugin from "wavesurfer.js/dist/plugins/timeline.js";
 
 const CHANNEL_COLORS: Array<[wave: string, progress: string]> = [
   ["#4FC3F7", "#0288D1"],
@@ -40,12 +40,7 @@ const CHANNEL_COLORS: Array<[wave: string, progress: string]> = [
   ["#7986CB", "#303F9F"],
 ];
 
-export function Wavesurfer(
-  container: HTMLElement,
-  media: HTMLAudioElement,
-  onLoad?: () => void,
-  onError?: (err: Error) => void,
-) {
+export function Wavesurfer(container: HTMLElement, media: HTMLAudioElement, onLoad?: () => void, onError?: (err: Error) => void) {
   const logger = getLogger("WaveSurfer");
 
   const plugins = {

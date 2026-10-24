@@ -5,9 +5,9 @@
  * @author    : Adarsh Pastakia
  */
 
-import { ApplicationProvider } from "@react-fabric/core";
 import i18next from "i18next";
 import { I18nextProvider, initReactI18next } from "react-i18next";
+import { ApplicationProvider } from "../packages/core/src";
 
 i18next
   // pass the i18n instance to react-i18next.

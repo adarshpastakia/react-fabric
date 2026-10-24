@@ -82,20 +82,6 @@
       cursor: col-resize;
       grid-area: resizer;
       width: 0.25rem;
-
-      &::before {
-        height: 32px;
-        border: 1px solid var(--color-tint-500);
-        border-width: 0 1.5px;
-      }
-
-      &:hover::before,
-      &:active::before {
-        height: 100%;
-        border-color: var(--bg-color-default);
-        border-width: 0 1.25px;
-        background-color: var(--color-primary-300);
-      }
     }
   }
 }

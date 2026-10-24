@@ -21,15 +21,18 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Button } from "@react-fabric/core";
+import { Button, Icon } from "@react-fabric/core";
 import { type ButtonProps } from "@react-fabric/core/dist/types/components/button/Button";
 import { cn, Format } from "@react-fabric/utilities";
 import { Fragment, type RefObject, useEffect, useImperativeHandle, useRef, useState } from "react";
+import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 import WaveSurfer from "wavesurfer.js";
-import RecordPlugin from "wavesurfer.js/dist/plugins/record";
+import RecordPlugin from "wavesurfer.js/dist/plugins/record.js";
 
 export interface DictationProps extends Pick<ButtonProps, "size" | "variant" | "color" | "hotKey" | "icon"> {
-  onRecord?: (blob: Blob) => void;
+  lang: string;
+  onRecord?: (transcript: string, blob: Blob) => void;
+  onTranscribe?: (transcript: string) => void;
   ref?: RefObject<{ start: () => void; stop: () => void }>;
 }
 
@@ -42,18 +45,23 @@ export interface DictationProps extends Pick<ButtonProps, "size" | "variant" | "
 export function Dictation({
   ref,
   size,
+  lang,
   color = "primary",
   hotKey = "Alt+T",
   icon = "icon-[mdi--microphone-outline]",
   variant,
   onRecord,
+  onTranscribe,
 }: DictationProps) {
   const [error, setError] = useState("");
   const [progress, setProgress] = useState(0);
-  const [recording, setRecording] = useState(false);
+  // const [recording, setRecording] = useState(false);
   const wavesurferRef = useRef<WaveSurfer>(null);
   const recordRef = useRef<RecordPlugin>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const transcriptRef = useRef<string>("");
+
+  const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition();
 
   useEffect(() => {
     if (containerRef.current) {
@@ -91,16 +99,29 @@ export function Dictation({
 
   useEffect(() => {
     recordRef.current?.on("record-end", (blob) => {
-      setRecording(false);
-      onRecord?.(blob);
+      onRecord?.(transcriptRef.current, blob);
+      resetTranscript();
     });
+    // eslint-disable-next-line @eslint-react/exhaustive-deps
   }, [onRecord]);
 
-  const startDictationRef = useRef(() => {
+  useEffect(() => {
+    transcriptRef.current = transcript;
+    onTranscribe?.(transcript);
+  }, [onTranscribe, transcript]);
+
+  const startDictationRef = useRef(async () => {
+    // Fetch available audio devices (triggers mic prompt if not given yet)
+    const devices = await RecordPlugin.getAvailableAudioDevices();
+    const firstDeviceId = devices[0]?.deviceId;
+
     recordRef.current
-      ?.startRecording()
+      ?.startRecording({ deviceId: firstDeviceId })
       .then(() => {
-        setRecording(true);
+        return SpeechRecognition.startListening({
+          continuous: true,
+          language: lang ?? "en-US",
+        });
       })
       .catch(() => {
         setError("Unable to access microphone");
@@ -109,6 +130,7 @@ export function Dictation({
 
   const stopDictationRef = useRef(() => {
     recordRef.current?.stopRecording();
+    void SpeechRecognition.stopListening();
   });
 
   useImperativeHandle(
@@ -121,48 +143,50 @@ export function Dictation({
   );
 
   return (
-    <div
-      className={cn(
-        "inline-flex rounded-full overflow-hidden items-center outline outline-tint-100 bg-dimmed -outline-offset-1 self-center",
-      )}
-    >
-      <div
-        ref={containerRef}
-        className={cn("overflow-hidden w-24 rounded-full shadow-inner bg-content", !recording && "hidden")}
-        style={{
-          boxShadow: "inset 0 0 2px 0 var(--tw-shadow-color)",
-        }}
-      />
-      {error && <span className="text-xs font-medium text-danger-500 px-2">{error}</span>}
-      {!error && !recording && (
-        <Fragment>
-          <Button
-            size={size}
-            icon={icon}
-            aria-label="Start dictation"
-            rounded
-            variant={variant}
-            hotKey={hotKey}
-            hideHotKeyLabel
-            onClick={startDictationRef.current}
+    <div className={cn("inline-flex rounded-full overflow-hidden items-center outline outline-tint-100 bg-dimmed -outline-offset-1 self-center")}>
+      {!browserSupportsSpeechRecognition ? (
+        <Icon icon="icon-[mdi--microphone-off]" />
+      ) : (
+        <>
+          <div
+            ref={containerRef}
+            className={cn("overflow-hidden w-24 rounded-full shadow-inner bg-content", !listening && "hidden")}
+            style={{
+              boxShadow: "inset 0 0 2px 0 var(--tw-shadow-color)",
+            }}
           />
-        </Fragment>
-      )}
-      {!error && recording && (
-        <Fragment>
-          <span className="text-xs px-2">{Format.duration(progress)}</span>
-          <Button
-            size={size}
-            icon="icon-[mdi--stop]"
-            aria-label="Stop dictation"
-            rounded
-            hotKey={hotKey}
-            hideHotKeyLabel
-            variant="solid"
-            color="danger"
-            onClick={stopDictationRef.current}
-          />
-        </Fragment>
+          {error && <span className="text-xs font-medium text-danger-500 px-2">{error}</span>}
+          {!error && !listening && (
+            <Fragment>
+              <Button
+                size={size}
+                icon={icon}
+                aria-label="Start dictation"
+                rounded
+                variant={variant}
+                hotKey={hotKey}
+                hideHotKeyLabel
+                onClick={startDictationRef.current}
+              />
+            </Fragment>
+          )}
+          {!error && listening && (
+            <Fragment>
+              <span className="text-xs px-2">{Format.duration(progress)}</span>
+              <Button
+                size={size}
+                icon="icon-[mdi--stop]"
+                aria-label="Stop dictation"
+                rounded
+                hotKey={hotKey}
+                hideHotKeyLabel
+                variant="solid"
+                color="danger"
+                onClick={stopDictationRef.current}
+              />
+            </Fragment>
+          )}
+        </>
       )}
     </div>
   );

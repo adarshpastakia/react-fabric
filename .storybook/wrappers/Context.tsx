@@ -4,11 +4,11 @@ import { useEffect } from "react";
 
 export const ContextWrapper = ({ locale, colorScheme, calendar, styleEffect, children }: AnyObject) => {
   const { changeLocale, changeCalendar, toggleColorScheme } = useApplicationContext();
-  const { changeLocale: apChangeLocale, changeCalendar: apChangeCalendar, toggleColorScheme: apToggleColorSchema } = useAP();
+  const { changeLocale: apChangeLocale, changeCalendar: apChangeCalendar, toggleColorScheme: apToggleColorScheme } = useAP();
 
   useEffect(() => {
     toggleColorScheme(colorScheme);
-    apToggleColorSchema(colorScheme);
+    apToggleColorScheme(colorScheme);
   }, [colorScheme]);
   useEffect(() => {
     changeCalendar(calendar);

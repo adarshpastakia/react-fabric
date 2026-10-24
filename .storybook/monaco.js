@@ -1,3 +1,4 @@
+import { loader } from "@monaco-editor/react";
 import * as monaco from "monaco-editor";
 import editorWorker from "monaco-editor/editor/editor.worker?worker";
 import cssWorker from "monaco-editor/language/css/css.worker?worker";
@@ -25,3 +26,5 @@ self.MonacoEnvironment = {
 };
 
 monaco.typescript.typescriptDefaults.setEagerModelSync(true);
+
+loader.config({ monaco });

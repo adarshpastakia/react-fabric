@@ -24,8 +24,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "makelink": "yarn link",
-    "removelink": "yarn unlink",
     "prebuild": "rm -rf ./dist",
     "build:dts": "tsc -p ./tsconfig.build.json",
     "build:rollup": "rollup -c ../../rollup.config.mjs",
@@ -45,8 +43,8 @@
   },
   "peerDependencies": {
     "i18next": "~26.3.6",
-    "react": "~19.2.8",
-    "react-dom": "~19.2.8",
+    "react": "~19.3.0",
+    "react-dom": "~19.3.0",
     "react-i18next": "~17.0.11"
   },
   "engines": {

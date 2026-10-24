@@ -66,6 +66,7 @@ export default tseslint.config(
           fixMixedExportsWithInlineTypeSpecifier: false, // Options: 'separate-type-imports' or 'inline-type-imports'
         },
       ],
+      "@typescript-eslint/no-unnecessary-type-assertion": "off",
       "@eslint-react/no-clone-element": "off",
       "@eslint-react/rules-of-hooks": [
         "error",

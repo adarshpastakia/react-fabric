@@ -24,8 +24,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "makelink": "yarn link",
-    "removelink": "yarn unlink",
     "prebuild": "rm -rf ./dist",
     "build:dts": "tsc -p ./tsconfig.build.json",
     "build:rollup": "rollup -c ../../rollup.config.mjs",
@@ -39,15 +37,20 @@
     "@react-fabric/core": "^1.0.0-beta.63",
     "@react-fabric/form": "^1.0.0-beta.63",
     "@react-fabric/utilities": "^1.0.0-beta.63",
+    "chroma-js": "~3.2.0",
     "konva": "~10.3.0",
     "react-konva": "~19.2.5",
-    "wavesurfer.js": "~7.12.11"
+    "react-speech-recognition": "~4.0.1",
+    "wavesurfer.js": "~8.0.1"
   },
   "peerDependencies": {
     "i18next": "~26.3.6",
-    "react": "~19.2.8",
-    "react-dom": "~19.2.8",
+    "react": "~19.3.0",
+    "react-dom": "~19.3.0",
     "react-i18next": "~17.0.11"
+  },
+  "devDependencies": {
+    "@types/react-speech-recognition": "~3.9.6"
   },
   "engines": {
     "node": ">=24.0.0",

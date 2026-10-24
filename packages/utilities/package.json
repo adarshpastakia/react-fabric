@@ -21,8 +21,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "makelink": "yarn link",
-    "removelink": "yarn unlink",
     "prebuild": "rm -rf ./dist",
     "build:dts": "tsc -p ./tsconfig.build.json",
     "build:rollup": "rollup -c ../../rollup.config.mjs",

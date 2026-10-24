@@ -36,7 +36,7 @@ interface Props<T = KeyValue> {
     align?: "start" | "center" | "end";
     className?: string;
     headRenderer?: React.ReactNode;
-    renderer?: (value: unknown, row: T, index: number) => React.ReactNode;
+    renderer?: (value: AnyObject, row: T, index: number) => React.ReactNode;
   }>;
   /**
    * Number of pagination buttons to show, default is 25
@@ -55,10 +55,7 @@ export function HtmlTable<T extends KeyValue = KeyValue>({ data, columns, pagina
 
   const startIndex = useMemo(() => paginator.page * paginationSize, [paginator.page, paginationSize]);
 
-  const dataPage = useMemo(
-    () => (paginationSize > 0 ? data.slice(startIndex, startIndex + paginationSize) : data),
-    [data, paginationSize, startIndex],
-  );
+  const dataPage = useMemo(() => (paginationSize > 0 ? data.slice(startIndex, startIndex + paginationSize) : data), [data, paginationSize, startIndex]);
 
   return (
     <div className={className}>
@@ -85,16 +82,10 @@ export function HtmlTable<T extends KeyValue = KeyValue>({ data, columns, pagina
                 <td
                   // eslint-disable-next-line @eslint-react/no-array-index-key
                   key={`${idx}-${cidx}`}
-                  className={cn(
-                    "px-2 py-1 truncate",
-                    col.align === "center" && "text-center",
-                    col.align === "end" && "text-end",
-                    col.className,
-                  )}
+                  className={cn("px-2 py-1 truncate", col.align === "center" && "text-center", col.align === "end" && "text-end", col.className)}
                   style={{ width: col.width, maxWidth: col.maxWidth }}
                 >
-                  {col.renderer?.(getByPath(row, col.id.toString()), row, startIndex + idx) ??
-                    getByPath(row, col.id.toString())}
+                  {col.renderer?.(getByPath(row, col.id.toString()), row, startIndex + idx) ?? getByPath(row, col.id.toString())}
                 </td>
               ))}
             </tr>

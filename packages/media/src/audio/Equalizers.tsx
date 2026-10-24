@@ -45,13 +45,7 @@ const EqSlider = memo(
     forChannel?: boolean;
     onChange: (index: number, value: number) => void;
   }) => (
-    <div
-      className="flex"
-      style={{ width: "2.5rem" }}
-      data-negative={value === 0 ? "zero" : value < 0}
-      data-for-channel={forChannel}
-      dir="ltr"
-    >
+    <div className="flex" style={{ width: "2.5rem" }} data-negative={value === 0 ? "zero" : value < 0} data-for-channel={forChannel} dir="ltr">
       <Slider
         vertical
         step={1}
@@ -75,9 +69,7 @@ export const Equalizers = memo(() => {
   const { wavesurfer, showEqs } = useAudioContext();
   const contextRef = useRef<AudioContext>(null);
   const mediaModelRef = useRef<MediaElementAudioSourceNode>(null);
-  const [filters, setFilters] = useState<Array<{ name?: string; frequency: { value: number }; gain: { value: number } }>>(
-    () => [],
-  );
+  const [filters, setFilters] = useState<Array<{ name?: string; frequency: { value: number }; gain: { value: number } }>>(() => []);
 
   const [channelGains, setChannelGains] = useState<Array<{ gain: { value: number } }>>();
 
@@ -149,7 +141,8 @@ export const Equalizers = memo(() => {
 
       if (!contextRef.current) {
         contextRef.current = new AudioContext();
-        mediaModelRef.current = contextRef.current.createMediaElementSource(wavesurfer.instance.getMediaElement());
+        const mediaElement = wavesurfer.instance.getMediaElement();
+        if (mediaElement) mediaModelRef.current = contextRef.current.createMediaElementSource(mediaElement);
       }
 
       // Create filters
@@ -301,10 +294,7 @@ export const Equalizers = memo(() => {
               // eslint-disable-next-line @eslint-react/no-array-index-key
               key={idx}
               label={
-                <button
-                  className="size-fit cursor-pointer"
-                  onClick={() => toggleChannel(idx, gainNode.gain.value > 0 ? 0 : 100)}
-                >
+                <button className="size-fit cursor-pointer" onClick={() => toggleChannel(idx, gainNode.gain.value > 0 ? 0 : 100)}>
                   <Icon
                     size="1.25rem"
                     icon="icon-[mdi--speaker]"

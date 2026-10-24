@@ -22,8 +22,44 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-export type ColorBase = "primary" | "secondary" | "info" | "danger" | "success" | "warning";
-export type ColorTints = "tint" | "silver" | "steel" | "olive" | "blush" | "slate";
-export type ColorPalette = "scarlet" | "pumpkin" | "marigold" | "amber" | "jade" | "avocado" | "teal" | "azure" | "denim" | "iris" | "lilac" | "orchid" | "coral" | "wood" | "terracotta";
-export type ColorUnion = ColorBase | ColorTints | ColorPalette;
-export type CustomColors<T = ColorUnion> = T | (string & {});
+
+export interface QuestionModel {
+  id: string;
+  text: string;
+  responses?: [question: string, answer: string][];
+  attachments?: string[];
+}
+
+export interface AnswerModel {
+  id: string;
+  response: string;
+  questionaire: Array<{
+    question: string;
+    options: Array<{ value?: string; text: string }>;
+    allowCustom?: boolean;
+    allowMultiple?: boolean;
+  }>;
+  feedback: {
+    state: "positive" | "negative";
+    confidence: number;
+    comment?: string;
+  };
+}
+
+interface QuestionNode {
+  id: string;
+  answers: AnswerNode[];
+}
+
+interface AnswerNode {
+  id: string;
+  questions: QuestionNode[];
+}
+
+export interface ChatProps {
+  tree: QuestionNode[];
+  onQuestionLoad: (id: string) => Promise<QuestionModel>;
+  onAnswerLoad: (id: string) => Promise<AnswerModel>;
+  onAsk: (question: QuestionModel) => ReadableStream;
+  onDictate?: (blob: Blob) => ReadableStream;
+}

@@ -47,19 +47,19 @@
 
 [data-rounding="sm"] {
   /* default rounding */
-  --radius: 2px;
+  --rounding: 2px;
   --rounding-cap: 2px;
 }
 
 [data-rounding="md"] {
   /* default rounding */
-  --radius: 0.5rem;
+  --rounding: 0.5rem;
   --rounding-cap: 0.5rem;
 }
 
 [data-rounding="full"] {
   /* default rounding */
-  --radius: 9999px;
+  --rounding: 9999px;
   --rounding-cap: 1rem;
 }
 

@@ -23,7 +23,7 @@
     cursor: pointer;
 
     padding: 0 0.5rem;
-    border-radius: var(--radius);
+    border-radius: var(--rounding);
 
     font-size: 0.75em;
     color: --alpha(var(--sonner-color) / 75%);
@@ -88,8 +88,8 @@
 
       width: 1px;
       height: 2px;
-      border-bottom-right-radius: var(--radius);
-      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--rounding);
+      border-bottom-left-radius: var(--rounding);
 
       background-color: --alpha(var(--sonner-color) / 50%);
 
@@ -172,7 +172,7 @@
     & [data-button] {
       cursor: pointer;
       padding: 0 1rem;
-      border-radius: var(--radius);
+      border-radius: var(--rounding);
       color: var(--sonner-color);
 
       &:hover {
@@ -218,7 +218,7 @@
     top: -0.5rem;
 
     padding: 4px;
-    border-radius: var(--radius);
+    border-radius: var(--rounding);
 
     line-height: 0;
     color: var(--color-tint-600) !important;
@@ -243,7 +243,7 @@
     top: -0.5rem;
 
     padding: 2px 4px;
-    border-radius: var(--radius);
+    border-radius: var(--rounding);
 
     font-size: 0.75rem;
     line-height: 1.25;
@@ -266,7 +266,7 @@
     z-index: 1;
 
     padding: 2px 4px;
-    border-radius: var(--radius);
+    border-radius: var(--rounding);
 
     font-size: 0.75rem;
     line-height: 1.25;
