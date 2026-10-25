@@ -90,6 +90,7 @@
     "jest-transform-stub": "~2.0.0",
     "jsdom": "~29.1.1",
     "jsdom-global": "~3.0.2",
+    "lerna": "~10.1.1",
     "monaco-editor-webpack-plugin": "~7.1.1",
     "msw": "~2.15.0",
     "msw-storybook-addon": "~3.0.0",
