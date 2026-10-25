@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "RUF: Core package",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -45,7 +45,7 @@
     "@iconify-json/svg-spinners": "~1.2.4",
     "@iconify-react/line-md": "~1.0.2",
     "@iconify/tailwind4": "~1.2.3",
-    "@react-fabric/utilities": "^1.0.0",
+    "@react-fabric/utilities": "^1.0.1",
     "@tailwindcss/postcss": "~4.3.3",
     "@tanstack/react-hotkeys": "~0.10.0",
     "boring-avatars": "~2.0.4",
