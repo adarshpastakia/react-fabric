@@ -1,6 +1,6 @@
 {
   "name": "@react-fabric/ai",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "RUF: AI chat package",
   "author": "Adarsh Pastakia <adarshpastakia@outlook.com>",
   "license": "MIT",
@@ -33,10 +33,10 @@
     "watch": "npm-run-all -p watch:rollup watch:dts"
   },
   "dependencies": {
-    "@react-fabric/core": "^1.0.1",
-    "@react-fabric/form": "^1.0.1",
-    "@react-fabric/media": "^1.0.1",
-    "@react-fabric/utilities": "^1.0.1"
+    "@react-fabric/core": "^1.0.2",
+    "@react-fabric/form": "^1.0.2",
+    "@react-fabric/media": "^1.0.2",
+    "@react-fabric/utilities": "^1.0.2"
   },
   "peerDependencies": {
     "i18next": "~26.3.6",
