@@ -23,10 +23,8 @@
  * SOFTWARE.
  */
 
-import AlertCircleIcon from "@iconify-react/line-md/alert-circle";
-import CloseCircleIcon from "@iconify-react/line-md/close-circle";
-import ConfirmCircleIcon from "@iconify-react/line-md/confirm-circle";
-import QuestionCircleIcon from "@iconify-react/line-md/question-circle";
+import { Icon as Iconify } from "@iconify-icon/react";
+import { shortHash } from "@react-fabric/utilities";
 import type { CssProp } from "../../types";
 import { Icon } from "../icon/Icon";
 
@@ -39,11 +37,12 @@ export interface AnimationIndicatorProps extends CssProp {
 }
 
 const ANIMATION_ICONS = {
-  info: <AlertCircleIcon height="1.25em" width="1.25em" className="rotate-180" />,
-  check: <ConfirmCircleIcon height="1.25em" width="1.25em" />,
-  cross: <CloseCircleIcon height="1.25em" width="1.25em" />,
-  question: <QuestionCircleIcon height="1.25em" width="1.25em" />,
-  exclaim: <AlertCircleIcon height="1.25em" width="1.25em" />,
+  info: <Iconify icon="line-md:alert-circle" className="rotate-180" />,
+  // <AlertCircleIcon height="1.25em" width="1.25em" className="rotate-180" />,
+  check: <Iconify icon="line-md:confirm-circle" />,
+  cross: <Iconify icon="line-md:close-circle" />,
+  question: <Iconify icon="line-md:question-circle" />,
+  exclaim: <Iconify icon="line-md:alert-circle" />,
 };
 
 /**
@@ -72,5 +71,5 @@ const ANIMATION_ICONS = {
  */
 export function AnimationIndicator({ type, ...props }: AnimationIndicatorProps) {
   // Map the type to its corresponding icon and delegate rendering to the Icon component
-  return <Icon {...props} icon={ANIMATION_ICONS[type || "info"]} />;
+  return <Icon key={shortHash()} {...props} icon={ANIMATION_ICONS[type || "info"]} />;
 }
