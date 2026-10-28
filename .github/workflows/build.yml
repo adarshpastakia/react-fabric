@@ -23,15 +23,20 @@ jobs:
         with:
           node-version: "24.2.0"
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+
       # Runs a set of commands using the runners shell
       - name: Install packages
         run: |
-          npm i
+          bun install --frozen-lockfile
 
       # Build library
       - name: Build library
         run: |
-          npm run dist && npm run test --coverage
+          bun run dist && bun run test
 
       # Collect test coverage
       - name: Run coverage
@@ -44,7 +49,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Build storybook
         run: |
-          npm run storybook:build
+          bun run storybook:build
 
       # Push build folder to gh-pages
       - name: Deploy to GitHub Pages

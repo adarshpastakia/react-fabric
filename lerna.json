@@ -1,4 +1,4 @@
 {
-  "npmClient": "yarn",
+  "npmClient": "bun",
   "version": "1.0.2"
 }

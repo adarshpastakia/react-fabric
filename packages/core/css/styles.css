@@ -32,6 +32,8 @@
 
 @plugin "@iconify/tailwind4";
 
+@source "../..";
+
 @source inline("{bg,text,border,outline,fill,stroke,shadow,ring}-{primary,secondary,tint,info,warning,success,danger}-{50,100,200,300,400,500,600,700,800,900,950}");
 
 @source inline("{bg,text,border,outline,fill,stroke,shadow,ring}-{silver,steel,olive,blush,sand}-{50,100,200,300,400,500,600,700,800,900,950}");

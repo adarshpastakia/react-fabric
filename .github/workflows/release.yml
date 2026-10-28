@@ -30,6 +30,11 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           package-manager-cache: false # never use caching in release builds
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+
       - name: Config git user
         run: |
           git config --global user.name "${{ github.actor }}"
@@ -38,11 +43,11 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install packages
         run: |
-          npm i
+          bun install --frozen-lockfile
 
       - name: Build packages
         run: |
-          npm run dist
+          bun run dist
 
       # Runs a set of commands using the runners shell
       - name: Publish release

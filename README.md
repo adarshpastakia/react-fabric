@@ -12,7 +12,7 @@
 ![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square&labelColor=333&logo=none)
 ![node](https://img.shields.io/github/package-json/minNode/adarshpastakia/react-fabric?logo=node.js&logoColor=white&label=node&color=5FA04E)
 ![Build](https://img.shields.io/github/actions/workflow/status/adarshpastakia/react-fabric/build.yml?style=flat-square&logo=github&labelColor=333&label=build)
-![npm](https://img.shields.io/npm/v/%40react-fabric%2Fcore?style=flat-square&logo=npm&labelColor=333&label=release&color=CB3837)
+![bun](https://img.shields.io/bun/v/%40react-fabric%2Fcore?style=flat-square&logo=bun&labelColor=333&label=release&color=CB3837)
 
 ![Deps](https://img.shields.io/librariesio/github/adarshpastakia/react-fabric?style=flat-square&logo=libraries.io&logoColor=fff&labelColor=333&label=dependencies)
 [![Maintainability](https://qlty.sh/badges/6e1b5fbc-a45d-44b3-a7ec-63f00fb29acc/maintainability.svg)](https://qlty.sh/gh/adarshpastakia/projects/react-fabric)
@@ -21,7 +21,7 @@
 [![react](https://img.shields.io/badge/react-61DAFB.svg?style=flat-square&labelColor=333&logo=react)](http://reactjs.org/)
 [![ts](https://img.shields.io/badge/typescript-3178C6.svg?style=flat-square&labelColor=333&logo=typescript)](https://typescriptlang.org/)
 [![tailwindcss](https://img.shields.io/badge/tailwindcss-06B6D4.svg?style=flat-square&labelColor=333&logo=tailwindcss)](https://tailwindcss.com/)
-[![npm](https://img.shields.io/badge/npm-CB3837.svg?style=flat-square&labelColor=333&logo=npm)](https://npmjs.com/)
+[![bun](https://img.shields.io/badge/bun-CB3837.svg?style=flat-square&labelColor=333&logo=bun)](https://bunjs.com/)
 [![turborepo](https://img.shields.io/badge/turborepo-FF1E56.svg?style=flat-square&labelColor=333&logo=turborepo)](https://turborepo.dev/)
 [![prettier](https://img.shields.io/badge/prettier-EA4C89.svg?style=flat-square&labelColor=333&logo=prettier)](https://prettier.io/)
 [![qlty](https://img.shields.io/badge/qlty-66FAEC.svg?style=flat-square&labelColor=333&logo=qlty)](https://qlty.sh/)
@@ -46,34 +46,34 @@ Overall, this UI framework provides a robust set of components that cater to a w
 
 ```bash
 # core components
-npm install @react-fabric/core @react-fabric/utilities
+bun install @react-fabric/core @react-fabric/utilities
 
 # data components
-npm install @react-fabric/data
+bun install @react-fabric/data
 
 # form components
-npm install @react-fabric/form
+bun install @react-fabric/form
 
 # advanced media viewers
-npm install @react-fabric/media
+bun install @react-fabric/media
 
 # comprehensive searchbar for data tools
-npm install @react-fabric/searchbar
+bun install @react-fabric/searchbar
 
 # relative date selector with event calendar
-npm install @react-fabric/superdate
+bun install @react-fabric/superdate
 
 # eCharts wrappers
-npm install @react-fabric/chart
+bun install @react-fabric/chart
 
 # lexical editor
-npm install @react-fabric/lexical
+bun install @react-fabric/lexical
 
 # mdx editor for markdown input
-npm install @react-fabric/mdx
+bun install @react-fabric/mdx
 
 # monaco editor
-npm install @react-fabric/monaco
+bun install @react-fabric/monaco
 
 ```
 
@@ -93,28 +93,24 @@ module.exports = {
 Include `TailwindCss` and `React Fabric` styles in main stylesheet
 
 ```css
-/* main.css */
-@import url("tailwindcss");
-@import url("@react-fabric/core/css/styles.css");
-@import url("@react-fabric/data/css/styles.css");
-@import url("@react-fabric/date/css/styles.css");
-@import url("@react-fabric/form/css/styles.css");
-@import url("@react-fabric/lexical/css/styles.css");
-@import url("@react-fabric/mdx/css/styles.css");
-@import url("@react-fabric/media/css/styles.css");
-@import url("@react-fabric/monaco/css/styles.css");
-@import url("@react-fabric/superdate/css/styles.css");
-
-/* helper css with base64 flag images for windows */
-@import "@react-fabric/core/css/flags.rect.css";
-@import "@react-fabric/core/css/flags.wavy.css";
+/* styles/main.css */
+@import "tailwindcss" source("..");
+@import "@react-fabric/core/css/styles.css";
+@import "@react-fabric/data/css/styles.css";
+@import "@react-fabric/date/css/styles.css";
+@import "@react-fabric/form/css/styles.css";
+@import "@react-fabric/lexical/css/styles.css";
+@import "@react-fabric/mdx/css/styles.css";
+@import "@react-fabric/media/css/styles.css";
+@import "@react-fabric/monaco/css/styles.css";
+@import "@react-fabric/superdate/css/styles.css";
 ```
 
 Include `main.css` in react root file
 
 ```tsx
 // main.tsx
-import "./main.css";
+import "./styles/main.css";
 
 import { createRoot } from "react-dom/client";
 import { App } from "./App.tsx";
@@ -127,16 +123,16 @@ createRoot(document.getElementById("root")!).render(<App />);
 ```bash
 
 # build library
-npm run dist
+bun run dist
 
 # watch changes
-npm run watch
+bun run watch
 
 # run tests
-npm run test
+bun run test
 
 # run storybook
-npm run storybook
+bun run storybook
 
 ```
 

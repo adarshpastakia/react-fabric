@@ -10,7 +10,7 @@
     "packages/*"
   ],
   "scripts": {
-    "prebuild": "npm run copy:arcgis && jest --ci --runInBand --detectOpenHandles --json --outputFile=./.storybook/jest-test-results.json",
+    "prebuild": "bun run copy:arcgis && jest --ci --runInBand --detectOpenHandles --json --outputFile=./.storybook/jest-test-results.json",
     "storybook": "storybook dev -p 6003",
     "storybook:build": "NODE_OPTIONS=--max-old-space-size=8192 storybook build -o ./build",
     "copy:arcgis": "cp -r ./node_modules/@arcgis/core/assets/ ./assets/@arcgis",
@@ -18,9 +18,9 @@
     "lint:ts": "eslint --no-error-on-unmatched-pattern .",
     "check:ts": "turbo run build:dts",
     "lint": "npm-run-all lint:css lint:ts check:ts",
-    "pretest": "npm run lint && tailwindcss -i ./.storybook/styles/styles.css -o ./.storybook/styles/output.css",
+    "pretest": "bun run lint && tailwindcss -i ./.storybook/styles/styles.css -o ./.storybook/styles/output.css",
     "jest": "jest --ci --runInBand --detectOpenHandles --forceExit --coverage .",
-    "test": "npm run jest",
+    "test": "bun run jest",
     "dist": "turbo run build",
     "watch": "turbo watch watch",
     "release": "lerna version --conventional-commits --yes --preid=beta -m \"chore(release): %v\"",
@@ -122,7 +122,7 @@
     "vite": "~8.2.0",
     "vitest": "~4.1.10"
   },
-  "packageManager": "npm@11.12.1",
+  "packageManager": "bun@1.4.2",
   "engines": {
     "node": ">=24.0.0",
     "npm": ">=11.0.0"
