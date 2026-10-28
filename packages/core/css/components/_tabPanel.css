@@ -110,7 +110,7 @@
       grid-area: tablist;
 
       & > .fabric-tabList > .fabric-tabButton {
-        border-radius: var(--rounding-cap);
+        border-radius: var(--radius-cap);
 
         &[data-color="accent"] {
           --color: var(--color-accent-500);
@@ -232,7 +232,7 @@
     &[data-variant="pills"] {
       .fabric-tabList > .fabric-tabButton {
         margin: 2px;
-        border-radius: var(--rounding);
+        border-radius: var(--radius);
         box-shadow: 0 0 2px var(--active-color) inset;
       }
     }

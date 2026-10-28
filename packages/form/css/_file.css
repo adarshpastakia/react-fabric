@@ -29,7 +29,7 @@
       padding-block: 0;
       padding-inline: 4px;
       border: 0;
-      border-radius: var(--rounding);
+      border-radius: var(--radius);
 
       color: var(--color-white);
 

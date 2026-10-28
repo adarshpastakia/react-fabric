@@ -31,8 +31,8 @@
     --color-tint: var(--color-silver);
 
     /* default rounding */
-    --rounding: 0.25rem;
-    --rounding-cap: 0.25rem;
+    --radius: 0.25rem;
+    --radius-capped: 0.25rem;
     --gutter: 0.5rem;
 
     /* z levels */
@@ -47,20 +47,20 @@
 
 [data-rounding="sm"] {
   /* default rounding */
-  --rounding: 2px;
-  --rounding-cap: 2px;
+  --radius: 2px;
+  --radius-capped: 2px;
 }
 
 [data-rounding="md"] {
   /* default rounding */
-  --rounding: 0.5rem;
-  --rounding-cap: 0.5rem;
+  --radius: 0.5rem;
+  --radius-capped: 0.5rem;
 }
 
 [data-rounding="full"] {
   /* default rounding */
-  --rounding: 9999px;
-  --rounding-cap: 1rem;
+  --radius: 9999px;
+  --radius-capped: 1rem;
 }
 
 [data-color-scheme="light"] {

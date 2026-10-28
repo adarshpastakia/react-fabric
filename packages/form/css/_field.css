@@ -166,7 +166,7 @@
       > * {
         &,
         & > .fabric-inputWrapper {
-          border-radius: var(--rounding-cap);
+          border-radius: var(--radius-cap);
         }
 
         &:not(:last-child) {

@@ -28,16 +28,7 @@ import { useCallback } from "react";
 import { ErrorBoundary } from "../../core/boundary/ErrorBoundary";
 import { type ContentProps } from "../../core/content/Content";
 import { type HeadFootProps } from "../../core/headfoot/HeadFoot";
-import type {
-  ChildrenProp,
-  CssPropWithMap,
-  Draggable,
-  HeightProps,
-  PolymorphicProps,
-  RefProp,
-  TestProps,
-  WidthProps,
-} from "../../types";
+import type { ChildrenProp, CssPropWithMap, Draggable, HeightProps, PolymorphicProps, RefProp, TestProps, WidthProps } from "../../types";
 import { StyleEffect } from "../effect/StyleEffect";
 import type { TitlebarProps } from "../titlebar/Titlebar";
 import { Titlebar } from "../titlebar/Titlebar";

@@ -27,7 +27,7 @@
   .fabric-avatar {
     width: 1em;
     height: 1em;
-    border-radius: var(--rounding);
+    border-radius: var(--radius);
 
     color: var(--text-color-dimmed);
     vertical-align: -0.125em;

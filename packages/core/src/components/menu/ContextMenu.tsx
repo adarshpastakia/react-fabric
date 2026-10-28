@@ -22,11 +22,11 @@
  */
 
 import {
-  autoUpdate,
-  flip,
   FloatingFocusManager,
   FloatingOverlay,
   FloatingPortal,
+  autoUpdate,
+  flip,
   offset,
   useClick,
   useDismiss,
@@ -39,9 +39,7 @@ import type { ChildrenProp } from "../../types";
 import type { MenuProps } from "./types";
 
 export interface ContextMenuProps extends ChildrenProp {
-  menu: React.ReactElement<
-    MenuProps & { style: React.CSSProperties; onMouseUp: (e: React.MouseEvent) => void; ref: React.RefObject<HTMLElement> }
-  >;
+  menu: React.ReactElement<MenuProps & { style: React.CSSProperties; onMouseUp: (e: React.MouseEvent) => void; ref: React.RefObject<HTMLElement> }>;
 
   disabled?: boolean;
 }
@@ -141,7 +139,7 @@ export function ContextMenu({ children, menu, disabled }: ContextMenuProps) {
                 ...getFloatingProps(),
                 style: {
                   ...floatingStyles,
-                  borderRadius: "var(--rounding)",
+                  borderRadius: "var(--radius)",
                   zIndex: "var(--z-popover)",
                   fontSize: "0.875rem",
                 },

@@ -45,9 +45,7 @@ import { type Menu } from "../components/menu/Menu";
  * @param {ContextMenuProps} props - The properties for the ContextMenu hook.
  * @returns {[React.ReactElement | null, (e: MouseEvent) => void]} An array containing the rendered ContextMenu component (or null if not open) and the function to handle right-click events.
  */
-export function useContextMenu(
-  menu: React.ReactElement<typeof Menu>,
-): [Overlay: React.ReactNode, onContentMenu: (e: React.MouseEvent) => void] {
+export function useContextMenu(menu: React.ReactElement<typeof Menu>): [Overlay: React.ReactNode, onContentMenu: (e: React.MouseEvent) => void] {
   const [isOpen, setIsOpen] = useState(false);
   const nodeId = useFloatingNodeId();
 
@@ -114,7 +112,7 @@ export function useContextMenu(
               ...getFloatingProps(),
               style: {
                 ...floatingStyles,
-                borderRadius: "var(--rounding)",
+                borderRadius: "var(--radius)",
                 zIndex: "var(--z-popover)",
                 fontSize: "0.875rem",
               },
