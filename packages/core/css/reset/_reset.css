@@ -72,6 +72,8 @@
   }
 
   ::view-transition-group(root) {
+    pointer-events: none !important;
+
     /* Safely pull the group back out of invisible off-screen space */
     right: var(--vt-right) !important;
     left: var(--vt-left) !important;

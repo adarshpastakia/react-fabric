@@ -23,6 +23,7 @@
  * SOFTWARE.
  */
 
+import { useId } from "react";
 import { useApplicationContext } from "../../context/context";
 
 /**
@@ -43,57 +44,42 @@ import { useApplicationContext } from "../../context/context";
 export function MatteEffect() {
   const { currentColorScheme } = useApplicationContext();
   const isDark = currentColorScheme === "dark";
+  const id = useId();
 
-  // Pattern cell size
+  // Pattern cell configuration
   const cellSize = 1.5;
-  // Pattern opacity for subtle effect
-  const patternOpacity = 0.05;
+  const patternSize = cellSize * 2;
+  const patternOpacity = 0.04; // Kept highly subtle for fine UI grain
 
-  // Generate SVG pattern for the matte/dither effect
-  // Creates a checkerboard-like pattern with alternating transparent and semi-transparent cells
+  // Highly optimized alternate checkerboard rendering path
+  // Uses 1 layout path instead of 4 dense rect nodes to create identical grid texture blocks
   const patternContent = isDark ? (
-    <>
-      {/* Base: transparent */}
-      <rect width={cellSize * 2} height={cellSize * 2} fill="transparent" />
-      {/* Alternating cells with dark overlay */}
-      <rect x={0} y={0} width={cellSize} height={cellSize} fill={`rgba(0, 0, 0, ${patternOpacity})`} />
-      <rect x={cellSize} y={cellSize} width={cellSize} height={cellSize} fill={`rgba(0, 0, 0, ${patternOpacity})`} />
-      {/* Subtle highlight cells for depth */}
-      <rect x={cellSize} y={0} width={cellSize} height={cellSize} fill={`rgba(255, 255, 255, ${patternOpacity * 0.3})`} />
-      <rect x={0} y={cellSize} width={cellSize} height={cellSize} fill={`rgba(255, 255, 255, ${patternOpacity * 0.3})`} />
-    </>
+    <path
+      d={`M 0 0 h ${cellSize} v ${cellSize} H 0 Z M ${cellSize} ${cellSize} h ${cellSize} v ${cellSize} H ${cellSize} Z`}
+      fill="#ffffff"
+      opacity={patternOpacity}
+    />
   ) : (
-    <>
-      {/* Base: transparent */}
-      <rect width={cellSize * 2} height={cellSize * 2} fill="transparent" />
-      {/* Alternating cells with light overlay */}
-      <rect x={0} y={0} width={cellSize} height={cellSize} fill={`rgba(255, 255, 255, ${patternOpacity})`} />
-      <rect x={cellSize} y={cellSize} width={cellSize} height={cellSize} fill={`rgba(255, 255, 255, ${patternOpacity})`} />
-      {/* Subtle shadow cells for depth */}
-      <rect x={cellSize} y={0} width={cellSize} height={cellSize} fill={`rgba(0, 0, 0, ${patternOpacity * 0.3})`} />
-      <rect x={0} y={cellSize} width={cellSize} height={cellSize} fill={`rgba(0, 0, 0, ${patternOpacity * 0.3})`} />
-    </>
+    <path
+      d={`M 0 0 h ${cellSize} v ${cellSize} H 0 Z M ${cellSize} ${cellSize} h ${cellSize} v ${cellSize} H ${cellSize} Z`}
+      fill="#000000"
+      opacity={patternOpacity}
+    />
   );
 
   return (
     <svg
       className="fabric-style-effect fabric-matteEffect absolute inset-0 size-full overflow-hidden rounded-[inherit] z-0"
+      style={{ pointerEvents: "none" }}
       aria-hidden="true"
     >
       <defs>
-        <pattern
-          id="mattePattern"
-          width={cellSize * 2}
-          height={cellSize * 2}
-          patternUnits="userSpaceOnUse"
-          patternTransform={`rotate(${isDark ? 45 : -45})`}
-        >
+        <pattern id={`${id}-mattePattern`} width={patternSize} height={patternSize} patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
           {patternContent}
         </pattern>
       </defs>
 
-      {/* Matte overlay — single rect with pattern fill, no extra div */}
-      <rect width="100%" height="100%" fill="url(#mattePattern)" style={{ mixBlendMode: isDark ? "overlay" : "soft-light" }} />
+      <rect width="100%" height="100%" fill={`url(#${id}-mattePattern)`} style={{ mixBlendMode: isDark ? "screen" : "multiply" }} />
     </svg>
   );
 }

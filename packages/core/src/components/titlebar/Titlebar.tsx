@@ -66,50 +66,49 @@ export function Titlebar({
     actions?: string;
     prepend?: string;
   }>) {
+  const hasContent = title || icon || actions || prepend;
+
   return (
-    <div
-      className={cn(
-        "fabric-titlebar",
-        "empty:hidden not-empty:border-b border-soft",
-        className,
-        classNames?.root,
-        "grid items-center rounded-t-[inherit] px-2 py-1 relative",
-      )}
-      data-ref="titlebar"
-    >
-      <StyleEffect showBorder={false} />
-      {isValidElement(title) ? (
-        title
-      ) : (
-        <Fragment>
-          {prepend && (
-            <div data-ref="titlebar-actions" className={cn("fabric-titlebarActions", classNames?.prepend)}>
-              {prepend}
-            </div>
-          )}
-          {icon && (
-            <Icon
-              className={cn("fabric-titlebarIcon", classNames?.icon, "p-1 text-lg select-none pointer-events-none")}
-              {...getIconProps(icon)}
-            />
-          )}
-          {title && (
-            <div
-              role="none"
-              data-ref="titlebar-title"
-              onClick={onClick}
-              className={cn("fabric-titlebarTitle", classNames?.title, "truncate py-0.5 px-1 select-none")}
-            >
-              {title}
-            </div>
-          )}
-          {actions && (
-            <div data-ref="titlebar-actions" className={cn("fabric-titlebarActions flex gap-px", classNames?.actions)}>
-              {actions}
-            </div>
-          )}
-        </Fragment>
-      )}
-    </div>
+    hasContent && (
+      <div
+        className={cn(
+          "fabric-titlebar",
+          "empty:hidden not-empty:border-b border-soft",
+          className,
+          classNames?.root,
+          "grid items-center rounded-t-[inherit] px-2 py-1 relative",
+        )}
+        data-ref="titlebar"
+      >
+        <StyleEffect showBorder={false} />
+        {isValidElement(title) ? (
+          title
+        ) : (
+          <Fragment>
+            {prepend && (
+              <div data-ref="titlebar-actions" className={cn("fabric-titlebarActions", classNames?.prepend)}>
+                {prepend}
+              </div>
+            )}
+            {icon && <Icon className={cn("fabric-titlebarIcon", classNames?.icon, "p-1 text-lg select-none pointer-events-none")} {...getIconProps(icon)} />}
+            {title && (
+              <div
+                role="none"
+                data-ref="titlebar-title"
+                onClick={onClick}
+                className={cn("fabric-titlebarTitle", classNames?.title, "truncate py-0.5 px-1 select-none")}
+              >
+                {title}
+              </div>
+            )}
+            {actions && (
+              <div data-ref="titlebar-actions" className={cn("fabric-titlebarActions flex gap-px", classNames?.actions)}>
+                {actions}
+              </div>
+            )}
+          </Fragment>
+        )}
+      </div>
+    )
   );
 }
