@@ -140,4 +140,4 @@ bun run storybook
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for the development workflow — the per-component
 lifecycle, a command cheatsheet, the husky git gates, and the cross-cutting guards. For the
-deep architecture and build internals, see [CLAUDE.md](./CLAUDE.md).
+deep architecture and build internals, see [AGENTS.md](./AGENTS.md).

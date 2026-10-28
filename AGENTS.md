@@ -1,6 +1,9 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Agent instructions for the **react-fabric** repository. This is the single,
+agent-agnostic source of truth for working in this codebase. Human contributors:
+see [`CONTRIBUTING.md`](./CONTRIBUTING.md) for the per-component workflow and
+[`README.md`](./README.md) for the public overview.
 
 ## Project
 
@@ -127,16 +130,36 @@ test|build|ops|docs|chore|merge|revert|i18n|WIP`. Husky gates the workflow: `com
 
 ## Skills
 
-Skills are installed from [skills.sh](https://skills.sh) into `.agents/skills/` (tracked by
-`skills-lock.json`). Currently installed:
+Skills live in `.agents/skills/` (each is a `SKILL.md` with a `name` + `description` front matter
+that an agent matches against the task). There are two groups:
 
-- **`typescript-docs`** — JSDoc/docs generation. Invoke when writing or fixing component/prop docs.
-- **`typescript-react-reviewer`** — React 19 code review. Use before declaring a component done.
-- **`grill-me`** — adversarial plan/design interview (user-invoked via the `grill-me` skill).
+**House skills** — project-specific, maintained here (not in `skills-lock.json`):
+
+- **`fabric-component`** — author or modify a `@react-fabric/*` component: React 19 function
+  component (no `import React`), MIT license header, JSDoc on the component and every prop with
+  `@example`, data-attribute-driven Tailwind v4 styling in `css/`, published-name imports, `cn` for
+  class merges, the polymorphic `as`/`PolymorphicProps` pattern, and a matching `Tester` story wired
+  with `meta.parameters.jest`. **Use this first for any new component / form control / styling task.**
+- **`fabric-test`** — write a Jest + Testing Library behavior test Tester-story-first: the component
+  must have a `Tester` story whose `meta.parameters.jest` links it to the test file; the test renders
+  the component in jsdom and asserts on it. **Use this after `fabric-component`, for any test.**
+
+**Third-party skills** — installed from [skills.sh](https://skills.sh) into `.agents/skills/` and
+pinned by hash in `skills-lock.json` (re-synced from upstream; do not edit in place, or the hash
+breaks and the next sync reverts your change):
+
+- **`typescript-docs`** — JSDoc/docs generation (TypeDoc, ADRs, JSDoc tag shapes). Invoke when
+  writing or fixing component/prop docs.
+- **`typescript-react-reviewer`** — React 19 code review. Invoke before declaring a component done.
+  **Caveat for this repo:** it is app-oriented, so its "barrel files (`index.ts`) → direct imports"
+  anti-pattern does **not** apply — this is a _library_ whose `src/index.ts` barrels _are_ the public
+  API. Also treat its Zustand / TanStack Query guidance as optional, not house style.
+- **`grill-me`** — adversarial plan/design interview. User-invoked only (`disable-model-invocation:
+true`); do not auto-invoke.
 
 The project's own workflows — JSDoc for comments, and the `Tester`-story-first flow for stories and
-tests — follow the "analyze → confirm with the user → generate" pattern even though they are not
-packaged as skill files yet.
+tests — follow an "analyze → confirm with the user → generate" pattern. `CONTRIBUTING.md` is the
+human-readable companion that maps each lifecycle stage to the skill above.
 
 ## Pitfalls
 

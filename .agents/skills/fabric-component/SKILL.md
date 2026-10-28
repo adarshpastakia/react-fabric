@@ -7,7 +7,7 @@ allowed-tools: Read, Write, Edit, Bash, Grep, Glob
 # Fabric Component Authoring
 
 Use this skill whenever you create or modify a component under `packages/<pkg>/src/`.
-It encodes the conventions in `CLAUDE.md` as an actionable checklist so a new component
+It encodes the conventions in `AGENTS.md` as an actionable checklist so a new component
 matches the library's house style on the first pass.
 
 ## Checklist (do all, in order)

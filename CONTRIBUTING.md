@@ -1,8 +1,8 @@
 # Contributing & development workflow
 
 This is the human-facing loop for adding or changing a React-Fabric component. It is the
-"what to do, in what order" companion to [`CLAUDE.md`](./CLAUDE.md), which holds the deep
-architecture, build-system, and testing internals. Read this for the flow; read `CLAUDE.md`
+"what to do, in what order" companion to [`AGENTS.md`](./AGENTS.md), which holds the deep
+architecture, build-system, and testing internals. Read this for the flow; read `AGENTS.md`
 when you need the _why_ or a detail.
 
 > Working with Claude? Each stage maps to a skill under `.agents/skills/` (`fabric-component`,
@@ -99,6 +99,6 @@ Use `npx jest` while iterating — it bypasses the `pretest` lint + Tailwind bui
 
 ## Where to go deeper
 
-- [`CLAUDE.md`](./CLAUDE.md) — architecture, monorepo layout, build system, testing split
+- [`AGENTS.md`](./AGENTS.md) — architecture, monorepo layout, build system, testing split
   (Jest/jsdom now; Playwright visual/E2E deferred), i18n.
 - `.agents/skills/` — the per-step skills that encode this loop when working with Claude.
