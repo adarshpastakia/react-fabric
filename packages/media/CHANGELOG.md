@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://github.com/adarshpastakia/react-fabric/tree/main/packages/media/compare/v1.0.3...v1.0.4) (2026-11-22)
+
+### Bug Fixes
+
+- **media:** remove stray console.log in Dictation ([5f8bc94](https://github.com/adarshpastakia/react-fabric/tree/main/packages/media/commit/5f8bc94ead78cfa4ca56dca807dc01d519f4e651))
+
 ## [1.0.3](https://github.com/adarshpastakia/react-fabric/tree/main/packages/media/compare/v1.0.2...v1.0.3) (2026-10-31)
 
 **Note:** Version bump only for package @react-fabric/media
