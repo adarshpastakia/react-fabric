@@ -24,3 +24,22 @@
  */
 
 export const AI_PACKAGE = "@react-fabric/ai";
+export const AI_VERSION = "1.0.3";
+
+export { AiChat } from "./components/AiChat";
+export { Chatbox } from "./components/Chatbox";
+export { QuestionnaireWizard } from "./components/QuestionnaireWizard";
+
+// TYPES
+export type {
+  AiChatProps,
+  AnswerBlock,
+  AnswerModel,
+  BlockRenderer,
+  BlockRendererMap,
+  BuiltInBlockType,
+  ChatMessage,
+  QuestionModel,
+  QuestionnaireItem,
+  RenderContext,
+} from "./types";
