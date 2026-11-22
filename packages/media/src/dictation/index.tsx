@@ -23,7 +23,7 @@
 
 import { Button, Icon } from "@react-fabric/core";
 import { type ButtonProps } from "@react-fabric/core/dist/types/components/button/Button";
-import { cn, Format } from "@react-fabric/utilities";
+import { Format, cn } from "@react-fabric/utilities";
 import { Fragment, type RefObject, useEffect, useImperativeHandle, useRef, useState } from "react";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 import WaveSurfer from "wavesurfer.js";
@@ -66,7 +66,6 @@ export function Dictation({
   useEffect(() => {
     if (containerRef.current) {
       const clr = getComputedStyle(containerRef.current).getPropertyValue("--color-primary");
-      console.log(clr);
       wavesurferRef.current = new WaveSurfer({
         container: containerRef.current,
         waveColor: clr,
