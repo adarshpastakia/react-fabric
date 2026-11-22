@@ -7,7 +7,7 @@ export default {
   collectCoverage: false,
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["./jest/setup.ts"],
-  roots: ["<rootDir>/packages"],
+  roots: ["<rootDir>/packages", "<rootDir>/jest"],
   testRegex: "(/tests/.*\\.(test|spec))\\.[jt]sx?$",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
   transform: {
@@ -15,16 +15,15 @@ export default {
       "ts-jest",
       {
         useESM: true,
+        isolatedModules: true,
         tsconfig: "tsconfig.test.json",
       },
     ],
-    "\\.(js|jsx)$": "babel-jest",
+    // "\\.(js|jsx)$": "babel-jest",
     "\\.css$": "jest-transform-css",
     "\\.svg$": "jest-transform-stub",
   },
-  transformIgnorePatterns: [
-    "/node_modules/(?!(@storybook/react|@storybook/react\\-vite|storybook|@faker\\-js/faker|boring\\-avatars)/)",
-  ],
+  transformIgnorePatterns: ["/node_modules/(?!(@storybook/react|@storybook/react\\-vite|storybook|@faker\\-js/faker|boring\\-avatars)/)"],
   modulePaths: ["<rootDir>/packages", "<rootDir>/node_modules"],
   modulePathIgnorePatterns: ["<rootDir>/packages/*/dist"],
   moduleNameMapper: {
