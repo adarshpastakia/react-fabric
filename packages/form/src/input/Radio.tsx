@@ -76,20 +76,7 @@ export interface RadioProps extends RefProp<HTMLInputElement> {
  * This component renders a radio button with an optional label and custom icons for checked and unchecked states.
  * It supports disabled and invalid states, and allows for custom width.
  */
-export function Radio({
-  ref,
-  name,
-  label,
-  value,
-  invalid,
-  disabled,
-  width,
-  icon,
-  error,
-  iconChecked,
-  onChange,
-  ...rest
-}: RadioProps) {
+export function Radio({ ref, name, label, value, invalid, disabled, width, icon, error, iconChecked, onChange, ...rest }: RadioProps) {
   const iconOn = useMemo(() => iconChecked ?? icon ?? "icon-[mdi--radiobox-marked]", [icon, iconChecked]);
   const iconOff = useMemo(() => icon ?? "icon-[mdi--radiobox-blank]", [icon]);
 
@@ -106,7 +93,7 @@ export function Radio({
       className={cn(
         invalid ? "ring-danger-500" : "ring-primary-500",
         disabled ? "opacity-50 cursor-not-allowed" : "hover:opacity-100 cursor-pointer",
-        "inline-flex gap-1 py-1 items-center relative cursor-pointer opacity-85 rounded ring-offset-2 has-focus-visible:ring-1",
+        "inline-flex gap-1 py-1 items-center relative cursor-pointer opacity-85 rounded-capped ring-offset-2 has-focus-visible:ring-1",
       )}
       style={{ width }}
     >

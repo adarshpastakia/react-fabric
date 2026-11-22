@@ -67,16 +67,7 @@ const buttonClassName =
  * </Navigator>
  * ```
  */
-export function Navigator({
-  className,
-  onNavigate,
-  color,
-  children,
-  length,
-  current,
-  disableKeyHandlers,
-  ...aria
-}: NavigatorProps) {
+export function Navigator({ className, onNavigate, color, children, length, current, disableKeyHandlers, ...aria }: NavigatorProps) {
   const navPrev = () => (isEmpty(current) || current !== 0) && onNavigate(-1);
   const navNext = () => (isEmpty(current) || current + 1 < (length ?? 0)) && onNavigate(+1);
 
@@ -100,34 +91,22 @@ export function Navigator({
     <div data-ref="navigator" className={cn(className, "inline-flex gap-1 items-center leading-none")} {...aria}>
       <button
         type="button"
+        color={color}
         className={buttonClassName}
         disabled={!isEmpty(current) && current === 0}
         onClick={(e) => [e.stopPropagation(), navPrev()]}
       >
-        <Icon
-          rtlFlip
-          color={color}
-          className="text-[1.25em] p-[0.125em]"
-          aria-label="previous"
-          data-ref="previous"
-          icon="icon-[mdi--chevron-left]"
-        />
+        <Icon rtlFlip className="text-[1.25em] p-[0.125em]" aria-label="previous" data-ref="previous" icon="icon-[mdi--chevron-left]" />
       </button>
       <div className="text-[1em]">{children}</div>
       <button
         type="button"
+        color={color}
         className={buttonClassName}
         disabled={!isEmpty(current) && current + 1 === length}
         onClick={(e) => [e.stopPropagation(), navNext()]}
       >
-        <Icon
-          rtlFlip
-          className="text-[1.25em] p-[0.125em]"
-          color={color}
-          aria-label="next"
-          data-ref="next"
-          icon="icon-[mdi--chevron-right]"
-        />
+        <Icon rtlFlip className="text-[1.25em] p-[0.125em]" aria-label="next" data-ref="next" icon="icon-[mdi--chevron-right]" />
       </button>
     </div>
   );

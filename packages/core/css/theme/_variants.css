@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-@custom-variant dark (&:where([data-color-scheme="dark"]:not(:has([data-color-scheme])), [data-color-scheme="dark"]:not(:has([data-color-scheme])) *));
+@custom-variant dark (&:where([data-color-scheme="dark"], [data-color-scheme="dark"] *));
 
 @custom-variant is-active (&:where([data-active="true"], [data-active="true"] *));
 

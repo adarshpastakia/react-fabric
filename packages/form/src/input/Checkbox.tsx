@@ -76,20 +76,7 @@ interface CheckboxProps extends RefProp<HTMLInputElement> {
  * The component uses a deferred value to manage the checked state, ensuring smooth updates.
  * It also provides an error icon to indicate validation errors.
  */
-export function Checkbox({
-  ref,
-  label,
-  name,
-  checked,
-  invalid,
-  disabled,
-  error,
-  width,
-  icon,
-  iconChecked,
-  onChange,
-  ...rest
-}: CheckboxProps) {
+export function Checkbox({ ref, label, name, checked, invalid, disabled, error, width, icon, iconChecked, onChange, ...rest }: CheckboxProps) {
   const { currentValue, updateValue } = useControlledValue(!!checked, false);
 
   const iconOn = useMemo(() => iconChecked ?? icon ?? "icon-[mdi--checkbox-marked]", [icon, iconChecked]);
@@ -108,7 +95,7 @@ export function Checkbox({
       className={cn(
         invalid ? "ring-danger-500" : "ring-primary-500",
         disabled ? "opacity-50 cursor-not-allowed" : " opacity-85 hover:opacity-100 cursor-pointer",
-        "inline-flex gap-1 py-1 items-center relative rounded ring-offset-2 has-focus-visible:ring-1",
+        "inline-flex gap-1 py-1 items-center relative rounded-capped ring-offset-2 has-focus-visible:ring-1",
       )}
       style={{ width }}
     >

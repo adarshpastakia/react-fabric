@@ -328,7 +328,7 @@
 
       margin: 1.5rem 0;
       border: 1px solid var(--border-color-default);
-      border-radius: var(--radius);
+      border-radius: var(--radius-capped);
 
       font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
       font-size: 12px;
@@ -553,7 +553,7 @@
       padding: 0.5rem;
       border: 1px solid;
       border-inline-start: 0.5rem solid;
-      border-radius: var(--radius-cap);
+      border-radius: var(--radius-capped);
 
       & > & {
         margin-inline-start: 1rem;

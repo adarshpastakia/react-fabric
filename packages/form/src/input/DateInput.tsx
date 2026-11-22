@@ -21,19 +21,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  arrow,
-  autoUpdate,
-  flip,
-  FloatingArrow,
-  offset,
-  shift,
-  useClick,
-  useDismiss,
-  useFloating,
-  useFocus,
-  useInteractions,
-} from "@floating-ui/react";
+import { FloatingArrow, arrow, autoUpdate, flip, offset, shift, useClick, useDismiss, useFloating, useFocus, useInteractions } from "@floating-ui/react";
 import { useControlledValue } from "@react-fabric/core";
 import type { RefProp } from "@react-fabric/core/dist/types/types";
 import type { DateLike } from "@react-fabric/date";
@@ -164,12 +152,7 @@ export function DateInput(props: DateProps) {
   const { getReferenceProps, getFloatingProps } = useInteractions([dismiss, click, focus]);
 
   return (
-    <InputWrapper
-      id={id}
-      showClear={allowClear && !!currentValue && !disabled && !readOnly}
-      onClear={handleChange}
-      {...getWrapperProps(props)}
-    >
+    <InputWrapper id={id} showClear={allowClear && !!currentValue && !disabled && !readOnly} onClear={handleChange} {...getWrapperProps(props)}>
       <input
         id={id}
         className={cn(
@@ -206,18 +189,12 @@ export function DateInput(props: DateProps) {
             zIndex: "var(--z-popover)",
             ...floatingStyles,
           }}
-          className="shadow-lg bg-default ring-1 ring-tint-100"
+          className="shadow-lg bg-default border border-soft"
           data-ref="dropdownBody"
           {...getFloatingProps()}
         >
-          <DatePanel
-            withTime={type === "datetime"}
-            value={currentValue ?? ""}
-            max={max}
-            min={min}
-            onChange={handleDateChange}
-          />
-          <FloatingArrow ref={arrowRef} context={context} strokeWidth={0.5} className="fill-default stroke-muted" />
+          <DatePanel withTime={type === "datetime"} value={currentValue ?? ""} max={max} min={min} onChange={handleDateChange} />
+          <FloatingArrow ref={arrowRef} context={context} strokeWidth={0.5} className="fill-default stroke-soft" />
         </div>
       )}
     </InputWrapper>

@@ -130,7 +130,7 @@ export function Card<Tag extends React.ElementType = "div">({
         "fabric-card",
         className,
         classNames?.root,
-        "rounded-capped relative scroll-thin",
+        "rounded-capped relative scroll-thin group/card",
         selectedRibbon && "selected-ribbon",
         !selectedRibbon && "is-selected:ring-[1.5px] is-selected:ring-accent-500 is-selected:ring-offset-2",
       )}

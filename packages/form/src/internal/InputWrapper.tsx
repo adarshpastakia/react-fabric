@@ -105,38 +105,26 @@ export function InputWrapper(props: InputWrapperProps) {
         className={cn(
           "fabric-inputWrapper",
           invalid && "fabric-invalidWrapper",
-          !borderless && "outline",
+          !borderless && "outline transition-colors duration-500",
           textarea ? "rounded-capped" : "rounded",
           className,
-          "flex flex-1 flex-nowrap items-center bg-(--fabric-input)",
+          "flex flex-1 flex-nowrap items-center bg-(--fabric-input) overflow-hidden",
           isExpanded ? "fixed inset-4 z-99" : floatingExpand ? "absolute inset-x-0" : "relative",
-          focusRing
-            ? "focus-within:ring ring-primary-500"
-            : "after:absolute after:bottom-0 after:h-px after:bg-primary-500 after:mx-auto",
+          focusRing ? "focus-within:ring ring-primary-500" : "after:absolute after:bottom-0 after:h-px after:bg-primary-500 after:mx-auto",
           isOpen && "outline-primary-500",
         )}
         onKeyDown={(e) => e.key === "Escape" && isExpanded && (setIsExpanded(false), e.stopPropagation())}
       >
         {decorateStart && (
-          <div
-            onClickCapture={doFocus}
-            className={cn("fabric-decorate", "text-muted leading-none flex-content", isString(decorateStart) && "px-1")}
-          >
+          <div onClickCapture={doFocus} className={cn("fabric-decorate", "text-muted leading-none flex-content", isString(decorateStart) && "px-1")}>
             {decorateStart}
           </div>
         )}
         <ErrorIcon invalid={invalid} error={error} />
         {children}
         {showClear && (
-          <button
-            type="button"
-            className={cn("size-fit leading-0 cursor-pointer", hasStepper && "relative -ms-12")}
-            onClick={handleClear}
-          >
-            <Icon
-              icon="icon-[mdi--close]"
-              className={cn("text-tint-500 hover:text-tint-700 p-1 z-1 flex-content", "fabric-inputClear")}
-            />
+          <button type="button" className={cn("size-fit leading-0 cursor-pointer", hasStepper && "relative -ms-12")} onClick={handleClear}>
+            <Icon icon="icon-[mdi--close]" className={cn("text-tint-500 hover:text-tint-700 p-1 z-1 flex-content", "fabric-inputClear")} />
           </button>
         )}
         {decorateEnd && (
@@ -159,11 +147,7 @@ export function InputWrapper(props: InputWrapperProps) {
           </div>
         )}
         {textareaExpandable && (
-          <button
-            type="button"
-            className="size-fit cursor-pointer leading-0 absolute top-0 inset-e-0"
-            onClick={() => setIsExpanded(!isExpanded)}
-          >
+          <button type="button" className="size-fit cursor-pointer leading-0 absolute top-0 inset-e-0" onClick={() => setIsExpanded(!isExpanded)}>
             <Icon
               icon={isExpanded ? "icon-[mdi--arrow-collapse]" : "icon-[mdi--arrow-expand]"}
               className="hidden group-hover:block bg-default hover:bg-tint-200 p-1 opacity-65 rounded-capped"

@@ -49,7 +49,7 @@
     &:has([data-open="true"]) {
       z-index: 1;
       background-color: var(--fabric-input-focus);
-      outline-color: var(--color-primary);
+      outline-color: var(--color-primary-200);
 
       &:not(:has([aria-readonly="true"]:not([hidden])))::after {
         inset-inline: 0;
@@ -62,7 +62,7 @@
 
     & input,
     & textarea {
-      width: 4rem;
+      min-width: 4rem;
       max-width: 100%;
       line-height: 1.5;
     }
@@ -166,7 +166,7 @@
       > * {
         &,
         & > .fabric-inputWrapper {
-          border-radius: var(--radius-cap);
+          border-radius: var(--radius-capped);
         }
 
         &:not(:last-child) {

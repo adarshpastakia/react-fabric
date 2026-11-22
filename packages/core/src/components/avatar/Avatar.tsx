@@ -182,21 +182,33 @@ export function Avatar({
       const [, first, second, group] = name.match(/(?=(\w).* (\w).*)|(?=(\w\w).*)/) as string[];
       return (
         <svg role="img">
-          <text
-            x="50%"
-            y="50%"
-            dy=".1em"
-            dominantBaseline="middle"
-            textAnchor="middle"
-            style={{ fontSize: ".5em", fontWeight: 500 }}
-          >
+          <text x="50%" y="50%" dy=".1em" dominantBaseline="middle" textAnchor="middle" style={{ fontSize: ".5em", fontWeight: 500 }}>
             {group ?? `${first}${second}`}
           </text>
         </svg>
       );
     }
     // Default: generate a Boring Avatar from the name
-    return <BoringAvatar square size={64} variant={variant} name={name} />;
+    return (
+      <BoringAvatar
+        square
+        size={64}
+        variant={variant}
+        name={name}
+        colors={[
+          "var(--color-primary-800)",
+          "var(--color-secondary-400)",
+          "var(--color-primary-700)",
+          "var(--color-secondary-500)",
+          "var(--color-primary-600)",
+          "var(--color-secondary-600)",
+          "var(--color-primary-500)",
+          "var(--color-secondary-700)",
+          "var(--color-primary-400)",
+          "var(--color-secondary-800)",
+        ]}
+      />
+    );
   }, [fallbackIcon, variant, name, viewBox]);
 
   return (

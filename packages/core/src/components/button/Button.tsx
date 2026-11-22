@@ -19,11 +19,11 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { cn, EMPTY_ARRAY } from "@react-fabric/utilities";
+import { EMPTY_ARRAY, cn } from "@react-fabric/utilities";
 import type { Hotkey } from "@tanstack/react-hotkeys";
 import { useHotkeySequence } from "@tanstack/react-hotkeys";
 import { useEffect, useReducer } from "react";
-import type { ChildProp, CssPropWithMap, CSSSizeType, HtmlEvents, PolymorphicProps, RefProp, SizeType, TestProps } from "../../types";
+import type { CSSSizeType, ChildProp, CssPropWithMap, HtmlEvents, PolymorphicProps, RefProp, SizeType, TestProps } from "../../types";
 import { Kbd } from "../../typography/Kbd";
 import { getIconProps } from "../../utils";
 import { AnimationIndicator } from "../animations/Indicator";
@@ -285,13 +285,21 @@ export function Button<Tag extends React.ElementType = "button">({
             className={cn(
               "fabric-buttonIcon",
               classNames?.icon,
-              "m-[0.375em] has-[~_.fabric-buttonLabel]:mx-0 inline-block size-fit flex-content pointer-events-none",
+              "m-[0.3em] text-[1.25em] has-[~_.fabric-buttonLabel]:mx-0 inline-block size-fit flex-content pointer-events-none",
             )}
             {...getIconProps(icon)}
           />
         )}
         {children && (
-          <div className={cn("fabric-buttonLabel", classNames?.label, "m-[0.25em] truncate flex-[0_1_auto] leading-tight pointer-events-none")}>{children}</div>
+          <div
+            className={cn(
+              "fabric-buttonLabel",
+              classNames?.label,
+              "m-[0.25em] py-[0.268em] text-[.875em] truncate flex-[0_1_auto] leading-tight pointer-events-none",
+            )}
+          >
+            {children}
+          </div>
         )}
         {!hideHotKeyLabel && hotKey && <Kbd keys={hotKey} />}
         {altIcon && (

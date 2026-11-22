@@ -23,8 +23,9 @@
 
 import { useControlledValue } from "@react-fabric/core";
 import type { RefProp } from "@react-fabric/core/dist/types/types";
+import { cn } from "@react-fabric/utilities";
 import type { KeyboardEventHandler } from "react";
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { useCallback, useId, useRef } from "react";
 import { InputWrapper } from "../internal/InputWrapper";
 import type { InputProps, WrapperProps } from "../types";
 import { getWrapperProps, useHandleEnter } from "../utils";
@@ -80,7 +81,6 @@ export function Textarea(props: TextareaProps) {
   const id = useId();
   const { currentValue, updateValue } = useControlledValue(value, defaultValue);
 
-  const [fixedRows, setFixedRows] = useState(() => rows);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const handleChange = useCallback(
@@ -92,20 +92,9 @@ export function Textarea(props: TextareaProps) {
     [defaultValue, updateValue, onChange],
   );
 
-  useEffect(() => {
-    if (variableRows) {
-      const lines = currentValue?.split("\n").length ?? 1;
-      // eslint-disable-next-line @eslint-react/set-state-in-effect
-      setFixedRows(Math.max(rows, Math.min(maxRows, lines)));
-    }
-  }, [currentValue, variableRows, rows, maxRows]);
-
-  const handleEnterPressed = useHandleEnter<HTMLTextAreaElement>(
-    onEnterPressed as unknown as KeyboardEventHandler<HTMLTextAreaElement>,
-    {
-      preventDefault: !!onEnterPressed,
-    },
-  );
+  const handleEnterPressed = useHandleEnter<HTMLTextAreaElement>(onEnterPressed as unknown as KeyboardEventHandler<HTMLTextAreaElement>, {
+    preventDefault: !!onEnterPressed,
+  });
 
   return (
     <InputWrapper
@@ -119,14 +108,17 @@ export function Textarea(props: TextareaProps) {
     >
       <textarea
         id={id}
-        className="appearance-none self-stretch bg-transparent py-1 px-4 not-first:ps-2 not-last:pe-2 flex-1 border-none outline-none ring-0 min-h-12 resize-none"
+        className={cn(
+          "appearance-none self-stretch bg-transparent py-1 px-4 not-first:ps-2 not-last:pe-2 flex-1 border-none outline-none ring-0 min-h-12 resize-none",
+          variableRows && "field-sizing-content",
+        )}
         aria-invalid={invalid}
         aria-disabled={disabled}
         aria-readonly={readOnly}
         placeholder={placeholder}
         disabled={disabled}
         readOnly={readOnly}
-        rows={fixedRows}
+        rows={rows}
         data-testid={name}
         name={name}
         ref={ref}
@@ -137,6 +129,9 @@ export function Textarea(props: TextareaProps) {
         onFocus={onFocus}
         onChange={handleChange}
         onKeyDown={handleEnterPressed}
+        style={{
+          maxHeight: `calc(${maxRows} * 1.25rem)`,
+        }}
       />
     </InputWrapper>
   );

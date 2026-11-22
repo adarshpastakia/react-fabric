@@ -48,7 +48,7 @@ export function Field(props: FieldProps) {
         className={cn(
           "fabric-fieldGroup",
           !plain && !borderless && "outline focus-within:outline-primary-500 has-aria-invalid:focus-within:outline-danger-500",
-          !plain && "bg-default",
+          !plain && "bg-(--fabric-input) focus-within:bg(--fabric-input-focus)",
           plain && "flex-wrap",
           inline && "flex-1",
           vertical ? "rounded-capped" : "rounded flex",

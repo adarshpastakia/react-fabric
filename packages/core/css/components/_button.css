@@ -203,9 +203,10 @@
       .fabric-button {
         --button-border: transparent;
         --button-bg: transparent;
-        --button-gradient: transparent;
-        --button-click-gradient: transparent;
+        --button-gradient: linear-gradient(transparent);
+        --button-click-gradient: linear-gradient(transparent);
         --button-text: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 90%, var(--fabric-text));
+        --button-hover-bg: color-mix(in oklab, var(--color-tint-500) 10%, var(--fabric-bg));
         --button-active-bg: color-mix(in oklab, var(--button-color, var(--color-primary-500)) 25%, var(--fabric-bg));
 
         &:hover {

@@ -49,7 +49,7 @@
           border-bottom: 1rem solid transparent;
           border-inline-start: 1rem solid transparent;
           border-inline-end: 1rem solid var(--color-primary-500);
-          border-radius: var(--radius-cap);
+          border-radius: var(--radius-capped);
         }
 
         &::after {

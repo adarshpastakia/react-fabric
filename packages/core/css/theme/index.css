@@ -50,6 +50,6 @@
   --aspect-portrait: 3 / 4;
   --aspect-screen: 4 / 3;
   --radius: var(--radius);
-  --radius-capped: var(--radius-cap);
+  --radius-capped: var(--radius-capped);
   --shadow-paper: 0 1px 3px 0 var(--fabric-shadow);
 }
