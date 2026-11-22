@@ -1,4 +1,4 @@
-import{n as e,r as t}from"./rolldown-runtime.js";import{t as n}from"./react.js";import{r}from"./EmptyContent.js";import{H as i,It as a,K as o,Lt as s,W as c,bt as l,gt as u,t as d,zt as f}from"./src2.js";import{t as p}from"./jsx-runtime.js";import{n as m,t as h}from"./en.js";var g=t({ClickableCard:()=>C,FlipCard:()=>w,_Card:()=>S,__namedExportsOrder:()=>T,default:()=>b}),_,v,y,b,x,S,C,w,T;function E(){return(E=e((()=>{d(),h(),_=n(),v=p(),y=p(),b={component:o,subcomponents:{CardCover:c},title:`@core/components/Card`,parameters:{layout:`centered`,jest:[`core/tests/components/Card.test.tsx`]},decorators:[e=>(0,y.jsx)(`div`,{className:`flex justify-center gap-4`,children:(0,y.jsx)(e,{})})]},x=m.lorem.paragraphs(2),S={render(e){return(0,y.jsx)(v.Fragment,{children:(0,y.jsxs)(o,{...e,title:`Card Title`,width:480,children:[(0,y.jsx)(s,{className:`px-4`,children:`Header`}),(0,y.jsx)(f,{children:(0,y.jsx)(u,{children:x})}),(0,y.jsx)(a,{className:`px-4`,children:`Footer`})]})})},args:{}},C={render(e){return(0,y.jsx)(v.Fragment,{children:(0,y.jsxs)(o,{...e,title:`Card Title`,width:480,onClick:()=>alert(`Card was clicked`),children:[(0,y.jsx)(s,{className:`px-4`,children:`Header`}),(0,y.jsxs)(f,{children:[(0,y.jsx)(u,{children:x}),(0,y.jsxs)(`div`,{className:`flex gap-2 mt-4`,children:[(0,y.jsx)(l,{onClick:e=>(e?.stopPropagation(),alert(`Anchor was clicked`)),children:`Inner link`}),(0,y.jsx)(r,{onClick:e=>(e?.stopPropagation(),alert(`Button was clicked`)),children:`Inner button`})]})]}),(0,y.jsx)(a,{className:`px-4`,children:`Footer`})]})})},args:{}},w={render:e=>{let t=(0,_.useRef)(null);return(0,y.jsxs)(o,{...e,width:480,children:[(0,y.jsx)(s,{children:(0,y.jsx)(r,{"data-testid":`flipToggle`,onClick:()=>t.current?.flipCard(),children:`Toggle Flip`})}),(0,y.jsxs)(i,{ref:t,children:[(0,y.jsx)(f,{"data-testid":`frontContent`,children:x}),(0,y.jsx)(f,{"data-testid":`backContent`,children:(0,y.jsx)(`table`,{children:(0,y.jsx)(`tbody`,{children:(0,y.jsxs)(`tr`,{children:[(0,y.jsx)(`td`,{children:`1`}),(0,y.jsx)(`td`,{children:`title`}),(0,y.jsx)(`td`,{children:`action`})]})})})})]})]})},args:{}},S.parameters={...S.parameters,docs:{...S.parameters?.docs,source:{originalSource:`{
+import{n as e,r as t}from"./rolldown-runtime.js";import{t as n}from"./react.js";import{r}from"./EmptyContent.js";import{t as i}from"./jsx-runtime.js";import{H as a,It as o,K as s,Lt as c,W as l,bt as u,gt as d,t as f,zt as p}from"./src2.js";import{n as m,t as h}from"./en.js";var g=t({ClickableCard:()=>S,FlipCard:()=>C,_Card:()=>x,__namedExportsOrder:()=>w,default:()=>y}),_,v,y,b,x,S,C,w;function T(){return(T=e((()=>{f(),h(),_=n(),v=i(),y={component:s,subcomponents:{CardCover:l},title:`@core/components/Card`,parameters:{layout:`centered`,jest:[`core/tests/components/Card.test.tsx`]},decorators:[e=>(0,v.jsx)(`div`,{className:`flex justify-center gap-4`,children:(0,v.jsx)(e,{})})]},b=m.lorem.paragraphs(2),x={render(e){return(0,v.jsx)(v.Fragment,{children:(0,v.jsxs)(s,{...e,title:`Card Title`,width:480,children:[(0,v.jsx)(c,{className:`px-4`,children:`Header`}),(0,v.jsx)(p,{children:(0,v.jsx)(d,{children:b})}),(0,v.jsx)(o,{className:`px-4`,children:`Footer`})]})})},args:{}},S={render(e){return(0,v.jsx)(v.Fragment,{children:(0,v.jsxs)(s,{...e,title:`Card Title`,width:480,onClick:()=>alert(`Card was clicked`),children:[(0,v.jsx)(c,{className:`px-4`,children:`Header`}),(0,v.jsxs)(p,{children:[(0,v.jsx)(d,{children:b}),(0,v.jsxs)(`div`,{className:`flex gap-2 mt-4`,children:[(0,v.jsx)(u,{onClick:e=>(e?.stopPropagation(),alert(`Anchor was clicked`)),children:`Inner link`}),(0,v.jsx)(r,{onClick:e=>(e?.stopPropagation(),alert(`Button was clicked`)),children:`Inner button`})]})]}),(0,v.jsx)(o,{className:`px-4`,children:`Footer`})]})})},args:{}},C={render:e=>{let t=(0,_.useRef)(null);return(0,v.jsxs)(s,{...e,width:480,children:[(0,v.jsx)(c,{children:(0,v.jsx)(r,{"data-testid":`flipToggle`,onClick:()=>t.current?.flipCard(),children:`Toggle Flip`})}),(0,v.jsxs)(a,{ref:t,children:[(0,v.jsx)(p,{"data-testid":`frontContent`,children:b}),(0,v.jsx)(p,{"data-testid":`backContent`,children:(0,v.jsx)(`table`,{children:(0,v.jsx)(`tbody`,{children:(0,v.jsxs)(`tr`,{children:[(0,v.jsx)(`td`,{children:`1`}),(0,v.jsx)(`td`,{children:`title`}),(0,v.jsx)(`td`,{children:`action`})]})})})})]})]})},args:{}},x.parameters={...x.parameters,docs:{...x.parameters?.docs,source:{originalSource:`{
   render(args) {
     return <Fragment>
         <Card {...args} title="Card Title" width={480}>
@@ -11,7 +11,7 @@ import{n as e,r as t}from"./rolldown-runtime.js";import{t as n}from"./react.js";
       </Fragment>;
   },
   args: {}
-}`,...S.parameters?.docs?.source}}},C.parameters={...C.parameters,docs:{...C.parameters?.docs,source:{originalSource:`{
+}`,...x.parameters?.docs?.source}}},S.parameters={...S.parameters,docs:{...S.parameters?.docs,source:{originalSource:`{
   render(args) {
     return <Fragment>
         <Card {...args} title="Card Title" width={480} onClick={() => alert("Card was clicked")}>
@@ -28,7 +28,7 @@ import{n as e,r as t}from"./rolldown-runtime.js";import{t as n}from"./react.js";
       </Fragment>;
   },
   args: {}
-}`,...C.parameters?.docs?.source}}},w.parameters={...w.parameters,docs:{...w.parameters?.docs,source:{originalSource:`{
+}`,...S.parameters?.docs?.source}}},C.parameters={...C.parameters,docs:{...C.parameters?.docs,source:{originalSource:`{
   render: args => {
     const ref = useRef<FlipContentRef>(null);
     return <Card {...args} width={480}>
@@ -54,4 +54,4 @@ import{n as e,r as t}from"./rolldown-runtime.js";import{t as n}from"./react.js";
       </Card>;
   },
   args: {}
-}`,...w.parameters?.docs?.source}}},T=[`_Card`,`ClickableCard`,`FlipCard`]})))()}export{E as a,S as i,C as n,w as r,g as t};
+}`,...C.parameters?.docs?.source}}},w=[`_Card`,`ClickableCard`,`FlipCard`]})))()}export{T as a,x as i,S as n,C as r,g as t};

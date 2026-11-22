@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime.js";import{B as t,t as n}from"./src2.js";import{t as r}from"./jsx-runtime.js";var i,a,o,s,c,l,u,d,f,p;function m(){return(m=e((()=>{n(),i=r(),a=r(),{fn:o}=__STORYBOOK_MODULE_TEST__,s={component:t,tags:[`autodocs`],title:`@core/components/Chip`,parameters:{layout:`centered`,jest:[`core/tests/components/Chip.test.tsx`]},decorators:[e=>(0,a.jsx)(`div`,{className:`flex gap-2 items-center p-4`,children:(0,a.jsx)(e,{})})]},c={render:({onClick:e,onRemove:n,...r})=>(0,a.jsxs)(i.Fragment,{children:[(0,a.jsx)(t,{...r,children:`Label`}),(0,a.jsx)(t,{...r,icon:`icon-[mdi--react]`,children:`Label with icon`}),(0,a.jsx)(t,{...r,icon:`icon-[mdi--react]`}),(0,a.jsx)(t,{...r,icon:`icon-[mdi--react]`,onClick:e,children:`Clickable`}),(0,a.jsx)(t,{...r,icon:`icon-[mdi--react]`,onRemove:n,children:`Remove Me`})]}),args:{onClick:o(),onRemove:o()}},l={render:e=>(0,a.jsxs)(i.Fragment,{children:[(0,a.jsx)(t,{...e,children:`Default`}),(0,a.jsx)(t,{...e,variant:`outlined`,children:`Outlined`}),(0,a.jsx)(t,{...e,color:`primary`,variant:`soft`,children:`Soft`}),(0,a.jsx)(t,{...e,color:`primary`,variant:`solid`,children:`Solid`})]}),args:{}},u={render:e=>(0,a.jsxs)(i.Fragment,{children:[(0,a.jsx)(t,{...e,color:`primary`,children:`Primary`}),(0,a.jsx)(t,{...e,color:`secondary`,children:`Secondary`}),(0,a.jsx)(t,{...e,color:`scarlet`,children:`Scarlet`}),(0,a.jsx)(t,{...e,color:`pumpkin`,children:`Pumpkin`}),(0,a.jsx)(t,{...e,color:`#148B69`,children:`#148B69`}),(0,a.jsx)(t,{...e,color:`#A7207F`,children:`#A7207F`})]}),args:{}},d={render:e=>(0,a.jsxs)(i.Fragment,{children:[(0,a.jsx)(t,{...e,color:`primary`,children:`Primary`}),(0,a.jsx)(t,{...e,color:`secondary`,children:`Secondary`}),(0,a.jsx)(t,{...e,color:`info`,children:`Info`}),(0,a.jsx)(t,{...e,color:`danger`,children:`Danger`}),(0,a.jsx)(t,{...e,color:`success`,children:`Success`}),(0,a.jsx)(t,{...e,color:`warning`,children:`Warning`})]}),args:{value:99}},f={tags:[`!autodocs`],render:e=>(0,a.jsx)(t,{...e}),args:{}},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
+import{n as e}from"./rolldown-runtime.js";import{t}from"./jsx-runtime.js";import{B as n,t as r}from"./src2.js";var i,a,o,s,c,l,u,d,f;function p(){return(p=e((()=>{r(),i=t(),{fn:a}=__STORYBOOK_MODULE_TEST__,o={component:n,tags:[`autodocs`],title:`@core/components/Chip`,parameters:{layout:`centered`,jest:[`core/tests/components/Chip.test.tsx`]},decorators:[e=>(0,i.jsx)(`div`,{className:`flex gap-2 items-center p-4`,children:(0,i.jsx)(e,{})})]},s={render:({onClick:e,onRemove:t,...r})=>(0,i.jsxs)(i.Fragment,{children:[(0,i.jsx)(n,{...r,children:`Label`}),(0,i.jsx)(n,{...r,icon:`icon-[mdi--react]`,children:`Label with icon`}),(0,i.jsx)(n,{...r,icon:`icon-[mdi--react]`}),(0,i.jsx)(n,{...r,icon:`icon-[mdi--react]`,onClick:e,children:`Clickable`}),(0,i.jsx)(n,{...r,icon:`icon-[mdi--react]`,onRemove:t,children:`Remove Me`})]}),args:{onClick:a(),onRemove:a()}},c={render:e=>(0,i.jsxs)(i.Fragment,{children:[(0,i.jsx)(n,{...e,children:`Default`}),(0,i.jsx)(n,{...e,variant:`outlined`,children:`Outlined`}),(0,i.jsx)(n,{...e,color:`primary`,variant:`soft`,children:`Soft`}),(0,i.jsx)(n,{...e,color:`primary`,variant:`solid`,children:`Solid`})]}),args:{}},l={render:e=>(0,i.jsxs)(i.Fragment,{children:[(0,i.jsx)(n,{...e,color:`primary`,children:`Primary`}),(0,i.jsx)(n,{...e,color:`secondary`,children:`Secondary`}),(0,i.jsx)(n,{...e,color:`scarlet`,children:`Scarlet`}),(0,i.jsx)(n,{...e,color:`pumpkin`,children:`Pumpkin`}),(0,i.jsx)(n,{...e,color:`#148B69`,children:`#148B69`}),(0,i.jsx)(n,{...e,color:`#A7207F`,children:`#A7207F`})]}),args:{}},u={render:e=>(0,i.jsxs)(i.Fragment,{children:[(0,i.jsx)(n,{...e,color:`primary`,children:`Primary`}),(0,i.jsx)(n,{...e,color:`secondary`,children:`Secondary`}),(0,i.jsx)(n,{...e,color:`info`,children:`Info`}),(0,i.jsx)(n,{...e,color:`danger`,children:`Danger`}),(0,i.jsx)(n,{...e,color:`success`,children:`Success`}),(0,i.jsx)(n,{...e,color:`warning`,children:`Warning`})]}),args:{value:99}},d={tags:[`!autodocs`],render:e=>(0,i.jsx)(n,{...e}),args:{}},s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`{
   render: ({
     onClick,
     onRemove,
@@ -22,7 +22,7 @@ import{n as e}from"./rolldown-runtime.js";import{B as t,t as n}from"./src2.js";i
     onClick: fn(),
     onRemove: fn()
   }
-}`,...c.parameters?.docs?.source}}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
+}`,...s.parameters?.docs?.source}}},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Fragment>
         <Chip {...args}>Default</Chip>
@@ -38,7 +38,7 @@ import{n as e}from"./rolldown-runtime.js";import{B as t,t as n}from"./src2.js";i
       </Fragment>;
   },
   args: {}
-}`,...l.parameters?.docs?.source}}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
+}`,...c.parameters?.docs?.source}}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Fragment>
         <Chip {...args} color="primary">
@@ -62,7 +62,7 @@ import{n as e}from"./rolldown-runtime.js";import{B as t,t as n}from"./src2.js";i
       </Fragment>;
   },
   args: {}
-}`,...u.parameters?.docs?.source}}},d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
+}`,...l.parameters?.docs?.source}}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Fragment>
         <Chip {...args} color="primary">
@@ -88,8 +88,8 @@ import{n as e}from"./rolldown-runtime.js";import{B as t,t as n}from"./src2.js";i
   args: {
     value: 99
   }
-}`,...d.parameters?.docs?.source}}},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
+}`,...u.parameters?.docs?.source}}},d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
   tags: ["!autodocs"],
   render: args => <Chip {...args} />,
   args: {}
-}`,...f.parameters?.docs?.source}}},p=[`_Chip`,`Variants`,`Colors`,`SegmentValue`,`Tester`]})))()}m();export{u as Colors,d as SegmentValue,f as Tester,l as Variants,c as _Chip,p as __namedExportsOrder,s as default};
+}`,...d.parameters?.docs?.source}}},f=[`_Chip`,`Variants`,`Colors`,`SegmentValue`,`Tester`]})))()}p();export{l as Colors,u as SegmentValue,d as Tester,c as Variants,s as _Chip,f as __namedExportsOrder,o as default};

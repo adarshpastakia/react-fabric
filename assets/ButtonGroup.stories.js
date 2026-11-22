@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime.js";import{r as t}from"./EmptyContent.js";import{mt as n,t as r}from"./src2.js";import{t as i}from"./jsx-runtime.js";var a,o,s,c,l,u,d;function f(){return(f=e((()=>{r(),a=i(),o=i(),{fn:s}=__STORYBOOK_MODULE_TEST__,c={component:n,tags:[`autodocs`],title:`@core/components/ButtonGroup`,parameters:{layout:`centered`,jest:[`core/tests/components/ButtonGroup.test.tsx`]},decorators:[e=>(0,o.jsx)(`div`,{className:`flex gap-2 items-center p-4`,children:(0,o.jsx)(e,{})})]},l={render:e=>(0,o.jsx)(a.Fragment,{children:(0,o.jsxs)(n,{...e,children:[(0,o.jsx)(t,{value:`left`,children:`Left`}),(0,o.jsx)(t,{value:`center`,children:`Center`}),(0,o.jsx)(t,{value:`right`,children:`Right`}),(0,o.jsx)(t,{value:`justify`,children:`Justify`})]})}),args:{onClick:s()}},u={tags:[`!autodocs`],render:e=>(0,o.jsx)(n,{...e}),args:{}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
+import{n as e}from"./rolldown-runtime.js";import{r as t}from"./EmptyContent.js";import{t as n}from"./jsx-runtime.js";import{mt as r,t as i}from"./src2.js";var a,o,s,c,l,u;function d(){return(d=e((()=>{i(),a=n(),{fn:o}=__STORYBOOK_MODULE_TEST__,s={component:r,tags:[`autodocs`],title:`@core/components/ButtonGroup`,parameters:{layout:`centered`,jest:[`core/tests/components/ButtonGroup.test.tsx`]},decorators:[e=>(0,a.jsx)(`div`,{className:`flex gap-2 items-center p-4`,children:(0,a.jsx)(e,{})})]},c={render:e=>(0,a.jsx)(a.Fragment,{children:(0,a.jsxs)(r,{...e,children:[(0,a.jsx)(t,{value:`left`,children:`Left`}),(0,a.jsx)(t,{value:`center`,children:`Center`}),(0,a.jsx)(t,{value:`right`,children:`Right`}),(0,a.jsx)(t,{value:`justify`,children:`Justify`})]})}),args:{onClick:o()}},l={tags:[`!autodocs`],render:e=>(0,a.jsx)(r,{...e}),args:{}},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Fragment>
         <ButtonGroup {...args}>
@@ -12,8 +12,8 @@ import{n as e}from"./rolldown-runtime.js";import{r as t}from"./EmptyContent.js";
   args: {
     onClick: fn()
   }
-}`,...l.parameters?.docs?.source}}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
+}`,...c.parameters?.docs?.source}}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
   tags: ["!autodocs"],
   render: args => <ButtonGroup {...args} />,
   args: {}
-}`,...u.parameters?.docs?.source}}},d=[`_ButtonGroup`,`Tester`]})))()}f();export{u as Tester,l as _ButtonGroup,d as __namedExportsOrder,c as default};
+}`,...l.parameters?.docs?.source}}},u=[`_ButtonGroup`,`Tester`]})))()}d();export{l as Tester,c as _ButtonGroup,u as __namedExportsOrder,s as default};

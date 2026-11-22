@@ -1,4 +1,4 @@
-import{n as e,r as t}from"./rolldown-runtime.js";import{t as n,ut as r}from"./src2.js";import{t as i}from"./jsx-runtime.js";import{n as a,t as o}from"./en.js";var s=t({_LoadingBars:()=>d,__namedExportsOrder:()=>f,default:()=>u}),c,l,u,d,f;function p(){return(p=e((()=>{n(),o(),c=i(),l=i(),u={component:r,title:`@core/components/Animations`,parameters:{layout:`centered`,jest:[`core/tests/components/Animations.test.tsx`]},decorators:[e=>(0,l.jsx)(`div`,{className:`flex gap-2 items-center p-4`,children:(0,l.jsx)(e,{})})]},d={render:e=>(0,l.jsxs)(c.Fragment,{children:[(0,l.jsx)(`div`,{children:a.lorem.paragraphs()}),(0,l.jsx)(r,{...e})]}),args:{}},d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
+import{n as e,r as t}from"./rolldown-runtime.js";import{t as n}from"./jsx-runtime.js";import{t as r,ut as i}from"./src2.js";import{n as a,t as o}from"./en.js";var s=t({_LoadingBars:()=>u,__namedExportsOrder:()=>d,default:()=>l}),c,l,u,d;function f(){return(f=e((()=>{r(),o(),c=n(),l={component:i,title:`@core/components/Animations`,parameters:{layout:`centered`,jest:[`core/tests/components/Animations.test.tsx`]},decorators:[e=>(0,c.jsx)(`div`,{className:`flex gap-2 items-center p-4`,children:(0,c.jsx)(e,{})})]},u={render:e=>(0,c.jsxs)(c.Fragment,{children:[(0,c.jsx)(`div`,{children:a.lorem.paragraphs()}),(0,c.jsx)(i,{...e})]}),args:{}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Fragment>
         <div>{faker.lorem.paragraphs()}</div>
@@ -6,4 +6,4 @@ import{n as e,r as t}from"./rolldown-runtime.js";import{t as n,ut as r}from"./sr
       </Fragment>;
   },
   args: {}
-}`,...d.parameters?.docs?.source}}},f=[`_LoadingBars`]})))()}export{d as n,p as r,s as t};
+}`,...u.parameters?.docs?.source}}},d=[`_LoadingBars`]})))()}export{u as n,f as r,s as t};

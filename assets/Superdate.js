@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime.js";import{t}from"./react.js";import{S as n,_ as r,c as i,g as a,i as o,l as s,r as c,t as l,y as u}from"./blocks.js";import{t as d}from"./jsx-runtime.js";import{i as f,r as p}from"./react2.js";import{N as m,t as h}from"./esm2.js";import{n as g,t as _}from"./src8.js";import{i as v,n as y,r as b,t as x}from"./Superdate.stories.js";function S(e){return(0,w.jsxs)(w.Fragment,{children:[(0,w.jsx)(a,{of:y}),`
+import{n as e}from"./rolldown-runtime.js";import{t}from"./react.js";import{S as n,_ as r,c as i,g as a,i as o,l as s,r as c,t as l,y as u}from"./blocks.js";import{t as d}from"./jsx-runtime.js";import{i as f,r as p}from"./react2.js";import{L as m,t as h}from"./esm3.js";import{n as g,t as _}from"./src9.js";import{i as v,n as y,r as b,t as x}from"./Superdate.stories.js";function S(e){return(0,w.jsxs)(w.Fragment,{children:[(0,w.jsx)(a,{of:y}),`
 `,(0,w.jsx)(u,{children:`Superdate`}),`
 `,(0,w.jsx)(l,{storyId:`datepanel`,children:(0,w.jsx)(`div`,{className:`hidden-anchor`,children:(0,w.jsx)(r,{children:`Superdate`})})}),`
 `,(0,w.jsx)(s,{of:g}),`

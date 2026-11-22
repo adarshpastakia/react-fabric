@@ -1,4 +1,4 @@
-import{n as e,r as t}from"./rolldown-runtime.js";import{r as n}from"./EmptyContent.js";import{It as r,f as i,g as a,m as o,t as s,zt as c}from"./src2.js";import{t as l}from"./jsx-runtime.js";import{n as u,t as d}from"./en.js";var f=t({PanelControls:()=>v,_Panel:()=>_,__namedExportsOrder:()=>y,default:()=>g}),p,m,h,g,_,v,y;function b(){return(b=e((()=>{s(),d(),p=l(),m=l(),{fn:h}=__STORYBOOK_MODULE_TEST__,g={component:o,subcomponents:{PanelGroup:i},title:`@core/components/Panel`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/Panel.test.tsx`]},decorators:[e=>(0,m.jsx)(`div`,{className:`w-96 p-4`,children:(0,m.jsx)(e,{})})]},_={render:e=>(0,m.jsx)(p.Fragment,{children:(0,m.jsxs)(o,{...e,actions:(0,m.jsx)(a,{className:`self-center`,onNavigate:h()}),children:[(0,m.jsx)(c,{children:u.lorem.paragraphs(2)}),(0,m.jsxs)(r,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,m.jsx)(n,{variant:`link`,children:`Cancel`}),(0,m.jsx)(n,{variant:`solid`,children:`OK`})]})]})}),args:{title:u.animal.cat()}},v={render:e=>(0,m.jsx)(o,{...e,children:(0,m.jsx)(c,{children:u.lorem.paragraphs(2)})}),args:{title:u.animal.cat(),collapsable:!0,expandable:!0,onClose:h(),onExpand:h(),onCollapse:h()}},_.parameters={..._.parameters,docs:{..._.parameters?.docs,source:{originalSource:`{
+import{n as e,r as t}from"./rolldown-runtime.js";import{r as n}from"./EmptyContent.js";import{t as r}from"./jsx-runtime.js";import{It as i,f as a,g as o,m as s,t as c,zt as l}from"./src2.js";import{n as u,t as d}from"./en.js";var f=t({PanelControls:()=>_,_Panel:()=>g,__namedExportsOrder:()=>v,default:()=>h}),p,m,h,g,_,v;function y(){return(y=e((()=>{c(),d(),p=r(),{fn:m}=__STORYBOOK_MODULE_TEST__,h={component:s,subcomponents:{PanelGroup:a},title:`@core/components/Panel`,parameters:{layout:`centered`,controls:{exclude:/^(on.*|children|as)/},jest:[`core/tests/Panel.test.tsx`]},decorators:[e=>(0,p.jsx)(`div`,{className:`w-96 p-4`,children:(0,p.jsx)(e,{})})]},g={render:e=>(0,p.jsx)(p.Fragment,{children:(0,p.jsxs)(s,{...e,actions:(0,p.jsx)(o,{className:`self-center`,onNavigate:m()}),children:[(0,p.jsx)(l,{children:u.lorem.paragraphs(2)}),(0,p.jsxs)(i,{flex:!0,justify:`end`,className:`px-2 py-1`,children:[(0,p.jsx)(n,{variant:`link`,children:`Cancel`}),(0,p.jsx)(n,{variant:`solid`,children:`OK`})]})]})}),args:{title:u.animal.cat()}},_={render:e=>(0,p.jsx)(s,{...e,children:(0,p.jsx)(l,{children:u.lorem.paragraphs(2)})}),args:{title:u.animal.cat(),collapsable:!0,expandable:!0,onClose:m(),onExpand:m(),onCollapse:m()}},g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Fragment>
         <Panel {...args} actions={<Navigator className="self-center" onNavigate={fn()} />}>
@@ -13,7 +13,7 @@ import{n as e,r as t}from"./rolldown-runtime.js";import{r as n}from"./EmptyConte
   args: {
     title: faker.animal.cat()
   }
-}`,..._.parameters?.docs?.source}}},v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
+}`,...g.parameters?.docs?.source}}},_.parameters={..._.parameters,docs:{..._.parameters?.docs,source:{originalSource:`{
   render: args => {
     return <Panel {...args}>
         <Content>{faker.lorem.paragraphs(2)}</Content>
@@ -27,4 +27,4 @@ import{n as e,r as t}from"./rolldown-runtime.js";import{r as n}from"./EmptyConte
     onExpand: fn(),
     onCollapse: fn()
   }
-}`,...v.parameters?.docs?.source}}},y=[`_Panel`,`PanelControls`]})))()}export{b as i,f as n,_ as r,v as t};
+}`,..._.parameters?.docs?.source}}},v=[`_Panel`,`PanelControls`]})))()}export{y as i,f as n,g as r,_ as t};
